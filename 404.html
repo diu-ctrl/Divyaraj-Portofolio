@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>404 - Page Not Found | Divyaraj Chauhan</title>
+    <link rel="icon" type="image/png" href="favicon.png">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital,wght@0,400;1,400&family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --bg: #000000;
+            --bg-deep: #000000;
+            --card: #282723;
+            --text: #FFFFFF;
+            --text-muted: #99A57D;
+            --border: #282723;
+            --accent: #EB4604;
+
+            /* Compatibility variables mapped to brutalist purge tokens */
+            --primary: var(--accent);
+            --primary-light: var(--accent);
+            --primary-dim: #2b1812;
+            --accent-1: var(--accent);
+            --accent-glow: var(--accent);
+            --secondary-1: var(--bg-deep);
+            --secondary-2: var(--bg);
+            --secondary-3: var(--text);
+            --surface: var(--card);
+            --surface-flat: var(--card);
+            --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            --font-serif: 'Instrument Serif', Georgia, serif;
+            --font-mono: 'Space Mono', 'JetBrains Mono', monospace;
+            --credes-surface: var(--card);
+            --credes-border: var(--border);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            border-radius: 0px !important;
+            box-shadow: none !important;
+            backdrop-filter: none !important;
+            -webkit-backdrop-filter: none !important;
+            mix-blend-mode: normal !important;
+        }
+
+        nav, .nav-links a, .nav-cta a, .nav-resume, .btn-nav, .btn-brutalist, .btn-primary-gold, .btn-outline, .stat-lbl, .cinema-badge, .outcome-badge, .web-badge, .folio-card-tag, .refresh-date, .copyright-above, .contact-links-mono {
+            font-family: var(--font-mono) !important;
+        }
+
+        body {
+            font-family: var(--font-sans);
+            background-color: var(--bg);
+            color: var(--text);
+            overflow: hidden;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* ─── Background Atmosphere ─── */
+        
+
+        
+
+        
+
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            33% { transform: translate(30px, -45px) scale(1.08); }
+            66% { transform: translate(-25px, 25px) scale(0.92); }
+        }
+
+        
+
+        /* ─── Main Container ─── */
+        .error-container {
+            text-align: center;
+            padding: 40px;
+            max-width: 600px;
+            width: 90%;
+            z-index: 10;
+        }
+
+        .error-code {
+            font-family: var(--font-serif);
+            font-size: clamp(6rem, 15vw, 10rem);
+            font-weight: 800;
+            line-height: 1;
+            margin-bottom: 24px;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            display: inline-block;
+        }
+
+        .error-message {
+            font-size: clamp(1.1rem, 2.5vw, 1.4rem);
+            color: var(--text);
+            font-weight: 500;
+            margin-bottom: 32px;
+            line-height: 1.5;
+        }
+
+        /* ─── Back Link button ─── */
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 12px 28px;
+            color: #ffffff;
+            border: 1.5px solid transparent;
+            border-radius: 100px;
+            font-weight: 600;
+            font-size: 0.88rem;
+            text-decoration: none;
+            transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+            cursor: pointer;
+            margin-bottom: 48px;
+        }
+
+        .back-link:hover {
+        }
+
+        /* ─── Custom Help Subtext ─── */
+        .mistake-helper {
+            font-family: var(--font-mono);
+            font-size: 0.72rem;
+            color: var(--text-muted);
+            line-height: 1.5;
+        }
+
+        .mistake-helper a {
+            color: var(--secondary-3);
+            text-decoration: none;
+            border-bottom: 1px dashed #282723;
+            transition: all 0.3s;
+        }
+
+        .mistake-helper a:hover {
+            color: #ffffff;
+            border-bottom-color: #ffffff;
+        }
+    
+        h1, h2 {
+            font-family: var(--font-serif) !important;
+            font-style: italic !important;
+            letter-spacing: -0.02em !important;
+            font-size: clamp(3.5rem, 8vw, 7rem) !important;
+            font-weight: 400 !important;
+            line-height: 1.05 !important;
+        }
+</style>
+</head>
+<body>
+
+    <!-- Ambient atmosphere -->
+    
+    
+    
+
+    <div class="error-container">
+        <h1 class="error-code">404</h1>
+        <p class="error-message">This page doesn't exist. Probably my fault.</p>
+        
+        <a href="index.html" class="back-link">
+            ← Back to the main site
+        </a>
+        
+        <div class="mistake-helper">
+            Think this is a mistake? <a href="https://wa.me/919909249767" target="_blank">WhatsApp me</a>
+        </div>
+    </div>
+
+</body>
+</html>

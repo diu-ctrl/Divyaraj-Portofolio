@@ -1,0 +1,11 @@
+# Ignore Vercel metadata
+.vercel
+
+# Ignore raw/edited video files and graphics assets from Sattvik Certifications
+**/SATCON'26 Media-Graphics/
+**/SATCON'26 Media-Videos/
+
+# Ignore scratch files
+scratch/
+check_sizes.py
+check_sizes.js

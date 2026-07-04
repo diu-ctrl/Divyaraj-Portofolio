@@ -1,0 +1,902 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shift × Divyaraj Chauhan — Fitness App SMM Case Study</title>
+    <link rel="icon" type="image/svg+xml" href="../favicon.svg">
+    <link rel="alternate icon" type="image/png" href="../favicon.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="../favicon.svg">
+    <meta name="description" content="How Divyaraj Chauhan built Shift's digital launch presence — brand identity strategy, organic fitness community growth, and launch campaigns.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital,wght@0,400;1,400&family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            border-radius: 0px !important;
+            box-shadow: none !important;
+            backdrop-filter: none !important;
+            -webkit-backdrop-filter: none !important;
+            mix-blend-mode: normal !important;
+        }
+
+                :root {
+            --bg: #000000;
+            --bg-deep: #000000;
+            --card: #282723;
+            --text: #FFFFFF;
+            --text-muted: #99A57D;
+            --border: #282723;
+            --accent: #EB4604;
+
+            /* Compatibility variables mapped to brutalist purge tokens */
+            --primary: var(--accent);
+            --primary-light: var(--accent);
+            --primary-dim: #2b1812;
+            --accent-1: var(--accent);
+            --accent-glow: var(--accent);
+            --secondary-1: var(--bg-deep);
+            --secondary-2: var(--bg);
+            --secondary-3: var(--text);
+            --surface: var(--card);
+            --surface-flat: var(--card);
+            --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            --font-serif: 'Instrument Serif', Georgia, serif;
+            --font-mono: 'Space Mono', 'JetBrains Mono', monospace;
+            --credes-surface: var(--card);
+            --credes-border: var(--border);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        /* ---- Ambient BG ---- */
+        
+        
+        
+        
+
+        
+
+        /* ---- Header ---- */
+        header {
+            padding: 24px 6%;
+            max-width: 1300px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: relative;
+            z-index: 100;
+        }
+
+        .back-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 10px 24px;
+            border-radius: 100px;
+            
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 0.85rem;
+            font-weight: 600;
+            transition: all 0.35s cubic-bezier(0.16,1,0.3,1);
+            border: 1px solid transparent;
+        }
+        .back-btn:hover {
+            color: #fff;
+            border-color: transparent;
+            transform: translateY(-2px);
+        }
+
+        .credes-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 18px;
+            border-radius: 100px;
+            border: 1px solid transparent;
+            font-size: 0.78rem;
+            font-weight: 700;
+            color: var(--shift-purple);
+            letter-spacing: 0.05em;
+        }
+
+        /* ---- Hero ---- */
+        .hero {
+            padding: 60px 6% 20px;
+            max-width: 1300px;
+            margin: 0 auto;
+        }
+
+        .brand-intro {
+            display: flex;
+            align-items: center;
+            gap: 28px;
+            margin-bottom: 32px;
+            flex-wrap: wrap;
+        }
+
+        .brand-logo-frame {
+            width: 96px;
+            height: 96px;
+            border-radius: 50%;
+            border: 2px solid var(--shift-border);
+            background: rgba(139,92,246,0.1);
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+        .brand-logo-frame img { width: 100%; height: 100%; object-fit: cover; }
+
+        .brand-eyebrow {
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.18em;
+            color: var(--shift-purple);
+            margin-bottom: 6px;
+        }
+
+        h1 {
+            font-size: clamp(2.4rem, 5.5vw, 4.2rem);
+            font-weight: 900;
+            letter-spacing: -0.03em;
+            line-height: 1.05;
+            
+            
+        }
+
+        .hero-sub {
+            font-size: 1.15rem;
+            color: var(--text-muted);
+            max-width: 640px;
+            margin-top: 16px;
+            line-height: 1.75;
+        }
+
+        /* ---- Metrics Grid ---- */
+        .metrics-section {
+            padding: 48px 6% 0;
+            max-width: 1300px;
+            margin: 0 auto;
+        }
+
+        .section-label {
+            font-size: 0.72rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            color: var(--shift-light);
+            margin-bottom: 24px;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 6px 16px;
+            border: 1px solid transparent;
+            border-radius: 100px;
+        }
+
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 16px;
+        }
+
+        .metric-card {
+            background: var(--surface);
+            
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            padding: 28px 24px;
+            text-align: center;
+            transition: all 0.4s cubic-bezier(0.16,1,0.3,1);
+            position: relative;
+            overflow: hidden;
+        }
+        .metric-card::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            border-radius: 20px;
+            opacity: 0;
+            transition: opacity 0.4s;
+        }
+        .metric-card:hover::before { opacity: 1; }
+
+        .metric-platform {
+            font-size: 0.7rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            color: var(--text-muted);
+            margin-bottom: 8px;
+        }
+        .metric-platform.instagram { color: #e1306c; }
+        .metric-platform.facebook { color: #1877F2; }
+        .metric-platform.threads { color: #fff; }
+
+        .metric-value {
+            font-size: 2.4rem;
+            font-weight: 900;
+            line-height: 1.1;
+            margin-bottom: 4px;
+            
+            
+        }
+
+        .metric-growth {
+            font-size: 0.78rem;
+            font-weight: 700;
+            color: #4ade80;
+            margin-bottom: 6px;
+        }
+        .metric-label {
+            font-size: 0.82rem;
+            color: var(--text-muted);
+            font-weight: 500;
+        }
+
+        /* ---- Two-Column Content ---- */
+        .main-content {
+            padding: 64px 6%;
+            max-width: 1300px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1.3fr 0.7fr;
+            gap: 60px;
+            align-items: start;
+        }
+
+        @media (max-width: 900px) {
+            .main-content { grid-template-columns: 1fr; gap: 40px; }
+        }
+
+        .case-study h2 {
+            font-size: 1.9rem;
+            font-weight: 800;
+            margin-bottom: 22px;
+            letter-spacing: -0.02em;
+            color: #fff;
+            position: relative;
+        }
+        .case-study h2 span {
+            
+            
+        }
+
+        .case-study p {
+            color: var(--text-muted);
+            font-size: 1.05rem;
+            line-height: 1.85;
+            margin-bottom: 22px;
+        }
+        .case-study p strong { color: #fff; }
+
+        .highlight-block {
+            background: var(--shift-surface);
+            border: 1px solid var(--shift-border);
+            border-left: 3px solid var(--shift-purple);
+            border-radius: 12px;
+            padding: 20px 24px;
+            margin: 28px 0;
+            font-size: 1.05rem;
+            color: var(--text-muted);
+            line-height: 1.7;
+            font-style: italic;
+        }
+        .highlight-block strong { color: var(--shift-light); }
+
+        /* ---- Sidebar ---- */
+        .sidebar { display: flex; flex-direction: column; gap: 20px; }
+
+        .sidebar-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 24px;
+            padding: 30px;
+            
+        }
+        .sidebar-card h3 {
+            font-size: 1.05rem;
+            font-weight: 700;
+            margin-bottom: 18px;
+            color: #fff;
+            border-left: 3px solid var(--shift-purple);
+            padding-left: 12px;
+        }
+
+        .task-list { list-style: none; display: flex; flex-direction: column; gap: 12px; }
+        .task-list li {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            font-size: 0.93rem;
+            color: var(--text-muted);
+            line-height: 1.5;
+        }
+        .task-list li .check {
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            background: rgba(139, 92, 246, 0.15);
+            border: 1px solid var(--shift-border);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            font-size: 0.65rem;
+            color: var(--shift-purple);
+            margin-top: 2px;
+        }
+
+        .tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 20px; padding-top: 20px; border-top: 1px dashed rgba(255,255,255,0.08); }
+        .tag {
+            padding: 5px 14px;
+            border: 1px solid transparent;
+            border-radius: 100px;
+            font-size: 0.75rem;
+            color: var(--shift-light);
+            font-weight: 600;
+            transition: all 0.35s cubic-bezier(0.16,1,0.3,1);
+        }
+        .tag:hover {
+            color: #ffffff;
+            border-color: transparent;
+            transform: translateY(-2px);
+        }
+
+        .platform-stat-mini {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 0;
+            border-bottom: 1px solid var(--border);
+        }
+        .platform-stat-mini:last-child { border-bottom: none; }
+        .psm-label { font-size: 0.85rem; color: var(--text-muted); }
+        .psm-val { font-size: 0.95rem; font-weight: 700; color: #fff; }
+
+        /* ---- Creative Grid Section ---- */
+        .grid-section {
+            padding: 0 6% 80px;
+            max-width: 1300px;
+            margin: 0 auto;
+        }
+
+        .grid-wrapper {
+            width: 100%;
+            border-radius: 24px;
+            overflow: hidden;
+            border: 1px solid var(--border);
+            background: rgba(0, 0, 0, 0.2);
+            transition: all 0.5s ease;
+        }
+        .grid-wrapper:hover {
+            border-color: var(--shift-purple);
+        }
+        .grid-wrapper img {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: transform 0.6s ease;
+        }
+        .grid-wrapper:hover img {
+            transform: scale(1.02);
+        }
+
+        /* ---- Footer Nav ---- */
+        .project-nav-footer {
+            border-top: 1px solid rgba(255,255,255,0.08);
+            padding: 60px 6%;
+            text-align: center;
+        }
+        .next-project-link {
+            display: inline-flex;
+            flex-direction: column;
+            align-items: center;
+            text-decoration: none;
+            gap: 12px;
+        }
+        .next-label { font-size: 0.78rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.15em; color: var(--text-muted); transition: color 0.3s; }
+        .next-title { font-size: 2.2rem; font-weight: 900; color: #fff; transition: all 0.3s; letter-spacing: -0.02em; }
+        .next-project-link:hover .next-label { color: var(--primary); }
+
+        /* ---- Reveal Animations ---- */
+        .reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.8s cubic-bezier(0.16,1,0.3,1), transform 0.8s cubic-bezier(0.16,1,0.3,1); }
+        .reveal.visible { opacity: 1; transform: none; }
+        .reveal-delay-1 { transition-delay: 0.1s; }
+        .reveal-delay-2 { transition-delay: 0.2s; }
+        .reveal-delay-3 { transition-delay: 0.3s; }
+
+        @media (max-width: 600px) {
+            .hero { padding: 40px 5% 0; }
+            h1 { font-size: 2.2rem; }
+            .metrics-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+    
+                /* --- Brand Nav Bar --- */
+        .brand-nav-bar { background:rgba(8,10,20,0.97);  border-top:1px solid rgba(255,255,255,0.06); padding:40px 5% 52px; }
+        .brand-nav-inner { max-width:1240px; margin:0 auto; }
+        .brand-nav-label { text-align:center; font-size:0.68rem; font-weight:700; letter-spacing:0.18em; text-transform:uppercase; color:rgba(255,255,255,0.25); margin-bottom:28px; }
+        .brand-nav-grid { display:flex; justify-content:center; align-items:center; gap:24px; }
+        .brand-nav-group { display:grid; grid-template-columns:repeat(3, 1fr); gap:12px; flex:1; max-width:520px; }
+        .brand-nav-divider { width:1px; height:84px; background:rgba(255,255,255,0.12); flex-shrink:0; }
+        .brand-nav-btn { display:inline-flex; align-items:center; gap:9px; padding:9px 18px 9px 10px; border-radius:100px; border:1px solid rgba(255,255,255,0.08); background:rgba(255,255,255,0.04); color:rgba(255,255,255,0.7); font-size:0.8rem; font-weight:600; text-decoration:none; transition:all 0.25s cubic-bezier(0.16,1,0.3,1); white-space:nowrap; }
+        .brand-nav-btn.active-brand { border-color:rgba(235, 70, 4,0.45); background:rgba(235, 70, 4,0.14); color:#EB4604; pointer-events:none; }
+        .brand-nav-btn .bnb-logo { width:26px; height:26px; border-radius:50%; object-fit:cover; flex-shrink:0; border:1px solid rgba(255,255,255,0.1); }
+        .brand-nav-btn.dc-home {
+            width: 64px;
+            height: 64px;
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(235, 70, 4,0.15);
+            border: 2px solid rgba(235, 70, 4,0.35);
+            color: #EB4604;
+            padding: 0;
+            flex-shrink: 0;
+            transition: all 0.3s cubic-bezier(0.16,1,0.3,1);
+        }
+        .brand-nav-btn.dc-home:hover {
+            background: rgba(235, 70, 4,0.28);
+            border-color: rgba(235, 70, 4,0.7);
+            color: #fff;
+            transform: scale(1.08) translateY(-2px);
+        }
+        @media(max-width:1150px) {
+            .brand-nav-grid { flex-direction:column; gap:20px; }
+            .brand-nav-divider { display:none; }
+            .brand-nav-group { max-width: 500px; width: 100%; }
+        }
+        @media(max-width:640px){ 
+            .brand-nav-group { grid-template-columns:repeat(2, 1fr); gap:8px; } 
+            .brand-nav-btn { font-size:0.72rem; padding:7px 14px 7px 8px; gap:7px; } 
+            .brand-nav-btn .bnb-logo { width:22px; height:22px; } 
+        }
+        @media(max-width:480px){ 
+            .brand-nav-group { grid-template-columns:1fr; } 
+        }
+        
+        /* --- Brand Subpage Mobile Responsiveness Overrides --- */
+        @media (max-width: 768px) {
+            .hero-grid,
+            .services-grid,
+            .metrics-grid,
+            .analytics-grid,
+            .cert-grid,
+            .roster-grid,
+            .hospital-grid,
+            .case-study-grid {
+                grid-template-columns: 1fr !important;
+                gap: 24px !important;
+            }
+            .metric-card.wide,
+            .metric-card.full-width {
+                grid-column: span 1 !important;
+            }
+            .event-meta-grid {
+                grid-template-columns: 1fr !important;
+            }
+        }
+        @media (max-width: 600px) {
+            header {
+                flex-direction: column !important;
+                gap: 16px !important;
+                padding: 20px 5% !important;
+                align-items: center !important;
+                text-align: center !important;
+            }
+            .brand-intro {
+                flex-direction: column !important;
+                text-align: center !important;
+                gap: 16px !important;
+                align-items: center !important;
+            }
+            .brand-logo-frame {
+                margin: 0 auto !important;
+            }
+            h1 {
+                font-size: clamp(2rem, 6.5vw, 2.5rem) !important;
+            }
+        }
+        /* --- End Mobile Responsiveness Overrides --- */
+
+        .brand-nav-btn.dc-home img {
+            width: 40px;
+            height: 40px;
+            object-fit: contain;
+        }
+
+        h1, h2 {
+            font-family: var(--font-serif) !important;
+            font-style: italic !important;
+            letter-spacing: -0.02em !important;
+            font-size: clamp(3.5rem, 8vw, 7rem) !important;
+            font-weight: 400 !important;
+            line-height: 1.05 !important;
+        }
+
+        
+
+        
+
+        /* ─── Brutalist Video/Image Hero Grid Overrides ─── */
+        .hero {
+            display: grid !important;
+            grid-template-columns: 1.25fr 0.75fr !important;
+            gap: 40px !important;
+            align-items: center !important;
+            min-height: 50vh !important;
+            padding-top: 40px !important;
+            padding-bottom: 40px !important;
+        }
+
+        .hero-left {
+            display: flex !important;
+            flex-direction: column !important;
+            justify-content: center !important;
+        }
+
+        .hero-left h1 {
+            color: var(--text) !important;
+            display: block !important;
+            visibility: visible !important;
+            opacity: 1 !important;
+        }
+
+        .brand-intro {
+            margin-bottom: 24px !important;
+            display: flex !important;
+            align-items: center !important;
+            gap: 24px !important;
+        }
+
+        .hero-sub {
+            max-width: 100% !important;
+            margin-top: 12px !important;
+        }
+
+        .hero-right {
+            position: relative !important;
+            width: 250px !important;
+            aspect-ratio: 9 / 16 !important;
+            justify-self: end !important;
+            border: 1px solid var(--border) !important;
+            background: #000000 !important;
+            overflow: hidden !important;
+            display: flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+        }
+
+        .video-brutalist-frame {
+            position: relative !important;
+            width: 100% !important;
+            height: 100% !important;
+            overflow: hidden !important;
+        }
+
+        .hero-video-element {
+            width: 100% !important;
+            height: 100% !important;
+            object-fit: cover !important;
+            filter: grayscale(100%) sepia(100%) hue-rotate(330deg) saturate(800%) contrast(180%) brightness(90%) !important;
+        }
+
+        .video-overlay-grid {
+            position: absolute !important;
+            inset: 0 !important;
+            pointer-events: none !important;
+            background-image: 
+                linear-gradient(rgba(18, 18, 18, 0.45) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(18, 18, 18, 0.45) 1px, transparent 1px) !important;
+            background-size: 3px 3px !important;
+            z-index: 2 !important;
+        }
+
+        @media (max-width: 900px) {
+            .hero {
+                grid-template-columns: 1fr !important;
+                gap: 30px !important;
+            }
+            .hero-right {
+                justify-self: center !important;
+                width: 220px !important;
+            }
+            .brand-intro {
+                flex-direction: column !important;
+                text-align: center !important;
+            }
+        }
+
+        /* ─── No-Video Hero Layout Style ─── */
+        .hero.no-video {
+            grid-template-columns: 1fr !important;
+            max-width: 900px !important;
+        }
+        .hero.no-video .hero-left {
+            max-width: 100% !important;
+        }
+
+</style>
+
+    <!-- ─── Back To Top Button Styles ─── -->
+    <style>
+        .back-to-top-btn {
+            position: fixed !important;
+            bottom: 40px !important;
+            right: 40px !important;
+            width: 48px !important;
+            height: 48px !important;
+            background: #EB4604 !important;
+            color: #000000 !important;
+            border: 1px solid #EB4604 !important;
+            font-size: 1.5rem !important;
+            font-weight: 700 !important;
+            cursor: pointer !important;
+            display: flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+            z-index: 1000 !important;
+            opacity: 0 !important;
+            pointer-events: none !important;
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1) !important;
+            border-radius: 0px !important;
+        }
+
+        .back-to-top-btn.visible {
+            opacity: 1 !important;
+            pointer-events: all !important;
+        }
+
+        .back-to-top-btn:hover {
+            background: #FFFFFF !important;
+            color: #000000 !important;
+            border-color: #FFFFFF !important;
+            transform: translateY(-4px) !important;
+        }
+
+        @media (max-width: 640px) {
+            .back-to-top-btn {
+                bottom: 20px !important;
+                right: 20px !important;
+                width: 40px !important;
+                height: 40px !important;
+                font-size: 1.2rem !important;
+            }
+        }
+    </style>
+
+</head>
+<body>
+    
+    
+    
+    
+
+    <header>
+        <a href="../index.html#hero" class="back-btn">← Back to Portfolio</a>
+        <div class="credes-badge">Credes Techlabs Project</div>
+    </header>
+
+    <main>
+        <!-- Hero -->
+        <section class="hero no-video">
+            <div class="hero-left">
+                <div class="brand-intro ">
+                <div class="brand-logo-frame">
+                    <img src="../images/Logos of the brands/shift.jpg" alt="Shift Logo">
+                </div>
+                <div>
+                    <span class="brand-eyebrow">
+        PRESENT · Fitness App SMM
+    </span>
+                    <h1>Shift</h1>
+                </div>
+            </div>
+                <p class="hero-sub ">
+                How I designed a digital launch pipeline and built an organic fitness community for a state-driven, interruption-safe interval training engine.
+            </p>
+            </div>
+            </section>
+
+        <!-- SMM Metrics Section -->
+        <section class="metrics-section reveal reveal-delay-2">
+            <div class="section-label">SMM Launch Metrics Summary</div>
+            <div class="metrics-grid">
+                <!-- Stat 1 -->
+                <div class="metric-card">
+                    <div class="metric-platform instagram">Instagram</div>
+                    <div class="metric-value">24K+</div>
+                    <div class="metric-growth">▲ Brand Impressions</div>
+                    <div class="metric-label">Organic Video Reach</div>
+                </div>
+                <!-- Stat 2 -->
+                <div class="metric-card">
+                    <div class="metric-platform facebook">Facebook Ads</div>
+                    <div class="metric-value">4.5K+</div>
+                    <div class="metric-growth">▲ +12% MoM</div>
+                    <div class="metric-label">New User App Installs</div>
+                </div>
+                <!-- Stat 3 -->
+                <div class="metric-card">
+                    <div class="metric-platform threads">Threads</div>
+                    <div class="metric-value">12K+</div>
+                    <div class="metric-growth">▲ High Engagement</div>
+                    <div class="metric-label">Community Views & Polls</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Two Column Detailed Case Study -->
+        <section class="main-content reveal">
+            <!-- Left Column: Copywriting -->
+            <div class="case-study">
+                <h2>The <span>Problem Boundary</span></h2>
+                <p>
+                    Most interval fitness timers on the market suffer from severe design flaws: <strong>accidental session termination</strong> due to single-tap exits, timer drift when multitasking, and absolute session data loss on phone calls or OS interruptions. 
+                </p>
+                <p>
+                    <strong>Shift</strong> was engineered as an interruption-safe, audio-primary state engine to solve these structural issues, offering 0% accidental workout cancellation guards, offline persistence, and asynchronous, non-intrusive monetization.
+                </p>
+
+                <h2 style="margin-top: 40px;">The <span>SMM Launch Strategy</span></h2>
+                <p>
+                    Because Shift is a new brand, our organic strategy focused heavily on educating home workout, HIIT, and Tabata enthusiasts about its key structural features. I structured campaigns around four core vision pillars:
+                </p>
+                <div class="highlight-block">
+                    "Workout timers shouldn't get in your way. Our social strategy highlighted Shift's <strong>Zero-Ad active session execution</strong> and <strong>100% interruption-safe persistence</strong> — targeting zero setup friction for high-intensity exertion."
+                </div>
+                <p>
+                    By positioning Shift as a clean, state-driven fitness tool rather than a generic ad-heavy timer, we quickly established high-intent community interest on Instagram and Threads.
+                </p>
+            </div>
+
+            <!-- Right Column: Sidebar -->
+            <div class="sidebar">
+                <div class="sidebar-card">
+                    <h3>My Contributions</h3>
+                    <ul class="task-list">
+                        <li>
+                            <div class="check">✓</div>
+                            <span><strong>Brand Positioning</strong>: Configured glowing purple visual templates for tech-fitness campaigns.</span>
+                        </li>
+                        <li>
+                            <div class="check">✓</div>
+                            <span><strong>App Launch Graphics</strong>: Created high-fidelity UI showcases explaining timer mechanics.</span>
+                        </li>
+                        <li>
+                            <div class="check">✓</div>
+                            <span><strong>Copywriting & SMM</strong>: Managed organic outreach copy for Instagram, Facebook, and Threads.</span>
+                        </li>
+                        <li>
+                            <div class="check">✓</div>
+                            <span><strong>Feature Highlights</strong>: Promoted Shift's exit confirmation guards and session recovery.</span>
+                        </li>
+                        <li>
+                            <div class="check">✓</div>
+                            <span><strong>Community Integration</strong>: Managed workout summary templates and achievement streak showcases.</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="sidebar-card">
+                    <h3>Campaign Info</h3>
+                    <div style="display: flex; flex-direction: column;">
+                        <div class="platform-stat-mini">
+                            <span class="psm-label">Campaign Span</span>
+                            <span class="psm-val">3 Months</span>
+                        </div>
+                        <div class="platform-stat-mini">
+                            <span class="psm-label">Key Channels</span>
+                            <span class="psm-val">IG, FB, Threads</span>
+                        </div>
+                        <div class="platform-stat-mini">
+                            <span class="psm-label">Lead Goal</span>
+                            <span class="psm-val">App Installs & Engagement</span>
+                        </div>
+                    </div>
+                    <div class="tags">
+                        <span class="tag">#AppLaunch</span>
+                        <span class="tag">#FitnessTech</span>
+                        <span class="tag">#SocialMediaMarketing</span>
+                        <span class="tag">#UIUXDesign</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Creative Grid Showcase Section -->
+        <section class="grid-section reveal">
+            <div class="gallery-section-title">Campaign <span>Creative Grid</span></div>
+            <p style="color:var(--text-muted); margin-bottom: 30px; max-width:700px; font-size:1.05rem;">
+                Aesthetic campaign grid displaying visual assets, UI previews, and streak badges curated for the social channels:
+            </p>
+            <div class="grid-wrapper">
+                <img src="Shift/Grid.jpeg" alt="Shift Creative Campaign Grid">
+            </div>
+        </section>
+    
+            <!-- Brand Navigation Bar -->
+    <nav class="brand-nav-bar">
+        <div class="brand-nav-inner">
+            <div class="brand-nav-label">Explore All Brands</div>
+            <div class="brand-nav-grid">
+                <div class="brand-nav-group left-group">
+                    <a href="credes.html" class="brand-nav-btn "><img class="bnb-logo" src="../images/Logos of the brands/credes techlabs.jpg" alt="">Credes</a>
+                    <a href="gujarat-tigers.html" class="brand-nav-btn "><img class="bnb-logo" src="../images/Logos of the brands/Gujarat Tigers.png" alt="">Gujarat Tigers</a>
+                    <a href="sattvik.html" class="brand-nav-btn "><img class="bnb-logo" src="../images/Logos of the brands/Sattvik Certifications.jpg" alt="">Sattvik</a>
+                    <a href="scuff.html" class="brand-nav-btn "><img class="bnb-logo" src="../images/Logos of the brands/scuff.jpeg" alt="">Scuff</a>
+                    <a href="highrocks.html" class="brand-nav-btn "><img class="bnb-logo" src="../images/Logos of the brands/highrocks.jpg" alt="">HighRocks</a>
+                    <a href="shelf.html" class="brand-nav-btn "><img class="bnb-logo" src="../images/Logos of the brands/shelf.png" alt="">Shelf</a>
+                </div>
+                <div class="brand-nav-divider"></div>
+                <a href="../index.html#hero" class="brand-nav-btn dc-home"><img src="../favicon.svg" alt="DC."></a>
+                <div class="brand-nav-divider"></div>
+                <div class="brand-nav-group right-group">
+                    <a href="esfi.html" class="brand-nav-btn "><img class="bnb-logo" src="../images/Logos of the brands/esfi.jpg" alt="">ESFI</a>
+                    <a href="white-horse.html" class="brand-nav-btn "><img class="bnb-logo" src="../images/Logos of the brands/white horse.jpg" alt="">White Horse</a>
+                    <a href="finanvo.html" class="brand-nav-btn "><img class="bnb-logo" src="../images/Logos of the brands/finanvo.png" alt="">Finanvo</a>
+                    <a href="shift.html" class="brand-nav-btn active-brand"><img class="bnb-logo" src="../images/Logos of the brands/shift.jpg" alt="">Shift</a>
+                    <a href="giffy.html" class="brand-nav-btn "><img class="bnb-logo" src="../images/Logos of the brands/giffy.jpg" alt="">Giffy</a>
+                    <a href="hashlite.html" class="brand-nav-btn "><img class="bnb-logo" src="../images/Logos of the brands/hashlite.png" alt="">Hashlite</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+</main>
+
+    <script>
+        // Reveal on scroll
+        const revealElements = document.querySelectorAll('.reveal');
+        const revealOnScroll = () => {
+            for (let i = 0; i < revealElements.length; i++) {
+                const windowHeight = window.innerHeight;
+                const elementTop = revealElements[i].getBoundingClientRect().top;
+                const elementVisible = 100;
+                if (elementTop < windowHeight - elementVisible) {
+                    revealElements[i].classList.add('visible');
+                }
+            }
+        };
+        window.addEventListener('scroll', revealOnScroll);
+        // Initial check
+        revealOnScroll();
+    </script>
+
+    <!-- ─── Back To Top Button HTML & Script ─── -->
+    <button id="back-to-top" class="back-to-top-btn" aria-label="Back to top">↑</button>
+    <script>
+        const backToTopBtn = document.getElementById('back-to-top');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 400) {
+                backToTopBtn.classList.add('visible');
+            } else {
+                backToTopBtn.classList.remove('visible');
+            }
+        });
+        backToTopBtn.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+    </script>
+
+</body>
+</html>

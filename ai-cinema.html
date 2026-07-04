@@ -1,0 +1,1547 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Cinema Lab — Generative Films & Human Direction — Divyaraj Chauhan</title>
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="alternate icon" type="image/png" href="favicon.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="favicon.svg">
+    <meta name="description" content="AI Cinema Lab by Divyaraj Chauhan. Premium AI-generated brand films, luxury product showcases, and research-backed historical micro-dramas.">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital,wght@0,400;1,400&family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --bg: #000000;
+            --bg-deep: #000000;
+            --card: #282723;
+            --text: #FFFFFF;
+            --text-muted: #99A57D;
+            --border: #282723;
+            --accent: #EB4604;
+
+            /* Compatibility variables mapped to brutalist purge tokens */
+            --primary: var(--accent);
+            --primary-light: var(--accent);
+            --primary-dim: #282723;
+            --accent-1: var(--accent);
+            --accent-glow: var(--accent);
+            --secondary-1: var(--bg-deep);
+            --secondary-2: var(--bg);
+            --secondary-3: var(--text);
+            --surface: var(--card);
+            --surface-flat: var(--card);
+            --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            --font-serif: 'Instrument Serif', Georgia, serif;
+            --font-mono: 'Space Mono', 'JetBrains Mono', monospace;
+            --credes-surface: var(--card);
+            --credes-border: var(--border);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            border-radius: 0px !important;
+            box-shadow: none !important;
+            backdrop-filter: none !important;
+            -webkit-backdrop-filter: none !important;
+            mix-blend-mode: normal !important;
+        }
+
+        nav, .nav-links a, .nav-cta a, .nav-resume, .btn-nav, .btn-brutalist, .btn-primary-gold, .btn-outline, .stat-lbl, .cinema-badge, .outcome-badge, .web-badge, .folio-card-tag, .refresh-date, .copyright-above, .contact-links-mono {
+            font-family: var(--font-mono) !important;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: var(--bg);
+        }
+        ::-webkit-scrollbar-thumb {
+            background: var(--secondary-2);
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--primary);
+        }
+
+        /* Background Atmosphere & Noise Overlay */
+        
+
+        
+
+        
+
+        
+
+        /* Navigation Header */
+        header {
+            padding: 30px 6%;
+            max-width: 1300px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            width: 100%;
+            z-index: 100;
+        }
+
+        .back-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 10px 24px;
+            border-radius: 100px;
+            border: 1px solid #282723;
+            background: #282723;
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 0.85rem;
+            font-weight: 600;
+            transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .back-btn:hover {
+            color: #ffffff;
+            border-color: var(--primary);
+            background: #282723;
+            transform: translateY(-2px);
+        }
+
+
+
+        /* ─── Hero Section ─── */
+        .cinema-hero {
+            position: relative;
+            width: 100%;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            background-color: #000000;
+            background-image: url('images/kasahrada-hero-fallback.jpg');
+            background-size: cover;
+            background-position: center;
+            padding: 120px 0;
+        }
+
+        .cinema-hero::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+            height: 200px;
+            z-index: 3;
+            pointer-events: none;
+        }
+
+        .cinema-hero video {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 100%;
+            height: 100%;
+            transform: translate(-50%, -50%);
+            object-fit: cover;
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        .cinema-hero-overlay {
+            position: absolute;
+            inset: 0;
+            background: var(--bg);
+            z-index: 2;
+        }
+
+        .cinema-hero-content {
+            position: relative;
+            z-index: 5;
+            max-width: 900px;
+            padding: 0 6%;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 24px;
+        }
+
+        .cinema-badge {
+            font-size: 0.72rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--secondary-3);
+            background: #282723;
+            border: 1px solid #282723;
+            padding: 6px 14px;
+            border-radius: 100px;
+            margin-bottom: 8px;
+        }
+
+        .cinema-hero-content h1 {
+            font-size: clamp(2.2rem, 5vw, 3.8rem);
+            font-weight: 900;
+            line-height: 1.1;
+            letter-spacing: -0.03em;
+            color: #fff;
+        }
+
+        .gradient-text {
+            background: linear-gradient(135deg, #FFFFFF 0%, #FFFFFF 30%, #EB4604 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-size: 200% 200%;
+            animation: gradientShift 8s ease infinite;
+            display: inline-block;
+            padding-right: 0.15em; /* Prevent italic character clipping */
+            margin-right: -0.15em;
+        }
+
+        @keyframes gradientShift {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+
+        .cinema-hero-content p {
+            font-size: clamp(1.05rem, 2vw, 1.25rem);
+            color: var(--text);
+            max-width: 760px;
+            line-height: 1.6;
+        }
+
+        .cinema-hero-ctas {
+            display: flex;
+            gap: 16px;
+            margin-top: 12px;
+        }
+
+        /* Buttons styling */
+        .btn-primary-gold {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 14px 28px;
+            font-size: 0.88rem;
+            font-weight: 700;
+            text-decoration: none;
+            color: #000000;
+            background: #Eb4604;
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+            border: 1px solid #Eb4604;
+            cursor: pointer;
+            white-space: nowrap;
+        }
+
+        .btn-primary-gold:hover {
+            transform: translateY(-2px);
+            background: #ffffff;
+            border-color: #ffffff;
+        }
+
+        .btn-outline {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 14px 28px;
+            font-size: 0.88rem;
+            font-weight: 700;
+            text-decoration: none;
+            color: #fff;
+            background: transparent;
+            border: 1px solid #EB4604;
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+            cursor: pointer;
+        }
+
+        .btn-outline:hover {
+            border-color: #fff;
+            background: #282723;
+            transform: translateY(-2px);
+        }
+
+        /* ─── Scroll Reveal Animation ─── */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* ─── Page Section Title Layout ─── */
+        .section-header {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 50px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .section-header h2 {
+            font-size: clamp(2.2rem, 4vw, 3rem);
+            font-weight: 850;
+            letter-spacing: -0.02em;
+            color: #fff;
+            line-height: 1.15;
+        }
+
+        /* ─── Process Section ─── */
+        .process-section {
+            padding: 80px 6% 60px;
+            max-width: 1300px;
+            margin: 0 auto;
+        }
+
+        .process-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 24px;
+            margin-top: 20px;
+        }
+
+        .process-card {
+            padding: 30px 24px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            height: 100%;
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 0;
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .process-card:hover {
+            border-color: var(--primary);
+        }
+
+        .process-number {
+            font-family: var(--font-serif);
+            font-size: 48px;
+            font-weight: 800;
+            line-height: 1;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .process-icon-wrap {
+            width: 48px;
+            height: 48px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #282723;
+            border: 1px solid var(--border);
+            border-radius: 0px;
+            color: var(--secondary-3);
+        }
+
+        .process-icon-wrap svg {
+            width: 24px;
+            height: 24px;
+        }
+
+
+
+        .process-card h3 {
+            font-size: 1.3rem;
+            font-weight: 750;
+            color: #fff;
+        }
+
+        .process-card p {
+            font-size: 0.92rem;
+            color: var(--text-muted);
+            line-height: 1.6;
+        }
+
+        /* ─── Selected Works Section ─── */
+        .films-section {
+            padding: 100px 6% 80px;
+            max-width: 1300px;
+            margin: 0 auto;
+        }
+
+        .films-container {
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
+            margin-top: 20px;
+        }
+
+        .film-row {
+            display: grid;
+            grid-template-columns: 1.2fr 1fr;
+            gap: 48px;
+            align-items: center;
+            padding: 40px;
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 0;
+            transition: all 0.4s ease;
+        }
+        .film-row:hover {
+            border-color: var(--primary);
+        }
+
+        .supporting-films-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+        }
+
+        .film-card {
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            padding: 32px;
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 0;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .film-card:hover {
+            border-color: var(--primary);
+        }
+
+        .film-row-visual {
+            position: relative;
+            width: 100%;
+            aspect-ratio: 16/9;
+            border-radius: 0;
+            overflow: hidden;
+            background: #000;
+            border: 1px solid #282723;
+        }
+
+        .film-row-visual img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .play-btn-large {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(16, 12, 11, 0.4);
+            border: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        .play-btn-large svg {
+            width: 72px;
+            height: 72px;
+            color: #fff;
+            
+            transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .film-row-content {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .film-meta {
+            align-self: flex-start;
+            font-size: 0.72rem;
+            font-weight: 700;
+            color: var(--secondary-3);
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            background: #282723;
+            border: 1px solid #282723;
+            padding: 4px 12px;
+            border-radius: 100px;
+        }
+
+        .film-row-content h2 {
+            font-size: 2rem;
+            font-weight: 850;
+            color: #fff;
+            line-height: 1.2;
+            letter-spacing: -0.02em;
+        }
+
+        .film-brief {
+            font-size: 0.98rem;
+            color: var(--text-muted);
+            line-height: 1.6;
+        }
+
+        .film-actions {
+            display: flex;
+            gap: 16px;
+            margin-top: 10px;
+        }
+
+        .film-actions button {
+            flex: 1;
+        }
+
+        /* ─── Services Section ─── */
+        .services-section {
+            padding: 80px 6% 60px;
+            max-width: 1300px;
+            margin: 0 auto;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 24px;
+            margin-top: 20px;
+        }
+
+        .service-card {
+            padding: 40px 30px;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            border-radius: 0;
+            background: var(--card);
+            border: 1px solid var(--border);
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .service-card:hover {
+            border-color: var(--primary);
+        }
+
+        .service-card h3 {
+            font-size: 1.35rem;
+            font-weight: 800;
+            color: #fff;
+            margin-bottom: 12px;
+        }
+
+        .service-desc {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            line-height: 1.5;
+            margin-bottom: 28px;
+            flex-grow: 1;
+        }
+
+        .service-price-block {
+            margin-bottom: 24px;
+        }
+
+        .service-price-label {
+            font-size: 0.72rem;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: var(--text-muted);
+            margin-bottom: 4px;
+        }
+
+        .service-price-amount {
+            font-family: var(--font-serif);
+            font-size: 2.2rem;
+            font-weight: 800;
+            color: #fff;
+            line-height: 1;
+        }
+
+        .service-price-amount span {
+            font-size: 0.85rem;
+            font-family: var(--font-sans);
+            color: var(--text-muted);
+            font-weight: 500;
+            margin-left: 2px;
+        }
+
+        .service-card .btn-outline {
+            width: 100%;
+        }
+
+        /* ─── Tools Section ─── */
+        .tools-section {
+            padding: 60px 6% 80px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .tools-pill-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 12px;
+            margin-top: 20px;
+        }
+
+        .tool-pill {
+            padding: 10px 22px;
+            border-radius: 100px;
+            border: 1px solid var(--border);
+            background: #282723;
+            color: var(--text-muted);
+            font-size: 0.88rem;
+            font-weight: 600;
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .tool-pill:hover {
+            color: #fff;
+            border-color: var(--primary);
+            background: #282723;
+            transform: translateY(-2px);
+        }
+
+        /* ─── Bottom CTA ─── */
+        .bottom-cta-section {
+            padding: 100px 6% 120px;
+            max-width: 1000px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .bottom-cta-inner {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 28px;
+        }
+
+        .bottom-cta-inner h2 {
+            font-size: clamp(2rem, 4vw, 2.8rem);
+            font-weight: 850;
+            color: #fff;
+            letter-spacing: -0.02em;
+        }
+
+        .bottom-cta-buttons {
+            display: flex;
+            gap: 16px;
+        }
+
+        .bottom-cta-buttons .btn-primary-gold,
+        .bottom-cta-buttons .btn-outline {
+            min-width: 200px;
+        }
+
+        /* ─── Dynamic Video Modal ─── */
+        .video-modal {
+            position: fixed;
+            inset: 0;
+            z-index: 1100;
+            background: #000000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            padding: 24px;
+        }
+
+        .video-modal.active {
+            opacity: 1;
+            pointer-events: all;
+        }
+
+        .video-modal-container {
+            width: 100%;
+            max-width: 1000px;
+            aspect-ratio: 16/9;
+            position: relative;
+            border-radius: 0;
+            overflow: hidden;
+            border: 1px solid #282723;
+            transform: scale(0.95);
+            transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .video-modal.active .video-modal-container {
+            transform: scale(1);
+        }
+
+        .video-modal-container iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        .modal-close-btn {
+            position: absolute;
+            top: 24px;
+            right: 24px;
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            border: 1px solid #282723;
+            background: #282723;
+            color: #fff;
+            font-size: 24px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s;
+            z-index: 10;
+        }
+
+        .modal-close-btn:hover {
+            background: #fff;
+            color: #000;
+            transform: scale(1.05);
+        }
+
+        /* ─── Sliding Case Study Overlay ─── */
+        .overlay-backdrop {
+            position: fixed;
+            inset: 0;
+            z-index: 999;
+            background: #000000;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .overlay-backdrop.active {
+            opacity: 1;
+            pointer-events: all;
+        }
+
+        .case-study-drawer {
+            position: fixed;
+            top: 0;
+            right: -100%;
+            width: 600px;
+            height: 100%;
+            z-index: 1000;
+            background: #000000;
+            border-left: 1px solid #282723;
+            display: flex;
+            flex-direction: column;
+            transition: right 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .case-study-drawer.active {
+            right: 0;
+        }
+
+        .drawer-header {
+            padding: 30px 40px 20px;
+            border-bottom: 1px solid #282723;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+        }
+
+        .drawer-header-info {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .drawer-header-info h2 {
+            font-size: 1.8rem;
+            font-weight: 850;
+            color: #fff;
+            line-height: 1.2;
+            letter-spacing: -0.02em;
+        }
+
+        .drawer-close-btn {
+            background: transparent;
+            border: none;
+            color: var(--text-muted);
+            font-size: 32px;
+            line-height: 1;
+            cursor: pointer;
+            transition: color 0.3s;
+            padding: 0 5px;
+        }
+
+        .drawer-close-btn:hover {
+            color: #fff;
+        }
+
+        .drawer-content {
+            padding: 40px;
+            overflow-y: auto;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 32px;
+        }
+
+        .drawer-section {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .drawer-section h3 {
+            font-size: 0.76rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--secondary-3);
+        }
+
+        .drawer-section p {
+            font-size: 0.95rem;
+            color: var(--text);
+            line-height: 1.6;
+        }
+
+        /* Drawer specific quotes */
+        .drawer-quote {
+            border-left: 2px solid var(--primary);
+            padding-left: 20px;
+            margin-top: 10px;
+            font-style: italic;
+            color: var(--text);
+        }
+
+        .drawer-quote-author {
+            font-style: normal;
+            font-size: 0.82rem;
+            font-weight: 700;
+            color: var(--text-muted);
+            margin-top: 8px;
+            display: block;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+
+
+        /* Chapter step breakdown for Porsche */
+        .chapters-container {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            margin-top: 10px;
+        }
+
+        .chapter-card {
+            background: #000000;
+            border: 1px solid #282723;
+            border-radius: 0px;
+            padding: 16px 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .chapter-title {
+            font-size: 0.95rem;
+            font-weight: 700;
+            color: #fff;
+        }
+
+        .chapter-desc {
+            font-size: 0.88rem;
+            color: var(--text-muted);
+            line-height: 1.5;
+        }
+
+        /* ─── Media Queries ─── */
+        @media (max-width: 1200px) {
+            .process-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .services-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .supporting-films-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 960px) {
+            .film-row {
+                grid-template-columns: 1fr;
+                gap: 30px;
+                padding: 30px;
+            }
+            .supporting-films-grid {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .case-study-drawer {
+                width: 100%;
+            }
+            .drawer-header {
+                padding: 24px;
+            }
+            .drawer-content {
+                padding: 24px;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .process-grid {
+                grid-template-columns: 1fr;
+            }
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+            .cinema-hero-ctas,
+            .bottom-cta-buttons {
+                flex-direction: column;
+                width: 100%;
+                gap: 12px;
+            }
+            .cinema-hero-ctas .btn-primary-gold,
+            .cinema-hero-ctas .btn-outline,
+            .bottom-cta-buttons .btn-primary-gold,
+            .bottom-cta-buttons .btn-outline {
+                width: 100%;
+            }
+        }
+
+        /* ─── Reduced Motion Overrides ─── */
+        @media (prefers-reduced-motion: reduce) {
+            * {
+                animation-delay: 0s !important;
+                animation-duration: 0s !important;
+                animation-iteration-count: 1 !important;
+                transition-delay: 0s !important;
+                transition-duration: 0s !important;
+                scroll-behavior: auto !important;
+            }
+            .reveal {
+                opacity: 1 !important;
+                transform: none !important;
+            }
+            .process-card:hover,
+            .film-card:hover,
+            .service-card:hover,
+            .film-row:hover {
+                transform: none !important;
+            }
+            .film-row:hover .film-row-visual img {
+                transform: none !important;
+            }
+            .play-btn-large svg:hover {
+                transform: none !important;
+            }
+        }
+    
+        h1, h2 {
+            font-family: var(--font-serif) !important;
+            font-style: italic !important;
+            letter-spacing: -0.02em !important;
+            font-size: clamp(3.5rem, 8vw, 7rem) !important;
+            font-weight: 400 !important;
+            line-height: 1.05 !important;
+        }
+</style>
+
+    <!-- ─── Back To Top Button Styles ─── -->
+    <style>
+        .back-to-top-btn {
+            position: fixed !important;
+            bottom: 40px !important;
+            right: 40px !important;
+            width: 48px !important;
+            height: 48px !important;
+            background: #EB4604 !important;
+            color: #000000 !important;
+            border: 1px solid #EB4604 !important;
+            font-size: 1.5rem !important;
+            font-weight: 700 !important;
+            cursor: pointer !important;
+            display: flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+            z-index: 1000 !important;
+            opacity: 0 !important;
+            pointer-events: none !important;
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1) !important;
+            border-radius: 0px !important;
+        }
+
+        .back-to-top-btn.visible {
+            opacity: 1 !important;
+            pointer-events: all !important;
+        }
+
+        .back-to-top-btn:hover {
+            background: #FFFFFF !important;
+            color: #000000 !important;
+            border-color: #FFFFFF !important;
+            transform: translateY(-4px) !important;
+        }
+
+        @media (max-width: 640px) {
+            .back-to-top-btn {
+                bottom: 20px !important;
+                right: 20px !important;
+                width: 40px !important;
+                height: 40px !important;
+                font-size: 1.2rem !important;
+            }
+        }
+    </style>
+
+</head>
+<body>
+
+    <!-- Ambient Background -->
+    
+    
+    
+
+    <!-- Navigation Header -->
+    <header>
+        <a href="index.html#ai-cinema" class="back-btn">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="19" y1="12" x2="5" y2="12"></line>
+                <polyline points="12 19 5 12 12 5"></polyline>
+            </svg>
+            Back to Portfolio
+        </a>
+        <a href="index.html#hero" class="logo">
+            <img src="favicon.svg" style="height: 32px; width: auto;" alt="DC.">
+        </a>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="cinema-hero">
+        <video autoplay loop muted playsinline poster="images/kasahrada-hero-fallback.jpg">
+            <source src="images/kasahrada-hero-loop.mp4" type="video/mp4">
+        </video>
+        <div class="cinema-hero-overlay"></div>
+        <div class="cinema-hero-content reveal">
+            <h1>I direct AI to tell stories<br><span class="gradient-text">that matter.</span></h1>
+            <div class="cinema-hero-ctas">
+                <a href="https://wa.me/qr/KQJFSZ2WY5FSO1" target="_blank" rel="noopener" class="btn-primary-gold">Start a Project ↗</a>
+                <a href="#films" class="btn-outline">Watch Showreel &rarr;</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- The Process Section -->
+    <section class="process-section">
+        <div class="section-header reveal" style="margin-bottom: 36px;">
+            <h2>How I <span class="gradient-text">Work</span></h2>
+        </div>
+        
+        <div class="process-grid">
+            <!-- Step 1 -->
+            <div class="process-card reveal">
+                <h3>Research & Scripting</h3>
+                <p>Script development, historical research, and creative direction. The human decision layer that defines narrative arcs.</p>
+            </div>
+            
+            <!-- Step 2 -->
+            <div class="process-card reveal">
+                <h3>Visual Design</h3>
+                <p>Cinematic frame generation, texture consistency controls, and establishing unified, premium project aesthetics.</p>
+            </div>
+            
+            <!-- Step 3 -->
+            <div class="process-card reveal">
+                <h3>Motion Control</h3>
+                <p>Realistic movement vectors, action sequences, and character-to-camera motion coherence — key for realistic film quality.</p>
+            </div>
+            
+            <!-- Step 4 -->
+            <div class="process-card reveal">
+                <h3>Sound Design</h3>
+                <p>Neural voice synthesis matched to period contexts and original synchronized orchestral score compositions.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Selected Works Section -->
+    <section id="films" class="films-section">
+        <div class="section-header reveal">
+
+            <h2>Selected <span class="gradient-text">Works</span></h2>
+        </div>
+        
+        <div class="films-container">
+            <!-- Featured Film: The Last Ember -->
+            <div class="film-row reveal featured-film" id="last-ember">
+                <div class="film-row-visual">
+                    <img src="images/last-ember-thumb.jpg" alt="The Last Ember Thumbnail">
+                    <button class="play-btn-large watch-btn" data-video="Final Video/The Last Amber.mp4" aria-label="Play Film">
+                        <svg viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M8 5v14l11-7z"/>
+                        </svg>
+                    </button>
+                </div>
+                <div class="film-row-content">
+                    <div style="display: flex; gap: 10px; align-items: center; flex-wrap: wrap;">
+                        <span class="film-meta">~112 sec &bull; Fantasy &bull; Storyvord Internship Assignment</span>
+                        <span class="film-meta" style="color: #EB4604; background: #282723; border-color: #282723;">Full Process Documented</span>
+                    </div>
+                    <h2>The Last Ember</h2>
+                    <p class="film-brief">
+                        A 16-shot AI cinematic sequence with full process documentation — from prompt formula to mid-workflow adaptation. Built in 12 hours.
+                    </p>
+                    <div class="film-actions">
+                        <button class="btn-primary-gold watch-btn" data-video="Final Video/The Last Amber.mp4">Watch Film</button>
+                        <a href="brands/Ai Cinema Lab/The Last Amber/index.html" class="btn-outline" style="text-decoration: none;">View Full Process &rarr;</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Featured Film: India AI Impact Summit 2026 -->
+            <div class="film-row reveal featured-film" id="india-ai-summit">
+                <div class="film-row-visual">
+                    <img src="brands/Ai Cinema Lab/Billion/billion.png" alt="The Next Billion Thumbnail">
+                    <button class="play-btn-large watch-btn" data-video="Final Video/india-ai-impact-summit-2026.mp4" aria-label="Play Film">
+                        <svg viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M8 5v14l11-7z"/>
+                        </svg>
+                    </button>
+                </div>
+                <div class="film-row-content">
+                    <div style="display: flex; gap: 10px; align-items: center; flex-wrap: wrap;">
+                        <span class="film-meta">5:17 &bull; Documentary &bull; 2026</span>
+                        <span class="film-meta" style="color: #EB4604; background: #282723; border-color: #282723;">Top 15 — India AI Impact Summit</span>
+                    </div>
+                    <h2>The Next Billion</h2>
+                    <p class="film-brief">
+                        A 5-minute AI documentary tracing India's journey from early computing to becoming a global AI powerhouse — healthcare, agriculture, education, defense, and the founders building what's next. Created for the India AI Impact Summit 2026 opening ceremony competition.
+                    </p>
+                    <div class="film-actions">
+                        <button class="btn-primary-gold watch-btn" data-video="Final Video/india-ai-impact-summit-2026.mp4">Watch Film</button>
+                        <button class="btn-outline case-study-btn" data-case="india-ai-summit">Summary &rarr;</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Supporting Films Grid -->
+            <div class="supporting-films-grid">
+                <!-- Film 1: Kasahrada -->
+                <div class="film-card reveal" id="kasahrada">
+                    <div class="film-card-visual" style="aspect-ratio: 16/9; margin-bottom: 24px; position: relative; border-radius: 0; overflow: hidden; border: 1px solid #282723; background: #000000;">
+                        <img src="images/kasahrada-thumb.jpg" alt="Battle of Kasahrada Thumbnail" style="width: 100%; height: 100%; object-fit: cover;">
+                        <button class="play-btn-large watch-btn" data-video="Final Video/Rani Nayika Devi_Divyaraj.mp4" aria-label="Play Film">
+                            <svg viewBox="0 0 24 24" fill="currentColor" style="width: 56px; height: 56px;">
+                                <path d="M8 5v14l11-7z"/>
+                            </svg>
+                        </button>
+                    </div>
+                    <div class="film-card-content" style="display: flex; flex-direction: column; gap: 8px;">
+                        <span class="film-meta">1:47 &bull; Historical &bull; 2025</span>
+                        <h3>Battle of Kasahrada</h3>
+                        <p class="film-subtitle" style="font-size: 0.95rem; color: var(--text-muted);">The Valor of Queen Nayika Devi</p>
+                        <p class="film-brief" style="font-size: 0.92rem; color: var(--text-muted); line-height: 1.6;">
+                            AI micro-drama recreating the 1178 CE battle where Queen Nayika Devi defended Gujarat.
+                        </p>
+                        <div class="film-actions" style="margin-top: auto; display: flex; gap: 12px;">
+                            <button class="btn-primary-gold watch-btn" data-video="Final Video/Rani Nayika Devi_Divyaraj.mp4">Watch Film</button>
+                            <button class="btn-outline case-study-btn" data-case="kasahrada">Summary &rarr;</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Film 2: Porsche -->
+                <div class="film-card reveal" id="porsche">
+                    <div class="film-card-visual" style="aspect-ratio: 16/9; margin-bottom: 24px; position: relative; border-radius: 0; overflow: hidden; border: 1px solid #282723; background: #000000;">
+                        <img src="images/porsche-thumb.jpg" alt="Porsche 911 Turbo S Thumbnail" style="width: 100%; height: 100%; object-fit: cover;">
+                        <button class="play-btn-large watch-btn" data-video="Final Video/1080P Porsche 911 Turbo S Promo.mp4" aria-label="Play Film">
+                            <svg viewBox="0 0 24 24" fill="currentColor" style="width: 56px; height: 56px;">
+                                <path d="M8 5v14l11-7z"/>
+                            </svg>
+                        </button>
+                    </div>
+                    <div class="film-card-content" style="display: flex; flex-direction: column; gap: 8px;">
+                        <span class="film-meta">2:15 &bull; Automotive &bull; 2025</span>
+                        <h3>Porsche 911 Turbo S</h3>
+                        <p class="film-subtitle" style="font-size: 0.95rem; color: var(--text-muted);">Luxury Automotive Showcase</p>
+                        <p class="film-brief" style="font-size: 0.92rem; color: var(--text-muted); line-height: 1.6;">
+                            AI-driven cinematic showcase built around the iconic white Porsche 911 Turbo S.
+                        </p>
+                        <div class="film-actions" style="margin-top: auto; display: flex; gap: 12px;">
+                            <button class="btn-primary-gold watch-btn" data-video="Final Video/1080P Porsche 911 Turbo S Promo.mp4">Watch Film</button>
+                            <button class="btn-outline case-study-btn" data-case="porsche">Summary &rarr;</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Film 3: Credes Ad -->
+                <div class="film-card reveal" id="credes-ad">
+                    <div class="film-card-visual" style="aspect-ratio: 16/9; margin-bottom: 24px; position: relative; border-radius: 0; overflow: hidden; border: 1px solid #282723; background: #000000;">
+                        <img src="images/credes-ad-thumb.jpg" alt="Credes Ad Thumbnail" style="width: 100%; height: 100%; object-fit: cover;">
+                        <button class="play-btn-large watch-btn" data-video="Final Video/credes-ad.mp4" aria-label="Play Film">
+                            <svg viewBox="0 0 24 24" fill="currentColor" style="width: 56px; height: 56px;">
+                                <path d="M8 5v14l11-7z"/>
+                            </svg>
+                        </button>
+                    </div>
+                    <div class="film-card-content" style="display: flex; flex-direction: column; gap: 8px;">
+                        <span class="film-meta">0:46 &bull; Brand Film &bull; 2026</span>
+                        <h3>Built for Builders</h3>
+                        <p class="film-subtitle" style="font-size: 0.95rem; color: var(--text-muted);">Why Founders Choose Credes</p>
+                        <p class="film-brief" style="font-size: 0.92rem; color: var(--text-muted); line-height: 1.6;">
+                            Fast-paced Meta ad brand film showing why founders and entrepreneurs choose Credes.
+                        </p>
+                        <div class="film-actions" style="margin-top: auto; display: flex; gap: 12px;">
+                            <button class="btn-primary-gold watch-btn" data-video="Final Video/credes-ad.mp4">Watch Film</button>
+                            <button class="btn-outline case-study-btn" data-case="credes-ad">Summary &rarr;</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services-section">
+        <div class="section-header reveal">
+
+            <h2>What I Can <span class="gradient-text">Build For You</span></h2>
+        </div>
+        
+        <div class="services-grid">
+            <!-- Service 1 -->
+            <div class="service-card reveal">
+                <h3>Brand Films</h3>
+                <p class="service-desc">Cinematic brand stories tailored for key launches, rebrands, corporate announcements, and high-impact social campaigns.</p>
+            </div>
+
+            <!-- Service 2 -->
+            <div class="service-card reveal">
+                <h3>Product Showcases</h3>
+                <p class="service-desc">Premium product reveals and closeups featuring beat-synchronized editorial cuts and detailed macro camera cinematography.</p>
+            </div>
+
+            <!-- Service 3 -->
+            <div class="service-card reveal">
+                <h3>Historical Micro-Dramas</h3>
+                <p class="service-desc">AI-driven dramatic retelling of epic historical moments, built with academic research-backed realism and authentic voices.</p>
+            </div>
+
+            <!-- Service 4 -->
+            <div class="service-card reveal">
+                <h3>Social Packages</h3>
+                <p class="service-desc">5 to 10 tailored AI vertical video assets per month, aligned with custom brand models and a unified visual tone.</p>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Bottom CTA -->
+    <section class="bottom-cta-section reveal">
+        <div class="bottom-cta-inner">
+            <h2>Have a story that needs telling?</h2>
+            <div class="bottom-cta-buttons">
+                <a href="index.html#hero" class="btn-outline">Back to Portfolio</a>
+                <a href="https://wa.me/qr/KQJFSZ2WY5FSO1" target="_blank" rel="noopener" class="btn-primary-gold">Start a Project ↗</a>
+                <a href="diu_resume.html" target="_blank" class="btn-outline">View My Resume</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <div style="text-align: center; padding: 40px 6%; color: var(--text-muted); font-size: 0.8rem; border-top: 1px solid var(--border);">
+        <div>© 2026 Divyaraj Chauhan. AI Cinema Lab.</div>
+        <div style="margin-top: 8px; font-size: 0.75rem; opacity: 0.6;">
+            <a href="index.html" style="color: inherit; text-decoration: none;">Portfolio</a> · 
+            <a href="diu_resume.html" style="color: inherit; text-decoration: none;">Resume</a> · 
+            <a href="https://wa.me/qr/KQJFSZ2WY5FSO1" style="color: inherit; text-decoration: none;">Contact</a>
+        </div>
+    </div>
+
+    <!-- Dynamic Video Modal -->
+    <div class="video-modal" id="videoModal">
+        <button class="modal-close-btn" id="modalCloseBtn" aria-label="Close modal">&times;</button>
+        <div class="video-modal-container">
+            <iframe id="videoIframe" src="" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen style="display: none; width: 100%; height: 100%;"></iframe>
+            <video id="videoElement" controls autoplay playsinline style="display: none; width: 100%; height: 100%; object-fit: contain;"></video>
+        </div>
+    </div>
+
+    <!-- Sliding Case Study Drawer -->
+    <div class="overlay-backdrop" id="drawerBackdrop"></div>
+    <div class="case-study-drawer" id="caseStudyDrawer">
+        <div class="drawer-header">
+            <div class="drawer-header-info">
+                <span class="cinema-badge" id="drawerBadge">Case Study</span>
+                <h2 id="drawerTitle">Project Title</h2>
+            </div>
+            <button class="drawer-close-btn" id="drawerCloseBtn" aria-label="Close case study">&times;</button>
+        </div>
+        <div class="drawer-content" id="drawerContent">
+            <!-- Dynamically populated -->
+        </div>
+    </div>
+
+    <!-- Case Study Data & Logic JavaScript -->
+    <script>
+        // Intersection Observer for scroll animations
+        const observerOptions = {
+            threshold: 0.08,
+            rootMargin: '0px 0px -60px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+        // Case Studies Data
+        const caseStudies = {
+            kasahrada: {
+                title: "Battle of Kasahrada: The Valor of Queen Nayika Devi",
+                badge: "Historical Micro-Drama • 2025",
+                brief: "Recreate the 1178 CE battle as a cinematic micro-drama, focusing on historical realism and emotional weight rather than a clinical documentary format.",
+                challenge: "AI video generation engines naturally struggle with complex, multi-subject human motion (such as sword combat and dynamic shields), structural character visual consistency across frames, and rendering specific 12th-century military armor.",
+                solution: "Deployed Higgsfield AI's visual motion controls to enforce realistic physical vectors for combat action. Integrated a strict structural frame-to-frame pipeline, combining image-to-video diffusion and post-render frame blending to control Queen Nayika's facial details. Faithfully recreated Gadaraghatta's dry, rocky terrain through customized background plate prompt structures.",
+                tools: ["ChatGPT", "Gemini", "Higgsfield AI", "Google Flow", "ElevenLabs", "Suno AI", "Google Vids"],
+                outcome: "A 1-minute, 47-second micro-drama featuring highly coherent battle layouts, period-accurate voice narratives, and a beat-synchronized cinematic orchestral score.",
+                quote: "Working on this project allowed me to push the boundaries of what is possible with current generative motion tools. It serves as proof that AI can be a powerful tool for preserving and celebrating our historical heritage.",
+                author: "Divyaraj Chauhan"
+            },
+            porsche: {
+                title: "Porsche 911 Turbo S: Luxury Automotive Showcase",
+                badge: "Automotive • 2025",
+                brief: "Build a premium brand showcase centered on the iconic white Porsche 911 Turbo S. Tell the story entirely through lighting, camera pans, and mechanical cuts without using any narrative voiceovers.",
+                challenge: "Simulating accurate lighting reflections (specular highlights) sliding across high-gloss curved car bodies, avoiding structural model morphing during rapid pans, and rendering photo-realistic wheel rotations without geometric distortions.",
+                solution: "Utilized Google Veo and Luma Dream Machine to handle fluid specular reflection physics. Structured the narrative flow in a 5-part shot breakdown to guide generative model context sequentially, going from details to high-speed movement.",
+                tools: ["Midjourney", "Veo", "Luma Dream Machine", "Premiere Pro", "CapCut"],
+                outcome: "A 2-minute, 15-second loop-ready high-end brand asset focused entirely on mechanical symmetry, cinematic lens work, and tight rhythmic audio transitions.",
+                quote: "Automotive cinematography is all about how light wraps around metal. With AI, you have to guide the engine to understand specular highlights and paint reflectivity, turning algorithms into virtual studio lights.",
+                author: "Divyaraj Chauhan",
+                chapters: [
+                    { title: "Chapter 1: Opening Reveal", desc: "Silhouette lighting panning across the active rear deck spoiler and sleek LED headlamps cutting through volumetric fog." },
+                    { title: "Chapter 2: Identity & Detail", desc: "Extreme macro shots focusing on the Porsche shield, chrome 'Turbo S' emblem, and detailed wheel caliper rims." },
+                    { title: "Chapter 3: Interior Craft", desc: "Slow camera glides over red leather seat stitching, carbon trim inserts, and the start-up sequence of the sport chrono dashboard." },
+                    { title: "Chapter 4: Performance Arc", desc: "High-speed tracking shots showing the white chassis cutting through rain-slicked curves, complete with natural motion blur." },
+                    { title: "Chapter 5: Closing Loop", desc: "The vehicle entering a dark, minimalist garage, headlights shutting down as the spoiler retracts, looping back seamlessly." }
+                ]
+            },
+            'credes-ad': {
+                title: "Built for Builders: Credes Techlabs Brand Film",
+                badge: "Brand Film • 2026",
+                brief: "Create a 46-second cinematic ad for Meta campaigns that convinces AI startup founders, entrepreneurs, and new business owners why Credes Techlabs is the right build partner — not just another dev shop.",
+                challenge: "The ad had to land in under a minute while speaking to three distinct audiences (technical founders, non-technical entrepreneurs, and business owners) without feeling generic. It needed to feel premium enough for a tech brand but approachable enough that a first-time founder wouldn't scroll past.",
+                solution: "Structured the narrative as a founder's internal monologue — from 'I have an idea' to 'I need someone who gets it.' Used Veo for cinematic B-roll of workspaces and cityscapes, Higgsfield AI for motion graphics transitions, and Gemini Pro to refine the script for punchy, founder-centric language. ElevenLabs delivered a warm, confident voiceover that doesn't sound like corporate AI. Edited in Canva for tight pacing and platform-native formatting.",
+                tools: ["Veo", "Gemini Pro", "Higgsfield AI", "ElevenLabs", "Canva"],
+                outcome: "The client approved the first cut. Ran as a Meta ad and generated direct leads from startup founders — tangible business inquiries, not just views. Engagement rate outperformed previous static creative by a significant margin.",
+                quote: "This wasn't about showing what Credes does. It was about showing founders that we speak their language — that we know what 'just build it' actually means when you're starting from zero.",
+                author: "Divyaraj Chauhan"
+            },
+            'india-ai-summit': {
+                title: "The Next Billion: India's AI Journey",
+                badge: "Documentary • India AI Impact Summit 2026 • Top 15",
+                brief: "Create a minimum 5-minute AI film for the India AI Impact Summit 2026 opening ceremony competition, covering India's AI journey across sectors and projecting a compelling future narrative.",
+                challenge: "Five minutes is an eternity in AI video — maintaining visual coherence, historical accuracy, and emotional arc across that runtime is exponentially harder than a 90-second piece. We had to cover multiple sectors (healthcare, agriculture, education, defense, startups) without feeling like a slideshow, and the historical-to-future transition had to feel earned, not forced. Plus, coordinating a 5-person team where everyone generates their own clips means style drift is inevitable.",
+                solution: "I acted as AI Generalist and visual consistency lead. Defined the prompt architecture, color grading rules, and motion language before anyone generated a single frame. Used Higgsfield for complex multi-subject historical scenes, Veo for sweeping environmental shots, and Gemini Pro + Grok for fact-checking historical milestones and future projections. ElevenLabs handled the narrator voice, Suno AI composed an original score that shifts from classical Indian motifs to electronic futurism. My personal clips — the human moments, real-scene blends, and emotional anchors — became the connective tissue holding the film together.",
+                tools: ["Higgsfield AI", "Veo", "Gemini Pro", "Grok", "ElevenLabs", "Suno AI"],
+                outcome: "Selected in the Top 15 entries nationwide for the India AI Impact Summit 2026 opening ceremony competition. Did not advance to final selection, but the film validated our team's ability to execute a long-form AI documentary at competition level — and proved that human direction (shot planning, narrative structure, emotional pacing) is what separates generated content from actual cinema.",
+                quote: "Five people, five tool stacks, one vision. The real craft wasn't the generation — it was the curation. Deciding what stays, what connects, and what makes someone feel something at minute 4.",
+                author: "Divyaraj Chauhan — AI Generalist, Team of 5"
+            }
+        };
+
+        // UI Selectors
+        const videoModal = document.getElementById('videoModal');
+        const videoIframe = document.getElementById('videoIframe');
+        const videoElement = document.getElementById('videoElement');
+        const modalCloseBtn = document.getElementById('modalCloseBtn');
+        const drawer = document.getElementById('caseStudyDrawer');
+        const drawerBackdrop = document.getElementById('drawerBackdrop');
+        const drawerCloseBtn = document.getElementById('drawerCloseBtn');
+        
+        // Video Modal Handler
+        document.querySelectorAll('.watch-btn').forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                const videoUrl = btn.getAttribute('data-video');
+                if (videoUrl) {
+                    if (videoUrl.includes('youtube.com') || videoUrl.includes('vimeo.com') || videoUrl.includes('embed')) {
+                        videoIframe.src = videoUrl + "?autoplay=1&rel=0";
+                        videoIframe.style.display = 'block';
+                        videoElement.style.display = 'none';
+                    } else {
+                        // Local video playing via video tag
+                        videoElement.src = videoUrl;
+                        videoElement.load();
+                        videoElement.play().catch(err => console.log("Auto-play blocked or failed", err));
+                        videoElement.style.display = 'block';
+                        videoIframe.style.display = 'none';
+                    }
+                    videoModal.classList.add('active');
+                }
+            });
+        });
+
+        const closeModal = () => {
+            videoModal.classList.remove('active');
+            // Reset sources to stop playback/audio
+            videoIframe.src = '';
+            videoElement.pause();
+            videoElement.src = '';
+            videoIframe.style.display = 'none';
+            videoElement.style.display = 'none';
+        };
+
+        modalCloseBtn.addEventListener('click', closeModal);
+        videoModal.addEventListener('click', (e) => {
+            if (e.target === videoModal) closeModal();
+        });
+
+        // Case Study Drawer Handler
+        const openCaseStudy = (caseId) => {
+            const data = caseStudies[caseId];
+            if (!data) return;
+
+            document.getElementById('drawerBadge').textContent = data.badge;
+            document.getElementById('drawerTitle').textContent = data.title;
+
+            // Generate content HTML
+            let contentHTML = `
+                <div class="drawer-section">
+                    <h3>The Brief</h3>
+                    <p>${data.brief}</p>
+                </div>
+                <div class="drawer-section">
+                    <h3>The Challenge</h3>
+                    <p>${data.challenge}</p>
+                </div>
+                <div class="drawer-section">
+                    <h3>My Solution</h3>
+                    <p>${data.solution}</p>
+                </div>
+            `;
+
+            if (data.chapters) {
+                contentHTML += `
+                    <div class="drawer-section">
+                        <h3>Shot Breakdown</h3>
+                        <div class="chapters-container">
+                `;
+                data.chapters.forEach(ch => {
+                    contentHTML += `
+                        <div class="chapter-card">
+                            <div class="chapter-title">${ch.title}</div>
+                            <div class="chapter-desc">${ch.desc}</div>
+                        </div>
+                    `;
+                });
+                contentHTML += `
+                        </div>
+                    </div>
+                `;
+            }
+
+
+            contentHTML += `
+                <div class="drawer-section">
+                    <h3>Key Outcome</h3>
+                    <p>${data.outcome}</p>
+                </div>
+            `;
+
+            document.getElementById('drawerContent').innerHTML = contentHTML;
+            
+            // Open Drawer
+            drawerBackdrop.classList.add('active');
+            drawer.classList.add('active');
+            
+            // Update URL hash without reload
+            history.pushState(null, null, '#' + caseId);
+        };
+
+        const closeDrawer = () => {
+            drawer.classList.remove('active');
+            drawerBackdrop.classList.remove('active');
+            // Remove hash from URL
+            history.pushState(null, null, ' ');
+        };
+
+        document.querySelectorAll('.case-study-btn').forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                const caseId = btn.getAttribute('data-case');
+                openCaseStudy(caseId);
+            });
+        });
+
+        drawerCloseBtn.addEventListener('click', closeDrawer);
+        drawerBackdrop.addEventListener('click', closeDrawer);
+
+        // Global Event: Keyboard accessibility (Close modal & drawer on Escape)
+        window.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                closeModal();
+                closeDrawer();
+            }
+        });
+
+        // Auto-open based on URL Hash
+        window.addEventListener('DOMContentLoaded', () => {
+            const hash = window.location.hash.substring(1);
+            if (hash && (hash === 'kasahrada' || hash === 'porsche' || hash === 'india-ai-summit' || hash === 'credes-ad')) {
+                openCaseStudy(hash);
+            }
+        });
+    </script>
+
+    <!-- ─── Back To Top Button HTML & Script ─── -->
+    <button id="back-to-top" class="back-to-top-btn" aria-label="Back to top">↑</button>
+    <script>
+        const backToTopBtn = document.getElementById('back-to-top');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 400) {
+                backToTopBtn.classList.add('visible');
+            } else {
+                backToTopBtn.classList.remove('visible');
+            }
+        });
+        backToTopBtn.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+    </script>
+
+</body>
+</html>

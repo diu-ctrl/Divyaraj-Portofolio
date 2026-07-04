@@ -1,0 +1,1195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Divyaraj Chauhan — Resume</title>
+    <link rel="icon" type="image/png" href="favicon.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital,wght@0,400;1,400&family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #000000;
+            --bg-deep: #000000;
+            --card: #282723;
+            --text: #FFFFFF;
+            --text-muted: #99A57D;
+            --border: #282723;
+            --accent: #EB4604;
+
+            /* Compatibility variables mapped to brutalist purge tokens */
+            --primary: var(--accent);
+            --primary-light: var(--accent);
+            --primary-dim: #2b1812;
+            --accent-1: var(--accent);
+            --accent-glow: var(--accent);
+            --secondary-1: var(--bg-deep);
+            --secondary-2: var(--bg);
+            --secondary-3: var(--text);
+            --surface: var(--card);
+            --surface-flat: var(--card);
+            --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            --font-serif: 'Instrument Serif', Georgia, serif;
+            --font-mono: 'Space Mono', 'JetBrains Mono', monospace;
+            --credes-surface: var(--card);
+            --credes-border: var(--border);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            border-radius: 0px !important;
+            box-shadow: none !important;
+            backdrop-filter: none !important;
+            -webkit-backdrop-filter: none !important;
+            mix-blend-mode: normal !important;
+        }
+
+        nav, .nav-links a, .nav-cta a, .nav-resume, .btn-nav, .btn-brutalist, .btn-primary-gold, .btn-outline, .stat-lbl, .cinema-badge, .outcome-badge, .web-badge, .folio-card-tag, .refresh-date, .copyright-above, .contact-links-mono {
+            font-family: var(--font-mono) !important;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--bg-deep);
+            color: var(--text);
+            line-height: 1.5;
+            padding: 40px 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        /* Resume Container */
+        .resume-container {
+            background: var(--bg);
+            max-width: 900px;
+            width: 100%;
+            border-radius: 16px;
+            border: 2px solid var(--border);
+            padding: 50px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Top Action Bar (hidden in print) */
+        .action-bar {
+            display: flex;
+            justify-content: flex-end;
+            margin-bottom: 30px;
+            gap: 12px;
+        }
+
+        .btn-action {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 20px;
+            border-radius: 100px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-decoration: none;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            border: 1px solid var(--border);
+            background: var(--card);
+            color: var(--text);
+        }
+
+        .btn-action:hover {
+            border-color: var(--accent);
+            color: var(--accent);
+            transform: translateY(-1px);
+        }
+
+        .btn-primary {
+            background: var(--accent);
+            color: var(--bg-deep);
+            border-color: var(--accent);
+        }
+
+        .btn-primary:hover {
+            background: var(--text);
+            color: var(--bg-deep);
+            border-color: var(--text);
+        }
+
+        /* Header styling */
+        header {
+            border-bottom: 2px solid var(--border);
+            padding-bottom: 30px;
+            margin-bottom: 36px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 30px;
+        }
+
+        .header-main-info {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            gap: 20px;
+            flex: 1;
+            min-width: 280px;
+        }
+
+        .header-left h1 {
+            font-size: 2.5rem;
+            font-weight: 900;
+            color: var(--primary);
+            letter-spacing: -0.04em;
+            line-height: 1.1;
+            margin-bottom: 8px;
+        }
+
+        .header-left .title-sub {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--accent);
+            letter-spacing: -0.01em;
+        }
+
+        .header-right {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 6px;
+            font-size: 0.88rem;
+            color: var(--text-muted);
+            text-align: left;
+        }
+
+        .header-right a {
+            color: var(--text-muted);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .header-right a:hover {
+            color: var(--accent);
+        }
+
+        /* Media Slot (Showcase video online, photo in PDF print) */
+        .header-media {
+            width: 350px;
+            height: 350px;
+            position: relative;
+            overflow: hidden;
+            border-radius: 8px;
+            border: 1px solid var(--border);
+            background: #000;
+            flex-shrink: 0;
+        }
+
+        .resume-video, .resume-photo {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+            display: block;
+        }
+
+        .resume-photo {
+            display: none !important;
+        }
+
+        /* Video Controls Overlay */
+        .video-controls {
+            position: absolute;
+            bottom: 12px;
+            right: 12px;
+            display: flex;
+            gap: 8px;
+            z-index: 10;
+            opacity: 0.75;
+            transition: opacity 0.3s ease, transform 0.2s ease;
+        }
+
+        .header-media:hover .video-controls {
+            opacity: 1;
+        }
+
+        .control-btn {
+            background: #282723;
+            border: 1px solid #282723;
+            color: #ffffff;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            padding: 0;
+        }
+
+        .control-btn:hover {
+            background: var(--accent);
+            border-color: var(--accent);
+            transform: scale(1.05);
+        }
+
+        .control-btn svg {
+            display: block;
+        }
+
+        /* Main Grid */
+        .resume-grid {
+            display: grid;
+            grid-template-columns: 1fr 2.1fr;
+            gap: 40px;
+        }
+
+        /* Sidebar Column */
+        .sidebar-col {
+            display: flex;
+            flex-direction: column;
+            gap: 32px;
+        }
+
+        /* Main Column */
+        .main-col {
+            display: flex;
+            flex-direction: column;
+            gap: 36px;
+        }
+
+        /* Section blocks */
+        .section-block h3 {
+            font-size: 0.78rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            color: var(--accent);
+            margin-bottom: 16px;
+            border-bottom: 1.5px solid var(--border);
+            padding-bottom: 6px;
+        }
+
+        /* Contact Details list */
+        .contact-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            font-size: 0.88rem;
+        }
+
+        .contact-list li {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .contact-list span.label {
+            font-size: 0.72rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            color: var(--text-muted);
+            letter-spacing: 0.05em;
+            margin-bottom: 2px;
+        }
+
+        .contact-list a, .contact-list span.value {
+            color: var(--text);
+            font-weight: 500;
+            text-decoration: none;
+        }
+
+        .contact-list a:hover {
+            color: var(--accent);
+        }
+
+        /* Skills badges */
+        .skills-group {
+            margin-bottom: 16px;
+        }
+
+        .skills-group h4 {
+            font-size: 0.8rem;
+            font-weight: 700;
+            color: var(--primary-light);
+            margin-bottom: 8px;
+            text-transform: uppercase;
+            letter-spacing: 0.02em;
+        }
+
+        .skills-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+        }
+
+        .skill-tag {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            padding: 5px 12px;
+            border-radius: 6px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: var(--primary-light);
+        }
+
+        /* Education block */
+        .edu-item {
+            margin-bottom: 14px;
+        }
+
+        .edu-degree {
+            font-size: 0.9rem;
+            font-weight: 700;
+            color: var(--text);
+        }
+
+        .edu-school {
+            font-size: 0.85rem;
+            color: var(--primary-light);
+            font-weight: 500;
+            margin: 2px 0 4px;
+        }
+
+        .edu-date {
+            font-size: 0.78rem;
+            font-weight: 600;
+            color: var(--accent);
+        }
+
+        .edu-desc {
+            font-size: 0.76rem;
+            color: var(--text-muted);
+            line-height: 1.5;
+            margin-top: 6px;
+        }
+
+        /* Experience Timeline Items */
+        .exp-item {
+            margin-bottom: 24px;
+            position: relative;
+        }
+
+        .exp-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .exp-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            flex-wrap: wrap;
+            margin-bottom: 6px;
+        }
+
+        .exp-title {
+            font-size: 1.05rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        .exp-company {
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--accent);
+            margin: 1px 0 4px;
+        }
+
+        .exp-date {
+            font-size: 0.8rem;
+            font-weight: 700;
+            color: var(--primary-light);
+            background: var(--surface);
+            padding: 3px 10px;
+            border-radius: 4px;
+            border: 1px solid var(--border);
+        }
+
+        .exp-desc {
+            font-size: 0.88rem;
+            color: var(--text-muted);
+            line-height: 1.55;
+            margin-bottom: 8px;
+        }
+
+        .exp-bullets {
+            list-style: none;
+            padding-left: 12px;
+        }
+
+        .exp-bullets li {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            position: relative;
+            margin-bottom: 4px;
+            line-height: 1.5;
+        }
+
+        .exp-bullets li::before {
+            content: "•";
+            color: var(--accent);
+            font-weight: bold;
+            position: absolute;
+            left: -12px;
+        }
+
+        /* Highlights Grid */
+        .highlights-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 16px;
+            margin-top: 10px;
+        }
+
+        .highlight-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 16px;
+            text-align: center;
+        }
+
+        .highlight-val {
+            font-size: 1.6rem;
+            font-weight: 800;
+            color: var(--accent);
+            line-height: 1.1;
+            margin-bottom: 2px;
+        }
+
+        .highlight-lbl {
+            font-size: 0.72rem;
+            font-weight: 700;
+            color: var(--primary-light);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        /* Responsive Layout styles */
+        @media screen and (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+            .resume-container {
+                padding: 30px 20px;
+            }
+            header {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+                gap: 20px;
+            }
+            .header-main-info {
+                align-items: center;
+                text-align: center;
+                width: 100%;
+                height: auto;
+            }
+            .header-left {
+                text-align: center;
+                margin-bottom: 10px;
+            }
+            .header-right {
+                text-align: center;
+                align-items: center;
+            }
+            .header-media {
+                width: 100%;
+                max-width: 350px;
+                aspect-ratio: 1 / 1;
+                height: auto;
+            }
+            .resume-grid {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+            .highlights-grid {
+                grid-template-columns: 1fr;
+                gap: 10px;
+            }
+        }
+
+        @media screen and (max-width: 480px) {
+            body {
+                padding: 5px;
+            }
+            .resume-container {
+                padding: 24px 14px;
+            }
+            .highlights-grid {
+                gap: 8px;
+            }
+            .highlight-card {
+                padding: 12px;
+            }
+            .title-sub {
+                font-size: 0.95rem;
+            }
+        }        /* Print stylesheet optimization — renders with PURPLE/INDIGO theme */
+        @media print {
+            print-color-adjust: exact;
+            -webkit-print-color-adjust: exact;
+
+            @page {
+                size: A4;
+                margin: 10mm;
+            }
+
+            /* ── Layout & structure ── */
+            body {
+                background: #f1f5f9 !important;
+                color: #0f172a !important;
+                padding: 0 !important;
+                margin: 0 !important;
+                font-size: 8.5pt !important;
+                line-height: 1.35 !important;
+                font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif !important;
+            }
+            .resume-container {
+                padding: 0 !important;
+                border-radius: 0 !important;
+                max-width: 100% !important;
+                background: #ffffff !important;
+                border: none !important;
+                box-shadow: none !important;
+            }
+            .action-bar, .btn-action, .video-controls, .copyright-above {
+                display: none !important;
+            }
+
+            /* ── Typography reset — override brutalist Instrument Serif/Space Mono ── */
+            *, *::before, *::after {
+                font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif !important;
+                font-style: normal !important;
+                border-radius: 0 !important;
+                box-shadow: none !important;
+                text-shadow: none !important;
+                backdrop-filter: none !important;
+                mix-blend-mode: normal !important;
+            }
+            h1, h2 {
+                font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif !important;
+                font-style: normal !important;
+                font-size: inherit !important;
+                font-weight: inherit !important;
+                letter-spacing: inherit !important;
+                line-height: inherit !important;
+            }
+
+            /* ── Header ── */
+            header {
+                display: flex !important;
+                flex-direction: row !important;
+                justify-content: space-between !important;
+                align-items: center !important;
+                gap: 20px !important;
+                border-bottom: 1.5px solid #e2e8f0 !important;
+                padding-bottom: 10px !important;
+                margin-bottom: 15px !important;
+            }
+            .header-main-info {
+                display: flex !important;
+                flex-direction: column !important;
+                align-items: flex-start !important;
+                text-align: left !important;
+                gap: 6px !important;
+            }
+            .header-left { text-align: left !important; }
+            .header-left h1 {
+                font-size: 1.8rem !important;
+                font-weight: 900 !important;
+                color: #1e293b !important;
+                letter-spacing: -0.04em !important;
+                line-height: 1.1 !important;
+                margin-bottom: 2px !important;
+                font-style: normal !important;
+            }
+            .header-left .title-sub {
+                font-size: 0.95rem !important;
+                font-weight: 600 !important;
+                color: #4f46e5 !important;
+            }
+            .header-right {
+                text-align: left !important;
+                align-items: flex-start !important;
+                gap: 3px !important;
+                font-size: 0.78rem !important;
+                color: #64748b !important;
+            }
+            .header-right a { color: #64748b !important; }
+
+            /* ── Media thumbnail ── */
+            .header-media {
+                width: 100px !important;
+                height: 100px !important;
+                display: block !important;
+                border-radius: 6px !important;
+                border: 1px solid #e2e8f0 !important;
+                flex-shrink: 0 !important;
+            }
+            .resume-video { display: none !important; }
+            .resume-photo {
+                display: block !important;
+                width: 100% !important;
+                height: 100% !important;
+                object-fit: cover !important;
+            }
+
+            /* ── Grid ── */
+            .resume-grid {
+                display: grid !important;
+                grid-template-columns: 1fr 2.1fr !important;
+                gap: 24px !important;
+            }
+            .sidebar-col {
+                display: flex !important;
+                flex-direction: column !important;
+                gap: 16px !important;
+            }
+            .main-col {
+                display: flex !important;
+                flex-direction: column !important;
+                gap: 20px !important;
+            }
+            .main-col > .section-block:last-child { margin-top: 0 !important; }
+
+            /* ── Section headings ── */
+            .section-block { margin-bottom: 0 !important; }
+            .section-block h3 {
+                font-size: 0.72rem !important;
+                font-weight: 700 !important;
+                text-transform: uppercase !important;
+                letter-spacing: 0.12em !important;
+                color: #4f46e5 !important;
+                margin-bottom: 8px !important;
+                padding-bottom: 3px !important;
+                border-bottom: 1px solid #e2e8f0 !important;
+            }
+
+            /* ── Experience ── */
+            .exp-item {
+                page-break-inside: avoid !important;
+                break-inside: avoid !important;
+                margin-bottom: 10px !important;
+            }
+            .exp-title {
+                font-size: 1.05rem !important;
+                font-weight: 700 !important;
+                color: #1e293b !important;
+            }
+            .exp-company {
+                font-size: 0.9rem !important;
+                font-weight: 600 !important;
+                color: #4f46e5 !important;
+                margin: 1px 0 4px !important;
+            }
+            .exp-date {
+                font-size: 0.8rem !important;
+                font-weight: 700 !important;
+                color: #475569 !important;
+                background: #f8fafc !important;
+                padding: 3px 10px !important;
+                border: 1px solid #e2e8f0 !important;
+            }
+            .exp-desc {
+                font-size: 8pt !important;
+                color: #64748b !important;
+                line-height: 1.3 !important;
+                margin-bottom: 4px !important;
+            }
+            .exp-bullets li {
+                font-size: 7.8pt !important;
+                color: #64748b !important;
+                line-height: 1.3 !important;
+                margin-bottom: 2px !important;
+            }
+            .exp-bullets li::before { color: #4f46e5 !important; }
+
+            /* ── Education ── */
+            .edu-item {
+                page-break-inside: avoid !important;
+                break-inside: avoid !important;
+                margin-bottom: 10px !important;
+            }
+            .edu-degree { color: #0f172a !important; font-weight: 700 !important; }
+            .edu-school { color: #475569 !important; font-weight: 500 !important; }
+            .edu-date { color: #4f46e5 !important; font-weight: 600 !important; }
+            .edu-desc { color: #64748b !important; line-height: 1.5 !important; }
+
+            /* ── Contact list ── */
+            .contact-list {
+                page-break-inside: avoid !important;
+                break-inside: avoid !important;
+            }
+            .contact-list span.label { color: #64748b !important; }
+            .contact-list a, .contact-list span.value {
+                color: #0f172a !important;
+                font-weight: 500 !important;
+            }
+
+            /* ── Skills ── */
+            .skills-group {
+                page-break-inside: avoid !important;
+                break-inside: avoid !important;
+                margin-bottom: 8px !important;
+            }
+            .skills-group h4 { color: #475569 !important; }
+            .skill-tag {
+                background: #f8fafc !important;
+                color: #475569 !important;
+                border: 1px solid #e2e8f0 !important;
+                padding: 1.5px 5px !important;
+                font-size: 0.62rem !important;
+                font-weight: 600 !important;
+            }
+
+            /* ── Highlight cards ── */
+            .highlight-card {
+                background: #f8fafc !important;
+                border: 1px solid #e2e8f0 !important;
+                padding: 16px !important;
+            }
+            .highlight-val {
+                font-size: 1.6rem !important;
+                font-weight: 800 !important;
+                color: #4f46e5 !important;
+            }
+            .highlight-lbl {
+                font-size: 0.72rem !important;
+                font-weight: 700 !important;
+                color: #475569 !important;
+                text-transform: uppercase !important;
+                letter-spacing: 0.05em !important;
+            }
+
+            /* ── Links ── */
+            a {
+                text-decoration: none !important;
+                color: #4f46e5 !important;
+            }
+        }
+    
+        h1, h2 {
+            font-family: var(--font-serif) !important;
+            font-style: italic !important;
+            letter-spacing: -0.02em !important;
+            font-size: clamp(3.5rem, 8vw, 7rem) !important;
+            font-weight: 400 !important;
+            line-height: 1.05 !important;
+        }
+</style>
+</head>
+<body>
+
+    <div class="resume-container">
+        <!-- Action Bar (Hidden when printed) -->
+        <div class="action-bar">
+            <a href="index.html" class="btn-action">← Back to Portfolio</a>
+            <button onclick="window.print()" class="btn-action btn-primary">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-bottom:-1px"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
+                Print / Save PDF
+            </button>
+        </div>
+
+        <!-- Header -->
+        <header>
+            <div class="header-main-info">
+                <div class="header-left">
+                    <h1>Divyaraj Chauhan</h1>
+                    <div class="title-sub">Social Media Manager, AI Filmmaker &amp; Content Creator</div>
+                </div>
+                <div class="header-right">
+                    <a href="mailto:divyarajc2@gmail.com">divyarajc2@gmail.com</a>
+                    <a href="tel:+919979787087">+91 99797 87087</a>
+                    <a href="https://wa.me/qr/KQJFSZ2WY5FSO1" target="_blank">Chat on Whatsapp</a>
+                </div>
+            </div>
+            <div class="header-media">
+                <!-- Video for showcase (online screen view only) -->
+                <video class="resume-video" id="resumeVideo" autoplay loop muted playsinline oncontextmenu="return false;" disablepictureinpicture controlslist="nodownload">
+                    <source src="images/divyaraj intro 2.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+                <!-- Custom controls overlay (screen only) -->
+                <div class="video-controls">
+                    <button class="control-btn" id="playPauseBtn" aria-label="Play/Pause">
+                        <!-- Play Icon -->
+                        <svg class="play-icon" viewBox="0 0 24 24" width="16" height="16" style="display: none;">
+                            <polygon points="5,3 19,12 5,21" fill="currentColor"/>
+                        </svg>
+                        <!-- Pause Icon -->
+                        <svg class="pause-icon" viewBox="0 0 24 24" width="16" height="16">
+                            <rect x="6" y="4" width="4" height="16" rx="1" fill="currentColor"/>
+                            <rect x="14" y="4" width="4" height="16" rx="1" fill="currentColor"/>
+                        </svg>
+                    </button>
+                    <button class="control-btn" id="muteUnmuteBtn" aria-label="Mute/Unmute">
+                        <!-- Muted Icon -->
+                        <svg class="muted-icon" viewBox="0 0 24 24" width="16" height="16">
+                            <path d="M11 5L6 9H2v6h4l5 4V5z" fill="currentColor"/>
+                            <path d="M23 9l-2.5 2.5L18 9l-1 1 2.5 2.5L17 15l1 1 2.5-2.5 2.5 2.5 1-1-2.5-2.5 2.5-2.5z" fill="currentColor"/>
+                        </svg>
+                        <!-- Unmuted/Volume Icon -->
+                        <svg class="volume-icon" viewBox="0 0 24 24" width="16" height="16" style="display: none;">
+                            <path d="M11 5L6 9H2v6h4l5 4V5z" fill="currentColor"/>
+                            <path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07" stroke="currentColor" stroke-width="2" stroke-linecap="round" fill="none"/>
+                        </svg>
+                    </button>
+                </div>
+                <!-- Photo for PDF download / print only -->
+                <img class="resume-photo" src="images/divyaraj pp 2.png" alt="Divyaraj Chauhan">
+            </div>
+        </header>
+
+
+
+        <!-- Two Column Content -->
+        <div class="resume-grid">
+            
+            <!-- Left Side Column -->
+            <div class="sidebar-col">
+                
+                <!-- Contact Meta Links -->
+                <div class="section-block">
+                    <h3>Connect</h3>
+                    <ul class="contact-list">
+                        <li>
+                            <span class="label">Portfolio Website</span>
+                            <a href="index.html">divyaraj-creates (portfolio)</a>
+                        </li>
+                        <li>
+                            <span class="label">LinkedIn Profile</span>
+                            <a href="https://www.linkedin.com/in/divyarajchauhan33/" target="_blank">linkedin.com/in/divyarajchauhan33</a>
+                        </li>
+                        <li>
+                            <span class="label">AI Cinema Lab</span>
+                            <a href="ai-cinema.html">divyaraj-creates/ai-cinema</a>
+                        </li>
+                        <li>
+                            <span class="label">Website Showcase</span>
+                            <a href="websites.html#abhushan">divyaraj-creates/websites</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Education -->
+                <div class="section-block">
+                    <h3>Education</h3>
+                    <div class="edu-item" style="margin-bottom: 24px;">
+                        <div class="edu-degree">Advanced Certification in AI Filmmaking &amp; Generative Content</div>
+                        <div class="edu-school">Indian Institute of Creative Technologies (IICT)</div>
+                        <div class="edu-date">Dec 2025 — March 2026</div>
+                        <p class="edu-desc">
+                            Mastered cinematic prompt engineering and shot-list generation for AI video models. Trained on neural audio design, voice synthesis (ElevenLabs), and orchestral score generation (Suno AI). Completed end-to-end pipeline projects (research &rarr; script &rarr; visual generation &rarr; motion control &rarr; post-production), building research-backed historical micro-dramas and luxury brand showcases using Midjourney, Veo, and Luma Dream Machine.
+                        </p>
+                    </div>
+                    <div class="edu-item">
+                        <div class="edu-degree">B.E. in Electronics &amp; Communication</div>
+                        <div class="edu-school">GEC Gandhinagar</div>
+                        <div class="edu-date">Ongoing</div>
+                    </div>
+                </div>
+
+                <!-- Technical Skills -->
+                <div class="section-block">
+                    <h3>Core Skills</h3>
+                    
+                    <div class="skills-group">
+                        <h4>Platform &amp; Campaign SMM</h4>
+                        <div class="skills-list">
+                            <span class="skill-tag">Instagram Strategy</span>
+                            <span class="skill-tag">LinkedIn Authority</span>
+                            <span class="skill-tag">Meta Ads</span>
+                            <span class="skill-tag">X / Threads Strategy</span>
+                            <span class="skill-tag">Local SEO</span>
+                        </div>
+                    </div>
+
+                    <div class="skills-group">
+                        <h4>Content &amp; Editing Suite</h4>
+                        <div class="skills-list">
+                            <span class="skill-tag">Canva Pro</span>
+                            <span class="skill-tag">Alight Motion</span>
+                            <span class="skill-tag">CapCut</span>
+                            <span class="skill-tag">Learning: Premiere Pro</span>
+                            <span class="skill-tag">Learning: Photoshop</span>
+                        </div>
+                    </div>
+
+                    <div class="skills-group">
+                        <h4>AI Filmmaking &amp; Generative Content</h4>
+                        <div class="skills-list">
+                            <span class="skill-tag">Midjourney</span>
+                            <span class="skill-tag">Veo / Luma Dream Machine</span>
+                            <span class="skill-tag">Higgsfield AI</span>
+                            <span class="skill-tag">ElevenLabs</span>
+                            <span class="skill-tag">Suno AI</span>
+                            <span class="skill-tag">Cinematic Prompt Engineering</span>
+                            <span class="skill-tag">AI Video Post-Production</span>
+                            <span class="skill-tag">OpenArt</span>
+                            <span class="skill-tag">Google Studio</span>
+                            <span class="skill-tag">Gemini Pro</span>
+                            <span class="skill-tag">ChatGPT 2.0</span>
+                            <span class="skill-tag">Seedance</span>
+                            <span class="skill-tag">Kling</span>
+                        </div>
+                    </div>
+
+                    <div class="skills-group">
+                        <h4>Community &amp; Operations</h4>
+                        <div class="skills-list">
+                            <span class="skill-tag">Community Architecture</span>
+                            <span class="skill-tag">Discord Moderation</span>
+                            <span class="skill-tag">Esports League Ops</span>
+                            <span class="skill-tag">Videography</span>
+                        </div>
+                    </div>
+
+                    <div class="skills-group">
+                        <h4>Web Design &amp; Development</h4>
+                        <div class="skills-list">
+                            <span class="skill-tag">HTML5 &amp; CSS3</span>
+                            <span class="skill-tag">Vanilla JavaScript</span>
+                            <span class="skill-tag">UX/UI Design System</span>
+                            <span class="skill-tag">Vercel Deployment</span>
+                            <span class="skill-tag">Git Version Control</span>
+                            <span class="skill-tag">Responsive Design</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Side Column -->
+            <div class="main-col">
+                
+                <!-- Professional Experience -->
+                <div class="section-block">
+                    <h3>Work Experience</h3>
+
+                    <!-- Credes Techlabs -->
+                    <div class="exp-item">
+                        <div class="exp-header">
+                            <span class="exp-title">Social Media Manager &amp; Content Writer</span>
+                            <span class="exp-date">Oct 2025 — Present</span>
+                        </div>
+                        <div class="exp-company">Credes Techlabs · Remote / Hybrid</div>
+                        <p class="exp-desc">
+                            Direct SMM initiatives and execute digital positioning for high-growth client products (including Giffy, HashLite, Slyth, FTF, and Shift).
+                        </p>
+                        <ul class="exp-bullets">
+                            <li>Lead generative content and AI film initiatives for brand showcases, producing cinematic product reveals and narrative-driven visual assets using AI video and audio synthesis tools.</li>
+                            <li>Manage end-to-end content distribution pipelines, scheduling, and community engagement.</li>
+                            <li>Coordinated product beta-launch pipelines and managed feedback pipelines to streamline development releases.</li>
+                        </ul>
+                    </div>
+
+                    <!-- HashLite -->
+                    <div class="exp-item">
+                        <div class="exp-header">
+                            <span class="exp-title">SMM / Content Pipeline Lead</span>
+                            <span class="exp-date">Feb 2026 — April 2026</span>
+                        </div>
+                        <div class="exp-company">HashLite Tech · Freelance / Campaign</div>
+                        <p class="exp-desc">
+                            Engineered a developer-focused content loop to establish B2B brand trust and drive organic incubator conversions.
+                        </p>
+                        <ul class="exp-bullets">
+                            <li>Produced and edited 6 high-retention video shorts and generative brand assets highlighting workspace setups.</li>
+                            <li>Scaled monthly organic brand impressions across Instagram, LinkedIn, and Threads.</li>
+                        </ul>
+                    </div>
+
+                    <!-- Sattvik Certifications -->
+                    <div class="exp-item">
+                        <div class="exp-header">
+                            <span class="exp-title">Event Digital Campaign Manager</span>
+                            <span class="exp-date">Jan 2026 — Feb 2026</span>
+                        </div>
+                        <div class="exp-company">Sattvik Certifications · Singapore / New Delhi</div>
+                        <p class="exp-desc">
+                            Managed the complete digital SMM rollout and creative production for Sattvik Certifications' flagship global event, SATCON Conclave 2026, held at Le Meridien, New Delhi.
+                        </p>
+                        <ul class="exp-bullets">
+                            <li>Orchestrated the creation of over 100 promotional visual and video content pieces distributed across 6 global channels.</li>
+                            <li>Drove localized event engagement and broadcast support for delegates from over 6 countries.</li>
+                        </ul>
+                    </div>
+
+                    <!-- WHMS -->
+                    <div class="exp-item">
+                        <div class="exp-header">
+                            <span class="exp-title">SMM &amp; Content Creation Manager</span>
+                            <span class="exp-date">Nov 2025 — Dec 2025</span>
+                        </div>
+                        <div class="exp-company">White Horse Media Solutions · WFO</div>
+                        <p class="exp-desc">
+                            Managed local client growth accounts, lead videographer assignments, and video editor pipelines.
+                        </p>
+                        <ul class="exp-bullets">
+                            <li>Executed Google My Business Local SEO optimization campaigns resulting in positive localized conversions.</li>
+                            <li>Managed Meta Ads and created video promo assets for medical and healthcare clients.</li>
+                        </ul>
+                    </div>
+
+                    <!-- ESFI -->
+                    <div class="exp-item">
+                        <div class="exp-header">
+                            <span class="exp-title">League Operations &amp; Production Support</span>
+                            <span class="exp-date">Jul 2025 — Sep 2025</span>
+                        </div>
+                        <div class="exp-company">Esports Federation of India · Remote</div>
+                        <p class="exp-desc">
+                            Provided digital broadcast layout designs and video editing assets for national-level event streams.
+                        </p>
+                        <ul class="exp-bullets">
+                            <li>Designed overlays, edit cuts, and graphic promotional collateral for pan-India tournament broadcasts.</li>
+                        </ul>
+                    </div>
+
+                    <!-- Gujarat Tigers -->
+                    <div class="exp-item">
+                        <div class="exp-header">
+                            <span class="exp-title">Social Media Manager &amp; Video Editor</span>
+                            <span class="exp-date">Aug 2023 — Feb 2025</span>
+                        </div>
+                        <div class="exp-company">Gujarat Tigers Esports · Hybrid</div>
+                        <p class="exp-desc">
+                            Pioneered SMM and editing operations from scratch, establishing the esports team's organic fanbase.
+                        </p>
+                        <ul class="exp-bullets">
+                            <li>Edited and released gaming montages, rosters reels, and team announcements.</li>
+                            <li>Coordinated league roster communications and logistics support for offline esports events.</li>
+                        </ul>
+                    </div>
+
+                </div>
+
+                <!-- Web Design & Development -->
+                <div class="section-block" style="margin-top: 36px;">
+                    <h3>Web Design &amp; Development</h3>
+
+                    <!-- Abhushan -->
+                    <div class="exp-item">
+                        <div class="exp-header">
+                            <span class="exp-title" style="font-size: 1.15rem; color: var(--primary);">Abhushan</span>
+                            <a href="https://abhushan-by-divyaraj.vercel.app/" target="_blank" rel="noopener" class="exp-date" style="color: var(--accent); border-color: #282723; background: #3a221b; text-decoration: none; display: inline-flex; align-items: center; gap: 4px;">Live Website ↗</a>
+                        </div>
+                        <div class="exp-company" style="margin-top: -2px;">Luxury E-Commerce &amp; Appointment Scheduler</div>
+                        <p class="exp-desc">
+                            Designed and engineered a luxury responsive gold and bridal jewelry storefront with an interactive product grid, dynamic booking engine, and secure administrative metrics dashboard.
+                        </p>
+                        <ul class="exp-bullets">
+                            <li>Established an editorial visual identity system (Playfair Display typography, warm dark-cocoa '#1E1617', and gold accents).</li>
+                            <li>Built a 4-service studio appointment booking scheduler featuring real-time slot validation and custom service selection.</li>
+                            <li>Engineered an administrative dashboard with credentials login, client filters, WhatsApp confirmation hooks, and CSV data export.</li>
+                        </ul>
+                    </div>
+
+                    <!-- Detailing Cars -->
+                    <div class="exp-item">
+                        <div class="exp-header">
+                            <span class="exp-title" style="font-size: 1.15rem; color: var(--primary);">Detailing Cars (DC)</span>
+                            <a href="https://dc-by-divyaraj.vercel.app/" target="_blank" rel="noopener" class="exp-date" style="color: var(--accent); border-color: #282723; background: #3a221b; text-decoration: none; display: inline-flex; align-items: center; gap: 4px;">Live Website ↗</a>
+                        </div>
+                        <div class="exp-company" style="margin-top: -2px;">Premium Automotive Service Booking Platform</div>
+                        <p class="exp-desc">
+                            Built a dark-mode studio booking engine and admin coordinator panel for a vehicle detailing studio in Ahmedabad.
+                        </p>
+                        <ul class="exp-bullets">
+                            <li>Designed a premium theme with high-contrast performance-yellow highlight interactions, vehicle size pricing selector, and before/after restorer slider.</li>
+                            <li>Coded an appointment booking workflow storing user inputs using localStorage API.</li>
+                            <li>Engineered a live administrative panel for tracking bookings, updating service status, and initiating customer WhatsApp triggers.</li>
+                        </ul>
+                    </div>
+
+                    <!-- KXM -->
+                    <div class="exp-item">
+                        <div class="exp-header">
+                            <span class="exp-title" style="font-size: 1.15rem; color: var(--primary);">KXM</span>
+                            <a href="https://kxm-by-divyaraj.vercel.app/" target="_blank" rel="noopener" class="exp-date" style="color: var(--accent); border-color: #282723; background: #3a221b; text-decoration: none; display: inline-flex; align-items: center; gap: 4px;">Live Website ↗</a>
+                        </div>
+                        <div class="exp-company" style="margin-top: -2px;">Brutalist Fashion Editorial Storefront</div>
+                        <p class="exp-desc">
+                            Developed a Brutalist, typography-driven editorial storefront with a dynamic shopping cart drawer and custom horizontal scrolling lookbook tracks.
+                        </p>
+                        <ul class="exp-bullets">
+                            <li>Implemented a minimalist brand layout utilizing custom font pairings (PP Neue Montreal and PP Editorial New) on a monochrome theme.</li>
+                            <li>Coded a dynamic slide-out shopping cart drawer and cart persistence utilizing the browser's localStorage API.</li>
+                            <li>Created hardware-accelerated infinite horizontal product marquee loops and dual-layer hover state image transitions using pure CSS.</li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- Copyright / Attribution -->
+        <div class="copyright-above" style="font-size:0.75rem; text-align:center; color:var(--text-muted); margin-top:40px; padding-top:20px; border-top:1.5px solid var(--border)">
+            Divyaraj Chauhan — SMM Portfolio Resume. Print to PDF using the button above or standard browser dialog (Ctrl+P).
+        </div>
+    </div>
+
+    <!-- Video Player Controls Script -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const video = document.getElementById('resumeVideo');
+            const playPauseBtn = document.getElementById('playPauseBtn');
+            const muteUnmuteBtn = document.getElementById('muteUnmuteBtn');
+            
+            if (!video || !playPauseBtn || !muteUnmuteBtn) return;
+            
+            const playIcon = playPauseBtn.querySelector('.play-icon');
+            const pauseIcon = playPauseBtn.querySelector('.pause-icon');
+            const mutedIcon = muteUnmuteBtn.querySelector('.muted-icon');
+            const volumeIcon = muteUnmuteBtn.querySelector('.volume-icon');
+
+            const updatePlayPauseUI = () => {
+                if (video.paused) {
+                    playIcon.style.display = 'block';
+                    pauseIcon.style.display = 'none';
+                } else {
+                    playIcon.style.display = 'none';
+                    pauseIcon.style.display = 'block';
+                }
+            };
+
+            const updateMuteUI = () => {
+                if (video.muted) {
+                    mutedIcon.style.display = 'block';
+                    volumeIcon.style.display = 'none';
+                } else {
+                    mutedIcon.style.display = 'none';
+                    volumeIcon.style.display = 'block';
+                }
+            };
+
+            // Run initial sync
+            updatePlayPauseUI();
+            updateMuteUI();
+
+            playPauseBtn.addEventListener('click', (e) => {
+                e.preventDefault();
+                if (video.paused) {
+                    video.play().then(updatePlayPauseUI).catch(err => console.log('Playback error:', err));
+                } else {
+                    video.pause();
+                    updatePlayPauseUI();
+                }
+            });
+
+            muteUnmuteBtn.addEventListener('click', (e) => {
+                e.preventDefault();
+                video.muted = !video.muted;
+                updateMuteUI();
+            });
+
+            // Sync UI with video events
+            video.addEventListener('play', updatePlayPauseUI);
+            video.addEventListener('pause', updatePlayPauseUI);
+            video.addEventListener('volumechange', updateMuteUI);
+        });
+    </script>
+</body>
+</html>

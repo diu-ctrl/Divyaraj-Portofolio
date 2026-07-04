@@ -1,0 +1,31 @@
+# Ignore OS files
+Thumbs.db
+Desktop.ini
+.DS_Store
+
+# Ignore Vercel configuration
+.vercel/
+
+# Ignore raw video production folders (over 2.5 GB, exceeding GitHub file limits)
+**/SATCON'26 Media-Graphics/
+**/SATCON'26 Media-Videos/
+
+# Ignore scratch files
+scratch/
+check_sizes.py
+check_sizes.js
+check_remaining_large_files.js
+check_unreferenced_files.js
+check_referenced_sizes.js
+find_css_js.js
+
+# Ignore legacy/duplicate project folders (contain large videos, not needed in repo)
+new new portfolio/
+the last amber/
+purple theme resume/
+
+# Ignore large video files (exceed GitHub 100MB limit)
+*.mp4
+*.mov
+*.avi
+*.mkv

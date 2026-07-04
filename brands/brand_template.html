@@ -1,0 +1,743 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Brand Showcase — Divyaraj Chauhan</title>
+    <link rel="icon" type="image/svg+xml" href="../favicon.svg">
+    <link rel="alternate icon" type="image/png" href="../favicon.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="../favicon.svg">
+    <meta name="description" content="Case study showcase for brand campaign deliverables.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital,wght@0,400;1,400&family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            border-radius: 0px !important;
+            box-shadow: none !important;
+            backdrop-filter: none !important;
+            -webkit-backdrop-filter: none !important;
+            mix-blend-mode: normal !important;
+        }
+
+                :root {
+            --bg: #000000;
+            --bg-deep: #000000;
+            --card: #282723;
+            --text: #FFFFFF;
+            --text-muted: #99A57D;
+            --border: #282723;
+            --accent: #EB4604;
+
+            /* Compatibility variables mapped to brutalist purge tokens */
+            --primary: var(--accent);
+            --primary-light: var(--accent);
+            --primary-dim: #2b1812;
+            --accent-1: var(--accent);
+            --accent-glow: var(--accent);
+            --secondary-1: var(--bg-deep);
+            --secondary-2: var(--bg);
+            --secondary-3: var(--text);
+            --surface: var(--card);
+            --surface-flat: var(--card);
+            --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            --font-serif: 'Instrument Serif', Georgia, serif;
+            --font-mono: 'Space Mono', 'JetBrains Mono', monospace;
+            --credes-surface: var(--card);
+            --credes-border: var(--border);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        /* Ambient Background */
+        
+
+        
+
+        
+
+        
+
+        /* Nav Header */
+        header {
+            padding: 24px 6%;
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: relative;
+            z-index: 100;
+        }
+
+        .back-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 10px 24px;
+            border-radius: 100px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            background: #282723;
+            
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 0.85rem;
+            font-weight: 600;
+            transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .back-btn:hover {
+            color: #ffffff;
+            border-color: var(--primary);
+            background: #3a221b;
+            transform: translateY(-2px);
+        }
+
+        /* Hero Showcase */
+        .hero {
+            padding: 80px 6% 40px;
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .brand-meta {
+            display: flex;
+            align-items: center;
+            gap: 24px;
+            margin-bottom: 24px;
+            flex-wrap: wrap;
+        }
+
+        .brand-logo-frame {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            border: 2px solid rgba(255, 255, 255, 0.12);
+            background: #282723;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .brand-logo-frame img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .brand-titles {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .brand-tagline {
+            font-size: 0.8rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: var(--primary);
+            margin-bottom: 4px;
+        }
+
+        h1 {
+            font-size: clamp(2.2rem, 5vw, 3.8rem);
+            font-weight: 800;
+            letter-spacing: -0.02em;
+            line-height: 1.1;
+            
+            
+        }
+
+        /* Metrics Bar */
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-top: 40px;
+        }
+
+        .metric-card {
+            background: var(--surface);
+            
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            padding: 24px;
+            text-align: center;
+            transition: transform 0.3s, border-color 0.3s;
+        }
+
+        .metric-card:hover {
+            transform: translateY(-4px);
+            border-color: rgba(235, 70, 4, 0.25);
+        }
+
+        .metric-value {
+            font-size: 2.2rem;
+            font-weight: 800;
+            color: #ffffff;
+            line-height: 1.2;
+            margin-bottom: 4px;
+            
+            
+        }
+
+        .metric-label {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        /* Content Sections */
+        .main-content {
+            padding: 60px 6%;
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr;
+            gap: 60px;
+        }
+
+        @media (max-width: 900px) {
+            .main-content {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+        }
+
+        .case-study p {
+            color: var(--text-muted);
+            font-size: 1.05rem;
+            line-height: 1.8;
+            margin-bottom: 24px;
+        }
+
+        .case-study p strong {
+            color: #ffffff;
+        }
+
+        .case-study h2 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            letter-spacing: -0.01em;
+            color: #ffffff;
+        }
+
+        .sidebar-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 24px;
+            padding: 36px;
+            height: fit-content;
+            
+        }
+
+        .sidebar-card h3 {
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: #ffffff;
+            border-left: 3px solid var(--primary);
+            padding-left: 12px;
+        }
+
+        .task-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+
+        .task-list li {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            font-size: 0.95rem;
+            color: var(--text-muted);
+        }
+
+        .task-list li::before {
+            content: "✓";
+            color: var(--primary);
+            font-weight: bold;
+        }
+
+        .skills-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 30px;
+            border-top: 1px dashed #282723;
+            padding-top: 24px;
+        }
+
+        .tag {
+            padding: 6px 14px;
+            background: #3a221b;
+            border: 1px solid rgba(235, 70, 4, 0.15);
+            border-radius: 100px;
+            font-size: 0.78rem;
+            color: var(--secondary-3);
+            font-weight: 500;
+        }
+
+        /* Asset Gallery */
+        .gallery-section {
+            padding: 60px 6% 120px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .gallery-section h2 {
+            font-size: 2rem;
+            font-weight: 800;
+            letter-spacing: -0.02em;
+            margin-bottom: 40px;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .gallery-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            overflow: hidden;
+            
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .gallery-card:hover {
+            transform: translateY(-6px);
+            border-color: rgba(235, 70, 4, 0.25);
+        }
+
+        .gallery-media {
+            width: 100%;
+            aspect-ratio: 16 / 10;
+            overflow: hidden;
+            background: #090b14;
+            border-bottom: 1px solid var(--border);
+            position: relative;
+        }
+
+        .gallery-media img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s ease;
+        }
+
+        .gallery-card:hover .gallery-media img {
+            transform: scale(1.05);
+        }
+
+        .gallery-info {
+            padding: 20px;
+        }
+
+        .gallery-info h4 {
+            font-size: 1.05rem;
+            font-weight: 700;
+            margin-bottom: 6px;
+            color: #ffffff;
+        }
+
+        .gallery-info p {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            line-height: 1.5;
+        }
+
+        /* Next Project Navigation */
+        .project-nav-footer {
+            border-top: 1px solid #282723;
+            padding: 60px 6%;
+            text-align: center;
+        }
+
+        .next-project-link {
+            display: inline-flex;
+            flex-direction: column;
+            align-items: center;
+            text-decoration: none;
+            gap: 12px;
+            group: hover;
+        }
+
+        .next-label {
+            font-size: 0.8rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: var(--text-muted);
+            transition: color 0.3s;
+        }
+
+        .next-title {
+            font-size: 2rem;
+            font-weight: 800;
+            color: #ffffff;
+            transition: color 0.3s, transform 0.3s;
+        }
+
+        .next-project-link:hover .next-label {
+            color: var(--primary);
+        }
+
+        .next-project-link:hover .next-title {
+            color: var(--secondary-3);
+            transform: translateY(-2px);
+        }
+            /* --- Brand Nav Bar --- */
+        .brand-nav-bar { background:rgba(8,10,20,0.97);  border-top:1px solid rgba(255,255,255,0.06); padding:40px 5% 52px; }
+        .brand-nav-inner { max-width:1200px; margin:0 auto; }
+        .brand-nav-label { text-align:center; font-size:0.68rem; font-weight:700; letter-spacing:0.18em; text-transform:uppercase; color:rgba(255,255,255,0.25); margin-bottom:28px; }
+        .brand-nav-grid { display:flex; flex-wrap:wrap; justify-content:center; align-items:center; gap:16px; }
+        .brand-nav-group { display:flex; flex-wrap:wrap; justify-content:center; align-items:center; gap:12px; }
+        .brand-nav-divider { width:1px; height:24px; background:rgba(255,255,255,0.15); flex-shrink:0; }
+        .brand-nav-btn { display:inline-flex; align-items:center; gap:9px; padding:9px 18px 9px 10px; border-radius:100px; border:1px solid rgba(255,255,255,0.08); background:rgba(255,255,255,0.04); color:rgba(255,255,255,0.7); font-size:0.8rem; font-weight:600; text-decoration:none; transition:all 0.25s cubic-bezier(0.16,1,0.3,1); white-space:nowrap; }
+        .brand-nav-btn.active-brand { border-color:rgba(235, 70, 4,0.45); background:rgba(235, 70, 4,0.14); color:#EB4604; pointer-events:none; }
+        .brand-nav-btn .bnb-logo { width:26px; height:26px; border-radius:50%; object-fit:cover; flex-shrink:0; border:1px solid rgba(255,255,255,0.1); }
+        .brand-nav-btn.dc-home { padding:9px 22px; background:rgba(235, 70, 4,0.15); border-color:rgba(235, 70, 4,0.35); color:#EB4604; font-weight:800; font-size:0.92rem; letter-spacing:0.06em; }
+        @media(max-width:1150px) {
+            .brand-nav-grid { flex-direction:column; gap:16px; }
+            .brand-nav-divider { display:none; }
+        }
+        @media(max-width:640px){ 
+            .brand-nav-group { gap:8px; } 
+            .brand-nav-btn { font-size:0.72rem; padding:7px 14px 7px 8px; gap:7px; } 
+            .brand-nav-btn .bnb-logo { width:22px; height:22px; } 
+        }
+    
+        /* --- Brand Subpage Mobile Responsiveness Overrides --- */
+        @media (max-width: 768px) {
+            .hero-grid,
+            .services-grid,
+            .metrics-grid,
+            .analytics-grid,
+            .cert-grid,
+            .roster-grid,
+            .hospital-grid,
+            .case-study-grid {
+                grid-template-columns: 1fr !important;
+                gap: 24px !important;
+            }
+            .metric-card.wide,
+            .metric-card.full-width {
+                grid-column: span 1 !important;
+            }
+            .event-meta-grid {
+                grid-template-columns: 1fr !important;
+            }
+        }
+        @media (max-width: 600px) {
+            header {
+                flex-direction: column !important;
+                gap: 16px !important;
+                padding: 20px 5% !important;
+                align-items: center !important;
+                text-align: center !important;
+            }
+            .brand-intro {
+                flex-direction: column !important;
+                text-align: center !important;
+                gap: 16px !important;
+                align-items: center !important;
+            }
+            .brand-logo-frame {
+                margin: 0 auto !important;
+            }
+            h1 {
+                font-size: clamp(2rem, 6.5vw, 2.5rem) !important;
+            }
+        }
+        /* --- End Mobile Responsiveness Overrides --- */
+
+        .brand-nav-btn.dc-home img {
+            width: 40px;
+            height: 40px;
+            object-fit: contain;
+        }
+
+        h1, h2 {
+            font-family: var(--font-serif) !important;
+            font-style: italic !important;
+            letter-spacing: -0.02em !important;
+            font-size: clamp(3.5rem, 8vw, 7rem) !important;
+            font-weight: 400 !important;
+            line-height: 1.05 !important;
+        }
+
+        
+
+        
+
+        /* ─── Brutalist Video/Image Hero Grid Overrides ─── */
+        .hero {
+            display: grid !important;
+            grid-template-columns: 1.25fr 0.75fr !important;
+            gap: 40px !important;
+            align-items: center !important;
+            min-height: 50vh !important;
+            padding-top: 40px !important;
+            padding-bottom: 40px !important;
+        }
+
+        .hero-left {
+            display: flex !important;
+            flex-direction: column !important;
+            justify-content: center !important;
+        }
+
+        .hero-left h1 {
+            color: var(--text) !important;
+            display: block !important;
+            visibility: visible !important;
+            opacity: 1 !important;
+        }
+
+        .brand-intro {
+            margin-bottom: 24px !important;
+            display: flex !important;
+            align-items: center !important;
+            gap: 24px !important;
+        }
+
+        .hero-sub {
+            max-width: 100% !important;
+            margin-top: 12px !important;
+        }
+
+        .hero-right {
+            position: relative !important;
+            width: 250px !important;
+            aspect-ratio: 9 / 16 !important;
+            justify-self: end !important;
+            border: 1px solid var(--border) !important;
+            background: #000000 !important;
+            overflow: hidden !important;
+            display: flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+        }
+
+        .video-brutalist-frame {
+            position: relative !important;
+            width: 100% !important;
+            height: 100% !important;
+            overflow: hidden !important;
+        }
+
+        .hero-video-element {
+            width: 100% !important;
+            height: 100% !important;
+            object-fit: cover !important;
+            filter: grayscale(100%) sepia(100%) hue-rotate(330deg) saturate(800%) contrast(180%) brightness(90%) !important;
+        }
+
+        .video-overlay-grid {
+            position: absolute !important;
+            inset: 0 !important;
+            pointer-events: none !important;
+            background-image: 
+                linear-gradient(rgba(18, 18, 18, 0.45) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(18, 18, 18, 0.45) 1px, transparent 1px) !important;
+            background-size: 3px 3px !important;
+            z-index: 2 !important;
+        }
+
+        @media (max-width: 900px) {
+            .hero {
+                grid-template-columns: 1fr !important;
+                gap: 30px !important;
+            }
+            .hero-right {
+                justify-self: center !important;
+                width: 220px !important;
+            }
+            .brand-intro {
+                flex-direction: column !important;
+                text-align: center !important;
+            }
+        }
+</style>
+</head>
+<body>
+
+    <!-- Ambient BG -->
+    
+    
+    
+
+    <header>
+        <!-- Replace href path depending on brand folder hierarchy -->
+        <a href="../index.html#hero" class="back-btn">
+            ← Back to Portfolio
+        </a>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="hero-left">
+                <div class="brand-meta">
+                <div class="brand-logo-frame">
+                    <!-- Replace with brand logo path -->
+                    <img src="../images/Logos of the brands/giffy.jpg" alt="Brand Logo">
+                </div>
+                <div class="brand-titles">
+                    <span class="brand-tagline">Date Range · Role / Campaign</span>
+                    <!-- Replace with brand name -->
+                    <h1>Brand Name Showcase</h1>
+                </div>
+            </div>
+
+            <!-- Key campaign achievements metrics -->
+            <div class="metrics-grid">
+                <div class="metric-card">
+                    <div class="metric-value">150K+</div>
+                    <div class="metric-label">Total Reach</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-value">10%</div>
+                    <div class="metric-label">Engagement Rate</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-value">50+</div>
+                    <div class="metric-label">Deliverables Produced</div>
+                </div>
+            </div>
+            </div>
+            <div class="hero-right reveal reveal-delay-2">
+                <div class="video-brutalist-frame">
+                    <img src="WHMS/Grid.jpeg" class="hero-video-element" />
+                    <div class="video-overlay-grid"></div>
+                </div>
+            </div>
+            </section>
+
+        <!-- Case study and sidebar -->
+        <section class="main-content">
+            <div class="case-study">
+                <h2>The Campaign &amp; Strategy</h2>
+                <p>
+                    Provide a detailed description of the project challenge, your creative ideas, and how you implemented the campaign. Discuss target audience analysis, narrative structures, and channel distribution.
+                </p>
+                <p>
+                    Describe key content initiatives such as series, video editing pipelines, post setups, and engagement plans. Explain how the content elevated the brand and resonated with the community.
+                </p>
+                
+                <h2 style="margin-top: 40px;">Results &amp; Impact</h2>
+                <p>
+                    Explain the quantitative and qualitative outcomes of the work. Discuss how the audience reacted, growth on digital platforms, and the overall success of the campaigns.
+                </p>
+            </div>
+
+            <div class="sidebar-card">
+                <h3>Campaign Details</h3>
+                <ul class="task-list">
+                    <li>Social Media Audit &amp; Setup</li>
+                    <li>Short-form Video Editing (Reels/TikTok)</li>
+                    <li>Copywriting &amp; Content Calendar</li>
+                    <li>Community Moderation &amp; Growth</li>
+                </ul>
+
+                <div class="skills-tags">
+                    <span class="tag">Brand Strategy</span>
+                    <span class="tag">Video Production</span>
+                    <span class="tag">Copywriting</span>
+                    <span class="tag">Engagement</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Asset Showcase Gallery -->
+        <section class="gallery-section">
+            <h2>Creative Deliverables Gallery</h2>
+            <div class="gallery-grid">
+                <!-- Gallery Card 1 -->
+                <div class="gallery-card">
+                    <div class="gallery-media">
+                        <!-- Add image of creative -->
+                        <img src="../images/hero-bg.png" alt="Creative asset Still">
+                    </div>
+                    <div class="gallery-info">
+                        <h4>Campaign Graphic Design</h4>
+                        <p>High-converting social media banner and promotional graphic designed for visual storytelling.</p>
+                    </div>
+                </div>
+                <!-- Gallery Card 2 -->
+                <div class="gallery-card">
+                    <div class="gallery-media">
+                        <img src="../images/hero-bg.png" alt="Creative asset Still">
+                    </div>
+                    <div class="gallery-info">
+                        <h4>Short-form Video Thumbnail</h4>
+                        <p>High-engagement short-form video edit, including custom subtitles, graphics, and pacing.</p>
+                    </div>
+                </div>
+                <!-- Gallery Card 3 -->
+                <div class="gallery-card">
+                    <div class="gallery-media">
+                        <img src="../images/hero-bg.png" alt="Creative asset Still">
+                    </div>
+                    <div class="gallery-info">
+                        <h4>Promotional Asset Layout</h4>
+                        <p>Branded asset layout detailing service features to increase local lead conversions.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Brand Navigation Bar -->
+    <nav class="brand-nav-bar">
+        <div class="brand-nav-inner">
+            <div class="brand-nav-label">Explore All Brands</div>
+            <div class="brand-nav-grid">
+                <div class="brand-nav-group left-group">
+                    <a href="credes.html" class="brand-nav-btn"><img class="bnb-logo" src="../images/Logos of the brands/credes techlabs.jpg" alt="">Credes</a>
+                    <a href="gujarat-tigers.html" class="brand-nav-btn"><img class="bnb-logo" src="../images/Logos of the brands/Gujarat Tigers.png" alt="">Gujarat Tigers</a>
+                    <a href="sattvik.html" class="brand-nav-btn"><img class="bnb-logo" src="../images/Logos of the brands/Sattvik Certifications.jpg" alt="">Sattvik</a>
+                    <a href="esfi.html" class="brand-nav-btn"><img class="bnb-logo" src="../images/Logos of the brands/esfi.jpg" alt="">ESFI</a>
+                    <a href="white-horse.html" class="brand-nav-btn"><img class="bnb-logo" src="../images/Logos of the brands/white horse.jpg" alt="">White Horse</a>
+                    <a href="finanvo.html" class="brand-nav-btn"><img class="bnb-logo" src="../images/Logos of the brands/finanvo.png" alt="">Finanvo</a>
+                </div>
+                <div class="brand-nav-divider"></div>
+                <a href="../index.html#hero" class="brand-nav-btn dc-home"><img src="../favicon.svg" alt="DC."></a>
+                <div class="brand-nav-divider"></div>
+                <div class="brand-nav-group right-group">
+                    <a href="scuff.html" class="brand-nav-btn"><img class="bnb-logo" src="../images/Logos of the brands/scuff.jpeg" alt="">Scuff</a>
+                    <a href="highrocks.html" class="brand-nav-btn"><img class="bnb-logo" src="../images/Logos of the brands/highrocks.jpg" alt="">HighRocks</a>
+                    <a href="shelf.html" class="brand-nav-btn"><img class="bnb-logo" src="../images/Logos of the brands/shelf.png" alt="">Shelf</a>
+                    <a href="shift.html" class="brand-nav-btn"><img class="bnb-logo" src="../images/Logos of the brands/shift.jpg" alt="">Shift</a>
+                    <a href="giffy.html" class="brand-nav-btn"><img class="bnb-logo" src="../images/Logos of the brands/giffy.jpg" alt="">Giffy</a>
+                    <a href="hashlite.html" class="brand-nav-btn"><img class="bnb-logo" src="../images/Logos of the brands/hashlite.png" alt="">Hashlite</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+    </main>
+
+</body>
+</html>
