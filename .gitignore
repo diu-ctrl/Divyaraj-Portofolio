@@ -25,7 +25,7 @@ the last amber/
 purple theme resume/
 
 # Ignore large video files (exceed GitHub 100MB limit)
-*.mp4
+**/india-ai-impact-summit-2026.mp4
 *.mov
 *.avi
 *.mkv
