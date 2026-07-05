@@ -1488,8 +1488,9 @@
         /* ─── Scroll Reveal ─── */
         .reveal {
             opacity: 0;
-            transform: translateY(40px);
-            transition: all 1s cubic-bezier(0.16, 1, 0.3, 1);
+            transform: translateY(30px);
+            transition: opacity 0.8s cubic-bezier(0.25, 1, 0.5, 1), transform 0.8s cubic-bezier(0.25, 1, 0.5, 1);
+            will-change: transform, opacity;
         }
 
         .reveal.active {
@@ -1498,8 +1499,9 @@
         }
 
         .reveal-deep {
-            transform: translateY(180px) !important;
-            transition: opacity 1.2s cubic-bezier(0.16, 1, 0.3, 1), transform 1.2s cubic-bezier(0.16, 1, 0.3, 1) !important;
+            transform: translateY(40px) !important;
+            transition: opacity 0.8s cubic-bezier(0.25, 1, 0.5, 1), transform 0.8s cubic-bezier(0.25, 1, 0.5, 1) !important;
+            will-change: transform, opacity;
         }
 
         .reveal-deep.active {
