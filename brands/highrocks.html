@@ -142,13 +142,20 @@
         }
         .brand-logo-frame img { width: 100%; height: 100%; object-fit: cover; }
 
-        .brand-eyebrow {
-            font-size: 0.75rem;
+                .brand-eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 6px 16px;
+            border-radius: 100px;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            font-size: 0.72rem;
             font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 0.18em;
             color: var(--brand-color);
-            margin-bottom: 6px;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            margin-bottom: 0px; /* reset for flex layout */
         }
 
         h1 {
@@ -688,9 +695,10 @@
                     <img src="../images/Logos of the brands/highrocks.jpg" alt="Highrocks Logo">
                 </div>
                 <div>
-                    <div class="brand-eyebrow">
-        PRESENT · Product & Brand
-    </div>
+                    <div style="display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 16px; align-items: center;">
+                        <div class="brand-eyebrow">OCT 2025 — PRESENT · Product & Brand</div>
+                        <div class="credes-badge-pill" style="display: inline-flex; align-items: center; padding: 6px 14px; border-radius: 100px; background: rgba(139, 92, 246, 0.08); border: 1px solid rgba(139, 92, 246, 0.2); font-size: 0.72rem; font-weight: 700; color: #a78bfa; text-transform: uppercase; letter-spacing: 0.05em;">Credes Techlabs Campaign</div>
+                    </div>
                     <h1>Highrocks</h1>
                 </div>
             </div>
