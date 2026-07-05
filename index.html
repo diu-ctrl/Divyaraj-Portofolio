@@ -4021,6 +4021,111 @@
                 observer.observe(p);
             });
         })();
+
+        // Typewriter & Scramble effects for Timeline Experience
+        (function() {
+            // Helper to recursively wrap text nodes in spans
+            function wrapTextNodes(element) {
+                const nodes = Array.from(element.childNodes);
+                nodes.forEach(node => {
+                    if (node.nodeType === Node.TEXT_NODE) {
+                        const text = node.textContent;
+                        if (text.trim() === '') return;
+                        
+                        const fragment = document.createDocumentFragment();
+                        Array.from(text).forEach(char => {
+                            const span = document.createElement('span');
+                            span.className = 'char';
+                            span.textContent = char;
+                            fragment.appendChild(span);
+                        });
+                        node.parentNode.replaceChild(fragment, node);
+                    } else if (node.nodeType === Node.ELEMENT_NODE) {
+                        wrapTextNodes(node);
+                    }
+                });
+            }
+
+            // Scramble effect for dates
+            const charsList = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789@#$%-+=*';
+            function scrambleText(element) {
+                const originalText = element.textContent.trim();
+                element.innerHTML = '';
+                
+                const spans = Array.from(originalText).map(char => {
+                    const span = document.createElement('span');
+                    span.textContent = char;
+                    span.style.display = 'inline-block';
+                    element.appendChild(span);
+                    return {
+                        span: span,
+                        targetChar: char,
+                        settleFrame: Math.floor(Math.random() * 15) + 12
+                    };
+                });
+                
+                let frame = 0;
+                function tick() {
+                    let done = true;
+                    spans.forEach(item => {
+                        if (item.targetChar === ' ' || item.targetChar === '—' || item.targetChar === '-') {
+                            item.span.textContent = item.targetChar;
+                            return;
+                        }
+                        if (frame < item.settleFrame) {
+                            item.span.textContent = charsList[Math.floor(Math.random() * charsList.length)];
+                            item.span.style.color = 'var(--accent)';
+                            done = false;
+                        } else {
+                            item.span.textContent = item.targetChar;
+                            item.span.style.color = '';
+                        }
+                    });
+                    
+                    if (!done) {
+                        frame++;
+                        requestAnimationFrame(tick);
+                    }
+                }
+                requestAnimationFrame(tick);
+            }
+
+            const timelineItems = document.querySelectorAll('.timeline-item');
+            
+            timelineItems.forEach(item => {
+                const dateEl = item.querySelector('.timeline-date');
+                const descEl = item.querySelector('.timeline-desc');
+                
+                if (!descEl) return;
+                
+                // Pre-process description
+                wrapTextNodes(descEl);
+                descEl.classList.add('typewriter-text', 'js-active');
+                const charSpans = descEl.querySelectorAll('.char');
+                
+                const observer = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            // 1. Scramble date
+                            if (dateEl) {
+                                scrambleText(dateEl);
+                            }
+                            
+                            // 2. Typewrite description
+                            charSpans.forEach((span, idx) => {
+                                setTimeout(() => {
+                                    span.classList.add('revealed');
+                                }, idx * 6); // Faster speed for longer timeline texts (6ms per character)
+                            });
+                            
+                            observer.unobserve(item);
+                        }
+                    });
+                }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+                
+                observer.observe(item);
+            });
+        })();
     </script>
 </body>
 </html>
