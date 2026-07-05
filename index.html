@@ -1242,30 +1242,6 @@
             text-align: left;
         }
 
-        .contact-headline.js-active .char {
-            opacity: 0;
-            transition: opacity 0.1s ease;
-        }
-
-        .contact-headline.js-active .char.revealed {
-            opacity: 1;
-        }
-
-        .contact-headline.js-active::after {
-            content: '|';
-            color: var(--accent);
-            display: inline-block;
-            margin-left: 2px;
-            font-style: normal;
-            font-weight: 300;
-            animation: cursor-blink 0.8s step-end infinite;
-        }
-
-        @keyframes cursor-blink {
-            from, to { opacity: 1; }
-            50% { opacity: 0; }
-        }
-
         .contact-buttons {
             display: flex;
             gap: 20px;
@@ -4080,7 +4056,11 @@
                 
                 const spans = Array.from(originalText).map(char => {
                     const span = document.createElement('span');
-                    span.textContent = char;
+                    if (char === ' ') {
+                        span.innerHTML = '&nbsp;';
+                    } else {
+                        span.textContent = char;
+                    }
                     span.style.display = 'inline-block';
                     element.appendChild(span);
                     return {
@@ -4094,7 +4074,11 @@
                 function tick() {
                     let done = true;
                     spans.forEach(item => {
-                        if (item.targetChar === ' ' || item.targetChar === '—' || item.targetChar === '-') {
+                        if (item.targetChar === ' ') {
+                            item.span.innerHTML = '&nbsp;';
+                            return;
+                        }
+                        if (item.targetChar === '—' || item.targetChar === '-') {
                             item.span.textContent = item.targetChar;
                             return;
                         }
@@ -4151,53 +4135,6 @@
                 
                 observer.observe(item);
             });
-        })();
-
-        // Typewriter effect for contact headline
-        (function() {
-            const headline = document.querySelector('.contact-headline');
-            if (!headline) return;
-            
-            // Helper to recursively wrap text nodes in spans
-            function wrapTextNodes(element) {
-                const nodes = Array.from(element.childNodes);
-                nodes.forEach(node => {
-                    if (node.nodeType === Node.TEXT_NODE) {
-                        const text = node.textContent;
-                        if (text.trim() === '') return;
-                        
-                        const fragment = document.createDocumentFragment();
-                        Array.from(text).forEach(char => {
-                            const span = document.createElement('span');
-                            span.className = 'char';
-                            span.textContent = char;
-                            fragment.appendChild(span);
-                        });
-                        node.parentNode.replaceChild(fragment, node);
-                    } else if (node.nodeType === Node.ELEMENT_NODE) {
-                        wrapTextNodes(node);
-                    }
-                });
-            }
-            
-            wrapTextNodes(headline);
-            headline.classList.add('js-active');
-            const charSpans = headline.querySelectorAll('.char');
-            
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        charSpans.forEach((span, idx) => {
-                            setTimeout(() => {
-                                span.classList.add('revealed');
-                            }, idx * 30); // 30ms typing speed per character
-                        });
-                        observer.unobserve(headline);
-                    }
-                });
-            }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
-            
-            observer.observe(headline);
         })();
     </script>
 </body>
