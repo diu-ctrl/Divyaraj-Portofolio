@@ -177,7 +177,7 @@
         /* Services */
         .services-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:18px; }
         .service-card { padding:28px; background:rgba(255,255,255,0.015); border:1px solid var(--border); border-radius:20px; position:relative; overflow:hidden; transition:all 0.4s cubic-bezier(0.16,1,0.3,1); }
-        .service-card:hover { transform:translateY(-6px); border-color:var(--brand-border); background:var(--surface); }
+        .service-card:hover { }
         .service-card:hover::before { opacity:1; }
         .service-icon { width:48px; height:48px; border-radius:14px; background:var(--surface); border:1px solid var(--brand-border); display:flex; align-items:center; justify-content:center; margin-bottom:16px; color:var(--primary-light); }
         .service-title { font-size:0.95rem; font-weight:700; margin-bottom:8px; }
@@ -197,7 +197,7 @@
         /* Metrics */
         .metrics-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:20px; }
         .metric-card { background:rgba(255,255,255,0.02); border:1px solid var(--border); border-radius:22px; padding:30px; position:relative; overflow:hidden; transition:all 0.4s ease; }
-        .metric-card:hover { border-color:var(--brand-border); background:var(--surface); transform:translateY(-4px); }
+        .metric-card:hover { }
         .metric-card.wide { grid-column:span 2; }
         .metric-card.full-width { grid-column:span 3; }
         .metric-card::after { content:''; position:absolute; top:0; right:0; width:80px; height:80px; background:radial-gradient(ellipse at 100% 0%,rgba(249,115,22,0.12),transparent 70%); pointer-events:none; }
