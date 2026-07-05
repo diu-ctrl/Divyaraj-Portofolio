@@ -2494,6 +2494,15 @@
             0% { transform: rotate(0deg); }
             100% { transform: rotate(360deg); }
         }
+
+        /* Typewriter Animation styling */
+        .typewriter-text.js-active .char {
+            opacity: 0;
+            transition: opacity 0.1s ease;
+        }
+        .typewriter-text.js-active .char.revealed {
+            opacity: 1;
+        }
 </style>
 </head>
 <body>
@@ -2618,15 +2627,15 @@
         <div class="about-pillars reveal">
             <div class="pillar-col">
                 <h3>01 / Growth</h3>
-                <p>Social Media & Content Specialist. Directed digital strategy and video operations scaling gaming communities and brands to millions of organic views.</p>
+                <p class="typewriter-text">Social Media & Content Specialist. Directed digital strategy and video operations scaling gaming communities and brands to millions of organic views.</p>
             </div>
             <div class="pillar-col">
                 <h3>02 / Cinema</h3>
-                <p>Generative Filmmaker. Crafting historical, commercial, and promotional cinematic narratives powered by AI tools under deliberate human direction.</p>
+                <p class="typewriter-text">Generative Filmmaker. Crafting historical, commercial, and promotional cinematic narratives powered by AI tools under deliberate human direction.</p>
             </div>
             <div class="pillar-col">
                 <h3>03 / Code</h3>
-                <p>Frontend Web Developer. Engineering custom brutalist portfolios, web frameworks, and digital storefronts with high-speed, stark user interfaces.</p>
+                <p class="typewriter-text">Frontend Web Developer. Engineering custom brutalist portfolios, web frameworks, and digital storefronts with high-speed, stark user interfaces.</p>
             </div>
         </div>
     </section>
@@ -3972,6 +3981,45 @@
             if (!video.paused) {
                 requestAnimationFrame(draw);
             }
+        })();
+
+        // Typewriter effect for categories
+        (function() {
+            const typewriterParagraphs = document.querySelectorAll('.typewriter-text');
+            
+            typewriterParagraphs.forEach(p => {
+                const text = p.textContent.trim();
+                p.innerHTML = '';
+                
+                // Wrap each letter in a span to prevent layout shifts
+                const chars = Array.from(text).map(char => {
+                    const span = document.createElement('span');
+                    span.className = 'char';
+                    span.textContent = char;
+                    p.appendChild(span);
+                    return span;
+                });
+                
+                // Add js-active to hide all chars dynamically
+                p.classList.add('js-active');
+                
+                // Intersection observer to animate when scrolled into view
+                const observer = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            // Start revealing characters sequentially
+                            chars.forEach((span, idx) => {
+                                setTimeout(() => {
+                                    span.classList.add('revealed');
+                                }, idx * 8); // 8ms speed per character
+                            });
+                            observer.unobserve(p);
+                        }
+                    });
+                }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+                
+                observer.observe(p);
+            });
         })();
     </script>
 </body>
