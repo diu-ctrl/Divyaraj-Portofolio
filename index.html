@@ -110,6 +110,7 @@
         /* ─── Hero ─── */
         .hero {
             height: 100vh !important;
+            height: 100dvh !important;
             width: 100%;
             max-width: none !important;
             display: flex;
@@ -1633,7 +1634,15 @@
             .hero {
                 padding: 40px 20px;
                 height: 100vh !important;
+                height: 100dvh !important;
                 min-height: 100vh !important;
+                min-height: 100dvh !important;
+            }
+            .hero-inner, .hero-subtitle-mono {
+                transform: translateY(-25px); /* Move center hero elements slightly upward */
+            }
+            .hero-corner-bl, .hero-corner-br {
+                bottom: 24px !important; /* Ensure bottom corners sit safely above mobile chrome */
             }
             .hero-title {
                 font-size: 18vw !important;
