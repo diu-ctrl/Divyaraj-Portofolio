@@ -1,0 +1,1147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The Last Ember — AI Cinematic Sequence | Storyvord</title>
+  <meta name="description" content="A fantasy short film created entirely with AI — from concept to motion. 16-shot AI-generated cinematic sequence by an AI Filmmaker Intern at Storyvord." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital,wght@0,400;1,400&family=Space+Mono:wght@400;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Inter:wght@300;400;500;600&family=Cinzel:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+  <link rel="icon" type="image/png" href="../../../favicon.png?v=2" />
+  <!-- ─── Back To Top Button Styles ─── -->
+  <style>
+      .back-to-top-btn {
+          position: fixed !important;
+          bottom: 40px !important;
+          right: 40px !important;
+          width: 48px !important;
+          height: 48px !important;
+          background: #EB4604 !important;
+          color: #000000 !important;
+          border: 1px solid #EB4604 !important;
+          font-size: 1.5rem !important;
+          font-weight: 700 !important;
+          cursor: pointer !important;
+          display: flex !important;
+          align-items: center !important;
+          justify-content: center !important;
+          z-index: 1000 !important;
+          opacity: 0 !important;
+          pointer-events: none !important;
+          transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1) !important;
+          border-radius: 0px !important;
+      }
+
+      .back-to-top-btn.visible {
+          opacity: 1 !important;
+          pointer-events: all !important;
+      }
+
+      .back-to-top-btn:hover {
+          background: #FFFFFF !important;
+          color: #000000 !important;
+          border-color: #FFFFFF !important;
+          transform: translateY(-4px) !important;
+      }
+
+      @media (max-width: 640px) {
+          .back-to-top-btn {
+              bottom: 20px !important;
+              right: 20px !important;
+              width: 40px !important;
+              height: 40px !important;
+              font-size: 1.2rem !important;
+          }
+      }
+  </style>
+</head>
+<body>
+
+  <!-- Portfolio Funnel Sticky Banner -->
+  <div class="process-banner">
+    <span class="banner-label">Process breakdown &mdash; <a href="../../../ai-cinema.html">AI Cinema Lab</a></span>
+    <div class="banner-actions">
+      <a href="../../../ai-cinema.html" class="banner-back">&larr; Back to Portfolio</a>
+      <a href="mailto:divyarajc2@gmail.com" class="banner-cta">Hire Me &rarr;</a>
+    </div>
+  </div>
+
+  <!-- ============================================================
+       NAV — hidden until user scrolls past hero
+  ============================================================ -->
+  <nav id="nav">
+    <div class="nav-logo">THE LAST EMBER</div>
+    <div class="nav-toggle-container">
+      <button id="navToggle" class="nav-toggle" aria-label="Toggle Menu">
+        <span class="nav-toggle-line"></span>
+        <span class="nav-toggle-line"></span>
+        <span class="nav-toggle-line"></span>
+      </button>
+      <div id="navMenu" class="nav-dropdown">
+        <a href="#project" class="nav-dropdown-link">Project</a>
+        <a href="#process" class="nav-dropdown-link">Process</a>
+        <a href="#bts" class="nav-dropdown-link">BTS</a>
+        <a href="#story" class="nav-dropdown-link">Story</a>
+        <a href="#character" class="nav-dropdown-link">Character</a>
+        <a href="#world" class="nav-dropdown-link">World</a>
+        <a href="#scenes" class="nav-dropdown-link">Scenes</a>
+        <a href="#craft" class="nav-dropdown-link">Craft</a>
+        <a href="#film" class="nav-dropdown-link">Film</a>
+      </div>
+    </div>
+  </nav>
+
+
+
+  <!-- ============================================================
+       HERO — Poster Image Version
+  ============================================================ -->
+  <header id="hero">
+    <div class="hero-poster">
+      <img src="Hero.png" alt="The Last Ember — Cinematic Poster" class="hero-poster-img" />
+      <div class="hero-poster-fallback"></div>
+    </div>
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <h1 class="hero-title fade-up">THE LAST<br /><em>EMBER</em></h1>
+      <div class="hero-eyebrow fade-up delay-1">AI Cinematic Sequence — Storyvord Internship Assignment</div>
+      <a href="#film" class="hero-cta fade-up delay-2">
+        <span>Watch the Film</span>
+        <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M6 3l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+    </div>
+
+  </header>
+
+  <!-- ============================================================
+       THE PROJECT
+  ============================================================ -->
+  <section id="project" class="section">
+    <div class="container">
+      <div class="section-label reveal">01 — The Project</div>
+      <h2 class="section-title reveal">The Brief</h2>
+      <div class="project-grid">
+        <div class="project-text reveal">
+          <p class="lead">As an AI Filmmaker intern at Storyvord, I was tasked with creating a short AI cinematic sequence using an original idea. I chose the Fantasy genre and built <em>"The Last Ember"</em> — a story about a young temple keeper who carries the sacred flame through the night to a mountain summit, where dawn renews its power.</p>
+          <p>The goal wasn't just to generate beautiful images. It was to prove I could:</p>
+          <ul class="goal-list">
+            <li><span class="check">✦</span> Maintain character consistency across 16 shots</li>
+            <li><span class="check">✦</span> Build a coherent visual world with cinematic lighting progression</li>
+            <li><span class="check">✦</span> Work within AI limitations and adapt my workflow in real time</li>
+            <li><span class="check">✦</span> Deliver a complete narrative with beginning, middle, and end</li>
+          </ul>
+        </div>
+        <div class="project-tools reveal">
+          <div class="tools-card">
+            <div class="tools-title">Tools Used</div>
+            <div class="tool-item">
+              <div class="tool-icon">▶</div>
+              <div>
+                <div class="tool-name">Higgsfield (Seedance 1.5 Pro)</div>
+                <div class="tool-role">Video generation (Audio generated with clips, Seedance audio ON)</div>
+              </div>
+            </div>
+            <div class="tool-item">
+              <div class="tool-icon">◈</div>
+              <div>
+                <div class="tool-name">Nano Banana Pro</div>
+                <div class="tool-role">Image generation</div>
+              </div>
+            </div>
+            <div class="tool-item">
+              <div class="tool-icon">◎</div>
+              <div>
+                <div class="tool-name">Luvvoice</div>
+                <div class="tool-role">Voiceover narration</div>
+              </div>
+            </div>
+            <div class="tool-item">
+              <div class="tool-icon">⬡</div>
+              <div>
+                <div class="tool-name">Google Vids</div>
+                <div class="tool-role">Final assembly, editing &amp; auto-generated transcript captions for voiceover sync</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       THE PROCESS
+  ============================================================ -->
+  <section id="process" class="section section-dark">
+    <div class="container">
+      <div class="process-layout">
+        
+        <!-- LEFT COLUMN: label + title + intro paragraph -->
+        <div class="process-left reveal">
+          <div class="section-label">02 — The Process</div>
+          <h2 class="section-title" style="margin-bottom: 36px;">How It Was Made</h2>
+          <div class="process-intro">
+            <p class="lead">This project was built through an iterative collaboration between myself and <strong>Kimi (Moonshot AI)</strong>, an AI assistant that guided the entire workflow — from story concept and character design to prompt engineering, shot-by-shot generation, and technical problem-solving.</p>
+          </div>
+        </div>
+
+        <!-- RIGHT COLUMN: key decisions -->
+        <div class="process-decisions reveal">
+          <div class="process-decisions-title">Key decisions made together</div>
+          <div class="process-decision">
+            <div class="process-decision-icon">◎</div>
+            <p>Simplified the story to <strong>one character, one lantern, one journey</strong> for maximum consistency</p>
+          </div>
+          <div class="process-decision">
+            <div class="process-decision-icon">◎</div>
+            <p>Discovered that <strong>Seedance 1.5 Pro handles Chinese prompts better</strong> for video generation</p>
+          </div>
+          <div class="process-decision">
+            <div class="process-decision-icon">◎</div>
+            <p>Identified that <strong>dolly-back camera motions cause AI hallucination</strong> outside the frame</p>
+          </div>
+          <div class="process-decision">
+            <div class="process-decision-icon">◎</div>
+            <p>Adapted the narrative mid-workflow from <em>"emergency rescue"</em> to <em>"annual ritual renewal"</em> when the generated fire never looked dying</p>
+          </div>
+          <div class="process-decision">
+            <div class="process-decision-icon">◎</div>
+            <p>Tested <strong>Start+End frame techniques</strong> for character continuity across shots</p>
+          </div>
+          <div class="process-decision">
+            <div class="process-decision-icon">◎</div>
+            <p>Troubleshot ElevenLabs IP restrictions and <strong>pivoted to Luvvoice</strong> for voiceover production</p>
+          </div>
+        </div>
+      </div>
+      <div class="process-reflection reveal">
+        <p>This shows the reality of AI filmmaking: it's not about perfect tools. It's about <strong>critical thinking, rapid adaptation</strong>, and knowing when to change the plan.</p>
+        <div class="process-credit">Workflow guided by <span class="kimi-credit">Kimi (Moonshot AI)</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       BEHIND THE SCENES
+  ============================================================ -->
+  <section id="bts" class="section">
+    <div class="container">
+      <div class="section-label reveal">03 — Behind the Scenes</div>
+      <h2 class="section-title reveal">Timeline</h2>
+      
+      <div class="bts-timeline reveal">
+        
+        <div class="bts-item">
+          <div class="bts-marker"></div>
+          <div class="bts-content">
+            <div class="bts-task">Image Generation (Shots &amp; Frames)</div>
+            <div class="bts-time">5–6 hours</div>
+            <div class="bts-desc">Character sheet, 4 location sheets, 16 shot images across all scenes</div>
+          </div>
+        </div>
+
+        <div class="bts-item">
+          <div class="bts-marker"></div>
+          <div class="bts-content">
+            <div class="bts-task">Video Generation (Animation)</div>
+            <div class="bts-time">4–5 hours</div>
+            <div class="bts-desc">16 clips generated in Seedance 1.5 Pro, shot-by-shot iteration and selection</div>
+          </div>
+        </div>
+
+        <div class="bts-item">
+          <div class="bts-marker"></div>
+          <div class="bts-content">
+            <div class="bts-task">Voiceover Production</div>
+            <div class="bts-time">10–15 minutes</div>
+            <div class="bts-desc">16 narration lines generated in Luvvoice (Elara Wynn voice)</div>
+          </div>
+        </div>
+
+        <div class="bts-item">
+          <div class="bts-marker"></div>
+          <div class="bts-content">
+            <div class="bts-task">Video Editing</div>
+            <div class="bts-time">30 minutes</div>
+            <div class="bts-desc">Merged clips, synced voiceovers, trimmed timing, balanced volume</div>
+          </div>
+        </div>
+
+        <div class="bts-item">
+          <div class="bts-marker"></div>
+          <div class="bts-content">
+            <div class="bts-task">Webpage Build &amp; Deploy</div>
+            <div class="bts-time">2 hours</div>
+            <div class="bts-desc">Designed and built with Antigravity, deployed via GitHub + Vercel</div>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="bts-summary reveal">
+        <div class="bts-total-label">Total Project Time</div>
+        <div class="bts-total-val">~12 hours</div>
+        <p class="bts-total-note">From first prompt to live website.</p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ============================================================
+       THE STORY
+  ============================================================ -->
+  <section id="story" class="section section-dark">
+    <div class="container">
+      <div class="story-layout">
+
+        <!-- LEFT: label + title + prose -->
+        <div class="story-left reveal">
+          <div class="section-label">04 — The Story</div>
+          <h2 class="section-title" style="margin-bottom: 36px;">The Myth</h2>
+          <p class="story-lead">Every year, the temple keeper must carry the sacred flame from the temple through the night to the mountain summit, where the first light of dawn renews its power. At sunrise, she returns to restore the strengthened flame to the temple brazier — a ritual that ensures the village's protection for another year.</p>
+        </div>
+
+        <!-- RIGHT: scene acts aligned to top -->
+        <div class="story-acts reveal">
+          <div class="act act-night">
+            <div class="act-num">Scene 1</div>
+            <div class="act-title">The Temple</div>
+            <div class="act-time">0:00 – 0:27</div>
+            <p>Deep night. The keeper begins her ritual. She takes the flame and steps into the dark.</p>
+          </div>
+          <div class="act act-forest">
+            <div class="act-num">Scene 2</div>
+            <div class="act-title">The Forest Path</div>
+            <div class="act-time">0:28 – 0:55</div>
+            <p>Through mist and cold, she walks alone. The forest tests her resolve.</p>
+          </div>
+          <div class="act act-dawn">
+            <div class="act-num">Scene 3</div>
+            <div class="act-title">The Summit</div>
+            <div class="act-time">0:56 – 1:27</div>
+            <p>At dawn, the mountain gives back what the night has taken. The flame is renewed.</p>
+          </div>
+          <div class="act act-morning">
+            <div class="act-num">Scene 4</div>
+            <div class="act-title">The Return</div>
+            <div class="act-time">1:28 – end</div>
+            <p>Home breathes again. The cycle is complete.</p>
+          </div>
+        </div>
+
+      </div>
+      <div class="lighting-arc reveal">
+        <div class="arc-label">Lighting Arc</div>
+        <div class="arc-bar">
+          <div class="arc-seg night">Cool Blue Night</div>
+          <div class="arc-seg dawn">Warm Gold Dawn</div>
+          <div class="arc-seg morning">Bright Morning</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ============================================================
+       CHARACTER
+  ============================================================ -->
+  <section id="character" class="section">
+    <div class="container">
+      <div class="section-label reveal">05 — Character Design</div>
+      <h2 class="section-title reveal">Elara, The Temple Keeper</h2>
+
+      <!-- Full-width image -->
+      <div class="character-image-full reveal">
+        <img src="base images/character sheet.jpeg" alt="Elara — Character Sheet" />
+        <div class="image-caption">Character Reference Sheet — Front · 3/4 View · Close-up</div>
+      </div>
+
+      <!-- Details row below -->
+      <div class="character-details-row">
+        <div class="char-stats reveal">
+          <div class="char-stat">
+            <div class="char-stat-label">Age</div>
+            <div class="char-stat-val">22</div>
+          </div>
+          <div class="char-stat">
+            <div class="char-stat-label">Role</div>
+            <div class="char-stat-val">Keeper of the Sacred Flame</div>
+          </div>
+          <div class="char-stat">
+            <div class="char-stat-label">Outfit</div>
+            <div class="char-stat-val">Heavy rust-colored wool hooded cloak, worn leather edges, dark leather belt with brass buckle, small brass lantern with glass panels</div>
+          </div>
+        </div>
+        <div class="char-strategy reveal">
+          <div class="strategy-title">Design Strategy</div>
+          <div class="strategy-item">
+            <div class="strategy-icon">◉</div>
+            <div><strong>Hooded cloak</strong> reduces face exposure, making AI consistency easier across shots</div>
+          </div>
+          <div class="strategy-item">
+            <div class="strategy-icon">◉</div>
+            <div><strong>Rust color</strong> creates strong visual contrast against cool blue environments</div>
+          </div>
+          <div class="strategy-item">
+            <div class="strategy-icon">◉</div>
+            <div><strong>Lantern</strong> serves as the story's central visual motif — the literal "last ember"</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ============================================================
+       THE WORLD
+  ============================================================ -->
+  <section id="world" class="section section-dark">
+    <div class="container">
+      <div class="section-label reveal">06 — World Building</div>
+      <h2 class="section-title reveal">The Locations</h2>
+      <div class="locations-grid">
+
+        <div class="location-card reveal">
+          <div class="location-img">
+            <img src="base images/Location A The Stone Temple Interior.png" alt="Location A — Stone Temple Interior" />
+            <div class="location-overlay">
+              <span class="location-tag night-tag">Night</span>
+            </div>
+          </div>
+          <div class="location-info">
+            <div class="location-id">Location A</div>
+            <div class="location-name">Stone Temple Interior</div>
+            <p>Ancient granite walls with carved runes. Circular stone brazier. Arched windows. Cool blue moonlight. Where the story begins and ends.</p>
+          </div>
+        </div>
+
+        <div class="location-card reveal">
+          <div class="location-img">
+            <img src="base images/Location B The Forest Path (Night).jpeg" alt="Location B — Misty Forest Path" />
+            <div class="location-overlay">
+              <span class="location-tag night-tag">Night</span>
+            </div>
+          </div>
+          <div class="location-info">
+            <div class="location-id">Location B</div>
+            <div class="location-name">Misty Forest Path</div>
+            <p>Tall pine trees, moss-covered ground, fallen leaves. Deep indigo night sky. Distant mountain peak barely visible through fog.</p>
+          </div>
+        </div>
+
+        <div class="location-card reveal">
+          <div class="location-img">
+            <img src="base images/Location C The Mountain Summit (Dawn).jpeg" alt="Location C — Mountain Summit" />
+            <div class="location-overlay">
+              <span class="location-tag dawn-tag">Dawn</span>
+            </div>
+          </div>
+          <div class="location-info">
+            <div class="location-id">Location C</div>
+            <div class="location-name">Mountain Summit</div>
+            <p>Rocky terrain, ancient stone marker, low clouds below. Golden sunrise breaking over the horizon. Where the flame is renewed.</p>
+          </div>
+        </div>
+
+        <div class="location-card reveal">
+          <div class="location-img">
+            <img src="base images/Location D The Temple Return (Morning).png" alt="Location D — Temple Return" />
+            <div class="location-overlay">
+              <span class="location-tag morning-tag">Morning</span>
+            </div>
+          </div>
+          <div class="location-info">
+            <div class="location-id">Location D</div>
+            <div class="location-name">Temple Return (Morning)</div>
+            <p>The same temple, transformed. Warm golden light. Bright brazier flames. Peace and restoration. The cycle complete.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       SCENES — SHARED SHOT COMPONENT TEMPLATE
+  ============================================================ -->
+  <section id="scenes" class="section scenes-section">
+    <div class="container">
+      <div class="section-label reveal">07 — Shot Breakdown</div>
+      <h2 class="section-title reveal">The Sequence</h2>
+    </div>
+
+    <!-- ---- SCENE 1 ---- -->
+    <div class="scene-block" id="scene1">
+      <div class="scene-header">
+        <div class="container">
+          <div class="scene-meta reveal">
+            <div class="scene-num">Scene 01</div>
+            <div class="scene-info">
+              <div class="scene-name">The Temple</div>
+              <div class="scene-timing">0:00 – 0:27</div>
+            </div>
+            <div class="scene-location-tag">Location A · Night</div>
+          </div>
+        </div>
+      </div>
+      <div class="shots-grid container">
+
+        <div class="shot-card reveal">
+          <div class="shot-media" data-clip="Clips/Scene 1/Shot 1.mp4">
+            <img src="Frames/Scene 1/Shot 1.jpeg" alt="Shot 1 — The Empty Temple" class="shot-img" />
+            <video src="Clips/Scene 1/Shot 1.mp4" muted loop playsinline preload="none" class="shot-video"></video>
+            <div class="play-hint"><div class="play-icon">▶</div><span>Play Clip</span></div>
+            <div class="shot-badge">Shot 01</div>
+          </div>
+          <div class="shot-info">
+            <div class="shot-title">The Empty Temple</div>
+            <div class="shot-meta-row">
+              <span class="shot-type">Extreme Wide / Establishing</span>
+              <span class="shot-cam">Slow push-in</span>
+            </div>
+            <blockquote class="shot-vo">"The flame burns… but it fades with time."</blockquote>
+          </div>
+        </div>
+
+        <div class="shot-card reveal">
+          <div class="shot-media" data-clip="Clips/Scene 1/Shot 2.mp4">
+            <img src="Frames/Scene 1/Shot 2.jpeg" alt="Shot 2 — The Keeper's Vigil" class="shot-img" />
+            <video src="Clips/Scene 1/Shot 2.mp4" muted loop playsinline preload="none" class="shot-video"></video>
+            <div class="play-hint"><div class="play-icon">▶</div><span>Play Clip</span></div>
+            <div class="shot-badge">Shot 02</div>
+          </div>
+          <div class="shot-info">
+            <div class="shot-title">The Keeper's Vigil</div>
+            <div class="shot-meta-row">
+              <span class="shot-type">Medium Shot</span>
+              <span class="shot-cam">Slow pan</span>
+            </div>
+            <blockquote class="shot-vo">"Before the sun rises, I must walk."<button class="vo-play-btn" title="Play voiceover">&#9654; VO</button><audio class="vo-audio" src="VOs/VO_02.mp3" preload="none"></audio></blockquote>
+          </div>
+        </div>
+
+        <div class="shot-card reveal">
+          <div class="shot-media" data-clip="Clips/Scene 1/Shot 3.mp4">
+            <img src="Frames/Scene 1/Shot 3.jpeg" alt="Shot 3 — The Realization" class="shot-img" />
+            <video src="Clips/Scene 1/Shot 3.mp4" muted loop playsinline preload="none" class="shot-video"></video>
+            <div class="play-hint"><div class="play-icon">▶</div><span>Play Clip</span></div>
+            <div class="shot-badge">Shot 03</div>
+          </div>
+          <div class="shot-info">
+            <div class="shot-title">The Realization</div>
+            <div class="shot-meta-row">
+              <span class="shot-type">Extreme Close-Up</span>
+              <span class="shot-cam">Slow push-in</span>
+            </div>
+            <blockquote class="shot-vo">"The mountain calls. The ritual begins."<button class="vo-play-btn" title="Play voiceover">&#9654; VO</button><audio class="vo-audio" src="VOs/VO_03.mp3" preload="none"></audio></blockquote>
+          </div>
+        </div>
+
+        <div class="shot-card reveal">
+          <div class="shot-media" data-clip="Clips/Scene 1/Shot 4.mp4">
+            <img src="Frames/Scene 1/Shot 4.jpeg" alt="Shot 4 — The Decision" class="shot-img" />
+            <video src="Clips/Scene 1/Shot 4.mp4" muted loop playsinline preload="none" class="shot-video"></video>
+            <div class="play-hint"><div class="play-icon">▶</div><span>Play Clip</span></div>
+            <div class="shot-badge">Shot 04</div>
+          </div>
+          <div class="shot-info">
+            <div class="shot-title">The Decision</div>
+            <div class="shot-meta-row">
+              <span class="shot-type">Medium-Wide</span>
+              <span class="shot-cam">Slow pull back</span>
+            </div>
+            <blockquote class="shot-vo">"I carry what the village cannot."<button class="vo-play-btn" title="Play voiceover">&#9654; VO</button><audio class="vo-audio" src="VOs/VO_04.mp3" preload="none"></audio></blockquote>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ---- SCENE 2 ---- -->
+    <div class="scene-block scene-forest" id="scene2">
+      <div class="scene-header">
+        <div class="container">
+          <div class="scene-meta reveal">
+            <div class="scene-num">Scene 02</div>
+            <div class="scene-info">
+              <div class="scene-name">The Forest Path</div>
+              <div class="scene-timing">0:28 – 0:55</div>
+            </div>
+            <div class="scene-location-tag">Location B · Night</div>
+          </div>
+        </div>
+      </div>
+      <div class="shots-grid container">
+
+        <div class="shot-card reveal">
+          <div class="shot-media" data-clip="Clips/Scene 2/Shot 5.mp4">
+            <img src="Frames/Scene 2/Shot 5.png" alt="Shot 5 — Into the Mist" class="shot-img" />
+            <video src="Clips/Scene 2/Shot 5.mp4" muted loop playsinline preload="none" class="shot-video"></video>
+            <div class="play-hint"><div class="play-icon">▶</div><span>Play Clip</span></div>
+            <div class="shot-badge">Shot 05</div>
+          </div>
+          <div class="shot-info">
+            <div class="shot-title">Into the Mist</div>
+            <div class="shot-meta-row">
+              <span class="shot-type">Extreme Wide / High Angle</span>
+              <span class="shot-cam">Slow push-in</span>
+            </div>
+            <blockquote class="shot-vo">"Through the sleeping forest…"</blockquote>
+          </div>
+        </div>
+
+        <div class="shot-card reveal">
+          <div class="shot-media" data-clip="Clips/Scene 2/Shot 6.mp4">
+            <img src="Frames/Scene 2/Shot 6.png" alt="Shot 6 — The Walk" class="shot-img" />
+            <video src="Clips/Scene 2/Shot 6.mp4" muted loop playsinline preload="none" class="shot-video"></video>
+            <div class="play-hint"><div class="play-icon">▶</div><span>Play Clip</span></div>
+            <div class="shot-badge">Shot 06</div>
+          </div>
+          <div class="shot-info">
+            <div class="shot-title">The Walk</div>
+            <div class="shot-meta-row">
+              <span class="shot-type">Full Shot / Tracking</span>
+              <span class="shot-cam">Slow dolly forward</span>
+            </div>
+            <blockquote class="shot-vo">"…where even the trees hold their breath."</blockquote>
+          </div>
+        </div>
+
+        <div class="shot-card reveal">
+          <div class="shot-media" data-clip="Clips/Scene 2/Shot 7.mp4">
+            <img src="Frames/Scene 2/Shot 7.png" alt="Shot 7 — Against the Wind" class="shot-img" />
+            <video src="Clips/Scene 2/Shot 7.mp4" muted loop playsinline preload="none" class="shot-video"></video>
+            <div class="play-hint"><div class="play-icon">▶</div><span>Play Clip</span></div>
+            <div class="shot-badge">Shot 07</div>
+          </div>
+          <div class="shot-info">
+            <div class="shot-title">Against the Wind</div>
+            <div class="shot-meta-row">
+              <span class="shot-type">Medium Shot</span>
+              <span class="shot-cam">Static push-in</span>
+            </div>
+            <blockquote class="shot-vo">"The wind tests my resolve."<button class="vo-play-btn" title="Play voiceover">&#9654; VO</button><audio class="vo-audio" src="VOs/VO_07.mp3" preload="none"></audio></blockquote>
+          </div>
+        </div>
+
+        <div class="shot-card reveal">
+          <div class="shot-media" data-clip="Clips/Scene 2/Shot 8.mp4">
+            <img src="Frames/Scene 2/Shot 8.png" alt="Shot 8 — The Flame" class="shot-img" />
+            <video src="Clips/Scene 2/Shot 8.mp4" muted loop playsinline preload="none" class="shot-video"></video>
+            <div class="play-hint"><div class="play-icon">▶</div><span>Play Clip</span></div>
+            <div class="shot-badge">Shot 08</div>
+          </div>
+          <div class="shot-info">
+            <div class="shot-title">The Flame</div>
+            <div class="shot-meta-row">
+              <span class="shot-type">Extreme Close-Up</span>
+              <span class="shot-cam">Slow push-in</span>
+            </div>
+            <blockquote class="shot-vo">"I guard the ember with both hands."<button class="vo-play-btn" title="Play voiceover">&#9654; VO</button><audio class="vo-audio" src="VOs/VO_08.mp3" preload="none"></audio></blockquote>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ---- SCENE 3 ---- -->
+    <div class="scene-block scene-dawn" id="scene3">
+      <div class="scene-header">
+        <div class="container">
+          <div class="scene-meta reveal">
+            <div class="scene-num">Scene 03</div>
+            <div class="scene-info">
+              <div class="scene-name">The Summit</div>
+              <div class="scene-timing">0:56 – 1:27</div>
+            </div>
+            <div class="scene-location-tag">Location C · Dawn</div>
+          </div>
+        </div>
+      </div>
+      <div class="shots-grid container">
+
+        <div class="shot-card reveal">
+          <div class="shot-media" data-clip="Clips/Scene 3/Shot 9.mp4">
+            <img src="Frames/Scene 3/Shot 9.jpeg" alt="Shot 9 — The Ascent" class="shot-img" />
+            <video src="Clips/Scene 3/Shot 9.mp4" muted loop playsinline preload="none" class="shot-video"></video>
+            <div class="play-hint"><div class="play-icon">▶</div><span>Play Clip</span></div>
+            <div class="shot-badge">Shot 09</div>
+          </div>
+          <div class="shot-info">
+            <div class="shot-title">The Ascent</div>
+            <div class="shot-meta-row">
+              <span class="shot-type">Extreme Wide</span>
+              <span class="shot-cam">Slow push-in</span>
+            </div>
+            <blockquote class="shot-vo">"The summit waits above the clouds."<button class="vo-play-btn" title="Play voiceover">&#9654; VO</button><audio class="vo-audio" src="VOs/VO_09.mp3" preload="none"></audio></blockquote>
+          </div>
+        </div>
+
+        <div class="shot-card reveal">
+          <div class="shot-media" data-clip="Clips/Scene 3/Shot 10.mp4">
+            <img src="Frames/Scene 3/Shot 10.png" alt="Shot 10 — The Stone Marker" class="shot-img" />
+            <video src="Clips/Scene 3/Shot 10.mp4" muted loop playsinline preload="none" class="shot-video"></video>
+            <div class="play-hint"><div class="play-icon">▶</div><span>Play Clip</span></div>
+            <div class="shot-badge">Shot 10</div>
+          </div>
+          <div class="shot-info">
+            <div class="shot-title">The Stone Marker</div>
+            <div class="shot-meta-row">
+              <span class="shot-type">Medium Shot</span>
+              <span class="shot-cam">Slow push-in</span>
+            </div>
+            <blockquote class="shot-vo">"Here, the old world meets the new."<button class="vo-play-btn" title="Play voiceover">&#9654; VO</button><audio class="vo-audio" src="VOs/VO_10.mp3" preload="none"></audio></blockquote>
+          </div>
+        </div>
+
+        <div class="shot-card reveal">
+          <div class="shot-media" data-clip="Clips/Scene 3/Shot 11.mp4">
+            <img src="Frames/Scene 3/Shot 11.png" alt="Shot 11 — The First Light" class="shot-img" />
+            <video src="Clips/Scene 3/Shot 11.mp4" muted loop playsinline preload="none" class="shot-video"></video>
+            <div class="play-hint"><div class="play-icon">▶</div><span>Play Clip</span></div>
+            <div class="shot-badge">Shot 11</div>
+          </div>
+          <div class="shot-info">
+            <div class="shot-title">The First Light</div>
+            <div class="shot-meta-row">
+              <span class="shot-type">Close-Up</span>
+              <span class="shot-cam">Slow push-in on lantern</span>
+            </div>
+            <blockquote class="shot-vo">"The dawn gives what the night has taken."<button class="vo-play-btn" title="Play voiceover">&#9654; VO</button><audio class="vo-audio" src="VOs/VO_11.mp3" preload="none"></audio></blockquote>
+          </div>
+        </div>
+
+        <div class="shot-card reveal">
+          <div class="shot-media" data-clip="Clips/Scene 3/Shot 12.mp4">
+            <img src="Frames/Scene 3/Shot 12.png" alt="Shot 12 — The Dawn" class="shot-img" />
+            <video src="Clips/Scene 3/Shot 12.mp4" muted loop playsinline preload="none" class="shot-video"></video>
+            <div class="play-hint"><div class="play-icon">▶</div><span>Play Clip</span></div>
+            <div class="shot-badge">Shot 12</div>
+          </div>
+          <div class="shot-info">
+            <div class="shot-title">The Dawn</div>
+            <div class="shot-meta-row">
+              <span class="shot-type">Wide Shot</span>
+              <span class="shot-cam">Slow pan left-to-right</span>
+            </div>
+            <blockquote class="shot-vo">"The flame is renewed."<button class="vo-play-btn" title="Play voiceover">&#9654; VO</button><audio class="vo-audio" src="VOs/VO_12.mp3" preload="none"></audio></blockquote>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ---- SCENE 4 ---- -->
+    <div class="scene-block scene-morning" id="scene4">
+      <div class="scene-header">
+        <div class="container">
+          <div class="scene-meta reveal">
+            <div class="scene-num">Scene 04</div>
+            <div class="scene-info">
+              <div class="scene-name">The Return</div>
+              <div class="scene-timing">1:28 – end</div>
+            </div>
+            <div class="scene-location-tag">Location D · Morning</div>
+          </div>
+        </div>
+      </div>
+      <div class="shots-grid container">
+
+        <div class="shot-card reveal">
+          <div class="shot-media" data-clip="Clips/Scene 4/Shot 13.mp4">
+            <img src="Frames/Scene 4/Shot 13.png" alt="Shot 13 — The Temple Reborn" class="shot-img" />
+            <video src="Clips/Scene 4/Shot 13.mp4" muted loop playsinline preload="none" class="shot-video"></video>
+            <div class="play-hint"><div class="play-icon">▶</div><span>Play Clip</span></div>
+            <div class="shot-badge">Shot 13</div>
+          </div>
+          <div class="shot-info">
+            <div class="shot-title">The Temple Reborn</div>
+            <div class="shot-meta-row">
+              <span class="shot-type">Wide Shot</span>
+              <span class="shot-cam">Slow push-in</span>
+            </div>
+            <blockquote class="shot-vo">"Home breathes again."<button class="vo-play-btn" title="Play voiceover">&#9654; VO</button><audio class="vo-audio" src="VOs/VO_13.mp3" preload="none"></audio></blockquote>
+          </div>
+        </div>
+
+        <div class="shot-card reveal">
+          <div class="shot-media" data-clip="Clips/Scene 4/Shot 14.mp4">
+            <img src="Frames/Scene 4/Shot 14.png" alt="Shot 14 — The Threshold" class="shot-img" />
+            <video src="Clips/Scene 4/Shot 14.mp4" muted loop playsinline preload="none" class="shot-video"></video>
+            <div class="play-hint"><div class="play-icon">▶</div><span>Play Clip</span></div>
+            <div class="shot-badge">Shot 14</div>
+          </div>
+          <div class="shot-info">
+            <div class="shot-title">The Threshold</div>
+            <div class="shot-meta-row">
+              <span class="shot-type">Medium Shot</span>
+              <span class="shot-cam">Slow push-in</span>
+            </div>
+            <blockquote class="shot-vo">"I return with the light."<button class="vo-play-btn" title="Play voiceover">&#9654; VO</button><audio class="vo-audio" src="VOs/VO_14.mp3" preload="none"></audio></blockquote>
+          </div>
+        </div>
+
+        <div class="shot-card reveal">
+          <div class="shot-media" data-clip="Clips/Scene 4/Shot 15-16.mp4">
+            <img src="Frames/Scene 4/Shot 15.png" alt="Shot 15 — The Offering" class="shot-img" />
+            <video src="Clips/Scene 4/Shot 15-16.mp4" muted loop playsinline preload="none" class="shot-video"></video>
+            <div class="play-hint"><div class="play-icon">▶</div><span>Play Clip</span></div>
+            <div class="shot-badge">Shot 15</div>
+          </div>
+          <div class="shot-info">
+            <div class="shot-title">The Offering</div>
+            <div class="shot-meta-row">
+              <span class="shot-type">Medium-Close</span>
+              <span class="shot-cam">Slow push-in</span>
+            </div>
+            <blockquote class="shot-vo">"The cycle is complete."<button class="vo-play-btn" title="Play voiceover">&#9654; VO</button><audio class="vo-audio" src="VOs/VO_15.mp3" preload="none"></audio></blockquote>
+          </div>
+        </div>
+
+        <div class="shot-card reveal">
+          <div class="shot-media" data-clip="Clips/Scene 4/Shot 15-16.mp4">
+            <img src="Frames/Scene 4/Shot 16.png" alt="Shot 16 — The Keeper" class="shot-img" />
+            <video src="Clips/Scene 4/Shot 15-16.mp4" muted loop playsinline preload="none" class="shot-video"></video>
+            <div class="play-hint"><div class="play-icon">▶</div><span>Play Clip</span></div>
+            <div class="shot-badge">Shot 16</div>
+          </div>
+          <div class="shot-info">
+            <div class="shot-title">The Keeper</div>
+            <div class="shot-meta-row">
+              <span class="shot-type">Extreme Close-Up</span>
+              <span class="shot-cam">Static hold</span>
+            </div>
+            <blockquote class="shot-vo">"Sleep well, my village. I am here."<button class="vo-play-btn" title="Play voiceover">&#9654; VO</button><audio class="vo-audio" src="VOs/VO_16.mp3" preload="none"></audio></blockquote>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       CRAFT — PROMPT ENGINEERING
+  ============================================================ -->
+  <section id="craft" class="section">
+    <div class="container">
+      <div class="section-label reveal">08 — The Craft</div>
+      <h2 class="section-title reveal">Prompt Engineering</h2>
+
+      <div class="craft-layout">
+        <div class="craft-formula reveal">
+          <div class="formula-title">The Formula</div>
+          <div class="formula-block">
+            <div class="formula-part"><span class="fpart-label">Subject</span> <span class="fpart-plus">+</span></div>
+            <div class="formula-part"><span class="fpart-label">Location</span> <span class="fpart-plus">+</span></div>
+            <div class="formula-part"><span class="fpart-label">Lighting</span> <span class="fpart-plus">+</span></div>
+            <div class="formula-part"><span class="fpart-label">Camera</span> <span class="fpart-plus">+</span></div>
+            <div class="formula-part"><span class="fpart-label">Mood</span></div>
+          </div>
+          <div class="formula-note">Every prompt in this project followed this exact structure — no exceptions.</div>
+        </div>
+
+        <div class="craft-example reveal">
+          <div class="example-title">Example Prompt</div>
+          <div class="prompt-block">
+            <code>"Young female temple keeper age 22, <span class="p-subject">rust-colored wool hooded cloak with worn leather edges</span>, <span class="p-location">ancient stone temple interior</span>, <span class="p-lighting">cool blue moonlight and warm ember glow mixing on her face</span>, <span class="p-camera">medium shot waist up, shallow depth of field</span>, <span class="p-mood">photorealistic cinematic fantasy film still, 8K, film grain, shot on Arri Alexa 35mm</span>"</code>
+          </div>
+          <div class="prompt-legend">
+            <span class="leg-item"><span class="leg-dot p-subject"></span>Subject</span>
+            <span class="leg-item"><span class="leg-dot p-location"></span>Location</span>
+            <span class="leg-item"><span class="leg-dot p-lighting"></span>Lighting</span>
+            <span class="leg-item"><span class="leg-dot p-camera"></span>Camera</span>
+            <span class="leg-item"><span class="leg-dot p-mood"></span>Mood</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="consistency-block reveal">
+        <div class="consistency-title">Consistency Keywords — used in every single shot</div>
+        <div class="keyword-tags">
+          <span class="kw-tag">"rust-colored wool hooded cloak with worn leather edges"</span>
+          <span class="kw-tag">"dark leather belt with brass buckle"</span>
+          <span class="kw-tag">"small brass lantern with glass panels"</span>
+          <span class="kw-tag">"photorealistic cinematic fantasy film"</span>
+          <span class="kw-tag">"8K, film grain, shot on Arri Alexa 35mm"</span>
+        </div>
+      </div>
+
+      <div class="chinese-note reveal">
+        <div class="cn-icon">语</div>
+        <div>
+          <strong>Chinese Prompts for Higgsfield</strong>
+          <p>Discovered that Seedance 1.5 Pro responds better to Chinese prompts for video generation. All video prompts were translated and optimized for the model.</p>
+        </div>
+      </div>
+
+      <!-- AI LIMITATIONS -->
+      <h3 class="subsection-title reveal">Working With AI Limitations</h3>
+      <div class="limitations-grid">
+
+        <div class="limit-card reveal">
+          <div class="limit-problem">
+            <div class="limit-icon problem-icon">✕</div>
+            <div class="limit-text">
+              <strong>Dolly back / Pull back / Zoom out</strong>
+              <p>AI hallucinates areas outside the original frame</p>
+            </div>
+          </div>
+          <div class="limit-arrow">→</div>
+          <div class="limit-solution">
+            <div class="limit-icon solution-icon">✓</div>
+            <div class="limit-text">
+              Removed all pull-back motions. Replaced with push-in, pan, or static camera moves.
+            </div>
+          </div>
+        </div>
+
+        <div class="limit-card reveal">
+          <div class="limit-problem">
+            <div class="limit-icon problem-icon">✕</div>
+            <div class="limit-text">
+              <strong>Face warping in close-ups</strong>
+              <p>AI struggles with facial consistency during motion</p>
+            </div>
+          </div>
+          <div class="limit-arrow">→</div>
+          <div class="limit-solution">
+            <div class="limit-icon solution-icon">✓</div>
+            <div class="limit-text">
+              Kept face shots minimal in movement. Judged face first before keeping any clip.
+            </div>
+          </div>
+        </div>
+
+        <div class="limit-card reveal">
+          <div class="limit-problem">
+            <div class="limit-icon problem-icon">✕</div>
+            <div class="limit-text">
+              <strong>Hand/finger morphing</strong>
+              <p>AI distorts fingers during complex hand motions</p>
+            </div>
+          </div>
+          <div class="limit-arrow">→</div>
+          <div class="limit-solution">
+            <div class="limit-icon solution-icon">✓</div>
+            <div class="limit-text">
+              Kept hands stable. Let camera and environment do the motion work.
+            </div>
+          </div>
+        </div>
+
+        <div class="limit-card reveal">
+          <div class="limit-problem">
+            <div class="limit-icon problem-icon">✕</div>
+            <div class="limit-text">
+              <strong>Body transition between poses</strong>
+              <p>Start+End frame risky with large pose changes</p>
+            </div>
+          </div>
+          <div class="limit-arrow">→</div>
+          <div class="limit-solution">
+            <div class="limit-icon solution-icon">✓</div>
+            <div class="limit-text">
+              Used Start+End frames only for subtle transitions. Avoided kneeling or complex pose changes.
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="adaptation-note reveal">
+        <div class="adapt-label">Mid-Workflow Adaptation</div>
+        <p>Originally planned an "emergency rescue" story — a dying flame that needed saving. But discovered that <strong>fire never looked dying</strong> in generated clips. Rather than forcing a broken narrative, I rewrote the story to an <em>"annual ritual renewal"</em> — matching the actual visual output. This shows critical thinking and professional judgment.</p>
+      </div>
+
+      <!-- VOICEOVER -->
+      <h3 class="subsection-title reveal">The Voiceover</h3>
+      <div class="voiceover-card reveal">
+        <div class="vo-grid">
+          <div class="vo-item">
+            <div class="vo-label">Platform</div>
+            <div class="vo-val">Luvvoice</div>
+          </div>
+          <div class="vo-item">
+            <div class="vo-label">Voice</div>
+            <div class="vo-val">Elara Wynn — Warm Reflective</div>
+          </div>
+          <div class="vo-item">
+            <div class="vo-label">Rate</div>
+            <div class="vo-val">−10% (meditative pacing)</div>
+          </div>
+          <div class="vo-item">
+            <div class="vo-label">Format</div>
+            <div class="vo-val">16 MP3 files, one per shot</div>
+          </div>
+          <div class="vo-item">
+            <div class="vo-label">Total Characters</div>
+            <div class="vo-val">~500</div>
+          </div>
+          <div class="vo-item">
+            <div class="vo-label">Style</div>
+            <div class="vo-val">Ancient, ritualistic, intimate. First-person.</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ============================================================
+       FINAL FILM
+  ============================================================ -->
+  <section id="film" class="section section-dark film-section">
+    <div class="container">
+      <div class="section-label reveal">09 — The Final Film</div>
+      <h2 class="section-title reveal">Watch the Complete Sequence</h2>
+      <div class="film-player reveal">
+        <video
+          id="finalFilm"
+          controls
+          preload="metadata"
+          poster="Frames/Scene 3/Shot 12.png"
+        >
+          <source src="Final Video/The Last Amber.mp4" type="video/mp4" />
+          Your browser does not support the video element.
+        </video>
+        <div class="film-meta-bar">
+          <span>Runtime: ~112 seconds</span>
+          <span>16:9 · 1080p</span>
+          <span>Voiceover + Audio generated with clips (Seedance audio ON)</span>
+          <span>Hard Cuts</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+
+  <!-- ============================================================
+       DIRECTED, NOT GENERATED — Methodology Block
+  ============================================================ -->
+  <section id="methodology" class="section methodology-block">
+    <div class="container">
+
+      <div class="methodology-eyebrow">10 / Methodology</div>
+      <h2 class="methodology-headline">Directed,<br>Not Generated.</h2>
+
+      <div class="methodology-body">
+        <div class="methodology-text">
+          <p>Every frame in this sequence was the result of deliberate, structured decision-making — not luck. AI was the brush. The direction, the story, the choices, the adaptation — those were human.</p>
+          <p>A prompt formula was applied to <em>every single shot</em>, no exceptions. When the AI broke, the workflow changed. When the narrative didn't match the output, the narrative was rewritten to serve the truth of the image.</p>
+          <p>That's not AI filmmaking. That's filmmaking with AI.</p>
+        </div>
+
+        <div class="methodology-stats">
+          <div class="method-stat">
+            <div class="method-stat-num">16</div>
+            <div class="method-stat-label">Shots — each with a unique structured prompt</div>
+          </div>
+          <div class="method-stat">
+            <div class="method-stat-num">12</div>
+            <div class="method-stat-label">Hours — concept to deployed website</div>
+          </div>
+          <div class="method-stat">
+            <div class="method-stat-num">1</div>
+            <div class="method-stat-label">Mid-workflow narrative pivot — when the AI told a different truth</div>
+          </div>
+          <div class="method-stat">
+            <div class="method-stat-num">0</div>
+            <div class="method-stat-label">Random generations accepted — every clip was judged, iterated, or replaced</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ============================================================
+       FINAL CTA — Have a story that needs telling?
+  ============================================================ -->
+  <section class="ember-cta">
+    <div class="container">
+      <div class="ember-cta-inner">
+        <div class="ember-cta-left">
+          <div class="ember-cta-eyebrow">Ready to collaborate?</div>
+          <h2 class="ember-cta-headline">Have a story<br>that needs telling?</h2>
+        </div>
+        <div class="ember-cta-right">
+          <div class="ember-cta-actions">
+            <a href="mailto:divyarajc2@gmail.com" class="ember-cta-btn">Start a Project</a>
+            <a href="../../../ai-cinema.html" class="ember-cta-back">&#8592; Back to Portfolio</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       FOOTER
+  ============================================================ -->
+  <footer class="site-footer">
+    <div class="container">
+
+      <!-- Title block -->
+      <div class="footer-top">
+        <div class="footer-title">THE LAST EMBER</div>
+        <div class="footer-sub">AI Cinematic Sequence — Storyvord Internship Assignment</div>
+      </div>
+
+      <div class="footer-divider"></div>
+
+      <!-- Credits + Tools row -->
+      <div class="footer-bottom">
+        <div class="footer-credit">
+          <div class="footer-name">Divyaraj Chauhan</div>
+          <div class="footer-role">AI Filmmaker Intern at Storyvord</div>
+          <div class="footer-date">June 2026</div>
+        </div>
+        <div class="footer-tools-block">
+          <div class="footer-citations">
+            <a href="http://storyvord.io/" target="_blank" rel="noopener noreferrer" class="footer-cite-item" title="Visit Storyvord">
+              <img src="base images/storyvord-logo.png" alt="Storyvord" class="footer-cite-logo" />
+            </a>
+            <a href="../../../index.html" class="footer-cite-item" title="Visit divyarajchauhan.in">
+              <img src="../../../favicon.svg" alt="divyarajchauhan.in" class="footer-cite-logo" style="filter: none;" />
+            </a>
+          </div>
+          <div class="footer-tools-label">Tools</div>
+          <div class="footer-tools">
+            <span>Higgsfield (Seedance 1.5 Pro)</span>
+            <span class="sep">|</span>
+            <span>Nano Banana Pro</span>
+            <span class="sep">|</span>
+            <span>Luvvoice</span>
+            <span class="sep">|</span>
+            <span>Google Vids</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+  </footer>
+
+  <script src="script.js"></script>
+  <!-- ─── Back To Top Button HTML & Script ─── -->
+  <button id="back-to-top" class="back-to-top-btn" aria-label="Back to top">↑</button>
+  <script>
+      const backToTopBtn = document.getElementById('back-to-top');
+      window.addEventListener('scroll', () => {
+          if (window.scrollY > 400) {
+              backToTopBtn.classList.add('visible');
+          } else {
+              backToTopBtn.classList.remove('visible');
+          }
+      });
+      backToTopBtn.addEventListener('click', () => {
+          window.scrollTo({
+              top: 0,
+              behavior: 'smooth'
+          });
+      });
+  </script>
+</body>
+</html>

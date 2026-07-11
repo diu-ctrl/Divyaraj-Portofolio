@@ -20,9 +20,9 @@ check_referenced_sizes.js
 find_css_js.js
 
 # Ignore legacy/duplicate project folders (contain large videos, not needed in repo)
-new new portfolio/
-the last amber/
-purple theme resume/
+/new new portfolio/
+/the last amber/
+/purple theme resume/
 
 # Ignore large video files (exceed GitHub 100MB limit)
 *.mov
