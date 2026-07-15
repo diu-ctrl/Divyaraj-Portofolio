@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Privacy Policy — Divyaraj Chauhan</title>
+    <link rel="icon" type="image/svg+xml" href="favicon.svg?v=2">
+    <link rel="alternate icon" type="image/png" href="favicon.png?v=2">
+    <meta name="description" content="Privacy Policy for divyarajchauhan.in — how Divyaraj Chauhan handles personal information shared through contact, enquiries and Meta lead forms.">
+    <meta name="robots" content="noindex, follow">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@300;400;500;600;700;800;900&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+
+    <style>
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+        :root {
+            --bg: #0a0a0a;
+            --surface: #111111;
+            --border: #1e1e1e;
+            --text: #f0ede6;
+            --text-muted: #6b6b6b;
+            --accent: #eb4604;
+            --accent-dim: rgba(235, 70, 4, 0.12);
+            --font-sans: 'Inter', -apple-system, sans-serif;
+            --font-serif: 'Instrument Serif', Georgia, serif;
+            --font-mono: 'Space Mono', monospace;
+        }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            background: var(--bg);
+            color: var(--text);
+            font-family: var(--font-sans);
+            font-size: 16px;
+            line-height: 1.7;
+            min-height: 100vh;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* ─── Top Nav ─── */
+        .pp-nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 18px 5%;
+            border-bottom: 1px solid var(--border);
+            background: rgba(10,10,10,0.92);
+            backdrop-filter: blur(12px);
+        }
+
+        .pp-nav-logo {
+            font-family: var(--font-serif);
+            font-size: 1.25rem;
+            color: var(--text);
+            text-decoration: none;
+            letter-spacing: -0.02em;
+        }
+
+        .pp-nav-logo span { color: var(--accent); }
+
+        .pp-back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-family: var(--font-mono);
+            font-size: 0.7rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--text-muted);
+            text-decoration: none;
+            transition: color 0.2s ease;
+        }
+
+        .pp-back-link:hover { color: var(--text); }
+
+        .pp-back-link svg {
+            width: 14px;
+            height: 14px;
+            transition: transform 0.2s ease;
+        }
+
+        .pp-back-link:hover svg { transform: translateX(-3px); }
+
+        /* ─── Page Container ─── */
+        .pp-container {
+            max-width: 780px;
+            margin: 0 auto;
+            padding: 140px 5% 100px;
+        }
+
+        /* ─── Header ─── */
+        .pp-header {
+            margin-bottom: 60px;
+            padding-bottom: 40px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .pp-eyebrow {
+            font-family: var(--font-mono);
+            font-size: 0.68rem;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            color: var(--accent);
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .pp-eyebrow::before {
+            content: '';
+            display: inline-block;
+            width: 6px;
+            height: 6px;
+            background: var(--accent);
+            border-radius: 50%;
+        }
+
+        .pp-title {
+            font-family: var(--font-serif);
+            font-size: clamp(2.4rem, 5vw, 3.4rem);
+            font-weight: 400;
+            line-height: 1.1;
+            letter-spacing: -0.02em;
+            color: var(--text);
+            margin-bottom: 20px;
+        }
+
+        .pp-effective {
+            font-family: var(--font-mono);
+            font-size: 0.72rem;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: var(--text-muted);
+        }
+
+        /* ─── Intro Para ─── */
+        .pp-intro {
+            font-size: 1.05rem;
+            color: rgba(240, 237, 230, 0.75);
+            line-height: 1.8;
+            margin-bottom: 60px;
+        }
+
+        /* ─── Section ─── */
+        .pp-section {
+            margin-bottom: 52px;
+        }
+
+        .pp-section-title {
+            font-family: var(--font-sans);
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--accent);
+            margin-bottom: 16px;
+            padding-left: 14px;
+            border-left: 2px solid var(--accent);
+        }
+
+        .pp-section p {
+            font-size: 0.97rem;
+            color: rgba(240, 237, 230, 0.72);
+            line-height: 1.8;
+            margin-bottom: 12px;
+        }
+
+        .pp-section p:last-child { margin-bottom: 0; }
+
+        /* ─── List ─── */
+        .pp-list {
+            list-style: none;
+            padding: 0;
+            margin: 12px 0;
+        }
+
+        .pp-list li {
+            font-size: 0.97rem;
+            color: rgba(240, 237, 230, 0.72);
+            line-height: 1.7;
+            padding: 7px 0 7px 22px;
+            border-bottom: 1px solid var(--border);
+            position: relative;
+        }
+
+        .pp-list li:last-child { border-bottom: none; }
+
+        .pp-list li::before {
+            content: '—';
+            position: absolute;
+            left: 0;
+            color: var(--text-muted);
+            font-family: var(--font-mono);
+        }
+
+        /* ─── Contact Card ─── */
+        .pp-contact-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            padding: 32px;
+            margin-top: 16px;
+        }
+
+        .pp-contact-card .contact-row {
+            display: flex;
+            align-items: baseline;
+            gap: 16px;
+            padding: 10px 0;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .pp-contact-card .contact-row:last-child { border-bottom: none; }
+
+        .pp-contact-card .contact-label {
+            font-family: var(--font-mono);
+            font-size: 0.65rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--text-muted);
+            min-width: 90px;
+            flex-shrink: 0;
+        }
+
+        .pp-contact-card .contact-value {
+            font-size: 0.93rem;
+            color: var(--text);
+        }
+
+        .pp-contact-card a {
+            color: var(--accent);
+            text-decoration: none;
+            transition: opacity 0.2s;
+        }
+
+        .pp-contact-card a:hover { opacity: 0.75; }
+
+        /* ─── Footer ─── */
+        .pp-footer {
+            margin-top: 80px;
+            padding-top: 32px;
+            border-top: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .pp-footer-copy {
+            font-family: var(--font-mono);
+            font-size: 0.65rem;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: var(--text-muted);
+        }
+
+        .pp-footer-back {
+            font-family: var(--font-mono);
+            font-size: 0.65rem;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: var(--text-muted);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .pp-footer-back:hover { color: var(--accent); }
+
+        @media (max-width: 600px) {
+            .pp-container { padding: 120px 6% 80px; }
+            .pp-contact-card { padding: 20px 18px; }
+            .pp-footer { flex-direction: column; align-items: flex-start; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Nav -->
+    <nav class="pp-nav">
+        <a href="index.html" class="pp-nav-logo">Divyaraj<span>.</span></a>
+        <a href="index.html" class="pp-back-link">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="19" y1="12" x2="5" y2="12"></line>
+                <polyline points="12 19 5 12 12 5"></polyline>
+            </svg>
+            Back to Portfolio
+        </a>
+    </nav>
+
+    <div class="pp-container">
+
+        <!-- Header -->
+        <header class="pp-header">
+            <div class="pp-eyebrow">Legal</div>
+            <h1 class="pp-title">Privacy Policy</h1>
+            <p class="pp-effective">Effective Date: 15 July 2026</p>
+        </header>
+
+        <!-- Intro -->
+        <p class="pp-intro">
+            Divyaraj Chauhan respects your privacy and is committed to protecting the information you share while contacting or working with me.
+        </p>
+
+        <!-- Section 1 -->
+        <div class="pp-section">
+            <h2 class="pp-section-title">Information Collected</h2>
+            <p>When you contact me through my website, Instagram, Facebook, Meta advertisements or lead forms, I may collect information such as:</p>
+            <ul class="pp-list">
+                <li>Your name</li>
+                <li>Instagram or Facebook profile details</li>
+                <li>Email address or phone number, when provided</li>
+                <li>Brand or company name</li>
+                <li>Project requirements</li>
+                <li>Timeline and estimated budget</li>
+                <li>Messages and communication related to your enquiry</li>
+            </ul>
+        </div>
+
+        <!-- Section 2 -->
+        <div class="pp-section">
+            <h2 class="pp-section-title">How the Information is Used</h2>
+            <p>The information collected may be used to:</p>
+            <ul class="pp-list">
+                <li>Respond to your enquiry</li>
+                <li>Understand your project requirements</li>
+                <li>Provide quotations, proposals or service recommendations</li>
+                <li>Communicate regarding current or future projects</li>
+                <li>Improve my services and client experience</li>
+                <li>Maintain necessary business records</li>
+            </ul>
+        </div>
+
+        <!-- Section 3 -->
+        <div class="pp-section">
+            <h2 class="pp-section-title">Sharing of Information</h2>
+            <p>Your personal information is not sold or rented to third parties.</p>
+            <p>Information may only be shared with trusted service providers when required to complete a project, operate the website or comply with applicable legal obligations.</p>
+        </div>
+
+        <!-- Section 4 -->
+        <div class="pp-section">
+            <h2 class="pp-section-title">Data Retention</h2>
+            <p>Information is retained only for as long as reasonably necessary to respond to enquiries, provide services, maintain business records or meet legal requirements.</p>
+        </div>
+
+        <!-- Section 5 -->
+        <div class="pp-section">
+            <h2 class="pp-section-title">Data Security</h2>
+            <p>Reasonable measures are taken to protect personal information from unauthorised access, loss, misuse or disclosure. However, no online system can guarantee complete security.</p>
+        </div>
+
+        <!-- Section 6 -->
+        <div class="pp-section">
+            <h2 class="pp-section-title">Third-Party Platforms</h2>
+            <p>Enquiries submitted through Instagram, Facebook or other Meta platforms may also be processed according to Meta's own privacy policies and platform terms.</p>
+        </div>
+
+        <!-- Section 7 -->
+        <div class="pp-section">
+            <h2 class="pp-section-title">Your Choices</h2>
+            <p>You may request access to, correction of or deletion of the personal information you have shared by contacting me.</p>
+        </div>
+
+        <!-- Section 8: Contact -->
+        <div class="pp-section">
+            <h2 class="pp-section-title">Contact</h2>
+            <p>For privacy-related questions or requests, contact:</p>
+            <div class="pp-contact-card">
+                <div class="contact-row">
+                    <span class="contact-label">Name</span>
+                    <span class="contact-value">Divyaraj Chauhan</span>
+                </div>
+                <div class="contact-row">
+                    <span class="contact-label">Instagram</span>
+                    <span class="contact-value"><a href="https://instagram.com/divyaraj.creates" target="_blank" rel="noopener">@divyaraj.creates</a></span>
+                </div>
+                <div class="contact-row">
+                    <span class="contact-label">Email</span>
+                    <span class="contact-value"><a href="mailto:divyarajc2@gmail.com">divyarajc2@gmail.com</a></span>
+                </div>
+                <div class="contact-row">
+                    <span class="contact-label">Website</span>
+                    <span class="contact-value"><a href="https://divyarajchauhan.in">divyarajchauhan.in</a></span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <footer class="pp-footer">
+            <span class="pp-footer-copy">&copy; 2026 Divyaraj Chauhan. All rights reserved.</span>
+            <a href="index.html" class="pp-footer-back">← Back to Portfolio</a>
+        </footer>
+
+    </div>
+
+</body>
+</html>
