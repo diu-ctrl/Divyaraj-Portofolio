@@ -1098,7 +1098,28 @@
         </div>
         
         <div class="films-container">
-            <!-- Featured Film: The Last Ember -->
+            <!-- Featured Film #1: Kutch -->
+            <div class="film-row reveal featured-film" id="kutch">
+                <div class="film-row-visual">
+                    <img src="images/kutch-thumb.png" alt="Kutch Thumbnail">
+                    <div style="position: absolute; top: 16px; left: 16px; background: rgba(0,0,0,0.75); border: 1px solid rgba(255,255,255,0.15); padding: 4px 10px; font-family: var(--font-mono); font-size: 0.62rem; letter-spacing: 0.1em; color: var(--text-muted); text-transform: uppercase;">Beat-Synced &middot; Tulasi — Sumedh K</div>
+                </div>
+                <div class="film-row-content">
+                    <div style="display: flex; gap: 10px; align-items: center; flex-wrap: wrap;">
+                        <span class="film-meta">Documentary &bull; AI Directed &bull; 2026</span>
+                    </div>
+                    <h2>Kutch</h2>
+                    <p class="film-brief">
+                        People, places, animals, art &mdash; the Kutch region explored through AI that doesn't look like AI. Every frame directed with intent. Beat-synced to Sumedh K's <em>Tulasi</em>.
+                    </p>
+                    <div class="film-actions">
+                        <button class="btn-primary-gold watch-btn" data-video="Final Video/Kutch.mp4">Watch Film</button>
+                        <button class="btn-outline case-study-btn" data-case="kutch">Summary &rarr;</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Featured Film #2: The Last Ember -->
             <div class="film-row reveal featured-film" id="last-ember">
                 <div class="film-row-visual">
                     <img src="images/last-ember-thumb.jpg" alt="The Last Ember Thumbnail">
@@ -1124,38 +1145,13 @@
                 </div>
             </div>
 
-            <!-- Featured Film: India AI Impact Summit 2026 -->
-            <div class="film-row reveal featured-film" id="india-ai-summit">
-                <div class="film-row-visual">
-                    <img src="brands/Ai Cinema Lab/Billion/billion.png" alt="The Next Billion Thumbnail">
-                    <button class="play-btn-large watch-btn" data-video="Final Video/india-ai-impact-summit-2026.mp4" aria-label="Play Film">
-                        <svg viewBox="0 0 24 24" fill="currentColor">
-                            <path d="M8 5v14l11-7z"/>
-                        </svg>
-                    </button>
-                </div>
-                <div class="film-row-content">
-                    <div style="display: flex; gap: 10px; align-items: center; flex-wrap: wrap;">
-                        <span class="film-meta">5:17 &bull; Documentary &bull; 2026</span>
-                        <span class="film-meta" style="color: #EB4604; background: #282723; border-color: #282723;">Top 15 — India AI Impact Summit</span>
-                    </div>
-                    <h2>The Next Billion</h2>
-                    <p class="film-brief">
-                        A 5-minute AI documentary tracing India's journey from early computing to becoming a global AI powerhouse — healthcare, agriculture, education, defense, and the founders building what's next. Created for the India AI Impact Summit 2026 opening ceremony competition.
-                    </p>
-                    <div class="film-actions">
-                        <button class="btn-primary-gold watch-btn" data-video="Final Video/india-ai-impact-summit-2026.mp4">Watch Film</button>
-                        <button class="btn-outline case-study-btn" data-case="india-ai-summit">Summary &rarr;</button>
-                    </div>
-                </div>
-            </div>
 
             <!-- Supporting Films Grid -->
             <div class="supporting-films-grid">
                 <!-- Film 1: Kasahrada -->
                 <div class="film-card reveal" id="kasahrada">
                     <div class="film-card-visual" style="aspect-ratio: 16/9; margin-bottom: 24px; position: relative; border-radius: 0; overflow: hidden; border: 1px solid #282723; background: #000000;">
-                        <img src="images/kasahrada-thumb.png" alt="Battle of Kasahrada Thumbnail" style="width: 100%; height: 100%; object-fit: cover;">
+                        <img src="images/kasahrada-thumb.png" alt="Battle of Kasahrada Thumbnail" style="width: 100%; height: 100%; object-fit: cover; transform: scale(1.18); object-position: center 35%;">
                         <button class="play-btn-large watch-btn" data-video="Final Video/Rani Nayika Devi_Divyaraj.mp4" aria-label="Play Film">
                             <svg viewBox="0 0 24 24" fill="currentColor" style="width: 56px; height: 56px;">
                                 <path d="M8 5v14l11-7z"/>
@@ -1248,24 +1244,32 @@
                     </div>
                 </div>
 
-                <!-- Film 5: Kutch -->
-                <div class="film-card reveal" id="kutch">
+                <!-- Film 5: The Next Billion -->
+                <div class="film-card reveal" id="india-ai-summit">
                     <div class="film-card-visual" style="aspect-ratio: 16/9; margin-bottom: 24px; position: relative; border-radius: 0; overflow: hidden; border: 1px solid #282723; background: #000000;">
-                        <img src="images/kutch-thumb.png" alt="Kutch Thumbnail" style="width: 100%; height: 100%; object-fit: cover;">
-                        <div style="position: absolute; bottom: 12px; right: 12px; background: rgba(0,0,0,0.7); border: 1px solid rgba(255,255,255,0.15); padding: 3px 8px; font-family: var(--font-mono); font-size: 0.65rem; letter-spacing: 0.08em; color: var(--text-muted);">BEAT-SYNCED</div>
+                        <img src="brands/Ai Cinema Lab/Billion/billion.png" alt="The Next Billion Thumbnail" style="width: 100%; height: 100%; object-fit: cover;">
+                        <button class="play-btn-large watch-btn" data-video="Final Video/india-ai-impact-summit-2026.mp4" aria-label="Play Film">
+                            <svg viewBox="0 0 24 24" fill="currentColor" style="width: 56px; height: 56px;">
+                                <path d="M8 5v14l11-7z"/>
+                            </svg>
+                        </button>
+                        <div style="position: absolute; top: 10px; right: 10px; background: rgba(235,70,4,0.15); border: 1px solid rgba(235,70,4,0.4); padding: 3px 8px; font-family: var(--font-mono); font-size: 0.62rem; letter-spacing: 0.08em; color: #EB4604;">TOP 15</div>
                     </div>
                     <div class="film-card-content" style="display: flex; flex-direction: column; gap: 8px;">
-                        <span class="film-meta">Documentary &bull; AI Directed &bull; 2026</span>
-                        <h3>Kutch</h3>
-                        <p class="film-subtitle" style="font-size: 0.95rem; color: var(--text-muted);">What AI Looks Like When It's Directed</p>
+                        <span class="film-meta">5:17 &bull; Documentary &bull; 2026</span>
+                        <h3>The Next Billion</h3>
+                        <p class="film-subtitle" style="font-size: 0.95rem; color: var(--text-muted);">India AI Impact Summit 2026</p>
                         <p class="film-brief" style="font-size: 0.92rem; color: var(--text-muted); line-height: 1.6;">
-                            People, places, animals, art — the Kutch region explored through AI that doesn't look like AI. Beat-synced to Sumedh K's <em>Tulasi</em>.
+                            5-minute AI documentary on India's AI journey. Top 15 entry at the India AI Impact Summit 2026 opening ceremony competition.
                         </p>
                         <div class="film-actions" style="margin-top: auto; display: flex; gap: 12px;">
-                            <button class="btn-outline case-study-btn" data-case="kutch">Summary &rarr;</button>
+                            <button class="btn-primary-gold watch-btn" data-video="Final Video/india-ai-impact-summit-2026.mp4">Watch Film</button>
+                            <button class="btn-outline case-study-btn" data-case="india-ai-summit">Summary &rarr;</button>
                         </div>
                     </div>
                 </div>
+
+                <!-- Kutch moved to featured row above -->
             </div>
         </div>
     </section>
