@@ -109,18 +109,28 @@
 
         /* ─── Hero ─── */
         .hero {
-            height: 100vh !important;
-            height: 100dvh !important;
+            height: 220vh !important; /* Scroll track for clip-path zoom effect */
             width: 100%;
             max-width: none !important;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
             position: relative;
+            background: #000000;
+        }
+
+        .hero-sticky {
+            position: sticky !important;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100vw;
+            height: 100vh;
+            height: 100dvh;
             overflow: hidden;
-            background: var(--bg);
-            padding: 0 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #000000;
+            clip-path: polygon(35% 20%, 65% 20%, 65% 80%, 35% 80%);
+            will-change: clip-path;
         }
 
         /* ─── Hero Corner Labels ─── */
@@ -158,9 +168,6 @@
         }
 
         @media (max-width: 480px) {
-            .hero-inner {
-                width: min(100%, 200px);
-            }
             .hero-title {
                 font-size: 13vw !important;
             }
@@ -168,9 +175,9 @@
 
         .hero-inner {
             position: relative;
-            width: min(100%, 300px);
-            aspect-ratio: 4 / 5;
-            height: auto;
+            width: 100% !important;
+            height: 100% !important;
+            max-width: none !important;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -181,7 +188,6 @@
             height: 100%;
             position: relative;
             overflow: hidden;
-            border: 1px solid var(--border);
             background: #000;
         }
 
@@ -228,13 +234,18 @@
         }
 
         .hero-subtitle-mono {
+            position: absolute;
+            bottom: 80px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 10;
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
             font-size: 1rem;
             color: var(--text);
-            margin-top: 30px;
             text-align: center;
             max-width: 600px;
             line-height: 1.5;
+            width: 90%;
         }
 
         @keyframes marquee {
@@ -2619,16 +2630,18 @@
         <span class="hero-corner hero-corner-bl">&copy; 2026 Divyaraj Chauhan</span>
         <span class="hero-corner hero-corner-br">Scroll to explore <span class="scroll-arrow">&#8595;</span></span>
 
-        <div class="hero-inner reveal">
-            <div class="hero-media">
-                <img src="Hero images/1.png" class="active" alt="Hero Image 1">
-                <img src="Hero images/2.png" alt="Hero Image 2">
-                <img src="Hero images/3.png" alt="Hero Image 3">
-                <img src="Hero images/4.png" alt="Hero Image 4">
-                <img src="Hero images/5.png" alt="Hero Image 5">
-                <img src="Hero images/6.png" alt="Hero Image 6">
+        <div class="hero-sticky">
+            <div class="hero-inner reveal">
+                <div class="hero-media">
+                    <img src="Hero images/1.png" class="active" alt="Hero Image 1">
+                    <img src="Hero images/2.png" alt="Hero Image 2">
+                    <img src="Hero images/3.png" alt="Hero Image 3">
+                    <img src="Hero images/4.png" alt="Hero Image 4">
+                    <img src="Hero images/5.png" alt="Hero Image 5">
+                    <img src="Hero images/6.png" alt="Hero Image 6">
+                </div>
+                <h1 class="hero-title">Divyaraj.</h1>
             </div>
-            <h1 class="hero-title">Divyaraj.</h1>
         </div>
         <p class="hero-subtitle-mono reveal">A digital strategist building brands, platforms, and cinematic stories.</p>
     </section>
@@ -3652,6 +3665,58 @@
                 window.location.href = 'ai-cinema.html';
             });
 
+            // Run initial check
+            handleScroll();
+        })();
+
+        // ─── Hero Scroll Clip-Path Parallax Effect ───
+        (function() {
+            const hero = document.getElementById('hero');
+            const sticky = document.querySelector('.hero-sticky');
+            const media = document.querySelector('.hero-media');
+
+            if (!hero || !sticky) return;
+
+            function handleScroll() {
+                const rect = hero.getBoundingClientRect();
+                const heroTop = rect.top + window.scrollY;
+                const heroHeight = hero.offsetHeight;
+                const windowHeight = window.innerHeight;
+
+                const start = heroTop;
+                const end = heroTop + heroHeight - windowHeight;
+                
+                if (end <= start) return;
+
+                let progress = (window.scrollY - start) / (end - start);
+                progress = Math.max(0, Math.min(1, progress));
+
+                // Mobile vs Desktop clip-path logic (aspect ratio ~4/5)
+                const isMobile = window.innerWidth <= 768;
+                const initialLeft = isMobile ? 20 : 35;
+                const initialRight = isMobile ? 80 : 65;
+                const initialTop = isMobile ? 25 : 20;
+                const initialBottom = isMobile ? 75 : 80;
+
+                const clipLeft = initialLeft - (initialLeft * progress);
+                const clipRight = initialRight + ((100 - initialRight) * progress);
+                const clipTop = initialTop - (initialTop * progress);
+                const clipBottom = initialBottom + ((100 - initialBottom) * progress);
+
+                sticky.style.clipPath = `polygon(${clipLeft}% ${clipTop}%, ${clipRight}% ${clipTop}%, ${clipRight}% ${clipBottom}%, ${clipLeft}% ${clipBottom}%)`;
+
+                // Zoom active image
+                if (media) {
+                    const scale = 1.6 - (0.6 * progress);
+                    media.style.transform = `scale(${scale})`;
+                }
+            }
+
+            window.addEventListener('scroll', () => {
+                requestAnimationFrame(handleScroll);
+            });
+            window.addEventListener('resize', handleScroll);
+            
             // Run initial check
             handleScroll();
         })();
