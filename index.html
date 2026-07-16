@@ -1951,9 +1951,7 @@
         .cinema-slider-wrapper {
             position: sticky !important;
             top: 0;
-            width: 100vw !important; /* Force 100% viewport width bleed */
-            left: 50%;
-            transform: translateX(-50%);
+            width: 100%;
             height: 100vh !important; /* Fullscreen vertical height */
             background: #000000;
             overflow: hidden;
@@ -2577,6 +2575,33 @@
             opacity: 1;
             transform: translate(-50%, -50%) scale(1);
         }
+
+        /* 3D Photography Gallery in Hero */
+        #hero-3d-gallery {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+            pointer-events: auto;
+        }
+
+        .hero-instructions {
+            position: absolute;
+            bottom: 40px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 10;
+            font-family: var(--font-mono);
+            text-transform: uppercase;
+            font-size: 11px;
+            font-weight: 600;
+            color: #ffffff;
+            text-align: center;
+            line-height: 1.6;
+            pointer-events: none;
+            width: 90%;
+        }
 </style>
 </head>
 <body>
@@ -2631,16 +2656,11 @@
         <span class="hero-corner hero-corner-br">Scroll to explore <span class="scroll-arrow">&#8595;</span></span>
 
         <div class="hero-sticky">
-            <div class="hero-inner reveal">
-                <div class="hero-media">
-                    <img src="Hero images/1.png" class="active" alt="Hero Image 1">
-                    <img src="Hero images/2.png" alt="Hero Image 2">
-                    <img src="Hero images/3.png" alt="Hero Image 3">
-                    <img src="Hero images/4.png" alt="Hero Image 4">
-                    <img src="Hero images/5.png" alt="Hero Image 5">
-                    <img src="Hero images/6.png" alt="Hero Image 6">
-                </div>
-                <h1 class="hero-title">Divyaraj.</h1>
+            <div id="hero-3d-gallery"></div>
+            <h1 class="hero-title">Divyaraj.</h1>
+            <div class="hero-instructions">
+                <p>Use scroll, arrow keys, or touch to navigate</p>
+                <p style="opacity: 0.6;">Auto-play resumes after 3 seconds of inactivity</p>
             </div>
         </div>
         <p class="hero-subtitle-mono reveal">A digital strategist building brands, platforms, and cinematic stories.</p>
@@ -3137,7 +3157,7 @@
             <h2>AI Cinema <span class="gradient-text">Lab</span></h2>
         </div>
         
-        <div class="cinema-container reveal">
+        <div class="cinema-container">
             <div class="cinema-slider-wrapper">
                 <div class="cinema-slider">
                     <!-- Slide: Kutch -->
@@ -3299,6 +3319,7 @@
         <button onclick="closeCustomAlert()">Got it</button>
     </div>
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <script>
 
 
@@ -3554,40 +3575,7 @@
             }
         })();
 
-        // ─── Hero Image Slideshow (sequential: 1→2→3→⋯→1→2…) ───
-        (function() {
-            const images = Array.from(document.querySelectorAll('.hero-media img'));
-            if (images.length === 0) return;
 
-            // Ensure image 0 is the starting active image
-            images.forEach((img, i) => {
-                img.classList.toggle('active', i === 0);
-            });
-
-            let current = 0;
-
-            setInterval(() => {
-                const currentImg = images[current];
-
-                // Advance to next, wrapping infinitely
-                const next = (current + 1) % images.length;
-                const nextImg = images[next];
-
-                // Fade out current
-                currentImg.classList.remove('active');
-                currentImg.classList.add('exit');
-
-                // Fade in next
-                nextImg.classList.add('active');
-
-                // Clean up exit class after transition
-                setTimeout(() => {
-                    currentImg.classList.remove('exit');
-                }, 1000);
-
-                current = next;
-            }, 3000); // 2 s visible + 1 s fade
-        })();
 
         // ─── AI Cinema Scroll Clip-Path Parallax & Custom Cursor ───
         (function() {
@@ -3669,56 +3657,377 @@
             handleScroll();
         })();
 
-        // ─── Hero Scroll Clip-Path Parallax Effect ───
+        // ─── Hero 3D Photography Gallery (WebGL / Three.js) ───
         (function() {
+            const container = document.getElementById('hero-3d-gallery');
             const hero = document.getElementById('hero');
-            const sticky = document.querySelector('.hero-sticky');
-            const media = document.querySelector('.hero-media');
+            const instructions = document.querySelector('.hero-instructions');
+            if (!container || !hero) return;
 
-            if (!hero || !sticky) return;
+            // 3D Scene Setup
+            const scene = new THREE.Scene();
+            const camera = new THREE.PerspectiveCamera(55, window.innerWidth / window.innerHeight, 0.1, 100);
+            camera.position.set(0, 0, 0);
 
-            function handleScroll() {
-                const rect = hero.getBoundingClientRect();
-                const heroTop = rect.top + window.scrollY;
-                const heroHeight = hero.offsetHeight;
-                const windowHeight = window.innerHeight;
+            const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+            renderer.setSize(window.innerWidth, window.innerHeight);
+            renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+            container.appendChild(renderer.domElement);
 
-                const start = heroTop;
-                const end = heroTop + heroHeight - windowHeight;
-                
-                if (end <= start) return;
+            // Load Textures
+            const textureLoader = new THREE.TextureLoader();
+            const imageUrls = [
+                'Hero images/1.png',
+                'Hero images/2.png',
+                'Hero images/3.png',
+                'Hero images/4.png',
+                'Hero images/5.png',
+                'Hero images/6.png'
+            ];
+            const textures = imageUrls.map(url => textureLoader.load(url));
 
-                let progress = (window.scrollY - start) / (end - start);
-                progress = Math.max(0, Math.min(1, progress));
-
-                // Mobile vs Desktop clip-path logic (aspect ratio ~4/5)
-                const isMobile = window.innerWidth <= 768;
-                const initialLeft = isMobile ? 20 : 35;
-                const initialRight = isMobile ? 80 : 65;
-                const initialTop = isMobile ? 25 : 20;
-                const initialBottom = isMobile ? 75 : 80;
-
-                const clipLeft = initialLeft - (initialLeft * progress);
-                const clipRight = initialRight + ((100 - initialRight) * progress);
-                const clipTop = initialTop - (initialTop * progress);
-                const clipBottom = initialBottom + ((100 - initialBottom) * progress);
-
-                sticky.style.clipPath = `polygon(${clipLeft}% ${clipTop}%, ${clipRight}% ${clipTop}%, ${clipRight}% ${clipBottom}%, ${clipLeft}% ${clipBottom}%)`;
-
-                // Zoom active image
-                if (media) {
-                    const scale = 1.6 - (0.6 * progress);
-                    media.style.transform = `scale(${scale})`;
-                }
+            // Cloth Material Builder
+            function createClothMaterial() {
+                return new THREE.ShaderMaterial({
+                    transparent: true,
+                    uniforms: {
+                        map: { value: null },
+                        opacity: { value: 1.0 },
+                        blurAmount: { value: 0.0 },
+                        scrollForce: { value: 0.0 },
+                        time: { value: 0.0 },
+                        isHovered: { value: 0.0 },
+                    },
+                    vertexShader: `
+                        uniform float scrollForce;
+                        uniform float time;
+                        uniform float isHovered;
+                        varying vec2 vUv;
+                        varying vec3 vNormal;
+                        
+                        void main() {
+                          vUv = uv;
+                          vNormal = normal;
+                          
+                          vec3 pos = position;
+                          
+                          // Smooth curving based on scroll force
+                          float curveIntensity = scrollForce * 0.3;
+                          float distanceFromCenter = length(pos.xy);
+                          float curve = distanceFromCenter * distanceFromCenter * curveIntensity;
+                          
+                          // Ripple waves
+                          float ripple1 = sin(pos.x * 2.0 + scrollForce * 3.0) * 0.02;
+                          float ripple2 = sin(pos.y * 2.5 + scrollForce * 2.0) * 0.015;
+                          float clothEffect = (ripple1 + ripple2) * abs(curveIntensity) * 2.0;
+                          
+                          // Flag waving wave on hover
+                          float flagWave = 0.0;
+                          if (isHovered > 0.5) {
+                            float wavePhase = pos.x * 3.0 + time * 8.0;
+                            float waveAmplitude = sin(wavePhase) * 0.08;
+                            float dampening = smoothstep(-0.5, 0.5, pos.x);
+                            flagWave = waveAmplitude * dampening;
+                            
+                            float secondaryWave = sin(pos.x * 5.0 + time * 12.0) * 0.02 * dampening;
+                            flagWave += secondaryWave;
+                          }
+                          
+                          pos.z -= (curve + clothEffect + flagWave);
+                          gl_Position = projectionMatrix * modelViewMatrix * vec4(pos, 1.0);
+                        }
+                    `,
+                    fragmentShader: `
+                        uniform sampler2D map;
+                        uniform float opacity;
+                        uniform float blurAmount;
+                        uniform float scrollForce;
+                        varying vec2 vUv;
+                        varying vec3 vNormal;
+                        
+                        void main() {
+                          vec4 color = texture2D(map, vUv);
+                          
+                          if (blurAmount > 0.0) {
+                            vec2 texelSize = vec2(0.001);
+                            vec4 blurred = vec4(0.0);
+                            float total = 0.0;
+                            
+                            for (float x = -2.0; x <= 2.0; x += 1.0) {
+                              for (float y = -2.0; y <= 2.0; y += 1.0) {
+                                vec2 offset = vec2(x, y) * texelSize * blurAmount;
+                                float weight = 1.0 / (1.0 + length(vec2(x, y)));
+                                blurred += texture2D(map, vUv + offset) * weight;
+                                total += weight;
+                              }
+                            }
+                            color = blurred / total;
+                          }
+                          
+                          float curveHighlight = abs(scrollForce) * 0.05;
+                          color.rgb += vec3(curveHighlight * 0.1);
+                          gl_FragColor = vec4(color.rgb, color.a * opacity);
+                        }
+                    `
+                });
             }
 
-            window.addEventListener('scroll', () => {
-                requestAnimationFrame(handleScroll);
+            // Spatial Angle Setup
+            const visibleCount = 12;
+            const depthRange = 50;
+            const halfRange = depthRange / 2;
+            const maxHorizontalOffset = 8;
+            const maxVerticalOffset = 8;
+
+            const spatialPositions = [];
+            for (let i = 0; i < visibleCount; i++) {
+                const horizontalAngle = (i * 2.618) % (Math.PI * 2);
+                const verticalAngle = (i * 1.618 + Math.PI / 3) % (Math.PI * 2);
+                const horizontalRadius = (i % 3) * 1.2;
+                const verticalRadius = ((i + 1) % 4) * 0.8;
+
+                const x = (Math.sin(horizontalAngle) * horizontalRadius * maxHorizontalOffset) / 3;
+                const y = (Math.cos(verticalAngle) * verticalRadius * maxVerticalOffset) / 4;
+
+                spatialPositions.push({ x, y });
+            }
+
+            // Planes Instantiation
+            const planes = [];
+            const geometry = new THREE.PlaneGeometry(1, 1, 32, 32);
+
+            for (let i = 0; i < visibleCount; i++) {
+                const material = createClothMaterial();
+                const mesh = new THREE.Mesh(geometry, material);
+
+                const planeData = {
+                    mesh: mesh,
+                    material: material,
+                    index: i,
+                    z: ((depthRange / visibleCount) * i) % depthRange,
+                    imageIndex: i % textures.length,
+                    x: spatialPositions[i].x,
+                    y: spatialPositions[i].y
+                };
+
+                // Default starting aspect scale
+                mesh.scale.set(1.6, 2.0, 1.0);
+                scene.add(mesh);
+                planes.push(planeData);
+            }
+
+            // Dynamic Image Aspect Ratio Scale Calculation
+            textures.forEach((texture, idx) => {
+                if (texture.image) {
+                    updatePlaneScale(idx, texture.image.width / texture.image.height);
+                } else {
+                    texture.image = new Image();
+                    texture.image.onload = () => {
+                        updatePlaneScale(idx, texture.image.width / texture.image.height);
+                    };
+                    texture.image.src = imageUrls[idx];
+                }
             });
-            window.addEventListener('resize', handleScroll);
-            
-            // Run initial check
-            handleScroll();
+
+            function updatePlaneScale(imgIndex, aspect) {
+                const scale = aspect > 1 ? [2 * aspect, 2, 1] : [2, 2 / aspect, 1];
+                planes.forEach(p => {
+                    if (p.imageIndex === imgIndex) {
+                        p.mesh.scale.set(scale[0], scale[1], scale[2]);
+                    }
+                });
+            }
+
+            // Navigation Inputs
+            let scrollVelocity = 0;
+            let autoPlay = true;
+            let lastInteraction = Date.now();
+
+            window.addEventListener('wheel', (e) => {
+                if (window.scrollY < window.innerHeight) {
+                    scrollVelocity += e.deltaY * 0.005;
+                    autoPlay = false;
+                    lastInteraction = Date.now();
+                }
+            }, { passive: true });
+
+            // Keyboard Arrow inputs
+            window.addEventListener('keydown', (e) => {
+                if (window.scrollY < window.innerHeight) {
+                    if (e.key === 'ArrowUp' || e.key === 'ArrowLeft') {
+                        scrollVelocity -= 1.5;
+                        autoPlay = false;
+                        lastInteraction = Date.now();
+                    } else if (e.key === 'ArrowDown' || e.key === 'ArrowRight') {
+                        scrollVelocity += 1.5;
+                        autoPlay = false;
+                        lastInteraction = Date.now();
+                    }
+                }
+            });
+
+            // Touch Inputs
+            let touchStartY = 0;
+            window.addEventListener('touchstart', (e) => {
+                if (window.scrollY < window.innerHeight) {
+                    touchStartY = e.touches[0].clientY;
+                    autoPlay = false;
+                    lastInteraction = Date.now();
+                }
+            });
+            window.addEventListener('touchmove', (e) => {
+                if (window.scrollY < window.innerHeight) {
+                    const deltaY = touchStartY - e.touches[0].clientY;
+                    scrollVelocity += deltaY * 0.02;
+                    touchStartY = e.touches[0].clientY;
+                }
+            });
+
+            // Autoplay Reset loop
+            setInterval(() => {
+                if (Date.now() - lastInteraction > 3000) {
+                    autoPlay = true;
+                }
+            }, 1000);
+
+            // Raycaster Hover Waving Waves
+            const raycaster = new THREE.Raycaster();
+            const mouse = new THREE.Vector2();
+
+            window.addEventListener('mousemove', (e) => {
+                mouse.x = (e.clientX / window.innerWidth) * 2 - 1;
+                mouse.y = -(e.clientY / window.innerHeight) * 2 + 1;
+
+                raycaster.setFromCamera(mouse, camera);
+                const intersects = raycaster.intersectObjects(planes.map(p => p.mesh));
+
+                planes.forEach(p => {
+                    p.material.uniforms.isHovered.value = 0.0;
+                });
+
+                if (intersects.length > 0) {
+                    const hoveredMesh = intersects[0].object;
+                    const hoveredPlane = planes.find(p => p.mesh === hoveredMesh);
+                    if (hoveredPlane) {
+                        hoveredPlane.material.uniforms.isHovered.value = 1.0;
+                    }
+                }
+            });
+
+            // Rendering Frame Animation
+            const clock = new THREE.Clock();
+
+            function animate() {
+                requestAnimationFrame(animate);
+
+                const delta = clock.getDelta();
+                const time = clock.getElapsedTime();
+
+                if (autoPlay) {
+                    scrollVelocity += 0.3 * delta;
+                }
+
+                // Scroll velocity damping
+                scrollVelocity *= 0.95;
+
+                // Sync section scroll progress (from 0 to 1)
+                const rect = hero.getBoundingClientRect();
+                const heroTop = rect.top + window.scrollY;
+                const heroHeight = rect.height;
+                const windowHeight = window.innerHeight;
+                
+                let progress = (window.scrollY - heroTop) / (heroHeight - windowHeight);
+                progress = Math.max(0, Math.min(1, progress));
+
+                // Fade instructions
+                if (instructions) {
+                    instructions.style.opacity = Math.max(0, 1 - progress * 2.5);
+                }
+
+                // Add physical scrolling translate progress into plane positions
+                const scrollOffset = progress * depthRange;
+
+                planes.forEach((plane, i) => {
+                    plane.material.uniforms.map.value = textures[plane.imageIndex];
+                    plane.material.uniforms.time.value = time;
+                    plane.material.uniforms.scrollForce.value = scrollVelocity;
+
+                    // Absolute position offset by scroll progress
+                    let newZ = plane.z + scrollVelocity * delta * 10;
+                    
+                    // Wrapping calculations
+                    const imageAdvance = visibleCount % textures.length || textures.length;
+                    if (newZ >= depthRange) {
+                        const wraps = Math.floor(newZ / depthRange);
+                        newZ -= depthRange * wraps;
+                        plane.imageIndex = (plane.imageIndex + wraps * imageAdvance) % textures.length;
+                    } else if (newZ < 0) {
+                        const wraps = Math.ceil(-newZ / depthRange);
+                        newZ += depthRange * wraps;
+                        const step = plane.imageIndex - wraps * imageAdvance;
+                        plane.imageIndex = ((step % textures.length) + textures.length) % textures.length;
+                    }
+
+                    plane.z = newZ;
+
+                    // Apply scroll progress offset to coordinates
+                    let finalZ = (newZ - scrollOffset);
+                    if (finalZ < 0) {
+                        finalZ = depthRange + (finalZ % depthRange);
+                    }
+                    finalZ = finalZ % depthRange;
+
+                    // Fade ranges calculations
+                    const normalizedPosition = finalZ / depthRange;
+                    let opacity = 1;
+                    const fadeInStart = 0.05, fadeInEnd = 0.25;
+                    const fadeOutStart = 0.4, fadeOutEnd = 0.43;
+
+                    if (normalizedPosition >= fadeInStart && normalizedPosition <= fadeInEnd) {
+                        opacity = (normalizedPosition - fadeInStart) / (fadeInEnd - fadeInStart);
+                    } else if (normalizedPosition < fadeInStart) {
+                        opacity = 0;
+                    } else if (normalizedPosition >= fadeOutStart && normalizedPosition <= fadeOutEnd) {
+                        opacity = 1 - (normalizedPosition - fadeOutStart) / (fadeOutEnd - fadeOutStart);
+                    } else if (normalizedPosition > fadeOutEnd) {
+                        opacity = 0;
+                    }
+
+                    // Blur ranges calculations
+                    let blur = 0;
+                    const maxBlur = 8.0;
+                    const blurInStart = 0.0, blurInEnd = 0.1;
+                    const blurOutStart = 0.4, blurOutEnd = 0.43;
+
+                    if (normalizedPosition >= blurInStart && normalizedPosition <= blurInEnd) {
+                        blur = maxBlur * (1 - (normalizedPosition - blurInStart) / (blurInEnd - blurInStart));
+                    } else if (normalizedPosition < blurInStart) {
+                        blur = maxBlur;
+                    } else if (normalizedPosition >= blurOutStart && normalizedPosition <= blurOutEnd) {
+                        blur = maxBlur * ((normalizedPosition - blurOutStart) / (blurOutEnd - blurOutStart));
+                    } else if (normalizedPosition > blurOutEnd) {
+                        blur = maxBlur;
+                    }
+
+                    plane.material.uniforms.opacity.value = opacity;
+                    plane.material.uniforms.blurAmount.value = blur;
+
+                    const worldZ = finalZ - halfRange;
+                    plane.mesh.position.set(plane.x, plane.y, worldZ);
+                });
+
+                renderer.render(scene, camera);
+            }
+
+            // Window resize adjustment
+            window.addEventListener('resize', () => {
+                camera.aspect = window.innerWidth / window.innerHeight;
+                camera.updateProjectionMatrix();
+                renderer.setSize(window.innerWidth, window.innerHeight);
+            });
+
+            // Run Animation
+            animate();
         })();
 
         // ─── Stark Stats Counter Animation ───
