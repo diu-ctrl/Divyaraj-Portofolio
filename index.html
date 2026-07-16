@@ -1896,23 +1896,31 @@
         /* --- AI Cinema Lab Section --- */
         .cinema-section {
             position: relative;
-            padding: 100px 0 0 !important; /* Remove horizontal padding and bottom margin */
+            padding: 0 !important;
             max-width: 100% !important;
             width: 100% !important;
             margin: 0 !important;
-            overflow: hidden;
+            height: 220vh; /* Scroll track for clip-path zoom effect */
+            background: #000000;
         }
 
 
         .cinema-header {
             text-align: center;
             max-width: 800px;
-            margin: 0 auto 30px;
+            margin: 0 auto;
             display: flex;
             flex-direction: column;
             align-items: center;
             gap: 16px;
             padding: 0 24px; /* Breeding room on smaller widths */
+            position: absolute;
+            top: 80px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 10;
+            width: 100%;
+            pointer-events: none;
         }
 
         .cinema-header h2 {
@@ -1930,13 +1938,16 @@
         }
 
         .cinema-slider-wrapper {
-            position: relative;
+            position: sticky !important;
+            top: 0;
             width: 100vw !important; /* Force 100% viewport width bleed */
             left: 50%;
             transform: translateX(-50%);
             height: 100vh !important; /* Fullscreen vertical height */
             background: #000000;
             overflow: hidden;
+            clip-path: polygon(25% 25%, 75% 25%, 75% 75%, 25% 75%);
+            will-change: clip-path;
         }
 
         .cinema-slider {
@@ -2521,6 +2532,39 @@
         }
         .typewriter-text.js-active .char.revealed {
             opacity: 1;
+        }
+
+        /* Custom Cursor for AI Cinema Section */
+        #ai-cinema {
+            cursor: none !important;
+        }
+        #ai-cinema * {
+            cursor: none !important;
+        }
+        .cinema-custom-cursor {
+            position: fixed;
+            width: 90px;
+            height: 90px;
+            background: #ffffff;
+            color: #000000;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: var(--font-mono);
+            font-size: 0.65rem;
+            font-weight: 750;
+            letter-spacing: 0.14em;
+            pointer-events: none;
+            z-index: 9999;
+            opacity: 0;
+            transform: translate(-50%, -50%) scale(0.3);
+            transition: opacity 0.25s cubic-bezier(0.16, 1, 0.3, 1), transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+        }
+        .cinema-custom-cursor.active {
+            opacity: 1;
+            transform: translate(-50%, -50%) scale(1);
         }
 </style>
 </head>
@@ -3532,49 +3576,84 @@
             }, 3000); // 2 s visible + 1 s fade
         })();
 
-        // ─── AI Cinema Slider JS ───
+        // ─── AI Cinema Scroll Clip-Path Parallax & Custom Cursor ───
         (function() {
-            const slider = document.querySelector('.cinema-slider');
-            const slides = Array.from(document.querySelectorAll('.cinema-slide'));
-            const prevBtn = document.querySelector('.prev-btn');
-            const nextBtn = document.querySelector('.next-btn');
+            const section = document.getElementById('ai-cinema');
+            const wrapper = document.querySelector('.cinema-slider-wrapper');
+            const img = document.querySelector('.cinema-slide img');
 
-            if (slides.length === 0 || !prevBtn || !nextBtn) return;
+            if (!section || !wrapper || !img) return;
 
-            let currentIndex = 0;
+            // Create custom cursor element dynamically
+            const cursor = document.createElement('div');
+            cursor.className = 'cinema-custom-cursor';
+            cursor.textContent = 'SHOW';
+            document.body.appendChild(cursor);
 
-            function updateSlides(newIndex) {
-                // Remove active class from current slide
-                slides[currentIndex].classList.remove('active');
+            // Set initial inline styles for hardware-accelerated performance
+            img.style.transition = 'transform 0.1s cubic-bezier(0.16, 1, 0.3, 1)';
+            img.style.transformOrigin = 'center center';
+            wrapper.style.transition = 'clip-path 0.1s cubic-bezier(0.16, 1, 0.3, 1)';
+
+            function handleScroll() {
+                const rect = section.getBoundingClientRect();
+                const sectionTop = rect.top + window.scrollY;
+                const sectionHeight = section.offsetHeight;
+                const windowHeight = window.innerHeight;
+
+                const start = sectionTop;
+                const end = sectionTop + sectionHeight - windowHeight;
                 
-                // Set new index
-                currentIndex = (newIndex + slides.length) % slides.length;
-                
-                // Add active class to new slide
-                slides[currentIndex].classList.add('active');
+                if (end <= start) return;
+
+                let progress = (window.scrollY - start) / (end - start);
+                progress = Math.max(0, Math.min(1, progress));
+
+                // Clip path interpolation (polygon from 25% 25% centered rectangle to 0% 0% full screen)
+                const clipStart = 25 - (25 * progress);
+                const clipEnd = 75 + (25 * progress);
+
+                wrapper.style.clipPath = `polygon(${clipStart}% ${clipStart}%, ${clipEnd}% ${clipStart}%, ${clipEnd}% ${clipEnd}%, ${clipStart}% ${clipEnd}%)`;
+
+                // Zoom interpolation (from 1.6x down to 1x)
+                const scale = 1.6 - (0.6 * progress);
+                img.style.transform = `scale(${scale})`;
             }
 
-            // 5-second automatic slideshow loop
-            let autoSlideInterval = setInterval(() => {
-                updateSlides(currentIndex + 1);
-            }, 5000);
-
-            function resetAutoSlide() {
-                clearInterval(autoSlideInterval);
-                autoSlideInterval = setInterval(() => {
-                    updateSlides(currentIndex + 1);
-                }, 5000);
-            }
-
-            prevBtn.addEventListener('click', () => {
-                updateSlides(currentIndex - 1);
-                resetAutoSlide();
+            window.addEventListener('scroll', () => {
+                requestAnimationFrame(handleScroll);
+            });
+            window.addEventListener('resize', handleScroll);
+            
+            // Custom Cursor Movement
+            section.addEventListener('mousemove', (e) => {
+                // Only track on fine-pointer devices (desktop)
+                if (window.matchMedia('(pointer: fine)').matches) {
+                    cursor.style.left = e.clientX + 'px';
+                    cursor.style.top = e.clientY + 'px';
+                    cursor.classList.add('active');
+                }
             });
 
-            nextBtn.addEventListener('click', () => {
-                updateSlides(currentIndex + 1);
-                resetAutoSlide();
+            section.addEventListener('mouseenter', () => {
+                if (window.matchMedia('(pointer: fine)').matches) {
+                    cursor.classList.add('active');
+                }
             });
+
+            section.addEventListener('mouseleave', () => {
+                cursor.classList.remove('active');
+            });
+
+            // Tap / Click to redirect anywhere within the section
+            section.addEventListener('click', (e) => {
+                // Prevent duplicate trigger if clicking existing links
+                e.preventDefault();
+                window.location.href = 'ai-cinema.html';
+            });
+
+            // Run initial check
+            handleScroll();
         })();
 
         // ─── Stark Stats Counter Animation ───
