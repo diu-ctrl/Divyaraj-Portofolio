@@ -109,7 +109,7 @@
 
         /* ─── Hero ─── */
         .hero {
-            height: 220vh !important; /* Scroll track for clip-path zoom effect */
+            height: 220vh !important; /* Scroll track height for depth transition */
             width: 100%;
             max-width: none !important;
             position: relative;
@@ -119,18 +119,12 @@
         .hero-sticky {
             position: sticky !important;
             top: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 100vw;
+            left: 0;
+            width: 100%;
             height: 100vh;
             height: 100dvh;
             overflow: hidden;
-            display: flex;
-            align-items: center;
-            justify-content: center;
             background: #000000;
-            clip-path: polygon(35% 20%, 65% 20%, 65% 80%, 35% 80%);
-            will-change: clip-path;
         }
 
         /* ─── Hero Corner Labels ─── */
@@ -231,21 +225,23 @@
             line-height: 1 !important;
             pointer-events: none;
             white-space: nowrap;
+            text-align: center;
         }
 
         .hero-subtitle-mono {
             position: absolute;
-            bottom: 80px;
+            bottom: 120px;
             left: 50%;
             transform: translateX(-50%);
             z-index: 10;
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
             font-size: 1rem;
-            color: var(--text);
+            color: var(--text-muted);
             text-align: center;
             max-width: 600px;
             line-height: 1.5;
             width: 90%;
+            pointer-events: none;
         }
 
         @keyframes marquee {
@@ -2577,13 +2573,60 @@
         }
 
         /* 3D Photography Gallery in Hero */
-        #hero-3d-gallery {
+        .hero-3d-gallery-container {
+            position: sticky !important;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            height: 100dvh;
+            overflow: hidden;
+            z-index: 1;
+            background: #000000;
+            perspective: 1200px;
+            pointer-events: auto; /* Allow mouse wheel/dragging */
+        }
+
+        .hero-3d-gallery-scene {
             position: absolute;
-            inset: 0;
             width: 100%;
             height: 100%;
-            z-index: 1;
-            pointer-events: auto;
+            transform-style: preserve-3d;
+            will-change: transform;
+        }
+
+        .gallery-card {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 260px;
+            height: 325px;
+            margin-left: -130px;
+            margin-top: -162.5px;
+            background: #0d0d0d;
+            transform-style: preserve-3d;
+            will-change: transform, opacity, filter;
+            transition: filter 0.3s ease, border-color 0.3s ease;
+            cursor: pointer;
+            border: 1px solid rgba(255,255,255,0.08);
+            box-shadow: 0 15px 45px rgba(0,0,0,0.5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .gallery-card:hover {
+            border-color: rgba(255,255,255,0.3);
+            filter: grayscale(0) !important;
+        }
+
+        .gallery-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            pointer-events: none;
         }
 
         .hero-instructions {
@@ -2656,14 +2699,17 @@
         <span class="hero-corner hero-corner-br">Scroll to explore <span class="scroll-arrow">&#8595;</span></span>
 
         <div class="hero-sticky">
-            <div id="hero-3d-gallery"></div>
+            <div class="hero-3d-gallery-container">
+                <div class="hero-3d-gallery-scene" id="hero-3d-scene"></div>
+            </div>
+            
             <h1 class="hero-title">Divyaraj.</h1>
+            <p class="hero-subtitle-mono">A digital strategist building brands, platforms, and cinematic stories.</p>
             <div class="hero-instructions">
                 <p>Use scroll, arrow keys, or touch to navigate</p>
                 <p style="opacity: 0.6;">Auto-play resumes after 3 seconds of inactivity</p>
             </div>
         </div>
-        <p class="hero-subtitle-mono reveal">A digital strategist building brands, platforms, and cinematic stories.</p>
     </section>
 
     <!-- Scrolling Tape & Stark Stats -->
@@ -3153,12 +3199,11 @@
 
     <!-- AI Cinema Lab -->
     <section id="ai-cinema" class="cinema-section">
-        <div class="cinema-header reveal">
-            <h2>AI Cinema <span class="gradient-text">Lab</span></h2>
-        </div>
-        
         <div class="cinema-container">
             <div class="cinema-slider-wrapper">
+                <div class="cinema-header">
+                    <h2>AI Cinema <span class="gradient-text">Lab</span></h2>
+                </div>
                 <div class="cinema-slider">
                     <!-- Slide: Kutch -->
                     <div class="cinema-slide active">
@@ -3577,13 +3622,13 @@
 
 
 
-        // ─── AI Cinema Scroll Clip-Path Parallax & Custom Cursor ───
+        // ─── AI Cinema Scroll Card Zoom & Custom Cursor ───
         (function() {
             const section = document.getElementById('ai-cinema');
-            const wrapper = document.querySelector('.cinema-slider-wrapper');
-            const img = document.querySelector('.cinema-slide img');
+            const slide = document.querySelector('.cinema-slide');
+            const header = document.querySelector('#ai-cinema .cinema-header');
 
-            if (!section || !wrapper || !img) return;
+            if (!section || !slide) return;
 
             // Create custom cursor element dynamically
             const cursor = document.createElement('div');
@@ -3591,10 +3636,8 @@
             cursor.textContent = 'SHOW';
             document.body.appendChild(cursor);
 
-            // Set initial inline styles for hardware-accelerated performance
-            img.style.transition = 'transform 0.1s cubic-bezier(0.16, 1, 0.3, 1)';
-            img.style.transformOrigin = 'center center';
-            wrapper.style.transition = 'clip-path 0.1s cubic-bezier(0.16, 1, 0.3, 1)';
+            // Origin center for proper expansion
+            slide.style.transformOrigin = 'center center';
 
             function handleScroll() {
                 const rect = section.getBoundingClientRect();
@@ -3610,15 +3653,14 @@
                 let progress = (window.scrollY - start) / (end - start);
                 progress = Math.max(0, Math.min(1, progress));
 
-                // Clip path interpolation (polygon from 25% 25% centered rectangle to 0% 0% full screen)
-                const clipStart = 25 - (25 * progress);
-                const clipEnd = 75 + (25 * progress);
+                // Scale card from 1 to 2 (covering the whole screen when progress = 1)
+                const scale = 1 + progress;
+                slide.style.transform = `scale(${scale})`;
 
-                wrapper.style.clipPath = `polygon(${clipStart}% ${clipStart}%, ${clipEnd}% ${clipStart}%, ${clipEnd}% ${clipEnd}%, ${clipStart}% ${clipEnd}%)`;
-
-                // Zoom interpolation (from 1.6x down to 1x)
-                const scale = 1.6 - (0.6 * progress);
-                img.style.transform = `scale(${scale})`;
+                // Fade out header
+                if (header) {
+                    header.style.opacity = Math.max(0, 1 - progress * 2.5);
+                }
             }
 
             window.addEventListener('scroll', () => {
@@ -3628,7 +3670,6 @@
             
             // Custom Cursor Movement
             section.addEventListener('mousemove', (e) => {
-                // Only track on fine-pointer devices (desktop)
                 if (window.matchMedia('(pointer: fine)').matches) {
                     cursor.style.left = e.clientX + 'px';
                     cursor.style.top = e.clientY + 'px';
@@ -3648,7 +3689,6 @@
 
             // Tap / Click to redirect anywhere within the section
             section.addEventListener('click', (e) => {
-                // Prevent duplicate trigger if clicking existing links
                 e.preventDefault();
                 window.location.href = 'ai-cinema.html';
             });
@@ -3657,25 +3697,15 @@
             handleScroll();
         })();
 
-        // ─── Hero 3D Photography Gallery (WebGL / Three.js) ───
+        // ─── Hero 3D CSS Photography Gallery ───
         (function() {
-            const container = document.getElementById('hero-3d-gallery');
+            const container = document.querySelector('.hero-3d-gallery-container');
+            const scene = document.getElementById('hero-3d-scene');
             const hero = document.getElementById('hero');
+            const subtitle = document.querySelector('.hero-subtitle-mono');
             const instructions = document.querySelector('.hero-instructions');
-            if (!container || !hero) return;
+            if (!container || !scene || !hero) return;
 
-            // 3D Scene Setup
-            const scene = new THREE.Scene();
-            const camera = new THREE.PerspectiveCamera(55, window.innerWidth / window.innerHeight, 0.1, 100);
-            camera.position.set(0, 0, 0);
-
-            const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
-            renderer.setSize(window.innerWidth, window.innerHeight);
-            renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
-            container.appendChild(renderer.domElement);
-
-            // Load Textures
-            const textureLoader = new THREE.TextureLoader();
             const imageUrls = [
                 'Hero images/1.png',
                 'Hero images/2.png',
@@ -3684,168 +3714,118 @@
                 'Hero images/5.png',
                 'Hero images/6.png'
             ];
-            const textures = imageUrls.map(url => textureLoader.load(url));
 
-            // Cloth Material Builder
-            function createClothMaterial() {
-                return new THREE.ShaderMaterial({
-                    transparent: true,
-                    uniforms: {
-                        map: { value: null },
-                        opacity: { value: 1.0 },
-                        blurAmount: { value: 0.0 },
-                        scrollForce: { value: 0.0 },
-                        time: { value: 0.0 },
-                        isHovered: { value: 0.0 },
-                    },
-                    vertexShader: `
-                        uniform float scrollForce;
-                        uniform float time;
-                        uniform float isHovered;
-                        varying vec2 vUv;
-                        varying vec3 vNormal;
-                        
-                        void main() {
-                          vUv = uv;
-                          vNormal = normal;
-                          
-                          vec3 pos = position;
-                          
-                          // Smooth curving based on scroll force
-                          float curveIntensity = scrollForce * 0.3;
-                          float distanceFromCenter = length(pos.xy);
-                          float curve = distanceFromCenter * distanceFromCenter * curveIntensity;
-                          
-                          // Ripple waves
-                          float ripple1 = sin(pos.x * 2.0 + scrollForce * 3.0) * 0.02;
-                          float ripple2 = sin(pos.y * 2.5 + scrollForce * 2.0) * 0.015;
-                          float clothEffect = (ripple1 + ripple2) * abs(curveIntensity) * 2.0;
-                          
-                          // Flag waving wave on hover
-                          float flagWave = 0.0;
-                          if (isHovered > 0.5) {
-                            float wavePhase = pos.x * 3.0 + time * 8.0;
-                            float waveAmplitude = sin(wavePhase) * 0.08;
-                            float dampening = smoothstep(-0.5, 0.5, pos.x);
-                            flagWave = waveAmplitude * dampening;
-                            
-                            float secondaryWave = sin(pos.x * 5.0 + time * 12.0) * 0.02 * dampening;
-                            flagWave += secondaryWave;
-                          }
-                          
-                          pos.z -= (curve + clothEffect + flagWave);
-                          gl_Position = projectionMatrix * modelViewMatrix * vec4(pos, 1.0);
-                        }
-                    `,
-                    fragmentShader: `
-                        uniform sampler2D map;
-                        uniform float opacity;
-                        uniform float blurAmount;
-                        uniform float scrollForce;
-                        varying vec2 vUv;
-                        varying vec3 vNormal;
-                        
-                        void main() {
-                          vec4 color = texture2D(map, vUv);
-                          
-                          if (blurAmount > 0.0) {
-                            vec2 texelSize = vec2(0.001);
-                            vec4 blurred = vec4(0.0);
-                            float total = 0.0;
-                            
-                            for (float x = -2.0; x <= 2.0; x += 1.0) {
-                              for (float y = -2.0; y <= 2.0; y += 1.0) {
-                                vec2 offset = vec2(x, y) * texelSize * blurAmount;
-                                float weight = 1.0 / (1.0 + length(vec2(x, y)));
-                                blurred += texture2D(map, vUv + offset) * weight;
-                                total += weight;
-                              }
-                            }
-                            color = blurred / total;
-                          }
-                          
-                          float curveHighlight = abs(scrollForce) * 0.05;
-                          color.rgb += vec3(curveHighlight * 0.1);
-                          gl_FragColor = vec4(color.rgb, color.a * opacity);
-                        }
-                    `
-                });
-            }
-
-            // Spatial Angle Setup
             const visibleCount = 12;
-            const depthRange = 50;
-            const halfRange = depthRange / 2;
-            const maxHorizontalOffset = 8;
-            const maxVerticalOffset = 8;
+            const depthRange = 2400; // max depth range in pixels
+            const maxHorizontalOffset = 500;
+            const maxVerticalOffset = 300;
 
-            const spatialPositions = [];
+            // Generate Golden Angle distribution for X and Y coordinates
+            const cardData = [];
             for (let i = 0; i < visibleCount; i++) {
                 const horizontalAngle = (i * 2.618) % (Math.PI * 2);
                 const verticalAngle = (i * 1.618 + Math.PI / 3) % (Math.PI * 2);
                 const horizontalRadius = (i % 3) * 1.2;
                 const verticalRadius = ((i + 1) % 4) * 0.8;
-
+                
                 const x = (Math.sin(horizontalAngle) * horizontalRadius * maxHorizontalOffset) / 3;
                 const y = (Math.cos(verticalAngle) * verticalRadius * maxVerticalOffset) / 4;
+                const initialZ = -((depthRange / visibleCount) * i); // distribute in depth along negative Z
 
-                spatialPositions.push({ x, y });
-            }
+                // Create DOM element
+                const card = document.createElement('div');
+                card.className = 'gallery-card';
+                card.innerHTML = `<img src="${imageUrls[i % imageUrls.length]}" alt="Photo ${i + 1}">`;
+                scene.appendChild(card);
 
-            // Planes Instantiation
-            const planes = [];
-            const geometry = new THREE.PlaneGeometry(1, 1, 32, 32);
-
-            for (let i = 0; i < visibleCount; i++) {
-                const material = createClothMaterial();
-                const mesh = new THREE.Mesh(geometry, material);
-
-                const planeData = {
-                    mesh: mesh,
-                    material: material,
-                    index: i,
-                    z: ((depthRange / visibleCount) * i) % depthRange,
-                    imageIndex: i % textures.length,
-                    x: spatialPositions[i].x,
-                    y: spatialPositions[i].y
-                };
-
-                // Default starting aspect scale
-                mesh.scale.set(1.6, 2.0, 1.0);
-                scene.add(mesh);
-                planes.push(planeData);
-            }
-
-            // Dynamic Image Aspect Ratio Scale Calculation
-            textures.forEach((texture, idx) => {
-                if (texture.image) {
-                    updatePlaneScale(idx, texture.image.width / texture.image.height);
-                } else {
-                    texture.image = new Image();
-                    texture.image.onload = () => {
-                        updatePlaneScale(idx, texture.image.width / texture.image.height);
-                    };
-                    texture.image.src = imageUrls[idx];
-                }
-            });
-
-            function updatePlaneScale(imgIndex, aspect) {
-                const scale = aspect > 1 ? [2 * aspect, 2, 1] : [2, 2 / aspect, 1];
-                planes.forEach(p => {
-                    if (p.imageIndex === imgIndex) {
-                        p.mesh.scale.set(scale[0], scale[1], scale[2]);
-                    }
+                cardData.push({
+                    element: card,
+                    x: x,
+                    y: y,
+                    initialZ: initialZ
                 });
             }
 
-            // Navigation Inputs
-            let scrollVelocity = 0;
+            // Scroll & autoplay state
+            let autoplayOffset = 0;
+            let lastScrollY = window.scrollY;
             let autoPlay = true;
             let lastInteraction = Date.now();
 
-            window.addEventListener('wheel', (e) => {
-                if (window.scrollY < window.innerHeight) {
-                    scrollVelocity += e.deltaY * 0.005;
+            function updateGallery() {
+                // Calculate scroll progress relative to the hero section scroll track
+                const heroRect = hero.getBoundingClientRect();
+                const heroTop = heroRect.top + window.scrollY;
+                const heroHeight = heroRect.height;
+                const windowHeight = window.innerHeight;
+                
+                // Progress from 0 to 1
+                let progress = (window.scrollY - heroTop) / (heroHeight - windowHeight);
+                progress = Math.max(0, Math.min(1, progress));
+
+                // Fade out subtitles and instructions
+                if (subtitle) {
+                    subtitle.style.opacity = Math.max(0, 1 - progress * 2.5);
+                }
+                if (instructions) {
+                    instructions.style.opacity = Math.max(0, 1 - progress * 2.5);
+                }
+
+                // Autoplay gentle depth speed
+                if (autoPlay) {
+                    autoplayOffset += 1.2; // Move forward in depth
+                }
+
+                // Add scroll linking to depth offset (scroll shifts coordinates by depthRange)
+                const scrollOffset = progress * depthRange;
+
+                // Update cards positions
+                cardData.forEach(card => {
+                    // Final depth position
+                    let z = (card.initialZ + autoplayOffset + scrollOffset) % depthRange;
+                    if (z > 400) {
+                        // Wrap back to the deepest position if too close
+                        z = -depthRange + (z - 400);
+                    } else if (z < -depthRange + 400) {
+                        z = 400 + (z + depthRange - 400);
+                    }
+
+                    // Normalized position for fades and blur
+                    const normZ = (z + depthRange - 400) / depthRange; // 0 to 1
+
+                    // Fade ranges
+                    let opacity = 1;
+                    if (normZ < 0.15) {
+                        // Fade in from deep background
+                        opacity = normZ / 0.15;
+                    } else if (normZ > 0.85) {
+                        // Fade out when passing the camera
+                        opacity = Math.max(0, 1 - (normZ - 0.85) / 0.15);
+                    }
+
+                    // Blur ranges
+                    let blur = 0;
+                    if (normZ < 0.2) {
+                        blur = 8 * (1 - normZ / 0.2);
+                    } else if (normZ > 0.8) {
+                        blur = 8 * ((normZ - 0.8) / 0.2);
+                    }
+
+                    // Render transformations
+                    card.element.style.transform = `translate3d(${card.x}px, ${card.y}px, ${z}px) scale(1)`;
+                    card.element.style.opacity = opacity;
+                    card.element.style.filter = `blur(${blur}px) grayscale(${normZ < 0.75 ? 0.45 : 0})`;
+                    card.element.style.zIndex = Math.round(z + depthRange);
+                });
+
+                requestAnimationFrame(updateGallery);
+            }
+
+            // Scroll trigger reset autoplay
+            window.addEventListener('scroll', () => {
+                const diff = window.scrollY - lastScrollY;
+                lastScrollY = window.scrollY;
+                if (Math.abs(diff) > 2) {
                     autoPlay = false;
                     lastInteraction = Date.now();
                 }
@@ -3855,179 +3835,26 @@
             window.addEventListener('keydown', (e) => {
                 if (window.scrollY < window.innerHeight) {
                     if (e.key === 'ArrowUp' || e.key === 'ArrowLeft') {
-                        scrollVelocity -= 1.5;
+                        autoplayOffset -= 30;
                         autoPlay = false;
                         lastInteraction = Date.now();
                     } else if (e.key === 'ArrowDown' || e.key === 'ArrowRight') {
-                        scrollVelocity += 1.5;
+                        autoplayOffset += 30;
                         autoPlay = false;
                         lastInteraction = Date.now();
                     }
                 }
             });
 
-            // Touch Inputs
-            let touchStartY = 0;
-            window.addEventListener('touchstart', (e) => {
-                if (window.scrollY < window.innerHeight) {
-                    touchStartY = e.touches[0].clientY;
-                    autoPlay = false;
-                    lastInteraction = Date.now();
-                }
-            });
-            window.addEventListener('touchmove', (e) => {
-                if (window.scrollY < window.innerHeight) {
-                    const deltaY = touchStartY - e.touches[0].clientY;
-                    scrollVelocity += deltaY * 0.02;
-                    touchStartY = e.touches[0].clientY;
-                }
-            });
-
-            // Autoplay Reset loop
+            // AutoPlay restorer
             setInterval(() => {
                 if (Date.now() - lastInteraction > 3000) {
                     autoPlay = true;
                 }
             }, 1000);
 
-            // Raycaster Hover Waving Waves
-            const raycaster = new THREE.Raycaster();
-            const mouse = new THREE.Vector2();
-
-            window.addEventListener('mousemove', (e) => {
-                mouse.x = (e.clientX / window.innerWidth) * 2 - 1;
-                mouse.y = -(e.clientY / window.innerHeight) * 2 + 1;
-
-                raycaster.setFromCamera(mouse, camera);
-                const intersects = raycaster.intersectObjects(planes.map(p => p.mesh));
-
-                planes.forEach(p => {
-                    p.material.uniforms.isHovered.value = 0.0;
-                });
-
-                if (intersects.length > 0) {
-                    const hoveredMesh = intersects[0].object;
-                    const hoveredPlane = planes.find(p => p.mesh === hoveredMesh);
-                    if (hoveredPlane) {
-                        hoveredPlane.material.uniforms.isHovered.value = 1.0;
-                    }
-                }
-            });
-
-            // Rendering Frame Animation
-            const clock = new THREE.Clock();
-
-            function animate() {
-                requestAnimationFrame(animate);
-
-                const delta = clock.getDelta();
-                const time = clock.getElapsedTime();
-
-                if (autoPlay) {
-                    scrollVelocity += 0.3 * delta;
-                }
-
-                // Scroll velocity damping
-                scrollVelocity *= 0.95;
-
-                // Sync section scroll progress (from 0 to 1)
-                const rect = hero.getBoundingClientRect();
-                const heroTop = rect.top + window.scrollY;
-                const heroHeight = rect.height;
-                const windowHeight = window.innerHeight;
-                
-                let progress = (window.scrollY - heroTop) / (heroHeight - windowHeight);
-                progress = Math.max(0, Math.min(1, progress));
-
-                // Fade instructions
-                if (instructions) {
-                    instructions.style.opacity = Math.max(0, 1 - progress * 2.5);
-                }
-
-                // Add physical scrolling translate progress into plane positions
-                const scrollOffset = progress * depthRange;
-
-                planes.forEach((plane, i) => {
-                    plane.material.uniforms.map.value = textures[plane.imageIndex];
-                    plane.material.uniforms.time.value = time;
-                    plane.material.uniforms.scrollForce.value = scrollVelocity;
-
-                    // Absolute position offset by scroll progress
-                    let newZ = plane.z + scrollVelocity * delta * 10;
-                    
-                    // Wrapping calculations
-                    const imageAdvance = visibleCount % textures.length || textures.length;
-                    if (newZ >= depthRange) {
-                        const wraps = Math.floor(newZ / depthRange);
-                        newZ -= depthRange * wraps;
-                        plane.imageIndex = (plane.imageIndex + wraps * imageAdvance) % textures.length;
-                    } else if (newZ < 0) {
-                        const wraps = Math.ceil(-newZ / depthRange);
-                        newZ += depthRange * wraps;
-                        const step = plane.imageIndex - wraps * imageAdvance;
-                        plane.imageIndex = ((step % textures.length) + textures.length) % textures.length;
-                    }
-
-                    plane.z = newZ;
-
-                    // Apply scroll progress offset to coordinates
-                    let finalZ = (newZ - scrollOffset);
-                    if (finalZ < 0) {
-                        finalZ = depthRange + (finalZ % depthRange);
-                    }
-                    finalZ = finalZ % depthRange;
-
-                    // Fade ranges calculations
-                    const normalizedPosition = finalZ / depthRange;
-                    let opacity = 1;
-                    const fadeInStart = 0.05, fadeInEnd = 0.25;
-                    const fadeOutStart = 0.4, fadeOutEnd = 0.43;
-
-                    if (normalizedPosition >= fadeInStart && normalizedPosition <= fadeInEnd) {
-                        opacity = (normalizedPosition - fadeInStart) / (fadeInEnd - fadeInStart);
-                    } else if (normalizedPosition < fadeInStart) {
-                        opacity = 0;
-                    } else if (normalizedPosition >= fadeOutStart && normalizedPosition <= fadeOutEnd) {
-                        opacity = 1 - (normalizedPosition - fadeOutStart) / (fadeOutEnd - fadeOutStart);
-                    } else if (normalizedPosition > fadeOutEnd) {
-                        opacity = 0;
-                    }
-
-                    // Blur ranges calculations
-                    let blur = 0;
-                    const maxBlur = 8.0;
-                    const blurInStart = 0.0, blurInEnd = 0.1;
-                    const blurOutStart = 0.4, blurOutEnd = 0.43;
-
-                    if (normalizedPosition >= blurInStart && normalizedPosition <= blurInEnd) {
-                        blur = maxBlur * (1 - (normalizedPosition - blurInStart) / (blurInEnd - blurInStart));
-                    } else if (normalizedPosition < blurInStart) {
-                        blur = maxBlur;
-                    } else if (normalizedPosition >= blurOutStart && normalizedPosition <= blurOutEnd) {
-                        blur = maxBlur * ((normalizedPosition - blurOutStart) / (blurOutEnd - blurOutStart));
-                    } else if (normalizedPosition > blurOutEnd) {
-                        blur = maxBlur;
-                    }
-
-                    plane.material.uniforms.opacity.value = opacity;
-                    plane.material.uniforms.blurAmount.value = blur;
-
-                    const worldZ = finalZ - halfRange;
-                    plane.mesh.position.set(plane.x, plane.y, worldZ);
-                });
-
-                renderer.render(scene, camera);
-            }
-
-            // Window resize adjustment
-            window.addEventListener('resize', () => {
-                camera.aspect = window.innerWidth / window.innerHeight;
-                camera.updateProjectionMatrix();
-                renderer.setSize(window.innerWidth, window.innerHeight);
-            });
-
-            // Run Animation
-            animate();
+            // Initialize rendering
+            updateGallery();
         })();
 
         // ─── Stark Stats Counter Animation ───
