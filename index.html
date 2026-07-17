@@ -53,6 +53,13 @@
             font-family: var(--font-mono) !important;
         }
 
+        html,
+        body {
+            width: 100%;
+            margin: 0;
+            overflow-x: hidden;
+        }
+
         html {
             scroll-behavior: smooth;
         }
@@ -61,7 +68,6 @@
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
             background: var(--bg);
             color: var(--text);
-            overflow-x: hidden;
             line-height: 1.6;
         }
 
@@ -1658,11 +1664,11 @@
                 scroll-margin-top: 100px;
             }
             .hero {
-                padding: 40px 20px;
-                height: 100vh !important;
-                height: 100dvh !important;
-                min-height: 100vh !important;
-                min-height: 100dvh !important;
+                padding: 0 !important;
+                margin: 0 !important;
+                height: 155vh !important;
+                height: 155svh !important;
+                min-height: 155svh !important;
             }
             .hero-inner, .hero-subtitle-mono {
                 transform: translateY(-25px); /* Move center hero elements slightly upward */
@@ -2652,24 +2658,45 @@
         }
 
         /* 3D Photography Gallery in Hero */
+        /* 3D Photography Gallery in Hero */
         .hero-3d-gallery-container {
-            position: sticky !important;
-            top: 0;
-            left: 0;
+            position: absolute;
+            inset: 0;
             width: 100%;
-            height: 100vh;
-            height: 100dvh;
+            height: 100%;
+            max-width: none;
+            margin: 0;
+            padding: 0;
+            border: 0;
+            border-radius: 0;
             overflow: hidden;
             z-index: 1;
             background: #000000;
             pointer-events: auto; /* Allow mouse wheel/dragging */
-            transition: opacity 0.25s ease;
         }
 
-        .hero-3d-gallery-scene {
+        #hero-3d-scene {
             position: absolute;
+            inset: 0;
             width: 100%;
             height: 100%;
+            max-width: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        #hero-3d-scene > div,
+        #hero-3d-scene canvas {
+            position: absolute !important;
+            inset: 0 !important;
+            display: block;
+            width: 100% !important;
+            height: 100% !important;
+            max-width: none !important;
+            margin: 0 !important;
+            padding: 0 !important;
+            border: 0 !important;
+            border-radius: 0 !important;
         }
 
         .hero-content-overlay {
@@ -4384,6 +4411,28 @@
                 observer.observe(item);
             });
         })();
+    </script>
+
+    <!-- Mathematical Verification of Title Centering & Canvas Dimensions -->
+    <script>
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                const canvasRoot = document.getElementById("hero-3d-scene");
+                console.log("Hero scene dimensions:", canvasRoot?.getBoundingClientRect());
+                
+                const title = document.querySelector(".hero-title");
+                const rect = title?.getBoundingClientRect();
+                if (rect) {
+                    const titleCenter = rect.top + rect.height / 2;
+                    const viewportCenter = window.innerHeight / 2;
+                    console.log({
+                        titleCenter,
+                        viewportCenter,
+                        difference: titleCenter - viewportCenter
+                    });
+                }
+            }, 1200);
+        });
     </script>
 </body>
 </html>

@@ -50,7 +50,7 @@ export default function Hero3DGallery() {
 
   // Handle ambient velocity decay inside R3F useFrame directly
   return (
-    <div style={{ width: '100%', height: '100%', position: 'relative' }}>
+    <div style={{ width: '100%', height: '100%', position: 'absolute', inset: 0, margin: 0, padding: 0 }}>
       {isVisible && (
         <Canvas
           className="hero-3d-canvas"

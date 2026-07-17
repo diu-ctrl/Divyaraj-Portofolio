@@ -41,7 +41,7 @@ export default function GalleryScene({ scrollVelocity }: GallerySceneProps) {
   const meshRefs = useRef<(THREE.Mesh | null)[]>([]);
   const smoothedScrollVelocity = useRef(0);
 
-  const { camera, size } = useThree();
+  const { camera, size, viewport } = useThree();
 
   const idleSpeed = 0.85; // ambient speed in units per second
   const scrollInfluence = 0.15; // sensitivity of scroll acceleration
@@ -52,6 +52,8 @@ export default function GalleryScene({ scrollVelocity }: GallerySceneProps) {
   // Active configurations based on screen sizes
   const isMobile = size.width < 768;
   const planesCount = isMobile ? 7 : 12; // reduce meshes on mobile for high-performance
+
+  const halfViewportWidth = viewport.width / 2;
 
   useFrame((state, delta) => {
     const safeDelta = Math.min(delta, 0.05);
@@ -88,14 +90,18 @@ export default function GalleryScene({ scrollVelocity }: GallerySceneProps) {
         mesh.position.z -= recycleDepth;
       }
 
-      // Smooth camera-proximity fade out and far-plane fade in
-      const distance = cameraZ - mesh.position.z;
-      let opacity = 1;
+      // Very late fade immediately before crossing camera to prevent premature disappearance
+      const distanceToCamera = cameraZ - mesh.position.z;
+      const fadeStart = 0.35;
       
-      if (distance < 2.0) {
-        opacity = Math.max(0, distance / 2.0);
-      } else if (mesh.position.z < -35) {
-        opacity = Math.max(0, (mesh.position.z + 45) / 10.0);
+      let opacity = distanceToCamera < fadeStart
+        ? THREE.MathUtils.clamp(distanceToCamera / fadeStart, 0, 1)
+        : 1;
+
+      // Smooth far-plane fade in (to prevent pop-in at -45)
+      if (mesh.position.z < -35) {
+        const farFade = THREE.MathUtils.clamp((mesh.position.z + 45) / 10.0, 0, 1);
+        opacity = Math.min(opacity, farFade);
       }
 
       const material = mesh.material as THREE.MeshBasicMaterial;
@@ -118,16 +124,25 @@ export default function GalleryScene({ scrollVelocity }: GallerySceneProps) {
     <>
       <fog attach="fog" args={['#000000', 12, 45]} />
       <group ref={groupRef}>
-        {initialPlanesConfig.slice(0, planesCount).map((config, index) => (
-          <GalleryImagePlane
-            key={index}
-            ref={(el) => (meshRefs.current[index] = el)}
-            src={imageUrls[index % imageUrls.length]}
-            width={isMobile ? config.w * 0.75 : config.w}
-            position={[isMobile ? config.x * 0.7 : config.x, config.y, config.z]}
-            rotation={config.rot as [number, number, number]}
-          />
-        ))}
+        {initialPlanesConfig.slice(0, planesCount).map((config, index) => {
+          const cardWidth = isMobile ? config.w * 0.75 : config.w;
+          const cardHalfWidth = cardWidth / 2;
+          const xRatio = config.x / 3.5; // Normalized X ratio based on original range
+          
+          // Spread across dynamic viewport width
+          const dynamicX = xRatio * (halfViewportWidth + cardHalfWidth * 0.25);
+          
+          return (
+            <GalleryImagePlane
+              key={index}
+              ref={(el) => (meshRefs.current[index] = el)}
+              src={imageUrls[index % imageUrls.length]}
+              width={cardWidth}
+              position={[dynamicX, config.y, config.z]}
+              rotation={config.rot as [number, number, number]}
+            />
+          );
+        })}
       </group>
     </>
   );
