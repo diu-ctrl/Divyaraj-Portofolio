@@ -2643,49 +2643,20 @@
             overflow: hidden;
             z-index: 1;
             background: #000000;
-            perspective: 1200px;
             pointer-events: auto; /* Allow mouse wheel/dragging */
+            transition: opacity 0.25s ease;
         }
 
         .hero-3d-gallery-scene {
             position: absolute;
             width: 100%;
             height: 100%;
-            transform-style: preserve-3d;
-            will-change: transform;
         }
 
-        .gallery-card {
+        .hero-content-overlay {
             position: absolute;
-            top: 50%;
-            left: 50%;
-            width: 260px;
-            height: 325px;
-            margin-left: -130px;
-            margin-top: -162.5px;
-            background: #0d0d0d;
-            transform-style: preserve-3d;
-            will-change: transform, opacity, filter;
-            transition: filter 0.3s ease, border-color 0.3s ease;
-            cursor: pointer;
-            border: 1px solid rgba(255,255,255,0.08);
-            box-shadow: 0 15px 45px rgba(0,0,0,0.5);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            overflow: hidden;
-        }
-
-        .gallery-card:hover {
-            border-color: rgba(255,255,255,0.3);
-            filter: grayscale(0) !important;
-        }
-
-        .gallery-card img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            display: block;
+            inset: 0;
+            z-index: 10;
             pointer-events: none;
         }
 
@@ -2763,11 +2734,13 @@
                 <div class="hero-3d-gallery-scene" id="hero-3d-scene"></div>
             </div>
             
-            <h1 class="hero-title">Divyaraj.</h1>
-            <p class="hero-subtitle-mono">A digital strategist building brands, platforms, and cinematic stories.</p>
-            <div class="hero-instructions">
-                <p>Use scroll, arrow keys, or touch to navigate</p>
-                <p style="opacity: 0.6;">Auto-play resumes after 3 seconds of inactivity</p>
+            <div class="hero-content-overlay">
+                <h1 class="hero-title">Divyaraj.</h1>
+                <p class="hero-subtitle-mono">A digital strategist building brands, platforms, and cinematic stories.</p>
+                <div class="hero-instructions">
+                    <p>Use scroll, arrow keys, or touch to navigate</p>
+                    <p style="opacity: 0.6;">Auto-play resumes after 3 seconds of inactivity</p>
+                </div>
             </div>
         </div>
     </section>
@@ -3414,7 +3387,7 @@
         <button onclick="closeCustomAlert()">Got it</button>
     </div>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script type="module" src="react-hero-gallery/dist/hero-gallery.js"></script>
     <script>
 
 
@@ -3831,165 +3804,7 @@
             updateCinemaScroll();
         })();
 
-        // ─── Hero 3D CSS Photography Gallery ───
-        (function() {
-            const container = document.querySelector('.hero-3d-gallery-container');
-            const scene = document.getElementById('hero-3d-scene');
-            const hero = document.getElementById('hero');
-            const subtitle = document.querySelector('.hero-subtitle-mono');
-            const instructions = document.querySelector('.hero-instructions');
-            if (!container || !scene || !hero) return;
-
-            const imageUrls = [
-                'Hero images/1.png',
-                'Hero images/2.png',
-                'Hero images/3.png',
-                'Hero images/4.png',
-                'Hero images/5.png',
-                'Hero images/6.png'
-            ];
-
-            const visibleCount = 12;
-            const depthRange = 2400; // max depth range in pixels
-            const maxHorizontalOffset = 500;
-            const maxVerticalOffset = 300;
-
-            // Generate Golden Angle distribution for X and Y coordinates
-            const cardData = [];
-            for (let i = 0; i < visibleCount; i++) {
-                const horizontalAngle = (i * 2.618) % (Math.PI * 2);
-                const verticalAngle = (i * 1.618 + Math.PI / 3) % (Math.PI * 2);
-                const horizontalRadius = (i % 3) * 1.2;
-                const verticalRadius = ((i + 1) % 4) * 0.8;
-                
-                const x = (Math.sin(horizontalAngle) * horizontalRadius * maxHorizontalOffset) / 3;
-                const y = (Math.cos(verticalAngle) * verticalRadius * maxVerticalOffset) / 4;
-                const initialZ = -((depthRange / visibleCount) * i); // distribute in depth along negative Z
-
-                // Create DOM element
-                const card = document.createElement('div');
-                card.className = 'gallery-card';
-                card.innerHTML = `<img src="${imageUrls[i % imageUrls.length]}" alt="Photo ${i + 1}">`;
-                scene.appendChild(card);
-
-                cardData.push({
-                    element: card,
-                    x: x,
-                    y: y,
-                    initialZ: initialZ
-                });
-            }
-
-            // Scroll & autoplay state
-            let autoplayOffset = 0;
-            let lastScrollY = window.scrollY;
-            let autoPlay = true;
-            let lastInteraction = Date.now();
-
-            function updateGallery() {
-                // Calculate scroll progress relative to the hero section scroll track
-                const heroRect = hero.getBoundingClientRect();
-                const heroTop = heroRect.top + window.scrollY;
-                const heroHeight = heroRect.height;
-                const windowHeight = window.innerHeight;
-                
-                // Progress from 0 to 1
-                let progress = (window.scrollY - heroTop) / (heroHeight - windowHeight);
-                progress = Math.max(0, Math.min(1, progress));
-
-                // Fade out subtitles and instructions
-                if (subtitle) {
-                    subtitle.style.opacity = Math.max(0, 1 - progress * 2.5);
-                }
-                if (instructions) {
-                    instructions.style.opacity = Math.max(0, 1 - progress * 2.5);
-                }
-
-                // Autoplay gentle depth speed
-                if (autoPlay) {
-                    autoplayOffset += 1.2; // Move forward in depth
-                }
-
-                // Add scroll linking to depth offset (scroll shifts coordinates by depthRange)
-                const scrollOffset = progress * depthRange;
-
-                // Update cards positions
-                cardData.forEach(card => {
-                    // Final depth position
-                    let z = (card.initialZ + autoplayOffset + scrollOffset) % depthRange;
-                    if (z > 400) {
-                        // Wrap back to the deepest position if too close
-                        z = -depthRange + (z - 400);
-                    } else if (z < -depthRange + 400) {
-                        z = 400 + (z + depthRange - 400);
-                    }
-
-                    // Normalized position for fades and blur
-                    const normZ = (z + depthRange - 400) / depthRange; // 0 to 1
-
-                    // Fade ranges
-                    let opacity = 1;
-                    if (normZ < 0.15) {
-                        // Fade in from deep background
-                        opacity = normZ / 0.15;
-                    } else if (normZ > 0.85) {
-                        // Fade out when passing the camera
-                        opacity = Math.max(0, 1 - (normZ - 0.85) / 0.15);
-                    }
-
-                    // Blur ranges
-                    let blur = 0;
-                    if (normZ < 0.2) {
-                        blur = 8 * (1 - normZ / 0.2);
-                    } else if (normZ > 0.8) {
-                        blur = 8 * ((normZ - 0.8) / 0.2);
-                    }
-
-                    // Render transformations
-                    card.element.style.transform = `translate3d(${card.x}px, ${card.y}px, ${z}px) scale(1)`;
-                    card.element.style.opacity = opacity;
-                    card.element.style.filter = `blur(${blur}px) grayscale(${normZ < 0.75 ? 0.45 : 0})`;
-                    card.element.style.zIndex = Math.round(z + depthRange);
-                });
-
-                requestAnimationFrame(updateGallery);
-            }
-
-            // Scroll trigger reset autoplay
-            window.addEventListener('scroll', () => {
-                const diff = window.scrollY - lastScrollY;
-                lastScrollY = window.scrollY;
-                if (Math.abs(diff) > 2) {
-                    autoPlay = false;
-                    lastInteraction = Date.now();
-                }
-            }, { passive: true });
-
-            // Keyboard Arrow inputs
-            window.addEventListener('keydown', (e) => {
-                if (window.scrollY < window.innerHeight) {
-                    if (e.key === 'ArrowUp' || e.key === 'ArrowLeft') {
-                        autoplayOffset -= 30;
-                        autoPlay = false;
-                        lastInteraction = Date.now();
-                    } else if (e.key === 'ArrowDown' || e.key === 'ArrowRight') {
-                        autoplayOffset += 30;
-                        autoPlay = false;
-                        lastInteraction = Date.now();
-                    }
-                }
-            });
-
-            // AutoPlay restorer
-            setInterval(() => {
-                if (Date.now() - lastInteraction > 3000) {
-                    autoPlay = true;
-                }
-            }, 1000);
-
-            // Initialize rendering
-            updateGallery();
-        })();
+        // ─── Hero 3D Gallery (Powered by React Three Fiber in react-hero-gallery/) ───
 
         // ─── Stark Stats Counter Animation ───
         (function() {
