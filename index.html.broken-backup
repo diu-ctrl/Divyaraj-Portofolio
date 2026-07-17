@@ -2639,41 +2639,41 @@
             left: 50%;
             transform: translateX(-50%);
             z-index: 10;
-        /* ─── 3D Testimonials Section ─── */
-        .client-testimonials {
+               /* ─── 3D Testimonials Section ─── */
+        .testimonials-section {
             position: relative;
             width: 100% !important;
             max-width: none !important;
+            min-height: 100vh;
             min-height: 100svh;
             margin: 0 !important;
-            padding: clamp(90px, 11vh, 140px) 0 clamp(80px, 10vh, 120px);
+            padding: clamp(90px, 12vh, 150px) 0 !important;
             overflow: hidden;
-            background: #000;
+            background: #000000 !important;
         }
 
-        .client-testimonials + section {
+        .testimonials-section + section {
             margin-top: 0 !important;
         }
 
-        .client-testimonials__header {
-            width: min(90vw, 1240px);
+        .testimonials-heading {
+            width: min(92vw, 1280px);
             margin: 0 auto;
             text-align: left;
             position: relative;
             z-index: 10;
         }
 
-        .client-testimonials__eyebrow {
+        .testimonials-meta-num {
             display: block;
             font-family: var(--font-mono) !important;
             font-size: 0.75rem;
             letter-spacing: 0.15em;
             color: #EB4604;
             margin-bottom: 8px;
-            text-transform: uppercase;
         }
 
-        .client-testimonials__title {
+        .testimonials-heading h2 {
             font-family: 'Instrument Serif', serif !important;
             font-size: clamp(2.5rem, 5vw, 4.5rem) !important;
             font-style: italic !important;
@@ -2685,7 +2685,7 @@
             letter-spacing: normal !important;
         }
 
-        .client-testimonials__intro {
+        .testimonials-subtitle-mono {
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif !important;
             font-size: 0.95rem !important;
             color: var(--text-muted) !important;
@@ -2694,143 +2694,160 @@
             line-height: 1.5 !important;
         }
 
-        .client-testimonials__scene {
+        .testimonials-scene {
             position: relative;
-            width: min(90vw, 1240px);
-            height: clamp(470px, 63vh, 650px);
-            margin: clamp(30px, 5vh, 55px) auto 0;
-            perspective: 1300px;
-            perspective-origin: 50% 45%;
-            overflow: visible;
+            width: min(92vw, 1280px);
+            height: clamp(540px, 70vh, 760px);
+            margin: clamp(40px, 6vh, 70px) auto 0;
+            perspective: 900px;
+            perspective-origin: 50% 48%;
         }
 
-        #testimonials-3d-scene {
-            width: 100%;
-            height: 100%;
-            display: block;
-        }
-
-        .client-testimonials__board {
+        .testimonials-board {
             position: absolute;
             inset: 0;
             display: grid;
             grid-template-columns: repeat(4, minmax(0, 1fr));
-            gap: 14px;
-            padding: 22px;
+            gap: clamp(12px, 1.2vw, 24px);
+            padding: clamp(20px, 2.5vw, 36px);
             overflow: hidden;
-            transform-style: preserve-3d;
-            transform: rotateX(44deg) rotateY(-2.5deg) rotateZ(-1.5deg) scale(0.98);
-            transform-origin: 50% 48%;
             border-radius: 12px;
-            -webkit-mask-image: linear-gradient(to bottom, transparent 0%, #000 9%, #000 91%, transparent 100%);
-            mask-image: linear-gradient(to bottom, transparent 0%, #000 9%, #000 91%, transparent 100%);
+            transform-style: preserve-3d;
+            will-change: transform;
+            background: rgba(10, 10, 10, 0.4);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            box-shadow: 0 30px 100px rgba(0, 0, 0, 0.8), inset 0 1px 0 rgba(255, 255, 255, 0.05);
+            -webkit-mask-image: linear-gradient(to bottom, transparent 0%, #000 18%, #000 82%, transparent 100%),
+                                linear-gradient(to right, transparent 0%, #000 8%, #000 92%, transparent 100%);
+            -webkit-mask-composite: source-in;
+            mask-image: linear-gradient(to bottom, transparent 0%, #000 18%, #000 82%, transparent 100%),
+                        linear-gradient(to right, transparent 0%, #000 8%, #000 92%, transparent 100%);
+            mask-composite: intersect;
         }
 
-        .client-testimonials__board::before {
-            content: "";
-            position: absolute;
-            inset: 4% 3%;
-            z-index: -1;
-            background: rgba(0, 0, 0, 0.65);
-            filter: blur(30px);
-            transform: translateZ(-30px);
-            pointer-events: none;
-        }
-
-        .client-testimonials__column {
+        .testimonial-column {
             position: relative;
-            min-width: 0;
             height: 100%;
             overflow: hidden;
+            transform-style: preserve-3d;
+            transition: opacity 0.5s ease, transform 0.5s ease;
         }
 
-        .client-testimonials__track {
+        /* 3D Depth Layering / Hierarchy */
+        .testimonial-column:nth-child(2),
+        .testimonial-column:nth-child(3) {
+            opacity: 1;
+            transform: translateZ(12px) scale(1.02);
+        }
+
+        .testimonial-column:nth-child(1),
+        .testimonial-column:nth-child(4) {
+            opacity: 0.65;
+            transform: translateZ(-12px) scale(0.98);
+        }
+
+        .testimonial-column-track {
             display: flex;
             flex-direction: column;
             will-change: transform;
         }
 
-        .client-testimonials__set {
+        .testimonial-set {
             display: flex;
             flex-direction: column;
         }
 
         /* Continuous vertical scroll marquee animation keyframes */
-        @keyframes client-testimonials-scroll-up {
+        @keyframes testimonial-column-up {
             from { transform: translate3d(0, 0, 0); }
             to { transform: translate3d(0, -50%, 0); }
         }
 
-        @keyframes client-testimonials-scroll-down {
+        @keyframes testimonial-column-down {
             from { transform: translate3d(0, -50%, 0); }
             to { transform: translate3d(0, 0, 0); }
         }
 
-        .client-testimonials.is-visible .client-testimonials__column:nth-child(1) .client-testimonials__track {
-            animation: client-testimonials-scroll-up 38s linear infinite;
+        .testimonials-section.is-visible .testimonial-column:nth-child(1) .testimonial-column-track {
+            animation: testimonial-column-up 38s linear infinite;
         }
 
-        .client-testimonials.is-visible .client-testimonials__column:nth-child(2) .client-testimonials__track {
-            animation: client-testimonials-scroll-down 44s linear infinite;
+        .testimonials-section.is-visible .testimonial-column:nth-child(2) .testimonial-column-track {
+            animation: testimonial-column-down 46s linear infinite;
         }
 
-        .client-testimonials.is-visible .client-testimonials__column:nth-child(3) .client-testimonials__track {
-            animation: client-testimonials-scroll-up 41s linear infinite;
+        .testimonials-section.is-visible .testimonial-column:nth-child(3) .testimonial-column-track {
+            animation: testimonial-column-up 42s linear infinite;
         }
 
-        .client-testimonials.is-visible .client-testimonials__column:nth-child(4) .client-testimonials__track {
-            animation: client-testimonials-scroll-down 47s linear infinite;
+        .testimonials-section.is-visible .testimonial-column:nth-child(4) .testimonial-column-track {
+            animation: testimonial-column-down 50s linear infinite;
         }
 
         /* Pause animations when off-screen to conserve CPU */
-        .client-testimonials:not(.is-visible) .client-testimonials__track {
+        .testimonials-section:not(.is-visible) .testimonial-column-track {
             animation-play-state: paused !important;
         }
 
-        .client-testimonials__card {
+        .testimonial-card {
             position: relative;
             width: 100%;
-            min-height: 150px;
-            padding: 18px;
-            margin: 0 0 14px;
-            box-sizing: border-box;
-            background: #111111;
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            border-radius: 4px;
-            color: #f4f1ea;
-            overflow: hidden;
+            min-height: 130px;
+            padding: 24px;
+            margin-bottom: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.12);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+            border-left: 1px solid rgba(255, 255, 255, 0.05);
+            border-right: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 8px;
+            background: rgba(12, 12, 12, 0.85);
+            backdrop-filter: blur(8px);
+            color: var(--text);
             backface-visibility: hidden;
             transform: translateZ(0);
-            transition: border-color 0.3s ease;
+            transition: transform 0.3s cubic-bezier(0.25, 1, 0.5, 1), border-color 0.3s ease, background-color 0.3s;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
         }
 
-        .client-testimonials__card:hover {
-            border-color: rgba(255, 255, 255, 0.2);
+        /* Subtle lift on hover */
+        .testimonial-card:hover {
+            transform: translate3d(0, 0, 20px);
+            border-color: rgba(255, 255, 255, 0.25);
+            background: rgba(18, 18, 18, 0.95);
         }
 
-        .client-testimonials__person {
+        .testimonial-person {
             display: flex;
             align-items: center;
             gap: 12px;
             margin-bottom: 14px;
         }
 
-        .client-testimonials__avatar {
-            width: 36px;
-            height: 36px;
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.08);
+        .testimonial-avatar {
+            width: 38px;
+            height: 38px;
+            background: rgba(235, 70, 4, 0.05);
+            border: 1px solid rgba(235, 70, 4, 0.2);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
+            transition: background-color 0.3s, border-color 0.3s;
+        }
+
+        .testimonial-card:hover .testimonial-avatar {
+            background: rgba(235, 70, 4, 0.15);
+            border-color: rgba(235, 70, 4, 0.4);
+        }
+
+        .testimonial-avatar-initial {
             font-family: var(--font-mono);
             font-size: 0.8rem;
             font-weight: 700;
             color: #EB4604;
         }
 
-        .client-testimonials__name {
+        .testimonial-person h3 {
             font-family: var(--font-mono);
             font-size: 0.8rem;
             font-weight: 600;
@@ -2840,18 +2857,18 @@
             text-transform: none;
         }
 
-        .client-testimonials__role {
+        .testimonial-person p {
             font-family: 'Inter', sans-serif;
             font-size: 0.7rem;
-            color: #8c9b83;
+            color: var(--text-muted);
             margin: 0;
         }
 
-        .client-testimonials__quote {
+        .testimonial-card-quote {
             font-family: 'Inter', sans-serif !important;
-            font-size: 0.88rem !important;
+            font-size: 0.92rem !important;
             line-height: 1.6 !important;
-            color: #f4f1ea !important;
+            color: #e2e2e2 !important;
             margin: 0 0 16px 0 !important;
             font-style: italic !important;
             text-align: left !important;
@@ -2859,7 +2876,7 @@
             letter-spacing: normal !important;
         }
 
-        .client-testimonials__category {
+        .testimonial-card-tag {
             align-self: flex-start;
             display: inline-block;
             font-family: var(--font-mono) !important;
@@ -2875,33 +2892,49 @@
 
         /* Responsive tablet/mobile settings */
         @media (max-width: 1024px) {
-            .client-testimonials__scene {
+            .testimonials-scene {
                 width: 92vw;
                 height: 580px;
             }
 
-            .client-testimonials__board {
+            .testimonials-board {
                 grid-template-columns: repeat(3, minmax(0, 1fr));
+                gap: 16px;
+                padding: 20px;
             }
 
-            .client-testimonials__column:nth-child(4) {
+            .testimonial-column:nth-child(4) {
                 display: none;
+            }
+
+            .testimonial-column:nth-child(1),
+            .testimonial-column:nth-child(4) {
+                opacity: 0.75;
+                transform: none;
+            }
+            .testimonial-column:nth-child(2),
+            .testimonial-column:nth-child(3) {
+                opacity: 1;
+                transform: none;
             }
         }
 
         @media (max-width: 767px) {
-            .client-testimonials__scene {
+            .testimonials-scene {
                 width: 94vw;
                 height: 620px;
                 margin-top: 40px;
+                perspective: 1100px;
             }
 
-            .client-testimonials__board {
+            .testimonials-board {
                 grid-template-columns: repeat(2, minmax(0, 1fr));
-                transform: rotateX(28deg) rotateZ(-1deg) scale(0.98);
+                transform: rotateX(32deg) rotateZ(-1deg) scale(0.96);
+                gap: 12px;
+                padding: 16px;
             }
 
-            .client-testimonials__column:nth-child(n + 3) {
+            .testimonial-column:nth-child(n + 3) {
                 display: none;
             }
         }
@@ -3461,26 +3494,15 @@
     </section>
 
     <!-- AI Cinema Lab -->
-    <section id="ai-cinema" class="ai-cinema-scroll-section">
+    <section id="ai-cinema" class="ai-cinema-scroll-track">
         <div class="ai-cinema-sticky-stage">
-            <div class="cinema-header">
-                <h2>AI Cinema <span class="gradient-text">Lab</span></h2>
+            <div class="ai-cinema-intro">
+                <h2 class="ai-cinema-title">AI Cinema Lab</h2>
             </div>
             
-            <a class="ai-cinema-expand-card" href="ai-cinema.html#kutch" aria-label="Explore Kutch Project">
-                <img src="images/kutch-thumb.png" alt="Kutch">
-                <div class="cinema-slide-overlay"></div>
-                
-                <div class="cinema-play-button">
-                    <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M8 5V19L19 12L8 5Z"/>
-                    </svg>
-                </div>
-                
-                <span class="slide-meta">AI DIRECTED</span>
-                <div class="cinema-slide-info">
-                    <h2 class="slide-title">KUTCH</h2>
-                </div>
+            <a class="ai-cinema-featured-card" href="ai-cinema.html#kutch" aria-label="Open the featured AI Cinema project">
+                <img class="ai-cinema-featured-image" src="images/kutch-thumb.png" alt="Kutch" />
+                <span class="ai-cinema-show-button">SHOW</span>
             </a>
         </div>
     </section>
@@ -3546,14 +3568,14 @@
     </section>
 
     <!-- 3D Testimonials Section -->
-    <section class="client-testimonials" id="testimonials" aria-labelledby="client-testimonials-heading">
-        <div class="client-testimonials__header reveal">
-            <p class="client-testimonials__eyebrow">05 / TRUSTED VOICES</p>
-            <h2 id="client-testimonials-heading" class="client-testimonials__title">Words From Clients</h2>
-            <p class="client-testimonials__intro">Feedback from clients, collaborators, and creative partners.</p>
+    <section class="testimonials-section" id="testimonials" aria-labelledby="testimonials-heading">
+        <div class="testimonials-heading reveal">
+            <span class="testimonials-meta-num">05 / TRUSTED VOICES</span>
+            <h2 id="testimonials-heading">Words From <span class="gradient-text">Clients</span></h2>
+            <p class="testimonials-subtitle-mono">Feedback from clients, collaborators, and creative partners.</p>
         </div>
 
-        <div class="client-testimonials__scene">
+        <div class="testimonials-scene">
             <div id="testimonials-3d-scene"></div>
         </div>
     </section>
@@ -3899,29 +3921,20 @@
 
 
 
-        // ─── AI Cinema Scroll Card Zoom & Custom Cursor ───
+        // ─── AI Cinema Scroll Card Zoom & Controls ───
         (function() {
             const section = document.getElementById('ai-cinema');
-            const stickyStage = document.querySelector('.ai-cinema-sticky-stage');
-            const card = document.querySelector('.ai-cinema-expand-card');
-            const img = document.querySelector('.ai-cinema-expand-card img');
-            const header = document.querySelector('#ai-cinema .cinema-header');
-            const meta = document.querySelector('#ai-cinema .slide-meta');
-            const info = document.querySelector('#ai-cinema .cinema-slide-info');
-            const playBtn = document.querySelector('#ai-cinema .cinema-play-button');
+            const card = document.querySelector('.ai-cinema-featured-card');
+            const title = document.querySelector('.ai-cinema-title');
+            const showBtn = document.querySelector('.ai-cinema-show-button');
 
             if (!section || !card) return;
 
-            // Create custom cursor element dynamically
-            const cursor = document.createElement('div');
-            cursor.className = 'cinema-custom-cursor';
-            cursor.textContent = 'SHOW';
-            document.body.appendChild(cursor);
-
             let viewportWidth = window.innerWidth;
             let viewportHeight = window.innerHeight;
-            let squareSize = 280;
-            let startRadius = 24;
+            
+            let startWidth = 300;
+            let startHeight = 360;
             let horizontalInset = 0;
             let verticalInset = 0;
 
@@ -3929,19 +3942,16 @@
                 viewportWidth = window.innerWidth;
                 viewportHeight = window.innerHeight;
 
-                if (viewportWidth >= 1024) {
-                    squareSize = 280;
-                    startRadius = 24;
-                } else if (viewportWidth >= 768) {
-                    squareSize = 240;
-                    startRadius = 24;
+                if (viewportWidth < 768) {
+                    startWidth = Math.min(viewportWidth * 0.72, 300);
+                    startHeight = Math.min(viewportHeight * 0.48, 380);
                 } else {
-                    squareSize = Math.min(viewportWidth * 0.72, viewportHeight * 0.42);
-                    startRadius = 24;
+                    startWidth = Math.min(300, viewportWidth * 0.24);
+                    startHeight = Math.min(360, viewportHeight * 0.48);
                 }
 
-                horizontalInset = Math.max(0, (viewportWidth - squareSize) / 2);
-                verticalInset = Math.max(0, (viewportHeight - squareSize) / 2);
+                horizontalInset = (viewportWidth - startWidth) / 2;
+                verticalInset = (viewportHeight - startHeight) / 2;
             }
 
             let ticking = false;
@@ -3953,8 +3963,8 @@
                 }
             }
 
-            function smoothstep(value) {
-                return value * value * (3 - 2 * value);
+            function clamp(value, min, max) {
+                return Math.min(Math.max(value, min), max);
             }
 
             function updateCinemaScroll() {
@@ -3962,95 +3972,76 @@
 
                 if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
                     card.style.clipPath = '';
-                    if (meta) meta.style.opacity = '1';
-                    if (info) info.style.opacity = '1';
-                    if (playBtn) playBtn.style.transform = '';
-                    if (header) header.style.opacity = '1';
+                    if (title) {
+                        title.style.opacity = '1';
+                        title.style.transform = '';
+                    }
+                    if (showBtn) {
+                        showBtn.style.opacity = '1';
+                        showBtn.style.transform = 'translate(-50%, -50%) scale(1)';
+                    }
                     return;
                 }
 
                 const rect = section.getBoundingClientRect();
                 const sectionTop = rect.top + window.scrollY;
                 const sectionHeight = rect.height;
-                const scrollRange = sectionHeight - viewportHeight;
+                const scrollDistance = sectionHeight - viewportHeight;
 
-                if (scrollRange <= 0) return;
+                if (scrollDistance <= 0) return;
 
-                let rawProgress = (window.scrollY - sectionTop) / scrollRange;
-                rawProgress = Math.max(0, Math.min(1, rawProgress));
+                // 1. Raw scroll progress [0, 1]
+                const rawProgress = clamp((window.scrollY - sectionTop) / scrollDistance, 0, 1);
 
-                // Mapping progress: 0-8% hold, 8-88% zoom, 88-100% hold fullscreen
+                // 2. Mapping progress: 0-12% hold small, 12-86% zoom, 86-100% hold fullscreen
                 let easedProgress = 0;
-                if (rawProgress < 0.08) {
+                if (rawProgress < 0.12) {
                     easedProgress = 0;
-                } else if (rawProgress > 0.88) {
+                } else if (rawProgress > 0.86) {
                     easedProgress = 1;
                 } else {
-                    const norm = (rawProgress - 0.08) / 0.80;
-                    easedProgress = smoothstep(norm);
+                    const norm = (rawProgress - 0.12) / 0.74;
+                    easedProgress = norm * norm * (3 - 2 * norm); // Smoothstep
                 }
 
-                // Inset calculations
-                const currentHorizontal = horizontalInset * (1 - easedProgress);
-                const currentVertical = verticalInset * (1 - easedProgress);
-                const currentRadius = startRadius * (1 - easedProgress);
+                // 3. Interpolate the insets toward zero
+                const currentHorizontalInset = horizontalInset * (1 - easedProgress);
+                const currentVerticalInset = verticalInset * (1 - easedProgress);
+                const currentRadius = 22 * (1 - easedProgress);
 
-                card.style.clipPath = `inset(${currentVertical}px ${currentHorizontal}px ${currentVertical}px ${currentHorizontal}px round ${currentRadius}px)`;
+                card.style.clipPath = `inset(
+                    ${currentVerticalInset}px
+                    ${currentHorizontalInset}px
+                    ${currentVerticalInset}px
+                    ${currentHorizontalInset}px
+                    round ${currentRadius}px
+                )`;
 
-                // Dynamic opacity fades
-                const textOpacity = Math.max(0, 1 - easedProgress * 3.3);
-                if (meta) meta.style.opacity = textOpacity;
-                if (info) info.style.opacity = textOpacity;
-
-                // Scale play button gently
-                const playScale = 1 - easedProgress * 0.15;
-                if (playBtn) {
-                    playBtn.style.transform = `translate(-50%, -50%) scale(${playScale})`;
+                // 4. Heading animation: fade only while image expands
+                if (title) {
+                    const titleFadeProgress = clamp((rawProgress - 0.10) / 0.25, 0, 1);
+                    title.style.opacity = String(1 - titleFadeProgress);
+                    title.style.transform = `translateY(${-20 * titleFadeProgress}px)`;
                 }
 
-                // Fade header text
-                if (header) {
-                    header.style.opacity = Math.max(0, 1 - easedProgress * 2.5);
+                // 5. SHOW button scale and opacity fade during full-screen hold
+                if (showBtn) {
+                    const playScale = 1 - easedProgress * 0.15;
+                    const playOpacity = clamp(1 - (rawProgress - 0.75) / 0.11, 0, 1);
+                    showBtn.style.opacity = String(playOpacity);
+                    showBtn.style.transform = `translate(-50%, -50%) scale(${playScale})`;
                 }
             }
 
             // Listeners
             window.addEventListener('scroll', requestUpdate, { passive: true });
-            
             window.addEventListener('resize', () => {
                 calculateDimensions();
                 requestUpdate();
             });
-
             window.addEventListener('orientationchange', () => {
                 calculateDimensions();
                 requestUpdate();
-            });
-
-            // Custom Cursor Movement
-            section.addEventListener('mousemove', (e) => {
-                if (window.matchMedia('(pointer: fine)').matches) {
-                    cursor.style.left = e.clientX + 'px';
-                    cursor.style.top = e.clientY + 'px';
-                    cursor.classList.add('active');
-                }
-            });
-
-            section.addEventListener('mouseenter', () => {
-                if (window.matchMedia('(pointer: fine)').matches) {
-                    cursor.classList.add('active');
-                }
-            });
-
-            section.addEventListener('mouseleave', () => {
-                cursor.classList.remove('active');
-            });
-
-            // Tap/click redirect handler
-            section.addEventListener('click', (e) => {
-                // Let anchor navigate natively
-                e.preventDefault();
-                window.location.href = 'ai-cinema.html#kutch';
             });
 
             // Initial calculations and rendering
