@@ -144,7 +144,22 @@
         }
 
         .hero-scroll-track + section {
-            margin-top: 0 !important;
+            margin-top: -50vh !important;
+            margin-top: -50svh !important;
+        }
+
+        @media (max-width: 1024px) {
+            .hero-scroll-track + section {
+                margin-top: -45vh !important;
+                margin-top: -45svh !important;
+            }
+        }
+
+        @media (max-width: 767px) {
+            .hero-scroll-track + section {
+                margin-top: -35vh !important;
+                margin-top: -35svh !important;
+            }
         }
 
         /* ─── Hero Content Overlay & Placements ─── */
@@ -3022,8 +3037,6 @@
                     <span class="hero-copyright">© 2026 DIVYARAJ CHAUHAN</span>
                     <span class="hero-scroll-label">SCROLL TO EXPLORE ↓</span>
                 </div>
-
-                <div class="hero-bottom-accent"></div>
             </div>
         </div>
     </section>
