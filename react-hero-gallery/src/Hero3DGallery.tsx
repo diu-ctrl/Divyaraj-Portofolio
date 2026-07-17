@@ -23,7 +23,7 @@ export default function Hero3DGallery() {
       observer.observe(section);
     }
 
-    // 2. Scroll velocity & exit transition handler
+    // 2. Scroll velocity tracker
     const handleScroll = () => {
       if (!isVisible) return;
 
@@ -38,34 +38,6 @@ export default function Hero3DGallery() {
 
       lastScrollY.current = currentScrollY;
       lastTime.current = currentTime;
-
-      // Exit transition calculation (final 16% of scroll track)
-      if (section) {
-        const rect = section.getBoundingClientRect();
-        const sectionTop = rect.top + window.scrollY;
-        const sectionHeight = rect.height;
-        const scrollRange = sectionHeight - window.innerHeight;
-
-        if (scrollRange > 0) {
-          let progress = (window.scrollY - sectionTop) / scrollRange;
-          progress = Math.max(0, Math.min(1, progress));
-
-          // Exit mapping
-          const exitProgress = Math.max(0, Math.min(1, (progress - 0.84) / 0.16));
-
-          // Smooth DOM styling adjustments
-          const overlay = document.querySelector('.hero-content-overlay');
-          const canvasContainer = document.querySelector('.hero-3d-gallery-container');
-          
-          if (overlay instanceof HTMLElement) {
-            overlay.style.opacity = `${1 - exitProgress}`;
-            overlay.style.transform = `translate3d(0, ${-40 * exitProgress}px, 0)`;
-          }
-          if (canvasContainer instanceof HTMLElement) {
-            canvasContainer.style.opacity = `${1 - exitProgress * 0.5}`;
-          }
-        }
-      }
     };
 
     window.addEventListener('scroll', handleScroll, { passive: true });
