@@ -1913,211 +1913,150 @@
             transform: translateY(-2px);
         }
 
-        /* --- AI Cinema Lab Section --- */
-        /* --- AI Cinema Lab Section --- */
-        .ai-cinema-scroll-section {
+        /* ─── AI Cinema Lab Section ─── */
+        .ai-cinema-scroll-track {
             position: relative;
-            padding: 0 !important;
-            max-width: 100% !important;
             width: 100% !important;
+            max-width: none !important;
+            height: 260vh !important;
+            height: 260svh !important;
             margin: 0 !important;
-            height: 300vh; /* Scroll track for clip-path zoom effect */
+            padding: 0 !important;
             background: #000000;
+            margin-bottom: 0 !important;
+            padding-bottom: 0 !important;
+        }
+
+        .ai-cinema-scroll-track + section {
+            margin-top: 0 !important;
         }
 
         .ai-cinema-sticky-stage {
             position: sticky !important;
             top: 0;
-            width: 100%;
-            height: 100vh;
-            height: 100svh;
+            left: 0;
+            width: 100% !important;
+            height: 100vh !important;
+            height: 100svh !important;
+            min-height: 100svh !important;
             overflow: hidden;
-            display: grid;
-            place-items: center;
             background: #000000;
-            z-index: 2;
+            isolation: isolate;
+            margin: 0 !important;
+            padding: 0 !important;
         }
 
-        .cinema-header {
-            text-align: center;
-            max-width: 800px;
-            margin: 0 auto;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 16px;
-            padding: 0 24px;
+        .ai-cinema-intro {
             position: absolute;
-            top: 80px;
+            top: clamp(80px, 12vh, 120px);
             left: 50%;
             transform: translateX(-50%);
             z-index: 10;
             width: 100%;
+            text-align: center;
             pointer-events: none;
-            transition: opacity 0.25s ease;
+            will-change: opacity, transform;
         }
 
-        .cinema-header h2 {
-            font-size: clamp(2.2rem, 4vw, 3rem);
-            font-weight: 850;
-            letter-spacing: -0.02em;
-            color: #fff;
-            line-height: 1.15;
-            margin: 0;
+        .ai-cinema-title {
+            font-family: 'Instrument Serif', serif !important;
+            font-size: clamp(2.5rem, 5vw, 4.5rem) !important;
+            font-style: italic !important;
+            font-weight: normal !important;
+            color: #ffffff;
+            line-height: 1.1 !important;
+            margin: 0 !important;
+            text-transform: none !important;
+            letter-spacing: normal !important;
         }
 
-        .ai-cinema-expand-card {
+        .ai-cinema-featured-card {
             position: absolute;
             inset: 0;
+            z-index: 2;
+            display: block;
             width: 100%;
             height: 100%;
             overflow: hidden;
-            display: block;
             text-decoration: none;
-            background: #000000;
             will-change: clip-path;
             transform: translateZ(0);
-            z-index: 5;
+            background: #000000;
         }
 
-        .ai-cinema-expand-card img {
-            width: 100% !important;
-            height: 100% !important;
-            min-height: 100% !important;
-            object-fit: cover !important;
-            display: block !important;
-            filter: brightness(0.6) contrast(1.05);
-            z-index: 1;
-            position: relative;
-            transform: translateZ(0);
+        .ai-cinema-featured-image {
+            width: 100%;
+            height: 100%;
+            display: block;
+            object-fit: cover;
+            object-position: center center;
+            filter: brightness(0.65) contrast(1.05);
         }
 
-        .cinema-slide-overlay {
+        .ai-cinema-show-button {
             position: absolute;
-            inset: 0;
-            background: radial-gradient(circle at center, transparent 30%, rgba(0,0,0,0.4) 70%, rgba(0,0,0,0.85) 100%);
-            z-index: 2;
-            pointer-events: none;
-        }
-
-        /* Centered custom play button overlay */
-        .cinema-play-button {
-            position: absolute;
-            top: 50%;
             left: 50%;
+            top: 50%;
+            z-index: 3;
+            display: grid;
+            place-items: center;
+            width: clamp(80px, 10vw, 96px);
+            height: clamp(80px, 10vw, 96px);
             transform: translate(-50%, -50%);
-            width: 64px;
-            height: 64px;
-            background: rgba(255, 255, 255, 0.15);
-            backdrop-filter: blur(8px);
-            -webkit-backdrop-filter: blur(8px);
-            border: 1px solid rgba(255, 255, 255, 0.4);
             border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            z-index: 5;
-            color: #ffffff;
-            transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.3s, border-color 0.3s, opacity 0.2s ease;
-            pointer-events: none;
+            background: #ffffff;
+            color: #000000;
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 0.05em;
+            text-align: center;
+            transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.3s;
             will-change: transform, opacity;
         }
 
-        .cinema-play-button svg {
-            width: 22px;
-            height: 22px;
-            transform: translateX(2px); /* visual centering for play triangle */
-            fill: #ffffff;
-        }
-
-        .ai-cinema-expand-card:hover .cinema-play-button {
+        .ai-cinema-featured-card:hover .ai-cinema-show-button {
             transform: translate(-50%, -50%) scale(1.1);
-            background: rgba(255, 255, 255, 0.3);
-            border-color: #ffffff;
-        }
-
-        /* Immersive centered text inside square card */
-        .slide-meta {
-            position: absolute;
-            top: calc(50% - 60px);
-            left: 50%;
-            transform: translateX(-50%);
-            z-index: 5;
-            font-family: var(--font-mono);
-            font-size: 0.65rem;
-            color: var(--accent);
-            letter-spacing: 0.1em;
-            font-weight: 700;
-            text-transform: uppercase;
-            white-space: nowrap;
-            pointer-events: none;
-            transition: opacity 0.2s ease;
-            will-change: opacity;
-        }
-
-        .cinema-slide-info {
-            position: absolute;
-            top: calc(50% + 55px);
-            left: 50%;
-            transform: translateX(-50%);
-            z-index: 5;
-            text-align: center;
-            width: 100%;
-            max-width: 240px;
-            pointer-events: none;
-            transition: opacity 0.2s ease;
-            will-change: opacity;
-        }
-
-        .slide-title {
-            font-family: var(--font-sans);
-            font-weight: 900;
-            font-size: clamp(1.2rem, 3.5vw, 1.6rem);
-            line-height: 1.1;
+            background: #EB4604;
             color: #ffffff;
-            letter-spacing: 0.04em;
-            text-transform: uppercase;
-            margin: 0;
-            white-space: nowrap;
         }
 
-        /* Accessibility: Prefers Reduced Motion */
+        /* Responsive tablet/mobile heights */
+        @media (max-width: 1024px) {
+            .ai-cinema-scroll-track {
+                height: 230vh !important;
+                height: 230svh !important;
+            }
+        }
+
+        @media (max-width: 767px) {
+            .ai-cinema-scroll-track {
+                height: 200vh !important;
+                height: 200svh !important;
+            }
+        }
+
+        /* Accessibility: Reduced Motion */
         @media (prefers-reduced-motion: reduce) {
-            .ai-cinema-scroll-section {
+            .ai-cinema-scroll-track {
                 height: auto !important;
             }
+
             .ai-cinema-sticky-stage {
                 position: relative !important;
                 height: auto !important;
+                min-height: 100svh !important;
                 padding: 100px 24px 60px !important;
             }
-            .ai-cinema-expand-card {
-                position: relative !important;
-                width: 100% !important;
-                max-width: 320px !important;
-                height: 320px !important;
-                clip-path: none !important;
-                border-radius: 24px !important;
-                margin: 40px auto 0 !important;
-            }
-            .cinema-play-button {
-                opacity: 1 !important;
-                transform: translate(-50%, -50%) scale(1) !important;
-            }
-            .slide-meta, .cinema-slide-info {
-                opacity: 1 !important;
-            }
-            .cinema-header {
-                position: relative !important;
-                top: 0 !important;
-                left: 0 !important;
-                transform: none !important;
-                opacity: 1 !important;
-            }
-        }
 
-        .cinema-slide-link:hover .slide-title {
-            color: var(--accent);
+            .ai-cinema-featured-card {
+                position: relative !important;
+                width: min(90vw, 900px) !important;
+                height: min(70svh, 620px) !important;
+                margin: 40px auto !important;
+                clip-path: none !important;
+                border-radius: 12px !important;
+            }
         }
 
         .slider-btn {
@@ -3527,15 +3466,15 @@
     </section>
 
     <!-- AI Cinema Lab -->
-    <section id="ai-cinema" class="ai-cinema-scroll-section">
+    <section id="ai-cinema" class="ai-cinema-scroll-track">
         <div class="ai-cinema-sticky-stage">
-            <div class="cinema-header">
-                <h2>AI Cinema <span class="gradient-text">Lab</span></h2>
+            <div class="ai-cinema-intro">
+                <h2 class="ai-cinema-title">AI Cinema Lab</h2>
             </div>
             
-            <a class="ai-cinema-expand-card" href="ai-cinema.html#kutch" aria-label="Explore Kutch Project">
-                <img src="images/kutch-thumb.png" alt="Kutch">
-                <div class="cinema-slide-overlay"></div>
+            <a class="ai-cinema-featured-card" href="ai-cinema.html#kutch" aria-label="Open the featured AI Cinema project">
+                <img class="ai-cinema-featured-image" src="images/kutch-thumb.png" alt="Kutch" />
+                <span class="ai-cinema-show-button">SHOW</span>
             </a>
         </div>
     </section>
@@ -3954,29 +3893,20 @@
 
 
 
-        // ─── AI Cinema Scroll Card Zoom & Custom Cursor ───
+        // ─── AI Cinema Scroll Card Zoom & Controls ───
         (function() {
             const section = document.getElementById('ai-cinema');
-            const stickyStage = document.querySelector('.ai-cinema-sticky-stage');
-            const card = document.querySelector('.ai-cinema-expand-card');
-            const img = document.querySelector('.ai-cinema-expand-card img');
-            const header = document.querySelector('#ai-cinema .cinema-header');
-            const meta = document.querySelector('#ai-cinema .slide-meta');
-            const info = document.querySelector('#ai-cinema .cinema-slide-info');
-            const playBtn = document.querySelector('#ai-cinema .cinema-play-button');
+            const card = document.querySelector('.ai-cinema-featured-card');
+            const title = document.querySelector('.ai-cinema-title');
+            const showBtn = document.querySelector('.ai-cinema-show-button');
 
             if (!section || !card) return;
 
-            // Create custom cursor element dynamically
-            const cursor = document.createElement('div');
-            cursor.className = 'cinema-custom-cursor';
-            cursor.textContent = 'SHOW';
-            document.body.appendChild(cursor);
-
             let viewportWidth = window.innerWidth;
             let viewportHeight = window.innerHeight;
-            let squareSize = 280;
-            let startRadius = 24;
+            
+            let startWidth = 300;
+            let startHeight = 360;
             let horizontalInset = 0;
             let verticalInset = 0;
 
@@ -3984,19 +3914,16 @@
                 viewportWidth = window.innerWidth;
                 viewportHeight = window.innerHeight;
 
-                if (viewportWidth >= 1024) {
-                    squareSize = 280;
-                    startRadius = 24;
-                } else if (viewportWidth >= 768) {
-                    squareSize = 240;
-                    startRadius = 24;
+                if (viewportWidth < 768) {
+                    startWidth = Math.min(viewportWidth * 0.72, 300);
+                    startHeight = Math.min(viewportHeight * 0.48, 380);
                 } else {
-                    squareSize = Math.min(viewportWidth * 0.72, viewportHeight * 0.42);
-                    startRadius = 24;
+                    startWidth = Math.min(300, viewportWidth * 0.24);
+                    startHeight = Math.min(360, viewportHeight * 0.48);
                 }
 
-                horizontalInset = Math.max(0, (viewportWidth - squareSize) / 2);
-                verticalInset = Math.max(0, (viewportHeight - squareSize) / 2);
+                horizontalInset = (viewportWidth - startWidth) / 2;
+                verticalInset = (viewportHeight - startHeight) / 2;
             }
 
             let ticking = false;
@@ -4008,8 +3935,8 @@
                 }
             }
 
-            function smoothstep(value) {
-                return value * value * (3 - 2 * value);
+            function clamp(value, min, max) {
+                return Math.min(Math.max(value, min), max);
             }
 
             function updateCinemaScroll() {
@@ -4017,95 +3944,76 @@
 
                 if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
                     card.style.clipPath = '';
-                    if (meta) meta.style.opacity = '1';
-                    if (info) info.style.opacity = '1';
-                    if (playBtn) playBtn.style.transform = '';
-                    if (header) header.style.opacity = '1';
+                    if (title) {
+                        title.style.opacity = '1';
+                        title.style.transform = '';
+                    }
+                    if (showBtn) {
+                        showBtn.style.opacity = '1';
+                        showBtn.style.transform = 'translate(-50%, -50%) scale(1)';
+                    }
                     return;
                 }
 
                 const rect = section.getBoundingClientRect();
                 const sectionTop = rect.top + window.scrollY;
                 const sectionHeight = rect.height;
-                const scrollRange = sectionHeight - viewportHeight;
+                const scrollDistance = sectionHeight - viewportHeight;
 
-                if (scrollRange <= 0) return;
+                if (scrollDistance <= 0) return;
 
-                let rawProgress = (window.scrollY - sectionTop) / scrollRange;
-                rawProgress = Math.max(0, Math.min(1, rawProgress));
+                // 1. Raw scroll progress [0, 1]
+                const rawProgress = clamp((window.scrollY - sectionTop) / scrollDistance, 0, 1);
 
-                // Mapping progress: 0-8% hold, 8-88% zoom, 88-100% hold fullscreen
+                // 2. Mapping progress: 0-12% hold small, 12-86% zoom, 86-100% hold fullscreen
                 let easedProgress = 0;
-                if (rawProgress < 0.08) {
+                if (rawProgress < 0.12) {
                     easedProgress = 0;
-                } else if (rawProgress > 0.88) {
+                } else if (rawProgress > 0.86) {
                     easedProgress = 1;
                 } else {
-                    const norm = (rawProgress - 0.08) / 0.80;
-                    easedProgress = smoothstep(norm);
+                    const norm = (rawProgress - 0.12) / 0.74;
+                    easedProgress = norm * norm * (3 - 2 * norm); // Smoothstep
                 }
 
-                // Inset calculations
-                const currentHorizontal = horizontalInset * (1 - easedProgress);
-                const currentVertical = verticalInset * (1 - easedProgress);
-                const currentRadius = startRadius * (1 - easedProgress);
+                // 3. Interpolate the insets toward zero
+                const currentHorizontalInset = horizontalInset * (1 - easedProgress);
+                const currentVerticalInset = verticalInset * (1 - easedProgress);
+                const currentRadius = 22 * (1 - easedProgress);
 
-                card.style.clipPath = `inset(${currentVertical}px ${currentHorizontal}px ${currentVertical}px ${currentHorizontal}px round ${currentRadius}px)`;
+                card.style.clipPath = `inset(
+                    ${currentVerticalInset}px
+                    ${currentHorizontalInset}px
+                    ${currentVerticalInset}px
+                    ${currentHorizontalInset}px
+                    round ${currentRadius}px
+                )`;
 
-                // Dynamic opacity fades
-                const textOpacity = Math.max(0, 1 - easedProgress * 3.3);
-                if (meta) meta.style.opacity = textOpacity;
-                if (info) info.style.opacity = textOpacity;
-
-                // Scale play button gently
-                const playScale = 1 - easedProgress * 0.15;
-                if (playBtn) {
-                    playBtn.style.transform = `translate(-50%, -50%) scale(${playScale})`;
+                // 4. Heading animation: fade only while image expands
+                if (title) {
+                    const titleFadeProgress = clamp((rawProgress - 0.10) / 0.25, 0, 1);
+                    title.style.opacity = String(1 - titleFadeProgress);
+                    title.style.transform = `translateY(${-20 * titleFadeProgress}px)`;
                 }
 
-                // Fade header text
-                if (header) {
-                    header.style.opacity = Math.max(0, 1 - easedProgress * 2.5);
+                // 5. SHOW button scale and opacity fade during full-screen hold
+                if (showBtn) {
+                    const playScale = 1 - easedProgress * 0.15;
+                    const playOpacity = clamp(1 - (rawProgress - 0.75) / 0.11, 0, 1);
+                    showBtn.style.opacity = String(playOpacity);
+                    showBtn.style.transform = `translate(-50%, -50%) scale(${playScale})`;
                 }
             }
 
             // Listeners
             window.addEventListener('scroll', requestUpdate, { passive: true });
-            
             window.addEventListener('resize', () => {
                 calculateDimensions();
                 requestUpdate();
             });
-
             window.addEventListener('orientationchange', () => {
                 calculateDimensions();
                 requestUpdate();
-            });
-
-            // Custom Cursor Movement
-            section.addEventListener('mousemove', (e) => {
-                if (window.matchMedia('(pointer: fine)').matches) {
-                    cursor.style.left = e.clientX + 'px';
-                    cursor.style.top = e.clientY + 'px';
-                    cursor.classList.add('active');
-                }
-            });
-
-            section.addEventListener('mouseenter', () => {
-                if (window.matchMedia('(pointer: fine)').matches) {
-                    cursor.classList.add('active');
-                }
-            });
-
-            section.addEventListener('mouseleave', () => {
-                cursor.classList.remove('active');
-            });
-
-            // Tap/click redirect handler
-            section.addEventListener('click', (e) => {
-                // Let anchor navigate natively
-                e.preventDefault();
-                window.location.href = 'ai-cinema.html#kutch';
             });
 
             // Initial calculations and rendering
