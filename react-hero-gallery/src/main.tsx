@@ -1,7 +1,7 @@
 import React from 'react';
 import { createRoot } from 'react-dom/client';
 import Hero3DGallery from './Hero3DGallery';
-import Testimonials3DSection from './Testimonials3DSection';
+import Testimonials3DDemo from './Testimonials3DDemo';
 
 document.addEventListener('DOMContentLoaded', () => {
   const container = document.getElementById('hero-3d-scene');
@@ -14,12 +14,12 @@ document.addEventListener('DOMContentLoaded', () => {
     );
   }
 
-  const testimonialsContainer = document.getElementById('testimonials-3d-scene');
-  if (testimonialsContainer) {
-    const root = createRoot(testimonialsContainer);
+  const testimonialsRoot = document.getElementById('testimonials-3d-root');
+  if (testimonialsRoot) {
+    const root = createRoot(testimonialsRoot);
     root.render(
       <React.StrictMode>
-        <Testimonials3DSection />
+        <Testimonials3DDemo />
       </React.StrictMode>
     );
   }

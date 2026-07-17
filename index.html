@@ -11,6 +11,35 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital,wght@0,400;1,400&family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        corePlugins: {
+          preflight: false,
+        },
+        theme: {
+          extend: {
+            spacing: {
+              50: '12.5rem',
+            },
+            animation: {
+              marquee: 'marquee var(--duration, 40s) linear infinite',
+              'marquee-vertical': 'marquee-vertical var(--duration, 40s) linear infinite',
+            },
+            keyframes: {
+              marquee: {
+                'from': { transform: 'translateX(0)' },
+                'to': { transform: 'translateX(calc(-100% - var(--gap, 1rem)))' }
+              },
+              'marquee-vertical': {
+                'from': { transform: 'translateY(0)' },
+                'to': { transform: 'translateY(calc(-100% - var(--gap, 1rem)))' }
+              }
+            }
+          }
+        }
+      }
+    </script>
     <style>        :root {
             --bg: #000000;
             --bg-deep: #000000;
@@ -2714,273 +2743,57 @@
             transform: translateX(-50%);
             z-index: 10;
         /* ─── 3D Testimonials Section ─── */
-        .client-testimonials {
+        #testimonials-3d-demo {
+            --background: #000000;
+            --foreground: #ffffff;
+            --card: #111111;
+            --card-foreground: #ffffff;
+            --popover: #000000;
+            --popover-foreground: #ffffff;
+            --primary: #ffffff;
+            --primary-foreground: #000000;
+            --secondary: #111111;
+            --secondary-foreground: #cccccc;
+            --muted: #111111;
+            --muted-foreground: #888888;
+            --accent: #eb4604;
+            --accent-foreground: #ffffff;
+            --destructive: #ff0000;
+            --destructive-foreground: #ffffff;
+            --border: rgba(255, 255, 255, 0.08);
+            --input: rgba(255, 255, 255, 0.08);
+            --ring: #eb4604;
+
             position: relative;
             width: 100% !important;
             max-width: none !important;
-            min-height: 100svh;
             margin: 0 !important;
-            padding: clamp(90px, 11vh, 140px) 0 clamp(80px, 10vh, 120px);
-            overflow: hidden;
-            background: #000;
+            background: #000000 !important;
+            padding: 100px 0 !important;
         }
 
-        .client-testimonials + section {
-            margin-top: 0 !important;
+        #testimonials-3d-demo .w-50 {
+            width: 200px !important;
         }
 
-        .client-testimonials__header {
-            width: min(90vw, 1240px);
-            margin: 0 auto;
-            text-align: left;
-            position: relative;
-            z-index: 10;
+        #testimonials-3d-demo .bg-card {
+            background-color: #111111 !important;
+            border: 1px solid rgba(255, 255, 255, 0.08) !important;
+            border-radius: 8px !important;
+            padding: 16px !important;
         }
 
-        .client-testimonials__eyebrow {
-            display: block;
-            font-family: var(--font-mono) !important;
-            font-size: 0.75rem;
-            letter-spacing: 0.15em;
-            color: #EB4604;
-            margin-bottom: 8px;
-            text-transform: uppercase;
+        #testimonials-3d-demo .size-9 {
+            width: 36px !important;
+            height: 36px !important;
         }
 
-        .client-testimonials__title {
-            font-family: 'Instrument Serif', serif !important;
-            font-size: clamp(2.5rem, 5vw, 4.5rem) !important;
-            font-style: italic !important;
-            font-weight: normal !important;
-            color: #ffffff;
-            line-height: 1.1 !important;
-            margin: 0 0 12px 0 !important;
-            text-transform: none !important;
-            letter-spacing: normal !important;
+        #testimonials-3d-demo .rounded-full {
+            border-radius: 9999px !important;
         }
 
-        .client-testimonials__intro {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif !important;
-            font-size: 0.95rem !important;
-            color: var(--text-muted) !important;
-            margin: 0 !important;
-            max-width: 500px;
-            line-height: 1.5 !important;
-        }
-
-        .client-testimonials__scene {
-            position: relative;
-            width: min(90vw, 1240px);
-            height: clamp(470px, 63vh, 650px);
-            margin: clamp(30px, 5vh, 55px) auto 0;
-            perspective: 1300px;
-            perspective-origin: 50% 45%;
-            overflow: visible;
-        }
-
-        #testimonials-3d-scene {
-            position: absolute;
-            inset: 0;
-            width: 100%;
-            height: 100%;
-            display: block;
-            transform-style: preserve-3d;
-        }
-
-        .client-testimonials__board {
-            position: absolute;
-            inset: 0;
-            display: grid;
-            grid-template-columns: repeat(4, minmax(0, 1fr));
-            gap: 14px;
-            padding: 22px;
-            overflow: hidden;
-            transform-style: preserve-3d;
-            transform: rotateX(44deg) rotateY(-2.5deg) rotateZ(-1.5deg) scale(0.98);
-            transform-origin: 50% 48%;
-            border-radius: 12px;
-            -webkit-mask-image: linear-gradient(to bottom, transparent 0%, #000 9%, #000 91%, transparent 100%);
-            mask-image: linear-gradient(to bottom, transparent 0%, #000 9%, #000 91%, transparent 100%);
-        }
-
-        .client-testimonials__board::before {
-            content: "";
-            position: absolute;
-            inset: 4% 3%;
-            z-index: -1;
-            background: rgba(0, 0, 0, 0.65);
-            filter: blur(30px);
-            transform: translateZ(-30px);
-            pointer-events: none;
-        }
-
-        .client-testimonials__column {
-            position: relative;
-            min-width: 0;
-            height: 100%;
-            overflow: hidden;
-        }
-
-        .client-testimonials__track {
-            display: flex;
-            flex-direction: column;
-            will-change: transform;
-        }
-
-        .client-testimonials__set {
-            display: flex;
-            flex-direction: column;
-        }
-
-        /* Continuous vertical scroll marquee animation keyframes */
-        @keyframes client-testimonials-scroll-up {
-            from { transform: translate3d(0, 0, 0); }
-            to { transform: translate3d(0, -50%, 0); }
-        }
-
-        @keyframes client-testimonials-scroll-down {
-            from { transform: translate3d(0, -50%, 0); }
-            to { transform: translate3d(0, 0, 0); }
-        }
-
-        .client-testimonials.is-visible .client-testimonials__column:nth-child(1) .client-testimonials__track {
-            animation: client-testimonials-scroll-up 38s linear infinite;
-        }
-
-        .client-testimonials.is-visible .client-testimonials__column:nth-child(2) .client-testimonials__track {
-            animation: client-testimonials-scroll-down 44s linear infinite;
-        }
-
-        .client-testimonials.is-visible .client-testimonials__column:nth-child(3) .client-testimonials__track {
-            animation: client-testimonials-scroll-up 41s linear infinite;
-        }
-
-        .client-testimonials.is-visible .client-testimonials__column:nth-child(4) .client-testimonials__track {
-            animation: client-testimonials-scroll-down 47s linear infinite;
-        }
-
-        /* Pause animations when off-screen to conserve CPU */
-        .client-testimonials:not(.is-visible) .client-testimonials__track {
-            animation-play-state: paused !important;
-        }
-
-        .client-testimonials__card {
-            position: relative;
-            width: 100%;
-            min-height: 150px;
-            padding: 18px;
-            margin: 0 0 14px;
-            box-sizing: border-box;
-            background: #111111;
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            border-radius: 4px;
-            color: #f4f1ea;
-            overflow: hidden;
-            backface-visibility: hidden;
-            transform: translateZ(0);
-            transition: border-color 0.3s ease;
-        }
-
-        .client-testimonials__card:hover {
-            border-color: rgba(255, 255, 255, 0.2);
-        }
-
-        .client-testimonials__person {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            margin-bottom: 14px;
-        }
-
-        .client-testimonials__avatar {
-            width: 36px;
-            height: 36px;
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-family: var(--font-mono);
-            font-size: 0.8rem;
-            font-weight: 700;
-            color: #EB4604;
-        }
-
-        .client-testimonials__name {
-            font-family: var(--font-mono);
-            font-size: 0.8rem;
-            font-weight: 600;
-            color: #ffffff;
-            margin: 0 0 2px 0;
-            letter-spacing: normal;
-            text-transform: none;
-        }
-
-        .client-testimonials__role {
-            font-family: 'Inter', sans-serif;
-            font-size: 0.7rem;
-            color: #8c9b83;
-            margin: 0;
-        }
-
-        .client-testimonials__quote {
-            font-family: 'Inter', sans-serif !important;
-            font-size: 0.88rem !important;
-            line-height: 1.6 !important;
-            color: #f4f1ea !important;
-            margin: 0 0 16px 0 !important;
-            font-style: italic !important;
-            text-align: left !important;
-            text-transform: none !important;
-            letter-spacing: normal !important;
-        }
-
-        .client-testimonials__category {
-            align-self: flex-start;
-            display: inline-block;
-            font-family: var(--font-mono) !important;
-            font-size: 0.6rem !important;
-            font-weight: 700 !important;
-            color: #EB4604 !important;
-            border: 1px solid rgba(235, 70, 4, 0.2) !important;
-            padding: 3px 8px !important;
-            border-radius: 2px !important;
-            text-transform: uppercase !important;
-            letter-spacing: 0.08em !important;
-        }
-
-        /* Responsive tablet/mobile settings */
-        @media (max-width: 1024px) {
-            .client-testimonials__scene {
-                width: 92vw;
-                height: 580px;
-            }
-
-            .client-testimonials__board {
-                grid-template-columns: repeat(3, minmax(0, 1fr));
-            }
-
-            .client-testimonials__column:nth-child(4) {
-                display: none;
-            }
-        }
-
-        @media (max-width: 767px) {
-            .client-testimonials__scene {
-                width: 94vw;
-                height: 620px;
-                margin-top: 40px;
-            }
-
-            .client-testimonials__board {
-                grid-template-columns: repeat(2, minmax(0, 1fr));
-                transform: rotateX(28deg) rotateZ(-1deg) scale(0.98);
-            }
-
-            .client-testimonials__column:nth-child(n + 3) {
-                display: none;
-            }
+        #testimonials-3d-demo .rounded-lg {
+            border-radius: 8px !important;
         }
 </style>
 </head>
@@ -3623,16 +3436,11 @@
     </section>
 
     <!-- 3D Testimonials Section -->
-    <section class="client-testimonials" id="testimonials" aria-labelledby="client-testimonials-heading">
-        <div class="client-testimonials__header reveal">
-            <p class="client-testimonials__eyebrow">05 / TRUSTED VOICES</p>
-            <h2 id="client-testimonials-heading" class="client-testimonials__title">Words From Clients</h2>
-            <p class="client-testimonials__intro">Feedback from clients, collaborators, and creative partners.</p>
-        </div>
-
-        <div class="client-testimonials__scene">
-            <div id="testimonials-3d-scene"></div>
-        </div>
+    <section
+      id="testimonials-3d-demo"
+      class="flex min-h-screen w-full items-center justify-center overflow-hidden bg-background px-4 py-20"
+    >
+      <div id="testimonials-3d-root"></div>
     </section>
 
     <!-- Contact -->
