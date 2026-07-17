@@ -149,10 +149,10 @@ export default function Testimonials3DSection() {
       }
 
       // Calculate targets
-      const targetRY = baseRotateY + mouse.current.x * 2.5;
-      const targetRX = baseRotateX - mouse.current.y * 1.5;
-      const targetTX = mouse.current.x * 8;
-      const targetTY = mouse.current.y * 5;
+      const targetRY = baseRotateY + mouse.current.x * 3.5;
+      const targetRX = baseRotateX - mouse.current.y * 2.5;
+      const targetTX = mouse.current.x * 12;
+      const targetTY = mouse.current.y * 8;
 
       // Interpolate values
       current.current.rx += (targetRX - current.current.rx) * 0.06;
