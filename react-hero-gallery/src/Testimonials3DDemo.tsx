@@ -16,67 +16,92 @@ import {
 
 const testimonials = [
   {
-    name: 'Ava Green',
-    username: '@ava',
-    body: 'Cascade AI made my workflow 10x faster!',
-    img: 'https://randomuser.me/api/portraits/women/32.jpg',
-    country: '🇦🇺 Australia',
+    name: 'Jayesh Thakker',
+    username: '@jayesh_t',
+    body: 'Brilliant strategy and perfect positioning! Working with Divyaraj was a complete game changer for our brand setup.',
+    img: '',
+    country: 'Mumbai',
+    initial: 'J',
   },
   {
-    name: 'Ana Miller',
-    username: '@ana',
-    body: 'Vertical marquee is a game changer!',
-    img: 'https://randomuser.me/api/portraits/women/68.jpg',
-    country: '🇩🇪 Germany',
+    name: 'Kartik Mistry',
+    username: '@kartik_gt',
+    body: 'Gujarat Tigers designs were absolutely spot on. Highly recommended digital strategist!',
+    img: '',
+    country: 'Gujarat',
+    initial: 'K',
   },
   {
-    name: 'Mateo Rossi',
-    username: '@mat',
-    body: 'Animations are buttery smooth!',
-    img: 'https://randomuser.me/api/portraits/men/51.jpg',
-    country: '🇮🇹 Italy',
+    name: 'Ravi Somani',
+    username: '@ravi_finanvo',
+    body: 'Finanvo branding identity looks extremely bold and clean. Simplest user flow and solid execution.',
+    img: '',
+    country: 'Noida',
+    initial: 'S',
   },
   {
-    name: 'Maya Patel',
-    username: '@maya',
-    body: 'Setup was a breeze!',
-    img: 'https://randomuser.me/api/portraits/women/53.jpg',
-    country: '🇮🇳 India',
+    name: 'Gaurang Shah',
+    username: '@gaurang_whms',
+    body: 'White Horse Media Solutions campaigns got incredible engagement. Visually striking assets delivered on time.',
+    img: '',
+    country: 'Delhi',
+    initial: 'G',
   },
   {
-    name: 'Noah Smith',
-    username: '@noah',
-    body: 'Best marquee component!',
-    img: 'https://randomuser.me/api/portraits/men/33.jpg',
-    country: '🇺🇸 USA',
+    name: 'Ananya Sen',
+    username: '@ananya_kxm',
+    body: 'KXM Clothing streetwear campaign was a massive hit. The visual SMM strategy and assets got solid traction!',
+    img: '',
+    country: 'Mumbai',
+    initial: 'A',
   },
   {
-    name: 'Lucas Stone',
-    username: '@luc',
-    body: 'Very customizable and smooth.',
-    img: 'https://randomuser.me/api/portraits/men/22.jpg',
-    country: '🇫🇷 France',
+    name: 'Siddhant Siwach',
+    username: '@siddhant_cr',
+    body: 'Shift and Shelf platform assets are top level. Extremely clean visual interface styling.',
+    img: '',
+    country: 'Greater Noida',
+    initial: 'S',
   },
   {
-    name: 'Haruto Sato',
-    username: '@haru',
-    body: 'Impressive performance on mobile!',
-    img: 'https://randomuser.me/api/portraits/men/85.jpg',
-    country: '🇯🇵 Japan',
+    name: 'Ujjwal Singh',
+    username: '@ujjwal_cr',
+    body: 'Brutalist portfolio designs for Credes and Scuff look very premium. Smooth project coordination.',
+    img: '',
+    country: 'Pune',
+    initial: 'U',
   },
   {
-    name: 'Emma Lee',
-    username: '@emma',
-    body: 'Love the pause on hover feature!',
-    img: 'https://randomuser.me/api/portraits/women/45.jpg',
-    country: '🇨🇦 Canada',
+    name: 'Raghubar Jha',
+    username: '@raghubar_giffy',
+    body: 'SMM output for Giffy launch was absolutely stellar. Amazing planned social media strategy!',
+    img: '',
+    country: 'Mumbai',
+    initial: 'R',
   },
   {
-    name: 'Carlos Ray',
-    username: '@carl',
-    body: 'Great for testimonials and logos.',
-    img: 'https://randomuser.me/api/portraits/men/61.jpg',
-    country: '🇪🇸 Spain',
+    name: 'Ramkrishna Pamidimukkla',
+    username: '@ram_aspire',
+    body: 'Aspire positioning strategy was extremely structured. Perfect visual asset design!',
+    img: '',
+    country: 'Pune',
+    initial: 'R',
+  },
+  {
+    name: 'Abhishek Biswas',
+    username: '@abhishek_sattvik',
+    body: 'Sattvik certifications platform UI/UX is highly accessible and looks very clean.',
+    img: '',
+    country: 'Delhi',
+    initial: 'A',
+  },
+  {
+    name: 'Lokesh Suji',
+    username: '@lokesh_esfi',
+    body: 'ESFI esports tournament graphics got solid traction. Stark and impactful layouts.',
+    img: '',
+    country: 'Gujarat',
+    initial: 'L',
   },
 ];
 
@@ -86,38 +111,42 @@ function TestimonialCard({
   username,
   body,
   country,
+  initial,
 }: (typeof testimonials)[number]) {
   return (
-    <Card className="w-50">
-      <CardContent>
+    <Card className="w-50 testimonial-card">
+      <CardContent className="testimonial-card-content">
         <div className="flex items-center gap-2.5">
-          <Avatar className="size-9">
-            <AvatarImage
-              src={img}
-              alt={`${name} profile`}
-            />
+          <Avatar className="size-9 testimonial-avatar">
+            {img ? (
+              <AvatarImage
+                src={img}
+                alt={`${name} profile`}
+                className="testimonial-avatar-image"
+              />
+            ) : null}
 
-            <AvatarFallback>
-              {name[0]}
+            <AvatarFallback className="testimonial-avatar-fallback">
+              {initial || name[0]}
             </AvatarFallback>
           </Avatar>
 
           <div className="flex flex-col">
-            <figcaption className="flex items-center gap-1 text-sm font-medium text-foreground">
+            <figcaption className="flex items-center gap-1 text-sm font-medium testimonial-name">
               {name}
 
-              <span className="text-xs">
+              <span className="text-xs testimonial-country">
                 {country}
               </span>
             </figcaption>
 
-            <p className="text-xs font-medium text-muted-foreground">
+            <p className="text-xs font-medium testimonial-username">
               {username}
             </p>
           </div>
         </div>
 
-        <blockquote className="mt-3 text-sm text-secondary-foreground">
+        <blockquote className="mt-3 text-sm testimonial-body">
           {body}
         </blockquote>
       </CardContent>
@@ -127,12 +156,12 @@ function TestimonialCard({
 
 export default function Testimonials3DDemo() {
   return (
-    <div className="relative flex h-96 w-full max-w-[800px] flex-row items-center justify-center gap-1.5 overflow-hidden rounded-lg border border-border [perspective:300px]">
+    <div className="relative flex h-[640px] w-full max-w-none flex-row items-center justify-center gap-1.5 overflow-hidden rounded-lg [perspective:800px]">
       <div
-        className="relative flex flex-row items-center gap-4"
+        className="relative flex flex-row items-center gap-8"
         style={{
           transform:
-            'translateX(-100px) translateY(0px) translateZ(-100px) rotateX(20deg) rotateY(-10deg) rotateZ(20deg)',
+            'translateX(-80px) translateY(0px) translateZ(-220px) rotateX(20deg) rotateY(-10deg) rotateZ(20deg)',
           transformStyle: 'preserve-3d',
         }}
       >
@@ -194,13 +223,13 @@ export default function Testimonials3DDemo() {
           ))}
         </Marquee>
 
-        <div className="pointer-events-none absolute inset-x-0 top-0 z-10 h-1/4 bg-gradient-to-b from-background to-transparent" />
+        <div className="pointer-events-none absolute inset-x-0 top-0 z-10 h-[12%] testimonial-fade-top" />
 
-        <div className="pointer-events-none absolute inset-x-0 bottom-0 z-10 h-1/4 bg-gradient-to-t from-background to-transparent" />
+        <div className="pointer-events-none absolute inset-x-0 bottom-0 z-10 h-[12%] testimonial-fade-bottom" />
 
-        <div className="pointer-events-none absolute inset-y-0 left-0 z-10 w-1/4 bg-gradient-to-r from-background to-transparent" />
+        <div className="pointer-events-none absolute inset-y-0 left-0 z-10 w-[12%] testimonial-fade-left" />
 
-        <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-1/4 bg-gradient-to-l from-background to-transparent" />
+        <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-[12%] testimonial-fade-right" />
       </div>
     </div>
   );
