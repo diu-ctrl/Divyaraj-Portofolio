@@ -1860,6 +1860,76 @@
             }
         }
 
+        @media (max-width: 767px) {
+            /* 1. Hero corner labels */
+            .hero-top-meta {
+                top: calc(20px + env(safe-area-inset-top)) !important;
+                left: 20px !important;
+                right: 20px !important;
+                display: flex !important;
+                justify-content: space-between !important;
+                flex-direction: row !important;
+            }
+            .hero-bottom-meta {
+                bottom: calc(20px + env(safe-area-inset-bottom)) !important;
+                left: 20px !important;
+                right: 20px !important;
+                display: flex !important;
+                justify-content: space-between !important;
+                flex-direction: row !important;
+            }
+            .hero-availability,
+            .hero-location,
+            .hero-copyright,
+            .hero-scroll-label {
+                font-size: clamp(8px, 2.2vw, 10px) !important;
+                letter-spacing: 0.12em !important;
+                white-space: nowrap !important;
+            }
+
+            /* 2. Reduce gap between statistics and Profile section */
+            .stats-section {
+                padding-top: 50px !important;
+                padding-bottom: 30px !important;
+            }
+            #about-section {
+                padding-top: 50px !important; /* Top space of Profile section */
+                padding-bottom: 60px !important;
+            }
+
+            /* 3. Correct spacing around “Where I’ve Worked” */
+            #experience {
+                padding-top: 30px !important; /* profile-to-experience gap = about padding-bottom (60) + experience padding-top (30) = 90px */
+                padding-bottom: 50px !important;
+            }
+            #experience .section-header {
+                margin-bottom: 65px !important; /* Heading to first experience card: 55px-75px */
+            }
+
+            /* 4. Correct spacing around “Pick a lane. I’ll do the rest.” */
+            #services.services-section {
+                padding-top: 50px !important; /* experience-to-services gap = experience padding-bottom (50) + services padding-top (50) = 100px */
+                padding-bottom: 60px !important;
+            }
+            #services .section-header {
+                margin-bottom: 65px !important; /* Services heading to Platform Growth: 60px-75px */
+            }
+
+            /* 6. Mobile navigation clearance inside scrollable timelines & grids */
+            .timeline {
+                padding-bottom: calc(40px + env(safe-area-inset-bottom)) !important;
+            }
+            .services-grid-four-lanes {
+                padding-bottom: calc(45px + env(safe-area-inset-bottom)) !important;
+            }
+            #portfolio {
+                padding-bottom: calc(80px + env(safe-area-inset-bottom)) !important;
+            }
+            .cta-section {
+                padding-bottom: calc(80px + env(safe-area-inset-bottom)) !important;
+            }
+        }
+
         /* Custom scrollbar */
         ::-webkit-scrollbar {
             width: 8px;
