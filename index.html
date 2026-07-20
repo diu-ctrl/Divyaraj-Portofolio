@@ -11,6 +11,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital,wght@0,400;1,400&family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/navigation.css">
     <script>
       tailwind = {
         config: {
@@ -2577,156 +2578,7 @@
     
 
 
-        /* ─── Limelight Floating Navigation ─── */
-        .limelight-nav-container {
-            position: fixed;
-            bottom: 0px;
-            left: 50%;
-            transform: translateX(-50%);
-            z-index: 1000;
-            width: auto;
-            max-width: 90vw;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            padding-bottom: 24px;
-            padding-top: 40px;
-            padding-left: 60px;
-            padding-right: 60px;
-        }
-
-        .limelight-trigger-line {
-            width: 60px;
-            height: 3px;
-            background: var(--primary);
-            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-            transform-origin: center;
-        }
-
-        .limelight-nav {
-            display: flex;
-            align-items: center;
-            background: #000000 !important;
-            border: 1px solid var(--border) !important;
-            border-radius: 0px !important; /* Sharp corners brutalist design */
-            padding: 4px 16px;
-            gap: 12px;
-            position: absolute;
-            bottom: 24px;
-            left: 50%;
-            transform: translate(-50%, 20px);
-            opacity: 0;
-            visibility: hidden;
-            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-            pointer-events: none;
-            box-shadow: none !important; /* No shadows */
-        }
-
-        .limelight-nav-container:hover .limelight-trigger-line {
-            opacity: 0;
-            transform: scaleX(0);
-        }
-
-        .limelight-nav-container:hover .limelight-nav {
-            opacity: 1;
-            visibility: visible;
-            transform: translate(-50%, 0);
-            pointer-events: auto;
-        }
-
-        .limelight-nav-item {
-            position: relative;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 56px;
-            height: 56px;
-            color: var(--text-muted);
-            text-decoration: none;
-            transition: color 0.3s ease;
-            border-radius: 0px !important; /* Sharp corners */
-        }
-
-        .nav-icon {
-            width: 22px;
-            height: 22px;
-            transition: transform 0.3s ease;
-            position: relative;
-            z-index: 2;
-        }
-
-        /* Hover / Active spotlight effect */
-        .limelight-nav-item::before {
-            content: '';
-            position: absolute;
-            top: -4px; /* Align to the top border of the nav capsule */
-            left: 50%;
-            transform: translateX(-50%);
-            width: 32px;
-            height: 2px;
-            background: var(--primary); /* Signature Hot Orange */
-            border-radius: 0px !important;
-            opacity: 0;
-            transition: opacity 0.3s ease;
-            z-index: 3;
-        }
-
-        .limelight-beam {
-            position: absolute;
-            top: -4px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 50px;
-            height: 60px;
-            background: linear-gradient(to bottom, rgba(235, 70, 4, 0.18) 0%, rgba(235, 70, 4, 0) 100%); /* Orange spotlight beam */
-            clip-path: polygon(25% 0%, 75% 0%, 100% 100%, 0% 100%);
-            opacity: 0;
-            transition: opacity 0.3s ease;
-            pointer-events: none;
-            z-index: 1;
-        }
-
-        /* Active & Hover states */
-        .limelight-nav-item:hover {
-            color: var(--primary); /* Hover turns to hot orange */
-        }
-
-        .limelight-nav-item:hover .nav-icon {
-            transform: scale(1.05);
-        }
-
-        .limelight-nav-item.active {
-            color: var(--primary); /* Active icon is hot orange */
-        }
-
-        .limelight-nav-item.active::before,
-        .limelight-nav-item.active .limelight-beam {
-            opacity: 1;
-        }
-
-        /* Simple tooltips for navigation accessibility */
-        .nav-tooltip {
-            position: absolute;
-            bottom: 70px;
-            background: #000000;
-            border: 1px solid var(--border);
-            color: var(--text);
-            font-family: var(--font-mono);
-            font-size: 11px;
-            padding: 4px 8px;
-            border-radius: 0px !important; /* Sharp corners */
-            opacity: 0;
-            pointer-events: none;
-            transition: opacity 0.2s ease, transform 0.2s ease;
-            transform: translateY(5px);
-            white-space: nowrap;
-            z-index: 100;
-        }
-
-        .limelight-nav-item:hover .nav-tooltip {
-            opacity: 1;
-            transform: translateY(0);
-        }
+        /* ─── Limelight Floating Navigation (Imported from css/navigation.css) ─── */
 
         /* ─── Slide to Confirm Button ─── */
         .slide-button-container {
@@ -3074,32 +2926,36 @@
 
     <!-- Limelight Floating Navigation Bar -->
     <nav class="limelight-nav-container">
-        <div class="limelight-trigger-line"></div>
         <div class="limelight-nav">
+            <!-- Home -->
             <a href="#hero" class="limelight-nav-item active" data-target="hero">
                 <div class="limelight-beam"></div>
                 <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
                 <span class="nav-tooltip">Home</span>
             </a>
-            <a href="#portfolio" class="limelight-nav-item" data-target="portfolio">
+            <!-- About -->
+            <a href="index.html" class="limelight-nav-item" data-target="about">
+                <div class="limelight-beam"></div>
+                <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                <span class="nav-tooltip">About</span>
+            </a>
+            <!-- Work -->
+            <a href="work.html" class="limelight-nav-item" data-target="work">
                 <div class="limelight-beam"></div>
                 <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg>
                 <span class="nav-tooltip">Work</span>
             </a>
-            <a href="#ai-cinema" class="limelight-nav-item" data-target="ai-cinema">
-                <div class="limelight-beam"></div>
-                <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:26px;height:26px;">
-                    <path d="M15 10l4.553-2.069A1 1 0 0 1 21 8.87v6.26a1 1 0 0 1-1.447.91L15 14"/>
-                    <rect x="2" y="7" width="13" height="10" rx="2"/>
-                    <circle cx="5.5" cy="5" r="1" fill="currentColor" stroke="none"/>
-                    <circle cx="10.5" cy="5" r="1" fill="currentColor" stroke="none"/>
-                </svg>
-                <span class="nav-tooltip">AI Cinema</span>
-            </a>
+            <!-- Contact -->
             <a href="#contact" class="limelight-nav-item" data-target="contact">
                 <div class="limelight-beam"></div>
                 <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
                 <span class="nav-tooltip">Contact</span>
+            </a>
+            <!-- Resume -->
+            <a href="divyaraj_resume" target="_blank" class="limelight-nav-item" data-target="resume">
+                <div class="limelight-beam"></div>
+                <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><line x1="10" y1="9" x2="8" y2="9"/></svg>
+                <span class="nav-tooltip">Resume</span>
             </a>
         </div>
     </nav>
@@ -3938,59 +3794,7 @@
         })();
 
 
-        // ─── Limelight Navigation Scroll Spy & Smooth Scroll ───
-        (function() {
-            const navItems = document.querySelectorAll('.limelight-nav-item');
-            const sections = [
-                document.getElementById('hero'),
-                document.getElementById('portfolio'),
-                document.getElementById('ai-cinema'),
-                document.getElementById('contact')
-            ];
-
-            // Click scrolling
-            navItems.forEach(item => {
-                item.addEventListener('click', (e) => {
-                    e.preventDefault();
-                    const targetId = item.getAttribute('href');
-                    const targetSection = document.querySelector(targetId);
-                    if (targetSection) {
-                        targetSection.scrollIntoView({ behavior: 'smooth' });
-                    }
-                });
-            });
-
-            // Scroll spy logic
-            function scrollSpy() {
-                let currentActiveIndex = 0;
-                const scrollPos = window.scrollY + window.innerHeight / 3;
-
-                sections.forEach((section, idx) => {
-                    if (!section) return;
-                    const top = section.offsetTop;
-                    const height = section.offsetHeight;
-                    if (scrollPos >= top && scrollPos < top + height) {
-                        currentActiveIndex = idx;
-                    }
-                });
-
-                // Force active index to bottom section if user scrolled to the absolute bottom
-                if ((window.innerHeight + window.scrollY) >= document.documentElement.scrollHeight - 50) {
-                    currentActiveIndex = sections.length - 1;
-                }
-
-                navItems.forEach((item, idx) => {
-                    if (idx === currentActiveIndex) {
-                        item.classList.add('active');
-                    } else {
-                        item.classList.remove('active');
-                    }
-                });
-            }
-
-            window.addEventListener('scroll', scrollSpy);
-            scrollSpy(); // Initial run
-        })();
+        // ─── Shared Floating Navigation (Imported from js/navigation.js) ───
 
         // ─── Slide to Hire Me Interaction ───
         (function() {
@@ -4844,8 +4648,8 @@
                 
                 observer.observe(item);
             });
-        })();
     </script>
+    <script src="js/navigation.js"></script>
 
     <!-- Mathematical Verification of Title Centering & Canvas Dimensions -->
     <script>

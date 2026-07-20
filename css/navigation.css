@@ -1,0 +1,155 @@
+/* ─── Shared Floating Navigation Styles ─── */
+.limelight-nav-container {
+    position: fixed;
+    top: 24px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1000;
+    width: auto;
+    max-width: 90vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0;
+}
+
+.limelight-nav {
+    display: flex;
+    align-items: center;
+    background: #000000 !important;
+    border: 1px solid var(--border) !important;
+    border-radius: 0px !important; /* Sharp corners brutalist design */
+    padding: 4px 16px;
+    gap: 12px;
+    position: relative;
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    box-shadow: none !important;
+}
+
+.limelight-nav-item {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 56px;
+    height: 56px;
+    color: var(--text-muted);
+    text-decoration: none;
+    transition: color 0.3s ease;
+    border-radius: 0px !important;
+}
+
+.nav-icon {
+    width: 22px;
+    height: 22px;
+    transition: transform 0.3s ease;
+    position: relative;
+    z-index: 2;
+}
+
+/* Hover / Active spotlight effect */
+.limelight-nav-item::before {
+    content: '';
+    position: absolute;
+    top: -4px; /* Align to top border of nav capsule */
+    left: 50%;
+    transform: translateX(-50%);
+    width: 32px;
+    height: 2px;
+    background: var(--primary); /* Signature Hot Orange */
+    border-radius: 0px !important;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: 3;
+}
+
+.limelight-beam {
+    position: absolute;
+    top: -4px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 50px;
+    height: 60px;
+    background: linear-gradient(to bottom, rgba(235, 70, 4, 0.18) 0%, rgba(235, 70, 4, 0) 100%); /* Orange spotlight beam */
+    clip-path: polygon(25% 0%, 75% 0%, 100% 100%, 0% 100%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+    z-index: 1;
+}
+
+/* Active & Hover states */
+.limelight-nav-item:hover {
+    color: var(--primary);
+}
+
+.limelight-nav-item:hover .nav-icon {
+    transform: scale(1.05);
+}
+
+.limelight-nav-item.active {
+    color: var(--primary);
+}
+
+.limelight-nav-item.active::before,
+.limelight-nav-item.active .limelight-beam {
+    opacity: 1;
+}
+
+/* Tooltips positioned below the nav bar at the top */
+.nav-tooltip {
+    position: absolute;
+    top: 64px; /* Below the nav item */
+    background: #000000;
+    border: 1px solid var(--border);
+    color: var(--text);
+    font-family: var(--font-mono);
+    font-size: 11px;
+    padding: 4px 8px;
+    border-radius: 0px !important;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.2s ease, transform 0.2s ease;
+    transform: translateY(-5px);
+    white-space: nowrap;
+    z-index: 100;
+}
+
+.limelight-nav-item:hover .nav-tooltip {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Responsive Mobile Navigation Styles */
+@media (max-width: 767px) {
+    .limelight-nav-container {
+        top: calc(10px + env(safe-area-inset-top));
+        max-width: 95vw;
+    }
+    .limelight-nav {
+        padding: 2px 8px;
+        gap: 4px;
+    }
+    .limelight-nav-item {
+        width: 44px;
+        height: 44px;
+    }
+    .nav-icon {
+        width: 18px;
+        height: 18px;
+    }
+    .limelight-nav-item::before {
+        width: 24px;
+        top: -2px;
+    }
+    .limelight-beam {
+        top: -2px;
+        width: 38px;
+        height: 48px;
+    }
+    .nav-tooltip {
+        display: none; /* Hide tooltips on mobile touch screens */
+    }
+}
