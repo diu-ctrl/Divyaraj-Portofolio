@@ -10,94 +10,104 @@
     const pathname = window.location.pathname;
     const isWorkPage = pathname.endsWith('work.html') || pathname.endsWith('work');
 
-    if (isWorkPage) {
-        // On work.html: Work (index 2) is active by default. Other scrollspy is disabled.
-        navItems.forEach((item, idx) => {
-            if (idx === 2) {
-                item.classList.add('active');
-            } else {
-                item.classList.remove('active');
-            }
-        });
+    // Scroll spy logic
+    const heroSection = document.getElementById('hero');
+    const contactSection = document.getElementById('contact');
 
-        // Intercept Work click to scroll smoothly to top
-        const workItem = navItems[2];
-        workItem.addEventListener('click', (e) => {
-            e.preventDefault();
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        });
-    } else {
-        // On index.html: Scroll spy handles active state for Home, About, and Contact
-        const heroSection = document.getElementById('hero');
-        const contactSection = document.getElementById('contact');
+    function scrollSpy() {
+        const scrollPos = window.scrollY + window.innerHeight / 3;
+        let activeIndex = isWorkPage ? 2 : 1; // Default: Work on work.html, About on index.html
 
-        // Scroll spy logic
-        function scrollSpy() {
-            const scrollPos = window.scrollY + window.innerHeight / 3;
-            let activeIndex = 1; // Default to About (index 1)
-
-            // Check if hero is in view (near the top)
+        if (isWorkPage) {
+            // On work page: top is Work (2), bottom is Contact (3)
             if (heroSection) {
                 const heroHeight = heroSection.offsetHeight;
                 if (window.scrollY < heroHeight * 0.7) {
-                    activeIndex = 0; // Home is active
+                    activeIndex = 2; // Work is active
                 }
             }
-
-            // Check if contact is in view
             if (contactSection) {
                 const contactTop = contactSection.offsetTop;
                 if (scrollPos >= contactTop) {
                     activeIndex = 3; // Contact is active
                 }
             }
-
-            // Force active index to Contact if user scrolled to absolute bottom
-            if ((window.innerHeight + window.scrollY) >= document.documentElement.scrollHeight - 50) {
-                activeIndex = 3;
-            }
-
-            navItems.forEach((item, idx) => {
-                if (idx === activeIndex) {
-                    item.classList.add('active');
-                } else {
-                    item.classList.remove('active');
+        } else {
+            // On index page: top is Home (0), middle is About (1), bottom is Contact (3)
+            if (heroSection) {
+                const heroHeight = heroSection.offsetHeight;
+                if (window.scrollY < heroHeight * 0.7) {
+                    activeIndex = 0; // Home is active
                 }
-            });
+            }
+            if (contactSection) {
+                const contactTop = contactSection.offsetTop;
+                if (scrollPos >= contactTop) {
+                    activeIndex = 3; // Contact is active
+                }
+            }
         }
 
-        // Click scrolling handlers for index.html links
+        // Force active index to Contact if user scrolled to absolute bottom
+        if ((window.innerHeight + window.scrollY) >= document.documentElement.scrollHeight - 50) {
+            activeIndex = 3;
+        }
+
         navItems.forEach((item, idx) => {
-            const href = item.getAttribute('href');
-            const targetAttr = item.getAttribute('data-target');
-            if (href.startsWith('#') || href === 'index.html' || href.startsWith('index.html#')) {
-                item.addEventListener('click', (e) => {
-                    e.preventDefault();
-                    if (targetAttr === 'hero' || href === '#hero' || href === 'index.html#hero') {
-                        window.scrollTo({ top: 0, behavior: 'smooth' });
-                        // Update hash without jump
-                        history.pushState(null, null, '#hero');
-                    } else if (targetAttr === 'about' || href === '#about' || href === 'index.html#about') {
-                        const targetSection = document.getElementById('about');
-                        if (targetSection) {
-                            targetSection.scrollIntoView({ behavior: 'smooth' });
-                            history.pushState(null, null, '#about');
-                        }
-                    } else {
-                        const hash = href.includes('#') ? href.substring(href.indexOf('#')) : '';
-                        const target = document.querySelector(hash);
-                        if (target) {
-                            target.scrollIntoView({ behavior: 'smooth' });
-                            history.pushState(null, null, hash);
-                        }
-                    }
-                });
+            if (idx === activeIndex) {
+                item.classList.add('active');
+            } else {
+                item.classList.remove('active');
             }
         });
+    }
 
-        // Referrer-based scroll to About section when navigating from work.html
+    // Click scrolling handlers
+    navItems.forEach((item, idx) => {
+        const href = item.getAttribute('href');
+
+        item.addEventListener('click', (e) => {
+            // Check if this link points to an anchor on the current page
+            let isLocal = false;
+            let targetHash = '';
+
+            if (href.startsWith('#')) {
+                isLocal = true;
+                targetHash = href;
+            } else if (href.includes('#')) {
+                const [page, hash] = href.split('#');
+                const currentPage = pathname.split('/').pop() || 'index.html';
+                if (currentPage === page || (currentPage === 'index.html' && page === 'index.html') || (currentPage === '' && page === 'index.html') || (currentPage === 'work.html' && page === 'work.html')) {
+                    isLocal = true;
+                    targetHash = '#' + hash;
+                }
+            } else if (href === 'index.html' && !isWorkPage) {
+                isLocal = true;
+                targetHash = '#about';
+            } else if (href === 'work.html' && isWorkPage) {
+                isLocal = true;
+                targetHash = '#hero';
+            }
+
+            if (isLocal) {
+                e.preventDefault();
+                if (targetHash === '#hero') {
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                    history.pushState(null, null, '#hero');
+                } else {
+                    const targetSection = document.querySelector(targetHash);
+                    if (targetSection) {
+                        targetSection.scrollIntoView({ behavior: 'smooth' });
+                        history.pushState(null, null, targetHash);
+                    }
+                }
+            }
+        });
+    });
+
+    // Referrer-based scroll to About section when navigating from work.html
+    if (!isWorkPage) {
         window.addEventListener('load', () => {
-            // Allow brief timeout for rendering layout stability
             if (!window.location.hash && document.referrer && (document.referrer.indexOf('work.html') !== -1 || document.referrer.indexOf('/work') !== -1)) {
                 setTimeout(() => {
                     const aboutSection = document.getElementById('about');
@@ -107,8 +117,8 @@
                 }, 200);
             }
         });
-
-        window.addEventListener('scroll', scrollSpy);
-        scrollSpy(); // Initial run
     }
+
+    window.addEventListener('scroll', scrollSpy);
+    scrollSpy(); // Initial run
 })();

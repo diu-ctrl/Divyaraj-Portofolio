@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Work — Divyaraj Chauhan</title>
-    <meta name="description" content="Work and SMM case studies of Divyaraj Chauhan.">
+    <title>Work  Divyaraj Chauhan</title>
+    <meta name="description" content="Portfolio of Divyaraj Chauhan, Social Media Manager & Content Creator at Credes Techlabs.">
     <link rel="icon" type="image/svg+xml" href="favicon.svg?v=2">
     <link rel="alternate icon" type="image/png" href="favicon.png?v=2">
     <link rel="apple-touch-icon" sizes="180x180" href="favicon.svg?v=2">
@@ -12,83 +12,45 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital,wght@0,400;1,400&family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/navigation.css">
-    <style>
-        :root {
-            --bg: #000000;
-            --bg-deep: #000000;
-            --card: #282723;
-            --text: #FFFFFF;
-            --text-muted: #99A57D;
-            --border: #282723;
-            --accent: #EB4604;
-            --primary: var(--accent);
-            --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-            --font-serif: 'Instrument Serif', Georgia, serif;
-            --font-mono: 'Space Mono', 'JetBrains Mono', monospace;
+    <script>
+      tailwind = {
+        config: {
+          corePlugins: {
+            preflight: false,
+          },
+          theme: {
+            extend: {
+              spacing: {
+                50: '12.5rem',
+              },
+              animation: {
+                marquee: 'marquee var(--duration, 40s) linear infinite',
+                'marquee-vertical': 'marquee-vertical var(--duration, 40s) linear infinite',
+              },
+              keyframes: {
+                marquee: {
+                  'from': { transform: 'translateX(0)' },
+                  'to': { transform: 'translateX(calc(-100% - var(--gap, 1rem)))' }
+                },
+                'marquee-vertical': {
+                  'from': { transform: 'translateY(0)' },
+                  'to': { transform: 'translateY(calc(-100% - var(--gap, 1rem)))' }
+                }
+              }
+            }
+          }
         }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            border-radius: 0px !important;
-            box-shadow: none !important;
-            backdrop-filter: none !important;
-            -webkit-backdrop-filter: none !important;
-            mix-blend-mode: normal !important;
-        }
-
-        body {
-            font-family: var(--font-sans);
-            background: var(--bg);
-            color: var(--text);
-            overflow-x: hidden;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            min-height: 100vh;
-            padding: 24px;
-        }
-
-        .placeholder-container {
-            border: 1px solid var(--border);
-            background: var(--card);
-            padding: 48px;
-            max-width: 600px;
-            width: 100%;
-            text-align: center;
-        }
-
-        .placeholder-container h1 {
-            font-family: var(--font-serif);
-            font-style: italic;
-            font-size: clamp(2.5rem, 5vw, 4.5rem);
-            line-height: 1.1;
-            margin-bottom: 16px;
-            font-weight: 400;
-        }
-
-        .placeholder-container p {
-            color: var(--text-muted);
-            font-family: var(--font-sans);
-            font-size: 1.1rem;
-            line-height: 1.6;
-            margin-bottom: 24px;
-        }
-
-        .placeholder-container span {
-            font-family: var(--font-mono);
-            font-size: 0.85rem;
-            color: var(--accent);
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-            border: 1px solid var(--accent);
-            padding: 6px 12px;
-            display: inline-block;
-        }
-    </style>
+      }
+    </script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="css/global.css">
 </head>
 <body>
+
+    <!-- Ambient Background -->
+    
+    
+    
 
     <!-- Limelight Floating Navigation Bar -->
     <nav class="limelight-nav-container">
@@ -112,7 +74,7 @@
                 <span class="nav-tooltip">Work</span>
             </a>
             <!-- Contact -->
-            <a href="index.html#contact" class="limelight-nav-item" data-target="contact">
+            <a href="#contact" class="limelight-nav-item" data-target="contact">
                 <div class="limelight-beam"></div>
                 <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
                 <span class="nav-tooltip">Contact</span>
@@ -126,12 +88,1525 @@
         </div>
     </nav>
 
-    <div class="placeholder-container">
-        <h1>Work</h1>
-        <p>Work page structure ready</p>
-        <span>Under Construction</span>
+
+
+
+    <!-- Hero -->
+    <section class="hero-scroll-track" id="hero">
+        <div class="hero-sticky">
+            <div class="hero-3d-gallery-container">
+                <div class="hero-3d-gallery-scene" id="hero-3d-scene"></div>
+            </div>
+
+            <div class="hero-main-content">
+                <h1 class="hero-title">Divyaraj.</h1>
+                <p class="hero-subtitle-mono">A digital strategist building brands, platforms, and cinematic stories.</p>
+            </div>
+
+            <div class="hero-content-overlay">
+                <div class="hero-top-meta">
+                    <span class="hero-availability">OPEN TO WORK · FREELANCE</span>
+                    <span class="hero-location">AHMEDABAD — GUJARAT</span>
+                </div>
+
+                <div class="hero-bottom-meta">
+                    <span class="hero-copyright">© 2026 DIVYARAJ CHAUHAN</span>
+                    <span class="hero-scroll-label">SCROLL TO EXPLORE ↓</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Scrolling Tape & Stark Stats -->
+    <section class="marquee-section">
+        <div class="marquee-container">
+            <div class="marquee-track">
+                <div class="marquee-content">
+                    <span>Social Media Management</span>
+                    <span class="marquee-dot">•</span>
+                    <span>Web Engineering</span>
+                    <span class="marquee-dot">•</span>
+                    <span>AI Filmmaking</span>
+                    <span class="marquee-dot">•</span>
+                    <span>Content Creation</span>
+                    <span class="marquee-dot">•</span>
+                </div>
+                <div class="marquee-content" aria-hidden="true">
+                    <span>Social Media Management</span>
+                    <span class="marquee-dot">•</span>
+                    <span>Web Engineering</span>
+                    <span class="marquee-dot">•</span>
+                    <span>AI Filmmaking</span>
+                    <span class="marquee-dot">•</span>
+                    <span>Content Creation</span>
+                    <span class="marquee-dot">•</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+<!-- Services Section -->
+    <section id="services" class="services-section">
+        <div class="section-header reveal" style="margin-bottom: 20px;">
+            <h2 class="display-serif-statement">Pick a lane.<br><span class="gradient-text">I'll do the rest.</span></h2>
+        </div>
+
+        <div class="services-grid-four-lanes reveal">
+            <!-- Lane 1: Platform Growth -->
+            <div class="service-lane">
+                <a href="#contact" class="service-lane-link"><h3>Platform Growth</h3></a>
+                <ul>
+                    <li>Content Strategy &amp; Ideation</li>
+                    <li>Calendar Scheduling &amp; Posting</li>
+                    <li>Organic Pipeline Audits</li>
+                    <li>Community Engagement</li>
+                    <li>Performance Analytics</li>
+                </ul>
+            </div>
+
+            <!-- Lane 2: Digital Storefronts -->
+            <div class="service-lane">
+                <a href="#contact" class="service-lane-link"><h3>Digital Storefronts</h3></a>
+                <ul>
+                    <li>Custom Design Mockups</li>
+                    <li>Responsive Web Engineering</li>
+                    <li>Booking &amp; Reservation Systems</li>
+                    <li>Custom Checkout Design</li>
+                    <li>Speed &amp; SEO Optimization</li>
+                </ul>
+            </div>
+
+            <!-- Lane 3: AI Cinema Lab -->
+            <div class="service-lane">
+                <a href="#contact" class="service-lane-link"><h3>AI Cinema Lab</h3></a>
+                <ul>
+                    <li>Conceptual Style Frames</li>
+                    <li>AI Cinematic Synthesis</li>
+                    <li>Sound FX &amp; Score Synthesis</li>
+                    <li>Color Grading &amp; Editing</li>
+                    <li>Generative Brand Films</li>
+                </ul>
+            </div>
+
+            <!-- Lane 4: Full Campaigns -->
+            <div class="service-lane">
+                <a href="#contact" class="service-lane-link"><h3>Full Campaigns</h3></a>
+                <ul>
+                    <li>End-to-End Asset Creation</li>
+                    <li>Multi-Channel Execution</li>
+                    <li>Brand Identity Guidelines</li>
+                    <li>Comprehensive Asset Delivery</li>
+                    <li>Dedicated Project Pipeline</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+
+
+    <!-- Portfolio -->
+    <!-- Scattered Portfolio / Spatial Showcase -->
+    <section id="portfolio">
+        <div class="section-header reveal" style="text-align: center; margin-bottom: 40px; padding: 0 6%;">
+            <h2 class="display-serif-statement">Brand <span class="gradient-text">Collaborations</span></h2>
+        </div>
+
+        <div class="scattered-canvas reveal">
+            <!-- Card 1: Credes Techlabs -->
+            <div class="folio-card featured-front not-stamped" style="top: 4%; left: 6%; transform: rotate(-6deg);">
+                <a href="brands/credes">
+                    <div class="folio-card-meta">
+                        <span class="meta-label">BRAND INTEGRATION</span>
+                        <span class="meta-num">01</span>
+                    </div>
+                    <img src="images/Logos of the brands/credes techlabs.jpg" alt="Credes Techlabs Showcase">
+                    <div class="folio-card-details">
+                        <span class="folio-card-title">Credes Techlabs</span>
+                        <span class="folio-card-tag">Social Media &amp; Brand Identity</span>
+                    </div>
+                </a>
+            </div>
+
+            <!-- Card 2: Gujarat Tigers -->
+            <div class="folio-card featured-front not-stamped" style="top: 48%; left: 34%; transform: rotate(5deg);">
+                <a href="brands/gujarat-tigers">
+                    <div class="folio-card-meta">
+                        <span class="meta-label">MEDIA OPERATIONS</span>
+                        <span class="meta-num">02</span>
+                    </div>
+                    <img src="images/Logos of the brands/Gujarat Tigers.png" alt="Gujarat Tigers Showcase">
+                    <div class="folio-card-details">
+                        <span class="folio-card-title">Gujarat Tigers</span>
+                        <span class="folio-card-tag">Social Media &amp; Video Production</span>
+                    </div>
+                </a>
+            </div>
+
+            <!-- Card 3: ESFI -->
+            <div class="folio-card not-stamped" style="top: 54%; left: 10%; transform: rotate(-5deg);">
+                <a href="brands/esfi">
+                    <div class="folio-card-meta">
+                        <span class="meta-label">FEDERATION CAMPAIGN</span>
+                        <span class="meta-num">03</span>
+                    </div>
+                    <img src="images/Logos of the brands/esfi.jpg" alt="ESFI Showcase">
+                    <div class="folio-card-details">
+                        <span class="folio-card-title">Esports Federation of India</span>
+                        <span class="folio-card-tag">Social Media Operations</span>
+                    </div>
+                </a>
+            </div>
+
+            <!-- Card 4: Finanvo -->
+            <div class="folio-card not-stamped" style="top: 2%; left: 24%; transform: rotate(3deg);">
+                <a href="brands/finanvo">
+                    <div class="folio-card-meta">
+                        <span class="meta-label">IDENTITY SYSTEM</span>
+                        <span class="meta-num">04</span>
+                    </div>
+                    <img src="images/Logos of the brands/finanvo.png" alt="Finanvo Showcase">
+                    <div class="folio-card-details">
+                        <span class="folio-card-title">Finanvo</span>
+                        <span class="folio-card-tag">Brand Design &amp; Content Strategy</span>
+                    </div>
+                </a>
+            </div>
+
+            <!-- Card 5: Giffy -->
+            <div class="folio-card not-stamped" style="top: 36%; left: 19%; transform: rotate(-8deg);">
+                <a href="brands/giffy">
+                    <div class="folio-card-meta">
+                        <span class="meta-label">CONTENT PIPELINE</span>
+                        <span class="meta-num">05</span>
+                    </div>
+                    <img src="images/Logos of the brands/giffy.jpg" alt="Giffy Showcase">
+                    <div class="folio-card-details">
+                        <span class="folio-card-title">Giffy</span>
+                        <span class="folio-card-tag">Social Media Operations</span>
+                    </div>
+                </a>
+            </div>
+
+            <!-- Card 6: HashLite -->
+            <div class="folio-card not-stamped" style="top: 30%; left: 3%; transform: rotate(4deg);">
+                <a href="brands/hashlite">
+                    <div class="folio-card-meta">
+                        <span class="meta-label">WEB3 STRATEGY</span>
+                        <span class="meta-num">06</span>
+                    </div>
+                    <img src="images/Logos of the brands/hashlite.png" alt="HashLite Showcase">
+                    <div class="folio-card-details">
+                        <span class="folio-card-title">HashLite</span>
+                        <span class="folio-card-tag">Web3 Marketing &amp; Creative Direction</span>
+                    </div>
+                </a>
+            </div>
+
+            <!-- Card 7: Sattvik Certifications -->
+            <div class="folio-card not-stamped" style="top: 4%; left: 45%; transform: rotate(-4deg);">
+                <a href="brands/sattvik">
+                    <div class="folio-card-meta">
+                        <span class="meta-label">ORGANIC REACH</span>
+                        <span class="meta-num">07</span>
+                    </div>
+                    <img src="images/Logos of the brands/Sattvik Certifications.jpg" alt="Sattvik Certifications Showcase">
+                    <div class="folio-card-details">
+                        <span class="folio-card-title">Sattvik Certifications</span>
+                        <span class="folio-card-tag">Organic Brand Campaigns</span>
+                    </div>
+                </a>
+            </div>
+
+            <!-- Card 8: Scuff Clothing -->
+            <div class="folio-card not-stamped" style="top: 26%; left: 54%; transform: rotate(7deg);">
+                <a href="brands/scuff">
+                    <div class="folio-card-meta">
+                        <span class="meta-label">COMMERCE DEPLOY</span>
+                        <span class="meta-num">08</span>
+                    </div>
+                    <img src="images/Logos of the brands/scuff.jpeg" alt="Scuff Showcase">
+                    <div class="folio-card-details">
+                        <span class="folio-card-title">Scuff Clothing</span>
+                        <span class="folio-card-tag">E-Commerce Brand Management</span>
+                    </div>
+                </a>
+            </div>
+
+            <!-- Card 9: Shelf -->
+            <div class="folio-card not-stamped" style="top: 56%; left: 50%; transform: rotate(-3deg);">
+                <a href="brands/shelf">
+                    <div class="folio-card-meta">
+                        <span class="meta-label">VISUAL DESIGN</span>
+                        <span class="meta-num">09</span>
+                    </div>
+                    <img src="images/Logos of the brands/shelf.png" alt="Shelf Showcase">
+                    <div class="folio-card-details">
+                        <span class="folio-card-title">Shelf</span>
+                        <span class="folio-card-tag">Visual Identity &amp; Design</span>
+                    </div>
+                </a>
+            </div>
+
+            <!-- Card 10: Shift -->
+            <div class="folio-card not-stamped" style="top: 2%; left: 74%; transform: rotate(5deg);">
+                <a href="brands/shift">
+                    <div class="folio-card-meta">
+                        <span class="meta-label">GROWTH ENGINE</span>
+                        <span class="meta-num">10</span>
+                    </div>
+                    <img src="images/Logos of the brands/shift.jpg" alt="Shift Showcase">
+                    <div class="folio-card-details">
+                        <span class="folio-card-title">Shift</span>
+                        <span class="folio-card-tag">Growth Strategy &amp; Content</span>
+                    </div>
+                </a>
+            </div>
+
+            <!-- Card 11: White Horse -->
+            <div class="folio-card not-stamped" style="top: 28%; left: 76%; transform: rotate(-6deg);">
+                <a href="brands/white-horse">
+                    <div class="folio-card-meta">
+                        <span class="meta-label">MARKET POSITION</span>
+                        <span class="meta-num">11</span>
+                    </div>
+                    <img src="images/Logos of the brands/white horse.jpg" alt="White Horse Showcase">
+                    <div class="folio-card-details">
+                        <span class="folio-card-title">White Horse</span>
+                        <span class="folio-card-tag">Brand Marketing &amp; Strategy</span>
+                    </div>
+                </a>
+            </div>
+
+            <!-- Card 12: Highrocks -->
+            <div class="folio-card not-stamped" style="top: 54%; left: 70%; transform: rotate(4deg);">
+                <a href="brands/highrocks">
+                    <div class="folio-card-meta">
+                        <span class="meta-label">ASSET PRODUCTION</span>
+                        <span class="meta-num">12</span>
+                    </div>
+                    <img src="images/Logos of the brands/highrocks.jpg" alt="Highrocks Showcase">
+                    <div class="folio-card-details">
+                        <span class="folio-card-title">Highrocks</span>
+                        <span class="folio-card-tag">Brand Asset Production</span>
+                    </div>
+                </a>
+            </div>
+
+            <!-- Card 13: Aspire -->
+            <div class="folio-card featured-front not-stamped" style="top: 12%; left: 62%; transform: rotate(-3deg);">
+                <a href="brands/aspire">
+                    <div class="folio-card-meta">
+                        <span class="meta-label">IDENTITY SYSTEM</span>
+                        <span class="meta-num">13</span>
+                    </div>
+                    <img src="images/Logos of the brands/aspire.jpg" alt="Aspire Showcase">
+                    <div class="folio-card-details">
+                        <span class="folio-card-title">Aspire</span>
+                        <span class="folio-card-tag">Brand Design &amp; SMM</span>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- AI Cinema Lab -->
+    <section
+        id="ai-cinema"
+        class="cinema-scroll-track"
+    >
+        <div class="cinema-sticky-stage">
+            <a
+                class="cinema-scale-card"
+                href="ai-cinema#kutch"
+                aria-label="Open Kutch AI Cinema project"
+            >
+                <img
+                    class="cinema-scale-image"
+                    src="images/kutch-thumb.png"
+                    alt="Kutch AI Cinema project"
+                />
+
+                <div class="cinema-scale-overlay">
+                    <h2 class="cinema-scale-title">
+                        KUTCH
+                    </h2>
+
+                    <p class="cinema-scale-copy">
+                        Tap to watch
+                    </p>
+                </div>
+            </a>
+        </div>
+    </section>
+
+    <!-- Web Showcase Section -->
+    <section id="web-showcase" class="web-showcase-section">
+        <div class="web-showcase-header reveal">
+            <h2 class="display-serif-statement">Selected Web <span class="gradient-text">Work</span></h2>
+        </div>
+
+        <div class="web-showcase-container">
+            <!-- Row 1: KXM Clothing (Text Left, Visual Right) -->
+            <div class="web-row reveal reveal-deep">
+                <div class="web-row-content">
+                    <span class="web-row-num">01 / APPAREL STORE</span>
+                    <h3>KXM CLOTHING</h3>
+                    <p class="web-row-desc">
+                        A minimal, modern storefront engineered for a streetwear apparel brand. Optimized for lightning-fast loads, robust filtering, and seamless mobile purchasing.
+                    </p>
+                    <a href="websites#kxm" class="btn-outline" style="border-color:#EB4604; color:#EB4604;">Explore Case Study &rarr;</a>
+                </div>
+                <div class="web-row-visual">
+                    <div class="web-image-wrapper">
+                        <img src="images/kxm_showcase.png" alt="KXM Clothing Storefront">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Row 2: Abhushan Jewelry (Visual Left, Text Right) -->
+            <div class="web-row reveal reverse reveal-deep">
+                <div class="web-row-content">
+                    <span class="web-row-num">02 / LUXURY E-COMMERCE</span>
+                    <h3>ABHUSHAN JEWELRY</h3>
+                    <p class="web-row-desc">
+                        A high-end custom e-commerce solution engineered for luxury retail. Developed with fluid navigation, responsive product displays, and an optimized checkout sequence.
+                    </p>
+                    <a href="websites#abhushan" class="btn-outline" style="border-color:#EB4604; color:#EB4604;">Explore Case Study &rarr;</a>
+                </div>
+                <div class="web-row-visual">
+                    <div class="web-image-wrapper">
+                        <img src="images/abhushan_showcase.png" alt="Abhushan Jewelry E-Commerce">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Row 3: Detailing Cars (Text Left, Visual Right) -->
+            <div class="web-row reveal reveal-deep">
+                <div class="web-row-content">
+                    <span class="web-row-num">03 / AUTOMOTIVE PORTAL</span>
+                    <h3>DETAILING CARS (DC)</h3>
+                    <p class="web-row-desc">
+                        A high-conversion custom platform developed for an elite automotive detailing service. Featuring an interactive service configurator and clean brand asset placements.
+                    </p>
+                    <a href="websites#detailing-cars" class="btn-outline" style="border-color:#EB4604; color:#EB4604;">Explore Case Study &rarr;</a>
+                </div>
+                <div class="web-row-visual">
+                    <div class="web-image-wrapper">
+                        <img src="images/detailing_cars_showcase.png" alt="Detailing Cars Portal">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 3D Testimonials Section -->
+    <section
+      id="testimonials-3d-demo"
+      class="flex min-h-screen w-full items-center justify-center overflow-hidden bg-background py-20"
+    >
+      <div id="testimonials-3d-root" class="w-full flex justify-center"></div>
+    </section>
+
+<!-- Contact -->
+    <section id="contact" class="cta-section">
+        <div class="brutalist-contact-block reveal">
+            <div class="contact-info-left">
+                <h2 class="contact-headline display-serif-statement">Let's build your next&nbsp;campaign.</h2>
+                <div class="contact-buttons">
+                    <!-- Slide to Hire Me Button -->
+                    <div class="slide-button-container">
+                        <div class="slide-button-track" id="slideTrack">
+                            <div class="slide-button-progress" id="slideProgress"></div>
+                            <div class="slide-button-text" id="slideText">Slide to Hire Me</div>
+                            <div class="slide-button-handle" id="slideHandle">
+                                <svg class="handle-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
+                            </div>
+                            <div class="slide-button-status" id="slideStatus"></div>
+                        </div>
+                    </div>
+                    <a href="divyaraj_resume" target="_blank" class="btn-brutalist btn-brutalist-outline">VIEW RESUME</a>
+                </div>
+                <div class="contact-social-row">
+                    <!-- Instagram -->
+                    <a href="https://www.instagram.com/divyaraj.creates" target="_blank" rel="noopener" class="social-icon-btn" aria-label="Instagram" title="Instagram">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                            <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+                            <circle cx="12" cy="12" r="4.5"/>
+                            <circle cx="17.5" cy="6.5" r="0.8" fill="currentColor" stroke="none"/>
+                        </svg>
+                    </a>
+                    <!-- LinkedIn -->
+                    <a href="https://www.linkedin.com/in/divyarajchauhan33/" target="_blank" rel="noopener" class="social-icon-btn" aria-label="LinkedIn" title="LinkedIn">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                            <rect x="2" y="2" width="20" height="20" rx="3"/>
+                            <line x1="8" y1="11" x2="8" y2="17"/>
+                            <line x1="8" y1="7" x2="8" y2="8"/>
+                            <path d="M12 17v-4c0-1.1.9-2 2-2s2 .9 2 2v4"/>
+                            <line x1="12" y1="11" x2="12" y2="17"/>
+                        </svg>
+                    </a>
+                    <!-- Phone -->
+                    <a href="tel:+919979787087" class="social-icon-btn" aria-label="Call Divyaraj" title="+91 99797 87087">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/>
+                        </svg>
+                    </a>
+                    <!-- Mail Me -->
+                    <a href="mailto:divyarajc2@gmail.com" class="social-mail-btn" aria-label="Email Divyaraj" title="divyarajc2@gmail.com">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                            <polyline points="22,6 12,13 2,6"/>
+                        </svg>
+                        Mail Me
+                    </a>
+                </div>
+            </div>
+            <div class="contact-video-right">
+                <div class="portrait-video-wrapper">
+                    <video src="description video/2.mp4" autoplay loop muted playsinline class="contact-portrait-video"></video>
+                </div>
+            </div>
+        </div>
+
+        <!-- Copyright above the Dot Matrix Border -->
+        <div class="copyright-above reveal">
+            <div>&copy; 2026 Divyaraj Chauhan. All rights reserved. &nbsp;&middot;&nbsp; <a href="privacy-policy" style="color: var(--text-muted); text-decoration: none; transition: color 0.2s;" onmouseover="this.style.color='var(--text)'" onmouseout="this.style.color='var(--text-muted)'">Privacy Policy</a></div>
+            <div class="refresh-date">Built with raw HTML/CSS &amp; too much coffee &middot; Refreshed June 2026</div>
+        </div>
+    </section>
+
+    <!-- Dither CTA Card Section -->
+    <section class="dither-card-section reveal">
+        <div class="dither-card-container">
+            <canvas id="ditherBannerCanvas" class="dither-banner-canvas"></canvas>
+        </div>
+    </section>
+
+
+
+    <!-- Custom Alert Box -->
+    <div id="customAlert" class="custom-alert">
+        <p id="customAlertMessage"></p>
+        <button onclick="closeCustomAlert()">Got it</button>
     </div>
 
+    <script type="module" src="react-hero-gallery/dist/hero-gallery.js?v=7"></script>
+    <script>
+        // Fade out Hero section contents on scroll to prevent overlap with the marquee/next sections
+        (() => {
+            const heroOverlay = document.querySelector('.hero-content-overlay');
+            const heroMainContent = document.querySelector('.hero-main-content');
+            const galleryContainer = document.querySelector('.hero-3d-gallery-container');
+
+            function handleScroll() {
+                const scrollTop = window.scrollY || window.pageYOffset;
+                const fadeDistance = window.innerHeight * 0.45;
+                const progress = Math.min(scrollTop / fadeDistance, 1);
+                const opacity = (1 - progress).toFixed(3);
+
+                if (heroOverlay) {
+                    heroOverlay.style.opacity = opacity;
+                    heroOverlay.style.visibility = progress >= 1 ? 'hidden' : 'visible';
+                }
+                if (heroMainContent) {
+                    heroMainContent.style.opacity = opacity;
+                    heroMainContent.style.visibility = progress >= 1 ? 'hidden' : 'visible';
+                }
+                if (galleryContainer) {
+                    galleryContainer.style.opacity = opacity;
+                    galleryContainer.style.visibility = progress >= 1 ? 'hidden' : 'visible';
+                }
+            }
+
+            window.addEventListener('scroll', handleScroll, { passive: true });
+            handleScroll();
+        })();
+
+
+
+
+        // Custom Alert Functionality (Replaces standard browser alert)
+        function showCustomAlert(message) {
+            const alertBox = document.getElementById('customAlert');
+            const messageEl = document.getElementById('customAlertMessage');
+            messageEl.textContent = message;
+            alertBox.classList.add('show');
+        }
+
+        function closeCustomAlert() {
+            document.getElementById('customAlert').classList.remove('show');
+        }
+
+        // Intersection Observer for scroll animations (faster reveal)
+        const observerOptions = {
+            threshold: 0.12, // triggers when 12% enters viewport
+            rootMargin: '0px 0px -20px 0px' // triggers earlier
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                    observer.unobserve(entry.target); // reveal only once
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.reveal').forEach(el => {
+            // Immediate trigger if already in viewport on load
+            const rect = el.getBoundingClientRect();
+            const isVisibleOnLoad = rect.top < window.innerHeight && rect.bottom > 0;
+            if (isVisibleOnLoad) {
+                el.classList.add('active');
+            } else {
+                observer.observe(el);
+            }
+        });
+
+
+
+
+
+
+
+        // ─── Draggable Scattered Cards JS ───
+        (function() {
+            // Only run dragging if viewport width supports desktop layout (> 900px)
+            if (window.innerWidth <= 900) return;
+
+            const cards = document.querySelectorAll('.folio-card');
+            let highestZ = 10;
+
+            cards.forEach(card => {
+                let isDragging = false;
+                let startX, startY;
+
+                card.addEventListener('mousedown', dragStart);
+                card.addEventListener('touchstart', dragStart, { passive: true });
+
+                function dragStart(e) {
+                    if (e.type === 'mousedown' && e.button !== 0) return;
+                    
+                    isDragging = true;
+                    card.classList.add('active-drag');
+                    card.style.zIndex = ++highestZ;
+
+                    const clientX = e.type === 'touchstart' ? e.touches[0].clientX : e.clientX;
+                    const clientY = e.type === 'touchstart' ? e.touches[0].clientY : e.clientY;
+
+                    startX = clientX - card.offsetLeft;
+                    startY = clientY - card.offsetTop;
+
+                    document.addEventListener('mousemove', dragMove);
+                    document.addEventListener('touchmove', dragMove, { passive: false });
+                    document.addEventListener('mouseup', dragEnd);
+                    document.addEventListener('touchend', dragEnd);
+                }
+
+                function dragMove(e) {
+                    if (!isDragging) return;
+                    if (e.cancelable) e.preventDefault();
+
+                    const clientX = e.type === 'touchmove' ? e.touches[0].clientX : e.clientX;
+                    const clientY = e.type === 'touchmove' ? e.touches[0].clientY : e.clientY;
+
+                    let left = clientX - startX;
+                    let top = clientY - startY;
+
+                    card.style.left = `${left}px`;
+                    card.style.top = `${top}px`;
+                }
+
+                function dragEnd() {
+                    isDragging = false;
+                    card.classList.remove('active-drag');
+                    document.removeEventListener('mousemove', dragMove);
+                    document.removeEventListener('touchmove', dragMove);
+                    document.removeEventListener('mouseup', dragEnd);
+                    document.removeEventListener('touchend', dragEnd);
+                }
+            });
+        })();
+
+
+        // ─── Shared Floating Navigation (Imported from js/navigation.js) ───
+
+        // ─── Slide to Hire Me Interaction ───
+        (function() {
+            const handle = document.getElementById('slideHandle');
+            const track = document.getElementById('slideTrack');
+            const progress = document.getElementById('slideProgress');
+            const text = document.getElementById('slideText');
+            const status = document.getElementById('slideStatus');
+
+            if (!handle || !track) return;
+
+            let isDragging = false;
+            let startX = 0;
+            let maxDrag = 0;
+
+            function updateConstraints() {
+                maxDrag = track.clientWidth - handle.clientWidth - 8; // margins
+            }
+
+            updateConstraints();
+            window.addEventListener('resize', updateConstraints);
+
+            handle.addEventListener('pointerdown', (e) => {
+                if (track.classList.contains('completed')) return;
+                isDragging = true;
+                startX = e.clientX - (parseFloat(handle.style.left) || 4);
+                handle.setPointerCapture(e.pointerId);
+                handle.style.transition = 'none';
+                progress.style.transition = 'none';
+            });
+
+            handle.addEventListener('pointermove', (e) => {
+                if (!isDragging) return;
+                let currentX = e.clientX - startX;
+                currentX = Math.max(4, Math.min(currentX, maxDrag));
+                
+                handle.style.left = `${currentX}px`;
+                
+                const pct = (currentX - 4) / (maxDrag - 4);
+                progress.style.width = `${currentX + 24}px`;
+                text.style.opacity = 1 - (pct * 1.5);
+            });
+
+            handle.addEventListener('pointerup', (e) => {
+                if (!isDragging) return;
+                isDragging = false;
+                
+                const currentX = parseFloat(handle.style.left) || 4;
+                const pct = (currentX - 4) / (maxDrag - 4);
+
+                if (pct >= 0.88) {
+                    triggerComplete();
+                } else {
+                    handle.style.transition = 'left 0.3s cubic-bezier(0.16, 1, 0.3, 1)';
+                    progress.style.transition = 'width 0.3s cubic-bezier(0.16, 1, 0.3, 1)';
+                    handle.style.left = '4px';
+                    progress.style.width = '0px';
+                    text.style.opacity = 1;
+                }
+            });
+
+            function triggerComplete() {
+                track.classList.add('completed');
+                
+                // Loader spinning
+                status.innerHTML = `
+                    <svg class="status-spinner" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#000000" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="12" y1="2" x2="12" y2="6"></line>
+                        <line x1="12" y1="18" x2="12" y2="22"></line>
+                        <line x1="4.93" y1="4.93" x2="7.76" y2="7.76"></line>
+                        <line x1="16.24" y1="16.24" x2="19.07" y2="19.07"></line>
+                        <line x1="2" y1="12" x2="6" y2="12"></line>
+                        <line x1="18" y1="12" x2="22" y2="12"></line>
+                        <line x1="4.93" y1="19.07" x2="7.76" y2="16.24"></line>
+                        <line x1="16.24" y1="7.76" x2="19.07" y2="4.93"></line>
+                    </svg>
+                `;
+                
+                setTimeout(() => {
+                    // Success checkmark
+                    status.innerHTML = `
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#000000" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="20 6 9 17 4 12"></polyline>
+                        </svg>
+                    `;
+                    
+                    // Redirect to WhatsApp
+                    setTimeout(() => {
+                        window.open('https://wa.me/qr/KQJFSZ2WY5FSO1', '_blank');
+                        
+                        // Reset slider state
+                        setTimeout(() => {
+                            track.classList.remove('completed');
+                            handle.style.left = '4px';
+                            progress.style.width = '0px';
+                            text.style.opacity = 1;
+                            status.innerHTML = '';
+                        }, 1000);
+                    }, 1000);
+                }, 1500);
+            }
+        })();
+
+
+
+        // ─── AI Cinema Lab — Scroll to Scale ───
+        (() => {
+            const track =
+                document.getElementById('ai-cinema');
+
+            const stage =
+                track?.querySelector(
+                    '.cinema-sticky-stage'
+                );
+
+            const card =
+                track?.querySelector(
+                    '.cinema-scale-card'
+                );
+
+            if (!track || !stage || !card) {
+                console.error(
+                    '[Cinema Scale] Required elements missing.'
+                );
+                return;
+            }
+
+            const clamp = (
+                value,
+                minimum = 0,
+                maximum = 1
+            ) => Math.min(
+                Math.max(value, minimum),
+                maximum
+            );
+
+            const smoothstep = (value) =>
+                value *
+                value *
+                (3 - 2 * value);
+
+            /*
+            0%–12%:
+            Small card remains centred.
+
+            12%–82%:
+            Main visible scale animation.
+
+            82%–100%:
+            Full-screen hold before sticky release.
+            */
+            const SCALE_START = 0.12;
+            const SCALE_END = 0.82;
+            const START_RADIUS = 18;
+
+            let minimumScale = 0.27;
+            let ticking = false;
+
+            function calculateMinimumScale() {
+                const viewportWidth = window.innerWidth;
+                const targetWidth = Math.min(Math.max(320, viewportWidth * 0.32), 520);
+                minimumScale = targetWidth / viewportWidth;
+            }
+
+            function getProgress() {
+                const trackRect =
+                    track.getBoundingClientRect();
+
+                const scrollDistance =
+                    track.offsetHeight -
+                    stage.offsetHeight;
+
+                if (scrollDistance <= 0) {
+                    return 0;
+                }
+
+                return clamp(
+                    -trackRect.top /
+                    scrollDistance
+                );
+            }
+
+            function update() {
+                ticking = false;
+
+                const rawProgress =
+                    getProgress();
+
+                const scaleProgress =
+                    clamp(
+                        (
+                            rawProgress -
+                            SCALE_START
+                        ) /
+                        (
+                            SCALE_END -
+                            SCALE_START
+                        )
+                    );
+
+                const easedProgress =
+                    smoothstep(scaleProgress);
+
+                const scale =
+                    minimumScale +
+                    (
+                        1 - minimumScale
+                    ) *
+                    easedProgress;
+
+                const radius =
+                    (START_RADIUS * (1 - easedProgress)) / scale;
+
+                card.style.setProperty(
+                    '--cinema-scale',
+                    scale.toFixed(5)
+                );
+
+                card.style.setProperty(
+                    '--cinema-radius',
+                    `${radius.toFixed(2)}px`
+                );
+            }
+
+            function requestUpdate() {
+                if (ticking) {
+                    return;
+                }
+
+                ticking = true;
+
+                requestAnimationFrame(update);
+            }
+
+            function recalculate() {
+                calculateMinimumScale();
+                requestUpdate();
+            }
+
+            window.addEventListener(
+                'scroll',
+                requestUpdate,
+                { passive: true }
+            );
+
+            window.addEventListener(
+                'resize',
+                recalculate
+            );
+
+            window.addEventListener(
+                'orientationchange',
+                recalculate
+            );
+
+            // ── Verification log (REMOVE AFTER TESTING) ──
+            window.addEventListener(
+                'scroll',
+                () => {
+                    const trackRect =
+                        track.getBoundingClientRect();
+
+                    const stageRect =
+                        stage.getBoundingClientRect();
+
+                    const cardRect =
+                        card.getBoundingClientRect();
+
+                    console.table({
+                        trackTop:
+                            trackRect.top.toFixed(1),
+
+                        stageTop:
+                            stageRect.top.toFixed(1),
+
+                        cardCenterX:
+                            (
+                                cardRect.left +
+                                cardRect.width / 2
+                            ).toFixed(1),
+
+                        cardCenterY:
+                            (
+                                cardRect.top +
+                                cardRect.height / 2
+                            ).toFixed(1),
+
+                        viewportCenterX:
+                            (
+                                window.innerWidth / 2
+                            ).toFixed(1),
+
+                        viewportCenterY:
+                            (
+                                window.innerHeight / 2
+                            ).toFixed(1)
+                    });
+                },
+                { passive: true }
+            );
+            // ──────────────────────────────────────────────────
+
+            calculateMinimumScale();
+            update();
+        })();
+
+        // ─── Hero 3D Gallery (Powered by React Three Fiber in react-hero-gallery/) ───
+
+        // ─── Stark Stats Counter Animation ───
+        (function() {
+            const stats = document.querySelectorAll('.stat-num');
+            const statsSection = document.querySelector('.stats-section');
+            if (stats.length === 0 || !statsSection) return;
+
+            function formatSuffix(suffix) {
+                if (!suffix) return '';
+                if (suffix.includes('+')) {
+                    const clean = suffix.replace('+', '');
+                    return clean + `<span class="stat-suffix">+</span>`;
+                }
+                return suffix;
+            }
+
+            // Initialize to zeros immediately when JS runs
+            stats.forEach(stat => {
+                const suffix = stat.getAttribute('data-suffix') || '';
+                const pad = parseInt(stat.getAttribute('data-pad')) || 0;
+                const decimals = parseInt(stat.getAttribute('data-decimals')) || 0;
+                let zeroVal = (0).toFixed(decimals);
+                if (pad > 0) zeroVal = zeroVal.padStart(pad, '0');
+                stat.innerHTML = zeroVal + formatSuffix(suffix);
+            });
+
+            // Intersection Observer to fire count up
+            const observerOptions = {
+                root: null,
+                threshold: 0.15
+            };
+
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        animateStats();
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, observerOptions);
+
+            observer.observe(statsSection);
+
+            function animateStats() {
+                stats.forEach(stat => {
+                    const target = parseFloat(stat.getAttribute('data-target'));
+                    const suffix = stat.getAttribute('data-suffix') || '';
+                    const pad = parseInt(stat.getAttribute('data-pad')) || 0;
+                    const decimals = parseInt(stat.getAttribute('data-decimals')) || 0;
+                    
+                    let start = 0;
+                    const duration = 2000; // 2.0 seconds count up duration
+                    const startTime = performance.now();
+
+                    function updateNumber(now) {
+                        const progress = Math.min((now - startTime) / duration, 1);
+                        // Easing out cubic
+                        const easeProgress = 1 - Math.pow(1 - progress, 3);
+                        const current = start + easeProgress * (target - start);
+                        
+                        let formatted = current.toFixed(decimals);
+                        if (pad > 0) {
+                            formatted = formatted.padStart(pad, '0');
+                        }
+                        stat.innerHTML = formatted + formatSuffix(suffix);
+
+                        if (progress < 1) {
+                            requestAnimationFrame(updateNumber);
+                        } else {
+                            let finalVal = target.toFixed(decimals);
+                            if (pad > 0) {
+                                finalVal = finalVal.padStart(pad, '0');
+                            }
+                            stat.innerHTML = finalVal + formatSuffix(suffix);
+                        }
+                    }
+
+                    requestAnimationFrame(updateNumber);
+                });
+            }
+        })();
+
+        // ─── Scattered Portfolio Card Stamping Animation ───
+        (function() {
+            const canvas = document.querySelector('.scattered-canvas');
+            if (!canvas) return;
+
+            const cards = Array.from(canvas.querySelectorAll('.folio-card'));
+            if (cards.length === 0) return;
+
+            // Store original transforms and set initial state
+            cards.forEach(card => {
+                const origTransform = card.style.transform || '';
+                card.setAttribute('data-orig-transform', origTransform);
+                
+                // Add class to hide card initially
+                card.classList.add('not-stamped');
+                
+                // Parse rotation to scale it up initially
+                const rotateMatch = origTransform.match(/rotate\([^)]+\)/);
+                const rotation = rotateMatch ? rotateMatch[0] : 'rotate(0deg)';
+                card.style.transform = `scale(1.8) ${rotation}`;
+                
+                // Apply transition override for stamp motion
+                card.style.transition = 'transform 0.45s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0.35s ease, border-color 0.3s ease, filter 0.3s ease, box-shadow 0.3s ease';
+            });
+
+            // Intersection Observer to trigger stamping
+            const observerOptions = {
+                root: null,
+                threshold: 0.1
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        stampCards();
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, observerOptions);
+
+            observer.observe(canvas);
+
+            function stampCards() {
+                // Sort cards: background first, featured-front last
+                const sortedCards = [...cards].sort((a, b) => {
+                    const aFeatured = a.classList.contains('featured-front') ? 1 : 0;
+                    const bFeatured = b.classList.contains('featured-front') ? 1 : 0;
+                    return aFeatured - bFeatured;
+                });
+
+                // Stamp one by one
+                sortedCards.forEach((card, index) => {
+                    setTimeout(() => {
+                        const origTransform = card.getAttribute('data-orig-transform');
+                        card.classList.remove('not-stamped');
+                        card.style.transform = `scale(1) ${origTransform}`;
+                    }, index * 120); // 120ms staggered delay
+                });
+            }
+        })();
+
+        // ─── Dither Canvas – Marquee Text Animation ───
+        (function() {
+            const canvas = document.getElementById('ditherBannerCanvas');
+            if (!canvas) return;
+
+            const container = canvas.parentElement;
+            const ctx = canvas.getContext('2d');
+
+            const scale = 4; // pixel scale: 1 canvas px = 4 CSS px
+            let w, h;
+
+            // ── Off-screen text mask canvas ──
+            const textCanvas = document.createElement('canvas');
+            const tCtx = textCanvas.getContext('2d');
+            let textW = 0; // will be set after font measurement
+
+            // Marquee scroll state
+            let scrollX = 0;       // current x offset of the text block (in low-res units)
+            const scrollSpeed = 0.35; // low-res px per frame — smooth crawl
+
+            // Bayer 4×4 ordered dither matrix
+            const bayer = [
+                 1,  9,  3, 11,
+                13,  5, 15,  7,
+                 4, 12,  2, 10,
+                16,  8, 14,  6
+            ];
+
+            // Measure & render text into the off-screen canvas
+            function buildTextMask() {
+                // Font size in low-res units (will be scaled up by CSS)
+                const fontSize = Math.round(h * 0.62);
+                const fontStr  = `900 ${fontSize}px 'Space Mono', monospace`;
+
+                tCtx.font = fontStr;
+                const word1 = 'Divyaraj';
+                const word2 = 'Chauhan';
+
+                const w1 = tCtx.measureText(word1).width;
+                const w2 = tCtx.measureText(word2).width;
+
+                // Keep same gap after both words
+                const gap = Math.round(fontSize * 0.85);
+
+                textW = Math.ceil(w1 + gap + w2 + gap);
+
+                textCanvas.width  = textW;
+                textCanvas.height = h;
+
+                tCtx.clearRect(0, 0, textW, h);
+                tCtx.font      = fontStr;
+                tCtx.fillStyle = '#ffffff';
+                tCtx.textBaseline = 'middle';
+
+                // Draw Word 1 at 0
+                tCtx.fillText(word1, 0, h / 2);
+                // Draw Word 2 at w1 + gap
+                tCtx.fillText(word2, w1 + gap, h / 2);
+            }
+
+            function resize() {
+                const rect = container.getBoundingClientRect();
+                w = Math.ceil(rect.width  / scale);
+                h = Math.ceil(rect.height / scale);
+                canvas.width  = w;
+                canvas.height = h;
+                buildTextMask();
+            }
+
+            resize();
+            window.addEventListener('resize', () => { resize(); });
+
+            // Pre-read mask pixels so we don't call getImageData every frame
+            function getMaskPixels() {
+                return tCtx.getImageData(0, 0, textCanvas.width, textCanvas.height).data;
+            }
+            let maskData = getMaskPixels();
+
+            // Rebuild mask when resize fires
+            function resize2() {
+                const rect = container.getBoundingClientRect();
+                w = Math.ceil(rect.width  / scale);
+                h = Math.ceil(rect.height / scale);
+                canvas.width  = w;
+                canvas.height = h;
+                buildTextMask();
+                maskData = getMaskPixels();
+            }
+            window.addEventListener('resize', resize2);
+
+            let t = 0;
+
+            function animate() {
+                t++;
+                // Advance marquee scroll
+                scrollX -= scrollSpeed;
+                if (scrollX < -textW) scrollX += textW;
+
+                const imgData = ctx.createImageData(w, h);
+                const data    = imgData.data;
+
+                const time = t * 0.006;
+
+                for (let y = 0; y < h; y++) {
+                    const ny      = y * 0.035;
+                    const yOff    = y * w;
+                    const bayerRow = (y & 3) * 4;
+
+                    for (let x = 0; x < w; x++) {
+                        const nx = x * 0.035;
+
+                        // ── Domain-warped fluid noise (same as before) ──
+                        const qx = Math.sin(nx + time * 0.8) + Math.cos(ny - time * 0.5);
+                        const qy = Math.cos(nx - time * 0.6) + Math.sin(ny + time * 0.7);
+                        const rx = Math.sin(nx + 3.0 * qx + time * 1.1 + 1.7);
+                        const ry = Math.cos(ny + 3.0 * qy + time * 0.9 + 2.3);
+
+                        let v = (Math.sin(nx + rx) * 0.5 + 0.5 + Math.cos(ny + ry) * 0.5 + 0.5) / 2;
+
+                        const threshold = bayer[bayerRow + (x & 3)] / 17;
+
+                        // ── Sample repeating text mask ──
+                        let maskX = Math.round(x - scrollX) % textW;
+                        if (maskX < 0) maskX += textW;
+
+                        const mIdx = (y * textW + maskX) * 4 + 3;
+                        const inText = maskData[mIdx] > 128;
+
+                        let r, g, b;
+
+                        if (inText) {
+                            // Inside text: show vivid orange dither pattern
+                            if (v > threshold) {
+                                const diff = v - threshold;
+                                if (diff > 0.12) {
+                                    r = 235; g = 70; b = 4;   // Hot Orange #EB4604
+                                } else {
+                                    r = 160; g = 50; b = 8;   // Mid orange
+                                }
+                            } else {
+                                r = 30; g = 14; b = 8;         // very dark inside unlit dots
+                            }
+                        } else {
+                            // Outside text: near-black background with subtle warm dark noise
+                            if (v > threshold + 0.35) {
+                                r = 28; g = 18; b = 14;        // barely-visible warm dark
+                            } else {
+                                r = 12; g = 9; b = 8;          // almost pure black
+                            }
+                        }
+
+                        const idx = (yOff + x) * 4;
+                        data[idx]   = r;
+                        data[idx+1] = g;
+                        data[idx+2] = b;
+                        data[idx+3] = 255;
+                    }
+                }
+
+                ctx.putImageData(imgData, 0, 0);
+                requestAnimationFrame(animate);
+            }
+
+            requestAnimationFrame(animate);
+        })();
+
+        // ─── Real-time canvas-based video dither ───
+        (function() {
+            const video = document.getElementById('about-video-source');
+            const canvas = document.getElementById('about-video-canvas');
+            if (!video || !canvas) return;
+
+            const ctx = canvas.getContext('2d', { willReadFrequently: true });
+            const tempCanvas = document.createElement('canvas');
+            const tempCtx = tempCanvas.getContext('2d');
+
+            const scale = 3; // low-res scaling factor
+            let w = 160;
+            let h = 90;
+
+            const bayer = [
+                 1,  9,  3, 11,
+                13,  5, 15,  7,
+                 4, 12,  2, 10,
+                16,  8, 14,  6
+            ];
+
+            function resize() {
+                const rect = canvas.getBoundingClientRect();
+                w = Math.ceil(rect.width / scale);
+                h = Math.ceil(rect.height / scale);
+                canvas.width = w;
+                canvas.height = h;
+                tempCanvas.width = w;
+                tempCanvas.height = h;
+            }
+
+            resize();
+            window.addEventListener('resize', resize);
+
+            video.play().catch(() => {
+                document.addEventListener('click', () => {
+                    video.play();
+                }, { once: true });
+            });
+
+            function draw() {
+                if (video.paused || video.ended) {
+                    requestAnimationFrame(draw);
+                    return;
+                }
+
+                tempCtx.drawImage(video, 0, 0, w, h);
+                const frame = tempCtx.getImageData(0, 0, w, h);
+                const videoData = frame.data;
+
+                const imgData = ctx.createImageData(w, h);
+                const data = imgData.data;
+
+                for (let y = 0; y < h; y++) {
+                    const yOff = y * w;
+                    const bayerRow = (y & 3) * 4;
+                    for (let x = 0; x < w; x++) {
+                        const idx = (yOff + x) * 4;
+                        const r_val = videoData[idx];
+                        const g_val = videoData[idx+1];
+                        const b_val = videoData[idx+2];
+
+                        const v = (0.299 * r_val + 0.587 * g_val + 0.114 * b_val) / 255;
+                        const threshold = bayer[bayerRow + (x & 3)] / 17;
+
+                        let r, g, b;
+                        if (v > threshold) {
+                            if (v > 0.8) {
+                                r = 255; g = 255; b = 255; // White
+                            } else if (v > 0.5) {
+                                r = 235; g = 70; b = 4;   // Hot Orange
+                            } else {
+                                r = 153; g = 165; b = 125; // Moss
+                            }
+                        } else {
+                            if (v > 0.25) {
+                                r = 40; g = 39; b = 35;   // Eerie Light
+                            } else {
+                                r = 0; g = 0; b = 0;       // Black
+                            }
+                        }
+
+                        data[idx] = r;
+                        data[idx+1] = g;
+                        data[idx+2] = b;
+                        data[idx+3] = 255;
+                    }
+                }
+
+                ctx.putImageData(imgData, 0, 0);
+                requestAnimationFrame(draw);
+            }
+
+            video.addEventListener('play', () => {
+                requestAnimationFrame(draw);
+            });
+
+            if (!video.paused) {
+                requestAnimationFrame(draw);
+            }
+        })();
+
+        // Typewriter effect for categories
+        (function() {
+            const typewriterParagraphs = document.querySelectorAll('.typewriter-text');
+            
+            typewriterParagraphs.forEach(p => {
+                const text = p.textContent.trim();
+                p.innerHTML = '';
+                
+                // Wrap each letter in a span to prevent layout shifts
+                const chars = Array.from(text).map(char => {
+                    const span = document.createElement('span');
+                    span.className = 'char';
+                    span.textContent = char;
+                    p.appendChild(span);
+                    return span;
+                });
+                
+                // Add js-active to hide all chars dynamically
+                p.classList.add('js-active');
+                
+                // Intersection observer to animate when scrolled into view
+                const observer = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            // Start revealing characters sequentially
+                            chars.forEach((span, idx) => {
+                                setTimeout(() => {
+                                    span.classList.add('revealed');
+                                }, idx * 1); // 1ms speed per character
+                            });
+                            observer.unobserve(p);
+                        }
+                    });
+                }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+                
+                observer.observe(p);
+            });
+        })();
+
+        // Typewriter & Scramble effects for Timeline Experience
+        (function() {
+            // Helper to recursively wrap text nodes in spans
+            function wrapTextNodes(element) {
+                const nodes = Array.from(element.childNodes);
+                nodes.forEach(node => {
+                    if (node.nodeType === Node.TEXT_NODE) {
+                        const text = node.textContent;
+                        if (text.trim() === '') return;
+                        
+                        const fragment = document.createDocumentFragment();
+                        Array.from(text).forEach(char => {
+                            const span = document.createElement('span');
+                            span.className = 'char';
+                            span.textContent = char;
+                            fragment.appendChild(span);
+                        });
+                        node.parentNode.replaceChild(fragment, node);
+                    } else if (node.nodeType === Node.ELEMENT_NODE) {
+                        wrapTextNodes(node);
+                    }
+                });
+            }
+
+            // Scramble effect for dates
+            const charsList = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789@#$%-+=*';
+            function scrambleText(element) {
+                const originalText = element.textContent.trim();
+                element.innerHTML = '';
+                
+                const spans = Array.from(originalText).map(char => {
+                    const span = document.createElement('span');
+                    if (char === ' ') {
+                        span.innerHTML = '&nbsp;';
+                    } else {
+                        span.textContent = char;
+                    }
+                    span.style.display = 'inline-block';
+                    element.appendChild(span);
+                    return {
+                        span: span,
+                        targetChar: char,
+                        settleFrame: Math.floor(Math.random() * 15) + 12
+                    };
+                });
+                
+                let frame = 0;
+                function tick() {
+                    let done = true;
+                    spans.forEach(item => {
+                        if (item.targetChar === ' ') {
+                            item.span.innerHTML = '&nbsp;';
+                            return;
+                        }
+                        if (item.targetChar === '—' || item.targetChar === '-') {
+                            item.span.textContent = item.targetChar;
+                            return;
+                        }
+                        if (frame < item.settleFrame) {
+                            item.span.textContent = charsList[Math.floor(Math.random() * charsList.length)];
+                            item.span.style.color = 'var(--accent)';
+                            done = false;
+                        } else {
+                            item.span.textContent = item.targetChar;
+                            item.span.style.color = '';
+                        }
+                    });
+                    
+                    if (!done) {
+                        frame++;
+                        requestAnimationFrame(tick);
+                    }
+                }
+                requestAnimationFrame(tick);
+            }
+
+            const timelineItems = document.querySelectorAll('.timeline-item');
+            
+            timelineItems.forEach(item => {
+                const dateEl = item.querySelector('.timeline-date');
+                
+                const observer = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            // 1. Scramble date
+                            if (dateEl) {
+                                scrambleText(dateEl);
+                            }
+                            
+                            observer.unobserve(item);
+                        }
+                    });
+                }, { threshold: 0.12, rootMargin: '0px 0px -20px 0px' });
+                
+                observer.observe(item);
+            });
+        })();
+    </script>
     <script src="js/navigation.js"></script>
+
+    <!-- Mathematical Verification of Title Centering & Canvas Dimensions -->
+    <script>
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                const canvasRoot = document.getElementById("hero-3d-scene");
+                console.log("Hero scene dimensions:", canvasRoot?.getBoundingClientRect());
+                
+                const title = document.querySelector(".hero-title");
+                const rect = title?.getBoundingClientRect();
+                if (rect) {
+                    const titleCenter = rect.top + rect.height / 2;
+                    const viewportCenter = window.innerHeight / 2;
+                    console.log({
+                        titleCenter,
+                        viewportCenter,
+                        difference: titleCenter - viewportCenter
+                    });
+                }
+            }, 1200);
+        });
+    </script>
 </body>
 </html>
