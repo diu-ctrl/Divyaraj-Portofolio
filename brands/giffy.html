@@ -995,6 +995,18 @@
                 font-size: 1.2rem !important;
             }
         }
+
+        .ads-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 32px;
+        }
+        @media (max-width: 768px) {
+            .ads-grid {
+                grid-template-columns: 1fr;
+                gap: 24px;
+            }
+        }
     </style>
 
 </head>
@@ -1458,6 +1470,61 @@
                             </div>
                             Brand storytelling with high visual impact
                         </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- AI Ads Campaign Section -->
+        <section class="ai-ads-section" style="padding: 64px 6%; max-width: 1300px; margin: 0 auto; border-top: 1px solid var(--border);">
+            <div class="section-label reveal" style="font-size: 0.7rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.2em; color: var(--accent); margin-bottom: 12px;">AI Ads Campaign</div>
+            <h2 class="reveal" style="font-size: 2.2rem; font-weight: 900; margin-bottom: 20px; letter-spacing: -0.03em; color: #fff;">AI Ads</h2>
+            <p class="reveal" style="color: var(--text-muted); font-size: 1.05rem; line-height: 1.85; margin-bottom: 40px; max-width: 800px;">
+                Promotional AI ad campaigns created with image assets generated using <strong>GPT Image 5</strong> and dynamic video rendering powered by <strong>Seedance 2.0 Fast</strong>. Further details can be inferred from the titles below.
+            </p>
+            
+            <div class="ads-grid reveal">
+                <!-- Ad 1: Smart Value -->
+                <div class="film-card" style="display: flex; flex-direction: column; background: var(--card); border: 1px solid var(--border); padding: 24px;">
+                    <div class="film-card-visual" style="aspect-ratio: 16/9; margin-bottom: 20px; position: relative; overflow: hidden; border: 1px solid #282723; background: #000000;">
+                        <video src="../Final Video/Smart Value video.mp4" controls preload="metadata" style="width: 100%; height: 100%; object-fit: cover;"></video>
+                    </div>
+                    <div class="film-card-content" style="display: flex; flex-direction: column; gap: 4px;">
+                        <span class="film-meta" style="font-family: var(--font-mono); font-size: 0.72rem; letter-spacing: 0.05em; color: var(--accent); text-transform: uppercase;">Commercial Ad</span>
+                        <h3 style="font-size: 1.25rem; font-weight: 700; color: #fff; margin-top: 4px;">Smart Value</h3>
+                    </div>
+                </div>
+
+                <!-- Ad 2: Flexible Scheduling -->
+                <div class="film-card" style="display: flex; flex-direction: column; background: var(--card); border: 1px solid var(--border); padding: 24px;">
+                    <div class="film-card-visual" style="aspect-ratio: 16/9; margin-bottom: 20px; position: relative; overflow: hidden; border: 1px solid #282723; background: #000000;">
+                        <video src="../Final Video/Flexible Scheduling video.mp4" controls preload="metadata" style="width: 100%; height: 100%; object-fit: cover;"></video>
+                    </div>
+                    <div class="film-card-content" style="display: flex; flex-direction: column; gap: 4px;">
+                        <span class="film-meta" style="font-family: var(--font-mono); font-size: 0.72rem; letter-spacing: 0.05em; color: var(--accent); text-transform: uppercase;">Commercial Ad</span>
+                        <h3 style="font-size: 1.25rem; font-weight: 700; color: #fff; margin-top: 4px;">Flexible Scheduling</h3>
+                    </div>
+                </div>
+
+                <!-- Ad 3: Absolute Trust -->
+                <div class="film-card" style="display: flex; flex-direction: column; background: var(--card); border: 1px solid var(--border); padding: 24px;">
+                    <div class="film-card-visual" style="aspect-ratio: 16/9; margin-bottom: 20px; position: relative; overflow: hidden; border: 1px solid #282723; background: #000000;">
+                        <video src="../Final Video/Absolute Trust video.mp4" controls preload="metadata" style="width: 100%; height: 100%; object-fit: cover;"></video>
+                    </div>
+                    <div class="film-card-content" style="display: flex; flex-direction: column; gap: 4px;">
+                        <span class="film-meta" style="font-family: var(--font-mono); font-size: 0.72rem; letter-spacing: 0.05em; color: var(--accent); text-transform: uppercase;">Commercial Ad</span>
+                        <h3 style="font-size: 1.25rem; font-weight: 700; color: #fff; margin-top: 4px;">Absolute Trust</h3>
+                    </div>
+                </div>
+
+                <!-- Ad 4: Worker Rotation -->
+                <div class="film-card" style="display: flex; flex-direction: column; background: var(--card); border: 1px solid var(--border); padding: 24px;">
+                    <div class="film-card-visual" style="aspect-ratio: 16/9; margin-bottom: 20px; position: relative; overflow: hidden; border: 1px solid #282723; background: #000000;">
+                        <video src="../Final Video/Worker Rotation.mp4" controls preload="metadata" style="width: 100%; height: 100%; object-fit: cover;"></video>
+                    </div>
+                    <div class="film-card-content" style="display: flex; flex-direction: column; gap: 4px;">
+                        <span class="film-meta" style="font-family: var(--font-mono); font-size: 0.72rem; letter-spacing: 0.05em; color: var(--accent); text-transform: uppercase;">Commercial Ad</span>
+                        <h3 style="font-size: 1.25rem; font-weight: 700; color: #fff; margin-top: 4px;">Worker Rotation</h3>
                     </div>
                 </div>
             </div>
