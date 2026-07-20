@@ -971,6 +971,21 @@
             font-weight: 400 !important;
             line-height: 1.05 !important;
         }
+
+        #ai-ads .supporting-films-grid {
+            grid-template-columns: repeat(4, 1fr) !important;
+            gap: 20px !important;
+        }
+        @media (max-width: 960px) {
+            #ai-ads .supporting-films-grid {
+                grid-template-columns: repeat(2, 1fr) !important;
+            }
+        }
+        @media (max-width: 600px) {
+            #ai-ads .supporting-films-grid {
+                grid-template-columns: 1fr !important;
+            }
+        }
 </style>
 
     <!-- ─── Back To Top Button Styles ─── -->
@@ -1289,10 +1304,10 @@
                 </p>
             </div>
             
-            <div class="supporting-films-grid reveal" style="grid-template-columns: repeat(2, 1fr) !important; gap: 32px !important;">
+            <div class="supporting-films-grid reveal">
                 <!-- Ad 1: Smart Value -->
                 <div class="film-card" style="display: flex; flex-direction: column; background: var(--card); border: 1px solid var(--border); padding: 24px;">
-                    <div class="film-card-visual" style="aspect-ratio: 16/9; margin-bottom: 20px; position: relative; overflow: hidden; border: 1px solid #282723; background: #000000;">
+                    <div class="film-card-visual" style="aspect-ratio: 9/16; margin-bottom: 20px; position: relative; overflow: hidden; border: 1px solid #282723; background: #000000;">
                         <video src="Final Video/Smart Value video.mp4" controls preload="metadata" style="width: 100%; height: 100%; object-fit: cover;"></video>
                     </div>
                     <div class="film-card-content" style="display: flex; flex-direction: column; gap: 4px;">
@@ -1303,7 +1318,7 @@
 
                 <!-- Ad 2: Flexible Scheduling -->
                 <div class="film-card" style="display: flex; flex-direction: column; background: var(--card); border: 1px solid var(--border); padding: 24px;">
-                    <div class="film-card-visual" style="aspect-ratio: 16/9; margin-bottom: 20px; position: relative; overflow: hidden; border: 1px solid #282723; background: #000000;">
+                    <div class="film-card-visual" style="aspect-ratio: 9/16; margin-bottom: 20px; position: relative; overflow: hidden; border: 1px solid #282723; background: #000000;">
                         <video src="Final Video/Flexible Scheduling video.mp4" controls preload="metadata" style="width: 100%; height: 100%; object-fit: cover;"></video>
                     </div>
                     <div class="film-card-content" style="display: flex; flex-direction: column; gap: 4px;">
@@ -1314,7 +1329,7 @@
 
                 <!-- Ad 3: Absolute Trust -->
                 <div class="film-card" style="display: flex; flex-direction: column; background: var(--card); border: 1px solid var(--border); padding: 24px;">
-                    <div class="film-card-visual" style="aspect-ratio: 16/9; margin-bottom: 20px; position: relative; overflow: hidden; border: 1px solid #282723; background: #000000;">
+                    <div class="film-card-visual" style="aspect-ratio: 9/16; margin-bottom: 20px; position: relative; overflow: hidden; border: 1px solid #282723; background: #000000;">
                         <video src="Final Video/Absolute Trust video.mp4" controls preload="metadata" style="width: 100%; height: 100%; object-fit: cover;"></video>
                     </div>
                     <div class="film-card-content" style="display: flex; flex-direction: column; gap: 4px;">
@@ -1325,7 +1340,7 @@
 
                 <!-- Ad 4: Worker Rotation -->
                 <div class="film-card" style="display: flex; flex-direction: column; background: var(--card); border: 1px solid var(--border); padding: 24px;">
-                    <div class="film-card-visual" style="aspect-ratio: 16/9; margin-bottom: 20px; position: relative; overflow: hidden; border: 1px solid #282723; background: #000000;">
+                    <div class="film-card-visual" style="aspect-ratio: 9/16; margin-bottom: 20px; position: relative; overflow: hidden; border: 1px solid #282723; background: #000000;">
                         <video src="Final Video/Worker Rotation.mp4" controls preload="metadata" style="width: 100%; height: 100%; object-fit: cover;"></video>
                     </div>
                     <div class="film-card-content" style="display: flex; flex-direction: column; gap: 4px;">
