@@ -69,13 +69,20 @@
         // Click scrolling handlers for index.html links
         navItems.forEach((item, idx) => {
             const href = item.getAttribute('href');
+            const targetAttr = item.getAttribute('data-target');
             if (href.startsWith('#') || href === 'index.html' || href.startsWith('index.html#')) {
                 item.addEventListener('click', (e) => {
                     e.preventDefault();
-                    if (href === 'index.html' || href === '#hero' || href === 'index.html#hero') {
+                    if (targetAttr === 'hero' || href === '#hero' || href === 'index.html#hero') {
                         window.scrollTo({ top: 0, behavior: 'smooth' });
                         // Update hash without jump
                         history.pushState(null, null, '#hero');
+                    } else if (targetAttr === 'about' || href === '#about' || href === 'index.html#about') {
+                        const targetSection = document.getElementById('about');
+                        if (targetSection) {
+                            targetSection.scrollIntoView({ behavior: 'smooth' });
+                            history.pushState(null, null, '#about');
+                        }
                     } else {
                         const hash = href.includes('#') ? href.substring(href.indexOf('#')) : '';
                         const target = document.querySelector(hash);
@@ -85,6 +92,19 @@
                         }
                     }
                 });
+            }
+        });
+
+        // Referrer-based scroll to About section when navigating from work.html
+        window.addEventListener('load', () => {
+            // Allow brief timeout for rendering layout stability
+            if (!window.location.hash && document.referrer && (document.referrer.indexOf('work.html') !== -1 || document.referrer.indexOf('/work') !== -1)) {
+                setTimeout(() => {
+                    const aboutSection = document.getElementById('about');
+                    if (aboutSection) {
+                        aboutSection.scrollIntoView({ behavior: 'smooth' });
+                    }
+                }, 200);
             }
         });
 
