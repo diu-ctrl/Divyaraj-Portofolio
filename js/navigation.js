@@ -1,7 +1,7 @@
 /**
  * Shared Floating Drawer Navigation JavaScript
  * Handles Pull-Down Drag (Desktop Open), Simple Click-to-Close (Desktop & Mobile),
- * Hover reveal for border & CLOSE handle when open, Scroll Spy, and Active States.
+ * Shared Pointer Hover State for Orange Border & CLOSE handle, Scroll Spy, and Active States.
  *
  * Configured WhatsApp URL source: https://wa.me/qr/KQJFSZ2WY5FSO1
  */
@@ -27,6 +27,7 @@
     let startY = 0;
     let initialY = 0;
     let justDragged = false;
+    let hoverTimer = null;
 
     function getClosedY() {
         const topSpacing = isMobile() ? 10 : 16;
@@ -43,8 +44,17 @@
         }
     }
 
+    function clearHoverState() {
+        if (hoverTimer) {
+            clearTimeout(hoverTimer);
+            hoverTimer = null;
+        }
+        navContainer.classList.remove('is-hovered');
+    }
+
     function openDrawer() {
         isOpen = true;
+        clearHoverState();
         navContainer.classList.add('is-open');
         navContainer.style.transform = '';
         handleBtn.setAttribute('aria-expanded', 'true');
@@ -53,11 +63,36 @@
 
     function closeDrawer() {
         isOpen = false;
+        clearHoverState();
         navContainer.classList.remove('is-open');
         navContainer.style.transform = '';
         handleBtn.setAttribute('aria-expanded', 'false');
         updateHandleLabel();
     }
+
+    // ── Shared Pointer Hover State Management ──
+    navContainer.addEventListener('pointerenter', () => {
+        if (!isOpen) return;
+        if (hoverTimer) {
+            clearTimeout(hoverTimer);
+            hoverTimer = null;
+        }
+        navContainer.classList.add('is-hovered');
+    });
+
+    navContainer.addEventListener('pointerleave', () => {
+        if (hoverTimer) clearTimeout(hoverTimer);
+        hoverTimer = setTimeout(() => {
+            navContainer.classList.remove('is-hovered');
+            hoverTimer = null;
+        }, 90);
+    });
+
+    navContainer.addEventListener('pointercancel', clearHoverState);
+    window.addEventListener('blur', clearHoverState);
+    document.addEventListener('visibilitychange', () => {
+        if (document.hidden) clearHoverState();
+    });
 
     // Pointer Events for Desktop Drag Gesture (Pull Down to Open)
     handleBtn.addEventListener('pointerdown', (e) => {
