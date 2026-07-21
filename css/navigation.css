@@ -7,7 +7,7 @@
 @media (max-width: 767px) {
     :root {
         --nav-top-spacing: calc(8px + env(safe-area-inset-top));
-        --handle-height: 30px;
+        --handle-height: 32px;
     }
 }
 
@@ -17,8 +17,8 @@
     left: 50%;
     transform: translateX(-50%) translateY(calc(-100% + var(--handle-height) - var(--nav-top-spacing)));
     z-index: 1000;
-    width: auto;
-    max-width: 90vw;
+    width: 360px;
+    max-width: 92vw;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -28,12 +28,17 @@
     will-change: transform;
 }
 
+.limelight-nav-container.is-dragging {
+    transition: none !important;
+}
+
 .limelight-nav-container.is-open {
     transform: translateX(-50%) translateY(0);
 }
 
 .limelight-nav-panel {
     pointer-events: auto;
+    width: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -42,11 +47,13 @@
 .limelight-nav {
     display: flex;
     align-items: center;
+    justify-content: space-around;
+    width: 100%;
     background: #000000 !important;
-    border: 1px solid var(--border) !important;
+    border: 1px solid var(--primary) !important;
     border-radius: 0px !important; /* Sharp brutalist corners */
-    padding: 4px 16px;
-    gap: 12px;
+    padding: 4px 12px;
+    gap: 8px;
     position: relative;
     box-shadow: none !important;
 }
@@ -57,39 +64,58 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 8px;
     background: #000000 !important;
-    border: 1px solid var(--border) !important;
-    border-top: 1px solid var(--primary) !important; /* Signature Hot Orange upper edge */
-    color: var(--text-muted);
+    border: 1px solid var(--primary) !important;
+    color: var(--primary);
     font-family: var(--font-mono);
     font-size: 11px;
     font-weight: 700;
-    letter-spacing: 0.12em;
+    letter-spacing: 0.14em;
     padding: 0 16px;
     height: var(--handle-height);
-    width: 170px;
-    cursor: pointer;
+    width: 100%; /* Matches exact width of panel */
+    cursor: grab;
     border-radius: 0px !important;
     outline: none;
-    transition: color 0.25s ease, border-color 0.25s ease, background-color 0.25s ease;
+    touch-action: none;
+    user-select: none;
     margin-top: -1px; /* Seamless overlap with nav panel bottom border */
+    transition: opacity 0.25s ease, transform 0.25s ease, color 0.2s ease, border-color 0.2s ease, background-color 0.2s ease;
+}
+
+.limelight-drawer-handle.is-grabbing {
+    cursor: grabbing !important;
 }
 
 .limelight-drawer-handle:hover,
 .limelight-drawer-handle:focus-visible {
-    color: var(--primary);
-    border-color: var(--primary) !important;
+    background: #0a0a0a !important;
 }
 
-.drawer-handle-icon {
-    width: 14px;
-    height: 14px;
-    transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+/* Desktop open hover state for handle */
+@media (min-width: 768px) {
+    .limelight-nav-container.is-open .limelight-drawer-handle {
+        opacity: 0;
+        pointer-events: none;
+        transform: translateY(-8px);
+    }
+    
+    /* When hovered, focused-within, or actively dragging on desktop */
+    .limelight-nav-container.is-open:hover .limelight-drawer-handle,
+    .limelight-nav-container.is-open:focus-within .limelight-drawer-handle,
+    .limelight-nav-container.is-open.is-dragging .limelight-drawer-handle {
+        opacity: 1;
+        pointer-events: auto;
+        transform: translateY(0);
+    }
 }
 
-.limelight-nav-container.is-open .drawer-handle-icon {
-    transform: rotate(180deg);
+@media (max-width: 767px) {
+    .limelight-nav-container.is-open .limelight-drawer-handle {
+        opacity: 1;
+        pointer-events: auto;
+        transform: translateY(0);
+    }
 }
 
 /* Navigation Links */
@@ -98,8 +124,8 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 56px;
-    height: 56px;
+    width: 52px;
+    height: 52px;
     color: var(--text-muted);
     text-decoration: none;
     transition: color 0.3s ease;
@@ -166,9 +192,9 @@
 /* Tooltips */
 .nav-tooltip {
     position: absolute;
-    top: 64px;
+    top: 60px;
     background: #000000;
-    border: 1px solid var(--border);
+    border: 1px solid var(--primary);
     color: var(--text);
     font-family: var(--font-mono);
     font-size: 11px;
@@ -190,16 +216,12 @@
 /* Responsive Mobile Navigation Styles */
 @media (max-width: 767px) {
     .limelight-nav-container {
-        max-width: 95vw;
-    }
-    .limelight-nav-panel {
-        width: 100%;
+        width: 92vw;
+        max-width: 360px;
     }
     .limelight-nav {
-        padding: 2px 8px;
-        gap: 4px;
-        width: 100%;
-        justify-content: space-around;
+        padding: 2px 4px;
+        gap: 2px;
     }
     .limelight-nav-item {
         width: 44px;
@@ -219,10 +241,10 @@
         height: 48px;
     }
     .limelight-drawer-handle {
-        width: 140px;
         height: var(--handle-height);
         font-size: 10px;
-        padding: 0 12px;
+        padding: 0 10px;
+        cursor: pointer;
     }
     .nav-tooltip {
         display: none;

@@ -1,12 +1,14 @@
 /**
  * Shared Floating Drawer Navigation JavaScript
- * Handles Drawer Toggle, Scroll Spy, Smooth Scrolling, and page-specific Active States.
+ * Handles Pointer Events Drag (Desktop), Tap-to-Toggle (Mobile), Scroll Spy, and Active States.
  *
  * Configured WhatsApp URL source: https://wa.me/qr/KQJFSZ2WY5FSO1
  */
 (function() {
     const navContainer = document.getElementById('limelight-nav-container');
     const handleBtn = document.getElementById('limelight-drawer-handle');
+    const handleText = document.getElementById('drawer-handle-text');
+    const navPanel = document.getElementById('limelight-nav-panel');
     const navItems = document.querySelectorAll('.limelight-nav-item');
 
     if (!navContainer || !handleBtn || !navItems.length) return;
@@ -16,41 +18,149 @@
     const filename = pathname.split('/').pop().toLowerCase() || 'index.html';
     const isAboutPage = filename === 'about.html' || filename === 'about';
 
-    // Drawer state management
+    const isMobile = () => window.innerWidth < 768;
+
+    let isOpen = false;
+    let isDragging = false;
+    let startY = 0;
+    let initialY = 0;
+    let hasDraggedFar = false;
+
+    function getClosedY() {
+        const topSpacing = isMobile() ? 10 : 16;
+        const panelHeight = navPanel ? navPanel.offsetHeight : 64;
+        return -(panelHeight + topSpacing);
+    }
+
+    function updateHandleLabel() {
+        if (handleText) {
+            handleText.textContent = isOpen ? 'PULL UP ↑' : 'PULL DOWN ↓';
+        }
+    }
+
     function openDrawer() {
+        isOpen = true;
         navContainer.classList.add('is-open');
+        navContainer.style.transform = '';
         handleBtn.setAttribute('aria-expanded', 'true');
+        updateHandleLabel();
     }
 
     function closeDrawer() {
+        isOpen = false;
         navContainer.classList.remove('is-open');
+        navContainer.style.transform = '';
         handleBtn.setAttribute('aria-expanded', 'false');
+        updateHandleLabel();
     }
 
-    function toggleDrawer() {
-        if (navContainer.classList.contains('is-open')) {
-            closeDrawer();
+    // Pointer Events for Desktop Drag Gesture
+    handleBtn.addEventListener('pointerdown', (e) => {
+        if (isMobile()) return;
+        if (e.button !== 0) return; // Left mouse button only
+
+        e.preventDefault();
+        try {
+            handleBtn.setPointerCapture(e.pointerId);
+        } catch (err) {}
+
+        isDragging = true;
+        hasDraggedFar = false;
+        startY = e.clientY;
+
+        const closedY = getClosedY();
+        initialY = isOpen ? 0 : closedY;
+
+        navContainer.classList.add('is-dragging');
+        handleBtn.classList.add('is-grabbing');
+    });
+
+    handleBtn.addEventListener('pointermove', (e) => {
+        if (!isDragging) return;
+
+        const deltaY = e.clientY - startY;
+        if (Math.abs(deltaY) > 6) {
+            hasDraggedFar = true;
+        }
+
+        const closedY = getClosedY();
+        let targetY = initialY + deltaY;
+
+        // Clamp translation between closedY and 15px overscroll
+        targetY = Math.max(closedY - 10, Math.min(20, targetY));
+
+        navContainer.style.transform = `translateX(-50%) translateY(${targetY}px)`;
+    });
+
+    function endDrag(e) {
+        if (!isDragging) return;
+
+        isDragging = false;
+        navContainer.classList.remove('is-dragging');
+        handleBtn.classList.remove('is-grabbing');
+
+        try {
+            handleBtn.releasePointerCapture(e.pointerId);
+        } catch (err) {}
+
+        const deltaY = e.clientY - startY;
+        const threshold = 45; // 45px drag threshold
+
+        if (!isOpen) {
+            // Closed: drag down past threshold opens drawer
+            if (deltaY >= threshold) {
+                openDrawer();
+            } else {
+                closeDrawer();
+            }
         } else {
-            openDrawer();
+            // Open: drag up past threshold closes drawer
+            if (deltaY <= -threshold) {
+                closeDrawer();
+            } else {
+                openDrawer();
+            }
         }
     }
 
-    // Toggle drawer on handle button click
+    handleBtn.addEventListener('pointerup', endDrag);
+    handleBtn.addEventListener('pointercancel', endDrag);
+
+    // Handle Click behavior (Desktop vs Mobile)
     handleBtn.addEventListener('click', (e) => {
-        e.stopPropagation();
-        toggleDrawer();
+        if (isMobile()) {
+            e.stopPropagation();
+            if (isOpen) {
+                closeDrawer();
+            } else {
+                openDrawer();
+            }
+        } else {
+            // On desktop, click does not open drawer unless user dragged or used keyboard
+            if (hasDraggedFar) {
+                e.stopPropagation();
+            }
+        }
     });
 
-    // Close on click outside
-    document.addEventListener('click', (e) => {
-        if (navContainer.classList.contains('is-open') && !navContainer.contains(e.target)) {
+    // Keyboard support (Enter/Space on handle, Escape on document)
+    handleBtn.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            if (isOpen) closeDrawer();
+            else openDrawer();
+        }
+    });
+
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && isOpen) {
             closeDrawer();
         }
     });
 
-    // Close on Escape key press
-    document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape' && navContainer.classList.contains('is-open')) {
+    // Click outside to close
+    document.addEventListener('click', (e) => {
+        if (isOpen && !navContainer.contains(e.target)) {
             closeDrawer();
         }
     });
@@ -60,12 +170,12 @@
 
     function scrollSpy() {
         const scrollPos = window.scrollY + window.innerHeight / 3;
-        let activeIndex = isAboutPage ? 0 : 1; // Default: About (0) on about.html, Work (1) on index.html
+        let activeIndex = isAboutPage ? 0 : 1;
 
         if (contactSection) {
             const contactTop = contactSection.offsetTop;
             if (scrollPos >= contactTop) {
-                activeIndex = 2; // Contact is active
+                activeIndex = 2;
             }
         }
 
@@ -82,7 +192,7 @@
         });
     }
 
-    // Click scrolling and navigation handlers
+    // Navigation links click handlers
     navItems.forEach((item) => {
         const href = item.getAttribute('href');
         const targetAttr = item.getAttribute('data-target');
@@ -115,7 +225,6 @@
                     closeDrawer();
                 }
             }
-            // WhatsApp and Resume links are external (target="_blank") and will open in a new tab without closing the drawer immediately.
         });
     });
 
