@@ -52,42 +52,47 @@
     
     
 
-    <!-- Limelight Floating Navigation Bar -->
-        <!-- Limelight Floating Navigation Bar -->
-    <nav class="limelight-nav-container">
-        <div class="limelight-nav">
-            <!-- About -->
-            <a href="about.html" class="limelight-nav-item active" data-target="about">
-                <div class="limelight-beam"></div>
-                <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
-                <span class="nav-tooltip">About</span>
-            </a>
-            <!-- Work -->
-            <a href="index.html" class="limelight-nav-item" data-target="work">
-                <div class="limelight-beam"></div>
-                <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg>
-                <span class="nav-tooltip">Work</span>
-            </a>
-            <!-- Contact -->
-            <a href="#contact" class="limelight-nav-item" data-target="contact">
-                <div class="limelight-beam"></div>
-                <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-                <span class="nav-tooltip">Contact</span>
-            </a>
-            <!-- WhatsApp -->
-            <a href="https://wa.me/qr/KQJFSZ2WY5FSO1" target="_blank" rel="noopener noreferrer" class="limelight-nav-item" data-target="whatsapp">
-                <div class="limelight-beam"></div>
-                <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
-                <span class="nav-tooltip">WhatsApp</span>
-            </a>
-            <!-- Resume -->
-            <a href="divyaraj_resume" target="_blank" rel="noopener" class="limelight-nav-item" data-target="resume">
-                <div class="limelight-beam"></div>
-                <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><line x1="10" y1="9" x2="8" y2="9"/></svg>
-                <span class="nav-tooltip">Resume</span>
-            </a>
-        </div>
-    </nav>
+    <!-- Limelight Floating Drawer Navigation Bar -->
+    <div class="limelight-nav-container" id="limelight-nav-container">
+        <nav class="limelight-nav-panel" id="limelight-nav-panel" aria-label="Main Navigation">
+            <div class="limelight-nav">
+                <!-- About -->
+                <a href="about.html" class="limelight-nav-item active" data-target="about">
+                    <div class="limelight-beam"></div>
+                    <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                    <span class="nav-tooltip">About</span>
+                </a>
+                <!-- Work -->
+                <a href="index.html" class="limelight-nav-item" data-target="work">
+                    <div class="limelight-beam"></div>
+                    <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg>
+                    <span class="nav-tooltip">Work</span>
+                </a>
+                <!-- Contact -->
+                <a href="#contact" class="limelight-nav-item" data-target="contact">
+                    <div class="limelight-beam"></div>
+                    <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                    <span class="nav-tooltip">Contact</span>
+                </a>
+                <!-- WhatsApp -->
+                <a href="https://wa.me/qr/KQJFSZ2WY5FSO1" target="_blank" rel="noopener noreferrer" class="limelight-nav-item" data-target="whatsapp">
+                    <div class="limelight-beam"></div>
+                    <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+                    <span class="nav-tooltip">WhatsApp</span>
+                </a>
+                <!-- Resume -->
+                <a href="divyaraj_resume" target="_blank" rel="noopener" class="limelight-nav-item" data-target="resume">
+                    <div class="limelight-beam"></div>
+                    <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><line x1="10" y1="9" x2="8" y2="9"/></svg>
+                    <span class="nav-tooltip">Resume</span>
+                </a>
+            </div>
+        </nav>
+        <button class="limelight-drawer-handle" id="limelight-drawer-handle" aria-expanded="false" aria-controls="limelight-nav-panel" aria-label="Toggle navigation menu">
+            <span class="drawer-handle-label">MENU</span>
+            <svg class="drawer-handle-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+    </div>
 
 
 
