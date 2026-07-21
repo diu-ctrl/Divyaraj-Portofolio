@@ -44,14 +44,13 @@
     justify-content: center;
 }
 
-/* Open state: panel has transparent border by default */
+/* Base navbar panel */
 .limelight-nav {
     display: flex;
     align-items: center;
     justify-content: space-around;
     width: 100%;
     background: #000000 !important;
-    border: 1px solid transparent !important;
     border-radius: 0px !important; /* Sharp brutalist corners */
     padding: 4px 12px;
     gap: 8px;
@@ -60,13 +59,7 @@
     transition: border-color 0.25s ease, background-color 0.25s ease;
 }
 
-/* On hover / focus when open, reveal orange panel border */
-.limelight-nav-container.is-open:hover .limelight-nav,
-.limelight-nav-container.is-open:focus-within .limelight-nav {
-    border-color: var(--primary) !important;
-}
-
-/* Mechanical Drawer Handle Button */
+/* Mechanical Drawer Handle Button (Default Closed: Left, Right, Bottom Orange Border) */
 .limelight-drawer-handle {
     pointer-events: auto;
     display: flex;
@@ -119,18 +112,30 @@
     vertical-align: middle;
 }
 
-/* Open state: CLOSE handle hidden by default, revealed on hover/focus */
+/* ─── OPEN STATE HOVER-ONLY VISIBILITY RULES ─── */
+
+/* 1. Default Open State (No Hover): Border transparent, CLOSE handle hidden */
+.limelight-nav-container.is-open .limelight-nav {
+    border: 1px solid transparent !important;
+}
+
 .limelight-nav-container.is-open .limelight-drawer-handle {
-    opacity: 0;
-    pointer-events: none;
+    opacity: 0 !important;
+    pointer-events: none !important;
     transform: translateY(-6px);
+}
+
+/* 2. Hover / Focus Open State: Reveal orange border AND CLOSE handle on shared container hover */
+.limelight-nav-container.is-open:hover .limelight-nav,
+.limelight-nav-container.is-open:focus-within .limelight-nav {
+    border-color: var(--primary) !important;
 }
 
 .limelight-nav-container.is-open:hover .limelight-drawer-handle,
 .limelight-nav-container.is-open:focus-within .limelight-drawer-handle,
 .limelight-nav-container.is-open.is-dragging .limelight-drawer-handle {
-    opacity: 1;
-    pointer-events: auto;
+    opacity: 1 !important;
+    pointer-events: auto !important;
     transform: translateY(0);
 }
 
