@@ -1,13 +1,13 @@
 /* ─── Shared Floating Drawer Navigation Styles ─── */
 :root {
     --nav-top-spacing: 16px;
-    --handle-height: 28px;
+    --handle-height: 32px;
 }
 
 @media (max-width: 767px) {
     :root {
         --nav-top-spacing: calc(8px + env(safe-area-inset-top));
-        --handle-height: 32px;
+        --handle-height: 34px;
     }
 }
 
@@ -65,7 +65,10 @@
     align-items: center;
     justify-content: center;
     background: #000000 !important;
-    border: 1px solid var(--primary) !important;
+    border-left: 1px solid var(--primary) !important;
+    border-right: 1px solid var(--primary) !important;
+    border-bottom: 1px solid var(--primary) !important;
+    border-top: none !important; /* Top border removed for seamless integration */
     color: var(--primary);
     font-family: var(--font-mono);
     font-size: 11px;
@@ -79,7 +82,7 @@
     outline: none;
     touch-action: none;
     user-select: none;
-    margin-top: -1px; /* Seamless overlap with nav panel bottom border */
+    margin-top: 0;
     transition: opacity 0.25s ease, transform 0.25s ease, color 0.2s ease, border-color 0.2s ease, background-color 0.2s ease;
 }
 
@@ -90,6 +93,21 @@
 .limelight-drawer-handle:hover,
 .limelight-drawer-handle:focus-visible {
     background: #0a0a0a !important;
+}
+
+.drawer-handle-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.drawer-stacked-chevrons {
+    width: 14px;
+    height: 16px;
+    color: var(--primary);
+    display: inline-block;
+    vertical-align: middle;
 }
 
 /* Desktop open hover state for handle */

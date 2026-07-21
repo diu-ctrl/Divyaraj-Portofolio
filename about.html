@@ -52,7 +52,7 @@
     
     
 
-        <!-- Limelight Floating Drawer Navigation Bar -->
+            <!-- Limelight Floating Drawer Navigation Bar -->
     <div class="limelight-nav-container" id="limelight-nav-container">
         <nav class="limelight-nav-panel" id="limelight-nav-panel" aria-label="Main Navigation">
             <div class="limelight-nav">
@@ -89,7 +89,14 @@
             </div>
         </nav>
         <button class="limelight-drawer-handle" id="limelight-drawer-handle" aria-expanded="false" aria-controls="limelight-nav-panel" aria-label="Toggle navigation menu">
-            <span class="drawer-handle-text" id="drawer-handle-text">PULL DOWN ˅˅</span>
+            <span class="drawer-handle-content">
+                <span class="drawer-handle-text" id="drawer-handle-text">PULL DOWN</span>
+                <svg class="drawer-stacked-chevrons" id="drawer-chevrons-icon" viewBox="0 0 16 18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="2 2 8 6 14 2"/>
+                    <polyline points="2 7 8 11 14 7"/>
+                    <polyline points="2 12 8 16 14 12"/>
+                </svg>
+            </span>
         </button>
     </div>
 

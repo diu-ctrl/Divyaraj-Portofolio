@@ -9,6 +9,7 @@
     const navContainer = document.getElementById('limelight-nav-container');
     const handleBtn = document.getElementById('limelight-drawer-handle');
     const handleText = document.getElementById('drawer-handle-text');
+    const chevronsIcon = document.getElementById('drawer-chevrons-icon');
     const navPanel = document.getElementById('limelight-nav-panel');
     const navItems = document.querySelectorAll('.limelight-nav-item');
 
@@ -25,7 +26,7 @@
     let isDragging = false;
     let startY = 0;
     let initialY = 0;
-    let hasDraggedFar = false;
+    let justDragged = false;
 
     function getClosedY() {
         const topSpacing = isMobile() ? 10 : 16;
@@ -35,7 +36,10 @@
 
     function updateHandleLabel() {
         if (handleText) {
-            handleText.textContent = isOpen ? 'CLOSE' : 'PULL DOWN ˅˅';
+            handleText.textContent = isOpen ? 'CLOSE' : 'PULL DOWN';
+        }
+        if (chevronsIcon) {
+            chevronsIcon.style.display = isOpen ? 'none' : 'inline-block';
         }
     }
 
@@ -60,7 +64,7 @@
         if (isMobile()) return;
         if (e.button !== 0) return; // Left mouse button only
 
-        // Only handle drag when drawer is closed (pulling down)
+        // Only handle drag when drawer is closed
         if (isOpen) return;
 
         e.preventDefault();
@@ -69,7 +73,7 @@
         } catch (err) {}
 
         isDragging = true;
-        hasDraggedFar = false;
+        justDragged = false;
         startY = e.clientY;
 
         const closedY = getClosedY();
@@ -83,9 +87,6 @@
         if (!isDragging) return;
 
         const deltaY = e.clientY - startY;
-        if (Math.abs(deltaY) > 6) {
-            hasDraggedFar = true;
-        }
 
         const closedY = getClosedY();
         let targetY = initialY + deltaY;
@@ -108,10 +109,12 @@
         } catch (err) {}
 
         const deltaY = e.clientY - startY;
-        const threshold = 45; // 45px drag threshold
+        const threshold = 45; // 45px drag threshold to open
 
         if (deltaY >= threshold) {
+            justDragged = true;
             openDrawer();
+            setTimeout(() => { justDragged = false; }, 200);
         } else {
             closeDrawer();
         }
@@ -123,6 +126,13 @@
     // Handle Click behavior (Desktop vs Mobile)
     handleBtn.addEventListener('click', (e) => {
         e.stopPropagation();
+
+        // If click was triggered right after a drag-to-open gesture, ignore click
+        if (justDragged) {
+            justDragged = false;
+            return;
+        }
+
         if (isOpen) {
             // Clicking CLOSE when open ALWAYS closes the drawer on both desktop and mobile
             closeDrawer();
