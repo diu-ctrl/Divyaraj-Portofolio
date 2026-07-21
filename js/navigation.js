@@ -35,18 +35,18 @@
         return -(panelHeight + topSpacing);
     }
 
-    function updateHandleLabel() {
-        if (handleText) {
-            if (isOpen && !isMobile()) {
-                handleText.textContent = 'CLOSE';
-            } else if (isMobile()) {
-                handleText.textContent = 'TAP TO OPEN';
-            } else {
-                handleText.textContent = 'PULL DOWN';
-            }
+        function updateHandleLabel() {
+        if (!handleText) return;
+        const isMob = isMobile();
+        if (isMob) {
+            handleText.textContent = 'TAP TO OPEN';
+        } else if (isOpen) {
+            handleText.textContent = 'CLOSE';
+        } else {
+            handleText.textContent = 'PULL DOWN';
         }
         if (chevronsIcon) {
-            chevronsIcon.style.display = (isOpen && !isMobile()) ? 'none' : 'inline-block';
+            chevronsIcon.style.display = (isOpen && !isMob) ? 'none' : 'inline-block';
         }
     }
 
@@ -271,6 +271,7 @@
     });
 
     window.addEventListener('resize', updateHandleLabel);
+    window.addEventListener('orientationchange', updateHandleLabel);
     window.addEventListener('scroll', scrollSpy);
     scrollSpy(); // Initial run
 })();
