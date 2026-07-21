@@ -271,3 +271,44 @@
         display: none;
     }
 }
+
+/* Sequential Downward Chevron Animation */
+.chevron-line {
+    transition: stroke 0.25s ease, opacity 0.25s ease;
+    stroke: rgba(235, 70, 4, 0.35);
+    opacity: 0.4;
+}
+
+.chevron-top {
+    animation: chevronSequence 1.8s infinite ease-in-out;
+    animation-delay: 0s;
+}
+
+.chevron-mid {
+    animation: chevronSequence 1.8s infinite ease-in-out;
+    animation-delay: 0.6s;
+}
+
+.chevron-bot {
+    animation: chevronSequence 1.8s infinite ease-in-out;
+    animation-delay: 1.2s;
+}
+
+@keyframes chevronSequence {
+    0% {
+        stroke: var(--primary);
+        opacity: 1;
+    }
+    28% {
+        stroke: var(--primary);
+        opacity: 1;
+    }
+    40% {
+        stroke: rgba(235, 70, 4, 0.35);
+        opacity: 0.4;
+    }
+    100% {
+        stroke: rgba(235, 70, 4, 0.35);
+        opacity: 0.4;
+    }
+}
