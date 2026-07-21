@@ -1,6 +1,7 @@
 /**
  * Shared Floating Drawer Navigation JavaScript
- * Handles Pointer Events Drag (Desktop), Tap-to-Toggle (Mobile), Scroll Spy, and Active States.
+ * Handles Pull-Down Drag (Desktop Open), Simple Click-to-Close (Desktop & Mobile),
+ * Scroll Spy, and Active States.
  *
  * Configured WhatsApp URL source: https://wa.me/qr/KQJFSZ2WY5FSO1
  */
@@ -34,7 +35,7 @@
 
     function updateHandleLabel() {
         if (handleText) {
-            handleText.textContent = isOpen ? 'PULL UP ↑' : 'PULL DOWN ↓';
+            handleText.textContent = isOpen ? 'CLOSE' : 'PULL DOWN ˅˅';
         }
     }
 
@@ -54,10 +55,13 @@
         updateHandleLabel();
     }
 
-    // Pointer Events for Desktop Drag Gesture
+    // Pointer Events for Desktop Drag Gesture (Pull Down to Open)
     handleBtn.addEventListener('pointerdown', (e) => {
         if (isMobile()) return;
         if (e.button !== 0) return; // Left mouse button only
+
+        // Only handle drag when drawer is closed (pulling down)
+        if (isOpen) return;
 
         e.preventDefault();
         try {
@@ -69,7 +73,7 @@
         startY = e.clientY;
 
         const closedY = getClosedY();
-        initialY = isOpen ? 0 : closedY;
+        initialY = closedY;
 
         navContainer.classList.add('is-dragging');
         handleBtn.classList.add('is-grabbing');
@@ -106,20 +110,10 @@
         const deltaY = e.clientY - startY;
         const threshold = 45; // 45px drag threshold
 
-        if (!isOpen) {
-            // Closed: drag down past threshold opens drawer
-            if (deltaY >= threshold) {
-                openDrawer();
-            } else {
-                closeDrawer();
-            }
+        if (deltaY >= threshold) {
+            openDrawer();
         } else {
-            // Open: drag up past threshold closes drawer
-            if (deltaY <= -threshold) {
-                closeDrawer();
-            } else {
-                openDrawer();
-            }
+            closeDrawer();
         }
     }
 
@@ -128,17 +122,14 @@
 
     // Handle Click behavior (Desktop vs Mobile)
     handleBtn.addEventListener('click', (e) => {
-        if (isMobile()) {
-            e.stopPropagation();
-            if (isOpen) {
-                closeDrawer();
-            } else {
-                openDrawer();
-            }
+        e.stopPropagation();
+        if (isOpen) {
+            // Clicking CLOSE when open ALWAYS closes the drawer on both desktop and mobile
+            closeDrawer();
         } else {
-            // On desktop, click does not open drawer unless user dragged or used keyboard
-            if (hasDraggedFar) {
-                e.stopPropagation();
+            if (isMobile()) {
+                // Mobile closed state: tap opens drawer
+                openDrawer();
             }
         }
     });
