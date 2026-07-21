@@ -1,7 +1,7 @@
 /**
  * Shared Floating Drawer Navigation JavaScript
- * Handles Pull-Down Drag (Desktop Open), Simple Click-to-Close (Desktop & Mobile),
- * Shared Pointer Hover State for Orange Border & CLOSE handle, Scroll Spy, and Active States.
+ * Handles Pull-Down Drag (Desktop Open), Simple Click-to-Close (Desktop Only),
+ * Tap-to-Open & Persistent Open (Mobile), Scroll Spy, and Active States.
  *
  * Configured WhatsApp URL source: https://wa.me/qr/KQJFSZ2WY5FSO1
  */
@@ -30,17 +30,17 @@
     let hoverTimer = null;
 
     function getClosedY() {
-        const topSpacing = isMobile() ? 10 : 16;
+        const topSpacing = isMobile() ? 6 : 16;
         const panelHeight = navPanel ? navPanel.offsetHeight : 64;
         return -(panelHeight + topSpacing);
     }
 
     function updateHandleLabel() {
         if (handleText) {
-            handleText.textContent = isOpen ? 'CLOSE' : 'PULL DOWN';
+            handleText.textContent = (isOpen && !isMobile()) ? 'CLOSE' : 'PULL DOWN';
         }
         if (chevronsIcon) {
-            chevronsIcon.style.display = isOpen ? 'none' : 'inline-block';
+            chevronsIcon.style.display = (isOpen && !isMobile()) ? 'none' : 'inline-block';
         }
     }
 
@@ -70,9 +70,9 @@
         updateHandleLabel();
     }
 
-    // ── Shared Pointer Hover State Management ──
+    // ── Shared Pointer Hover State Management (Desktop Only) ──
     navContainer.addEventListener('pointerenter', () => {
-        if (!isOpen) return;
+        if (!isOpen || isMobile()) return;
         if (hoverTimer) {
             clearTimeout(hoverTimer);
             hoverTimer = null;
@@ -81,6 +81,7 @@
     });
 
     navContainer.addEventListener('pointerleave', () => {
+        if (isMobile()) return;
         if (hoverTimer) clearTimeout(hoverTimer);
         hoverTimer = setTimeout(() => {
             navContainer.classList.remove('is-hovered');
@@ -99,7 +100,6 @@
         if (isMobile()) return;
         if (e.button !== 0) return; // Left mouse button only
 
-        // Only handle drag when drawer is closed
         if (isOpen) return;
 
         e.preventDefault();
@@ -126,7 +126,6 @@
         const closedY = getClosedY();
         let targetY = initialY + deltaY;
 
-        // Clamp translation between closedY and 15px overscroll
         targetY = Math.max(closedY - 10, Math.min(20, targetY));
 
         navContainer.style.transform = `translateX(-50%) translateY(${targetY}px)`;
@@ -144,7 +143,7 @@
         } catch (err) {}
 
         const deltaY = e.clientY - startY;
-        const threshold = 45; // 45px drag threshold to open
+        const threshold = 45;
 
         if (deltaY >= threshold) {
             justDragged = true;
@@ -158,7 +157,7 @@
     handleBtn.addEventListener('pointerup', endDrag);
     handleBtn.addEventListener('pointercancel', endDrag);
 
-    // Handle Click behavior (Desktop vs Mobile)
+    // Handle Click behavior
     handleBtn.addEventListener('click', (e) => {
         e.stopPropagation();
 
@@ -167,18 +166,20 @@
             return;
         }
 
-        if (isOpen) {
-            // Clicking CLOSE when open ALWAYS closes the drawer on both desktop and mobile
-            closeDrawer();
-        } else {
-            if (isMobile()) {
-                // Mobile closed state: tap opens drawer
+        if (isMobile()) {
+            // Mobile: tap PULL DOWN opens drawer. Once open, handle is hidden.
+            if (!isOpen) {
                 openDrawer();
+            }
+        } else {
+            // Desktop: clicking CLOSE closes drawer
+            if (isOpen) {
+                closeDrawer();
             }
         }
     });
 
-    // Keyboard support (Enter/Space on handle, Escape on document)
+    // Keyboard support (Enter/Space on handle, Escape on document for Desktop)
     handleBtn.addEventListener('keydown', (e) => {
         if (e.key === 'Enter' || e.key === ' ') {
             e.preventDefault();
@@ -188,14 +189,14 @@
     });
 
     document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape' && isOpen) {
+        if (!isMobile() && e.key === 'Escape' && isOpen) {
             closeDrawer();
         }
     });
 
-    // Click outside to close
+    // Click outside to close (Desktop Only)
     document.addEventListener('click', (e) => {
-        if (isOpen && !navContainer.contains(e.target)) {
+        if (!isMobile() && isOpen && !navContainer.contains(e.target)) {
             closeDrawer();
         }
     });
@@ -235,7 +236,7 @@
         item.addEventListener('click', (e) => {
             if (targetAttr === 'contact' || href === '#contact') {
                 e.preventDefault();
-                closeDrawer();
+                if (!isMobile()) closeDrawer(); // Do NOT close on mobile when tapping item
                 const contactEl = document.getElementById('contact');
                 if (contactEl) {
                     contactEl.scrollIntoView({ behavior: 'smooth' });
@@ -244,20 +245,20 @@
             } else if (targetAttr === 'work') {
                 if (!isAboutPage) {
                     e.preventDefault();
-                    closeDrawer();
+                    if (!isMobile()) closeDrawer();
                     window.scrollTo({ top: 0, behavior: 'smooth' });
                     history.pushState(null, null, '#hero');
                 } else {
-                    closeDrawer();
+                    if (!isMobile()) closeDrawer();
                 }
             } else if (targetAttr === 'about') {
                 if (isAboutPage) {
                     e.preventDefault();
-                    closeDrawer();
+                    if (!isMobile()) closeDrawer();
                     window.scrollTo({ top: 0, behavior: 'smooth' });
                     history.pushState(null, null, '#hero');
                 } else {
-                    closeDrawer();
+                    if (!isMobile()) closeDrawer();
                 }
             }
         });

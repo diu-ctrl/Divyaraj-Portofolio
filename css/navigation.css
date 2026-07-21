@@ -6,8 +6,8 @@
 
 @media (max-width: 767px) {
     :root {
-        --nav-top-spacing: calc(8px + env(safe-area-inset-top));
-        --handle-height: 34px;
+        --nav-top-spacing: calc(6px + env(safe-area-inset-top));
+        --handle-height: 28px;
     }
 }
 
@@ -51,7 +51,6 @@
     justify-content: space-around;
     width: 100%;
     background: #000000 !important;
-    border: 1px solid transparent !important;
     border-radius: 0px !important; /* Sharp brutalist corners */
     padding: 4px 12px;
     gap: 8px;
@@ -104,7 +103,7 @@
     gap: 8px;
 }
 
-/* Compact 3 stacked chevrons matching 12px font size */
+/* Compact 3 stacked chevrons matching font size */
 .drawer-stacked-chevrons {
     width: 12px;
     height: 12px;
@@ -113,31 +112,32 @@
     vertical-align: middle;
 }
 
-/* ─── OPEN STATE HOVER-ONLY VISIBILITY RULES ─── */
+/* ─── DESKTOP OPEN STATE HOVER-ONLY VISIBILITY RULES (≥ 768px) ─── */
+@media (min-width: 768px) {
+    /* 1. Default Open State (No Hover): Border transparent, CLOSE handle hidden */
+    .limelight-nav-container.is-open .limelight-nav {
+        border-color: transparent !important;
+    }
 
-/* 1. Default Open State (No Hover): Border transparent, CLOSE handle hidden */
-.limelight-nav-container.is-open .limelight-nav {
-    border-color: transparent !important;
-}
+    .limelight-nav-container.is-open .limelight-drawer-handle {
+        opacity: 0 !important;
+        visibility: hidden !important;
+        pointer-events: none !important;
+        transform: translateY(-6px);
+    }
 
-.limelight-nav-container.is-open .limelight-drawer-handle {
-    opacity: 0 !important;
-    visibility: hidden !important;
-    pointer-events: none !important;
-    transform: translateY(-6px);
-}
+    /* 2. Explicit JS-managed .is-hovered state on open container */
+    .limelight-nav-container.is-open.is-hovered .limelight-nav {
+        border-color: var(--primary) !important;
+    }
 
-/* 2. Explicit JS-managed .is-hovered state on open container */
-.limelight-nav-container.is-open.is-hovered .limelight-nav {
-    border-color: var(--primary) !important;
-}
-
-.limelight-nav-container.is-open.is-hovered .limelight-drawer-handle,
-.limelight-nav-container.is-open.is-dragging .limelight-drawer-handle {
-    opacity: 1 !important;
-    visibility: visible !important;
-    pointer-events: auto !important;
-    transform: translateY(0);
+    .limelight-nav-container.is-open.is-hovered .limelight-drawer-handle,
+    .limelight-nav-container.is-open.is-dragging .limelight-drawer-handle {
+        opacity: 1 !important;
+        visibility: visible !important;
+        pointer-events: auto !important;
+        transform: translateY(0);
+    }
 }
 
 /* Navigation Links */
@@ -276,39 +276,63 @@
     }
 }
 
-/* Responsive Mobile Navigation Styles */
+/* ─── REFINED MOBILE NAVIGATION STYLES (< 767px) ─── */
 @media (max-width: 767px) {
     .limelight-nav-container {
-        width: 92vw;
-        max-width: 360px;
+        width: 78vw;
+        max-width: 310px;
     }
+    
     .limelight-nav {
-        padding: 2px 4px;
-        gap: 2px;
+        padding: 2px 6px;
+        gap: 8px;
+        justify-content: center;
+        border-color: transparent !important;
     }
+    
     .limelight-nav-item {
-        width: 44px;
-        height: 44px;
+        width: 40px;
+        height: 38px;
     }
+    
     .nav-icon {
         width: 18px;
         height: 18px;
     }
+    
     .limelight-nav-item::before {
-        width: 24px;
+        width: 20px;
         top: -2px;
     }
+    
     .limelight-beam {
         top: -2px;
-        width: 38px;
-        height: 48px;
+        width: 34px;
+        height: 42px;
     }
+    
     .limelight-drawer-handle {
         height: var(--handle-height);
-        font-size: 11px;
-        padding: 0 10px;
+        font-size: 10.5px;
+        padding: 0 8px;
         cursor: pointer;
     }
+    
+    /* On mobile open state: hide handle completely, NO CLOSE bar */
+    .limelight-nav-container.is-open .limelight-drawer-handle,
+    .limelight-nav-container.is-open:hover .limelight-drawer-handle,
+    .limelight-nav-container.is-open:focus-within .limelight-drawer-handle {
+        display: none !important;
+        opacity: 0 !important;
+        visibility: hidden !important;
+        pointer-events: none !important;
+    }
+
+    .limelight-nav-container.is-open .limelight-nav,
+    .limelight-nav-container.is-open:hover .limelight-nav {
+        border-color: transparent !important;
+    }
+
     .nav-tooltip {
         display: none;
     }
