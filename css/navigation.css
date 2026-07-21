@@ -6,8 +6,8 @@
 
 @media (max-width: 767px) {
     :root {
-        --nav-top-spacing: calc(6px + env(safe-area-inset-top));
-        --handle-height: 28px;
+        --nav-top-spacing: calc(20px + env(safe-area-inset-top));
+        --handle-height: 30px;
     }
 }
 
@@ -77,7 +77,7 @@
     letter-spacing: 0.14em;
     padding: 0 16px;
     height: var(--handle-height);
-    width: 100%; /* Matches exact width of panel */
+    width: 100%; /* Matches exact width of panel on desktop */
     cursor: grab;
     border-radius: 0px !important;
     outline: none;
@@ -279,43 +279,55 @@
 /* ─── REFINED MOBILE NAVIGATION STYLES (< 767px) ─── */
 @media (max-width: 767px) {
     .limelight-nav-container {
-        width: 78vw;
-        max-width: 310px;
+        width: 82vw;
+        max-width: 360px;
     }
     
     .limelight-nav {
-        padding: 2px 6px;
-        gap: 8px;
+        padding: 4px 10px;
+        gap: 14px;
         justify-content: center;
         border-color: transparent !important;
     }
     
     .limelight-nav-item {
-        width: 40px;
-        height: 38px;
+        width: 48px;
+        height: 44px;
     }
     
     .nav-icon {
-        width: 18px;
-        height: 18px;
+        width: 24px;
+        height: 24px;
     }
     
     .limelight-nav-item::before {
-        width: 20px;
+        width: 24px;
         top: -2px;
     }
     
     .limelight-beam {
         top: -2px;
-        width: 34px;
-        height: 42px;
+        width: 40px;
+        height: 46px;
     }
     
+    /* Closed PULL DOWN handle is content-sized, centered, with equal padding */
     .limelight-drawer-handle {
         height: var(--handle-height);
-        font-size: 10.5px;
-        padding: 0 8px;
+        font-size: 11px;
+        padding: 0 20px;
+        width: fit-content !important;
+        max-width: max-content !important;
+        align-self: center !important;
         cursor: pointer;
+        border-left: 1px solid var(--primary) !important;
+        border-right: 1px solid var(--primary) !important;
+        border-bottom: 1px solid var(--primary) !important;
+        border-top: none !important;
+    }
+    
+    .drawer-handle-content {
+        gap: 10px;
     }
     
     /* On mobile open state: hide handle completely, NO CLOSE bar */

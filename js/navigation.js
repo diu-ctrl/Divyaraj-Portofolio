@@ -30,7 +30,7 @@
     let hoverTimer = null;
 
     function getClosedY() {
-        const topSpacing = isMobile() ? 6 : 16;
+        const topSpacing = isMobile() ? 20 : 16;
         const panelHeight = navPanel ? navPanel.offsetHeight : 64;
         return -(panelHeight + topSpacing);
     }
