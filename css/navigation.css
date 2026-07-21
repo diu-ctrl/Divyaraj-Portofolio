@@ -44,18 +44,26 @@
     justify-content: center;
 }
 
+/* Open state: panel has transparent border by default */
 .limelight-nav {
     display: flex;
     align-items: center;
     justify-content: space-around;
     width: 100%;
     background: #000000 !important;
-    border: 1px solid var(--primary) !important;
+    border: 1px solid transparent !important;
     border-radius: 0px !important; /* Sharp brutalist corners */
     padding: 4px 12px;
     gap: 8px;
     position: relative;
     box-shadow: none !important;
+    transition: border-color 0.25s ease, background-color 0.25s ease;
+}
+
+/* On hover / focus when open, reveal orange panel border */
+.limelight-nav-container.is-open:hover .limelight-nav,
+.limelight-nav-container.is-open:focus-within .limelight-nav {
+    border-color: var(--primary) !important;
 }
 
 /* Mechanical Drawer Handle Button */
@@ -71,7 +79,7 @@
     border-top: none !important; /* Top border removed for seamless integration */
     color: var(--primary);
     font-family: var(--font-mono);
-    font-size: 11px;
+    font-size: 12px;
     font-weight: 700;
     letter-spacing: 0.14em;
     padding: 0 16px;
@@ -99,41 +107,31 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 10px;
+    gap: 8px;
 }
 
+/* Compact 3 stacked chevrons matching 12px font size */
 .drawer-stacked-chevrons {
-    width: 14px;
-    height: 16px;
+    width: 12px;
+    height: 12px;
     color: var(--primary);
     display: inline-block;
     vertical-align: middle;
 }
 
-/* Desktop open hover state for handle */
-@media (min-width: 768px) {
-    .limelight-nav-container.is-open .limelight-drawer-handle {
-        opacity: 0;
-        pointer-events: none;
-        transform: translateY(-8px);
-    }
-    
-    /* When hovered, focused-within, or actively dragging on desktop */
-    .limelight-nav-container.is-open:hover .limelight-drawer-handle,
-    .limelight-nav-container.is-open:focus-within .limelight-drawer-handle,
-    .limelight-nav-container.is-open.is-dragging .limelight-drawer-handle {
-        opacity: 1;
-        pointer-events: auto;
-        transform: translateY(0);
-    }
+/* Open state: CLOSE handle hidden by default, revealed on hover/focus */
+.limelight-nav-container.is-open .limelight-drawer-handle {
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(-6px);
 }
 
-@media (max-width: 767px) {
-    .limelight-nav-container.is-open .limelight-drawer-handle {
-        opacity: 1;
-        pointer-events: auto;
-        transform: translateY(0);
-    }
+.limelight-nav-container.is-open:hover .limelight-drawer-handle,
+.limelight-nav-container.is-open:focus-within .limelight-drawer-handle,
+.limelight-nav-container.is-open.is-dragging .limelight-drawer-handle {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateY(0);
 }
 
 /* Navigation Links */
@@ -260,7 +258,7 @@
     }
     .limelight-drawer-handle {
         height: var(--handle-height);
-        font-size: 10px;
+        font-size: 11px;
         padding: 0 10px;
         cursor: pointer;
     }

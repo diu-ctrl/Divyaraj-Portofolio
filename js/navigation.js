@@ -1,7 +1,7 @@
 /**
  * Shared Floating Drawer Navigation JavaScript
  * Handles Pull-Down Drag (Desktop Open), Simple Click-to-Close (Desktop & Mobile),
- * Scroll Spy, and Active States.
+ * Hover reveal for border & CLOSE handle when open, Scroll Spy, and Active States.
  *
  * Configured WhatsApp URL source: https://wa.me/qr/KQJFSZ2WY5FSO1
  */
@@ -127,7 +127,6 @@
     handleBtn.addEventListener('click', (e) => {
         e.stopPropagation();
 
-        // If click was triggered right after a drag-to-open gesture, ignore click
         if (justDragged) {
             justDragged = false;
             return;
