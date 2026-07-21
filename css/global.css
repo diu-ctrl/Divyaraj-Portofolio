@@ -2870,3 +2870,78 @@
         .\[animation-direction\:reverse\] {
             animation-direction: reverse !important;
         }
+/* ─── Mobile Brand Collaborations Controls & Pagination ─── */
+.brand-mobile-controls {
+    display: none;
+}
+
+@keyframes brandCardFade {
+    0% {
+        opacity: 0;
+        transform: translateY(8px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@media (max-width: 767px) {
+    .brand-collaborations-header {
+        display: flex !important;
+        align-items: center !important;
+        justify-content: space-between !important;
+        margin-bottom: 24px !important;
+        padding: 0 4% !important;
+        text-align: left !important;
+    }
+
+    .brand-collaborations-header .display-serif-statement {
+        font-size: 1.75rem !important;
+        text-align: left !important;
+        margin: 0 !important;
+    }
+
+    .brand-mobile-controls {
+        display: flex !important;
+        align-items: center !important;
+        gap: 8px !important;
+        flex-shrink: 0 !important;
+    }
+
+    .brand-arrow-btn {
+        width: 36px !important;
+        height: 36px !important;
+        border-radius: 50% !important;
+        background: var(--primary) !important;
+        color: #000000 !important;
+        border: none !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        cursor: pointer !important;
+        padding: 0 !important;
+        outline: none !important;
+        box-shadow: 0 2px 8px rgba(235, 70, 4, 0.35) !important;
+        transition: transform 0.15s ease, background-color 0.15s ease !important;
+        -webkit-tap-highlight-color: transparent !important;
+    }
+
+    .brand-arrow-btn:active {
+        transform: scale(0.9) !important;
+    }
+
+    .folio-card.mobile-brand-hidden {
+        display: none !important;
+        opacity: 0 !important;
+        visibility: hidden !important;
+        pointer-events: none !important;
+    }
+
+    .folio-card.mobile-brand-visible {
+        display: block !important;
+        opacity: 1 !important;
+        visibility: visible !important;
+        pointer-events: auto !important;
+    }
+}

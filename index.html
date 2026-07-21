@@ -219,8 +219,20 @@
     <!-- Portfolio -->
     <!-- Scattered Portfolio / Spatial Showcase -->
     <section id="portfolio">
-        <div class="section-header reveal" style="text-align: center; margin-bottom: 40px; padding: 0 6%;">
+        <div class="section-header reveal brand-collaborations-header" style="text-align: center; margin-bottom: 40px; padding: 0 6%;">
             <h2 class="display-serif-statement">Brand <span class="gradient-text">Collaborations</span></h2>
+            <div class="brand-mobile-controls" id="brand-mobile-controls">
+                <button class="brand-arrow-btn prev-btn" id="brand-prev-btn" aria-label="Previous brands" type="button">
+                    <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                        <polyline points="15 18 9 12 15 6"></polyline>
+                    </svg>
+                </button>
+                <button class="brand-arrow-btn next-btn" id="brand-next-btn" aria-label="Next brands" type="button">
+                    <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                        <polyline points="9 18 15 12 9 6"></polyline>
+                    </svg>
+                </button>
+            </div>
         </div>
 
         <div class="scattered-canvas reveal">
@@ -1620,5 +1632,72 @@
             }, 1200);
         });
     </script>
+
+    <!-- Mobile Brand Collaborations 4-Card Paging & Infinite Rotation -->
+    <script>
+    (function initMobileBrandCarousel() {
+        const container = document.querySelector('#portfolio .scattered-canvas');
+        const prevBtn = document.getElementById('brand-prev-btn');
+        const nextBtn = document.getElementById('brand-next-btn');
+
+        if (!container || !prevBtn || !nextBtn) return;
+
+        const cards = Array.from(container.querySelectorAll('.folio-card'));
+        if (!cards.length) return;
+
+        const pageSize = 4;
+        const totalPages = Math.ceil(cards.length / pageSize);
+        let currentPage = 0;
+
+        function updateMobileDisplay(animate) {
+            const isMobile = window.innerWidth < 768;
+
+            if (!isMobile) {
+                cards.forEach(card => {
+                    card.classList.remove('mobile-brand-hidden', 'mobile-brand-visible');
+                    card.style.display = '';
+                });
+                return;
+            }
+
+            const startIndex = currentPage * pageSize;
+            const endIndex = startIndex + pageSize;
+
+            cards.forEach((card, index) => {
+                if (index >= startIndex && index < endIndex) {
+                    card.classList.remove('mobile-brand-hidden');
+                    card.classList.add('mobile-brand-visible');
+                    card.style.display = 'block';
+                    if (animate) {
+                        card.style.animation = 'none';
+                        card.offsetHeight;
+                        card.style.animation = 'brandCardFade 0.3s ease-out forwards';
+                    }
+                } else {
+                    card.classList.remove('mobile-brand-visible');
+                    card.classList.add('mobile-brand-hidden');
+                    card.style.display = 'none';
+                }
+            });
+        }
+
+        nextBtn.addEventListener('click', function(e) {
+            e.preventDefault();
+            currentPage = (currentPage + 1) % totalPages;
+            updateMobileDisplay(true);
+        });
+
+        prevBtn.addEventListener('click', function(e) {
+            e.preventDefault();
+            currentPage = (currentPage - 1 + totalPages) % totalPages;
+            updateMobileDisplay(true);
+        });
+
+        window.addEventListener('resize', function() { updateMobileDisplay(false); });
+        document.addEventListener('DOMContentLoaded', function() { updateMobileDisplay(false); });
+        updateMobileDisplay(false);
+    })();
+    </script>
+
 </body>
 </html>
