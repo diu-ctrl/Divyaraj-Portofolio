@@ -1012,6 +1012,111 @@
                 grid-template-columns: 1fr !important;
             }
         }
+
+        /* ─── Portrait Video Fullscreen Fix ─── */
+        /* Prevents vertical/9:16 videos from stretching to fill landscape fullscreen */
+        video:fullscreen {
+            object-fit: contain !important;
+            background: #000000 !important;
+            width: 100% !important;
+            height: 100% !important;
+        }
+        video:-webkit-full-screen {
+            object-fit: contain !important;
+            background: #000000 !important;
+            width: 100% !important;
+            height: 100% !important;
+        }
+        video:-moz-full-screen {
+            object-fit: contain !important;
+            background: #000000 !important;
+        }
+        video:-ms-fullscreen {
+            object-fit: contain !important;
+            background: #000000 !important;
+        }
+
+        /* ─── Copy / Share URL Buttons ─── */
+        .copy-url-btn {
+            position: absolute;
+            z-index: 20;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            border: 1px solid #282723;
+            background: #282723;
+            color: var(--text-muted);
+            transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+            border-radius: 0 !important;
+        }
+        .copy-url-btn:hover {
+            background: var(--accent);
+            border-color: var(--accent);
+            color: #000;
+            transform: scale(1.06);
+        }
+        .copy-url-btn.copied {
+            background: #1c3a1c !important;
+            border-color: #2d6a2d !important;
+            color: #4ade80 !important;
+        }
+        .copy-url-btn svg {
+            pointer-events: none;
+            flex-shrink: 0;
+        }
+        /* Horizontal variant — for .film-row featured cards */
+        .copy-url-btn.copy-horizontal {
+            top: 16px;
+            right: 16px;
+            width: 40px;
+            height: 40px;
+        }
+        .copy-url-btn.copy-horizontal svg {
+            width: 17px;
+            height: 17px;
+        }
+        /* Vertical variant — for .film-card grid cards */
+        .copy-url-btn.copy-vertical {
+            top: 10px;
+            right: 10px;
+            width: 32px;
+            height: 32px;
+        }
+        .copy-url-btn.copy-vertical svg {
+            width: 14px;
+            height: 14px;
+        }
+
+        /* ─── Copy Toast Notification ─── */
+        .copy-toast {
+            position: fixed;
+            bottom: 96px;
+            left: 50%;
+            transform: translateX(-50%) translateY(12px);
+            background: #1a1a18;
+            border: 1px solid #282723;
+            color: #fff;
+            font-family: var(--font-mono);
+            font-size: 0.76rem;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            padding: 11px 22px;
+            z-index: 2000;
+            opacity: 0;
+            pointer-events: none;
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+            white-space: nowrap;
+            border-radius: 0 !important;
+        }
+        .copy-toast .toast-check {
+            color: #4ade80;
+            margin-right: 8px;
+        }
+        .copy-toast.show {
+            opacity: 1;
+            transform: translateX(-50%) translateY(0);
+        }
 </style>
 
     <!-- ─── Back To Top Button Styles ─── -->
@@ -1139,6 +1244,32 @@
         </div>
         
         <div class="films-container">
+            <!-- Featured Film #0: 212 All Terrains -->
+            <div class="film-row reveal featured-film" id="212-all-terrains">
+                <div class="film-row-visual">
+                    <img src="images/212-all-terrains-thumb.jpg" alt="212 All Terrains Thumbnail">
+                    <button class="play-btn-large watch-btn" data-video="Final Video/212 all terrains.mp4" aria-label="Play Film">
+                        <svg viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M8 5v14l11-7z"/>
+                        </svg>
+                    </button>
+                    <div style="position: absolute; top: 16px; left: 16px; background: rgba(0,0,0,0.75); border: 1px solid rgba(255,255,255,0.15); padding: 4px 10px; font-family: var(--font-mono); font-size: 0.62rem; letter-spacing: 0.1em; color: var(--text-muted); text-transform: uppercase;">Ad Film &middot; Kuwait</div>
+                </div>
+                <div class="film-row-content">
+                    <div style="display: flex; gap: 10px; align-items: center; flex-wrap: wrap;">
+                        <span class="film-meta">Automotive &bull; Ad Film &bull; 2026</span>
+                    </div>
+                    <h2>212 All Terrains</h2>
+                    <p class="film-brief">
+                        An AI-directed ad film crafted for the 212 Kuwait brand — pushing the vehicle through every environment it was built to conquer. Raw terrain, cinematic momentum, and a frame-by-frame intent that makes it feel shot, not generated.
+                    </p>
+                    <div class="film-actions">
+                        <button class="btn-primary-gold watch-btn" data-video="Final Video/212 all terrains.mp4">Watch Film</button>
+                        <button class="btn-outline case-study-btn" data-case="212-all-terrains">Summary &rarr;</button>
+                    </div>
+                </div>
+            </div>
+
             <!-- Featured Film #1: Kutch -->
             <div class="film-row reveal featured-film" id="kutch">
                 <div class="film-row-visual">
@@ -1161,6 +1292,32 @@
                     <div class="film-actions">
                         <button class="btn-primary-gold watch-btn" data-video="Final Video/Kutch.mp4">Watch Film</button>
                         <button class="btn-outline case-study-btn" data-case="kutch">Summary &rarr;</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Featured Film #1.5: 212 Cinematic -->
+            <div class="film-row reveal featured-film" id="212-cinematic">
+                <div class="film-row-visual">
+                    <img src="images/212-cinematic-thumb.jpg" alt="212 Cinematic Thumbnail">
+                    <button class="play-btn-large watch-btn" data-video="Final Video/212 Cinematic.mp4" aria-label="Play Film">
+                        <svg viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M8 5v14l11-7z"/>
+                        </svg>
+                    </button>
+                    <div style="position: absolute; top: 16px; left: 16px; background: rgba(0,0,0,0.75); border: 1px solid rgba(255,255,255,0.15); padding: 4px 10px; font-family: var(--font-mono); font-size: 0.62rem; letter-spacing: 0.1em; color: var(--text-muted); text-transform: uppercase;">Ad Film &middot; Kuwait</div>
+                </div>
+                <div class="film-row-content">
+                    <div style="display: flex; gap: 10px; align-items: center; flex-wrap: wrap;">
+                        <span class="film-meta">Automotive &bull; Cinematic &bull; 2026</span>
+                    </div>
+                    <h2>212 Cinematic</h2>
+                    <p class="film-brief">
+                        The cinematic companion to the 212 Kuwait campaign — slower, more deliberate, built for feeling. Where All Terrains shows capability, this one shows character. Every shot composed to make you feel the weight of the machine.
+                    </p>
+                    <div class="film-actions">
+                        <button class="btn-primary-gold watch-btn" data-video="Final Video/212 Cinematic.mp4">Watch Film</button>
+                        <button class="btn-outline case-study-btn" data-case="212-cinematic">Summary &rarr;</button>
                     </div>
                 </div>
             </div>
@@ -1194,6 +1351,30 @@
 
             <!-- Supporting Films Grid -->
             <div class="supporting-films-grid">
+                <!-- Film 0: BMW x KITH -->
+                <div class="film-card reveal" id="bmw-kith">
+                    <div class="film-card-visual" style="aspect-ratio: 16/9; margin-bottom: 24px; position: relative; border-radius: 0; overflow: hidden; border: 1px solid #282723; background: #000000;">
+                        <img src="images/bmw-kith-thumb.jpg" alt="BMW x KITH Thumbnail" style="width: 100%; height: 100%; object-fit: cover;">
+                        <button class="play-btn-large watch-btn" data-video="Final Video/BMW x KITH.mp4" aria-label="Play Film">
+                            <svg viewBox="0 0 24 24" fill="currentColor" style="width: 56px; height: 56px;">
+                                <path d="M8 5v14l11-7z"/>
+                            </svg>
+                        </button>
+                    </div>
+                    <div class="film-card-content" style="display: flex; flex-direction: column; gap: 8px;">
+                        <span class="film-meta">Concept Reel &bull; Automotive &bull; 2026</span>
+                        <h3>BMW x KITH</h3>
+                        <p class="film-subtitle" style="font-size: 0.95rem; color: var(--text-muted);">A Concept Collaboration Showreel</p>
+                        <p class="film-brief" style="font-size: 0.92rem; color: var(--text-muted); line-height: 1.6;">
+                            An AI-directed concept showreel imagining a BMW x KITH collaboration — luxury automotive meets high-fashion streetwear in a visual language built entirely from intent.
+                        </p>
+                        <div class="film-actions" style="margin-top: auto; display: flex; gap: 12px;">
+                            <button class="btn-primary-gold watch-btn" data-video="Final Video/BMW x KITH.mp4">Watch Film</button>
+                            <button class="btn-outline case-study-btn" data-case="bmw-kith">Summary &rarr;</button>
+                        </div>
+                    </div>
+                </div>
+
                 <!-- Film 1: Kasahrada -->
                 <div class="film-card reveal" id="kasahrada">
                     <div class="film-card-visual" style="aspect-ratio: 16/9; margin-bottom: 24px; position: relative; border-radius: 0; overflow: hidden; border: 1px solid #282723; background: #000000;">
@@ -1311,6 +1492,30 @@
                         <div class="film-actions" style="margin-top: auto; display: flex; gap: 12px;">
                             <button class="btn-primary-gold watch-btn" data-video="Final Video/india-ai-impact-summit-2026.mp4">Watch Film</button>
                             <button class="btn-outline case-study-btn" data-case="india-ai-summit">Summary &rarr;</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Film 6: Wind Pole Reel (Man and Dog) -->
+                <div class="film-card reveal" id="wind-pole-reel">
+                    <div class="film-card-visual" style="aspect-ratio: 16/9; margin-bottom: 24px; position: relative; border-radius: 0; overflow: hidden; border: 1px solid #282723; background: #000000;">
+                        <img src="images/wind-pole-reel-thumb.jpg" alt="Wind Pole Reel Thumbnail" style="width: 100%; height: 100%; object-fit: cover;">
+                        <button class="play-btn-large watch-btn" data-video="Final Video/Man and dog hanging on a pole.mp4" aria-label="Play Film">
+                            <svg viewBox="0 0 24 24" fill="currentColor" style="width: 56px; height: 56px;">
+                                <path d="M8 5v14l11-7z"/>
+                            </svg>
+                        </button>
+                    </div>
+                    <div class="film-card-content" style="display: flex; flex-direction: column; gap: 8px;">
+                        <span class="film-meta">Short Reel &bull; Experimental &bull; 2026</span>
+                        <h3>Wind Pole Reel</h3>
+                        <p class="film-subtitle" style="font-size: 0.95rem; color: var(--text-muted);">Man &amp; Dog &mdash; Diabolical Reel</p>
+                        <p class="film-brief" style="font-size: 0.92rem; color: var(--text-muted); line-height: 1.6;">
+                            A short, diabolical reel — man and dog, a pole, and wind. Absurd in concept, deliberate in execution. Proof that AI direction works at any scale, including the ridiculous.
+                        </p>
+                        <div class="film-actions" style="margin-top: auto; display: flex; gap: 12px;">
+                            <button class="btn-primary-gold watch-btn" data-video="Final Video/Man and dog hanging on a pole.mp4">Watch Film</button>
+                            <button class="btn-outline case-study-btn" data-case="wind-pole-reel">Summary &rarr;</button>
                         </div>
                     </div>
                 </div>
@@ -1541,6 +1746,50 @@
                 quote: "The format already had emotional gravity. The only job was to not waste it.",
                 author: "Divyaraj Chauhan"
             },
+            '212-all-terrains': {
+                title: "212 All Terrains: Ad Film for 212 Kuwait",
+                badge: "Automotive Ad Film • 2026",
+                brief: "Create a high-impact AI-directed ad film for the 212 Kuwait brand — a vehicle built for every environment. The film had to feel shot on location, not generated in a machine.",
+                challenge: "Automotive AI generation tends toward perfection that reads as synthetic. For a vehicle positioned on raw capability across diverse terrain, the visuals needed grit, dust, and physical weight — qualities AI engines actively resist.",
+                solution: "Directed terrain-specific shot sequences with strict naturalism constraints. Each environment — desert, mountain, wet road — was treated as a distinct visual chapter with its own lighting prompt architecture. Motion vectors were tuned for momentum and impact rather than smooth commercial gloss.",
+                tools: ["Higgsfield AI", "Veo", "Gemini Pro", "ElevenLabs", "CapCut"],
+                outcome: "A cinematic ad film that reads as location-shot footage — the vehicle looks like it earned every frame. Delivered as a complete commercial asset for the 212 Kuwait brand.",
+                quote: "The brief was simple: make it feel like the car was actually there. Every prompt was written with mud and altitude in mind.",
+                author: "Divyaraj Chauhan"
+            },
+            '212-cinematic': {
+                title: "212 Cinematic: The Character Behind the Machine",
+                badge: "Automotive Cinematic • 2026",
+                brief: "A cinematic companion piece to the 212 Kuwait ad campaign — slower paced, more emotional, built to make you feel the vehicle rather than just see it.",
+                challenge: "Cinematic automotive films live or die on atmosphere. Without the raw action energy of the All Terrains cut, this piece had to earn its runtime through composition, light, and pacing alone.",
+                solution: "Structured the film as a mood arc — open with stillness, build through detail, release through motion. Camera movements were slower and more deliberate, with a heavy focus on golden-hour lighting and environmental texture that gives the vehicle presence and weight.",
+                tools: ["Higgsfield AI", "Veo", "Midjourney", "ElevenLabs", "CapCut"],
+                outcome: "A cinematic piece that holds its own as a standalone film while amplifying the 212 Kuwait brand story alongside the All Terrains cut.",
+                quote: "If All Terrains shows what the 212 can do, this one shows what it is.",
+                author: "Divyaraj Chauhan"
+            },
+            'bmw-kith': {
+                title: "BMW x KITH: Concept Collaboration Showreel",
+                badge: "Concept Showreel • Automotive • Fashion • 2026",
+                brief: "Imagine and execute a visual concept for a BMW x KITH collaboration — two premium brands with distinct visual identities — and merge them into a single coherent showreel without either losing its identity.",
+                challenge: "BMW and KITH occupy very different aesthetic worlds. Automotive precision versus high-fashion streetwear. The challenge was finding the visual overlap — a shared language of premium material, restrained color, and confident silhouette — without forcing a contrast that feels obvious.",
+                solution: "Built the visual language around material and surface texture: matte carbon fiber against clean cotton, motion blur on curves mirroring the movement of fabric, a color palette locked to BMW's performance white and KITH's signature cream and earth tones. Every frame was directed to feel like a lookbook and a car ad simultaneously.",
+                tools: ["Higgsfield AI", "Veo", "Midjourney", "CapCut"],
+                outcome: "A concept showreel that proves AI direction can ideate collabs at the speed of imagination — a brand strategy tool as much as a creative film.",
+                quote: "Both brands sell aspiration. The film just had to speak both languages at once.",
+                author: "Divyaraj Chauhan"
+            },
+            'wind-pole-reel': {
+                title: "Wind Pole Reel: Man, Dog, and Controlled Chaos",
+                badge: "Experimental Short • Diabolical Reel • 2026",
+                brief: "An absurdist short reel — man and dog clinging to a pole in the wind. No narrative, no message. Pure directed chaos.",
+                challenge: "Getting AI to commit to the ridiculous with a straight face. The comedic and diabolical tone only works if the direction is completely deadpan — the moment the visuals wink at the camera, it collapses.",
+                solution: "Directed with the same technical seriousness as any cinematic piece: locked camera, consistent physics, deliberate framing. The absurdity comes from the concept, not the execution. Let the subject be ridiculous while the craft stays composed.",
+                tools: ["Higgsfield AI", "Veo", "CapCut"],
+                outcome: "A short reel that proves AI direction scales to any creative register — from historical epics to complete nonsense. Both require the same intentionality.",
+                quote: "It's diabolical. That was the brief.",
+                author: "Divyaraj Chauhan"
+            },
             'kutch': {
                 title: "Kutch: What AI Looks Like When It's Directed",
                 badge: "Documentary • Beat-Synced • 2026",
@@ -1695,6 +1944,100 @@
                 openCaseStudy(hash);
             }
         });
+    </script>
+
+    <!-- ─── Copy URL Button Logic ─── -->
+    <div class="copy-toast" id="copyToast"><span class="toast-check">✓</span><span id="copyToastMsg">Link copied — share directly!</span></div>
+    <script>
+    (function() {
+        const BASE_URL = 'https://divyarajchauhan.in/ai-cinema';
+        const toast = document.getElementById('copyToast');
+        const toastMsg = document.getElementById('copyToastMsg');
+        let toastTimer;
+
+        function showToast(msg) {
+            toastMsg.textContent = msg;
+            toast.classList.add('show');
+            clearTimeout(toastTimer);
+            toastTimer = setTimeout(() => toast.classList.remove('show'), 2400);
+        }
+
+        function copyToClipboard(text) {
+            if (navigator.clipboard && navigator.clipboard.writeText) {
+                return navigator.clipboard.writeText(text);
+            }
+            // Fallback for older browsers
+            return new Promise((resolve) => {
+                const ta = document.createElement('textarea');
+                ta.value = text;
+                ta.style.cssText = 'position:fixed;opacity:0;pointer-events:none;';
+                document.body.appendChild(ta);
+                ta.select();
+                document.execCommand('copy');
+                document.body.removeChild(ta);
+                resolve();
+            });
+        }
+
+        const linkIcon = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/>
+            <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/>
+        </svg>`;
+        const checkIcon = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="20 6 9 17 4 12"/>
+        </svg>`;
+
+        function createCopyBtn(variant, anchorId) {
+            const btn = document.createElement('button');
+            btn.className = `copy-url-btn copy-${variant}`;
+            btn.setAttribute('aria-label', 'Copy link to this video');
+            btn.title = 'Copy direct link to this video';
+            btn.innerHTML = linkIcon;
+
+            btn.addEventListener('click', function(e) {
+                e.stopPropagation();
+                e.preventDefault();
+                const url = `${BASE_URL}#${anchorId}`;
+                copyToClipboard(url).then(() => {
+                    btn.innerHTML = checkIcon;
+                    btn.classList.add('copied');
+                    showToast('Link copied — share it directly!');
+                    setTimeout(() => {
+                        btn.innerHTML = linkIcon;
+                        btn.classList.remove('copied');
+                    }, 1800);
+                });
+            });
+
+            return btn;
+        }
+
+        // Inject into featured film-rows
+        document.querySelectorAll('.film-row[id]').forEach(function(row) {
+            row.style.position = 'relative';
+            row.appendChild(createCopyBtn('horizontal', row.id));
+        });
+
+        // Inject into supporting grid film-cards (only those with IDs — skips AI Ads)
+        document.querySelectorAll('.supporting-films-grid .film-card[id]').forEach(function(card) {
+            card.appendChild(createCopyBtn('vertical', card.id));
+        });
+
+        // ─── Deep Link: scroll to + reveal video on direct anchor URL ───
+        window.addEventListener('DOMContentLoaded', function() {
+            const hash = window.location.hash.substring(1);
+            if (!hash) return;
+            const target = document.getElementById(hash);
+            if (!target) return;
+            // Make it visible immediately (bypasses reveal animation delay)
+            if (target.classList.contains('reveal')) {
+                target.classList.add('active');
+            }
+            setTimeout(function() {
+                target.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            }, 300);
+        });
+    })();
     </script>
 
     <!-- ─── Back To Top Button HTML & Script ─── -->
