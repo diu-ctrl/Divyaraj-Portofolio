@@ -420,16 +420,16 @@
         .films-container {
             display: flex;
             flex-direction: column;
-            gap: 40px;
+            gap: 24px;
             margin-top: 20px;
         }
 
         .film-row {
             display: grid;
-            grid-template-columns: 1.2fr 1fr;
-            gap: 48px;
+            grid-template-columns: 1.15fr 1fr;
+            gap: 32px;
             align-items: center;
-            padding: 40px;
+            padding: 24px 28px;
             background: var(--card);
             border: 1px solid var(--border);
             border-radius: 0;
@@ -449,7 +449,7 @@
             display: flex;
             flex-direction: column;
             height: 100%;
-            padding: 32px;
+            padding: 24px;
             background: var(--card);
             border: 1px solid var(--border);
             border-radius: 0;
@@ -494,8 +494,8 @@
         }
 
         .play-btn-large svg {
-            width: 72px;
-            height: 72px;
+            width: 56px;
+            height: 56px;
             color: #fff;
             
             transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
@@ -504,43 +504,48 @@
         .film-row-content {
             display: flex;
             flex-direction: column;
-            gap: 20px;
+            gap: 10px;
         }
 
         .film-meta {
             align-self: flex-start;
-            font-size: 0.72rem;
+            font-size: 0.7rem;
             font-weight: 700;
             color: var(--secondary-3);
             text-transform: uppercase;
             letter-spacing: 0.08em;
             background: #282723;
             border: 1px solid #282723;
-            padding: 4px 12px;
+            padding: 3px 10px;
             border-radius: 100px;
         }
 
         .film-row-content h2 {
-            font-size: 2rem;
-            font-weight: 850;
-            color: #fff;
-            line-height: 1.2;
-            letter-spacing: -0.02em;
+            font-family: var(--font-serif) !important;
+            font-style: italic !important;
+            font-size: clamp(1.75rem, 2.3vw, 2.25rem) !important;
+            font-weight: 400 !important;
+            color: #fff !important;
+            line-height: 1.15 !important;
+            letter-spacing: -0.02em !important;
+            margin: 0 !important;
         }
 
         .film-brief {
-            font-size: 0.98rem;
+            font-size: 0.91rem;
             color: var(--text-muted);
-            line-height: 1.6;
+            line-height: 1.5;
+            margin: 0;
         }
 
         .film-actions {
             display: flex;
-            gap: 16px;
-            margin-top: 10px;
+            gap: 12px;
+            margin-top: 4px;
         }
 
-        .film-actions button {
+        .film-actions button,
+        .film-actions a {
             flex: 1;
         }
 
@@ -989,28 +994,21 @@
             }
         }
     
-        h1, h2 {
+        .section-header h2, .cinema-hero-content h1, .bottom-cta-inner h2 {
             font-family: var(--font-serif) !important;
             font-style: italic !important;
             letter-spacing: -0.02em !important;
-            font-size: clamp(3.5rem, 8vw, 7rem) !important;
+            font-size: clamp(3rem, 6.5vw, 5.2rem) !important;
             font-weight: 400 !important;
             line-height: 1.05 !important;
         }
 
-        #ai-ads .supporting-films-grid {
-            grid-template-columns: repeat(4, 1fr) !important;
-            gap: 20px !important;
-        }
-        @media (max-width: 960px) {
-            #ai-ads .supporting-films-grid {
-                grid-template-columns: repeat(2, 1fr) !important;
-            }
-        }
-        @media (max-width: 600px) {
-            #ai-ads .supporting-films-grid {
-                grid-template-columns: 1fr !important;
-            }
+        .drawer-header-info h2 {
+            font-family: var(--font-serif) !important;
+            font-style: italic !important;
+            font-size: clamp(1.8rem, 2.4vw, 2.2rem) !important;
+            line-height: 1.15 !important;
+            font-weight: 400 !important;
         }
 
         /* ─── Portrait Video Fullscreen Fix ─── */
@@ -1594,68 +1592,101 @@
                     </div>
                 </div>
 
-                <!-- Kutch moved to featured row above -->
-            </div>
-        </div>
-    </section>
-
-    <!-- AI Ads Section -->
-    <section class="cinema-section" id="ai-ads" style="padding-top: 80px; padding-bottom: 80px; border-top: 1px solid #1c1b18;">
-        <div class="container">
-            <div class="section-header reveal" style="margin-bottom: 40px;">
-                <h2>AI <span class="gradient-text">Ads</span></h2>
-                <p style="font-family: var(--font-sans); font-size: 16px; color: var(--text-muted); max-width: 700px; margin-top: 16px; line-height: 1.6;">
-                    Promotional AI ad campaigns created with image assets generated using <strong>GPT Image 5</strong> and dynamic video rendering powered by <strong>Seedance 2.0 Fast</strong>. Further details can be inferred from the titles below.
-                </p>
-            </div>
-            
-            <div class="supporting-films-grid reveal">
-                <!-- Ad 1: Smart Value -->
-                <div class="film-card" style="display: flex; flex-direction: column; background: var(--card); border: 1px solid var(--border); padding: 24px;">
-                    <div class="film-card-visual" style="aspect-ratio: 9/16; margin-bottom: 20px; position: relative; overflow: hidden; border: 1px solid #282723; background: #000000;">
-                        <video src="Final Video/Smart Value video.mp4" controls preload="metadata" style="width: 100%; height: 100%; object-fit: cover;"></video>
+                <!-- Film 9: Smart Value -->
+                <div class="film-card reveal" id="smart-value">
+                    <div class="film-card-visual" style="aspect-ratio: 16/9; margin-bottom: 24px; position: relative; border-radius: 0; overflow: hidden; border: 1px solid #282723; background: #000000;">
+                        <img src="images/smart-value-thumb.jpg" alt="Smart Value Thumbnail" style="width: 100%; height: 100%; object-fit: cover;">
+                        <button class="play-btn-large watch-btn" data-video="Final Video/Smart Value video.mp4" aria-label="Play Film">
+                            <svg viewBox="0 0 24 24" fill="currentColor" style="width: 56px; height: 56px;">
+                                <path d="M8 5v14l11-7z"/>
+                            </svg>
+                        </button>
                     </div>
-                    <div class="film-card-content" style="display: flex; flex-direction: column; gap: 4px;">
-                        <span class="film-meta" style="font-family: var(--font-mono); font-size: 0.72rem; letter-spacing: 0.05em; color: var(--accent); text-transform: uppercase;">Commercial Ad &bull; Giffy</span>
-                        <h3 style="font-size: 1.25rem; font-weight: 700; color: #fff; margin-top: 4px;">Smart Value</h3>
+                    <div class="film-card-content" style="display: flex; flex-direction: column; gap: 8px;">
+                        <span class="film-meta">Commercial Ad &bull; Campaign</span>
+                        <h3>Smart Value</h3>
+                        <p class="film-subtitle" style="font-size: 0.95rem; color: var(--text-muted);">Giffy Commercial Ad</p>
+                        <p class="film-brief" style="font-size: 0.92rem; color: var(--text-muted); line-height: 1.6;">
+                            Promotional commercial campaign highlighting transparent value proposition with dynamic AI video rendering.
+                        </p>
+                        <div class="film-actions" style="margin-top: auto; display: flex; gap: 12px;">
+                            <button class="btn-primary-gold watch-btn" data-video="Final Video/Smart Value video.mp4">Watch Film</button>
+                            <button class="btn-outline case-study-btn" data-case="smart-value">Summary &rarr;</button>
+                        </div>
                     </div>
                 </div>
 
-                <!-- Ad 2: Flexible Scheduling -->
-                <div class="film-card" style="display: flex; flex-direction: column; background: var(--card); border: 1px solid var(--border); padding: 24px;">
-                    <div class="film-card-visual" style="aspect-ratio: 9/16; margin-bottom: 20px; position: relative; overflow: hidden; border: 1px solid #282723; background: #000000;">
-                        <video src="Final Video/Flexible Scheduling video.mp4" controls preload="metadata" style="width: 100%; height: 100%; object-fit: cover;"></video>
+                <!-- Film 10: Flexible Scheduling -->
+                <div class="film-card reveal" id="flexible-scheduling">
+                    <div class="film-card-visual" style="aspect-ratio: 16/9; margin-bottom: 24px; position: relative; border-radius: 0; overflow: hidden; border: 1px solid #282723; background: #000000;">
+                        <img src="images/flexible-scheduling-thumb.jpg" alt="Flexible Scheduling Thumbnail" style="width: 100%; height: 100%; object-fit: cover;">
+                        <button class="play-btn-large watch-btn" data-video="Final Video/Flexible Scheduling video.mp4" aria-label="Play Film">
+                            <svg viewBox="0 0 24 24" fill="currentColor" style="width: 56px; height: 56px;">
+                                <path d="M8 5v14l11-7z"/>
+                            </svg>
+                        </button>
                     </div>
-                    <div class="film-card-content" style="display: flex; flex-direction: column; gap: 4px;">
-                        <span class="film-meta" style="font-family: var(--font-mono); font-size: 0.72rem; letter-spacing: 0.05em; color: var(--accent); text-transform: uppercase;">Commercial Ad &bull; Giffy</span>
-                        <h3 style="font-size: 1.25rem; font-weight: 700; color: #fff; margin-top: 4px;">Flexible Scheduling</h3>
+                    <div class="film-card-content" style="display: flex; flex-direction: column; gap: 8px;">
+                        <span class="film-meta">Commercial Ad &bull; Campaign</span>
+                        <h3>Flexible Scheduling</h3>
+                        <p class="film-subtitle" style="font-size: 0.95rem; color: var(--text-muted);">Giffy Commercial Ad</p>
+                        <p class="film-brief" style="font-size: 0.92rem; color: var(--text-muted); line-height: 1.6;">
+                            Commercial narrative showcasing on-demand convenience and seamless scheduling tailored for busy lifestyles.
+                        </p>
+                        <div class="film-actions" style="margin-top: auto; display: flex; gap: 12px;">
+                            <button class="btn-primary-gold watch-btn" data-video="Final Video/Flexible Scheduling video.mp4">Watch Film</button>
+                            <button class="btn-outline case-study-btn" data-case="flexible-scheduling">Summary &rarr;</button>
+                        </div>
                     </div>
                 </div>
 
-                <!-- Ad 3: Absolute Trust -->
-                <div class="film-card" style="display: flex; flex-direction: column; background: var(--card); border: 1px solid var(--border); padding: 24px;">
-                    <div class="film-card-visual" style="aspect-ratio: 9/16; margin-bottom: 20px; position: relative; overflow: hidden; border: 1px solid #282723; background: #000000;">
-                        <video src="Final Video/Absolute Trust video.mp4" controls preload="metadata" style="width: 100%; height: 100%; object-fit: cover;"></video>
+                <!-- Film 11: Absolute Trust -->
+                <div class="film-card reveal" id="absolute-trust">
+                    <div class="film-card-visual" style="aspect-ratio: 16/9; margin-bottom: 24px; position: relative; border-radius: 0; overflow: hidden; border: 1px solid #282723; background: #000000;">
+                        <img src="images/absolute-trust-thumb.jpg" alt="Absolute Trust Thumbnail" style="width: 100%; height: 100%; object-fit: cover;">
+                        <button class="play-btn-large watch-btn" data-video="Final Video/Absolute Trust video.mp4" aria-label="Play Film">
+                            <svg viewBox="0 0 24 24" fill="currentColor" style="width: 56px; height: 56px;">
+                                <path d="M8 5v14l11-7z"/>
+                            </svg>
+                        </button>
                     </div>
-                    <div class="film-card-content" style="display: flex; flex-direction: column; gap: 4px;">
-                        <span class="film-meta" style="font-family: var(--font-mono); font-size: 0.72rem; letter-spacing: 0.05em; color: var(--accent); text-transform: uppercase;">Commercial Ad &bull; Giffy</span>
-                        <h3 style="font-size: 1.25rem; font-weight: 700; color: #fff; margin-top: 4px;">Absolute Trust</h3>
+                    <div class="film-card-content" style="display: flex; flex-direction: column; gap: 8px;">
+                        <span class="film-meta">Commercial Ad &bull; Campaign</span>
+                        <h3>Absolute Trust</h3>
+                        <p class="film-subtitle" style="font-size: 0.95rem; color: var(--text-muted);">Giffy Commercial Ad</p>
+                        <p class="film-brief" style="font-size: 0.92rem; color: var(--text-muted); line-height: 1.6;">
+                            Brand-building commercial focusing on verified safety, reliability, and household domestic trust.
+                        </p>
+                        <div class="film-actions" style="margin-top: auto; display: flex; gap: 12px;">
+                            <button class="btn-primary-gold watch-btn" data-video="Final Video/Absolute Trust video.mp4">Watch Film</button>
+                            <button class="btn-outline case-study-btn" data-case="absolute-trust">Summary &rarr;</button>
+                        </div>
                     </div>
                 </div>
 
-                <!-- Ad 4: Worker Rotation -->
-                <div class="film-card" style="display: flex; flex-direction: column; background: var(--card); border: 1px solid var(--border); padding: 24px;">
-                    <div class="film-card-visual" style="aspect-ratio: 9/16; margin-bottom: 20px; position: relative; overflow: hidden; border: 1px solid #282723; background: #000000;">
-                        <video src="Final Video/Worker Rotation.mp4" controls preload="metadata" style="width: 100%; height: 100%; object-fit: cover;"></video>
+                <!-- Film 12: Worker Rotation -->
+                <div class="film-card reveal" id="worker-rotation">
+                    <div class="film-card-visual" style="aspect-ratio: 16/9; margin-bottom: 24px; position: relative; border-radius: 0; overflow: hidden; border: 1px solid #282723; background: #000000;">
+                        <img src="images/worker-rotation-thumb.jpg" alt="Worker Rotation Thumbnail" style="width: 100%; height: 100%; object-fit: cover;">
+                        <button class="play-btn-large watch-btn" data-video="Final Video/Worker Rotation.mp4" aria-label="Play Film">
+                            <svg viewBox="0 0 24 24" fill="currentColor" style="width: 56px; height: 56px;">
+                                <path d="M8 5v14l11-7z"/>
+                            </svg>
+                        </button>
                     </div>
-                    <div class="film-card-content" style="display: flex; flex-direction: column; gap: 4px;">
-                        <span class="film-meta" style="font-family: var(--font-mono); font-size: 0.72rem; letter-spacing: 0.05em; color: var(--accent); text-transform: uppercase;">Commercial Ad &bull; Giffy</span>
-                        <h3 style="font-size: 1.25rem; font-weight: 700; color: #fff; margin-top: 4px;">Worker Rotation</h3>
+                    <div class="film-card-content" style="display: flex; flex-direction: column; gap: 8px;">
+                        <span class="film-meta">Commercial Ad &bull; Campaign</span>
+                        <h3>Worker Rotation</h3>
+                        <p class="film-subtitle" style="font-size: 0.95rem; color: var(--text-muted);">Giffy Commercial Ad</p>
+                        <p class="film-brief" style="font-size: 0.92rem; color: var(--text-muted); line-height: 1.6;">
+                            Customer-facing commercial demonstrating certified service consistency and friendly verified team rotation.
+                        </p>
+                        <div class="film-actions" style="margin-top: auto; display: flex; gap: 12px;">
+                            <button class="btn-primary-gold watch-btn" data-video="Final Video/Worker Rotation.mp4">Watch Film</button>
+                            <button class="btn-outline case-study-btn" data-case="worker-rotation">Summary &rarr;</button>
+                        </div>
                     </div>
                 </div>
-            </div>
-        </div>
-    </section>
 
     <!-- Services Section -->
     <section class="services-section">
@@ -1906,6 +1937,50 @@
                 tools: ["Midjourney", "Kling AI", "Veo", "Premiere Pro", "CapCut"],
                 outcome: "An engaging, high-retention reel demonstrating versatility in action pacing and playful pop-culture storytelling.",
                 quote: "The multiverse allows you to break rules — but the camera physics still have to feel grounded.",
+                author: "Divyaraj Chauhan"
+            },
+            'smart-value': {
+                title: "Smart Value: Commercial Ad for Giffy",
+                badge: "Commercial Ad",
+                brief: "Direct a commercial video ad highlighting transparent, reliable value proposition and effortless booking for modern households.",
+                challenge: "Balancing commercial promotional messaging with natural, high-production domestic aesthetics without feeling staged.",
+                solution: "Engineered prompt architectures using GPT Image 5 for styleframes and Seedance 2.0 Fast for fluid generative video rendering with warm morning lighting.",
+                tools: ["GPT Image 5", "Seedance 2.0 Fast", "CapCut", "ElevenLabs"],
+                outcome: "A high-conversion commercial asset demonstrating transparent service value with crisp cinematic execution.",
+                quote: "Effective commercial ads build trust in the first three seconds through authentic atmosphere.",
+                author: "Divyaraj Chauhan"
+            },
+            'flexible-scheduling': {
+                title: "Flexible Scheduling: Commercial Ad for Giffy",
+                badge: "Commercial Ad",
+                brief: "Craft a short commercial narrative showcasing on-demand convenience and seamless scheduling tailored for busy professionals.",
+                challenge: "Communicating peace of mind and effortless flexibility visually without heavy text overlays.",
+                solution: "Designed calm, sunlit lifestyle environments and smooth camera glides emphasizing relaxation and personal time.",
+                tools: ["GPT Image 5", "Seedance 2.0 Fast", "CapCut", "ElevenLabs"],
+                outcome: "A compelling commercial video highlighting customer ease and flexible booking with engaging visual pacing.",
+                quote: "Flexibility isn't just a feature — it's the feeling of getting your time back.",
+                author: "Divyaraj Chauhan"
+            },
+            'absolute-trust': {
+                title: "Absolute Trust: Commercial Ad for Giffy",
+                badge: "Commercial Ad",
+                brief: "Produce a brand-building commercial focused on safety, reliability, and domestic trust for home services.",
+                challenge: "Establishing immediate security, professionalism, and warmth within a short-form video format.",
+                solution: "Utilized balanced interior compositions, warm ambient lighting, and grounded camera movement to evoke security and reliability.",
+                tools: ["GPT Image 5", "Seedance 2.0 Fast", "CapCut", "ElevenLabs"],
+                outcome: "A trustworthy promotional asset designed to increase conversion and customer confidence.",
+                quote: "Trust is conveyed through stillness, warmth, and attention to detail.",
+                author: "Divyaraj Chauhan"
+            },
+            'worker-rotation': {
+                title: "Worker Rotation: Commercial Ad for Giffy",
+                badge: "Commercial Ad",
+                brief: "Direct a friendly, customer-facing commercial explaining consistent service standards and trained staff rotation.",
+                challenge: "Human interaction rendering in AI video, ensuring friendly expressions and authentic doorway greeting dynamics.",
+                solution: "Crafted prompt formulas with high character consistency, natural doorway lighting, and clean branding integration.",
+                tools: ["GPT Image 5", "Seedance 2.0 Fast", "CapCut", "ElevenLabs"],
+                outcome: "An approachable commercial ad highlighting verified, friendly staff with seamless execution.",
+                quote: "Great service begins with a genuine, welcoming smile at the door.",
                 author: "Divyaraj Chauhan"
             }
         };
