@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -93,6 +93,10 @@
         .work-card:hover { border-color:var(--accent); }
         .work-card-media { position:relative; width:100%; background:#000; border-bottom:1px solid var(--border); overflow:hidden; aspect-ratio:16/9; }
         .work-card-media video { width:100%; height:100%; object-fit:cover; display:block; }
+        video:fullscreen { object-fit:contain !important; background:#000000 !important; width:100% !important; height:100% !important; }
+        video:-webkit-full-screen { object-fit:contain !important; background:#000000 !important; width:100% !important; height:100% !important; }
+        video:-moz-full-screen { object-fit:contain !important; background:#000000 !important; width:100% !important; height:100% !important; }
+        video:-ms-fullscreen { object-fit:contain !important; background:#000000 !important; width:100% !important; height:100% !important; }
         .work-card-content { padding:24px; display:flex; flex-direction:column; flex-grow:1; justify-content:space-between; }
         .work-card-tag { font-family:var(--font-mono); font-size:0.68rem; font-weight:700; color:var(--accent); text-transform:uppercase; letter-spacing:0.12em; margin-bottom:8px; }
         .work-card-title { font-family:var(--font-sans); font-size:1.3rem; font-weight:700; color:#ffffff; letter-spacing:-0.02em; margin-bottom:10px; }
@@ -382,7 +386,7 @@
                 <!-- Video 3: Aston Martin Showcase -->
                 <div class="work-card reveal">
                     <div class="work-card-media">
-                        <video src="UNTAGD/Videos/aston martin hori 2.mp4" controls playsinline preload="metadata"></video>
+                        <video src="UNTAGD/Videos/aston martin hori 2.mp4" controls playsinline preload="metadata" poster="../images/aston-martin-thumb.jpg"></video>
                         <div class="video-overlay-grid"></div>
                     </div>
                     <div class="work-card-content">
@@ -564,6 +568,36 @@
             });
         }, { threshold: 0.1 });
         revealEls.forEach(el => io.observe(el));
+
+        // Ensure vertical & horizontal videos preserve true aspect ratio in fullscreen
+        document.querySelectorAll('video').forEach(vid => {
+            const handleFullscreen = () => {
+                const isFS = document.fullscreenElement === vid || 
+                             document.webkitFullscreenElement === vid || 
+                             document.mozFullScreenElement === vid || 
+                             document.msFullscreenElement === vid;
+                if (isFS) {
+                    vid.style.setProperty('object-fit', 'contain', 'important');
+                    vid.style.setProperty('background', '#000000', 'important');
+                } else {
+                    vid.style.removeProperty('object-fit');
+                    vid.style.removeProperty('background');
+                }
+            };
+            ['fullscreenchange', 'webkitfullscreenchange', 'mozfullscreenchange', 'MSFullscreenChange'].forEach(evt => {
+                document.addEventListener(evt, handleFullscreen);
+            });
+            // iOS Safari presentation mode support
+            vid.addEventListener('webkitpresentationmodechanged', () => {
+                if (vid.webkitPresentationMode === 'fullscreen') {
+                    vid.style.setProperty('object-fit', 'contain', 'important');
+                    vid.style.setProperty('background', '#000000', 'important');
+                } else {
+                    vid.style.removeProperty('object-fit');
+                    vid.style.removeProperty('background');
+                }
+            });
+        });
     </script>
 
     <!-- Back To Top Button -->
