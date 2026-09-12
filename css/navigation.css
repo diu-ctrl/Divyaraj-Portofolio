@@ -71,10 +71,10 @@
     border-bottom: 1px solid var(--primary) !important;
     border-top: none !important; /* Top border removed for seamless integration */
     color: var(--primary);
-    font-family: var(--font-mono);
+    font-family: var(--font-sans);
     font-size: 12px;
     font-weight: 700;
-    letter-spacing: 0.14em;
+    letter-spacing: 0.04em;
     padding: 0 16px;
     height: var(--handle-height);
     width: 100%; /* Matches exact width of panel on desktop */
@@ -218,8 +218,10 @@
     background: #000000;
     border: 1px solid var(--primary);
     color: var(--text);
-    font-family: var(--font-mono);
+    font-family: var(--font-sans);
     font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.02em;
     padding: 4px 8px;
     border-radius: 0px !important;
     opacity: 0;

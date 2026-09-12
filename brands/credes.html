@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -67,7 +67,7 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital,wght@0,400;1,400&family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital,wght@0,400;1,400&family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -102,7 +102,7 @@
             --surface-flat: var(--card);
             --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
             --font-serif: 'Instrument Serif', Georgia, serif;
-            --font-mono: 'Space Mono', 'JetBrains Mono', monospace;
+            /* --font-mono removed — entire site uses only --font-serif and --font-sans */
             --credes-surface: var(--card);
             --credes-border: var(--border);
         }
@@ -194,7 +194,6 @@
             font-size: 0.72rem;
             font-weight: 700;
             color: var(--primary-light, var(--brand-color));
-            text-transform: uppercase;
             letter-spacing: 0.1em;
             margin-bottom: 24px;
         }
@@ -236,7 +235,7 @@
             
             line-height: 1;
         }
-        .hero-stat .lbl { font-size: 0.72rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.08em; margin-top: 4px; }
+        .hero-stat .lbl { font-size: 0.72rem; color: var(--text-muted); letter-spacing: 0.08em; margin-top: 4px; }
 
         /* ─── Hero Right: Stacked Reel Preview ─── */
         .hero-right {
@@ -376,7 +375,7 @@
             right: -80px;
             animation-delay: 2s;
         }
-        .fc-label { font-size: 0.65rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 4px; }
+        .fc-label { font-size: 0.65rem; color: var(--text-muted); letter-spacing: 0.08em; margin-bottom: 4px; }
         .fc-value { font-size: 1.1rem; font-weight: 800; color: var(--primary-light); }
         .fc-sub { font-size: 0.68rem; color: var(--text-muted); margin-top: 2px; }
 
@@ -394,7 +393,6 @@
             font-size: 0.72rem;
             font-weight: 700;
             color: var(--secondary-3);
-            text-transform: uppercase;
             letter-spacing: 0.12em;
             margin-bottom: 18px;
         }
@@ -486,7 +484,6 @@
             justify-content: center;
             font-size: 0.75rem;
             font-weight: 700;
-            text-transform: uppercase;
             letter-spacing: 0.15em;
             color: rgba(255, 255, 255, 0.45);
             background: radial-gradient(circle at center, #3a221b 0%, transparent 80%);
@@ -672,7 +669,6 @@
             font-size: 0.72rem;
             font-weight: 700;
             color: var(--text-muted);
-            text-transform: uppercase;
             letter-spacing: 0.1em;
             margin-bottom: 12px;
             display: flex;
@@ -860,7 +856,6 @@
             margin-top: 24px;
             font-size: 0.82rem;
             color: var(--text-muted);
-            text-transform: uppercase;
             letter-spacing: 0.1em;
             font-weight: 600;
             position: relative;
@@ -885,7 +880,7 @@
             border: 1px solid rgba(235, 70, 4,0.2);
             transition: all 0.4s ease;
         }
-        .next-label { font-size: 0.72rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.12em; font-weight: 600; }
+        .next-label { font-size: 0.72rem; color: var(--text-muted); letter-spacing: 0.12em; font-weight: 600; }
         .next-title { font-size: 1.4rem; font-weight: 800; color: var(--text); letter-spacing: -0.02em; }
 
         /* ─── Scroll reveal ─── */
@@ -985,9 +980,9 @@
             padding: 12px 10px;
             text-align: center;
         }
-        .rvp-stat-label { font-size: 0.62rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 6px; }
+        .rvp-stat-label { font-size: 0.62rem; color: var(--text-muted); letter-spacing: 0.06em; margin-bottom: 6px; }
         .rvp-bar-section { display: flex; flex-direction: column; gap: 8px; }
-        .rvp-bar-label { font-size: 0.65rem; font-weight: 600; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 4px; }
+        .rvp-bar-label { font-size: 0.65rem; font-weight: 600; color: var(--text-muted); letter-spacing: 0.08em; margin-bottom: 4px; }
         .rvp-bars { display: flex; flex-direction: column; gap: 8px; }
         .rvp-bar-item { display: flex; align-items: center; gap: 10px; font-size: 0.72rem; color: var(--text-muted); }
         .rvp-bar-item > span:first-child { width: 50px; flex-shrink: 0; }
@@ -1040,7 +1035,7 @@
                 /* --- Brand Nav Bar --- */
         .brand-nav-bar { background:rgba(8,10,20,0.97);  border-top:1px solid rgba(255,255,255,0.06); padding:40px 5% 52px; }
         .brand-nav-inner { max-width:1240px; margin:0 auto; }
-        .brand-nav-label { text-align:center; font-size:0.68rem; font-weight:700; letter-spacing:0.18em; text-transform:uppercase; color:rgba(255,255,255,0.25); margin-bottom:28px; }
+        .brand-nav-label { text-align:center; font-size:0.68rem; font-weight:700; letter-spacing:0.18em; color:rgba(255,255,255,0.25); margin-bottom:28px; }
         .brand-nav-grid { display:flex; justify-content:center; align-items:center; gap:24px; }
         .brand-nav-group { display:grid; grid-template-columns:repeat(3, 1fr); gap:12px; flex:1; max-width:520px; }
         .brand-nav-divider { width:1px; height:84px; background:rgba(255,255,255,0.12); flex-shrink:0; }
@@ -1288,7 +1283,7 @@
     <!-- ─── HERO ─── -->
     <section class="hero">
         <div class="hero-left reveal" style="position:relative;z-index:1;">
-            <div class="hero-eyebrow"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M8.56 2.75c4.37 6.03 6.02 9.42 8.03 17.72m2.54-15.38c-3.72 4.35-8.94 5.66-16.88 5.85m19.5 1.9c-3.5-.93-6.63-.82-8.94 0-2.58.92-5.01 2.86-7.44 6.32"/></svg> OCT 2025 — AUG 2026 · SOCIAL MEDIA MANAGER</div>
+            <div class="hero-eyebrow"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M8.56 2.75c4.37 6.03 6.02 9.42 8.03 17.72m2.54-15.38c-3.72 4.35-8.94 5.66-16.88 5.85m19.5 1.9c-3.5-.93-6.63-.82-8.94 0-2.58.92-5.01 2.86-7.44 6.32"/></svg> Oct 2025 — Aug 2026 · Social Media Manager</div>
             <h1 class="hero-title">
                 <span class="line-plain">Building</span>
                 <span class="line-gradient">Credes Techlabs</span>
@@ -1697,7 +1692,7 @@
             <div class="brand-nav-label">Explore All Brands</div>
             <div class="brand-nav-grid">
                 <div class="brand-nav-group left-group">
-                    <a href="untagd" class="brand-nav-btn "><img class="bnb-logo" src="../images/Logos of the brands/untagd.png" alt="">UNTAGD</a>
+                    <a href="untagd" class="brand-nav-btn "><img class="bnb-logo" src="../images/Logos of the brands/untagd.png" alt="">Untagd</a>
                     <a href="credes" class="brand-nav-btn active-brand"><img class="bnb-logo" src="../images/Logos of the brands/credes techlabs.jpg" alt="">Credes</a>
                     <a href="gujarat-tigers" class="brand-nav-btn "><img class="bnb-logo" src="../images/Logos of the brands/Gujarat Tigers.png" alt="">Gujarat Tigers</a>
                     <a href="sattvik" class="brand-nav-btn "><img class="bnb-logo" src="../images/Logos of the brands/Sattvik Certifications.jpg" alt="">Sattvik</a>

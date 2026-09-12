@@ -37,7 +37,7 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital,wght@0,400;1,400&family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital,wght@0,400;1,400&family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     
     <style>
         :root {
@@ -62,7 +62,7 @@
             --surface-flat: var(--card);
             --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
             --font-serif: 'Instrument Serif', Georgia, serif;
-            --font-mono: 'Space Mono', 'JetBrains Mono', monospace;
+            /* --font-mono removed — entire site uses only --font-serif and --font-sans */
             --credes-surface: var(--card);
             --credes-border: var(--border);
         }
@@ -79,7 +79,7 @@
         }
 
         nav, .nav-links a, .nav-cta a, .nav-resume, .btn-nav, .btn-brutalist, .btn-primary-gold, .btn-outline, .stat-lbl, .cinema-badge, .outcome-badge, .web-badge, .folio-card-tag, .refresh-date, .copyright-above, .contact-links-mono {
-            font-family: var(--font-mono) !important;
+            font-family: var(--font-sans) !important;
         }
 
         html {
@@ -270,7 +270,6 @@
             align-self: flex-start;
             font-size: 0.72rem;
             font-weight: 700;
-            text-transform: uppercase;
             letter-spacing: 0.1em;
             color: #ffffff;
             background: #000000;
@@ -316,7 +315,6 @@
         .meta-label {
             font-size: 0.7rem;
             font-weight: 700;
-            text-transform: uppercase;
             letter-spacing: 0.1em;
             color: var(--text);
         }
@@ -496,7 +494,6 @@
             background: #282723;
             font-size: 0.78rem;
             font-weight: 700;
-            text-transform: uppercase;
             letter-spacing: 0.1em;
             color: var(--text-muted);
         }
@@ -526,7 +523,7 @@
         }
 
         .tech-note {
-            font-family: var(--font-mono);
+            font-family: var(--font-sans);
             font-size: 0.8rem !important;
             color: #ffffff !important;
         }

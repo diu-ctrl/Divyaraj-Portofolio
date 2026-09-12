@@ -37,7 +37,7 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital,wght@0,400;1,400&family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital,wght@0,400;1,400&family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <style>
         :root {
             --bg: #000000;
@@ -61,7 +61,7 @@
             --surface-flat: var(--card);
             --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
             --font-serif: 'Instrument Serif', Georgia, serif;
-            --font-mono: 'Space Mono', 'JetBrains Mono', monospace;
+            /* --font-mono removed — entire site uses only --font-serif and --font-sans */
             --credes-surface: var(--card);
             --credes-border: var(--border);
         }
@@ -78,7 +78,7 @@
         }
 
         nav, .nav-links a, .nav-cta a, .nav-resume, .btn-nav, .btn-brutalist, .btn-primary-gold, .btn-outline, .stat-lbl, .cinema-badge, .outcome-badge, .web-badge, .folio-card-tag, .refresh-date, .copyright-above, .contact-links-mono {
-            font-family: var(--font-mono) !important;
+            font-family: var(--font-sans) !important;
         }
 
         body {
@@ -293,7 +293,6 @@
         .section-block h3 {
             font-size: 0.78rem;
             font-weight: 700;
-            text-transform: uppercase;
             letter-spacing: 0.12em;
             color: var(--accent);
             margin-bottom: 16px;
@@ -318,7 +317,6 @@
         .contact-list span.label {
             font-size: 0.72rem;
             font-weight: 700;
-            text-transform: uppercase;
             color: var(--text-muted);
             letter-spacing: 0.05em;
             margin-bottom: 2px;
@@ -344,7 +342,6 @@
             font-weight: 700;
             color: var(--primary-light);
             margin-bottom: 4px;
-            text-transform: uppercase;
             letter-spacing: 0.02em;
         }
 
@@ -492,7 +489,6 @@
             font-size: 0.72rem;
             font-weight: 700;
             color: var(--primary-light);
-            text-transform: uppercase;
             letter-spacing: 0.05em;
         }
 
@@ -588,7 +584,7 @@
                 display: none !important;
             }
 
-            /* ── Typography reset — override brutalist Instrument Serif/Space Mono ── */
+            /* ── Typography reset — override brutalist Instrument Serif/Inter ── */
             *, *::before, *::after {
                 font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif !important;
                 font-style: normal !important;
@@ -689,7 +685,6 @@
             .section-block h3 {
                 font-size: 0.72rem !important;
                 font-weight: 700 !important;
-                text-transform: uppercase !important;
                 letter-spacing: 0.12em !important;
                 color: #4f46e5 !important;
                 margin-bottom: 8px !important;
@@ -789,7 +784,6 @@
                 font-size: 0.72rem !important;
                 font-weight: 700 !important;
                 color: #475569 !important;
-                text-transform: uppercase !important;
                 letter-spacing: 0.05em !important;
             }
 
@@ -1003,9 +997,9 @@
                             <span class="exp-title">AI Junior Creator</span>
                             <span class="exp-date">Jul 2026 — Aug 2026</span>
                         </div>
-                        <div class="exp-company">UNTAGD · Full-time Freelance · Remote (Kuwait)</div>
+                        <div class="exp-company">Untagd · Full-time Freelance · Remote (Kuwait)</div>
                         <p class="exp-desc">
-                            Direct AI content creation, visual development, prompting workflows, and generative video production for Kuwait-based creative studio UNTAGD. Delivered commercial ad films, automotive cinematic showcases, and narrative concepts.
+                            Direct AI content creation, visual development, prompting workflows, and generative video production for Kuwait-based creative studio Untagd. Delivered commercial ad films, automotive cinematic showcases, and narrative concepts.
                         </p>
                     </div>
 
@@ -1060,12 +1054,12 @@
                     <!-- 5. Sattvik Certifications (Freelance) -->
                     <div class="exp-item">
                         <div class="exp-header">
-                            <span class="exp-title">Social Media Manager &amp; Content Creator (SATCON 2026)</span>
+                            <span class="exp-title">Social Media Manager &amp; Content Creator (Satcon 2026)</span>
                             <span class="exp-date">Jan 2026 — Feb 2026</span>
                         </div>
                         <div class="exp-company">Sattvik Certifications · Freelance · Remote</div>
                         <p class="exp-desc">
-                            Spearheaded the complete digital SMM rollout and creative production for SATCON 2026, delivering 100+ promotional visual and video assets across global channels.
+                            Spearheaded the complete digital SMM rollout and creative production for Satcon 2026, delivering 100+ promotional visual and video assets across global channels.
                         </p>
                     </div>
 

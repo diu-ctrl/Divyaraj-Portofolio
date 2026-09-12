@@ -67,7 +67,7 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital,wght@0,400;1,400&family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital,wght@0,400;1,400&family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -102,7 +102,7 @@
             --surface-flat: var(--card);
             --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
             --font-serif: 'Instrument Serif', Georgia, serif;
-            --font-mono: 'Space Mono', 'JetBrains Mono', monospace;
+            /* --font-mono removed — entire site uses only --font-serif and --font-sans */
             --credes-surface: var(--card);
             --credes-border: var(--border);
         }
@@ -210,7 +210,6 @@
             font-size: 0.72rem;
             font-weight: 700;
             color: var(--brand-color);
-            text-transform: uppercase;
             letter-spacing: 0.08em;
             margin-bottom: 0px; /* reset for flex layout */
         }
@@ -242,7 +241,6 @@
         .section-label {
             font-size: 0.72rem;
             font-weight: 700;
-            text-transform: uppercase;
             letter-spacing: 0.12em;
             color: var(--brand-color);
             margin-bottom: 24px;
@@ -481,7 +479,7 @@
                 /* --- Brand Nav Bar --- */
         .brand-nav-bar { background:rgba(8,10,20,0.97);  border-top:1px solid rgba(255,255,255,0.06); padding:40px 5% 52px; }
         .brand-nav-inner { max-width:1240px; margin:0 auto; }
-        .brand-nav-label { text-align:center; font-size:0.68rem; font-weight:700; letter-spacing:0.18em; text-transform:uppercase; color:rgba(255,255,255,0.25); margin-bottom:28px; }
+        .brand-nav-label { text-align:center; font-size:0.68rem; font-weight:700; letter-spacing:0.18em; color:rgba(255,255,255,0.25); margin-bottom:28px; }
         .brand-nav-grid { display:flex; justify-content:center; align-items:center; gap:24px; }
         .brand-nav-group { display:grid; grid-template-columns:repeat(3, 1fr); gap:12px; flex:1; max-width:520px; }
         .brand-nav-divider { width:1px; height:84px; background:rgba(255,255,255,0.12); flex-shrink:0; }
@@ -753,8 +751,8 @@
                 </div>
                 <div>
                     <div style="display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 16px; align-items: center;">
-                        <div class="brand-eyebrow">OCT 2025 — AUG 2026 · Product & Brand</div>
-                        <div class="credes-badge-pill" style="display: inline-flex; align-items: center; padding: 6px 14px; border-radius: 100px; background: rgba(139, 92, 246, 0.08); border: 1px solid rgba(139, 92, 246, 0.2); font-size: 0.72rem; font-weight: 700; color: #a78bfa; text-transform: uppercase; letter-spacing: 0.05em;">Credes Techlabs Campaign</div>
+                        <div class="brand-eyebrow">Oct 2025 — Aug 2026 · Product & Brand</div>
+                        <div class="credes-badge-pill" style="display: inline-flex; align-items: center; padding: 6px 14px; border-radius: 100px; background: rgba(139, 92, 246, 0.08); border: 1px solid rgba(139, 92, 246, 0.2); font-size: 0.72rem; font-weight: 700; color: #a78bfa; letter-spacing: 0.05em;">Credes Techlabs Campaign</div>
                     </div>
                     <h1>Highrocks</h1>
                 </div>
@@ -827,7 +825,7 @@
         <section class="main-content">
             <div class="case-study reveal">
                 <h2>Translating Analytics into <span>Viral Engagement</span></h2>
-                <p>HYROX racing is highly analytical, centered on pacing, splits, and station split strategies. HighRocks was built to solve pacing guesswork, and our SMM strategy focused on communicating this data visually. We turned complex race analytics into digestible pacing guides and clean, shareable infographics on Instagram.</p>
+                <p>Hyrox racing is highly analytical, centered on pacing, splits, and station split strategies. HighRocks was built to solve pacing guesswork, and our SMM strategy focused on communicating this data visually. We turned complex race analytics into digestible pacing guides and clean, shareable infographics on Instagram.</p>
                 <p>Using reels, we highlighted training splits, athlete breakdowns, and tool tutorials that fit native mobile formats. On Threads, we built interactive Q&As where athletes could get custom pacing splits, transforming the channel into a conversational utility that drove high click-through rates back to the tool.</p>
                 <div class="highlight-block">
                     <strong>"Data visualization and interactive tools drive organic saves."</strong> — We created high-value pacing cards that athletes saved and shared, leveraging interactive thread discussions to build HighRocks' reputation as a pacing expert.
@@ -872,7 +870,7 @@
             <div class="brand-nav-label">Explore All Brands</div>
             <div class="brand-nav-grid">
                 <div class="brand-nav-group left-group">
-                    <a href="untagd" class="brand-nav-btn "><img class="bnb-logo" src="../images/Logos of the brands/untagd.png" alt="">UNTAGD</a>
+                    <a href="untagd" class="brand-nav-btn "><img class="bnb-logo" src="../images/Logos of the brands/untagd.png" alt="">Untagd</a>
                     <a href="credes" class="brand-nav-btn "><img class="bnb-logo" src="../images/Logos of the brands/credes techlabs.jpg" alt="">Credes</a>
                     <a href="gujarat-tigers" class="brand-nav-btn "><img class="bnb-logo" src="../images/Logos of the brands/Gujarat Tigers.png" alt="">Gujarat Tigers</a>
                     <a href="sattvik" class="brand-nav-btn "><img class="bnb-logo" src="../images/Logos of the brands/Sattvik Certifications.jpg" alt="">Sattvik</a>

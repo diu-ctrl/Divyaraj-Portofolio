@@ -63,10 +63,9 @@ img { display: block; width: 100%; height: 100%; object-fit: cover; }
   display: flex;
   justify-content: space-between;
   align-items: center;
-  font-family: 'Space Mono', 'Courier New', monospace;
+  font-family: var(--ff-sans);
   font-size: 0.7rem;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
+  letter-spacing: 0.02em;
   z-index: 101;
   gap: 24px;
 }
@@ -98,10 +97,10 @@ img { display: block; width: 100%; height: 100%; object-fit: cover; }
 .process-banner a.banner-back {
   color: rgba(255, 255, 255, 0.5);
   text-decoration: none;
-  font-family: 'Space Mono', monospace;
+  font-family: var(--ff-sans);
   font-size: 0.68rem;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
+  font-weight: 500;
+  letter-spacing: 0.02em;
   padding: 6px 16px;
   border: 1px solid rgba(255, 255, 255, 0.18);
   transition: color 0.2s ease, border-color 0.2s ease;
@@ -117,11 +116,10 @@ img { display: block; width: 100%; height: 100%; object-fit: cover; }
   color: #000000;
   background: #EB4604;
   text-decoration: none;
-  font-family: 'Space Mono', monospace;
+  font-family: var(--ff-sans);
   font-size: 0.68rem;
   font-weight: 700;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
+  letter-spacing: 0.02em;
   padding: 6px 16px;
   border: 1px solid #EB4604;
   border-radius: 0;
@@ -269,7 +267,6 @@ img { display: block; width: 100%; height: 100%; object-fit: cover; }
 .nav-dropdown-link {
   font-family: var(--ff-cinzel);
   font-size: 13px;
-  text-transform: uppercase;
   color: var(--text-muted);
   text-decoration: none;
   letter-spacing: 0.15em;
@@ -364,7 +361,6 @@ img { display: block; width: 100%; height: 100%; object-fit: cover; }
   font-family: var(--ff-sans);
   font-size: 11px;
   letter-spacing: 0.3em;
-  text-transform: uppercase;
   color: rgba(232,224,208,0.65);
   margin-top: 16px;
   margin-bottom: 0;
@@ -406,7 +402,6 @@ img { display: block; width: 100%; height: 100%; object-fit: cover; }
   text-decoration: none;
   font-size: 11px;
   letter-spacing: 0.2em;
-  text-transform: uppercase;
   font-weight: 500;
   transition: color 0.3s, opacity 0.3s;
   position: relative;
@@ -472,7 +467,6 @@ img { display: block; width: 100%; height: 100%; object-fit: cover; }
 .section-label {
   font-size: 10px;
   letter-spacing: 0.3em;
-  text-transform: uppercase;
   color: var(--amber-dim);
   margin-bottom: 16px;
   font-weight: 500;
@@ -544,7 +538,6 @@ img { display: block; width: 100%; height: 100%; object-fit: cover; }
 .tools-title {
   font-size: 10px;
   letter-spacing: 0.22em;
-  text-transform: uppercase;
   color: var(--amber-dim);
   margin-bottom: 28px;
   font-weight: 500;
@@ -645,7 +638,6 @@ img { display: block; width: 100%; height: 100%; object-fit: cover; }
 .act-num {
   font-size: 9px;
   letter-spacing: 0.22em;
-  text-transform: uppercase;
   color: var(--amber-dim);
   margin-bottom: 4px;
 }
@@ -673,7 +665,6 @@ img { display: block; width: 100%; height: 100%; object-fit: cover; }
 .arc-label {
   font-size: 10px;
   letter-spacing: 0.22em;
-  text-transform: uppercase;
   color: var(--text-dim);
   margin-bottom: 12px;
 }
@@ -693,7 +684,6 @@ img { display: block; width: 100%; height: 100%; object-fit: cover; }
   justify-content: center;
   font-size: 10px;
   letter-spacing: 0.12em;
-  text-transform: uppercase;
   font-weight: 600;
   background: transparent !important;
   border: none !important;
@@ -742,7 +732,6 @@ img { display: block; width: 100%; height: 100%; object-fit: cover; }
   background: linear-gradient(transparent, rgba(10,10,10,0.9));
   font-size: 11px;
   letter-spacing: 0.16em;
-  text-transform: uppercase;
   color: var(--amber-dim);
 }
 
@@ -762,7 +751,6 @@ img { display: block; width: 100%; height: 100%; object-fit: cover; }
 .char-stat-label {
   font-size: 10px;
   letter-spacing: 0.2em;
-  text-transform: uppercase;
   color: var(--amber-dim);
   margin-bottom: 6px;
 }
@@ -776,7 +764,6 @@ img { display: block; width: 100%; height: 100%; object-fit: cover; }
 .strategy-title {
   font-size: 10px;
   letter-spacing: 0.2em;
-  text-transform: uppercase;
   color: var(--amber-dim);
   margin-bottom: 20px;
 }
@@ -834,7 +821,6 @@ img { display: block; width: 100%; height: 100%; object-fit: cover; }
 .location-tag {
   font-size: 9px;
   letter-spacing: 0.18em;
-  text-transform: uppercase;
   padding: 5px 12px;
   border-radius: 2px;
   font-weight: 600;
@@ -852,7 +838,6 @@ img { display: block; width: 100%; height: 100%; object-fit: cover; }
 .location-id {
   font-size: 9px;
   letter-spacing: 0.22em;
-  text-transform: uppercase;
   color: var(--amber-dim);
   margin-bottom: 6px;
 }
@@ -926,7 +911,6 @@ img { display: block; width: 100%; height: 100%; object-fit: cover; }
 .scene-location-tag {
   font-size: 10px;
   letter-spacing: 0.18em;
-  text-transform: uppercase;
   color: var(--amber-dim);
   border: 1px solid var(--border);
   padding: 6px 16px;
@@ -1019,7 +1003,6 @@ img { display: block; width: 100%; height: 100%; object-fit: cover; }
 .play-hint span {
   font-size: 9px;
   letter-spacing: 0.18em;
-  text-transform: uppercase;
   color: var(--amber);
 }
 
@@ -1060,7 +1043,6 @@ img { display: block; width: 100%; height: 100%; object-fit: cover; }
 .shot-type, .shot-cam {
   font-size: 9px;
   letter-spacing: 0.12em;
-  text-transform: uppercase;
   padding: 3px 8px;
 }
 
@@ -1101,7 +1083,6 @@ img { display: block; width: 100%; height: 100%; object-fit: cover; }
   color: var(--amber);
   font-size: 9px;
   letter-spacing: 0.14em;
-  text-transform: uppercase;
   padding: 5px 10px;
   cursor: pointer;
   font-family: var(--ff-sans);
@@ -1139,7 +1120,6 @@ img { display: block; width: 100%; height: 100%; object-fit: cover; }
 .formula-title, .example-title {
   font-size: 10px;
   letter-spacing: 0.22em;
-  text-transform: uppercase;
   color: var(--amber-dim);
   margin-bottom: 24px;
 }
@@ -1190,7 +1170,7 @@ img { display: block; width: 100%; height: 100%; object-fit: cover; }
 }
 
 .prompt-block code {
-  font-family: 'Courier New', monospace;
+  font-family: var(--ff-sans);
   font-size: 12.5px;
   line-height: 1.8;
   color: rgba(232,224,208,0.7);
@@ -1217,7 +1197,6 @@ img { display: block; width: 100%; height: 100%; object-fit: cover; }
   font-size: 10px;
   color: var(--text-dim);
   letter-spacing: 0.1em;
-  text-transform: uppercase;
 }
 
 .leg-dot {
@@ -1244,7 +1223,6 @@ img { display: block; width: 100%; height: 100%; object-fit: cover; }
 .consistency-title {
   font-size: 10px;
   letter-spacing: 0.2em;
-  text-transform: uppercase;
   color: var(--amber-dim);
   margin-bottom: 20px;
 }
@@ -1256,7 +1234,7 @@ img { display: block; width: 100%; height: 100%; object-fit: cover; }
 }
 
 .kw-tag {
-  font-family: 'Courier New', monospace;
+  font-family: var(--ff-sans);
   font-size: 11px;
   color: var(--amber);
   background: rgba(212,165,116,0.07);
@@ -1358,7 +1336,6 @@ img { display: block; width: 100%; height: 100%; object-fit: cover; }
 .adapt-label {
   font-size: 10px;
   letter-spacing: 0.22em;
-  text-transform: uppercase;
   color: var(--amber);
   margin-bottom: 12px;
 }
@@ -1388,7 +1365,6 @@ img { display: block; width: 100%; height: 100%; object-fit: cover; }
 .vo-label {
   font-size: 9px;
   letter-spacing: 0.2em;
-  text-transform: uppercase;
   color: var(--amber-dim);
   margin-bottom: 6px;
 }
@@ -1428,7 +1404,6 @@ img { display: block; width: 100%; height: 100%; object-fit: cover; }
 .film-meta-bar span {
   font-size: 11px;
   letter-spacing: 0.14em;
-  text-transform: uppercase;
   color: var(--text-dim);
 }
 
@@ -1481,7 +1456,6 @@ img { display: block; width: 100%; height: 100%; object-fit: cover; }
 .score-category {
   font-size: 12px;
   letter-spacing: 0.14em;
-  text-transform: uppercase;
   color: var(--text);
   font-weight: 500;
   margin-bottom: 12px;
@@ -1524,7 +1498,6 @@ img { display: block; width: 100%; height: 100%; object-fit: cover; }
 .footer-sub {
   font-size: 12px;
   letter-spacing: 0.18em;
-  text-transform: uppercase;
   color: var(--text-muted);
 }
 
@@ -1573,7 +1546,6 @@ img { display: block; width: 100%; height: 100%; object-fit: cover; }
 .footer-tools-label {
   font-size: 9px;
   letter-spacing: 0.26em;
-  text-transform: uppercase;
   color: var(--text-dim);
   text-align: right;
 }
@@ -1611,7 +1583,6 @@ img { display: block; width: 100%; height: 100%; object-fit: cover; }
 .process-decisions-title {
   font-size: 10px;
   letter-spacing: 0.22em;
-  text-transform: uppercase;
   color: var(--amber-dim);
   margin-bottom: 20px;
   font-weight: 500;
@@ -1659,7 +1630,6 @@ img { display: block; width: 100%; height: 100%; object-fit: cover; }
 .process-credit {
   font-size: 11px;
   letter-spacing: 0.16em;
-  text-transform: uppercase;
   color: var(--text-dim);
 }
 
@@ -1767,7 +1737,6 @@ img { display: block; width: 100%; height: 100%; object-fit: cover; }
 .bts-time {
   font-size: 11px;
   letter-spacing: 0.16em;
-  text-transform: uppercase;
   color: var(--amber);
   margin-bottom: 12px;
   font-weight: 600;
@@ -1793,7 +1762,6 @@ img { display: block; width: 100%; height: 100%; object-fit: cover; }
 .bts-total-label {
   font-size: 10px;
   letter-spacing: 0.22em;
-  text-transform: uppercase;
   color: var(--amber-dim);
   margin-bottom: 8px;
   font-weight: 500;
@@ -1877,15 +1845,14 @@ img { display: block; width: 100%; height: 100%; object-fit: cover; }
   border-bottom: 1px solid #282723;
 }
 
-/* ── Section eyebrow label — Space Mono, Moss green ── */
+/* ── Section eyebrow label — Inter, Moss green ── */
 .section-label {
-  font-family: 'Space Mono', 'Courier New', monospace !important;
+  font-family: var(--ff-sans) !important;
   font-size: 0.72rem !important;
-  letter-spacing: 0.2em !important;
-  text-transform: uppercase !important;
+  letter-spacing: 0.04em !important;
   color: #99A57D !important;
   margin-bottom: 14px !important;
-  font-weight: 400 !important;
+  font-weight: 500 !important;
 }
 
 /* ── Section title — Instrument Serif italic ── */
@@ -1922,13 +1889,13 @@ img { display: block; width: 100%; height: 100%; object-fit: cover; }
   position: static !important;
   background: transparent !important;
   padding: 10px 0 0 0 !important;
-  font-family: 'Space Mono', monospace !important;
+  font-family: var(--ff-sans) !important;
   font-size: 0.75rem !important;
-  letter-spacing: 0.06em !important;
+  letter-spacing: 0.02em !important;
   text-transform: none !important;
   color: #99A57D !important;
   text-align: left !important;
-  font-weight: 400 !important;
+  font-weight: 500 !important;
 }
 
 /* ── Locations / World grid — auto-fit editorial ── */
@@ -1965,11 +1932,11 @@ img { display: block; width: 100%; height: 100%; object-fit: cover; }
 }
 
 .location-id {
-  font-family: 'Space Mono', monospace !important;
+  font-family: var(--ff-sans) !important;
   font-size: 0.75rem !important;
   color: #99A57D !important;
-  letter-spacing: 0.1em !important;
-  text-transform: uppercase !important;
+  letter-spacing: 0.02em !important;
+  font-weight: 500 !important;
   margin-bottom: 4px !important;
 }
 
@@ -2034,10 +2001,11 @@ img { display: block; width: 100%; height: 100%; object-fit: cover; }
 }
 
 .shot-meta-row {
-  font-family: 'Space Mono', monospace !important;
+  font-family: var(--ff-sans) !important;
   font-size: 0.72rem !important;
   color: #99A57D !important;
-  letter-spacing: 0.06em !important;
+  letter-spacing: 0.02em !important;
+  font-weight: 500 !important;
   margin-bottom: 8px !important;
   display: flex !important;
   gap: 12px !important;
@@ -2067,9 +2035,10 @@ blockquote.shot-vo {
 
 /* Shot badge — keep but style editorially */
 .shot-badge {
-  font-family: 'Space Mono', monospace !important;
+  font-family: var(--ff-sans) !important;
   font-size: 0.65rem !important;
-  letter-spacing: 0.14em !important;
+  letter-spacing: 0.04em !important;
+  font-weight: 500 !important;
   background: rgba(10,10,10,0.75) !important;
   color: #99A57D !important;
   border-radius: 0 !important;
@@ -2085,10 +2054,11 @@ blockquote.shot-vo {
 }
 
 .scene-num {
-  font-family: 'Space Mono', monospace !important;
+  font-family: var(--ff-sans) !important;
   font-size: 0.7rem !important;
   color: #99A57D !important;
-  letter-spacing: 0.15em !important;
+  letter-spacing: 0.04em !important;
+  font-weight: 500 !important;
 }
 
 .scene-name {
@@ -2119,10 +2089,10 @@ blockquote.shot-vo {
 }
 
 .methodology-eyebrow {
-  font-family: 'Space Mono', monospace;
+  font-family: var(--ff-sans);
   font-size: 0.72rem;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
+  font-weight: 500;
+  letter-spacing: 0.04em;
   color: #99A57D;
   margin-bottom: 20px;
 }
@@ -2209,10 +2179,10 @@ blockquote.shot-vo {
 }
 
 .ember-cta-eyebrow {
-  font-family: 'Space Mono', monospace;
+  font-family: var(--ff-sans);
   font-size: 0.72rem;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
+  font-weight: 500;
+  letter-spacing: 0.04em;
   color: #99A57D;
   margin-bottom: 20px;
 }
@@ -2240,11 +2210,10 @@ blockquote.shot-vo {
   display: inline-block;
   background: #EB4604;
   color: #000000;
-  font-family: 'Space Mono', monospace;
+  font-family: var(--ff-sans);
   font-size: 0.85rem;
   font-weight: 700;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
+  letter-spacing: 0.04em;
   text-decoration: none;
   padding: 18px 40px;
   border-radius: 0;
@@ -2264,11 +2233,10 @@ blockquote.shot-vo {
   padding: 18px 40px;
   border: 2px solid #99A57D;
   border-radius: 0;
-  font-family: 'Space Mono', monospace;
+  font-family: var(--ff-sans);
   font-size: 0.85rem;
   font-weight: 700;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
+  letter-spacing: 0.04em;
   color: #99A57D;
   text-decoration: none;
   text-align: center;

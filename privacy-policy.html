@@ -39,7 +39,7 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@300;400;500;600;700;800;900&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital,wght@0,400;1,400&family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 
     <style>
         *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -54,7 +54,7 @@
             --accent-dim: rgba(235, 70, 4, 0.12);
             --font-sans: 'Inter', -apple-system, sans-serif;
             --font-serif: 'Instrument Serif', Georgia, serif;
-            --font-mono: 'Space Mono', monospace;
+            /* --font-mono removed — entire site uses only --font-serif and --font-sans */
         }
 
         html { scroll-behavior: smooth; }
@@ -99,10 +99,10 @@
             display: inline-flex;
             align-items: center;
             gap: 8px;
-            font-family: var(--font-mono);
+            font-family: var(--font-sans);
             font-size: 0.7rem;
-            letter-spacing: 0.1em;
-            text-transform: uppercase;
+            font-weight: 500;
+            letter-spacing: 0.02em;
             color: var(--text-muted);
             text-decoration: none;
             transition: color 0.2s ease;
@@ -133,10 +133,10 @@
         }
 
         .pp-eyebrow {
-            font-family: var(--font-mono);
+            font-family: var(--font-sans);
             font-size: 0.68rem;
-            letter-spacing: 0.14em;
-            text-transform: uppercase;
+            font-weight: 500;
+            letter-spacing: 0.04em;
             color: var(--accent);
             margin-bottom: 16px;
             display: flex;
@@ -164,10 +164,10 @@
         }
 
         .pp-effective {
-            font-family: var(--font-mono);
+            font-family: var(--font-sans);
             font-size: 0.72rem;
-            letter-spacing: 0.08em;
-            text-transform: uppercase;
+            font-weight: 500;
+            letter-spacing: 0.02em;
             color: var(--text-muted);
         }
 
@@ -189,7 +189,6 @@
             font-size: 0.75rem;
             font-weight: 700;
             letter-spacing: 0.12em;
-            text-transform: uppercase;
             color: var(--accent);
             margin-bottom: 16px;
             padding-left: 14px;
@@ -228,7 +227,7 @@
             position: absolute;
             left: 0;
             color: var(--text-muted);
-            font-family: var(--font-mono);
+            font-family: var(--font-sans);
         }
 
         /* ─── Contact Card ─── */
@@ -250,10 +249,10 @@
         .pp-contact-card .contact-row:last-child { border-bottom: none; }
 
         .pp-contact-card .contact-label {
-            font-family: var(--font-mono);
+            font-family: var(--font-sans);
             font-size: 0.65rem;
-            letter-spacing: 0.1em;
-            text-transform: uppercase;
+            font-weight: 500;
+            letter-spacing: 0.02em;
             color: var(--text-muted);
             min-width: 90px;
             flex-shrink: 0;
@@ -285,18 +284,18 @@
         }
 
         .pp-footer-copy {
-            font-family: var(--font-mono);
+            font-family: var(--font-sans);
             font-size: 0.65rem;
-            letter-spacing: 0.08em;
-            text-transform: uppercase;
+            font-weight: 500;
+            letter-spacing: 0.02em;
             color: var(--text-muted);
         }
 
         .pp-footer-back {
-            font-family: var(--font-mono);
+            font-family: var(--font-sans);
             font-size: 0.65rem;
-            letter-spacing: 0.08em;
-            text-transform: uppercase;
+            font-weight: 500;
+            letter-spacing: 0.02em;
             color: var(--text-muted);
             text-decoration: none;
             transition: color 0.2s;

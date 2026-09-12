@@ -37,7 +37,7 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital,wght@0,400;1,400&family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital,wght@0,400;1,400&family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     
     <style>
         :root {
@@ -62,7 +62,7 @@
             --surface-flat: var(--card);
             --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
             --font-serif: 'Instrument Serif', Georgia, serif;
-            --font-mono: 'Space Mono', 'JetBrains Mono', monospace;
+            /* --font-mono removed — entire site uses only --font-serif and --font-sans */
             --credes-surface: var(--card);
             --credes-border: var(--border);
         }
@@ -79,7 +79,7 @@
         }
 
         nav, .nav-links a, .nav-cta a, .nav-resume, .btn-nav, .btn-brutalist, .btn-primary-gold, .btn-outline, .stat-lbl, .cinema-badge, .outcome-badge, .web-badge, .folio-card-tag, .refresh-date, .copyright-above, .contact-links-mono {
-            font-family: var(--font-mono) !important;
+            font-family: var(--font-sans) !important;
         }
 
         html {
@@ -216,7 +216,6 @@
         .cinema-badge {
             font-size: 0.72rem;
             font-weight: 700;
-            text-transform: uppercase;
             letter-spacing: 0.1em;
             color: var(--secondary-3);
             background: #282723;
@@ -509,7 +508,6 @@
             font-size: 0.7rem;
             font-weight: 700;
             color: var(--secondary-3);
-            text-transform: uppercase;
             letter-spacing: 0.08em;
             background: #282723;
             border: 1px solid #282723;
@@ -595,7 +593,6 @@
 
         .service-price-label {
             font-size: 0.72rem;
-            text-transform: uppercase;
             letter-spacing: 0.08em;
             color: var(--text-muted);
             margin-bottom: 4px;
@@ -842,7 +839,6 @@
         .drawer-section h3 {
             font-size: 0.76rem;
             font-weight: 700;
-            text-transform: uppercase;
             letter-spacing: 0.1em;
             color: var(--secondary-3);
         }
@@ -869,7 +865,6 @@
             color: var(--text-muted);
             margin-top: 8px;
             display: block;
-            text-transform: uppercase;
             letter-spacing: 0.05em;
         }
 
@@ -1109,10 +1104,11 @@
             background: #1a1a18;
             border: 1px solid #282723;
             color: #fff;
-            font-family: var(--font-mono);
+            font-family: var(--font-sans);
             font-size: 0.76rem;
-            letter-spacing: 0.06em;
-            text-transform: uppercase;
+            font-weight: 500;
+            letter-spacing: 0.02em;
+            
             padding: 11px 22px;
             z-index: 2000;
             opacity: 0;
@@ -1216,7 +1212,7 @@
                             <path d="M8 5v14l11-7z"/>
                         </svg>
                     </button>
-                    <div style="position: absolute; top: 16px; left: 16px; background: rgba(0,0,0,0.75); border: 1px solid rgba(255,255,255,0.15); padding: 4px 10px; font-family: var(--font-mono); font-size: 0.62rem; letter-spacing: 0.1em; color: var(--text-muted); text-transform: uppercase;">POV Cockpit &middot; Hyper-SUV</div>
+                    <div style="position: absolute; top: 16px; left: 16px; background: rgba(0,0,0,0.75); border: 1px solid rgba(255,255,255,0.15); padding: 4px 10px; font-family: var(--font-sans); font-weight: 500; font-size: 0.62rem; letter-spacing: 0.02em; color: var(--text-muted);">POV Cockpit &middot; Hyper-SUV</div>
                 </div>
                 <div class="film-row-content">
                     <div style="display: flex; gap: 10px; align-items: center; flex-wrap: wrap;">
@@ -1242,7 +1238,7 @@
                             <path d="M8 5v14l11-7z"/>
                         </svg>
                     </button>
-                    <div style="position: absolute; top: 16px; left: 16px; background: rgba(0,0,0,0.75); border: 1px solid rgba(255,255,255,0.15); padding: 4px 10px; font-family: var(--font-mono); font-size: 0.62rem; letter-spacing: 0.1em; color: var(--text-muted); text-transform: uppercase;">Ad Film &middot; Kuwait</div>
+                    <div style="position: absolute; top: 16px; left: 16px; background: rgba(0,0,0,0.75); border: 1px solid rgba(255,255,255,0.15); padding: 4px 10px; font-family: var(--font-sans); font-weight: 500; font-size: 0.62rem; letter-spacing: 0.02em; color: var(--text-muted);">Ad Film &middot; Kuwait</div>
                 </div>
                 <div class="film-row-content">
                     <div style="display: flex; gap: 10px; align-items: center; flex-wrap: wrap;">
@@ -1268,7 +1264,7 @@
                             <path d="M8 5v14l11-7z"/>
                         </svg>
                     </button>
-                    <div style="position: absolute; top: 16px; left: 16px; background: rgba(0,0,0,0.75); border: 1px solid rgba(255,255,255,0.15); padding: 4px 10px; font-family: var(--font-mono); font-size: 0.62rem; letter-spacing: 0.1em; color: var(--text-muted); text-transform: uppercase;">Beat-Synced &middot; Tulasi — Sumedh K</div>
+                    <div style="position: absolute; top: 16px; left: 16px; background: rgba(0,0,0,0.75); border: 1px solid rgba(255,255,255,0.15); padding: 4px 10px; font-family: var(--font-sans); font-weight: 500; font-size: 0.62rem; letter-spacing: 0.02em; color: var(--text-muted);">Beat-Synced &middot; Tulasi — Sumedh K</div>
                 </div>
                 <div class="film-row-content">
                     <div style="display: flex; gap: 10px; align-items: center; flex-wrap: wrap;">
@@ -1294,7 +1290,7 @@
                             <path d="M8 5v14l11-7z"/>
                         </svg>
                     </button>
-                    <div style="position: absolute; top: 16px; left: 16px; background: rgba(0,0,0,0.75); border: 1px solid rgba(255,255,255,0.15); padding: 4px 10px; font-family: var(--font-mono); font-size: 0.62rem; letter-spacing: 0.1em; color: var(--text-muted); text-transform: uppercase;">Ad Film &middot; Kuwait</div>
+                    <div style="position: absolute; top: 16px; left: 16px; background: rgba(0,0,0,0.75); border: 1px solid rgba(255,255,255,0.15); padding: 4px 10px; font-family: var(--font-sans); font-weight: 500; font-size: 0.62rem; letter-spacing: 0.02em; color: var(--text-muted);">Ad Film &middot; Kuwait</div>
                 </div>
                 <div class="film-row-content">
                     <div style="display: flex; gap: 10px; align-items: center; flex-wrap: wrap;">
@@ -1346,7 +1342,7 @@
                             <path d="M8 5v14l11-7z"/>
                         </svg>
                     </button>
-                    <div style="position: absolute; top: 16px; left: 16px; background: rgba(0,0,0,0.75); border: 1px solid rgba(255,255,255,0.15); padding: 4px 10px; font-family: var(--font-mono); font-size: 0.62rem; letter-spacing: 0.1em; color: var(--text-muted); text-transform: uppercase;">21:9 Ultrawide &middot; Master Craftsman</div>
+                    <div style="position: absolute; top: 16px; left: 16px; background: rgba(0,0,0,0.75); border: 1px solid rgba(255,255,255,0.15); padding: 4px 10px; font-family: var(--font-sans); font-weight: 500; font-size: 0.62rem; letter-spacing: 0.02em; color: var(--text-muted);">21:9 Ultrawide &middot; Master Craftsman</div>
                 </div>
                 <div class="film-row-content">
                     <div style="display: flex; gap: 10px; align-items: center; flex-wrap: wrap;">
@@ -1372,7 +1368,7 @@
                             <path d="M8 5v14l11-7z"/>
                         </svg>
                     </button>
-                    <div style="position: absolute; top: 16px; left: 16px; background: rgba(0,0,0,0.75); border: 1px solid rgba(255,255,255,0.15); padding: 4px 10px; font-family: var(--font-mono); font-size: 0.62rem; letter-spacing: 0.1em; color: var(--text-muted); text-transform: uppercase;">21:9 Ultrawide &middot; Mountain Traditions</div>
+                    <div style="position: absolute; top: 16px; left: 16px; background: rgba(0,0,0,0.75); border: 1px solid rgba(255,255,255,0.15); padding: 4px 10px; font-family: var(--font-sans); font-weight: 500; font-size: 0.62rem; letter-spacing: 0.02em; color: var(--text-muted);">21:9 Ultrawide &middot; Mountain Traditions</div>
                 </div>
                 <div class="film-row-content">
                     <div style="display: flex; gap: 10px; align-items: center; flex-wrap: wrap;">
@@ -1398,7 +1394,7 @@
                             <path d="M8 5v14l11-7z"/>
                         </svg>
                     </button>
-                    <div style="position: absolute; top: 16px; left: 16px; background: rgba(0,0,0,0.75); border: 1px solid rgba(255,255,255,0.15); padding: 4px 10px; font-family: var(--font-mono); font-size: 0.62rem; letter-spacing: 0.1em; color: var(--text-muted); text-transform: uppercase;">Studio Showcase &middot; Aerodynamics</div>
+                    <div style="position: absolute; top: 16px; left: 16px; background: rgba(0,0,0,0.75); border: 1px solid rgba(255,255,255,0.15); padding: 4px 10px; font-family: var(--font-sans); font-weight: 500; font-size: 0.62rem; letter-spacing: 0.02em; color: var(--text-muted);">Studio Showcase &middot; Aerodynamics</div>
                 </div>
                 <div class="film-row-content">
                     <div style="display: flex; gap: 10px; align-items: center; flex-wrap: wrap;">
@@ -1424,7 +1420,7 @@
                             <path d="M8 5v14l11-7z"/>
                         </svg>
                     </button>
-                    <div style="position: absolute; top: 16px; left: 16px; background: rgba(0,0,0,0.75); border: 1px solid rgba(255,255,255,0.15); padding: 4px 10px; font-family: var(--font-mono); font-size: 0.62rem; letter-spacing: 0.1em; color: var(--text-muted); text-transform: uppercase;">16:9 Widescreen &middot; UNTAGD</div>
+                    <div style="position: absolute; top: 16px; left: 16px; background: rgba(0,0,0,0.75); border: 1px solid rgba(255,255,255,0.15); padding: 4px 10px; font-family: var(--font-sans); font-weight: 500; font-size: 0.62rem; letter-spacing: 0.02em; color: var(--text-muted);">16:9 Widescreen &middot; Untagd</div>
                 </div>
                 <div class="film-row-content">
                     <div style="display: flex; gap: 10px; align-items: center; flex-wrap: wrap;">
@@ -1432,7 +1428,7 @@
                     </div>
                     <h2>Aston Martin Visual Exploration</h2>
                     <p class="film-brief">
-                        High-speed curve dynamics, carbon fiber texture fidelity, and precision motion blur simulation captured in panoramic cinematic widescreen for UNTAGD creative studio.
+                        High-speed curve dynamics, carbon fiber texture fidelity, and precision motion blur simulation captured in panoramic cinematic widescreen for Untagd creative studio.
                     </p>
                     <div class="film-actions">
                         <button class="btn-primary-gold watch-btn" data-video="Final Video/aston martin hori 2.mp4">Watch Film</button>
@@ -1621,7 +1617,7 @@
                                 <path d="M8 5v14l11-7z"/>
                             </svg>
                         </button>
-                        <div style="position: absolute; top: 10px; right: 10px; background: rgba(235,70,4,0.15); border: 1px solid rgba(235,70,4,0.4); padding: 3px 8px; font-family: var(--font-mono); font-size: 0.62rem; letter-spacing: 0.08em; color: #EB4604;">TOP 15</div>
+                        <div style="position: absolute; top: 10px; right: 10px; background: rgba(235,70,4,0.15); border: 1px solid rgba(235,70,4,0.4); padding: 3px 8px; font-family: var(--font-sans); font-weight: 500; font-size: 0.62rem; letter-spacing: 0.02em; color: #EB4604;">Top 15</div>
                     </div>
                     <div class="film-card-content" style="display: flex; flex-direction: column; gap: 8px;">
                         <span class="film-meta">Documentary &bull; Competition Selection</span>
@@ -1676,7 +1672,7 @@
                         <h3>Breaking Bad Trend Reel</h3>
                         <p class="film-subtitle" style="font-size: 0.95rem; color: var(--text-muted);">Desert Extraction Scene Synthesis</p>
                         <p class="film-brief" style="font-size: 0.92rem; color: var(--text-muted); line-height: 1.6;">
-                            Gritty desert narrative exploring harsh sun exposure, desolate isolation, character tension, and dust haze environmental synthesis directed for UNTAGD.
+                            Gritty desert narrative exploring harsh sun exposure, desolate isolation, character tension, and dust haze environmental synthesis directed for Untagd.
                         </p>
                         <div class="film-actions" style="margin-top: auto; display: flex; gap: 12px;">
                             <button class="btn-primary-gold watch-btn" data-video="Final Video/breaking bad 3.mp4">Watch Film</button>
@@ -1718,7 +1714,7 @@
                         <video src="Final Video/Smart Value video.mp4" controls preload="metadata" style="width: 100%; height: 100%; object-fit: cover;"></video>
                     </div>
                     <div class="film-card-content" style="display: flex; flex-direction: column; gap: 4px;">
-                        <span class="film-meta" style="font-family: var(--font-mono); font-size: 0.72rem; letter-spacing: 0.05em; color: var(--accent); text-transform: uppercase;">Commercial Ad &bull; Giffy</span>
+                        <span class="film-meta" style="font-family: var(--font-sans); font-weight: 500; font-size: 0.72rem; letter-spacing: 0.02em; color: var(--accent);">Commercial Ad &bull; Giffy</span>
                         <h3 style="font-size: 1.25rem; font-weight: 700; color: #fff; margin-top: 4px;">Smart Value</h3>
                     </div>
                 </div>
@@ -1729,7 +1725,7 @@
                         <video src="Final Video/Flexible Scheduling video.mp4" controls preload="metadata" style="width: 100%; height: 100%; object-fit: cover;"></video>
                     </div>
                     <div class="film-card-content" style="display: flex; flex-direction: column; gap: 4px;">
-                        <span class="film-meta" style="font-family: var(--font-mono); font-size: 0.72rem; letter-spacing: 0.05em; color: var(--accent); text-transform: uppercase;">Commercial Ad &bull; Giffy</span>
+                        <span class="film-meta" style="font-family: var(--font-sans); font-weight: 500; font-size: 0.72rem; letter-spacing: 0.02em; color: var(--accent);">Commercial Ad &bull; Giffy</span>
                         <h3 style="font-size: 1.25rem; font-weight: 700; color: #fff; margin-top: 4px;">Flexible Scheduling</h3>
                     </div>
                 </div>
@@ -1740,7 +1736,7 @@
                         <video src="Final Video/Absolute Trust video.mp4" controls preload="metadata" style="width: 100%; height: 100%; object-fit: cover;"></video>
                     </div>
                     <div class="film-card-content" style="display: flex; flex-direction: column; gap: 4px;">
-                        <span class="film-meta" style="font-family: var(--font-mono); font-size: 0.72rem; letter-spacing: 0.05em; color: var(--accent); text-transform: uppercase;">Commercial Ad &bull; Giffy</span>
+                        <span class="film-meta" style="font-family: var(--font-sans); font-weight: 500; font-size: 0.72rem; letter-spacing: 0.02em; color: var(--accent);">Commercial Ad &bull; Giffy</span>
                         <h3 style="font-size: 1.25rem; font-weight: 700; color: #fff; margin-top: 4px;">Absolute Trust</h3>
                     </div>
                 </div>
@@ -1751,7 +1747,7 @@
                         <video src="Final Video/Worker Rotation.mp4" controls preload="metadata" style="width: 100%; height: 100%; object-fit: cover;"></video>
                     </div>
                     <div class="film-card-content" style="display: flex; flex-direction: column; gap: 4px;">
-                        <span class="film-meta" style="font-family: var(--font-mono); font-size: 0.72rem; letter-spacing: 0.05em; color: var(--accent); text-transform: uppercase;">Commercial Ad &bull; Giffy</span>
+                        <span class="film-meta" style="font-family: var(--font-sans); font-weight: 500; font-size: 0.72rem; letter-spacing: 0.02em; color: var(--accent);">Commercial Ad &bull; Giffy</span>
                         <h3 style="font-size: 1.25rem; font-weight: 700; color: #fff; margin-top: 4px;">Worker Rotation</h3>
                     </div>
                 </div>
