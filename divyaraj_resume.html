@@ -559,42 +559,245 @@
         }
 
         @media print {
-            print-color-adjust: exact !important;
-            -webkit-print-color-adjust: exact !important;
+            print-color-adjust: exact;
+            -webkit-print-color-adjust: exact;
 
             @page {
                 size: A4;
                 margin: 10mm;
             }
 
+            /* ── Layout & structure — force WHITE theme ── */
+            body {
+                background: #f1f5f9 !important;
+                color: #0f172a !important;
+                padding: 0 !important;
+                margin: 0 !important;
+                font-size: 8.5pt !important;
+                line-height: 1.35 !important;
+                font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif !important;
+            }
+            .resume-container {
+                padding: 0 !important;
+                border-radius: 0 !important;
+                max-width: 100% !important;
+                background: #ffffff !important;
+                border: none !important;
+                box-shadow: none !important;
+            }
             /* Hide UI elements that shouldn't appear in the PDF */
             .action-bar, .btn-action, .video-controls, .copyright-above,
             .back-btn, .print-btn, .download-pdf-btn {
                 display: none !important;
             }
 
-            /* Switch video to photo for PDF / print */
-            .resume-video {
-                display: none !important;
+            /* ── Typography reset — override brutalist Instrument Serif/Inter ── */
+            *, *::before, *::after {
+                font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif !important;
+                font-style: normal !important;
+                border-radius: 0 !important;
+                box-shadow: none !important;
+                text-shadow: none !important;
+                backdrop-filter: none !important;
+                mix-blend-mode: normal !important;
             }
+            h1, h2 {
+                font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif !important;
+                font-style: normal !important;
+                font-size: inherit !important;
+                font-weight: inherit !important;
+                letter-spacing: inherit !important;
+                line-height: inherit !important;
+            }
+
+            /* ── Header ── */
+            header {
+                display: flex !important;
+                flex-direction: row !important;
+                justify-content: space-between !important;
+                align-items: center !important;
+                gap: 20px !important;
+                border-bottom: 1.5px solid #e2e8f0 !important;
+                padding-bottom: 10px !important;
+                margin-bottom: 15px !important;
+            }
+            .header-main-info {
+                display: flex !important;
+                flex-direction: column !important;
+                align-items: flex-start !important;
+                text-align: left !important;
+                gap: 6px !important;
+            }
+            .header-left { text-align: left !important; }
+            .header-left h1 {
+                font-size: 1.8rem !important;
+                font-weight: 900 !important;
+                color: #1e293b !important;
+                letter-spacing: -0.04em !important;
+                line-height: 1.1 !important;
+                margin-bottom: 2px !important;
+                font-style: normal !important;
+            }
+            .header-left .title-sub {
+                font-size: 0.95rem !important;
+                font-weight: 600 !important;
+                color: #4f46e5 !important;
+            }
+            .header-right {
+                text-align: left !important;
+                align-items: flex-start !important;
+                gap: 3px !important;
+                font-size: 0.78rem !important;
+                color: #64748b !important;
+            }
+            .header-right a { color: #64748b !important; }
+
+            /* ── Media thumbnail ── */
+            .header-media {
+                width: 100px !important;
+                height: 100px !important;
+                display: block !important;
+                border-radius: 6px !important;
+                border: 1px solid #e2e8f0 !important;
+                flex-shrink: 0 !important;
+            }
+            .resume-video { display: none !important; }
             .resume-photo {
                 display: block !important;
+                width: 100% !important;
+                height: 100% !important;
+                object-fit: cover !important;
             }
 
-            /* Ensure the resume container fills the page */
-            .resume-container {
-                max-width: 100% !important;
-                padding: 0 !important;
-                margin: 0 !important;
-                border: none !important;
-                box-shadow: none !important;
-                border-radius: 0 !important;
+            /* ── Grid ── */
+            .resume-grid {
+                display: grid !important;
+                grid-template-columns: 1fr 2.1fr !important;
+                gap: 24px !important;
+            }
+            .sidebar-col {
+                display: flex !important;
+                flex-direction: column !important;
+                gap: 16px !important;
+            }
+            .main-col {
+                display: flex !important;
+                flex-direction: column !important;
+                gap: 20px !important;
+            }
+            .main-col > .section-block:last-child { margin-top: 0 !important; }
+
+            /* ── Section headings ── */
+            .section-block { margin-bottom: 0 !important; }
+            .section-block h3 {
+                font-size: 0.72rem !important;
+                font-weight: 700 !important;
+                letter-spacing: 0.12em !important;
+                color: #4f46e5 !important;
+                margin-bottom: 8px !important;
+                padding-bottom: 3px !important;
+                border-bottom: 1px solid #e2e8f0 !important;
             }
 
-            /* Prevent page-breaks inside experience items, education items, skills groups, highlight cards */
-            .exp-item, .edu-item, .skills-group, .highlight-card, .contact-list {
+            /* ── Experience ── */
+            .exp-item {
                 page-break-inside: avoid !important;
                 break-inside: avoid !important;
+                margin-bottom: 10px !important;
+            }
+            .exp-title {
+                font-size: 1.05rem !important;
+                font-weight: 700 !important;
+                color: #1e293b !important;
+            }
+            .exp-company {
+                font-size: 0.9rem !important;
+                font-weight: 600 !important;
+                color: #4f46e5 !important;
+                margin: 1px 0 4px !important;
+            }
+            .exp-date {
+                font-size: 0.8rem !important;
+                font-weight: 700 !important;
+                color: #475569 !important;
+                background: #f8fafc !important;
+                padding: 3px 10px !important;
+                border: 1px solid #e2e8f0 !important;
+            }
+            .exp-desc {
+                font-size: 8pt !important;
+                color: #64748b !important;
+                line-height: 1.3 !important;
+                margin-bottom: 4px !important;
+            }
+            .exp-bullets li {
+                font-size: 7.8pt !important;
+                color: #64748b !important;
+                line-height: 1.3 !important;
+                margin-bottom: 2px !important;
+            }
+            .exp-bullets li::before { color: #4f46e5 !important; }
+
+            /* ── Education ── */
+            .edu-item {
+                page-break-inside: avoid !important;
+                break-inside: avoid !important;
+                margin-bottom: 10px !important;
+            }
+            .edu-degree { color: #0f172a !important; font-weight: 700 !important; }
+            .edu-school { color: #475569 !important; font-weight: 500 !important; }
+            .edu-date { color: #4f46e5 !important; font-weight: 600 !important; }
+            .edu-desc { color: #64748b !important; line-height: 1.5 !important; }
+
+            /* ── Contact list ── */
+            .contact-list {
+                page-break-inside: avoid !important;
+                break-inside: avoid !important;
+            }
+            .contact-list span.label { color: #64748b !important; }
+            .contact-list a, .contact-list span.value {
+                color: #0f172a !important;
+                font-weight: 500 !important;
+            }
+
+            /* ── Skills ── */
+            .skills-group {
+                page-break-inside: avoid !important;
+                break-inside: avoid !important;
+                margin-bottom: 8px !important;
+            }
+            .skills-group h4 { color: #475569 !important; }
+            .skill-tag {
+                background: #f8fafc !important;
+                color: #475569 !important;
+                border: 1px solid #e2e8f0 !important;
+                padding: 1.5px 5px !important;
+                font-size: 0.62rem !important;
+                font-weight: 600 !important;
+            }
+
+            /* ── Highlight cards ── */
+            .highlight-card {
+                background: #f8fafc !important;
+                border: 1px solid #e2e8f0 !important;
+                padding: 16px !important;
+            }
+            .highlight-val {
+                font-size: 1.6rem !important;
+                font-weight: 800 !important;
+                color: #4f46e5 !important;
+            }
+            .highlight-lbl {
+                font-size: 0.72rem !important;
+                font-weight: 700 !important;
+                color: #475569 !important;
+                letter-spacing: 0.05em !important;
+            }
+
+            /* ── Links — keep them visible + clickable ── */
+            a {
+                text-decoration: none !important;
+                color: #4f46e5 !important;
             }
         }
     
@@ -613,14 +816,12 @@
     <div class="resume-container">
         <!-- Action Bar (Hidden when printed) -->
         <div class="action-bar">
-            <a href="index" class="btn-action">← Back to Portfolio</a>
-            <button onclick="window.print()" class="btn-action" title="Open print dialog">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-bottom:-1px"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
-                Print
-            </button>
-            <a href="/Divyaraj-Resume.pdf" download="Divyaraj-Resume.pdf" class="btn-action btn-primary" aria-label="Download PDF" title="Download PDF">
+            <a href="index" class="btn-action back-btn">
+                <span>← Back to Website</span>
+            </a>
+            <a href="/Divyaraj-Resume.pdf" download="Divyaraj-Resume.pdf" class="btn-action btn-primary download-pdf-btn" aria-label="Download PDF" title="Download PDF">
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-bottom:-1px"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-                Download PDF
+                <span>Download PDF</span>
             </a>
         </div>
 
