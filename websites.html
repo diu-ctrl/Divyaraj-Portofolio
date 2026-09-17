@@ -998,10 +998,11 @@
     <main>
         <!-- Intro Hero -->
         <section class="hero">
-            <div class="subpage-nav-capsules">
+            <div class="subpage-nav-capsules" style="flex-wrap: wrap;">
                 <a href="#abhushan" class="nav-capsule">Abhushan</a>
                 <a href="#detailing-cars" class="nav-capsule">Detailing Cars</a>
                 <a href="#kxm" class="nav-capsule">KXM</a>
+                <a href="8bit-creatives.html" class="nav-capsule" style="border-color: #FF5931; color: #FF5931;">8Bit Creatives ↗</a>
             </div>
 
             <h1>Web Projects — <span class="gradient-text">Case Studies</span></h1>
@@ -1677,8 +1678,9 @@
 
         capsules.forEach(capsule => {
             capsule.addEventListener('click', (e) => {
-                e.preventDefault();
                 const targetId = capsule.getAttribute('href');
+                if (!targetId.startsWith('#')) return;
+                e.preventDefault();
                 showTab(targetId);
                 history.pushState(null, null, targetId);
             });
@@ -1686,6 +1688,10 @@
 
         function initTab() {
             let hash = window.location.hash;
+            if (hash === '#8bit-creatives') {
+                window.location.href = '8bit-creatives.html';
+                return;
+            }
             if (!hash || (hash !== '#abhushan' && hash !== '#detailing-cars' && hash !== '#kxm')) {
                 hash = '#abhushan';
             }
