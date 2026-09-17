@@ -38,6 +38,15 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital,wght@0,400;1,400&family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <!-- html2canvas — renders DOM to canvas -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"
+            integrity="sha384-ZZ1pncU3bQe8y31yfZdMFdSpttDoPmOZg2wguVK9almUodir1PghgT0eY7Mrty8H"
+            crossorigin="anonymous"></script>
+
+    <!-- jsPDF — generates the PDF -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"
+            integrity="sha384-JcnsjUPPylna1s1fvi1u12X5qjY5OL56iySh75FdtrwhO/SWXgMjoVqcKyIIWOLk"
+            crossorigin="anonymous"></script>
     <style>
         :root {
             --bg: #000000;
@@ -145,6 +154,10 @@
             background: var(--text);
             color: var(--bg-deep);
             border-color: var(--text);
+        }
+
+        @keyframes resumeSpin {
+            100% { transform: rotate(360deg); }
         }
 
         /* Header styling */
@@ -810,9 +823,13 @@
         <!-- Action Bar (Hidden when printed) -->
         <div class="action-bar">
             <a href="index" class="btn-action">← Back to Portfolio</a>
-            <button onclick="window.print()" class="btn-action btn-primary">
+            <button onclick="window.print()" class="btn-action" title="Open print dialog">
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-bottom:-1px"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
-                Print / Save PDF
+                Print
+            </button>
+            <button onclick="downloadResumePDF(this)" class="btn-action btn-primary" title="Download PDF with clickable links">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-bottom:-1px"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                Download PDF
             </button>
         </div>
 
@@ -1164,8 +1181,217 @@
         </div>
     </div>
 
-    <!-- Video Player Controls Script -->
+    <!-- Video Player Controls Script & PDF Generator -->
     <script>
+        /**
+         * Generates a PDF of the resume page with clickable links
+         * preserved as native PDF link annotations.
+         *
+         * Approach:
+         * 1. Capture bounding boxes of every <a href> on the page
+         * 2. Render the resume-container to a high-res canvas via html2canvas
+         * 3. Slice the canvas into A4-sized pages
+         * 4. For each page, add the image to a new jsPDF page
+         * 5. For each link, calculate its position on the correct page
+         *    and add a pdf.link() annotation at that position
+         * 6. Save the PDF as "Divyaraj-Resume.pdf"
+         */
+        async function downloadResumePDF(buttonElement) {
+            if (!window.html2canvas || !window.jspdf) {
+                alert('PDF libraries are still loading. Please try again in a moment.');
+                return;
+            }
+
+            // ─── Loading state on the button ───
+            const originalHTML = buttonElement ? buttonElement.innerHTML : '';
+            if (buttonElement) {
+                buttonElement.disabled = true;
+                buttonElement.innerHTML = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="margin-bottom:-1px; animation: resumeSpin 1s linear infinite; display: inline-block;"><circle cx="12" cy="12" r="10" stroke-dasharray="32" stroke-dashoffset="12"/></svg> Generating PDF...';
+            }
+
+            const hiddenElements = [];
+            let videoEl = null, photoEl = null;
+            let origVideoDisplay = '', origPhotoDisplay = '';
+
+            try {
+                // Ensure web fonts are completely loaded before capturing
+                if (document.fonts && document.fonts.ready) {
+                    await document.fonts.ready;
+                }
+
+                // ─── 1. Identify the resume container ───
+                const resumeEl = document.querySelector('.resume-container')
+                              || document.querySelector('main')
+                              || document.body;
+
+                // ─── 2. Capture all <a href> elements with their bounding boxes ───
+                const allLinks = Array.from(resumeEl.querySelectorAll('a[href]'))
+                    .filter(a => {
+                        if (a.closest('.action-bar') || a.classList.contains('back-btn') || a.classList.contains('btn-action')) {
+                            return false;
+                        }
+                        const href = a.getAttribute('href') || '';
+                        return href && !href.startsWith('#');
+                    })
+                    .map(a => {
+                        const rect = a.getBoundingClientRect();
+                        const containerRect = resumeEl.getBoundingClientRect();
+                        let targetUrl = a.href;
+                        const rawHref = a.getAttribute('href') || '';
+                        if (rawHref && !rawHref.startsWith('http://') && !rawHref.startsWith('https://') && !rawHref.startsWith('mailto:') && !rawHref.startsWith('tel:')) {
+                            const clean = rawHref.replace(/^\.\//, '').replace(/^\//, '');
+                            targetUrl = 'https://divyarajchauhan.in/' + (clean === 'index' ? '' : clean);
+                        } else if (targetUrl.startsWith('http://localhost') || targetUrl.startsWith('http://127.0.0.1') || targetUrl.startsWith('file:')) {
+                            const parsed = new URL(targetUrl);
+                            let p = parsed.pathname.replace(/^\//, '');
+                            if (p === 'index' || p === 'index.html') p = '';
+                            targetUrl = 'https://divyarajchauhan.in/' + p + parsed.search + parsed.hash;
+                        }
+                        return {
+                            href: targetUrl,
+                            x: rect.left - containerRect.left,
+                            y: rect.top - containerRect.top,
+                            width: rect.width,
+                            height: rect.height,
+                        };
+                    });
+
+                // ─── 3. Temporarily hide action bar / video controls / copyright ───
+                const hideSelectors = ['.action-bar', '.btn-action', '.video-controls', '.copyright-above', '.back-btn'];
+                hideSelectors.forEach(sel => {
+                    document.querySelectorAll(sel).forEach(el => {
+                        hiddenElements.push({ el, originalDisplay: el.style.display });
+                        el.style.display = 'none';
+                    });
+                });
+
+                // Swap video for photo so photo renders in PDF
+                videoEl = resumeEl.querySelector('.resume-video');
+                photoEl = resumeEl.querySelector('.resume-photo');
+                if (videoEl && photoEl) {
+                    origVideoDisplay = videoEl.style.display;
+                    origPhotoDisplay = photoEl.style.display;
+                    videoEl.style.display = 'none';
+                    photoEl.style.setProperty('display', 'block', 'important');
+                }
+
+                // ─── 4. Render the resume to a canvas at 2x resolution ───
+                const containerBg = window.getComputedStyle(resumeEl).backgroundColor || '#000000';
+                const canvas = await html2canvas(resumeEl, {
+                    scale: 2,
+                    useCORS: true,
+                    allowTaint: false,
+                    backgroundColor: containerBg,
+                    logging: false,
+                    windowWidth: resumeEl.scrollWidth,
+                    windowHeight: resumeEl.scrollHeight,
+                });
+
+                // ─── 5. Restore hidden elements immediately after rendering ───
+                hiddenElements.forEach(({ el, originalDisplay }) => {
+                    el.style.display = originalDisplay;
+                });
+                hiddenElements.length = 0;
+                if (videoEl && photoEl) {
+                    videoEl.style.display = origVideoDisplay;
+                    photoEl.style.display = origPhotoDisplay;
+                    videoEl = null;
+                    photoEl = null;
+                }
+
+                // ─── 6. Create the PDF — A4 portrait, 210mm × 297mm ───
+                const { jsPDF } = window.jspdf;
+                const pdf = new jsPDF({
+                    orientation: 'portrait',
+                    unit: 'mm',
+                    format: 'a4',
+                    compress: true,
+                });
+
+                const pageWidth = 210;   // A4 width in mm
+                const pageHeight = 297; // A4 height in mm
+                const margin = 10;       // 10mm margin
+                const printableWidth = pageWidth - (margin * 2);   // 190mm
+                const printableHeight = pageHeight - (margin * 2); // 277mm
+
+                const canvasAspectRatio = canvas.height / canvas.width;
+                const imgWidth = printableWidth;
+                const imgHeight = imgWidth * canvasAspectRatio;
+
+                const totalPages = Math.ceil(imgHeight / printableHeight);
+                const pxPerMm = canvas.width / imgWidth;
+
+                // ─── 7. Slice the canvas into pages and add each to the PDF ───
+                const pageCanvas = document.createElement('canvas');
+                pageCanvas.width = canvas.width;
+                pageCanvas.height = Math.floor(printableHeight * pxPerMm);
+                const ctx = pageCanvas.getContext('2d');
+
+                for (let page = 0; page < totalPages; page++) {
+                    const srcY = page * pageCanvas.height;
+                    const sliceHeight = Math.min(pageCanvas.height, canvas.height - srcY);
+
+                    ctx.fillStyle = containerBg;
+                    ctx.fillRect(0, 0, pageCanvas.width, pageCanvas.height);
+
+                    ctx.drawImage(
+                        canvas,
+                        0, srcY,
+                        canvas.width, sliceHeight,
+                        0, 0,
+                        canvas.width, sliceHeight
+                    );
+
+                    const imgData = pageCanvas.toDataURL('image/jpeg', 0.92);
+
+                    if (page > 0) pdf.addPage();
+
+                    pdf.addImage(imgData, 'JPEG', margin, margin, printableWidth, printableHeight);
+                }
+
+                // ─── 8. Add link annotations on top of the rasterized image ───
+                allLinks.forEach(link => {
+                    const linkXMm = link.x / pxPerMm;
+                    const linkYMm = link.y / pxPerMm;
+                    const linkWMm = link.width / pxPerMm;
+                    const linkHMm = link.height / pxPerMm;
+
+                    const pageForLink = Math.floor(linkYMm / printableHeight);
+                    const yOnPage = (linkYMm % printableHeight) + margin;
+                    const xOnPage = linkXMm + margin;
+
+                    if (pageForLink < 0 || pageForLink >= totalPages) return;
+
+                    pdf.setPage(pageForLink + 1);
+                    pdf.link(xOnPage, yOnPage, linkWMm, linkHMm, { url: link.href });
+                });
+
+                // ─── 9. Save the PDF ───
+                pdf.save('Divyaraj-Resume.pdf');
+
+            } catch (err) {
+                console.error('[downloadResumePDF] Error:', err);
+                alert('Sorry, there was an error generating the PDF. Please try the browser\'s Print dialog (Ctrl+P) and choose "Save as PDF" as the destination.');
+            } finally {
+                // Restore any remaining hidden elements if an error occurred
+                hiddenElements.forEach(({ el, originalDisplay }) => {
+                    el.style.display = originalDisplay;
+                });
+                if (videoEl && photoEl) {
+                    videoEl.style.display = origVideoDisplay;
+                    photoEl.style.display = origPhotoDisplay;
+                }
+                // ─── Restore the button ───
+                if (buttonElement) {
+                    buttonElement.disabled = false;
+                    buttonElement.innerHTML = originalHTML;
+                }
+            }
+        }
+
+        // Expose globally so the inline onclick can find it
+        window.downloadResumePDF = downloadResumePDF;
+
         document.addEventListener('DOMContentLoaded', () => {
             const video = document.getElementById('resumeVideo');
             const playPauseBtn = document.getElementById('playPauseBtn');
