@@ -38,15 +38,6 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital,wght@0,400;1,400&family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-    <!-- html2canvas — renders DOM to canvas -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"
-            integrity="sha384-ZZ1pncU3bQe8y31yfZdMFdSpttDoPmOZg2wguVK9almUodir1PghgT0eY7Mrty8H"
-            crossorigin="anonymous"></script>
-
-    <!-- jsPDF — generates the PDF -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"
-            integrity="sha384-JcnsjUPPylna1s1fvi1u12X5qjY5OL56iySh75FdtrwhO/SWXgMjoVqcKyIIWOLk"
-            crossorigin="anonymous"></script>
     <style>
         :root {
             --bg: #000000;
@@ -565,245 +556,45 @@
             .title-sub {
                 font-size: 0.95rem;
             }
-        }        /* Print stylesheet optimization — renders with PURPLE/INDIGO theme */
+        }
+
         @media print {
-            print-color-adjust: exact;
-            -webkit-print-color-adjust: exact;
+            print-color-adjust: exact !important;
+            -webkit-print-color-adjust: exact !important;
 
             @page {
                 size: A4;
                 margin: 10mm;
             }
 
-            /* ── Layout & structure ── */
-            body {
-                background: #f1f5f9 !important;
-                color: #0f172a !important;
-                padding: 0 !important;
-                margin: 0 !important;
-                font-size: 8.5pt !important;
-                line-height: 1.35 !important;
-                font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif !important;
-            }
-            .resume-container {
-                padding: 0 !important;
-                border-radius: 0 !important;
-                max-width: 100% !important;
-                background: #ffffff !important;
-                border: none !important;
-                box-shadow: none !important;
-            }
-            .action-bar, .btn-action, .video-controls, .copyright-above {
+            /* Hide UI elements that shouldn't appear in the PDF */
+            .action-bar, .btn-action, .video-controls, .copyright-above,
+            .back-btn, .print-btn, .download-pdf-btn {
                 display: none !important;
             }
 
-            /* ── Typography reset — override brutalist Instrument Serif/Inter ── */
-            *, *::before, *::after {
-                font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif !important;
-                font-style: normal !important;
-                border-radius: 0 !important;
-                box-shadow: none !important;
-                text-shadow: none !important;
-                backdrop-filter: none !important;
-                mix-blend-mode: normal !important;
+            /* Switch video to photo for PDF / print */
+            .resume-video {
+                display: none !important;
             }
-            h1, h2 {
-                font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif !important;
-                font-style: normal !important;
-                font-size: inherit !important;
-                font-weight: inherit !important;
-                letter-spacing: inherit !important;
-                line-height: inherit !important;
-            }
-
-            /* ── Header ── */
-            header {
-                display: flex !important;
-                flex-direction: row !important;
-                justify-content: space-between !important;
-                align-items: center !important;
-                gap: 20px !important;
-                border-bottom: 1.5px solid #e2e8f0 !important;
-                padding-bottom: 10px !important;
-                margin-bottom: 15px !important;
-            }
-            .header-main-info {
-                display: flex !important;
-                flex-direction: column !important;
-                align-items: flex-start !important;
-                text-align: left !important;
-                gap: 6px !important;
-            }
-            .header-left { text-align: left !important; }
-            .header-left h1 {
-                font-size: 1.8rem !important;
-                font-weight: 900 !important;
-                color: #1e293b !important;
-                letter-spacing: -0.04em !important;
-                line-height: 1.1 !important;
-                margin-bottom: 2px !important;
-                font-style: normal !important;
-            }
-            .header-left .title-sub {
-                font-size: 0.95rem !important;
-                font-weight: 600 !important;
-                color: #4f46e5 !important;
-            }
-            .header-right {
-                text-align: left !important;
-                align-items: flex-start !important;
-                gap: 3px !important;
-                font-size: 0.78rem !important;
-                color: #64748b !important;
-            }
-            .header-right a { color: #64748b !important; }
-
-            /* ── Media thumbnail ── */
-            .header-media {
-                width: 100px !important;
-                height: 100px !important;
-                display: block !important;
-                border-radius: 6px !important;
-                border: 1px solid #e2e8f0 !important;
-                flex-shrink: 0 !important;
-            }
-            .resume-video { display: none !important; }
             .resume-photo {
                 display: block !important;
-                width: 100% !important;
-                height: 100% !important;
-                object-fit: cover !important;
             }
 
-            /* ── Grid ── */
-            .resume-grid {
-                display: grid !important;
-                grid-template-columns: 1fr 2.1fr !important;
-                gap: 24px !important;
-            }
-            .sidebar-col {
-                display: flex !important;
-                flex-direction: column !important;
-                gap: 16px !important;
-            }
-            .main-col {
-                display: flex !important;
-                flex-direction: column !important;
-                gap: 20px !important;
-            }
-            .main-col > .section-block:last-child { margin-top: 0 !important; }
-
-            /* ── Section headings ── */
-            .section-block { margin-bottom: 0 !important; }
-            .section-block h3 {
-                font-size: 0.72rem !important;
-                font-weight: 700 !important;
-                letter-spacing: 0.12em !important;
-                color: #4f46e5 !important;
-                margin-bottom: 8px !important;
-                padding-bottom: 3px !important;
-                border-bottom: 1px solid #e2e8f0 !important;
+            /* Ensure the resume container fills the page */
+            .resume-container {
+                max-width: 100% !important;
+                padding: 0 !important;
+                margin: 0 !important;
+                border: none !important;
+                box-shadow: none !important;
+                border-radius: 0 !important;
             }
 
-            /* ── Experience ── */
-            .exp-item {
+            /* Prevent page-breaks inside experience items, education items, skills groups, highlight cards */
+            .exp-item, .edu-item, .skills-group, .highlight-card, .contact-list {
                 page-break-inside: avoid !important;
                 break-inside: avoid !important;
-                margin-bottom: 10px !important;
-            }
-            .exp-title {
-                font-size: 1.05rem !important;
-                font-weight: 700 !important;
-                color: #1e293b !important;
-            }
-            .exp-company {
-                font-size: 0.9rem !important;
-                font-weight: 600 !important;
-                color: #4f46e5 !important;
-                margin: 1px 0 4px !important;
-            }
-            .exp-date {
-                font-size: 0.8rem !important;
-                font-weight: 700 !important;
-                color: #475569 !important;
-                background: #f8fafc !important;
-                padding: 3px 10px !important;
-                border: 1px solid #e2e8f0 !important;
-            }
-            .exp-desc {
-                font-size: 8pt !important;
-                color: #64748b !important;
-                line-height: 1.3 !important;
-                margin-bottom: 4px !important;
-            }
-            .exp-bullets li {
-                font-size: 7.8pt !important;
-                color: #64748b !important;
-                line-height: 1.3 !important;
-                margin-bottom: 2px !important;
-            }
-            .exp-bullets li::before { color: #4f46e5 !important; }
-
-            /* ── Education ── */
-            .edu-item {
-                page-break-inside: avoid !important;
-                break-inside: avoid !important;
-                margin-bottom: 10px !important;
-            }
-            .edu-degree { color: #0f172a !important; font-weight: 700 !important; }
-            .edu-school { color: #475569 !important; font-weight: 500 !important; }
-            .edu-date { color: #4f46e5 !important; font-weight: 600 !important; }
-            .edu-desc { color: #64748b !important; line-height: 1.5 !important; }
-
-            /* ── Contact list ── */
-            .contact-list {
-                page-break-inside: avoid !important;
-                break-inside: avoid !important;
-            }
-            .contact-list span.label { color: #64748b !important; }
-            .contact-list a, .contact-list span.value {
-                color: #0f172a !important;
-                font-weight: 500 !important;
-            }
-
-            /* ── Skills ── */
-            .skills-group {
-                page-break-inside: avoid !important;
-                break-inside: avoid !important;
-                margin-bottom: 8px !important;
-            }
-            .skills-group h4 { color: #475569 !important; }
-            .skill-tag {
-                background: #f8fafc !important;
-                color: #475569 !important;
-                border: 1px solid #e2e8f0 !important;
-                padding: 1.5px 5px !important;
-                font-size: 0.62rem !important;
-                font-weight: 600 !important;
-            }
-
-            /* ── Highlight cards ── */
-            .highlight-card {
-                background: #f8fafc !important;
-                border: 1px solid #e2e8f0 !important;
-                padding: 16px !important;
-            }
-            .highlight-val {
-                font-size: 1.6rem !important;
-                font-weight: 800 !important;
-                color: #4f46e5 !important;
-            }
-            .highlight-lbl {
-                font-size: 0.72rem !important;
-                font-weight: 700 !important;
-                color: #475569 !important;
-                letter-spacing: 0.05em !important;
-            }
-
-            /* ── Links ── */
-            a {
-                text-decoration: none !important;
-                color: #4f46e5 !important;
             }
         }
     
@@ -827,10 +618,10 @@
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-bottom:-1px"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
                 Print
             </button>
-            <button onclick="downloadResumePDF(this)" class="btn-action btn-primary" title="Download PDF with clickable links">
+            <a href="/Divyaraj-Resume.pdf" download="Divyaraj-Resume.pdf" class="btn-action btn-primary" aria-label="Download PDF" title="Download PDF">
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-bottom:-1px"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
                 Download PDF
-            </button>
+            </a>
         </div>
 
         <!-- Header -->
@@ -897,7 +688,7 @@
                     <ul class="contact-list">
                         <li>
                             <span class="label">Portfolio Website</span>
-                            <a href="index">divyarajchauhan.in</a>
+                            <a href="https://divyarajchauhan.in/">divyarajchauhan.in</a>
                         </li>
                         <li>
                             <span class="label">LinkedIn Profile</span>
@@ -905,11 +696,11 @@
                         </li>
                         <li>
                             <span class="label">AI Cinema Lab</span>
-                            <a href="ai-cinema">divyarajchauhan.in/ai-cinema</a>
+                            <a href="https://divyarajchauhan.in/ai-cinema">divyarajchauhan.in/ai-cinema</a>
                         </li>
                         <li>
                             <span class="label">Website Showcase</span>
-                            <a href="websites#abhushan">divyarajchauhan.in/websites</a>
+                            <a href="https://divyarajchauhan.in/websites">divyarajchauhan.in/websites</a>
                         </li>
                     </ul>
                 </div>
@@ -1181,217 +972,8 @@
         </div>
     </div>
 
-    <!-- Video Player Controls Script & PDF Generator -->
+    <!-- Video Player Controls Script -->
     <script>
-        /**
-         * Generates a PDF of the resume page with clickable links
-         * preserved as native PDF link annotations.
-         *
-         * Approach:
-         * 1. Capture bounding boxes of every <a href> on the page
-         * 2. Render the resume-container to a high-res canvas via html2canvas
-         * 3. Slice the canvas into A4-sized pages
-         * 4. For each page, add the image to a new jsPDF page
-         * 5. For each link, calculate its position on the correct page
-         *    and add a pdf.link() annotation at that position
-         * 6. Save the PDF as "Divyaraj-Resume.pdf"
-         */
-        async function downloadResumePDF(buttonElement) {
-            if (!window.html2canvas || !window.jspdf) {
-                alert('PDF libraries are still loading. Please try again in a moment.');
-                return;
-            }
-
-            // ─── Loading state on the button ───
-            const originalHTML = buttonElement ? buttonElement.innerHTML : '';
-            if (buttonElement) {
-                buttonElement.disabled = true;
-                buttonElement.innerHTML = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="margin-bottom:-1px; animation: resumeSpin 1s linear infinite; display: inline-block;"><circle cx="12" cy="12" r="10" stroke-dasharray="32" stroke-dashoffset="12"/></svg> Generating PDF...';
-            }
-
-            const hiddenElements = [];
-            let videoEl = null, photoEl = null;
-            let origVideoDisplay = '', origPhotoDisplay = '';
-
-            try {
-                // Ensure web fonts are completely loaded before capturing
-                if (document.fonts && document.fonts.ready) {
-                    await document.fonts.ready;
-                }
-
-                // ─── 1. Identify the resume container ───
-                const resumeEl = document.querySelector('.resume-container')
-                              || document.querySelector('main')
-                              || document.body;
-
-                // ─── 2. Capture all <a href> elements with their bounding boxes ───
-                const allLinks = Array.from(resumeEl.querySelectorAll('a[href]'))
-                    .filter(a => {
-                        if (a.closest('.action-bar') || a.classList.contains('back-btn') || a.classList.contains('btn-action')) {
-                            return false;
-                        }
-                        const href = a.getAttribute('href') || '';
-                        return href && !href.startsWith('#');
-                    })
-                    .map(a => {
-                        const rect = a.getBoundingClientRect();
-                        const containerRect = resumeEl.getBoundingClientRect();
-                        let targetUrl = a.href;
-                        const rawHref = a.getAttribute('href') || '';
-                        if (rawHref && !rawHref.startsWith('http://') && !rawHref.startsWith('https://') && !rawHref.startsWith('mailto:') && !rawHref.startsWith('tel:')) {
-                            const clean = rawHref.replace(/^\.\//, '').replace(/^\//, '');
-                            targetUrl = 'https://divyarajchauhan.in/' + (clean === 'index' ? '' : clean);
-                        } else if (targetUrl.startsWith('http://localhost') || targetUrl.startsWith('http://127.0.0.1') || targetUrl.startsWith('file:')) {
-                            const parsed = new URL(targetUrl);
-                            let p = parsed.pathname.replace(/^\//, '');
-                            if (p === 'index' || p === 'index.html') p = '';
-                            targetUrl = 'https://divyarajchauhan.in/' + p + parsed.search + parsed.hash;
-                        }
-                        return {
-                            href: targetUrl,
-                            x: rect.left - containerRect.left,
-                            y: rect.top - containerRect.top,
-                            width: rect.width,
-                            height: rect.height,
-                        };
-                    });
-
-                // ─── 3. Temporarily hide action bar / video controls / copyright ───
-                const hideSelectors = ['.action-bar', '.btn-action', '.video-controls', '.copyright-above', '.back-btn'];
-                hideSelectors.forEach(sel => {
-                    document.querySelectorAll(sel).forEach(el => {
-                        hiddenElements.push({ el, originalDisplay: el.style.display });
-                        el.style.display = 'none';
-                    });
-                });
-
-                // Swap video for photo so photo renders in PDF
-                videoEl = resumeEl.querySelector('.resume-video');
-                photoEl = resumeEl.querySelector('.resume-photo');
-                if (videoEl && photoEl) {
-                    origVideoDisplay = videoEl.style.display;
-                    origPhotoDisplay = photoEl.style.display;
-                    videoEl.style.display = 'none';
-                    photoEl.style.setProperty('display', 'block', 'important');
-                }
-
-                // ─── 4. Render the resume to a canvas at 2x resolution ───
-                const containerBg = window.getComputedStyle(resumeEl).backgroundColor || '#000000';
-                const canvas = await html2canvas(resumeEl, {
-                    scale: 2,
-                    useCORS: true,
-                    allowTaint: false,
-                    backgroundColor: containerBg,
-                    logging: false,
-                    windowWidth: resumeEl.scrollWidth,
-                    windowHeight: resumeEl.scrollHeight,
-                });
-
-                // ─── 5. Restore hidden elements immediately after rendering ───
-                hiddenElements.forEach(({ el, originalDisplay }) => {
-                    el.style.display = originalDisplay;
-                });
-                hiddenElements.length = 0;
-                if (videoEl && photoEl) {
-                    videoEl.style.display = origVideoDisplay;
-                    photoEl.style.display = origPhotoDisplay;
-                    videoEl = null;
-                    photoEl = null;
-                }
-
-                // ─── 6. Create the PDF — A4 portrait, 210mm × 297mm ───
-                const { jsPDF } = window.jspdf;
-                const pdf = new jsPDF({
-                    orientation: 'portrait',
-                    unit: 'mm',
-                    format: 'a4',
-                    compress: true,
-                });
-
-                const pageWidth = 210;   // A4 width in mm
-                const pageHeight = 297; // A4 height in mm
-                const margin = 10;       // 10mm margin
-                const printableWidth = pageWidth - (margin * 2);   // 190mm
-                const printableHeight = pageHeight - (margin * 2); // 277mm
-
-                const canvasAspectRatio = canvas.height / canvas.width;
-                const imgWidth = printableWidth;
-                const imgHeight = imgWidth * canvasAspectRatio;
-
-                const totalPages = Math.ceil(imgHeight / printableHeight);
-                const pxPerMm = canvas.width / imgWidth;
-
-                // ─── 7. Slice the canvas into pages and add each to the PDF ───
-                const pageCanvas = document.createElement('canvas');
-                pageCanvas.width = canvas.width;
-                pageCanvas.height = Math.floor(printableHeight * pxPerMm);
-                const ctx = pageCanvas.getContext('2d');
-
-                for (let page = 0; page < totalPages; page++) {
-                    const srcY = page * pageCanvas.height;
-                    const sliceHeight = Math.min(pageCanvas.height, canvas.height - srcY);
-
-                    ctx.fillStyle = containerBg;
-                    ctx.fillRect(0, 0, pageCanvas.width, pageCanvas.height);
-
-                    ctx.drawImage(
-                        canvas,
-                        0, srcY,
-                        canvas.width, sliceHeight,
-                        0, 0,
-                        canvas.width, sliceHeight
-                    );
-
-                    const imgData = pageCanvas.toDataURL('image/jpeg', 0.92);
-
-                    if (page > 0) pdf.addPage();
-
-                    pdf.addImage(imgData, 'JPEG', margin, margin, printableWidth, printableHeight);
-                }
-
-                // ─── 8. Add link annotations on top of the rasterized image ───
-                allLinks.forEach(link => {
-                    const linkXMm = link.x / pxPerMm;
-                    const linkYMm = link.y / pxPerMm;
-                    const linkWMm = link.width / pxPerMm;
-                    const linkHMm = link.height / pxPerMm;
-
-                    const pageForLink = Math.floor(linkYMm / printableHeight);
-                    const yOnPage = (linkYMm % printableHeight) + margin;
-                    const xOnPage = linkXMm + margin;
-
-                    if (pageForLink < 0 || pageForLink >= totalPages) return;
-
-                    pdf.setPage(pageForLink + 1);
-                    pdf.link(xOnPage, yOnPage, linkWMm, linkHMm, { url: link.href });
-                });
-
-                // ─── 9. Save the PDF ───
-                pdf.save('Divyaraj-Resume.pdf');
-
-            } catch (err) {
-                console.error('[downloadResumePDF] Error:', err);
-                alert('Sorry, there was an error generating the PDF. Please try the browser\'s Print dialog (Ctrl+P) and choose "Save as PDF" as the destination.');
-            } finally {
-                // Restore any remaining hidden elements if an error occurred
-                hiddenElements.forEach(({ el, originalDisplay }) => {
-                    el.style.display = originalDisplay;
-                });
-                if (videoEl && photoEl) {
-                    videoEl.style.display = origVideoDisplay;
-                    photoEl.style.display = origPhotoDisplay;
-                }
-                // ─── Restore the button ───
-                if (buttonElement) {
-                    buttonElement.disabled = false;
-                    buttonElement.innerHTML = originalHTML;
-                }
-            }
-        }
-
-        // Expose globally so the inline onclick can find it
-        window.downloadResumePDF = downloadResumePDF;
-
         document.addEventListener('DOMContentLoaded', () => {
             const video = document.getElementById('resumeVideo');
             const playPauseBtn = document.getElementById('playPauseBtn');
