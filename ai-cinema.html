@@ -1203,6 +1203,32 @@
         </div>
         
         <div class="films-container">
+            <!-- Featured Film: BGMI Lite — Trailer Remake -->
+            <div class="film-row reveal featured-film" id="bgmi-lite">
+                <div class="film-row-visual">
+                    <img src="images/bgmi-lite-thumb.jpg" alt="BGMI Lite Trailer Remake Thumbnail">
+                    <button class="play-btn-large watch-btn" data-video="Final Video/BGMI LITE HINDI.mp4" aria-label="Play Film">
+                        <svg viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M8 5v14l11-7z"/>
+                        </svg>
+                    </button>
+                    <div style="position: absolute; top: 16px; left: 16px; background: rgba(0,0,0,0.75); border: 1px solid rgba(255,255,255,0.15); padding: 4px 10px; font-family: var(--font-sans); font-weight: 500; font-size: 0.62rem; letter-spacing: 0.02em; color: var(--text-muted);">Cinematic Trailer &middot; Hinglish VO</div>
+                </div>
+                <div class="film-row-content">
+                    <div style="display: flex; gap: 10px; align-items: center; flex-wrap: wrap;">
+                        <span class="film-meta">Gaming &bull; AI Cinema</span>
+                    </div>
+                    <h2>BGMI Lite &mdash; Trailer Remake</h2>
+                    <p class="film-brief">
+                        A cinematic fan recreation of the official BGMI Lite trailer &mdash; reimagined as a Hindi concept video. A four-person squad gears up inside a vibrating C-130, battles extreme wind at the open loading ramp, and dives into high-speed freefall above the classic Varenga map.
+                    </p>
+                    <div class="film-actions">
+                        <button class="btn-primary-gold watch-btn" data-video="Final Video/BGMI LITE HINDI.mp4">Watch Film</button>
+                        <button class="btn-outline case-study-btn" data-case="bgmi-lite">Summary &rarr;</button>
+                    </div>
+                </div>
+            </div>
+
             <!-- Featured Film: Lotus Eletre -->
             <div class="film-row reveal featured-film" id="lotus-eletre">
                 <div class="film-row-visual">
@@ -1856,6 +1882,37 @@
 
         // Case Studies Data
         const caseStudies = {
+            'bgmi-lite': {
+                title: "BGMI Lite Announcement — Official Trailer Remake",
+                badge: "Gaming Cinema • Trailer Remake",
+                customContent: `
+                    <div class="drawer-section">
+                        <p style="font-family: 'Instrument Serif', Georgia, serif; font-style: italic; font-size: 1.25rem; line-height: 1.5; color: #FFFFFF; margin: 0 0 8px 0;">A cinematic, fan-made recreation of the official BGMI Lite trailer, reimagined as a custom Hindi concept video.</p>
+                    </div>
+                    <div class="drawer-section">
+                        <h3>Project Overview</h3>
+                        <p>This project is a cinematic, fan-made recreation of the official BGMI Lite trailer, reimagined as a custom Hindi concept video. The visual narrative follows a four-person squad inside a dark, vibrating C-130 aircraft as they gear up, battle extreme wind at the open rear loading ramp, and dive into a high-speed freefall. Guided by a gritty, nostalgic Hindi voiceover, the video's core message centers on welcoming players back to the classic Varenga map, reviving the original stadium fights, and showcasing seamless account and outfit transfers from the old PUBG Lite. The visual aesthetic strictly mimics a raw 35mm film look with heavy contrast, optical vignetting, and intense, shaky handheld camera action to convey the physical struggle of the high-altitude drop.</p>
+                        <p>The entire production was built from the ground up utilizing exclusively free AI models and standard post-production software, demonstrating how to achieve a zero-budget, high-end studio result. The workflow was structured across three primary phases:</p>
+                    </div>
+                    <div class="drawer-section">
+                        <h3>Production Workflow</h3>
+                        <div class="chapters-container">
+                            <div class="chapter-card">
+                                <div class="chapter-title">Phase 1 &mdash; Pre-Production &amp; Scripting (Google Gemini)</div>
+                                <div class="chapter-desc">Served as the core creative engine to break down the original trailer's anatomy shot-by-shot. It was used to engineer precise, highly detailed cinematic prompts maintaining strict character continuity, lighting, and camera movement. It also crafted the specific Hinglish voiceover script tailored with exact timeframes and pauses for optimal AI voice generation.</div>
+                            </div>
+                            <div class="chapter-card">
+                                <div class="chapter-title">Phase 2 &mdash; Asset &amp; Motion Generation (Google Flow)</div>
+                                <div class="chapter-desc">Utilized entirely free models within the platform to generate the ultra-realistic base images (start frames) and process them into the final video sequences. This handled the complex generation of motion dynamics, such as asynchronous character walking, extreme wind resistance, and the physics of terminal velocity during the freefall shots.</div>
+                            </div>
+                            <div class="chapter-card">
+                                <div class="chapter-title">Phase 3 &mdash; Post-Production &amp; Assembly (Adobe Premiere Pro)</div>
+                                <div class="chapter-desc">Used for the final editing and timeline assembly. The raw AI video clips were stitched together and layered with a meticulously crafted sound design &mdash; featuring the roar of aircraft engines, heavy boots on steel grating, deafening wind, and the isolated Hindi voiceover &mdash; to establish the final cinematic pacing and impact.</div>
+                            </div>
+                        </div>
+                    </div>
+                `
+            },
             'lotus-eletre': {
                 title: "Lotus Eletre: POV Cockpit & Hyper-SUV Dynamics",
                 badge: "Automotive Cinema • High-Performance EV",
@@ -2174,7 +2231,11 @@
             document.getElementById('drawerTitle').textContent = data.title;
 
             // Generate content HTML
-            let contentHTML = `
+            let contentHTML = '';
+            if (data.customContent) {
+                contentHTML = data.customContent;
+            } else {
+                contentHTML = `
                 <div class="drawer-section">
                     <h3>The Brief</h3>
                     <p>${data.brief}</p>
@@ -2189,33 +2250,33 @@
                 </div>
             `;
 
-            if (data.chapters) {
-                contentHTML += `
+                if (data.chapters) {
+                    contentHTML += `
                     <div class="drawer-section">
                         <h3>Shot Breakdown</h3>
                         <div class="chapters-container">
-                `;
-                data.chapters.forEach(ch => {
-                    contentHTML += `
+                    `;
+                    data.chapters.forEach(ch => {
+                        contentHTML += `
                         <div class="chapter-card">
                             <div class="chapter-title">${ch.title}</div>
                             <div class="chapter-desc">${ch.desc}</div>
                         </div>
-                    `;
-                });
-                contentHTML += `
+                        `;
+                    });
+                    contentHTML += `
                         </div>
                     </div>
-                `;
-            }
+                    `;
+                }
 
-
-            contentHTML += `
+                contentHTML += `
                 <div class="drawer-section">
                     <h3>Key Outcome</h3>
                     <p>${data.outcome}</p>
                 </div>
-            `;
+                `;
+            }
 
             document.getElementById('drawerContent').innerHTML = contentHTML;
             
