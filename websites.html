@@ -241,6 +241,10 @@
             gap: 80px;
         }
 
+        .showcase-container:not(:has(.case-study-card.active)) {
+            display: none;
+        }
+
         /* Case Study Card Structure */
         .case-study-card {
             display: none; /* Hide by default, toggle with JS */
@@ -1005,8 +1009,8 @@
             <div class="subpage-nav-capsules" style="flex-wrap: wrap;">
                 <a href="8bit-creatives.html" class="nav-capsule">8Bit Creatives</a>
                 <a href="#abhushan" class="nav-capsule">Abhushan</a>
-                <a href="#detailing-cars" class="nav-capsule">Detailing Cars</a>
                 <a href="#kxm" class="nav-capsule">KXM</a>
+                <a href="#detailing-cars" class="nav-capsule">Detailing Cars</a>
             </div>
 
             <h1>Web Projects — <span class="gradient-text">Case Studies</span></h1>
@@ -1655,13 +1659,16 @@
     <script>
         const capsules = document.querySelectorAll('.nav-capsule');
         const sections = document.querySelectorAll('.case-study-card');
+        const showcaseContainer = document.querySelector('.showcase-container');
 
-        function showTab(targetId) {
-            const cleanId = targetId.replace('#', '');
-            
+        function showTab(targetId, shouldScroll = false) {
+            const cleanId = (targetId && targetId.startsWith('#')) ? targetId.replace('#', '') : '';
+            let hasActive = false;
+
             sections.forEach(section => {
-                if (section.id === cleanId) {
+                if (cleanId && section.id === cleanId) {
                     section.classList.add('active');
+                    hasActive = true;
                 } else {
                     section.classList.remove('active');
                 }
@@ -1669,15 +1676,20 @@
 
             capsules.forEach(capsule => {
                 const href = capsule.getAttribute('href');
-                if (href === targetId) {
+                if (cleanId && href === targetId) {
                     capsule.classList.add('active');
                 } else {
                     capsule.classList.remove('active');
                 }
             });
-            
-            // Scroll back to top smoothly so switching is clean
-            window.scrollTo({ top: 0, behavior: 'smooth' });
+
+            if (showcaseContainer) {
+                showcaseContainer.style.display = hasActive ? 'flex' : 'none';
+            }
+
+            if (shouldScroll && hasActive) {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
         }
 
         capsules.forEach(capsule => {
@@ -1685,8 +1697,15 @@
                 const targetId = capsule.getAttribute('href');
                 if (!targetId.startsWith('#')) return;
                 e.preventDefault();
-                showTab(targetId);
-                history.pushState(null, null, targetId);
+
+                if (capsule.classList.contains('active')) {
+                    // Clicking active tab closes it to return to overview state
+                    showTab('', false);
+                    history.pushState(null, null, window.location.pathname);
+                } else {
+                    showTab(targetId, true);
+                    history.pushState(null, null, targetId);
+                }
             });
         });
 
@@ -1696,10 +1715,11 @@
                 window.location.href = '8bit-creatives.html';
                 return;
             }
-            if (!hash || (hash !== '#abhushan' && hash !== '#detailing-cars' && hash !== '#kxm')) {
-                hash = '#abhushan';
+            if (hash === '#abhushan' || hash === '#detailing-cars' || hash === '#kxm') {
+                showTab(hash, false);
+            } else {
+                showTab('', false);
             }
-            showTab(hash);
         }
 
         window.addEventListener('load', initTab);
