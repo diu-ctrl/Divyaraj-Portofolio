@@ -1161,13 +1161,19 @@
         .service-lane ul li {
             font-family: var(--font-sans) !important;
             font-size: 15px !important;
-            color: #E4E4E7 !important;
+            color: #FFFFFF !important;
             line-height: 1.6 !important;
             position: relative;
-            padding-left: 16px;
+            padding-left: 0 !important;
+            cursor: default;
             opacity: 0;
             transform: translateX(-15px);
-            transition: opacity 0.6s ease, transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+            transition: color 0.3s ease, opacity 0.6s ease, transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .service-lane ul li:hover {
+            color: #EB4604 !important;
+            transition-delay: 0s !important;
         }
 
         .services-grid-four-lanes.active .service-lane ul li {
@@ -1175,17 +1181,15 @@
             transform: translateX(0);
         }
 
-        .services-grid-four-lanes.active .service-lane ul li:nth-child(1) { transition-delay: 0s; }
-        .services-grid-four-lanes.active .service-lane ul li:nth-child(2) { transition-delay: 0.12s; }
-        .services-grid-four-lanes.active .service-lane ul li:nth-child(3) { transition-delay: 0.24s; }
-        .services-grid-four-lanes.active .service-lane ul li:nth-child(4) { transition-delay: 0.36s; }
-        .services-grid-four-lanes.active .service-lane ul li:nth-child(5) { transition-delay: 0.48s; }
+        .services-grid-four-lanes.active .service-lane ul li:nth-child(1) { transition-delay: 0s, 0s, 0s; }
+        .services-grid-four-lanes.active .service-lane ul li:nth-child(2) { transition-delay: 0s, 0.12s, 0.12s; }
+        .services-grid-four-lanes.active .service-lane ul li:nth-child(3) { transition-delay: 0s, 0.24s, 0.24s; }
+        .services-grid-four-lanes.active .service-lane ul li:nth-child(4) { transition-delay: 0s, 0.36s, 0.36s; }
+        .services-grid-four-lanes.active .service-lane ul li:nth-child(5) { transition-delay: 0s, 0.48s, 0.48s; }
 
         .service-lane ul li::before {
-            content: "—";
-            position: absolute;
-            left: 0;
-            color: var(--accent);
+            display: none !important;
+            content: none !important;
         }
 
         @media (max-width: 960px) {
