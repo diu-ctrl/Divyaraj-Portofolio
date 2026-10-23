@@ -2937,3 +2937,21 @@
         pointer-events: auto !important;
     }
 }
+
+
+/* ─── utility replacements (Tailwind CDN removal, audit G3) ─── */
+#testimonials-3d-demo {
+    display: flex;
+    min-height: 100vh;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    background: var(--bg);
+    padding: 80px 0;
+}
+#testimonials-3d-root {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
