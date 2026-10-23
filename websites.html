@@ -412,6 +412,79 @@
             border-radius: 4px;
         }
 
+        
+        /* The Sky Box Sport-Green Accent */
+        #skybox .detail-block h3::before {
+            background: #0BA678;
+        }
+        #skybox .scope-list li::before {
+            color: #0BA678;
+        }
+        #skybox .project-mockup:hover {
+            border-color: #0BA678;
+        }
+        #skybox .hotspot-dot {
+            background: #0BA678;
+            color: #ffffff;
+            animation: pulse-gold 2s infinite;
+        }
+        #skybox .results-block {
+            border-left-color: #0BA678;
+        }
+        .turf-phone-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 28px;
+            margin-top: 20px;
+        }
+        .turf-phone-item {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        .turf-phone-caption {
+            font-size: 0.88rem;
+            font-weight: 700;
+            color: #ffffff;
+            line-height: 1.3;
+        }
+        .turf-phone-sub {
+            font-size: 0.78rem;
+            color: var(--text-muted);
+            line-height: 1.4;
+        }
+        .booking-flow-steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 16px;
+            margin-top: 14px;
+        }
+        .flow-step {
+            background: #000000;
+            border: 1px solid #282723;
+            padding: 18px;
+            display: flex;
+            gap: 14px;
+        }
+        .flow-step-num {
+            font-family: var(--font-sans);
+            font-size: 1.25rem;
+            font-weight: 800;
+            color: #0BA678;
+            line-height: 1;
+        }
+        .flow-step h4 {
+            font-size: 0.95rem;
+            font-weight: 700;
+            color: #FFFFFF;
+            margin-bottom: 6px;
+        }
+        .flow-step p {
+            font-size: 0.82rem;
+            line-height: 1.5;
+            color: var(--text-muted);
+        }
+
         #chemops .detail-block h3::before {
             background: #EB4604;
         }
@@ -1031,6 +1104,7 @@
             <div class="subpage-nav-capsules" style="flex-wrap: wrap;">
                 <a href="8bit-creatives.html" class="nav-capsule">8Bit Creatives</a>
                 <a href="#chemops" class="nav-capsule">ChemOps ERP</a>
+                <a href="#skybox" class="nav-capsule">The Sky Box</a>
                 <a href="#abhushan" class="nav-capsule">Abhushan</a>
                 <a href="#kxm" class="nav-capsule">KXM</a>
                 <a href="#detailing-cars" class="nav-capsule">Detailing Cars</a>
@@ -1320,6 +1394,376 @@
                     <p>
                         "8 Department Seats Deployed · 0 Data Inconsistencies · 420 Automated Tests Passing · &lt;1.2s Realtime State Sync. ChemOps ERP replaced fragmented spreadsheet workflows with an auditable, high-throughput manufacturing operating system. The platform guarantees strict multi-tier approval enforcement, real-time inventory lot reconciliation, and instant GST-compliant document dispatch across all production and commercial departments."
                     </p>
+                </div>
+            </section>
+
+            <!-- Website: The Sky Box -->
+            <section id="skybox" class="case-study-card">
+                <!-- Case Study Hero Block -->
+                <div class="case-study-hero">
+                    <div class="case-study-badge" style="border-color: #0BA678; color: #0BA678;">Case Study • Booking Platform</div>
+                    <h2 class="case-study-title">The Sky Box</h2>
+                    <p class="case-study-tagline">"The Sky Box turns an arena's QR sticker into a full booking app. Players see live slots and pay by UPI in under a minute — no app store, no sign-up — while the venue runs its entire day from one live console: orders arriving in real time, payments verified, and cancellations reopening slots instantly."</p>
+                    
+                    <div class="meta-row">
+                        <div class="meta-item">
+                            <span class="meta-label">Role</span>
+                            <span class="meta-value">Product design, full-stack development, QA &amp; launch — end to end</span>
+                        </div>
+                        <div class="meta-item">
+                            <span class="meta-label">Timeline</span>
+                            <span class="meta-value">Oct 2026 — ~2 weeks to live production, 35 release iterations</span>
+                        </div>
+                        <div class="meta-item">
+                            <span class="meta-label">Status</span>
+                            <span class="meta-value">Live</span>
+                        </div>
+                        <div class="meta-item">
+                            <span class="meta-label">Platform</span>
+                            <span class="meta-value">Next.js on Vercel · installable PWA · PostgreSQL (Supabase)</span>
+                        </div>
+                    </div>
+                    
+                    <div class="hero-ctas">
+                        <a href="https://theskybox.vercel.app" target="_blank" rel="noopener" class="btn-primary-gold" style="background: #0BA678; border-color: #0BA678; color: #000000;">Visit Live Site ↗</a>
+                    </div>
+                </div>
+
+                <!-- Details Grid: Challenge & Scope -->
+                <div class="case-details-grid">
+                    <div class="detail-block challenge-block">
+                        <h3>The Challenge</h3>
+                        <p>
+                            Turf slot bookings in India run on phone calls and WhatsApp. Players spam the venue with "bhai, aaj raat nu slot che?" messages, the owner answers the same question fifty times a day, and every booking lives in a chat log nobody can audit. The failure modes are constant and expensive: two groups show up for the same 7 PM slot because both were promised it verbally, players screenshot a UPI payment and claim "I've paid" for a booking that was never confirmed, and the owner has no single view of what is actually free tonight. Players have zero visibility into availability, so they either call repeatedly or simply book somewhere else.
+                        </p>
+                        <p style="margin-top: 14px;">
+                            The deeper problem was trust, not calendars. A shared spreadsheet or a form cannot tell the venue whether money actually arrived, and it cannot stop two people from holding the same slot at the same moment. So the product needed real payment verification — server-side confirmation against the payment gateway, an ownership check for counter payments, and a slot engine where the database itself makes double-booking structurally impossible, not just unlikely. Every status a player or manager sees has to be derived from server truth, never from optimistic client guesses.
+                        </p>
+                        <p style="margin-top: 14px;">
+                            The constraints shaped the architecture. Players organize games on WhatsApp and decide in seconds — they will not install an app or create an account just to book a box-cricket slot, so the whole flow had to live behind a QR scan in the browser with nothing more than a name and a phone number. The venue staff are not computer people either, so the management side had to work on a single phone kept behind the counter, protected by a short PIN, and readable at a glance from across the room. That ruled out dashboards-for-desktop-people and produced a phone-first app pair: a player booking app and a manager console, sharing one database.
+                        </p>
+                    </div>
+                    <div class="detail-block scope-block">
+                        <h3>My Role &amp; Scope</h3>
+                        <ul class="scope-list">
+                            <li>Designed the full product end to end: design system (phone-width app canvas, frosted bars, bottom sheets, tier-coloured slot grid), every screen in both apps, and all microcopy.</li>
+                            <li>Built the customer app: home with an auto-playing photo carousel, equal-width date chips, a colour-coded slot grid with peak/off-peak tiers and a sticky booking bar; plus My Bookings and Venue &amp; Rules screens.</li>
+                            <li>Built the booking engine: a slot state machine (open / held / booked / blocked / past) with 10-minute holds, transactional booking creation inside a single database transaction, and human-readable conflict errors instead of raw codes.</li>
+                            <li>Integrated UPI payments through Cashfree with server-side order verification, webhook handling and polling — the app never trusts a client-side "I've paid" claim.</li>
+                            <li>Built the second payment path — Pay at the counter — with an email-OTP ownership check and a manager "Verify &amp; Confirm" step backed by UTR reference matching.</li>
+                            <li>Built the manager console: PIN-gated login, a live day schedule that refreshes itself, payment-verification and slot-confirmation queues, bulk approve, walk-in bookings, maintenance blocking, refund requests, and a monthly calendar with revenue/occupancy analytics.</li>
+                            <li>Implemented notifications end to end: transactional email (OTP, confirmations) and a PDF Booking Pass players can download and share, plus web push with a new-order chime for the venue.</li>
+                            <li>Shipped it as an installable PWA: service worker, dynamic manifest, add-to-home-screen, and an offline-tolerant loading strategy with rescue UI that only appears on genuine slowness.</li>
+                            <li>Handled the edge cases that break booking apps in the field: past-slot rejection on the server, double-hold protection, idempotent manager actions (double-tapping Approve is harmless), rate-limited OTP, and automatic release of abandoned unpaid slots.</li>
+                            <li>Owned quality and deployment: an automated Vitest regression suite grown past 180 checks, a locked-down auth sweep of every API route, scripted live probes against production after each deploy, and a permanent canary booking that must stay untouched.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Key Features Table -->
+                <div class="features-table-wrapper">
+                    <h3>Key Features</h3>
+                    <table class="features-table">
+                        <thead>
+                            <tr>
+                                <th>Feature</th>
+                                <th>Description</th>
+                                <th>Technical Note</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="feat-name">No-Login Booking Flow</td>
+                                <td>Scan venue QR code to book instantly: name &amp; phone are the only required inputs.</td>
+                                <td class="tech-note">Repeat players retrieve bookings via phone lookup — no password fatigue</td>
+                            </tr>
+                            <tr>
+                                <td class="feat-name">Live Slot Availability Engine</td>
+                                <td>Slot states (open, held, booked, blocked, past) derived server-side on every load.</td>
+                                <td class="tech-note">10-minute hold state machine with single PostgreSQL transaction isolation</td>
+                            </tr>
+                            <tr>
+                                <td class="feat-name">UPI Payments via Cashfree</td>
+                                <td>Hosted UPI checkout with webhook parity and client polling fallback.</td>
+                                <td class="tech-note">Environment-toggle gateway switching; server-verified order reconciliation</td>
+                            </tr>
+                            <tr>
+                                <td class="feat-name">Pay-at-Counter with OTP</td>
+                                <td>Cash players verify ownership via email OTP; manager confirms receipt in 1 tap.</td>
+                                <td class="tech-note">UTR reference matching and dual-path transaction convergence</td>
+                            </tr>
+                            <tr>
+                                <td class="feat-name">Manager Workbench Console</td>
+                                <td>PIN-gated phone-first console with live day timeline and new-order audio chimes.</td>
+                                <td class="tech-note">Approve / decline / cancel actions, multi-hour walk-ins, maintenance blocking</td>
+                            </tr>
+                            <tr>
+                                <td class="feat-name">Refunds &amp; Integrity Queues</td>
+                                <td>Dedicated queues for payment verification, slot confirmations, and refund handling.</td>
+                                <td class="tech-note">Strictly idempotent operations — repeated taps produce no duplicate records</td>
+                            </tr>
+                            <tr>
+                                <td class="feat-name">Analytics &amp; Month Calendar</td>
+                                <td>Monday–Sunday view with pending alerts, revenue counters, and occupancy metrics.</td>
+                                <td class="tech-note">Aggregated monthly analytics and real-time visual occupancy charts</td>
+                            </tr>
+                            <tr>
+                                <td class="feat-name">Notifications &amp; PDF Pass</td>
+                                <td>Branded downloadable PDF passes, transactional emails, and venue web push.</td>
+                                <td class="tech-note">Dynamic PDF generation with embedded QR codes &amp; audio chimes</td>
+                            </tr>
+                            <tr>
+                                <td class="feat-name">Installable PWA</td>
+                                <td>Service worker, custom web app manifest, and native add-to-home-screen prompts.</td>
+                                <td class="tech-note">Offline-tolerant loading strategy with zero-spinner instant render architecture</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- Booking Flow Step Cards -->
+                <div class="features-table-wrapper" style="margin-top: 10px;">
+                    <h3>End-to-End Booking Flow</h3>
+                    <div class="booking-flow-steps">
+                        <div class="flow-step">
+                            <span class="flow-step-num">01</span>
+                            <div>
+                                <h4>Scan &amp; Land</h4>
+                                <p>The venue's QR poster opens the app straight on the Book tab — venue photos in an auto-playing carousel, venue branding, and equal-width date chips across the top.</p>
+                            </div>
+                        </div>
+                        <div class="flow-step">
+                            <span class="flow-step-num">02</span>
+                            <div>
+                                <h4>Pick Date &amp; Slot</h4>
+                                <p>The slot grid renders upcoming slots, colour-coded by availability and price tier — open, peak (amber), held, and booked. The sticky bottom bar updates the total live.</p>
+                            </div>
+                        </div>
+                        <div class="flow-step">
+                            <span class="flow-step-num">03</span>
+                            <div>
+                                <h4>Hold &amp; Details</h4>
+                                <p>Chosen slots are locked server-side for 10 minutes with a live countdown chip. The sheet collects name and phone, auto-applying eligible discounts before payment.</p>
+                            </div>
+                        </div>
+                        <div class="flow-step">
+                            <span class="flow-step-num">04</span>
+                            <div>
+                                <h4>Pay (UPI or Counter)</h4>
+                                <p>Pay by UPI triggers Cashfree hosted checkout; Pay at counter triggers an email OTP for fraud-free cash settlements. Abandoned holds auto-release.</p>
+                            </div>
+                        </div>
+                        <div class="flow-step">
+                            <span class="flow-step-num">05</span>
+                            <div>
+                                <h4>Confirm &amp; Pass</h4>
+                                <p>Server confirms payment, generating a unique booking code, downloadable PDF pass, calendar integration, and venue directions on a single clean receipt screen.</p>
+                            </div>
+                        </div>
+                        <div class="flow-step">
+                            <span class="flow-step-num">06</span>
+                            <div>
+                                <h4>Venue Live Console</h4>
+                                <p>The order arrives in the manager queue with audio chime and web push. Managers confirm or cancel with 1 tap, instantly syncing slots back to players.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Visual Showcase (8 Phone-Portrait Screens) -->
+                <div class="showcase-visual-wrapper">
+                    <h3>Visual Showcase</h3>
+                    <p class="showcase-hint">8-screen product tour across the player booking app and manager operations console.</p>
+                    
+                    <div class="turf-phone-grid">
+                        <!-- Screen 1: Home -->
+                        <div class="turf-phone-item">
+                            <div class="project-mockup">
+                                <div class="browser-bar">
+                                    <div class="browser-dots">
+                                        <span class="browser-dot red"></span>
+                                        <span class="browser-dot yellow"></span>
+                                        <span class="browser-dot green"></span>
+                                    </div>
+                                    <div class="browser-address">theskybox.vercel.app — Book</div>
+                                </div>
+                                <div class="web-img-wrap">
+                                    <img src="images/turf/turf-01.png" alt="The Sky Box — Home &amp; Discovery" loading="lazy">
+                                </div>
+                            </div>
+                            <div class="turf-phone-caption">01 / Home &amp; Discovery</div>
+                            <div class="turf-phone-sub">The venue's booking app, one QR scan away. Photo carousel, date chips, and per-hour slot rates.</div>
+                        </div>
+
+                        <!-- Screen 2: Slot Grid -->
+                        <div class="turf-phone-item">
+                            <div class="project-mockup">
+                                <div class="browser-bar">
+                                    <div class="browser-dots">
+                                        <span class="browser-dot red"></span>
+                                        <span class="browser-dot yellow"></span>
+                                        <span class="browser-dot green"></span>
+                                    </div>
+                                    <div class="browser-address">theskybox.vercel.app — Slots</div>
+                                </div>
+                                <div class="web-img-wrap">
+                                    <img src="images/turf/turf-02.png" alt="The Sky Box — Live Slot Grid" loading="lazy">
+                                </div>
+                            </div>
+                            <div class="turf-phone-caption">02 / Live Slot Availability</div>
+                            <div class="turf-phone-sub">Colour-coded slot grid: open slots with prices, peak-hour amber tiers, disabled booked slots, and sticky total.</div>
+                        </div>
+
+                        <!-- Screen 3: Checkout -->
+                        <div class="turf-phone-item">
+                            <div class="project-mockup">
+                                <div class="browser-bar">
+                                    <div class="browser-dots">
+                                        <span class="browser-dot red"></span>
+                                        <span class="browser-dot yellow"></span>
+                                        <span class="browser-dot green"></span>
+                                    </div>
+                                    <div class="browser-address">theskybox.vercel.app — Checkout</div>
+                                </div>
+                                <div class="web-img-wrap">
+                                    <img src="images/turf/turf-03.png" alt="The Sky Box — Checkout Sheet" loading="lazy">
+                                </div>
+                            </div>
+                            <div class="turf-phone-caption">03 / 10-Minute Hold &amp; Checkout</div>
+                            <div class="turf-phone-sub">Active hold countdown chip, player details, auto-applied promo tiers, and dual payment path selector.</div>
+                        </div>
+
+                        <!-- Screen 4: UPI Payment -->
+                        <div class="turf-phone-item">
+                            <div class="project-mockup">
+                                <div class="browser-bar">
+                                    <div class="browser-dots">
+                                        <span class="browser-dot red"></span>
+                                        <span class="browser-dot yellow"></span>
+                                        <span class="browser-dot green"></span>
+                                    </div>
+                                    <div class="browser-address">cashfree.com/checkout</div>
+                                </div>
+                                <div class="web-img-wrap">
+                                    <img src="images/turf/turf-04.png" alt="The Sky Box — UPI Payment" loading="lazy">
+                                </div>
+                            </div>
+                            <div class="turf-phone-caption">04 / Instant UPI Checkout</div>
+                            <div class="turf-phone-sub">Seamless Cashfree payment gateway integration supporting UPI intent apps, QR scan, and net banking.</div>
+                        </div>
+
+                        <!-- Screen 5: Booking Confirmed -->
+                        <div class="turf-phone-item">
+                            <div class="project-mockup">
+                                <div class="browser-bar">
+                                    <div class="browser-dots">
+                                        <span class="browser-dot red"></span>
+                                        <span class="browser-dot yellow"></span>
+                                        <span class="browser-dot green"></span>
+                                    </div>
+                                    <div class="browser-address">theskybox.vercel.app — Confirmed</div>
+                                </div>
+                                <div class="web-img-wrap">
+                                    <img src="images/turf/turf-05.png" alt="The Sky Box — Booking Confirmation" loading="lazy">
+                                </div>
+                            </div>
+                            <div class="turf-phone-caption">05 / Confirmed Pass &amp; Actions</div>
+                            <div class="turf-phone-sub">Unique booking code capsule, verified status chip, PDF Pass download, calendar sync, and GPS navigation.</div>
+                        </div>
+
+                        <!-- Screen 6: My Bookings -->
+                        <div class="turf-phone-item">
+                            <div class="project-mockup">
+                                <div class="browser-bar">
+                                    <div class="browser-dots">
+                                        <span class="browser-dot red"></span>
+                                        <span class="browser-dot yellow"></span>
+                                        <span class="browser-dot green"></span>
+                                    </div>
+                                    <div class="browser-address">theskybox.vercel.app — History</div>
+                                </div>
+                                <div class="web-img-wrap">
+                                    <img src="images/turf/turf-06.png" alt="The Sky Box — My Bookings History" loading="lazy">
+                                </div>
+                            </div>
+                            <div class="turf-phone-caption">06 / My Bookings Lookup</div>
+                            <div class="turf-phone-sub">Passwordless history retrieval by mobile number with honest state handling (Confirmed, Cancelled, Completed).</div>
+                        </div>
+
+                        <!-- Screen 7: Manager Console -->
+                        <div class="turf-phone-item">
+                            <div class="project-mockup">
+                                <div class="browser-bar">
+                                    <div class="browser-dots">
+                                        <span class="browser-dot red"></span>
+                                        <span class="browser-dot yellow"></span>
+                                        <span class="browser-dot green"></span>
+                                    </div>
+                                    <div class="browser-address">theskybox.vercel.app/admin — Day Console</div>
+                                </div>
+                                <div class="web-img-wrap">
+                                    <img src="images/turf/turf-07.png" alt="The Sky Box — Manager Console" loading="lazy">
+                                </div>
+                            </div>
+                            <div class="turf-phone-caption">07 / Manager Operations Console</div>
+                            <div class="turf-phone-sub">Live KPI cards (revenue, occupancy), day timeline schedule, and "Needs your action" order approval queue.</div>
+                        </div>
+
+                        <!-- Screen 8: Manager Analytics -->
+                        <div class="turf-phone-item">
+                            <div class="project-mockup">
+                                <div class="browser-bar">
+                                    <div class="browser-dots">
+                                        <span class="browser-dot red"></span>
+                                        <span class="browser-dot yellow"></span>
+                                        <span class="browser-dot green"></span>
+                                    </div>
+                                    <div class="browser-address">theskybox.vercel.app/admin — Analytics</div>
+                                </div>
+                                <div class="web-img-wrap">
+                                    <img src="images/turf/turf-08.png" alt="The Sky Box — Manager Queues &amp; Analytics" loading="lazy">
+                                </div>
+                            </div>
+                            <div class="turf-phone-caption">08 / Verification Queues &amp; Month View</div>
+                            <div class="turf-phone-sub">Payment verification with UTR matching, slot integrity validation, and monthly Monday–Sunday calendar analytics.</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tech Stack Badges Group -->
+                <div class="tech-tags-wrapper">
+                    <span class="tech-tag" style="border-color: #0BA678; color: #FFFFFF;">Next.js</span>
+                    <span class="tech-tag">React</span>
+                    <span class="tech-tag">TypeScript</span>
+                    <span class="tech-tag">Tailwind CSS</span>
+                    <span class="tech-tag">Prisma</span>
+                    <span class="tech-tag">PostgreSQL</span>
+                    <span class="tech-tag">Supabase</span>
+                    <span class="tech-tag">Vercel</span>
+                    <span class="tech-tag">Cashfree</span>
+                    <span class="tech-tag">Brevo</span>
+                    <span class="tech-tag">Web Push</span>
+                    <span class="tech-tag">PWA / Service Worker</span>
+                    <span class="tech-tag">PDF Generation</span>
+                    <span class="tech-tag">Vitest</span>
+                    <span class="tech-tag">Node.js</span>
+                </div>
+
+                <!-- Results Block -->
+                <div class="results-block" style="border-left-color: #0BA678;">
+                    <h3>Impact &amp; Architecture Results</h3>
+                    <p>
+                        "The Sky Box went from a blank page to a live, field-tested production platform in about two weeks of October 2026, then kept hardening through 35 numbered release iterations driven by real usage — including a real customer's first booking from a phone at the venue gate. The white-label architecture is the commercial point: one venue per deployment, brand assets, photos, pricing and rules as data, so onboarding the next turf is a configuration swap, not a rebuild. Warm API responses on the booking-critical endpoints measure in the 150–250 ms range, brand assets ship inside a strict size budget with immutable caching, and a version-polling channel lets the app update itself without losing a player's place."
+                    </p>
+                    <p style="margin-top: 14px;">
+                        "The engineering that matters most is invisible. Booking creation runs inside a single database transaction that re-validates the hold and the slots together, which makes double-booking a structural impossibility rather than a race the app hopes to win. Manager actions are idempotent — approve twice and the second press is a harmless no-op — and every payment path ends in a server-side verification against the gateway, so the venue never has to trust a screenshot. Quality was enforced the same way as the features: an automated regression suite past 180 checks, a security sweep proving every admin route rejects unauthenticated calls, and an independent probe script run against the live production app after every deploy, watching a permanent canary booking that must never change."
+                    </p>
+                </div>
+
+                <!-- CTA Footer Line -->
+                <div style="margin-top: 8px; padding-top: 24px; border-top: 1px solid #282723; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px;">
+                    <span style="font-family: var(--font-serif); font-size: 1.3rem; font-style: italic; color: #FFFFFF;">Need a booking platform for your turf, court or sports facility?</span>
+                    <a href="https://wa.me/qr/KQJFSZ2WY5FSO1" target="_blank" rel="noopener" class="btn-primary-gold" style="background: #0BA678; border-color: #0BA678; color: #000000; padding: 8px 20px; font-size: 0.82rem;">Let's Talk ↗</a>
                 </div>
             </section>
 
@@ -1963,7 +2407,8 @@
         const showcaseContainer = document.querySelector('.showcase-container');
 
         function showTab(targetId, shouldScroll = false) {
-            const cleanId = (targetId && targetId.startsWith('#')) ? targetId.replace('#', '') : '';
+            let cleanId = (targetId && targetId.startsWith('#')) ? targetId.replace('#', '') : '';
+            if (cleanId === 'turf') cleanId = 'skybox';
             let hasActive = false;
 
             sections.forEach(section => {
@@ -1977,7 +2422,7 @@
 
             capsules.forEach(capsule => {
                 const href = capsule.getAttribute('href');
-                if (cleanId && href === targetId) {
+                if (cleanId && (href === '#' + cleanId || (cleanId === 'skybox' && href === '#skybox'))) {
                     capsule.classList.add('active');
                 } else {
                     capsule.classList.remove('active');
@@ -2016,7 +2461,7 @@
                 window.location.href = '8bit-creatives.html';
                 return;
             }
-            if (hash === '#abhushan' || hash === '#detailing-cars' || hash === '#kxm' || hash === '#chemops') {
+            if (hash === '#abhushan' || hash === '#detailing-cars' || hash === '#kxm' || hash === '#chemops' || hash === '#skybox' || hash === '#turf') {
                 showTab(hash, false);
             } else {
                 showTab('', false);
