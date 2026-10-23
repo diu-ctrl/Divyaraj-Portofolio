@@ -175,7 +175,7 @@
             font-size: 2.5rem;
             font-weight: 900;
             color: var(--primary);
-            letter-spacing: -0.04em;
+            letter-spacing: 0.03em;
             line-height: 1.1;
             margin-bottom: 8px;
         }
@@ -409,15 +409,18 @@
         .exp-header {
             display: flex;
             justify-content: space-between;
-            align-items: baseline;
-            flex-wrap: wrap;
+            align-items: flex-start;
+            flex-wrap: nowrap;
             margin-bottom: 6px;
+            gap: 12px;
         }
 
         .exp-title {
             font-size: 1.05rem;
             font-weight: 700;
             color: var(--primary);
+            flex: 1 1 auto;
+            min-width: 0;
         }
 
         .exp-company {
@@ -435,6 +438,10 @@
             padding: 3px 10px;
             border-radius: 4px;
             border: 1px solid var(--border);
+            margin-left: auto;
+            white-space: nowrap;
+            flex-shrink: 0;
+            text-align: right;
         }
 
         .exp-desc {
@@ -569,7 +576,7 @@
 
             /* ── Layout & structure — force WHITE theme ── */
             body {
-                background: #f1f5f9 !important;
+                background: #ffffff !important;
                 color: #0f172a !important;
                 padding: 0 !important;
                 margin: 0 !important;
@@ -633,7 +640,7 @@
                 font-size: 1.8rem !important;
                 font-weight: 900 !important;
                 color: #1e293b !important;
-                letter-spacing: -0.04em !important;
+                letter-spacing: 0.03em !important;
                 line-height: 1.1 !important;
                 margin-bottom: 2px !important;
                 font-style: normal !important;
@@ -705,10 +712,21 @@
                 break-inside: avoid !important;
                 margin-bottom: 10px !important;
             }
+            
+            .exp-header {
+                display: flex !important;
+                justify-content: space-between !important;
+                align-items: flex-start !important;
+                flex-wrap: nowrap !important;
+                gap: 12px !important;
+                margin-bottom: 4px !important;
+            }
             .exp-title {
                 font-size: 1.05rem !important;
                 font-weight: 700 !important;
                 color: #1e293b !important;
+                flex: 1 1 auto !important;
+                min-width: 0 !important;
             }
             .exp-company {
                 font-size: 0.9rem !important;
@@ -723,6 +741,11 @@
                 background: #f8fafc !important;
                 padding: 3px 10px !important;
                 border: 1px solid #e2e8f0 !important;
+                margin-left: auto !important;
+                white-space: nowrap !important;
+                flex-shrink: 0 !important;
+                align-self: flex-start !important;
+                text-align: right !important;
             }
             .exp-desc {
                 font-size: 8pt !important;
@@ -1129,6 +1152,42 @@
                 <!-- Web Design & Development -->
                 <div class="section-block" style="margin-top: 36px;">
                     <h3>Web Design &amp; Development</h3>
+
+                    <!-- 8Bit Creatives -->
+                    <div class="exp-item">
+                        <div class="exp-header">
+                            <span class="exp-title" style="font-size: 1.15rem; color: var(--primary);">8Bit Creatives</span>
+                            <a href="https://8bit-creatives.vercel.app/" target="_blank" rel="noopener" class="exp-date" style="color: var(--accent); border-color: #282723; background: #3a221b; text-decoration: none; display: inline-flex; align-items: center; gap: 4px;">Live Website</a>
+                        </div>
+                        <div class="exp-company" style="margin-top: -2px;">Gaming Creator Agency &amp; Ops Portal</div>
+                        <p class="exp-desc">
+                            Architected a dark-mode editorial agency platform featuring a 9-view internal operations portal, three external partner dashboards (Creator, Brand, Platform), 60fps GPU letter animations, and interactive physics.
+                        </p>
+                    </div>
+
+                    <!-- ChemOps ERP -->
+                    <div class="exp-item">
+                        <div class="exp-header">
+                            <span class="exp-title" style="font-size: 1.15rem; color: var(--primary);">ChemOps ERP</span>
+                            <a href="https://chemops-erp.vercel.app/" target="_blank" rel="noopener" class="exp-date" style="color: var(--accent); border-color: #282723; background: #3a221b; text-decoration: none; display: inline-flex; align-items: center; gap: 4px;">Live Website</a>
+                        </div>
+                        <div class="exp-company" style="margin-top: -2px;">Enterprise Chemical Manufacturing ERP</div>
+                        <p class="exp-desc">
+                            Engineered a mission-critical manufacturing ERP featuring 8-department role-based access control, automated GST quotation workflows, batch production tracking, and atomic inventory reconciliation.
+                        </p>
+                    </div>
+
+                    <!-- The Sky Box -->
+                    <div class="exp-item">
+                        <div class="exp-header">
+                            <span class="exp-title" style="font-size: 1.15rem; color: var(--primary);">The Sky Box</span>
+                            <a href="https://theskybox.vercel.app/" target="_blank" rel="noopener" class="exp-date" style="color: var(--accent); border-color: #282723; background: #3a221b; text-decoration: none; display: inline-flex; align-items: center; gap: 4px;">Live Website</a>
+                        </div>
+                        <div class="exp-company" style="margin-top: -2px;">Sports Arena Real-Time Booking Platform</div>
+                        <p class="exp-desc">
+                            Developed a high-conversion turf booking platform with instant sub-minute QR-to-UPI booking flows, dynamic time-slot matrices, automated order validation, and a live coordinator console.
+                        </p>
+                    </div>
 
                     <!-- Abhushan -->
                     <div class="exp-item">
