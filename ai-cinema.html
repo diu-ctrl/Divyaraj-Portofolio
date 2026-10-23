@@ -1207,6 +1207,58 @@
         </div>
         
         <div class="films-container">
+            <!-- Featured Film: Superman: 3D vs AI -->
+            <div class="film-row reveal featured-film" id="superman-3d-vs-ai">
+                <div class="film-row-visual">
+                    <img src="images/superman-3d-vs-ai-thumb.jpg" alt="Superman 3D vs AI Thumbnail">
+                    <button class="play-btn-large watch-btn" data-video="Final Video/superman 3d vs ai.mp4" aria-label="Play Film">
+                        <svg viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M8 5v14l11-7z"/>
+                        </svg>
+                    </button>
+                    <div style="position: absolute; top: 16px; left: 16px; background: rgba(0,0,0,0.75); border: 1px solid rgba(255,255,255,0.15); padding: 4px 10px; font-family: var(--font-sans); font-weight: 500; font-size: 0.62rem; letter-spacing: 0.02em; color: var(--text-muted);">Workflow Comparison &middot; Google Flow</div>
+                </div>
+                <div class="film-row-content">
+                    <div style="display: flex; gap: 10px; align-items: center; flex-wrap: wrap;">
+                        <span class="film-meta">Experimental Cinema &bull; 3D vs AI</span>
+                    </div>
+                    <h2>Superman: 3D vs AI</h2>
+                    <p class="film-brief">
+                        A transformative comparison exploring the evolution of digital filmmaking pipelines. Contrasting traditional manual 3D DCC viewport modeling and particle physics against generative AI cinematography directed with Google Flow Omni Flash 1.1.
+                    </p>
+                    <div class="film-actions">
+                        <button class="btn-primary-gold watch-btn" data-video="Final Video/superman 3d vs ai.mp4">Watch Film</button>
+                        <button class="btn-outline case-study-btn" data-case="superman-3d-vs-ai">Summary &rarr;</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Featured Film: Thakkarnagar Style -->
+            <div class="film-row reveal featured-film" id="thakkarnagar-style">
+                <div class="film-row-visual">
+                    <img src="images/thakkarnagar-style-thumb.jpg" alt="Thakkarnagar Style Thumbnail">
+                    <button class="play-btn-large watch-btn" data-video="Final Video/Thakkarnagar Stylee.mp4" aria-label="Play Film">
+                        <svg viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M8 5v14l11-7z"/>
+                        </svg>
+                    </button>
+                    <div style="position: absolute; top: 16px; left: 16px; background: rgba(0,0,0,0.75); border: 1px solid rgba(255,255,255,0.15); padding: 4px 10px; font-family: var(--font-sans); font-weight: 500; font-size: 0.62rem; letter-spacing: 0.02em; color: var(--text-muted);">Music Video &middot; 2.5D &amp; Photoreal AI</div>
+                </div>
+                <div class="film-row-content">
+                    <div style="display: flex; gap: 10px; align-items: center; flex-wrap: wrap;">
+                        <span class="film-meta">Music Reel &bull; Gujarati Hip-Hop</span>
+                    </div>
+                    <h2>Thakkarnagar Style</h2>
+                    <p class="film-brief">
+                        A raw, introspective music video reel created for Gujarati rap artist Snappy Kaal. Directed using Google Flow Omni Flash 1.1 to bridge pristine studio photorealism with stylized 2.5D narrative art, translating street roots, personal struggles, and moral resilience into beat-synced cinema.
+                    </p>
+                    <div class="film-actions">
+                        <button class="btn-primary-gold watch-btn" data-video="Final Video/Thakkarnagar Stylee.mp4">Watch Film</button>
+                        <button class="btn-outline case-study-btn" data-case="thakkarnagar-style">Summary &rarr;</button>
+                    </div>
+                </div>
+            </div>
+
             <!-- Featured Film: BGMI Lite — Trailer Remake -->
             <div class="film-row reveal featured-film" id="bgmi-lite">
                 <div class="film-row-visual">
@@ -1886,6 +1938,75 @@
 
         // Case Studies Data
         const caseStudies = {
+            'superman-3d-vs-ai': {
+                title: "Superman: 3D vs AI — The Paradigm Shift in Digital Cinema",
+                badge: "Workflow Comparison • 3D DCC vs Generative AI",
+                customContent: `
+                    <div class="drawer-section">
+                        <p style="font-family: 'Instrument Serif', Georgia, serif; font-style: italic; font-size: 1.25rem; line-height: 1.5; color: #FFFFFF; margin: 0 0 8px 0;">"AI isn't a cheat code; it’s a new type of camera rig, and the artist is still the director calling the shots."</p>
+                    </div>
+                    <div class="drawer-section">
+                        <h3>Project Overview</h3>
+                        <p>This project is a direct, transformative visual case study exploring the changing landscape of visual effects and digital filmmaking. Traditional 3D workflows demand dozens of painstaking manual hours: polygon sculpting, skeletal rigging, complex dynamic cloth solvers, gravel and dust physics simulations, multi-light studio balancing, and overnight raster rendering. This project juxtaposes that traditional clay/wireframe viewport workflow against generative AI video, demonstrating the sheer velocity and photographic fidelity possible when an experienced director drives modern generative tools.</p>
+                        <p>Created not out of disrespect for traditional 3D mastery, but as an open dialogue on how directors must adapt: the tools are advancing exponentially, yet human vision, artistic taste, and camera orchestration remain the true creative engine.</p>
+                    </div>
+                    <div class="drawer-section">
+                        <h3>Directorial Workflow (Google Flow Omni Flash 1.1)</h3>
+                        <div class="chapters-container">
+                            <div class="chapter-card">
+                                <div class="chapter-title">Phase 1 &mdash; Motion Analysis &amp; Visual Anchors</div>
+                                <div class="chapter-desc">Extracted camera velocity, impact vectors, and focal arcs from the baseline 3D animation to establish strict compositional timing for the ground punch and the subsequent orbital pullback.</div>
+                            </div>
+                            <div class="chapter-card">
+                                <div class="chapter-title">Phase 2 &mdash; Generative Synthesis via Google Flow (Omni Flash 1.1)</div>
+                                <div class="chapter-desc">Directed Google Flow utilizing the Omni Flash 1.1 engine to synthesize complex physical phenomena without manual simulation cages: micro-shattering ice and gravel debris on the tactical fist impact, dense dust plumes, and an expansive cinematic orbital wide shot of Superman hovering in thermospheric sunlight with realistic suit weave and flowing cape aerodynamics.</div>
+                            </div>
+                            <div class="chapter-card">
+                                <div class="chapter-title">Phase 3 &mdash; Optical Finishing &amp; Sound Engineering</div>
+                                <div class="chapter-desc">Stitched the split-paradigm timeline in post-production, applying subtle anamorphic lens characteristics, anamorphic horizontal flare sweeps, and a dynamic contrastive sound mix that elevates the kinetic punch into visceral reality.</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="drawer-section">
+                        <h3>Core Takeaway</h3>
+                        <p>The workflow changes, but the vision is what matters. Generative AI empowers solo directors to iterate at the speed of thought, turning complex conceptual VFX sequences into finished cinema in hours instead of weeks.</p>
+                    </div>
+                `
+            },
+            'thakkarnagar-style': {
+                title: "Thakkarnagar Style — Snappy Kaal (Official AI Reel)",
+                badge: "Music Video Reel • 2.5D & Photorealistic AI",
+                customContent: `
+                    <div class="drawer-section">
+                        <p style="font-family: 'Instrument Serif', Georgia, serif; font-style: italic; font-size: 1.25rem; line-height: 1.5; color: #FFFFFF; margin: 0 0 8px 0;">"A raw, introspective Gujarati hip-hop visual celebrating humble street origins, personal sacrifices, and relentless dedication to craft."</p>
+                    </div>
+                    <div class="drawer-section">
+                        <h3>Project Overview</h3>
+                        <p>Directed as the official visual reel for Gujarati rap artist Snappy Kaal's gritty, introspective anthem <em>Thakkarnagar Style</em>. Moving far beyond standard music video tropes, this visual piece delves into Snappy Kaal's personal journey: navigating life struggles, rejecting superficial glamor, reflecting on life's fleeting nature, and staying fiercely loyal to his roots. The visual architecture transitions deliberately between two distinct cinematic modes: crisp, high-key studio photorealism and stylized, emotive 2.5D illustrated storytelling.</p>
+                    </div>
+                    <div class="drawer-section">
+                        <h3>Production Process (Google Flow Omni Flash 1.1)</h3>
+                        <div class="chapters-container">
+                            <div class="chapter-card">
+                                <div class="chapter-title">Phase 1 &mdash; Lyrical Deconstruction &amp; Concept Mapping</div>
+                                <div class="chapter-desc">Deconstructed the Gujarati lyrical narrative into visual metaphors: the fruit of disciplined hustle represented by pristine white infinity cove studio cinematography with a black Honda Civic Type R and Harley Davidson, contrasted against poignant vignettes of inner struggle.</div>
+                            </div>
+                            <div class="chapter-card">
+                                <div class="chapter-title">Phase 2 &mdash; Dual-Aesthetic Synthesis (Google Flow Omni Flash 1.1)</div>
+                                <div class="chapter-desc">Employed Google Flow with Omni Flash 1.1 to direct two harmonized visual styles: photorealistic studio lighting with accurate vehicle specular reflections, and painterly 2.5D animated vignettes illustrating emotional moments &mdash; the lonely park bench at sunset (<em>Takleef</em>), societal pressures in the crowd, and a grounding maternal embrace (<em>Pahela</em>).</div>
+                            </div>
+                            <div class="chapter-card">
+                                <div class="chapter-title">Phase 3 &mdash; Beat-Syncing &amp; Kinetic Typography</div>
+                                <div class="chapter-desc">Sequenced every shot to the syncopated boom-bap rhythm and flow of Snappy Kaal's verses, pairing sharp cutting with custom Gujarati lyric typography and subtle film grain to preserve an authentic street-smart edge.</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="drawer-section">
+                        <h3>Core Takeaway</h3>
+                        <p>Showcases how generative AI filmmaking can elevate regional hip-hop storytelling with studio-caliber dual-medium artistry, creating authentic emotional resonance that connects deeply with audiences.</p>
+                    </div>
+                `
+            },
             'bgmi-lite': {
                 title: "BGMI Lite Announcement — Official Trailer Remake",
                 badge: "Gaming Cinema • Trailer Remake",
@@ -2219,7 +2340,25 @@
             videoElement.src = '';
             videoIframe.style.display = 'none';
             videoElement.style.display = 'none';
+            const container = document.querySelector('.video-modal-container');
+            if (container) {
+                container.style.aspectRatio = '';
+                container.style.maxWidth = '';
+            }
         };
+
+        videoElement.addEventListener('loadedmetadata', () => {
+            const container = document.querySelector('.video-modal-container');
+            if (container && videoElement.videoHeight && videoElement.videoWidth) {
+                if (videoElement.videoHeight > videoElement.videoWidth) {
+                    container.style.aspectRatio = '9/16';
+                    container.style.maxWidth = '420px';
+                } else {
+                    container.style.aspectRatio = '16/9';
+                    container.style.maxWidth = '1000px';
+                }
+            }
+        });
 
         modalCloseBtn.addEventListener('click', closeModal);
         videoModal.addEventListener('click', (e) => {
