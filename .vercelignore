@@ -1,19 +1,19 @@
 # Ignore Vercel metadata
 .vercel
 
-# Ignore raw/edited video files and giant assets
+# Ignore massive raw assets and node_modules
 **/SATCON'26 Media-Graphics/
 **/SATCON'26 Media-Videos/
-Final Video/
-**/Videos/
-**/The Last Amber/
-brands/Ai Cinema Lab/
-brands/_apply_brand_nav.ps1
-brands/brand_template.html
+react-hero-gallery/node_modules/
+
+# Ignore non-web video formats
 *.mov
 *.avi
 *.mkv
-*.mp4
+
+# Ignore internal templates and scripts
+brands/_apply_brand_nav.ps1
+brands/brand_template.html
 
 # Ignore scratch files
 scratch/
@@ -21,3 +21,4 @@ check_sizes.py
 check_sizes.js
 inspect_brands.py
 prepare_brands.py
+check_videos.py
