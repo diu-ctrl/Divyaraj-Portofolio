@@ -39,6 +39,37 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital,wght@0,400;1,400&family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/navigation.css">
+    <script>
+      tailwind = {
+        config: {
+          corePlugins: {
+            preflight: false,
+          },
+          theme: {
+            extend: {
+              spacing: {
+                50: '12.5rem',
+              },
+              animation: {
+                marquee: 'marquee var(--duration, 40s) linear infinite',
+                'marquee-vertical': 'marquee-vertical var(--duration, 40s) linear infinite',
+              },
+              keyframes: {
+                marquee: {
+                  'from': { transform: 'translateX(0)' },
+                  'to': { transform: 'translateX(calc(-100% - var(--gap, 1rem)))' }
+                },
+                'marquee-vertical': {
+                  'from': { transform: 'translateY(0)' },
+                  'to': { transform: 'translateY(calc(-100% - var(--gap, 1rem)))' }
+                }
+              }
+            }
+          }
+        }
+      }
+    </script>
+    <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="css/global.css">
     <!-- Vercel Web Analytics (view data in Vercel project → Analytics tab) -->
     <script defer src="/_vercel/insights/script.js"></script>
