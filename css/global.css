@@ -596,8 +596,7 @@
             font-weight: 700;
         }
 
-        .folio-card a,
-        .folio-card .folio-card-inner {
+        .folio-card a {
             text-decoration: none;
             color: inherit;
             display: block;
