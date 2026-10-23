@@ -1,16 +1,23 @@
 # Ignore Vercel metadata
 .vercel
 
-# Ignore raw/edited video files and graphics assets from Sattvik Certifications
+# Ignore raw/edited video files and giant assets
 **/SATCON'26 Media-Graphics/
 **/SATCON'26 Media-Videos/
 Final Video/
-brands/
+**/Videos/
+**/The Last Amber/
+brands/Ai Cinema Lab/
+brands/_apply_brand_nav.ps1
+brands/brand_template.html
 *.mov
 *.avi
 *.mkv
+*.mp4
 
 # Ignore scratch files
 scratch/
 check_sizes.py
 check_sizes.js
+inspect_brands.py
+prepare_brands.py
