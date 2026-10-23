@@ -28,3 +28,6 @@ find_css_js.js
 *.mov
 *.avi
 *.mkv
+
+.vercel
+.env*
