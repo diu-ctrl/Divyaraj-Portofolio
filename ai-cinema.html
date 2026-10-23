@@ -1207,58 +1207,6 @@
         </div>
         
         <div class="films-container">
-            <!-- Featured Film: Superman: 3D vs AI -->
-            <div class="film-row reveal featured-film" id="superman-3d-vs-ai">
-                <div class="film-row-visual">
-                    <img src="images/superman-3d-vs-ai-thumb.jpg" alt="Superman 3D vs AI Thumbnail">
-                    <button class="play-btn-large watch-btn" data-video="Final Video/superman 3d vs ai.mp4" aria-label="Play Film">
-                        <svg viewBox="0 0 24 24" fill="currentColor">
-                            <path d="M8 5v14l11-7z"/>
-                        </svg>
-                    </button>
-                    <div style="position: absolute; top: 16px; left: 16px; background: rgba(0,0,0,0.75); border: 1px solid rgba(255,255,255,0.15); padding: 4px 10px; font-family: var(--font-sans); font-weight: 500; font-size: 0.62rem; letter-spacing: 0.02em; color: var(--text-muted);">Workflow Comparison &middot; Google Flow</div>
-                </div>
-                <div class="film-row-content">
-                    <div style="display: flex; gap: 10px; align-items: center; flex-wrap: wrap;">
-                        <span class="film-meta">Experimental Cinema &bull; 3D vs AI</span>
-                    </div>
-                    <h2>Superman: 3D vs AI</h2>
-                    <p class="film-brief">
-                        A transformative comparison exploring the evolution of digital filmmaking pipelines. Contrasting traditional manual 3D DCC viewport modeling and particle physics against generative AI cinematography directed with Google Flow Omni Flash 1.1.
-                    </p>
-                    <div class="film-actions">
-                        <button class="btn-primary-gold watch-btn" data-video="Final Video/superman 3d vs ai.mp4">Watch Film</button>
-                        <button class="btn-outline case-study-btn" data-case="superman-3d-vs-ai">Summary &rarr;</button>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Featured Film: Thakkarnagar Style -->
-            <div class="film-row reveal featured-film" id="thakkarnagar-style">
-                <div class="film-row-visual">
-                    <img src="images/thakkarnagar-style-thumb.jpg" alt="Thakkarnagar Style Thumbnail">
-                    <button class="play-btn-large watch-btn" data-video="Final Video/Thakkarnagar Stylee.mp4" aria-label="Play Film">
-                        <svg viewBox="0 0 24 24" fill="currentColor">
-                            <path d="M8 5v14l11-7z"/>
-                        </svg>
-                    </button>
-                    <div style="position: absolute; top: 16px; left: 16px; background: rgba(0,0,0,0.75); border: 1px solid rgba(255,255,255,0.15); padding: 4px 10px; font-family: var(--font-sans); font-weight: 500; font-size: 0.62rem; letter-spacing: 0.02em; color: var(--text-muted);">Music Video &middot; 2.5D &amp; Photoreal AI</div>
-                </div>
-                <div class="film-row-content">
-                    <div style="display: flex; gap: 10px; align-items: center; flex-wrap: wrap;">
-                        <span class="film-meta">Music Reel &bull; Gujarati Hip-Hop</span>
-                    </div>
-                    <h2>Thakkarnagar Style</h2>
-                    <p class="film-brief">
-                        A raw, introspective music video reel created for Gujarati rap artist Snappy Kaal. Directed using Google Flow Omni Flash 1.1 to bridge pristine studio photorealism with stylized 2.5D narrative art, translating street roots, personal struggles, and moral resilience into beat-synced cinema.
-                    </p>
-                    <div class="film-actions">
-                        <button class="btn-primary-gold watch-btn" data-video="Final Video/Thakkarnagar Stylee.mp4">Watch Film</button>
-                        <button class="btn-outline case-study-btn" data-case="thakkarnagar-style">Summary &rarr;</button>
-                    </div>
-                </div>
-            </div>
-
             <!-- Featured Film: BGMI Lite — Trailer Remake -->
             <div class="film-row reveal featured-film" id="bgmi-lite">
                 <div class="film-row-visual">
@@ -1522,6 +1470,54 @@
 
             <!-- Supporting Films Grid -->
             <div class="supporting-films-grid">
+                <!-- Film: Thakkarnagar Style -->
+                <div class="film-card reveal" id="thakkarnagar-style">
+                    <div class="film-card-visual" style="aspect-ratio: 16/9; margin-bottom: 24px; position: relative; border-radius: 0; overflow: hidden; border: 1px solid #282723; background: #000000;">
+                        <img src="images/thakkarnagar-style-thumb.jpg" alt="Thakkarnagar Style Thumbnail" style="width: 100%; height: 100%; object-fit: cover;">
+                        <button class="play-btn-large watch-btn" data-video="Final Video/Thakkarnagar Stylee.mp4" aria-label="Play Film">
+                            <svg viewBox="0 0 24 24" fill="currentColor" style="width: 56px; height: 56px;">
+                                <path d="M8 5v14l11-7z"/>
+                            </svg>
+                        </button>
+                    </div>
+                    <div class="film-card-content" style="display: flex; flex-direction: column; gap: 8px;">
+                        <span class="film-meta">Music Reel &bull; Gujarati Hip-Hop</span>
+                        <h3>Thakkarnagar Style</h3>
+                        <p class="film-subtitle" style="font-size: 0.95rem; color: var(--text-muted);">Snappy Kaal &bull; Official AI Reel</p>
+                        <p class="film-brief" style="font-size: 0.92rem; color: var(--text-muted); line-height: 1.6;">
+                            A raw, introspective music video reel created for Gujarati rap artist Snappy Kaal. Directed using Google Flow Omni Flash 1.1 to bridge pristine studio photorealism with stylized 2.5D narrative art.
+                        </p>
+                        <div class="film-actions" style="margin-top: auto; display: flex; gap: 12px;">
+                            <button class="btn-primary-gold watch-btn" data-video="Final Video/Thakkarnagar Stylee.mp4">Watch Film</button>
+                            <button class="btn-outline case-study-btn" data-case="thakkarnagar-style">Summary &rarr;</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Film: Superman: 3D vs AI -->
+                <div class="film-card reveal" id="superman-3d-vs-ai">
+                    <div class="film-card-visual" style="aspect-ratio: 16/9; margin-bottom: 24px; position: relative; border-radius: 0; overflow: hidden; border: 1px solid #282723; background: #000000;">
+                        <img src="images/superman-3d-vs-ai-thumb.jpg" alt="Superman 3D vs AI Thumbnail" style="width: 100%; height: 100%; object-fit: cover;">
+                        <button class="play-btn-large watch-btn" data-video="Final Video/superman 3d vs ai.mp4" aria-label="Play Film">
+                            <svg viewBox="0 0 24 24" fill="currentColor" style="width: 56px; height: 56px;">
+                                <path d="M8 5v14l11-7z"/>
+                            </svg>
+                        </button>
+                    </div>
+                    <div class="film-card-content" style="display: flex; flex-direction: column; gap: 8px;">
+                        <span class="film-meta">Experimental Cinema &bull; 3D vs AI</span>
+                        <h3>Superman: 3D vs AI</h3>
+                        <p class="film-subtitle" style="font-size: 0.95rem; color: var(--text-muted);">Traditional 3D vs Generative Video</p>
+                        <p class="film-brief" style="font-size: 0.92rem; color: var(--text-muted); line-height: 1.6;">
+                            A transformative comparison exploring the evolution of digital filmmaking pipelines. Contrasting traditional manual 3D DCC viewport modeling and particle physics against generative AI cinematography.
+                        </p>
+                        <div class="film-actions" style="margin-top: auto; display: flex; gap: 12px;">
+                            <button class="btn-primary-gold watch-btn" data-video="Final Video/superman 3d vs ai.mp4">Watch Film</button>
+                            <button class="btn-outline case-study-btn" data-case="superman-3d-vs-ai">Summary &rarr;</button>
+                        </div>
+                    </div>
+                </div>
+
                 <!-- Film: 1990 Man -->
                 <div class="film-card reveal" id="1990-man">
                     <div class="film-card-visual" style="aspect-ratio: 16/9; margin-bottom: 24px; position: relative; border-radius: 0; overflow: hidden; border: 1px solid #282723; background: #000000;">
