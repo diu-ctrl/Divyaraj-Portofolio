@@ -1,0 +1,5 @@
+# divyarajchauhan.in — open to all search & AI crawlers
+User-agent: *
+Allow: /
+
+Sitemap: https://www.divyarajchauhan.in/sitemap.xml
