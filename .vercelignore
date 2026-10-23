@@ -4,6 +4,11 @@
 # Ignore raw/edited video files and graphics assets from Sattvik Certifications
 **/SATCON'26 Media-Graphics/
 **/SATCON'26 Media-Videos/
+Final Video/
+brands/
+*.mov
+*.avi
+*.mkv
 
 # Ignore scratch files
 scratch/
