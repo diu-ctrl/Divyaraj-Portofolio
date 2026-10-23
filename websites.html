@@ -415,21 +415,21 @@
         
         /* The Sky Box Sport-Green Accent */
         #skybox .detail-block h3::before {
-            background: #0BA678;
+            background: #EB4604;
         }
         #skybox .scope-list li::before {
-            color: #0BA678;
+            color: #EB4604;
         }
         #skybox .project-mockup:hover {
-            border-color: #0BA678;
+            border-color: #EB4604;
         }
         #skybox .hotspot-dot {
-            background: #0BA678;
+            background: #EB4604;
             color: #ffffff;
             animation: pulse-gold 2s infinite;
         }
         #skybox .results-block {
-            border-left-color: #0BA678;
+            border-left-color: #EB4604;
         }
         .turf-phone-grid {
             display: grid;
@@ -470,7 +470,7 @@
             font-family: var(--font-sans);
             font-size: 1.25rem;
             font-weight: 800;
-            color: #0BA678;
+            color: #EB4604;
             line-height: 1;
         }
         .flow-step h4 {
@@ -668,27 +668,31 @@
 
         /* macOS-style Browser Bar */
         .browser-bar {
-            height: 36px;
-            background: #282723;
+            height: 38px;
+            background: #1a1917;
             border-bottom: 1px solid #282723;
-            border-top-left-radius: 15px;
-            border-top-right-radius: 15px;
             display: flex;
             align-items: center;
-            padding: 0 18px;
+            justify-content: flex-start;
+            padding: 0 16px;
             position: relative;
             z-index: 5;
         }
 
         .browser-dots {
             display: flex;
-            gap: 7px;
+            align-items: center;
+            gap: 6px;
+            flex-shrink: 0;
+            z-index: 2;
         }
 
         .browser-dot {
-            width: 9px;
-            height: 9px;
-            border-radius: 50%;
+            width: 10px !important;
+            height: 10px !important;
+            border-radius: 50% !important;
+            display: inline-block !important;
+            flex-shrink: 0 !important;
         }
 
         .browser-dot.red { background: #ff5f56; }
@@ -699,17 +703,47 @@
             position: absolute;
             left: 50%;
             transform: translateX(-50%);
-            width: 60%;
-            max-width: 350px;
-            height: 20px;
-            background: #282723;
-            border-radius: 0px;
-            font-size: 0.7rem;
-            color: var(--text);
+            width: calc(100% - 100px);
+            max-width: 580px;
+            height: 24px;
+            background: #000000;
+            border: 1px solid #282723;
+            border-radius: 4px !important;
+            padding: 0 12px;
+            font-size: 0.72rem;
+            color: var(--text-muted);
             display: flex;
             align-items: center;
             justify-content: center;
             letter-spacing: 0.02em;
+            white-space: nowrap !important;
+            overflow: hidden !important;
+            text-overflow: ellipsis !important;
+            line-height: 24px !important;
+            box-sizing: border-box;
+            pointer-events: none;
+        }
+
+        .turf-phone-grid .browser-bar {
+            height: 32px;
+            padding: 0 10px;
+        }
+
+        .turf-phone-grid .browser-dots {
+            gap: 5px;
+        }
+
+        .turf-phone-grid .browser-dot {
+            width: 8px !important;
+            height: 8px !important;
+        }
+
+        .turf-phone-grid .browser-address {
+            height: 20px;
+            line-height: 20px !important;
+            font-size: 0.65rem;
+            width: calc(100% - 64px);
+            padding: 0 8px;
         }
 
         .web-img-wrap {
@@ -1401,7 +1435,7 @@
             <section id="skybox" class="case-study-card">
                 <!-- Case Study Hero Block -->
                 <div class="case-study-hero">
-                    <div class="case-study-badge" style="border-color: #0BA678; color: #0BA678;">Case Study • Booking Platform</div>
+                    <div class="case-study-badge" style="border-color: #EB4604; color: #EB4604;">Case Study • Booking Platform</div>
                     <h2 class="case-study-title">The Sky Box</h2>
                     <p class="case-study-tagline">"The Sky Box turns an arena's QR sticker into a full booking app. Players see live slots and pay by UPI in under a minute — no app store, no sign-up — while the venue runs its entire day from one live console: orders arriving in real time, payments verified, and cancellations reopening slots instantly."</p>
                     
@@ -1425,7 +1459,7 @@
                     </div>
                     
                     <div class="hero-ctas">
-                        <a href="https://theskybox.vercel.app" target="_blank" rel="noopener" class="btn-primary-gold" style="background: #0BA678; border-color: #0BA678; color: #000000;">Visit Live Site ↗</a>
+                        <a href="https://theskybox.vercel.app" target="_blank" rel="noopener" class="btn-primary-gold" style="background: #EB4604; border-color: #EB4604; color: #000000;">Visit Live Site ↗</a>
                     </div>
                 </div>
 
@@ -1732,7 +1766,7 @@
 
                 <!-- Tech Stack Badges Group -->
                 <div class="tech-tags-wrapper">
-                    <span class="tech-tag" style="border-color: #0BA678; color: #FFFFFF;">Next.js</span>
+                    <span class="tech-tag" style="border-color: #EB4604; color: #FFFFFF;">Next.js</span>
                     <span class="tech-tag">React</span>
                     <span class="tech-tag">TypeScript</span>
                     <span class="tech-tag">Tailwind CSS</span>
@@ -1750,7 +1784,7 @@
                 </div>
 
                 <!-- Results Block -->
-                <div class="results-block" style="border-left-color: #0BA678;">
+                <div class="results-block" style="border-left-color: #EB4604;">
                     <h3>Impact &amp; Architecture Results</h3>
                     <p>
                         "The Sky Box went from a blank page to a live, field-tested production platform in about two weeks of October 2026, then kept hardening through 35 numbered release iterations driven by real usage — including a real customer's first booking from a phone at the venue gate. The white-label architecture is the commercial point: one venue per deployment, brand assets, photos, pricing and rules as data, so onboarding the next turf is a configuration swap, not a rebuild. Warm API responses on the booking-critical endpoints measure in the 150–250 ms range, brand assets ship inside a strict size budget with immutable caching, and a version-polling channel lets the app update itself without losing a player's place."
@@ -1763,7 +1797,7 @@
                 <!-- CTA Footer Line -->
                 <div style="margin-top: 8px; padding-top: 24px; border-top: 1px solid #282723; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px;">
                     <span style="font-family: var(--font-serif); font-size: 1.3rem; font-style: italic; color: #FFFFFF;">Need a booking platform for your turf, court or sports facility?</span>
-                    <a href="https://wa.me/qr/KQJFSZ2WY5FSO1" target="_blank" rel="noopener" class="btn-primary-gold" style="background: #0BA678; border-color: #0BA678; color: #000000; padding: 8px 20px; font-size: 0.82rem;">Let's Talk ↗</a>
+                    <a href="https://wa.me/qr/KQJFSZ2WY5FSO1" target="_blank" rel="noopener" class="btn-primary-gold" style="background: #EB4604; border-color: #EB4604; color: #000000; padding: 8px 20px; font-size: 0.82rem;">Let's Talk ↗</a>
                 </div>
             </section>
 
