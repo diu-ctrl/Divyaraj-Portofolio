@@ -847,9 +847,7 @@
     <div class="resume-container">
         <!-- Action Bar (Hidden when printed) -->
         <div class="action-bar">
-            <a href="index" class="btn-action back-btn">
-                <span>Back to Website</span>
-            </a>
+            <a href="/#contact" class="btn-action back-btn"><span>Back to Portfolio</span></a>
             <a href="/Divyaraj-Resume.pdf" download="Divyaraj-Resume.pdf" class="btn-action btn-primary download-pdf-btn" aria-label="Download PDF" title="Download PDF">
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-bottom:-1px"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
                 <span>Download PDF</span>
@@ -1297,6 +1295,24 @@
             video.addEventListener('pause', updatePlayPauseUI);
             video.addEventListener('volumechange', updateMuteUI);
         });
+    </script>
+    <!-- Dynamic Return-to-Position Back Button Script -->
+    <script>
+    (function() {
+        if ('scrollRestoration' in history) {
+            history.scrollRestoration = 'auto';
+        }
+        var backBtn = document.querySelector('.back-btn, .pp-back-link, .banner-back');
+        if (backBtn) {
+            backBtn.addEventListener('click', function(e) {
+                var ref = document.referrer;
+                if (window.history.length > 1 && ref && (ref.indexOf(window.location.host) !== -1 || ref.indexOf('divyarajchauhan.in') !== -1)) {
+                    e.preventDefault();
+                    window.history.back();
+                }
+            });
+        }
+    })();
     </script>
 </body>
 </html>

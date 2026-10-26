@@ -152,6 +152,13 @@
     <meta name="twitter:image:alt" content="Divyaraj Chauhan — Creative Strategist, Web Designer & AI Filmmaker">
 </head>
 <body>
+    <!-- Top Navigation Header -->
+    <header class="about-top-header" style="position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; justify-content: space-between; align-items: center; padding: 24px 4%; pointer-events: none;">
+        <a href="/#portfolio" class="back-btn" style="pointer-events: auto; display: inline-flex; align-items: center; gap: 8px; font-size: 13px; font-weight: 500; color: #a1a1aa; text-decoration: none; border: 1px solid #27272a; padding: 8px 16px; border-radius: 9999px; background: rgba(18, 18, 20, 0.7); backdrop-filter: blur(12px); transition: all 0.2s;">Back to Portfolio</a>
+        <a href="/" class="logo" style="pointer-events: auto;">
+            <img src="/dc-logo.png" style="height: 32px; width: auto;" alt="DC">
+        </a>
+    </header>
 
     <!-- Ambient Background -->
 
@@ -1629,6 +1636,24 @@
                 }
             }, 1200);
         });
+    </script>
+    <!-- Dynamic Return-to-Position Back Button Script -->
+    <script>
+    (function() {
+        if ('scrollRestoration' in history) {
+            history.scrollRestoration = 'auto';
+        }
+        var backBtn = document.querySelector('.back-btn, .pp-back-link, .banner-back');
+        if (backBtn) {
+            backBtn.addEventListener('click', function(e) {
+                var ref = document.referrer;
+                if (window.history.length > 1 && ref && (ref.indexOf(window.location.host) !== -1 || ref.indexOf('divyarajchauhan.in') !== -1)) {
+                    e.preventDefault();
+                    window.history.back();
+                }
+            });
+        }
+    })();
     </script>
 </body>
 </html>

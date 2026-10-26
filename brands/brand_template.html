@@ -605,9 +605,7 @@
     <!-- Ambient BG -->
 
     <header>
-    <a href="../index#hero" class="back-btn">
-            Back to Portfolio
-        </a>
+    <a href="/#portfolio" class="back-btn" id="back-btn">Back to Portfolio</a>
 </header>
 
     <main>
@@ -736,7 +734,7 @@
                     <a href="shelf" class="brand-nav-btn "><img class="bnb-logo" src="../images/Logos of the brands/shelf.png" alt="">Shelf</a>
                 </div>
                 <div class="brand-nav-divider"></div>
-                <a href="../index#hero" class="brand-nav-btn dc-home" title="Back to Home"><img src="/dc-logo.png" alt="DC"></a>
+                <a href="/" class="brand-nav-btn dc-home" title="Back to Home"><img src="/dc-logo.png" alt="DC"></a>
                 <div class="brand-nav-divider"></div>
                 <div class="brand-nav-group right-group">
                     <a href="esfi" class="brand-nav-btn "><img class="bnb-logo" src="../images/Logos of the brands/esfi.jpg" alt="">ESFI</a>
@@ -752,5 +750,23 @@
     </nav>
     </main>
 
+    <!-- Dynamic Return-to-Position Back Button Script -->
+    <script>
+    (function() {
+        if ('scrollRestoration' in history) {
+            history.scrollRestoration = 'auto';
+        }
+        var backBtn = document.querySelector('.back-btn, .pp-back-link, .banner-back');
+        if (backBtn) {
+            backBtn.addEventListener('click', function(e) {
+                var ref = document.referrer;
+                if (window.history.length > 1 && ref && (ref.indexOf(window.location.host) !== -1 || ref.indexOf('divyarajchauhan.in') !== -1)) {
+                    e.preventDefault();
+                    window.history.back();
+                }
+            });
+        }
+    })();
+    </script>
 </body>
 </html>

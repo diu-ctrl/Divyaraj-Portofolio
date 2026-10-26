@@ -1035,9 +1035,7 @@
 
     <!-- Navigation Header -->
     <header>
-        <a href="websites.html" class="back-btn">
-            Back to Portfolio
-        </a>
+        <a href="/#web-showcase" class="back-btn">Back to Portfolio</a>
     </header>
 
     <main>
@@ -1349,7 +1347,6 @@
             <div class="bottom-cta-inner">
                 <h2>Need a website for your creator agency or gaming brand?</h2>
                 <div class="bottom-cta-buttons">
-                    <a href="websites.html" class="btn-outline">Back to Portfolio</a>
                     <a href="https://wa.me/qr/KQJFSZ2WY5FSO1" target="_blank" rel="noopener" class="btn-primary-gold" style="background: #FF5931; border-color: #FF5931;">Start a Conversation</a>
                     <a href="divyaraj_resume" target="_blank" class="btn-outline">View My Resume</a>
                 </div>
@@ -1386,6 +1383,24 @@
                 behavior: 'smooth'
             });
         });
+    </script>
+    <!-- Dynamic Return-to-Position Back Button Script -->
+    <script>
+    (function() {
+        if ('scrollRestoration' in history) {
+            history.scrollRestoration = 'auto';
+        }
+        var backBtn = document.querySelector('.back-btn, .pp-back-link, .banner-back');
+        if (backBtn) {
+            backBtn.addEventListener('click', function(e) {
+                var ref = document.referrer;
+                if (window.history.length > 1 && ref && (ref.indexOf(window.location.host) !== -1 || ref.indexOf('divyarajchauhan.in') !== -1)) {
+                    e.preventDefault();
+                    window.history.back();
+                }
+            });
+        }
+    })();
     </script>
 </body>
 </html>

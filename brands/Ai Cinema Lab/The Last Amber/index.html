@@ -100,7 +100,7 @@
   <div class="process-banner">
     <span class="banner-label">Process breakdown &mdash; <a href="../../../ai-cinema.html">AI Cinema Lab</a></span>
     <div class="banner-actions">
-      <a href="../../../ai-cinema.html" class="banner-back">Back to Portfolio</a>
+      <a href="/ai-cinema" class="banner-back">Back to Portfolio</a>
       <a href="mailto:divyarajc2@gmail.com" class="banner-cta">Hire Me</a>
     </div>
   </div>
@@ -1100,7 +1100,6 @@
         <div class="ember-cta-right">
           <div class="ember-cta-actions">
             <a href="mailto:divyarajc2@gmail.com" class="ember-cta-btn">Start a Project</a>
-            <a href="/ai-cinema" class="ember-cta-back">Back to Portfolio</a>
           </div>
         </div>
       </div>
@@ -1173,5 +1172,23 @@
           });
       });
   </script>
+    <!-- Dynamic Return-to-Position Back Button Script -->
+    <script>
+    (function() {
+        if ('scrollRestoration' in history) {
+            history.scrollRestoration = 'auto';
+        }
+        var backBtn = document.querySelector('.back-btn, .pp-back-link, .banner-back');
+        if (backBtn) {
+            backBtn.addEventListener('click', function(e) {
+                var ref = document.referrer;
+                if (window.history.length > 1 && ref && (ref.indexOf(window.location.host) !== -1 || ref.indexOf('divyarajchauhan.in') !== -1)) {
+                    e.preventDefault();
+                    window.history.back();
+                }
+            });
+        }
+    })();
+    </script>
 </body>
 </html>
