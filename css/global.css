@@ -1137,12 +1137,11 @@
             text-decoration: none;
             color: inherit;
             display: inline-block;
-            transition: transform 0.2s ease;
+            transition: ;
             cursor: pointer;
         }
 
         .service-lane-link:hover {
-            transform: translateY(-2px);
         }
 
         .service-lane-link:hover h3 {
@@ -1415,7 +1414,6 @@
         .btn-brutalist-filled:hover {
             background: #ffffff;
             border-color: #ffffff;
-            transform: translateY(-2px);
         }
 
         .btn-brutalist-outline {
@@ -1427,7 +1425,6 @@
         .btn-brutalist-outline:hover {
             border-color: var(--text);
             background: #282723;
-            transform: translateY(-2px);
         }
 
         /* ─── Social Icon Buttons Row ─── */
@@ -1449,7 +1446,7 @@
             background: transparent;
             color: #ffffff;
             text-decoration: none;
-            transition: background 0.25s ease, border-color 0.25s ease, color 0.25s ease, transform 0.2s ease;
+            transition: background 0.25s ease, border-color 0.25s ease, color 0.25s ease, ;
             cursor: pointer;
             flex-shrink: 0;
         }
@@ -1464,7 +1461,6 @@
             background: #EB4604;
             border-color: #EB4604;
             color: #000000;
-            transform: translateY(-2px);
         }
 
         .social-icon-btn:hover svg path,
@@ -1489,7 +1485,7 @@
             font-size: 13px !important;
             font-weight: 600 !important;
             letter-spacing: 0.02em !important;
-            transition: background 0.25s ease, border-color 0.25s ease, color 0.25s ease, transform 0.2s ease;
+            transition: background 0.25s ease, border-color 0.25s ease, color 0.25s ease, ;
             cursor: pointer;
             white-space: nowrap;
         }
@@ -1504,7 +1500,6 @@
             background: #EB4604;
             border-color: #EB4604;
             color: #000000;
-            transform: translateY(-2px);
         }
 
         .social-mail-btn:hover svg path,
@@ -1720,11 +1715,10 @@
             border-radius: 100px;
             cursor: pointer;
             font-weight: 600;
-            transition: transform 0.2s, box-shadow 0.2s;
+            transition: box-shadow 0.2s;
         }
 
         .custom-alert button:hover {
-            transform: translateY(-2px);
         }
 
         @keyframes popIn {
@@ -2107,7 +2101,6 @@
         }
 
         .btn-primary-gold:hover {
-            transform: translateY(-2px);
             background: #ffffff;
             border-color: #ffffff;
         }
@@ -2131,7 +2124,6 @@
         .btn-outline:hover {
             border-color: #fff;
             background: #282723;
-            transform: translateY(-2px);
         }
 
         /* =========================================

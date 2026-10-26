@@ -23,7 +23,7 @@
         body { font-family:var(--font-sans); background:var(--bg); color:var(--text); overflow-x:hidden; line-height:1.6; }
         header { padding:24px 6%; max-width:1340px; margin:0 auto; display:flex; justify-content:space-between; align-items:center; position:relative; z-index:100; }
         .back-btn { display:inline-flex; align-items:center; gap:10px; padding:10px 24px; border:1px solid var(--border); background:var(--card); color:var(--text-muted); text-decoration:none; font-family:var(--font-sans); font-size:0.82rem; font-weight:600; letter-spacing:0.01em; transition:all 0.25s ease; }
-        .back-btn:hover { color:#ffffff; border-color:var(--accent); background:#3a221b; transform:translateY(-2px); }
+        .back-btn:hover { color:#ffffff; border-color:var(--accent); background:#3a221b; }
         .header-badge { display:flex; align-items:center; gap:8px; padding:8px 18px; background:var(--card); border:1px solid var(--border); font-family:var(--font-sans); font-size:0.76rem; color:var(--accent); font-weight:700; letter-spacing:0.02em; }
         .header-badge span { width:7px; height:7px; background:var(--accent); display:inline-block; animation:pulse-dot 2s ease-in-out infinite; }
         @keyframes pulse-dot { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:0.4;transform:scale(0.8)} }
@@ -103,7 +103,7 @@
         .brand-nav-grid { display:flex; flex-wrap:wrap; justify-content:center; align-items:center; gap:12px; }
         .brand-nav-group { display:flex; flex-wrap:wrap; justify-content:center; align-items:center; gap:10px; }
         .brand-nav-btn { display:inline-flex; align-items:center; gap:9px; padding:8px 16px 8px 10px; border:1px solid var(--border); background:var(--card); color:#ffffff; font-family:var(--font-sans); font-size:0.78rem; font-weight:600; text-decoration:none; letter-spacing:0.01em; transition:all 0.25s ease; white-space:nowrap; }
-        .brand-nav-btn:hover { border-color:var(--accent); background:#3a221b; color:#ffffff; transform:translateY(-2px); }
+        .brand-nav-btn:hover { border-color:var(--accent); background:#3a221b; color:#ffffff; }
         .brand-nav-btn.active-brand { border-color:var(--accent); background:#3a221b; color:var(--accent); pointer-events:none; }
         .brand-nav-btn .bnb-logo { width:22px; height:22px; border-radius:50%; object-fit:cover; flex-shrink:0; border:1px solid #282723; }
         .brand-nav-btn.dc-home { padding:8px 16px; background:var(--card); border-color:var(--accent); color:var(--accent); }
@@ -114,7 +114,7 @@
         .reveal.visible { opacity:1; transform:translateY(0); }
         .back-to-top-btn { position:fixed; bottom:30px; right:30px; width:44px; height:44px; background:var(--card); border:1px solid var(--border); color:#ffffff; font-family:var(--font-sans); font-size:1.1rem; cursor:pointer; z-index:1000; display:flex; align-items:center; justify-content:center; opacity:0; pointer-events:none; transition:all 0.3s ease; }
         .back-to-top-btn.visible { opacity:1; pointer-events:auto; }
-        .back-to-top-btn:hover { border-color:var(--accent); background:#3a221b; color:var(--accent); transform:translateY(-2px); }
+        .back-to-top-btn:hover { border-color:var(--accent); background:#3a221b; color:var(--accent); }
     </style>
     <!-- Vercel Web Analytics (view data in Vercel project → Analytics tab) -->
     <script defer src="/_vercel/insights/script.js"></script>
