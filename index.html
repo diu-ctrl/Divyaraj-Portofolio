@@ -1891,5 +1891,28 @@
     })();
     </script>
 
+    <!-- Back To Top Button -->
+    <button id="back-to-top" class="back-to-top-btn" aria-label="Back to top">↑</button>
+
+    <script>
+        (function() {
+            const backToTopBtn = document.getElementById('back-to-top');
+            if (backToTopBtn) {
+                window.addEventListener('scroll', () => {
+                    if (window.scrollY > 400) {
+                        backToTopBtn.classList.add('visible');
+                    } else {
+                        backToTopBtn.classList.remove('visible');
+                    }
+                });
+                backToTopBtn.addEventListener('click', () => {
+                    window.scrollTo({
+                        top: 0,
+                        behavior: 'smooth'
+                    });
+                });
+            }
+        })();
+    </script>
 </body>
 </html>
