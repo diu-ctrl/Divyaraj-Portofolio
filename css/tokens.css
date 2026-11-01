@@ -548,3 +548,24 @@ body::before {
   outline: 2px solid var(--accent) !important;
   outline-offset: 3px !important;
 }
+
+
+/* ==========================================================================
+   ACCESSIBILITY (A11Y) & REDUCED MOTION
+   ========================================================================== */
+
+/* Respect User Reduced Motion Preference for new design tokens */
+@media (prefers-reduced-motion: reduce) {
+  .btn-b1, .btn-b2, .btn-b3, .btn-b4,
+  .btn-b3 .arrow, .text-arrow-link .arrow, a.explore-case-study .arrow, .back-link .arrow,
+  .btn-b4::after, .nav-link-b4::after, .nav-dropdown-link::after, .service-lane-link::after,
+  .card-p2, .panel-p1, .web-image-wrapper img {
+    transition: none !important;
+    transform: none !important;
+  }
+}
+
+/* Ensure accessible tap target sizes for interactive elements */
+button, input[type="submit"], input[type="button"], .btn-b1, .btn-b2 {
+  min-height: 44px;
+}
