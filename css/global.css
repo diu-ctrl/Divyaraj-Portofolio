@@ -2294,12 +2294,12 @@
             text-align: center;
             letter-spacing: 0.12em !important;
             text-transform: uppercase !important;
-            background: rgba(10, 10, 12, 0.72) !important;
-            border: 3px solid rgba(255, 255, 255, 0.28) !important;
+            background: rgba(255, 255, 255, 0.14) !important;
+            border: 3px solid rgba(255, 255, 255, 0.35) !important;
             border-radius: var(--r-pill, 999px) !important;
             backdrop-filter: blur(14px) !important;
             -webkit-backdrop-filter: blur(14px) !important;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5) !important;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4) !important;
             transform: none !important;
             transition: background 0.25s ease, border-color 0.25s ease, color 0.25s ease !important;
             cursor: pointer !important;
@@ -2308,7 +2308,7 @@
 
         .cinema-scale-copy .cinema-play-glyph {
             font-size: 0.8em !important;
-            color: var(--accent) !important;
+            color: #FFFFFF !important;
             transform: translateY(-1px) !important;
             transition: color 0.25s ease !important;
         }
