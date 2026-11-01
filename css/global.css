@@ -842,43 +842,18 @@
             padding-left: 50px;
         }
 
-        /* Line: dim at top, vivid near the current job */
-        .timeline::before {
-            content: '';
-            position: absolute;
-            left: 5px;
-            top: 10px;
-            bottom: 10px;
-            width: 1px;
+        /* Removed vertical timeline line and horizontal dashes per design update */
+        .timeline::before,
+        .timeline-item::before,
+        .timeline-item-current::before {
+            display: none !important;
+            content: none !important;
         }
 
-        .timeline-item {
+        .timeline-item,
+        .timeline-item-current {
             position: relative;
             margin-bottom: var(--tl-gap, 60px);
-            padding-left: 45px;
-        }
-
-        .timeline-item:last-child {
-            margin-bottom: 0;
-        }
-
-        .timeline-item::before {
-            content: '';
-            position: absolute;
-            left: -53px;
-            top: 14px;
-            width: 16px;
-            height: 2px;
-            background: var(--primary);
-            transition: background-color 0.35s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-
-        .timeline-item:hover::before {
-            background: #ffffff;
-        }
-
-        /* ─── Current job: breaks wider, glows ─── */
-        .timeline-item-current {
             border: 1px solid #282723;
             border-radius: 20px;
             padding: 28px 32px 28px 60px;
@@ -886,26 +861,15 @@
             transition: border-color 0.3s ease;
         }
 
-        .timeline-item-current::before {
-            content: '';
-            position: absolute;
-            left: -37px;
-            top: 38px;
-            width: 16px;
-            height: 2px;
-            background: var(--primary);
-            transform: translateX(0);
-            transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+        .timeline-item:last-child,
+        .timeline-item-current:last-child {
+            margin-bottom: 0;
         }
 
+        .timeline-item:hover,
         .timeline-item-current:hover {
             border-color: var(--primary) !important;
             transform: none !important; /* Keep box static on hover */
-        }
-
-        .timeline-item-current:hover::before {
-            background: #ffffff;
-            transform: none !important; /* Keep horizontal dash static on hover */
         }
 
         /* Pulsing "Currently here" badge */
@@ -1466,17 +1430,24 @@
         }
 
         .social-icon-btn:hover {
-            background: #EB4604;
-            border-color: #EB4604;
-            color: #000000;
+            background: rgba(235, 70, 4, 0.08) !important;
+            border-color: var(--accent) !important;
+            color: var(--accent) !important;
         }
 
+        .social-icon-btn:hover svg,
         .social-icon-btn:hover svg path,
         .social-icon-btn:hover svg rect,
         .social-icon-btn:hover svg circle,
         .social-icon-btn:hover svg line,
         .social-icon-btn:hover svg polyline {
-            stroke: #000000;
+            stroke: var(--accent) !important;
+            color: var(--accent) !important;
+        }
+
+        .social-icon-btn:hover svg circle[fill="currentColor"] {
+            fill: var(--accent) !important;
+            stroke: none !important;
         }
 
         .social-mail-btn {
@@ -1506,15 +1477,17 @@
         }
 
         .social-mail-btn:hover {
-            background: #EB4604;
-            border-color: #EB4604;
-            color: #000000;
+            background: rgba(235, 70, 4, 0.08) !important;
+            border-color: var(--accent) !important;
+            color: var(--accent) !important;
         }
 
+        .social-mail-btn:hover svg,
         .social-mail-btn:hover svg path,
         .social-mail-btn:hover svg rect,
         .social-mail-btn:hover svg polyline {
-            stroke: #000000;
+            stroke: var(--accent) !important;
+            color: var(--accent) !important;
         }
 
         /* ─── Copyright left-aligned ─── */
@@ -1785,13 +1758,16 @@
                 margin-right: 18px;
             }
             .timeline {
-                padding-left: 30px;
+                padding-left: 0 !important;
             }
-            .timeline-item {
-                padding-left: 25px;
+            .timeline-item,
+            .timeline-item-current {
+                margin-left: 0 !important;
+                padding: 24px 20px !important;
             }
-            .timeline-item::before {
-                left: -33px;
+            .timeline-item::before,
+            .timeline-item-current::before {
+                display: none !important;
             }
 
             .cta-box {
