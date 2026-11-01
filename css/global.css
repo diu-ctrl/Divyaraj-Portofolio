@@ -1540,11 +1540,17 @@
         /* ─── Dither Card Section ─── */
         .dither-card-section {
             padding: 24px 0 80px 0 !important;
-            width: 100%;
+            width: 100vw;
+            max-width: none !important;
+            margin-left: 50%;
+            transform: translateX(-50%);
             display: flex;
             justify-content: center;
             align-items: center;
-            background: #000;
+            background: #000000 !important;
+            background-color: #000000 !important;
+            position: relative !important;
+            z-index: 10 !important;
         }
 
         body .dither-card-container {
