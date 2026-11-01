@@ -1331,7 +1331,7 @@
             grid-template-columns: 1.2fr 0.8fr;
             align-items: center;
             gap: 60px;
-            padding: 80px 0;
+            padding: 40px 0 20px 0 !important;
             background: transparent;
             border: none;
             max-width: 1200px;
@@ -1342,7 +1342,7 @@
             display: flex;
             flex-direction: column;
             align-items: flex-start;
-            gap: 40px;
+            gap: 28px;
             width: 100%;
         }
 
@@ -1355,11 +1355,12 @@
 
         .portrait-video-wrapper {
             width: 100%;
-            max-width: 320px;
+            max-width: 250px !important;
             aspect-ratio: 9/16;
             background: #000000;
             border: 1px solid #282723;
-            overflow: hidden;
+            border-radius: 14px !important;
+            overflow: hidden !important;
             position: relative;
         }
 
@@ -1421,6 +1422,11 @@
             background: transparent;
             color: var(--text);
             border: 1px solid var(--border);
+            height: 56px !important;
+            min-height: 56px !important;
+            border-radius: 28px !important;
+            padding: 0 32px !important;
+            box-sizing: border-box !important;
         }
 
         .btn-brutalist-outline:hover {
@@ -1444,10 +1450,11 @@
             width: 46px;
             height: 46px;
             border: 1px solid rgba(255,255,255,0.18);
+            border-radius: var(--r-pill, 999px) !important;
             background: transparent;
             color: #ffffff;
             text-decoration: none;
-            transition: background 0.25s ease, border-color 0.25s ease, color 0.25s ease, ;
+            transition: background 0.25s ease, border-color 0.25s ease, color 0.25s ease;
             cursor: pointer;
             flex-shrink: 0;
         }
@@ -1477,8 +1484,9 @@
             align-items: center;
             gap: 8px;
             height: 46px;
-            padding: 0 20px;
+            padding: 0 22px !important;
             border: 1px solid rgba(255,255,255,0.18);
+            border-radius: var(--r-pill, 999px) !important;
             background: transparent;
             color: #ffffff;
             text-decoration: none;
@@ -1486,7 +1494,7 @@
             font-size: 13px !important;
             font-weight: 600 !important;
             letter-spacing: 0.02em !important;
-            transition: background 0.25s ease, border-color 0.25s ease, color 0.25s ease, ;
+            transition: background 0.25s ease, border-color 0.25s ease, color 0.25s ease;
             cursor: pointer;
             white-space: nowrap;
         }
@@ -1517,11 +1525,11 @@
             font-size: 12px !important;
             font-weight: 500 !important;
             letter-spacing: 0.02em !important;
-            margin-top: 40px;
+            margin-top: 20px !important;
             margin-bottom: 0px;
             line-height: 1.6;
             border-bottom: 1px solid var(--border);
-            padding-bottom: 30px;
+            padding-bottom: 24px !important;
             width: 100%;
             max-width: 1200px;
             margin-left: auto;

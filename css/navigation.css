@@ -51,7 +51,8 @@
     justify-content: space-around;
     width: 100%;
     background: #000000 !important;
-     /* Sharp brutalist corners */
+    border-radius: 16px !important;
+    border: 1px solid rgba(255, 255, 255, 0.14) !important;
     padding: 4px 12px;
     gap: 8px;
     position: relative;
@@ -70,6 +71,8 @@
     border-right: 1px solid var(--primary) !important;
     border-bottom: 1px solid var(--primary) !important;
     border-top: none !important; /* Top border removed for seamless integration */
+    border-bottom-left-radius: 14px !important;
+    border-bottom-right-radius: 14px !important;
     color: var(--primary);
     font-family: var(--font-sans);
     font-size: 12px;

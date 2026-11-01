@@ -254,7 +254,6 @@
             background: #000000;
             border: 1px solid #ffffff;
             padding: 5px 14px;
-            border-radius: 0px;
         }
 
         .case-study-title {
@@ -445,6 +444,9 @@
             display: flex;
             flex-direction: column;
             gap: 18px;
+            border-radius: var(--r-table, 12px) !important;
+            overflow: hidden !important;
+            border: 1px solid #282723 !important;
         }
 
         .features-table-wrapper h3 {
@@ -458,12 +460,14 @@
             border-collapse: separate !important;
             border-spacing: 0 !important;
             width: 100%;
-            border-collapse: collapse;
             background: #000000;
-            border: 1px solid #282723;
-            border-radius: var(--r-table, 12px) !important;
+            border: none !important;
             overflow: hidden;
         }
+        .features-table tr:first-child th:first-child { border-top-left-radius: 12px !important; }
+        .features-table tr:first-child th:last-child { border-top-right-radius: 12px !important; }
+        .features-table tr:last-child td:first-child { border-bottom-left-radius: 12px !important; }
+        .features-table tr:last-child td:last-child { border-bottom-right-radius: 12px !important; }
 
         .features-table th, .features-table td {
             padding: 16px 20px;
@@ -565,6 +569,8 @@
             height: 38px;
             background: #1a1917;
             border-bottom: 1px solid #282723;
+            border-top-left-radius: 14px !important;
+            border-top-right-radius: 14px !important;
             display: flex;
             align-items: center;
             justify-content: flex-start;
@@ -621,9 +627,9 @@
         .web-img-wrap {
             width: 100%;
             background: #000;
-            border-bottom-left-radius: 15px;
-            border-bottom-right-radius: 15px;
-            overflow: hidden;
+            border-bottom-left-radius: 14px !important;
+            border-bottom-right-radius: 14px !important;
+            overflow: hidden !important;
             position: relative;
         }
 
@@ -631,6 +637,8 @@
             width: 100%;
             height: auto;
             display: block;
+            border-bottom-left-radius: 14px !important;
+            border-bottom-right-radius: 14px !important;
         }
 
         /* Hotspot Container & Dot styling */
