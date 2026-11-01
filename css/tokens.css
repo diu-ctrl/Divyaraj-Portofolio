@@ -774,3 +774,24 @@ button, input[type="submit"], input[type="button"], .btn-b1, .btn-b2 {
   border-radius: 0 !important;
   box-shadow: none !important;
 }
+
+/* ─── AI Cinema Thumbnail Roundness & Overlay Fix ─── */
+.film-row-visual,
+.film-row-visual img,
+.film-card-visual,
+.film-card-visual img {
+  border-radius: var(--r-media, 14px) !important;
+  overflow: hidden !important;
+}
+
+/* Override global button pill radius: thumbnail overlay must match 14px rounded rectangle, NOT 999px oval */
+.play-btn-large {
+  border-radius: var(--r-media, 14px) !important;
+}
+
+/* Inner category chips inside video thumbnails */
+.film-badge-chip,
+.film-row-visual > div[style*="position: absolute; top: 16px"],
+.film-card-visual > div[style*="position: absolute; top: 16px"] {
+  border-radius: var(--r-badge, 8px) !important;
+}

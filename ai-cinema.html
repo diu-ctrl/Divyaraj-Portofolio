@@ -435,8 +435,8 @@
             position: relative;
             width: 100%;
             aspect-ratio: 16/9;
-            border-radius: 0;
-            overflow: hidden;
+            border-radius: var(--r-media, 14px) !important;
+            overflow: hidden !important;
             background: #000;
             border: 1px solid #282723;
         }
@@ -445,7 +445,17 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
+            border-radius: var(--r-media, 14px) !important;
             transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .film-card-visual {
+            border-radius: var(--r-media, 14px) !important;
+            overflow: hidden !important;
+        }
+
+        .film-card-visual img {
+            border-radius: var(--r-media, 14px) !important;
         }
 
         .play-btn-large {
@@ -455,11 +465,17 @@
             height: 100%;
             background: rgba(16, 12, 11, 0.4);
             border: none;
+            border-radius: var(--r-media, 14px) !important;
             display: flex;
             align-items: center;
             justify-content: center;
             cursor: pointer;
             transition: background 0.3s ease;
+        }
+
+        .film-badge-chip,
+        .film-row-visual > div[style*="position: absolute; top: 16px"] {
+            border-radius: var(--r-badge, 8px) !important;
         }
 
         .play-btn-large svg {
@@ -1238,7 +1254,7 @@
                             <path d="M8 5v14l11-7z"/>
                         </svg>
                     </button>
-                    <div style="position: absolute; top: 16px; left: 16px; background: rgba(0,0,0,0.75); border: 1px solid rgba(255,255,255,0.15); padding: 4px 10px; font-family: var(--font-sans); font-weight: 500; font-size: 0.62rem; letter-spacing: 0.02em; color: var(--text-muted);">Cinematic Trailer &middot; Hinglish VO</div>
+                    <div class="film-badge-chip" style="position: absolute; top: 16px; left: 16px; background: rgba(0,0,0,0.75); border: 1px solid rgba(255,255,255,0.15); padding: 4px 10px; font-family: var(--font-sans); font-weight: 500; font-size: 0.62rem; letter-spacing: 0.02em; color: var(--text-muted); border-radius: 8px;">Cinematic Trailer &middot; Hinglish VO</div>
                 </div>
                 <div class="film-row-content">
                     <div style="display: flex; gap: 10px; align-items: center; flex-wrap: wrap;">
@@ -1264,7 +1280,7 @@
                             <path d="M8 5v14l11-7z"/>
                         </svg>
                     </button>
-                    <div style="position: absolute; top: 16px; left: 16px; background: rgba(0,0,0,0.75); border: 1px solid rgba(255,255,255,0.15); padding: 4px 10px; font-family: var(--font-sans); font-weight: 500; font-size: 0.62rem; letter-spacing: 0.02em; color: var(--text-muted);">POV Cockpit &middot; Hyper-SUV</div>
+                    <div class="film-badge-chip" style="position: absolute; top: 16px; left: 16px; background: rgba(0,0,0,0.75); border: 1px solid rgba(255,255,255,0.15); padding: 4px 10px; font-family: var(--font-sans); font-weight: 500; font-size: 0.62rem; letter-spacing: 0.02em; color: var(--text-muted); border-radius: 8px;">POV Cockpit &middot; Hyper-SUV</div>
                 </div>
                 <div class="film-row-content">
                     <div style="display: flex; gap: 10px; align-items: center; flex-wrap: wrap;">
@@ -1290,7 +1306,7 @@
                             <path d="M8 5v14l11-7z"/>
                         </svg>
                     </button>
-                    <div style="position: absolute; top: 16px; left: 16px; background: rgba(0,0,0,0.75); border: 1px solid rgba(255,255,255,0.15); padding: 4px 10px; font-family: var(--font-sans); font-weight: 500; font-size: 0.62rem; letter-spacing: 0.02em; color: var(--text-muted);">Ad Film &middot; Kuwait</div>
+                    <div class="film-badge-chip" style="position: absolute; top: 16px; left: 16px; background: rgba(0,0,0,0.75); border: 1px solid rgba(255,255,255,0.15); padding: 4px 10px; font-family: var(--font-sans); font-weight: 500; font-size: 0.62rem; letter-spacing: 0.02em; color: var(--text-muted); border-radius: 8px;">Ad Film &middot; Kuwait</div>
                 </div>
                 <div class="film-row-content">
                     <div style="display: flex; gap: 10px; align-items: center; flex-wrap: wrap;">
@@ -1316,7 +1332,7 @@
                             <path d="M8 5v14l11-7z"/>
                         </svg>
                     </button>
-                    <div style="position: absolute; top: 16px; left: 16px; background: rgba(0,0,0,0.75); border: 1px solid rgba(255,255,255,0.15); padding: 4px 10px; font-family: var(--font-sans); font-weight: 500; font-size: 0.62rem; letter-spacing: 0.02em; color: var(--text-muted);">Beat-Synced &middot; Tulasi — Sumedh K</div>
+                    <div class="film-badge-chip" style="position: absolute; top: 16px; left: 16px; background: rgba(0,0,0,0.75); border: 1px solid rgba(255,255,255,0.15); padding: 4px 10px; font-family: var(--font-sans); font-weight: 500; font-size: 0.62rem; letter-spacing: 0.02em; color: var(--text-muted); border-radius: 8px;">Beat-Synced &middot; Tulasi — Sumedh K</div>
                 </div>
                 <div class="film-row-content">
                     <div style="display: flex; gap: 10px; align-items: center; flex-wrap: wrap;">
@@ -1342,7 +1358,7 @@
                             <path d="M8 5v14l11-7z"/>
                         </svg>
                     </button>
-                    <div style="position: absolute; top: 16px; left: 16px; background: rgba(0,0,0,0.75); border: 1px solid rgba(255,255,255,0.15); padding: 4px 10px; font-family: var(--font-sans); font-weight: 500; font-size: 0.62rem; letter-spacing: 0.02em; color: var(--text-muted);">Ad Film &middot; Kuwait</div>
+                    <div class="film-badge-chip" style="position: absolute; top: 16px; left: 16px; background: rgba(0,0,0,0.75); border: 1px solid rgba(255,255,255,0.15); padding: 4px 10px; font-family: var(--font-sans); font-weight: 500; font-size: 0.62rem; letter-spacing: 0.02em; color: var(--text-muted); border-radius: 8px;">Ad Film &middot; Kuwait</div>
                 </div>
                 <div class="film-row-content">
                     <div style="display: flex; gap: 10px; align-items: center; flex-wrap: wrap;">
@@ -1393,7 +1409,7 @@
                             <path d="M8 5v14l11-7z"/>
                         </svg>
                     </button>
-                    <div style="position: absolute; top: 16px; left: 16px; background: rgba(0,0,0,0.75); border: 1px solid rgba(255,255,255,0.15); padding: 4px 10px; font-family: var(--font-sans); font-weight: 500; font-size: 0.62rem; letter-spacing: 0.02em; color: var(--text-muted);">21:9 Ultrawide &middot; Master Craftsman</div>
+                    <div class="film-badge-chip" style="position: absolute; top: 16px; left: 16px; background: rgba(0,0,0,0.75); border: 1px solid rgba(255,255,255,0.15); padding: 4px 10px; font-family: var(--font-sans); font-weight: 500; font-size: 0.62rem; letter-spacing: 0.02em; color: var(--text-muted); border-radius: 8px;">21:9 Ultrawide &middot; Master Craftsman</div>
                 </div>
                 <div class="film-row-content">
                     <div style="display: flex; gap: 10px; align-items: center; flex-wrap: wrap;">
@@ -1419,7 +1435,7 @@
                             <path d="M8 5v14l11-7z"/>
                         </svg>
                     </button>
-                    <div style="position: absolute; top: 16px; left: 16px; background: rgba(0,0,0,0.75); border: 1px solid rgba(255,255,255,0.15); padding: 4px 10px; font-family: var(--font-sans); font-weight: 500; font-size: 0.62rem; letter-spacing: 0.02em; color: var(--text-muted);">21:9 Ultrawide &middot; Mountain Traditions</div>
+                    <div class="film-badge-chip" style="position: absolute; top: 16px; left: 16px; background: rgba(0,0,0,0.75); border: 1px solid rgba(255,255,255,0.15); padding: 4px 10px; font-family: var(--font-sans); font-weight: 500; font-size: 0.62rem; letter-spacing: 0.02em; color: var(--text-muted); border-radius: 8px;">21:9 Ultrawide &middot; Mountain Traditions</div>
                 </div>
                 <div class="film-row-content">
                     <div style="display: flex; gap: 10px; align-items: center; flex-wrap: wrap;">
@@ -1445,7 +1461,7 @@
                             <path d="M8 5v14l11-7z"/>
                         </svg>
                     </button>
-                    <div style="position: absolute; top: 16px; left: 16px; background: rgba(0,0,0,0.75); border: 1px solid rgba(255,255,255,0.15); padding: 4px 10px; font-family: var(--font-sans); font-weight: 500; font-size: 0.62rem; letter-spacing: 0.02em; color: var(--text-muted);">Studio Showcase &middot; Aerodynamics</div>
+                    <div class="film-badge-chip" style="position: absolute; top: 16px; left: 16px; background: rgba(0,0,0,0.75); border: 1px solid rgba(255,255,255,0.15); padding: 4px 10px; font-family: var(--font-sans); font-weight: 500; font-size: 0.62rem; letter-spacing: 0.02em; color: var(--text-muted); border-radius: 8px;">Studio Showcase &middot; Aerodynamics</div>
                 </div>
                 <div class="film-row-content">
                     <div style="display: flex; gap: 10px; align-items: center; flex-wrap: wrap;">
@@ -1471,7 +1487,7 @@
                             <path d="M8 5v14l11-7z"/>
                         </svg>
                     </button>
-                    <div style="position: absolute; top: 16px; left: 16px; background: rgba(0,0,0,0.75); border: 1px solid rgba(255,255,255,0.15); padding: 4px 10px; font-family: var(--font-sans); font-weight: 500; font-size: 0.62rem; letter-spacing: 0.02em; color: var(--text-muted);">16:9 Widescreen &middot; Untagd</div>
+                    <div class="film-badge-chip" style="position: absolute; top: 16px; left: 16px; background: rgba(0,0,0,0.75); border: 1px solid rgba(255,255,255,0.15); padding: 4px 10px; font-family: var(--font-sans); font-weight: 500; font-size: 0.62rem; letter-spacing: 0.02em; color: var(--text-muted); border-radius: 8px;">16:9 Widescreen &middot; Untagd</div>
                 </div>
                 <div class="film-row-content">
                     <div style="display: flex; gap: 10px; align-items: center; flex-wrap: wrap;">
@@ -1492,7 +1508,7 @@
             <div class="supporting-films-grid">
                 <!-- Film: Thakkarnagar Style -->
                 <div class="film-card reveal" id="thakkarnagar-style">
-                    <div class="film-card-visual" style="aspect-ratio: 16/9; margin-bottom: 24px; position: relative; border-radius: 0; overflow: hidden; border: 1px solid #282723; background: #000000;">
+                    <div class="film-card-visual" style="aspect-ratio: 16/9; margin-bottom: 24px; position: relative; border-radius: 14px !important; overflow: hidden !important; border: 1px solid #282723; background: #000000;">
                         <img src="images/thakkarnagar-style-thumb.jpg" alt="Thakkarnagar Style Thumbnail" style="width: 100%; height: 100%; object-fit: cover;">
                         <button class="play-btn-large watch-btn" data-video="Final Video/Thakkarnagar Stylee.mp4" aria-label="Play Film">
                             <svg viewBox="0 0 24 24" fill="currentColor" style="width: 56px; height: 56px;">
@@ -1516,7 +1532,7 @@
 
                 <!-- Film: Superman: 3D vs AI -->
                 <div class="film-card reveal" id="superman-3d-vs-ai">
-                    <div class="film-card-visual" style="aspect-ratio: 16/9; margin-bottom: 24px; position: relative; border-radius: 0; overflow: hidden; border: 1px solid #282723; background: #000000;">
+                    <div class="film-card-visual" style="aspect-ratio: 16/9; margin-bottom: 24px; position: relative; border-radius: 14px !important; overflow: hidden !important; border: 1px solid #282723; background: #000000;">
                         <img src="images/superman-3d-vs-ai-thumb.jpg" alt="Superman 3D vs AI Thumbnail" style="width: 100%; height: 100%; object-fit: cover;">
                         <button class="play-btn-large watch-btn" data-video="Final Video/superman 3d vs ai.mp4" aria-label="Play Film">
                             <svg viewBox="0 0 24 24" fill="currentColor" style="width: 56px; height: 56px;">
@@ -1540,7 +1556,7 @@
 
                 <!-- Film: 1990 Man -->
                 <div class="film-card reveal" id="1990-man">
-                    <div class="film-card-visual" style="aspect-ratio: 16/9; margin-bottom: 24px; position: relative; border-radius: 0; overflow: hidden; border: 1px solid #282723; background: #000000;">
+                    <div class="film-card-visual" style="aspect-ratio: 16/9; margin-bottom: 24px; position: relative; border-radius: 14px !important; overflow: hidden !important; border: 1px solid #282723; background: #000000;">
                         <img src="images/1990-man-thumb.jpg" alt="1990 Man Thumbnail" style="width: 100%; height: 100%; object-fit: cover;">
                         <button class="play-btn-large watch-btn" data-video="Final Video/1990 man.mp4" aria-label="Play Film">
                             <svg viewBox="0 0 24 24" fill="currentColor" style="width: 56px; height: 56px;">
@@ -1564,7 +1580,7 @@
 
                 <!-- Film: Astronaut -->
                 <div class="film-card reveal" id="astronaut">
-                    <div class="film-card-visual" style="aspect-ratio: 16/9; margin-bottom: 24px; position: relative; border-radius: 0; overflow: hidden; border: 1px solid #282723; background: #000000;">
+                    <div class="film-card-visual" style="aspect-ratio: 16/9; margin-bottom: 24px; position: relative; border-radius: 14px !important; overflow: hidden !important; border: 1px solid #282723; background: #000000;">
                         <img src="images/astronaut-thumb.jpg" alt="Astronaut Thumbnail" style="width: 100%; height: 100%; object-fit: cover;">
                         <button class="play-btn-large watch-btn" data-video="Final Video/astronaut.mp4" aria-label="Play Film">
                             <svg viewBox="0 0 24 24" fill="currentColor" style="width: 56px; height: 56px;">
@@ -1588,7 +1604,7 @@
 
                 <!-- Film 0: BMW x KITH -->
                 <div class="film-card reveal" id="bmw-kith">
-                    <div class="film-card-visual" style="aspect-ratio: 16/9; margin-bottom: 24px; position: relative; border-radius: 0; overflow: hidden; border: 1px solid #282723; background: #000000;">
+                    <div class="film-card-visual" style="aspect-ratio: 16/9; margin-bottom: 24px; position: relative; border-radius: 14px !important; overflow: hidden !important; border: 1px solid #282723; background: #000000;">
                         <img src="images/bmw-kith-thumb.jpg" alt="BMW x KITH Thumbnail" style="width: 100%; height: 100%; object-fit: cover;">
                         <button class="play-btn-large watch-btn" data-video="Final Video/BMW x KITH.mp4" aria-label="Play Film">
                             <svg viewBox="0 0 24 24" fill="currentColor" style="width: 56px; height: 56px;">
@@ -1612,7 +1628,7 @@
 
                 <!-- Film 1: Kasahrada -->
                 <div class="film-card reveal" id="kasahrada">
-                    <div class="film-card-visual" style="aspect-ratio: 16/9; margin-bottom: 24px; position: relative; border-radius: 0; overflow: hidden; border: 1px solid #282723; background: #000000;">
+                    <div class="film-card-visual" style="aspect-ratio: 16/9; margin-bottom: 24px; position: relative; border-radius: 14px !important; overflow: hidden !important; border: 1px solid #282723; background: #000000;">
                         <img src="images/kasahrada-thumb.png" alt="Battle of Kasahrada Thumbnail" style="width: 100%; height: 100%; object-fit: cover; transform: scale(1.18); object-position: center 35%;">
                         <button class="play-btn-large watch-btn" data-video="Final Video/Rani Nayika Devi_Divyaraj.mp4" aria-label="Play Film">
                             <svg viewBox="0 0 24 24" fill="currentColor" style="width: 56px; height: 56px;">
@@ -1636,7 +1652,7 @@
 
                 <!-- Film 2: Porsche -->
                 <div class="film-card reveal" id="porsche">
-                    <div class="film-card-visual" style="aspect-ratio: 16/9; margin-bottom: 24px; position: relative; border-radius: 0; overflow: hidden; border: 1px solid #282723; background: #000000;">
+                    <div class="film-card-visual" style="aspect-ratio: 16/9; margin-bottom: 24px; position: relative; border-radius: 14px !important; overflow: hidden !important; border: 1px solid #282723; background: #000000;">
                         <img src="images/porsche-thumb.jpg" alt="Porsche 911 Turbo S Thumbnail" style="width: 100%; height: 100%; object-fit: cover;">
                         <button class="play-btn-large watch-btn" data-video="Final Video/1080P Porsche 911 Turbo S Promo.mp4" aria-label="Play Film">
                             <svg viewBox="0 0 24 24" fill="currentColor" style="width: 56px; height: 56px;">
@@ -1660,7 +1676,7 @@
 
                 <!-- Film 3: Credes Ad -->
                 <div class="film-card reveal" id="credes-ad">
-                    <div class="film-card-visual" style="aspect-ratio: 16/9; margin-bottom: 24px; position: relative; border-radius: 0; overflow: hidden; border: 1px solid #282723; background: #000000;">
+                    <div class="film-card-visual" style="aspect-ratio: 16/9; margin-bottom: 24px; position: relative; border-radius: 14px !important; overflow: hidden !important; border: 1px solid #282723; background: #000000;">
                         <img src="images/credes-ad-thumb.jpg" alt="Credes Ad Thumbnail" style="width: 100%; height: 100%; object-fit: cover;">
                         <button class="play-btn-large watch-btn" data-video="Final Video/credes-ad.mp4" aria-label="Play Film">
                             <svg viewBox="0 0 24 24" fill="currentColor" style="width: 56px; height: 56px;">
@@ -1684,7 +1700,7 @@
 
                 <!-- Film 4: You vs You -->
                 <div class="film-card reveal" id="you-vs-you">
-                    <div class="film-card-visual" style="aspect-ratio: 16/9; margin-bottom: 24px; position: relative; border-radius: 0; overflow: hidden; border: 1px solid #282723; background: #000000;">
+                    <div class="film-card-visual" style="aspect-ratio: 16/9; margin-bottom: 24px; position: relative; border-radius: 14px !important; overflow: hidden !important; border: 1px solid #282723; background: #000000;">
                         <img src="images/you-vs-you-thumb.png" alt="You vs You Thumbnail" style="width: 100%; height: 100%; object-fit: cover;">
                         <button class="play-btn-large watch-btn" data-video="Final Video/You vs You.mp4" aria-label="Play Film">
                             <svg viewBox="0 0 24 24" fill="currentColor" style="width: 56px; height: 56px;">
@@ -1708,7 +1724,7 @@
 
                 <!-- Film 5: The Next Billion -->
                 <div class="film-card reveal" id="india-ai-summit">
-                    <div class="film-card-visual" style="aspect-ratio: 16/9; margin-bottom: 24px; position: relative; border-radius: 0; overflow: hidden; border: 1px solid #282723; background: #000000;">
+                    <div class="film-card-visual" style="aspect-ratio: 16/9; margin-bottom: 24px; position: relative; border-radius: 14px !important; overflow: hidden !important; border: 1px solid #282723; background: #000000;">
                         <img src="brands/Ai Cinema Lab/Billion/billion.png" alt="The Next Billion Thumbnail" style="width: 100%; height: 100%; object-fit: cover;">
                         <button class="play-btn-large watch-btn" data-video="Final Video/india-ai-impact-summit-2026.mp4" aria-label="Play Film">
                             <svg viewBox="0 0 24 24" fill="currentColor" style="width: 56px; height: 56px;">
@@ -1733,7 +1749,7 @@
 
                 <!-- Film 6: Wind Pole Reel (Man and Dog) -->
                 <div class="film-card reveal" id="wind-pole-reel">
-                    <div class="film-card-visual" style="aspect-ratio: 16/9; margin-bottom: 24px; position: relative; border-radius: 0; overflow: hidden; border: 1px solid #282723; background: #000000;">
+                    <div class="film-card-visual" style="aspect-ratio: 16/9; margin-bottom: 24px; position: relative; border-radius: 14px !important; overflow: hidden !important; border: 1px solid #282723; background: #000000;">
                         <img src="images/wind-pole-reel-thumb.jpg" alt="Wind Pole Reel Thumbnail" style="width: 100%; height: 100%; object-fit: cover;">
                         <button class="play-btn-large watch-btn" data-video="Final Video/Man and dog hanging on a pole.mp4" aria-label="Play Film">
                             <svg viewBox="0 0 24 24" fill="currentColor" style="width: 56px; height: 56px;">
@@ -1757,7 +1773,7 @@
 
                 <!-- Film 7: Breaking Bad Trend Reel -->
                 <div class="film-card reveal" id="breaking-bad-reel">
-                    <div class="film-card-visual" style="aspect-ratio: 16/9; margin-bottom: 24px; position: relative; border-radius: 0; overflow: hidden; border: 1px solid #282723; background: #000000;">
+                    <div class="film-card-visual" style="aspect-ratio: 16/9; margin-bottom: 24px; position: relative; border-radius: 14px !important; overflow: hidden !important; border: 1px solid #282723; background: #000000;">
                         <img src="images/breaking-bad-thumb.jpg" alt="Breaking Bad Trend Reel Thumbnail" style="width: 100%; height: 100%; object-fit: cover;">
                         <button class="play-btn-large watch-btn" data-video="Final Video/breaking bad 3.mp4" aria-label="Play Film">
                             <svg viewBox="0 0 24 24" fill="currentColor" style="width: 56px; height: 56px;">
@@ -1781,7 +1797,7 @@
 
                 <!-- Film 8: Spiderman in a Multiverse -->
                 <div class="film-card reveal" id="spiderman-multiverse">
-                    <div class="film-card-visual" style="aspect-ratio: 16/9; margin-bottom: 24px; position: relative; border-radius: 0; overflow: hidden; border: 1px solid #282723; background: #000000;">
+                    <div class="film-card-visual" style="aspect-ratio: 16/9; margin-bottom: 24px; position: relative; border-radius: 14px !important; overflow: hidden !important; border: 1px solid #282723; background: #000000;">
                         <img src="images/spiderman-multiverse-thumb.jpg" alt="Spiderman in a Multiverse Thumbnail" style="width: 100%; height: 100%; object-fit: cover;">
                         <button class="play-btn-large watch-btn" data-video="Final Video/spidey4.mp4" aria-label="Play Film">
                             <svg viewBox="0 0 24 24" fill="currentColor" style="width: 56px; height: 56px;">
@@ -2470,13 +2486,8 @@
             }
         });
 
-        // Auto-open based on URL Hash
-        window.addEventListener('DOMContentLoaded', () => {
-            const hash = window.location.hash.substring(1);
-            if (hash && caseStudies[hash]) {
-                openCaseStudy(hash);
-            }
-        });
+        // Auto-open based on URL Hash disabled per user request
+        // (direct deep links scroll to the film card without opening summary drawer)
     </script>
 
     <!-- ─── Copy URL Button Logic ─── -->
