@@ -1,5 +1,5 @@
 import React, { forwardRef } from 'react';
-import { useTexture } from '@react-three/drei';
+import { useTexture, Image } from '@react-three/drei';
 import * as THREE from 'three';
 
 interface GalleryImagePlaneProps {
@@ -21,10 +21,16 @@ export const GalleryImagePlane = forwardRef<THREE.Mesh, GalleryImagePlaneProps>(
   const height = width / aspect;
 
   return (
-    <mesh ref={ref} position={position} rotation={rotation}>
-      <planeGeometry args={[width, height]} />
-      <meshBasicMaterial map={texture} transparent toneMapped={false} />
-    </mesh>
+    <Image
+      ref={ref}
+      texture={texture}
+      scale={[width, height]}
+      position={position}
+      rotation={rotation}
+      radius={0.06}
+      transparent
+      toneMapped={false}
+    />
   );
 });
 
