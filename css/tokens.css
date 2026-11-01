@@ -405,13 +405,14 @@
    Optional (Selected Web Work thumbnails only): default filter: grayscale(15%) -> 0 on hover (400ms).
    Never apply filters inside protected sections. */
 .web-image-wrapper {
-  border-radius: var(--r-media, 0) !important;
-  overflow: hidden;
-  border: var(--hairline);
+  border-radius: var(--r-media, 14px) !important;
+  overflow: hidden !important;
+  border: none !important;
+  background: transparent !important;
 }
 
 .web-image-wrapper img {
-  border-radius: var(--r-media, 0) !important;
+  border-radius: var(--r-media, 14px) !important;
   filter: grayscale(15%);
   transition: transform var(--t-media), filter var(--t-media);
 }
