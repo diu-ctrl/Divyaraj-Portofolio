@@ -691,56 +691,157 @@
             <h2 class="display-serif-statement">Pick a lane.<br><span class="gradient-text">I'll do the rest.</span></h2>
         </div>
 
-        <div class="services-grid-four-lanes reveal">
+        <div class="services-accordion-lanes reveal" id="lanesContainer">
             <!-- Lane 1: Platform Growth -->
-            <div class="service-lane">
-                <a href="#contact" class="service-lane-link"><h3>Platform Growth</h3></a>
-                <ul>
-                    <li>Content Strategy &amp; Ideation</li>
-                    <li>Calendar Scheduling &amp; Posting</li>
-                    <li>Organic Pipeline Audits</li>
-                    <li>Community Engagement</li>
-                    <li>Performance Analytics</li>
-                </ul>
+            <div class="lane-card active" data-lane="1">
+                <a href="#contact" class="lane-card-link">
+                    <div class="lane-card-header">
+                        <span class="lane-card-eyebrow">01</span>
+                        <span class="lane-card-badge">01</span>
+                    </div>
+                    
+                    <div class="lane-card-collapsed-view">
+                        <h3 class="lane-collapsed-title">Platform Growth</h3>
+                        <p class="lane-collapsed-sub">Audience &amp; Content Engine</p>
+                    </div>
+
+                    <div class="lane-card-expanded-view">
+                        <div class="lane-expanded-top">
+                            <div class="lane-expanded-info">
+                                <h3 class="lane-expanded-title">Platform Growth</h3>
+                                <span class="lane-expanded-tag">AUDIENCE &amp; CONTENT ENGINE</span>
+                            </div>
+                            <div class="lane-expanded-image">
+                                <img src="images/lanes/platform-growth.jpg" alt="Platform Growth" loading="lazy">
+                            </div>
+                        </div>
+                        <ul class="lane-expanded-list">
+                            <li><span class="lane-bullet">■</span> Content Strategy &amp; Ideation</li>
+                            <li><span class="lane-bullet">■</span> Calendar Scheduling &amp; Posting</li>
+                            <li><span class="lane-bullet">■</span> Organic Pipeline Audits</li>
+                            <li><span class="lane-bullet">■</span> Community Engagement</li>
+                            <li><span class="lane-bullet">■</span> Performance Analytics</li>
+                        </ul>
+                    </div>
+                </a>
             </div>
 
             <!-- Lane 2: Digital Storefronts -->
-            <div class="service-lane">
-                <a href="#contact" class="service-lane-link"><h3>Digital Storefronts</h3></a>
-                <ul>
-                    <li>Custom Design Mockups</li>
-                    <li>Responsive Web Engineering</li>
-                    <li>Booking &amp; Reservation Systems</li>
-                    <li>Custom Checkout Design</li>
-                    <li>Speed &amp; SEO Optimization</li>
-                </ul>
+            <div class="lane-card" data-lane="2">
+                <a href="#contact" class="lane-card-link">
+                    <div class="lane-card-header">
+                        <span class="lane-card-eyebrow">02</span>
+                        <span class="lane-card-badge">02</span>
+                    </div>
+                    
+                    <div class="lane-card-collapsed-view">
+                        <h3 class="lane-collapsed-title">Digital Storefronts</h3>
+                        <p class="lane-collapsed-sub">Responsive Web &amp; Commerce</p>
+                    </div>
+
+                    <div class="lane-card-expanded-view">
+                        <div class="lane-expanded-top">
+                            <div class="lane-expanded-info">
+                                <h3 class="lane-expanded-title">Digital Storefronts</h3>
+                                <span class="lane-expanded-tag">RESPONSIVE WEB &amp; COMMERCE</span>
+                            </div>
+                            <div class="lane-expanded-image">
+                                <img src="images/lanes/digital-storefronts.jpg" alt="Digital Storefronts" loading="lazy">
+                            </div>
+                        </div>
+                        <ul class="lane-expanded-list">
+                            <li><span class="lane-bullet">■</span> Custom Design Mockups</li>
+                            <li><span class="lane-bullet">■</span> Responsive Web Engineering</li>
+                            <li><span class="lane-bullet">■</span> Booking &amp; Reservation Systems</li>
+                            <li><span class="lane-bullet">■</span> Custom Checkout Design</li>
+                            <li><span class="lane-bullet">■</span> Speed &amp; SEO Optimization</li>
+                        </ul>
+                    </div>
+                </a>
             </div>
 
             <!-- Lane 3: AI Cinema Lab -->
-            <div class="service-lane">
-                <a href="#contact" class="service-lane-link"><h3>AI Cinema Lab</h3></a>
-                <ul>
-                    <li>Conceptual Style Frames</li>
-                    <li>AI Cinematic Synthesis</li>
-                    <li>Sound FX &amp; Score Synthesis</li>
-                    <li>Color Grading &amp; Editing</li>
-                    <li>Generative Brand Films</li>
-                </ul>
+            <div class="lane-card" data-lane="3">
+                <a href="#contact" class="lane-card-link">
+                    <div class="lane-card-header">
+                        <span class="lane-card-eyebrow">03</span>
+                        <span class="lane-card-badge">03</span>
+                    </div>
+                    
+                    <div class="lane-card-collapsed-view">
+                        <h3 class="lane-collapsed-title">AI Cinema Lab</h3>
+                        <p class="lane-collapsed-sub">Generative Film &amp; VFX</p>
+                    </div>
+
+                    <div class="lane-card-expanded-view">
+                        <div class="lane-expanded-top">
+                            <div class="lane-expanded-info">
+                                <h3 class="lane-expanded-title">AI Cinema Lab</h3>
+                                <span class="lane-expanded-tag">GENERATIVE FILM &amp; VFX</span>
+                            </div>
+                            <div class="lane-expanded-image">
+                                <img src="images/lanes/ai-cinema.jpg" alt="AI Cinema Lab" loading="lazy">
+                            </div>
+                        </div>
+                        <ul class="lane-expanded-list">
+                            <li><span class="lane-bullet">■</span> Conceptual Style Frames</li>
+                            <li><span class="lane-bullet">■</span> AI Cinematic Synthesis</li>
+                            <li><span class="lane-bullet">■</span> Sound FX &amp; Score Synthesis</li>
+                            <li><span class="lane-bullet">■</span> Color Grading &amp; Editing</li>
+                            <li><span class="lane-bullet">■</span> Generative Brand Films</li>
+                        </ul>
+                    </div>
+                </a>
             </div>
 
             <!-- Lane 4: Full Campaigns -->
-            <div class="service-lane">
-                <a href="#contact" class="service-lane-link"><h3>Full Campaigns</h3></a>
-                <ul>
-                    <li>End-to-End Asset Creation</li>
-                    <li>Multi-Channel Execution</li>
-                    <li>Brand Identity Guidelines</li>
-                    <li>Comprehensive Asset Delivery</li>
-                    <li>Dedicated Project Pipeline</li>
-                </ul>
+            <div class="lane-card" data-lane="4">
+                <a href="#contact" class="lane-card-link">
+                    <div class="lane-card-header">
+                        <span class="lane-card-eyebrow">04</span>
+                        <span class="lane-card-badge">04</span>
+                    </div>
+                    
+                    <div class="lane-card-collapsed-view">
+                        <h3 class="lane-collapsed-title">Full Campaigns</h3>
+                        <p class="lane-collapsed-sub">End-to-End Brand Direction</p>
+                    </div>
+
+                    <div class="lane-card-expanded-view">
+                        <div class="lane-expanded-top">
+                            <div class="lane-expanded-info">
+                                <h3 class="lane-expanded-title">Full Campaigns</h3>
+                                <span class="lane-expanded-tag">END-TO-END BRAND DIRECTION</span>
+                            </div>
+                            <div class="lane-expanded-image">
+                                <img src="images/lanes/full-campaigns.jpg" alt="Full Campaigns" loading="lazy">
+                            </div>
+                        </div>
+                        <ul class="lane-expanded-list">
+                            <li><span class="lane-bullet">■</span> End-to-End Asset Creation</li>
+                            <li><span class="lane-bullet">■</span> Multi-Channel Execution</li>
+                            <li><span class="lane-bullet">■</span> Brand Identity Guidelines</li>
+                            <li><span class="lane-bullet">■</span> Comprehensive Asset Delivery</li>
+                            <li><span class="lane-bullet">■</span> Dedicated Project Pipeline</li>
+                        </ul>
+                    </div>
+                </a>
             </div>
         </div>
     </section>
+
+    <script>
+        (function() {
+            const laneCards = document.querySelectorAll('.lane-card');
+            if (!laneCards.length) return;
+            laneCards.forEach(card => {
+                card.addEventListener('mouseenter', () => {
+                    laneCards.forEach(c => c.classList.remove('active'));
+                    card.classList.add('active');
+                });
+            });
+        })();
+    </script>
 
     <!-- 3D Testimonials Section -->
     <section

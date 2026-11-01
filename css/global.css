@@ -1186,6 +1186,253 @@
             content: none !important;
         }
 
+        /* ═══════════════════════════════════════════════
+           SERVICES ACCORDION LANES (Interactive Hover Boxes)
+           ═══════════════════════════════════════════════ */
+        .services-accordion-lanes {
+            display: flex;
+            gap: 16px;
+            width: 100%;
+            align-items: stretch;
+            min-height: 500px;
+            margin-top: 50px;
+        }
+
+        .lane-card {
+            position: relative;
+            flex: 1;
+            min-width: 0;
+            background: #0d0d0d;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 30px 24px;
+            overflow: hidden;
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            transition: flex 0.45s cubic-bezier(0.25, 1, 0.5, 1), 
+                        border-color 0.3s ease, 
+                        background 0.3s ease, 
+                        box-shadow 0.3s ease;
+        }
+
+        .lane-card.active {
+            flex: 2.7;
+            border-color: rgba(255, 255, 255, 0.28);
+            background: #111111;
+            box-shadow: 0 20px 45px rgba(0, 0, 0, 0.8), 0 0 30px rgba(235, 70, 4, 0.06);
+        }
+
+        .lane-card:hover:not(.active) {
+            border-color: rgba(255, 255, 255, 0.22);
+            background: #0f0f0f;
+        }
+
+        .lane-card-link {
+            text-decoration: none;
+            color: inherit;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            justify-content: space-between;
+        }
+
+        .lane-card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 24px;
+            width: 100%;
+        }
+
+        .lane-card-eyebrow {
+            font-family: var(--font-sans);
+            font-weight: 800;
+            font-size: 22px;
+            color: rgba(255, 255, 255, 0.35);
+            transition: color 0.3s ease;
+            letter-spacing: -0.01em;
+        }
+
+        .lane-card.active .lane-card-eyebrow {
+            color: #EB4604;
+        }
+
+        .lane-card-badge {
+            font-family: var(--font-mono);
+            font-size: 11px;
+            font-weight: 500;
+            color: rgba(255, 255, 255, 0.4);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 6px;
+            padding: 2px 7px;
+            letter-spacing: 0.05em;
+        }
+
+        .lane-card.active .lane-card-badge {
+            border-color: rgba(255, 255, 255, 0.3);
+            color: #ffffff;
+        }
+
+        /* Collapsed state */
+        .lane-card-collapsed-view {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            margin-top: auto;
+            transition: opacity 0.25s ease, transform 0.25s ease;
+        }
+
+        .lane-card.active .lane-card-collapsed-view {
+            opacity: 0;
+            pointer-events: none;
+            position: absolute;
+            visibility: hidden;
+            transform: translateY(10px);
+        }
+
+        .lane-collapsed-title {
+            font-family: var(--font-sans);
+            font-size: 20px;
+            font-weight: 700;
+            color: #ffffff;
+            margin: 0;
+            line-height: 1.25;
+            white-space: normal;
+            word-break: break-word;
+        }
+
+        .lane-collapsed-sub {
+            font-family: var(--font-sans);
+            font-size: 13px;
+            color: rgba(255, 255, 255, 0.5);
+            margin: 0;
+            line-height: 1.4;
+            white-space: normal;
+        }
+
+        /* Expanded state */
+        .lane-card-expanded-view {
+            opacity: 0;
+            pointer-events: none;
+            position: absolute;
+            visibility: hidden;
+            transform: translateY(6px);
+            transition: opacity 0.35s ease 0.12s, transform 0.35s ease 0.12s;
+        }
+
+        .lane-card.active .lane-card-expanded-view {
+            opacity: 1;
+            pointer-events: auto;
+            position: relative;
+            visibility: visible;
+            transform: translateY(0);
+            display: flex;
+            flex-direction: column;
+            gap: 26px;
+            width: 100%;
+        }
+
+        .lane-expanded-top {
+            display: grid;
+            grid-template-columns: 1fr 180px;
+            gap: 20px;
+            align-items: start;
+        }
+
+        .lane-expanded-title {
+            font-family: var(--font-sans);
+            font-size: 28px;
+            font-weight: 700;
+            color: #ffffff;
+            margin: 0 0 6px 0;
+            line-height: 1.2;
+        }
+
+        .lane-expanded-tag {
+            font-family: var(--font-sans);
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            color: #EB4604;
+            text-transform: uppercase;
+        }
+
+        .lane-expanded-image {
+            width: 100%;
+            aspect-ratio: 16 / 10;
+            border-radius: 10px;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            background: #000;
+        }
+
+        .lane-expanded-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .lane-expanded-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .lane-expanded-list li {
+            font-family: var(--font-sans);
+            font-size: 14.5px;
+            color: rgba(255, 255, 255, 0.88);
+            line-height: 1.5;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            transition: color 0.2s ease, transform 0.2s ease;
+        }
+
+        .lane-expanded-list li:hover {
+            color: #ffffff;
+            transform: translateX(4px);
+        }
+
+        .lane-bullet {
+            color: #EB4604;
+            font-size: 10px;
+            line-height: 1;
+            flex-shrink: 0;
+        }
+
+        @media (max-width: 900px) {
+            .services-accordion-lanes {
+                flex-direction: column;
+                min-height: auto;
+            }
+            .lane-card, .lane-card.active {
+                flex: none;
+                width: 100%;
+                min-height: auto;
+            }
+            .lane-card-collapsed-view {
+                display: none !important;
+            }
+            .lane-card-expanded-view, .lane-card.active .lane-card-expanded-view {
+                opacity: 1 !important;
+                visibility: visible !important;
+                position: relative !important;
+                pointer-events: auto !important;
+                transform: none !important;
+            }
+            .lane-expanded-top {
+                grid-template-columns: 1fr;
+            }
+        }
+
+
         @media (max-width: 960px) {
             .services-grid-four-lanes {
                 grid-template-columns: repeat(2, 1fr);
@@ -1891,7 +2138,8 @@
             .timeline {
                 padding-bottom: calc(40px + env(safe-area-inset-bottom)) !important;
             }
-            .services-grid-four-lanes {
+            .services-grid-four-lanes,
+            .services-accordion-lanes {
                 padding-bottom: calc(45px + env(safe-area-inset-bottom)) !important;
             }
             #portfolio {
