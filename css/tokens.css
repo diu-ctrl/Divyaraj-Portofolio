@@ -415,3 +415,62 @@
   filter: grayscale(0%);
   transform: scale(1.02);
 }
+
+
+/* ==========================================================================
+   EYEBROW SYSTEM (E1) & SECTION HEADERS — SITE-WIDE
+   ========================================================================== */
+
+/* E1 Eyebrow Base: Mono, uppercase, 11–12px, letter-spacing .16em, color --muted with index in accent */
+.eyebrow-e1, .web-row-num, .case-study-badge, .section-label, .section-eyebrow,
+.hero-eyebrow, .methodology-eyebrow, .meta-label, .fc-label, .metric-label,
+.psm-label, .brand-eyebrow, .arc-label, .bts-total-label, .char-stat-label,
+.fpart-label, .vo-label, .em-label, .tag, .tech-tag, .service-tag, .spec-pill,
+.tool-category, .flow-step-num, .step-num, .hero-availability {
+  font-family: var(--font-mono) !important;
+  font-size: var(--micro) !important;
+  font-weight: 500 !important;
+  letter-spacing: var(--track) !important;
+  text-transform: uppercase !important;
+  color: var(--muted) !important;
+  line-height: 1.4;
+}
+
+.eyebrow-e1 .index, .web-row-num .index, .case-study-badge .index,
+.section-label .index, .section-eyebrow .index {
+  color: var(--accent) !important;
+  font-weight: 600;
+  margin-right: 2px;
+}
+
+/* Full-width hairline top rule for section eyebrows */
+.eyebrow-row, .section-eyebrow-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  border-top: var(--hairline);
+  padding-top: 14px;
+  margin-bottom: 20px;
+}
+
+/* Section Header Typography */
+.section-header h2, .display-serif-statement, h2.section-title, .web-showcase-header h2 {
+  font-family: var(--font-display) !important;
+  font-style: italic !important;
+  font-weight: 400 !important;
+  font-size: clamp(2rem, 4.5vw, 3.5rem) !important;
+  line-height: 1.1 !important;
+  letter-spacing: -0.02em !important;
+  color: var(--text) !important;
+  margin-top: 0;
+  margin-bottom: 16px;
+}
+
+.section-header p.lede, .section-lede {
+  font-family: var(--font-body);
+  font-size: clamp(1rem, 1.2vw, 1.125rem);
+  line-height: 1.6;
+  color: var(--muted);
+  max-width: 640px;
+}
