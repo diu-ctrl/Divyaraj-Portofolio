@@ -104,6 +104,12 @@
     align-items: center;
     justify-content: center;
     gap: 8px;
+    transform: translateY(6px);
+    transition: transform 0.25s ease;
+}
+
+.limelight-nav-container.is-open .drawer-handle-content {
+    transform: translateY(0);
 }
 
 /* Compact 3 stacked chevrons matching font size */
