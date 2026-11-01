@@ -2,7 +2,7 @@
 :root {
             --bg: #000000;
             --bg-deep: #000000;
-            --card: #282723;
+            --card: #141412;
             --text: #FFFFFF;
             --text-muted: #99A57D;
             --border: #282723;
@@ -11,7 +11,7 @@
             /* Compatibility variables mapped to brutalist purge tokens */
             --primary: var(--accent);
             --primary-light: var(--accent);
-            --primary-dim: #282723;
+            --primary-dim: #141412;
             --accent-1: var(--accent);
             --accent-glow: var(--accent);
             --secondary-1: var(--bg-deep);
