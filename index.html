@@ -545,7 +545,10 @@
                     <p class="web-row-desc">
                         A dark-mode editorial gaming-native agency website engineered for India's biggest creator economy. Built with an internal ops portal (9 views), three external partner dashboards (Creator, Brand, Platform), GSAP animations, Matter.js physics, and WebGL gradients — deployed on Vercel.
                     </p>
-                    <a href="/8bit-creatives" class="btn-explore-capsule">Explore Case Study</a>
+                    <a href="/8bit-creatives" class="btn-explore-capsule btn-ripple-spread">
+                        <span class="btn-label-base">Explore Case Study</span>
+                        <span class="btn-ripple-overlay" aria-hidden="true">Explore Case Study</span>
+                    </a>
                 </div>
                 <div class="web-row-visual">
                     <div class="web-image-wrapper">
@@ -2026,6 +2029,51 @@
                 });
             }
         })();
+    </script>
+
+    <!-- Direction-Aware Spreading Ripple Button (8Bit Creatives testing) -->
+    <script>
+    (function() {
+        const buttons = document.querySelectorAll('.btn-ripple-spread');
+        buttons.forEach(btn => {
+            const overlay = btn.querySelector('.btn-ripple-overlay');
+            if (!overlay) return;
+
+            function getCoords(e) {
+                const rect = btn.getBoundingClientRect();
+                const x = Math.max(0, Math.min(rect.width, e.clientX - rect.left));
+                const y = Math.max(0, Math.min(rect.height, e.clientY - rect.top));
+                return { x, y, rect };
+            }
+
+            function getMaxRadius(x, y, rect) {
+                const dx = Math.max(x, rect.width - x);
+                const dy = Math.max(y, rect.height - y);
+                return Math.hypot(dx, dy) + 4;
+            }
+
+            btn.addEventListener('mouseenter', (e) => {
+                const { x, y, rect } = getCoords(e);
+                const maxR = getMaxRadius(x, y, rect);
+
+                // Instantly anchor circle at exact cursor entry point with radius 0
+                overlay.style.transition = 'none';
+                overlay.style.clipPath = `circle(0px at ${x}px ${y}px)`;
+                void overlay.offsetWidth; // synchronous layout reflow
+
+                // Smooth radial expansion from entry point
+                overlay.style.transition = 'clip-path 0.45s cubic-bezier(0.16, 1, 0.3, 1)';
+                overlay.style.clipPath = `circle(${maxR}px at ${x}px ${y}px)`;
+            });
+
+            btn.addEventListener('mouseleave', (e) => {
+                const { x, y } = getCoords(e);
+                // Smooth radial collapse back toward cursor exit point
+                overlay.style.transition = 'clip-path 0.35s cubic-bezier(0.4, 0, 0.2, 1)';
+                overlay.style.clipPath = `circle(0px at ${x}px ${y}px)`;
+            });
+        });
+    })();
     </script>
 </body>
 </html>
