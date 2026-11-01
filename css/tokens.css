@@ -901,3 +901,27 @@ button, input[type="submit"], input[type="button"], .btn-b1, .btn-b2 {
   position: relative !important;
   z-index: 10 !important;
 }
+
+
+/* ─── Scattered Portfolio Section Flanks (#040404) & Pure Black Center (#000000) ─── */
+#portfolio {
+  width: 100vw !important;
+  max-width: none !important;
+  margin-left: 50% !important;
+  transform: translateX(-50%) !important;
+  background: linear-gradient(
+    to right,
+    #040404 0%,
+    #040404 calc(50% - min(32vw, 550px)),
+    #000000 calc(50% - min(32vw, 550px)),
+    #000000 calc(50% + min(32vw, 550px)),
+    #040404 calc(50% + min(32vw, 550px)),
+    #040404 100%
+  ) !important;
+}
+
+@media (max-width: 768px) {
+  #portfolio {
+    background: #000000 !important;
+  }
+}
