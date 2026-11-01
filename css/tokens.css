@@ -70,3 +70,201 @@
  * L3: One accent color. White/ink/muted do the rest.
  * L4: Only the hero name and section titles use the serif italic. Everything else grotesk/mono.
  */
+
+
+/* ==========================================================================
+   BUTTON SYSTEM (B1–B4) — SITE-WIDE
+   ========================================================================== */
+
+/* Shared Button Base Properties */
+.btn-b1, .btn-b2, .btn-primary-gold, .banner-cta, .ember-cta-btn, .btn-action.btn-primary,
+.back-btn, .pp-back-link, .banner-back, .btn-outline, .btn-brutalist, .brand-nav-btn,
+.cert-btn, .tab-btn, .control-btn, .back-to-top-btn, .download-pdf-btn, .watch-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 14.5px;
+  line-height: 1;
+  text-decoration: none;
+  cursor: pointer;
+  box-shadow: none !important;
+  text-shadow: none !important;
+  border-radius: var(--r-pill) !important;
+  transition: color var(--t-fast), background-color var(--t-fast), border-color var(--t-fast);
+}
+
+/* Height and padding specifications */
+.btn-b1, .btn-b2, .btn-primary-gold, .banner-cta, .ember-cta-btn, .btn-action.btn-primary,
+.back-btn, .pp-back-link, .banner-back, .btn-outline, .btn-brutalist, .brand-nav-btn,
+.cert-btn, .tab-btn, .download-pdf-btn {
+  min-height: 44px;
+  padding: 0 24px;
+}
+
+/* Hero / Large CTAs (52px height) */
+.hero-cta, .banner-cta, .ember-cta-btn, .cta-large {
+  min-height: 52px;
+  padding: 0 28px;
+  font-size: 15px;
+}
+
+/* Touch targets >= 44px for icon buttons */
+.social-icon-btn, .social-mail-btn, .brand-arrow-btn, .carousel-btn, .back-to-top-btn,
+.modal-close-btn, .drawer-close-btn, .control-btn {
+  min-width: 44px;
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: none !important;
+}
+
+/* Keyboard Only Focus-Visible (2px accent outline offset 3px) */
+:is(.btn-b1, .btn-b2, .btn-b3, .btn-b4, a, button, input):focus-visible {
+  outline: 2px solid var(--accent) !important;
+  outline-offset: 3px !important;
+}
+
+/* Law 1: No Hover Lift on button body */
+.btn-b1:hover, .btn-b2:hover, .btn-b3:hover, .btn-b4:hover,
+.btn-primary-gold:hover, .banner-cta:hover, .ember-cta-btn:hover, .btn-action:hover,
+.back-btn:hover, .pp-back-link:hover, .banner-back:hover, .btn-outline:hover,
+.btn-brutalist:hover, .brand-nav-btn:hover, .cert-btn:hover, .tab-btn:hover,
+.control-btn:hover, .back-to-top-btn:hover, .social-mail-btn:hover, .social-icon-btn:hover {
+  transform: none !important;
+}
+
+/* ─── B1 Primary ───
+   Solid accent bg, accent-ink text.
+   Hover: bg -> warm white (--text), text stays accent-ink. Pure color swap. */
+.btn-b1, .btn-primary-gold, .banner-cta, .ember-cta-btn, .btn-action.btn-primary, .download-pdf-btn {
+  background-color: var(--accent) !important;
+  color: var(--accent-ink) !important;
+  border: 1px solid transparent !important;
+}
+
+.btn-b1:hover, .btn-primary-gold:hover, .banner-cta:hover, .ember-cta-btn:hover, .btn-action.btn-primary:hover, .download-pdf-btn:hover {
+  background-color: var(--text) !important;
+  color: var(--accent-ink) !important;
+  border-color: transparent !important;
+  transform: none !important;
+}
+
+/* ─── B2 Secondary ───
+   Transparent bg, 1px --hairline-strong border, --text text.
+   Hover: border-color -> accent, text -> accent, bg -> accent at 8% alpha. */
+.btn-b2, .back-btn, .pp-back-link, .banner-back, .btn-outline, .btn-brutalist-outline,
+.cert-btn, .tab-btn, .control-btn, .back-to-top-btn, .social-mail-btn, .social-icon-btn {
+  background-color: transparent !important;
+  border: 1px solid var(--hairline-strong) !important;
+  color: var(--text) !important;
+}
+
+.btn-b2:hover, .back-btn:hover, .pp-back-link:hover, .banner-back:hover, .btn-outline:hover, .btn-brutalist-outline:hover,
+.cert-btn:hover, .tab-btn:hover, .control-btn:hover, .back-to-top-btn:hover, .social-mail-btn:hover, .social-icon-btn:hover {
+  border-color: var(--accent) !important;
+  color: var(--accent) !important;
+  background-color: rgba(235, 70, 4, 0.08) !important;
+  transform: none !important;
+}
+
+.brand-nav-btn {
+  background-color: transparent;
+  border: 1px solid var(--hairline-strong);
+  color: var(--muted);
+}
+
+.brand-nav-btn:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+  background-color: rgba(235, 70, 4, 0.08);
+  transform: none !important;
+}
+
+.brand-nav-btn.active-brand, .brand-nav-btn.active {
+  border-color: var(--accent) !important;
+  color: var(--text) !important;
+  background-color: rgba(235, 70, 4, 0.12) !important;
+}
+
+/* ─── B3 Text-arrow ("Explore Case Study →") ───
+   No box. Grotesk 600 or mono uppercase, --text, arrow glyph in its own <span class="arrow">.
+   Hover: text -> accent AND the arrow span translates 4px right (glyph only, 160ms). Button body never moves. */
+.btn-b3, .text-arrow-link, a.explore-case-study, .back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: transparent !important;
+  border: none !important;
+  padding: 0 !important;
+  border-radius: 0 !important;
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 14.5px;
+  color: var(--text) !important;
+  text-decoration: none;
+  cursor: pointer;
+  box-shadow: none !important;
+  transition: color var(--t-fast);
+}
+
+.btn-b3 .arrow, .text-arrow-link .arrow, a.explore-case-study .arrow, .back-link .arrow {
+  display: inline-block;
+  transition: transform var(--t-fast);
+}
+
+.btn-b3:hover, .text-arrow-link:hover, a.explore-case-study:hover, .back-link:hover {
+  color: var(--accent) !important;
+  transform: none !important;
+}
+
+.btn-b3:hover .arrow, .text-arrow-link:hover .arrow, a.explore-case-study:hover .arrow {
+  transform: translateX(4px) !important;
+}
+
+.back-link:hover .arrow {
+  transform: translateX(-4px) !important;
+}
+
+/* ─── B4 Nav link ───
+   --text, no pill.
+   Hover: text -> accent; underline via ::after scaleX 0->1 from left (160ms), 2px, offset 6px. */
+.btn-b4, .nav-link-b4, .nav-dropdown-link, .service-lane-link {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  color: var(--text);
+  font-family: var(--font-body);
+  font-weight: 500;
+  text-decoration: none;
+  background: transparent;
+  border: none;
+  border-radius: 0;
+  padding: 4px 0;
+  transition: color var(--t-fast);
+}
+
+.btn-b4::after, .nav-link-b4::after, .nav-dropdown-link::after, .service-lane-link::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background-color: var(--accent);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform var(--t-fast);
+}
+
+.btn-b4:hover, .nav-link-b4:hover, .nav-dropdown-link:hover, .service-lane-link:hover {
+  color: var(--accent) !important;
+  transform: none !important;
+}
+
+.btn-b4:hover::after, .nav-link-b4:hover::after, .nav-dropdown-link:hover::after, .service-lane-link:hover::after {
+  transform: scaleX(1);
+}
