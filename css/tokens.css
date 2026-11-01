@@ -283,7 +283,7 @@
    surface bg · 2px radius · 1px hairline · 24px padding (32px desktop)
    header row = mono eyebrow label + index number in accent
    interactive panels: hover border -> --hairline-strong only. Zero drop shadows. */
-.panel-p1, .service-lane, .service-card, .analytics-card, .metric-card, .stat-card,
+.panel-p1, .service-card, .analytics-card, .metric-card, .stat-card,
 .spec-card, .meta-grid, .event-meta-grid, .work-card-specs, .meta-box, .sidebar-card,
 .pp-contact-card, .tool-box, .closing-box, .features-table-wrapper, .cert-card, .asset-card {
   background-color: var(--surface) !important;
@@ -295,12 +295,12 @@
 }
 
 @media (min-width: 1024px) {
-  .panel-p1, .service-lane, .analytics-card, .sidebar-card, .pp-contact-card {
+  .panel-p1, .analytics-card, .sidebar-card, .pp-contact-card {
     padding: 32px;
   }
 }
 
-.panel-p1:hover, .service-lane:hover, .service-card:hover, .analytics-card:hover,
+.panel-p1:hover, .service-card:hover, .analytics-card:hover,
 .sidebar-card:hover, .cert-card:hover, .asset-card:hover {
   border-color: var(--hairline-strong) !important;
   box-shadow: none !important;
@@ -626,7 +626,7 @@ button, input[type="submit"], input[type="button"], .btn-b1, .btn-b2 {
 }
 
 /* 3. Info Panels & Metric Cards */
-.panel-p1, .service-lane, .service-card, .analytics-card, .metric-card, .stat-card,
+.panel-p1, .service-card, .analytics-card, .metric-card, .stat-card,
 .spec-card, .sidebar-card, .pp-contact-card, .tool-box, .closing-box, .cert-card, .asset-card,
 .folio-card {
   border-radius: var(--r-panel, 16px) !important;
@@ -741,4 +741,24 @@ button, input[type="submit"], input[type="button"], .btn-b1, .btn-b2 {
 
 .folio-card img {
   border-radius: 10px !important;
+}
+
+/* Service Lanes: Restored exact previous version (transparent editorial columns, no grey box) */
+.service-lane {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 24px !important;
+  background: transparent !important;
+  background-color: transparent !important;
+  border: none !important;
+  padding: 0 !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+}
+
+.service-lane:hover {
+  background: transparent !important;
+  background-color: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
 }
