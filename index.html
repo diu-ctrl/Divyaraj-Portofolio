@@ -889,61 +889,146 @@
             }
         });
 
-        // ─── Draggable Scattered Cards JS ───
+        // ─── Draggable Scattered Cards JS (Smooth Magnetic Physics & Tap Navigation) ───
         (function() {
-            // Only run dragging if viewport width supports desktop layout (> 900px)
-            if (window.innerWidth <= 900) return;
+            const canvas = document.querySelector('.scattered-canvas');
+            if (!canvas) return;
 
-            const cards = document.querySelectorAll('.folio-card');
-            let highestZ = 10;
+            const cards = canvas.querySelectorAll('.folio-card');
+            let highestZ = 50;
 
             cards.forEach(card => {
+                const link = card.querySelector('a');
+                const img = card.querySelector('img');
+
+                // Completely disable browser default HTML5 drag-and-drop on card, link, and images
+                card.setAttribute('draggable', 'false');
+                card.addEventListener('dragstart', (e) => e.preventDefault());
+                if (link) {
+                    link.setAttribute('draggable', 'false');
+                    link.addEventListener('dragstart', (e) => e.preventDefault());
+                }
+                if (img) {
+                    img.setAttribute('draggable', 'false');
+                    img.addEventListener('dragstart', (e) => e.preventDefault());
+                }
+
                 let isDragging = false;
-                let startX, startY;
+                let hasMoved = false;
+                let startPointerX = 0;
+                let startPointerY = 0;
+                let cardStartX = 0;
+                let cardStartY = 0;
+                let targetX = 0;
+                let targetY = 0;
+                let currentX = 0;
+                let currentY = 0;
+                let rafId = null;
 
-                card.addEventListener('mousedown', dragStart);
-                card.addEventListener('touchstart', dragStart, { passive: true });
+                function startSmoothFollow() {
+                    if (rafId) cancelAnimationFrame(rafId);
+                    function update() {
+                        if (!isDragging) {
+                            // Finish settling to target position
+                            const dist = Math.hypot(targetX - currentX, targetY - currentY);
+                            if (dist < 0.5) {
+                                card.style.left = targetX + 'px';
+                                card.style.top = targetY + 'px';
+                                rafId = null;
+                                return;
+                            }
+                        }
 
-                function dragStart(e) {
-                    if (e.type === 'mousedown' && e.button !== 0) return;
-                    
+                        // Smooth magnetic follow easing
+                        const ease = 0.35;
+                        currentX += (targetX - currentX) * ease;
+                        currentY += (targetY - currentY) * ease;
+
+                        card.style.left = currentX.toFixed(1) + 'px';
+                        card.style.top = currentY.toFixed(1) + 'px';
+
+                        rafId = requestAnimationFrame(update);
+                    }
+                    rafId = requestAnimationFrame(update);
+                }
+
+                function onPointerDown(e) {
+                    // Only desktop/tablet spatial mode (> 900px)
+                    if (window.innerWidth <= 900) return;
+                    // Left mouse button or touch
+                    if (e.pointerType === 'mouse' && e.button !== 0) return;
+
                     isDragging = true;
-                    card.classList.add('active-drag');
+                    hasMoved = false;
+                    startPointerX = e.clientX;
+                    startPointerY = e.clientY;
+
+                    // Compute card position relative to canvas
+                    cardStartX = card.offsetLeft;
+                    cardStartY = card.offsetTop;
+                    currentX = cardStartX;
+                    currentY = cardStartY;
+                    targetX = cardStartX;
+                    targetY = cardStartY;
+
+                    // Bring this card to front
                     card.style.zIndex = ++highestZ;
 
-                    const clientX = e.type === 'touchstart' ? e.touches[0].clientX : e.clientX;
-                    const clientY = e.type === 'touchstart' ? e.touches[0].clientY : e.clientY;
-
-                    startX = clientX - card.offsetLeft;
-                    startY = clientY - card.offsetTop;
-
-                    document.addEventListener('mousemove', dragMove);
-                    document.addEventListener('touchmove', dragMove, { passive: false });
-                    document.addEventListener('mouseup', dragEnd);
-                    document.addEventListener('touchend', dragEnd);
+                    window.addEventListener('pointermove', onPointerMove, { passive: false });
+                    window.addEventListener('pointerup', onPointerUp);
+                    window.addEventListener('pointercancel', onPointerUp);
                 }
 
-                function dragMove(e) {
+                function onPointerMove(e) {
                     if (!isDragging) return;
-                    if (e.cancelable) e.preventDefault();
 
-                    const clientX = e.type === 'touchmove' ? e.touches[0].clientX : e.clientX;
-                    const clientY = e.type === 'touchmove' ? e.touches[0].clientY : e.clientY;
+                    const deltaX = e.clientX - startPointerX;
+                    const deltaY = e.clientY - startPointerY;
+                    const dist = Math.hypot(deltaX, deltaY);
 
-                    let left = clientX - startX;
-                    let top = clientY - startY;
+                    // Threshold to distinguish between click/tap and intentional drag
+                    if (!hasMoved && dist > 5) {
+                        hasMoved = true;
+                        card.classList.add('active-drag');
+                        startSmoothFollow();
+                    }
 
-                    card.style.left = `${left}px`;
-                    card.style.top = `${top}px`;
+                    if (hasMoved) {
+                        if (e.cancelable) e.preventDefault();
+
+                        const maxLeft = Math.max(0, canvas.clientWidth - card.offsetWidth);
+                        const maxTop = Math.max(0, canvas.clientHeight - card.offsetHeight);
+
+                        targetX = Math.max(0, Math.min(cardStartX + deltaX, maxLeft));
+                        targetY = Math.max(0, Math.min(cardStartY + deltaY, maxTop));
+                    }
                 }
 
-                function dragEnd() {
+                function onPointerUp(e) {
+                    if (!isDragging) return;
                     isDragging = false;
-                    card.classList.remove('active-drag');
-                    document.removeEventListener('mousemove', dragMove);
-                    document.removeEventListener('touchmove', dragMove);
-                    document.removeEventListener('mouseup', dragEnd);
-                    document.removeEventListener('touchend', dragEnd);
+
+                    window.removeEventListener('pointermove', onPointerMove);
+                    window.removeEventListener('pointerup', onPointerUp);
+                    window.removeEventListener('pointercancel', onPointerUp);
+
+                    if (hasMoved) {
+                        card.classList.remove('active-drag');
+                        // RAF loop smoothly settles at targetX, targetY
+                    }
+                }
+
+                card.addEventListener('pointerdown', onPointerDown);
+
+                // Intercept link click: navigate on simple tap, suppress on drag
+                if (link) {
+                    link.addEventListener('click', (e) => {
+                        if (hasMoved) {
+                            e.preventDefault();
+                            e.stopPropagation();
+                            hasMoved = false;
+                        }
+                    });
                 }
             });
         })();

@@ -530,6 +530,24 @@
             margin: 0 auto;
         }
 
+        .folio-card,
+        .folio-card a,
+        .folio-card img {
+            user-select: none !important;
+            -webkit-user-select: none !important;
+            -webkit-user-drag: none !important;
+            user-drag: none !important;
+        }
+
+        .folio-card {
+            touch-action: none;
+        }
+
+        .folio-card.active-drag,
+        .folio-card.active-drag a {
+            cursor: grabbing !important;
+        }
+
         .folio-card {
             position: absolute;
             width: 220px; /* Decreased width to support multiple cards */
