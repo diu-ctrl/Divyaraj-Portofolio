@@ -548,11 +548,11 @@
         }
 
         .service-card {
-            padding: 40px 30px;
+            padding: 32px 24px !important;
             display: flex;
             flex-direction: column;
             height: 100%;
-            border-radius: 0;
+            border-radius: var(--r-panel, 16px) !important;
             background: var(--card);
             border: 1px solid var(--border);
             transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
@@ -562,17 +562,19 @@
         }
 
         .service-card h3 {
-            font-size: 1.35rem;
-            font-weight: 800;
-            color: #fff;
-            margin-bottom: 12px;
+            font-size: clamp(1.08rem, 1.22vw, 1.18rem) !important;
+            font-weight: 750 !important;
+            color: #fff !important;
+            margin-bottom: 14px !important;
+            white-space: nowrap !important;
+            letter-spacing: -0.01em !important;
         }
 
         .service-desc {
-            font-size: 0.9rem;
-            color: var(--text-muted);
-            line-height: 1.5;
-            margin-bottom: 28px;
+            font-size: 0.88rem !important;
+            color: var(--text-muted) !important;
+            line-height: 1.55 !important;
+            margin-bottom: 0 !important;
             flex-grow: 1;
         }
 
@@ -929,6 +931,9 @@
             }
             .services-grid {
                 grid-template-columns: 1fr;
+            }
+            .service-card h3 {
+                white-space: normal !important;
             }
             .cinema-hero-ctas,
             .bottom-cta-buttons {
@@ -1891,7 +1896,7 @@
 
             <!-- Service 3 -->
             <div class="service-card reveal">
-                <h3>Historical Micro-Dramas</h3>
+                <h3>Micro-Dramas</h3>
                 <p class="service-desc">AI-driven dramatic retelling of epic historical moments, built with academic research-backed realism and authentic voices.</p>
             </div>
 
