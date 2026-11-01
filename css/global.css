@@ -110,7 +110,7 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            border-radius: 0px !important;
+            
             box-shadow: none !important;
             backdrop-filter: none !important;
             -webkit-backdrop-filter: none !important;
@@ -1219,7 +1219,7 @@
         .holo-card {
             background: var(--card);
             border: 1px solid var(--border);
-            border-radius: 0 !important;
+            
             padding: 24px;
             display: flex;
             align-items: center;
@@ -1401,7 +1401,7 @@
             font-weight: 700 !important;
             letter-spacing: 0.04em !important;
             text-decoration: none;
-            border-radius: 0 !important;
+            
             transition: all 0.3s ease;
             cursor: pointer;
         }
@@ -2691,7 +2691,7 @@
             margin: 0 !important;
             padding: 0 !important;
             border: 0 !important;
-            border-radius: 0 !important;
+            
         }
 
         .hero-content-overlay {

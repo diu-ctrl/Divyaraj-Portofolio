@@ -51,7 +51,7 @@
     justify-content: space-around;
     width: 100%;
     background: #000000 !important;
-    border-radius: 0px !important; /* Sharp brutalist corners */
+     /* Sharp brutalist corners */
     padding: 4px 12px;
     gap: 8px;
     position: relative;
@@ -79,7 +79,7 @@
     height: var(--handle-height);
     width: 100%; /* Matches exact width of panel on desktop */
     cursor: grab;
-    border-radius: 0px !important;
+    
     outline: none;
     touch-action: none;
     user-select: none;
@@ -151,7 +151,7 @@
     color: var(--text-muted);
     text-decoration: none;
     transition: color 0.3s ease;
-    border-radius: 0px !important;
+    
     pointer-events: auto;
 }
 
@@ -173,7 +173,7 @@
     width: 32px;
     height: 2px;
     background: var(--primary);
-    border-radius: 0px !important;
+    
     opacity: 0;
     transition: opacity 0.3s ease;
     z-index: 3;
@@ -223,7 +223,7 @@
     font-weight: 500;
     letter-spacing: 0.02em;
     padding: 4px 8px;
-    border-radius: 0px !important;
+    
     opacity: 0;
     pointer-events: none;
     transition: opacity 0.2s ease, transform 0.2s ease;

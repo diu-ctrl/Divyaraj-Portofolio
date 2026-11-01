@@ -58,7 +58,7 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            border-radius: 0px !important;
+            
             box-shadow: none !important;
             backdrop-filter: none !important;
             -webkit-backdrop-filter: none !important;
@@ -182,6 +182,7 @@
         }
 
         .nav-capsule {
+            border-radius: var(--r-pill, 999px) !important;
             display: inline-flex;
             align-items: center;
             padding: 8px 20px;
@@ -219,13 +220,14 @@
 
         /* Case Study Card Structure */
         .case-study-card {
+            border-radius: var(--r-outer, 20px) !important;
             display: none; /* Hide by default, toggle with JS */
             flex-direction: column;
             gap: 48px;
             scroll-margin-top: 40px;
             background: var(--card);
             border: 1px solid var(--border);
-            border-radius: 0;
+            border-radius: var(--r-outer, 20px) !important;
             padding: 48px;
         }
 
@@ -243,6 +245,7 @@
         }
 
         .case-study-badge {
+            border-radius: var(--r-badge, 8px) !important;
             align-self: flex-start;
             font-size: 0.72rem;
             font-weight: 700;
@@ -272,13 +275,14 @@
 
         /* Meta Row */
         .meta-row {
+            border-radius: var(--r-meta, 12px) !important;
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
             gap: 20px;
             margin: 15px 0;
             background: #000000;
             border: 1px solid #282723;
-            border-radius: 0px;
+            border-radius: var(--r-meta, 12px) !important;
             padding: 20px;
         }
 
@@ -450,11 +454,14 @@
         }
 
         .features-table {
+            border-radius: var(--r-table, 12px) !important;
+            border-collapse: separate !important;
+            border-spacing: 0 !important;
             width: 100%;
             border-collapse: collapse;
             background: #000000;
             border: 1px solid #282723;
-            border-radius: 0px;
+            border-radius: var(--r-table, 12px) !important;
             overflow: hidden;
         }
 
@@ -526,9 +533,11 @@
 
         /* Mockup Container */
         .project-mockup {
+            border-radius: var(--r-media, 14px) !important;
+            overflow: hidden !important;
             position: relative;
             z-index: 1;
-            border-radius: 0px;
+            border-radius: var(--r-media, 14px) !important;
             overflow: visible; /* Need overflow visible for tooltips! */
             border: 1px solid #282723;
             background: #000000;
@@ -889,6 +898,7 @@
 
         @media (max-width: 640px) {
             .meta-row {
+            border-radius: var(--r-meta, 12px) !important;
                 grid-template-columns: 1fr 1fr;
                 padding: 16px;
                 gap: 16px;
@@ -901,6 +911,9 @@
                 width: 100%;
             }
             .features-table {
+            border-radius: var(--r-table, 12px) !important;
+            border-collapse: separate !important;
+            border-spacing: 0 !important;
                 display: block;
                 overflow-x: auto;
             }

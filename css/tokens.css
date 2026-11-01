@@ -42,9 +42,14 @@
   --section-pad: clamp(5rem, 12vh, 9rem);
 
   /* Radius */
-  --r-panel: 2px;           /* boxes are sharp */
+  --r-outer: 20px;
+  --r-panel: 16px;
+  --r-media: 14px;
+  --r-meta: 12px;
+  --r-table: 12px;
+  --r-badge: 8px;           /* boxes are sharp */
   --r-pill: 999px;          /* tags + buttons stay pills */
-  --r-media: 0;             /* images never rounded */
+  /* --r-media defined above */             /* images never rounded */
 
   /* Motion */
   --t-fast: 160ms cubic-bezier(.2, .6, .2, 1);   /* color/border */
@@ -200,7 +205,7 @@
   background: transparent !important;
   border: none !important;
   padding: 0 !important;
-  border-radius: 0 !important;
+  
   font-family: var(--font-body);
   font-weight: 600;
   font-size: 14.5px;
@@ -362,7 +367,7 @@
   background: transparent !important;
   border: none !important;
   border-left: 2px solid var(--accent) !important;
-  border-radius: 0 !important;
+  
   box-shadow: none !important;
   padding: 16px 0 16px 24px !important;
   margin: 32px 0 !important;
@@ -568,4 +573,172 @@ body::before {
 /* Ensure accessible tap target sizes for interactive elements */
 button, input[type="submit"], input[type="button"], .btn-b1, .btn-b2 {
   min-height: 44px;
+}
+
+
+/* ==========================================================================
+   ROUNDNESS SYSTEM — HARMONIOUS & PROPORTIONAL
+   Aligned identity across buttons, tabs, boxes, eyebrows, tables & mockups
+   ========================================================================== */
+
+/* 1. Buttons, Tabs & Filter Capsules */
+.btn-b1, .btn-b2, .btn-primary-gold, .banner-cta, .ember-cta-btn, .btn-action.btn-primary,
+.back-btn, .pp-back-link, .banner-back, .btn-outline, .btn-brutalist, .brand-nav-btn,
+.cert-btn, .tab-btn, .control-btn, .back-to-top-btn, .download-pdf-btn, .watch-btn,
+.nav-capsule, .subpage-nav-capsules .nav-capsule, .browser-address {
+  border-radius: var(--r-pill, 999px) !important;
+}
+
+.subpage-nav-capsules {
+  display: inline-flex;
+  gap: 12px;
+  margin-bottom: 28px;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.nav-capsule {
+  display: inline-flex;
+  align-items: center;
+  padding: 8px 20px !important;
+  font-family: var(--font-body);
+  font-weight: 500;
+  font-size: 13.5px;
+  background: #181818 !important;
+  border: 1px solid var(--hairline-strong) !important;
+  color: var(--muted) !important;
+  text-decoration: none;
+  transition: all var(--t-fast);
+}
+
+.nav-capsule:hover, .nav-capsule.active {
+  color: var(--text) !important;
+  border-color: var(--accent) !important;
+  background: rgba(235, 70, 4, 0.08) !important;
+}
+
+/* 2. Outer Cards & Overall Containers */
+.case-study-card, .card-p2, .web-row, .showcase-container .case-study-card, .film-card, .film-row {
+  border-radius: var(--r-outer, 20px) !important;
+  background-color: var(--surface) !important;
+  border: var(--hairline) !important;
+}
+
+/* 3. Info Panels & Metric Cards */
+.panel-p1, .service-lane, .service-card, .analytics-card, .metric-card, .stat-card,
+.spec-card, .sidebar-card, .pp-contact-card, .tool-box, .closing-box, .cert-card, .asset-card,
+.folio-card {
+  border-radius: var(--r-panel, 16px) !important;
+}
+
+/* 4. Inner Details Boxes (Category, Role, Timeline, Status) */
+.meta-row, .meta-grid, .event-meta-grid, .work-card-specs, .meta-box, .detail-block {
+  border-radius: var(--r-meta, 12px) !important;
+  background: #0C0C0C !important;
+  border: 1px solid rgba(255, 255, 255, 0.10) !important;
+}
+
+/* 5. Inner Eyebrow Tagline Badges & Category Chips */
+.case-study-badge, .eyebrow-e1, .section-label, .tech-tag, .service-tag, .spec-pill,
+.tool-category, .tag, .flow-step-num, .step-num, .outcome-badge, .stat-lbl {
+  border-radius: var(--r-badge, 8px) !important;
+}
+
+.case-study-badge {
+  padding: 6px 14px !important;
+  background: rgba(255, 255, 255, 0.04) !important;
+  border: 1px solid rgba(255, 255, 255, 0.12) !important;
+  display: inline-flex !important;
+  align-items: center;
+  align-self: flex-start;
+}
+
+/* 6. Key Features Table Box & Rows */
+.features-table-wrapper {
+  border-radius: var(--r-table, 12px) !important;
+  overflow: hidden !important;
+}
+
+.features-table {
+  border-radius: var(--r-table, 12px) !important;
+  border: 1px solid rgba(255, 255, 255, 0.10) !important;
+  border-collapse: separate !important;
+  border-spacing: 0 !important;
+  overflow: hidden !important;
+  width: 100%;
+}
+
+.features-table th {
+  background: #181818 !important;
+  padding: 16px 20px !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.10) !important;
+}
+
+.features-table th:first-child {
+  border-top-left-radius: 11px !important;
+}
+
+.features-table th:last-child {
+  border-top-right-radius: 11px !important;
+}
+
+.features-table td {
+  padding: 16px 20px !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06) !important;
+}
+
+.features-table tr:last-child td {
+  border-bottom: none !important;
+}
+
+.features-table tr:last-child td:first-child {
+  border-bottom-left-radius: 11px !important;
+}
+
+.features-table tr:last-child td:last-child {
+  border-bottom-right-radius: 11px !important;
+}
+
+.features-table tbody tr {
+  transition: background-color var(--t-fast);
+}
+
+.features-table tbody tr:hover {
+  background-color: rgba(255, 255, 255, 0.02) !important;
+}
+
+/* 7. Screenshots, Browser Mockups & Visual Showcase Frames */
+.project-mockup, .showcase-mockup-wrapper .project-mockup {
+  border-radius: var(--r-media, 14px) !important;
+  border: 1px solid rgba(255, 255, 255, 0.12) !important;
+  overflow: hidden !important;
+  background: #000000 !important;
+}
+
+.browser-bar {
+  border-top-left-radius: 13px !important;
+  border-top-right-radius: 13px !important;
+  background: #161616 !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
+}
+
+.browser-address {
+  border-radius: var(--r-pill, 999px) !important;
+  background: #080808 !important;
+  border: 1px solid rgba(255, 255, 255, 0.08) !important;
+}
+
+.hotspot-container, .hotspot-container img, .project-mockup img {
+  border-bottom-left-radius: 13px !important;
+  border-bottom-right-radius: 13px !important;
+}
+
+.web-image-wrapper, .web-image-wrapper img {
+  border-radius: var(--r-media, 14px) !important;
+  overflow: hidden !important;
+}
+
+.folio-card img {
+  border-radius: 10px !important;
 }
