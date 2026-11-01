@@ -795,3 +795,96 @@ button, input[type="submit"], input[type="button"], .btn-b1, .btn-b2 {
 .film-card-visual > div[style*="position: absolute; top: 16px"] {
   border-radius: var(--r-badge, 8px) !important;
 }
+
+
+/* ════════════════════════════════════════════════════════════════
+   Direction-Aware Spreading Ripple Button System
+   ════════════════════════════════════════════════════════════════ */
+.btn-ripple-container {
+  position: relative !important;
+  overflow: hidden !important;
+  isolation: isolate !important;
+  transition: border-color 0.3s ease, background-color 0.3s ease !important;
+}
+
+.btn-ripple-container .btn-label-base {
+  position: relative !important;
+  z-index: 1 !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: inherit !important;
+  width: 100% !important;
+  height: 100% !important;
+  pointer-events: none !important;
+  transition: none !important;
+}
+
+.btn-ripple-container .btn-ripple-overlay {
+  position: absolute !important;
+  inset: -1px !important;
+  border-radius: inherit !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: inherit !important;
+  pointer-events: none !important;
+  z-index: 2 !important;
+  white-space: nowrap !important;
+  clip-path: circle(0px at 50% 50%);
+  will-change: clip-path;
+}
+
+/* Theme 1: White Background (e.g. .btn-explore-capsule) */
+.btn-ripple-container.theme-white-to-orange {
+  background-color: #FFFFFF !important;
+  color: #000000 !important;
+  border-color: #FFFFFF !important;
+}
+.btn-ripple-container.theme-white-to-orange .btn-label-base {
+  color: #000000 !important;
+}
+.btn-ripple-container.theme-white-to-orange .btn-ripple-overlay {
+  background: var(--accent, #EB4604) !important;
+  color: #FFFFFF !important;
+}
+.btn-ripple-container.theme-white-to-orange:hover {
+  background-color: #FFFFFF !important;
+  border-color: var(--accent, #EB4604) !important;
+  color: #000000 !important;
+}
+
+/* Theme 2: Dark / Transparent Outline (e.g. .btn-outline, .btn-brutalist-outline, .back-btn, .social-mail-btn, .brand-nav-btn, .nav-capsule) */
+.btn-ripple-container.theme-dark-to-orange {
+  /* retains dark/transparent base */
+}
+.btn-ripple-container.theme-dark-to-orange .btn-label-base {
+  color: var(--text, #FFFFFF) !important;
+}
+.btn-ripple-container.theme-dark-to-orange .btn-ripple-overlay {
+  background: var(--accent, #EB4604) !important;
+  color: #FFFFFF !important;
+}
+.btn-ripple-container.theme-dark-to-orange:hover {
+  background-color: transparent !important;
+  border-color: var(--accent, #EB4604) !important;
+  color: #FFFFFF !important;
+}
+
+/* Theme 3: Orange Primary (e.g. .btn-primary-gold, .download-pdf-btn) */
+.btn-ripple-container.theme-orange-to-white {
+  background-color: var(--accent, #EB4604) !important;
+  border-color: var(--accent, #EB4604) !important;
+}
+.btn-ripple-container.theme-orange-to-white .btn-label-base {
+  color: #000000 !important;
+}
+.btn-ripple-container.theme-orange-to-white .btn-ripple-overlay {
+  background: #FFFFFF !important;
+  color: #000000 !important;
+}
+.btn-ripple-container.theme-orange-to-white:hover {
+  background-color: var(--accent, #EB4604) !important;
+  border-color: #FFFFFF !important;
+  color: #000000 !important;
+}

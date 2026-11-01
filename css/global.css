@@ -3031,11 +3031,11 @@
             display: inline-flex !important;
             align-items: center !important;
             justify-content: center !important;
-            padding: 10px 24px !important;
+            padding: 0 24px !important;
             height: 42px !important;
-            background: var(--accent) !important;
+            background: #FFFFFF !important;
             color: #000000 !important;
-            border: 1px solid var(--accent) !important;
+            border: 1px solid #FFFFFF !important;
             border-radius: var(--r-pill, 999px) !important;
             font-family: var(--font-sans) !important;
             font-size: 13.5px !important;
@@ -3046,46 +3046,37 @@
             white-space: nowrap !important;
             box-shadow: none !important;
             transform: none !important;
-            transition: background 0.25s ease, border-color 0.25s ease, color 0.25s ease !important;
+            position: relative !important;
+            overflow: hidden !important;
+            isolation: isolate !important;
+            transition: border-color 0.3s ease !important;
         }
 
         .btn-explore-capsule:hover {
             background: #FFFFFF !important;
-            border-color: #FFFFFF !important;
+            border-color: var(--accent) !important;
             color: #000000 !important;
             box-shadow: none !important;
             transform: none !important;
         }
 
-        /* --- Direction-Aware Spreading Ripple Button (8Bit Creatives testing) --- */
-        .btn-explore-capsule.btn-ripple-spread {
+        .btn-explore-capsule .btn-label-base {
             position: relative !important;
-            overflow: hidden !important;
-            isolation: isolate !important;
-            background: var(--accent) !important;
-            border: 1px solid var(--accent) !important;
-            color: #FFFFFF !important;
-            padding: 0 24px !important;
-            height: 42px !important;
+            z-index: 1 !important;
+            color: #000000 !important;
+            pointer-events: none !important;
+            transition: none !important;
             display: inline-flex !important;
             align-items: center !important;
             justify-content: center !important;
         }
 
-        .btn-explore-capsule.btn-ripple-spread .btn-label-base {
-            position: relative !important;
-            z-index: 1 !important;
-            color: #FFFFFF !important;
-            pointer-events: none !important;
-            transition: none !important;
-        }
-
-        .btn-explore-capsule.btn-ripple-spread .btn-ripple-overlay {
+        .btn-explore-capsule .btn-ripple-overlay {
             position: absolute !important;
             inset: -1px !important;
             border-radius: var(--r-pill, 999px) !important;
-            background: #FFFFFF !important;
-            color: #000000 !important;
+            background: var(--accent) !important;
+            color: #FFFFFF !important;
             display: flex !important;
             align-items: center !important;
             justify-content: center !important;
@@ -3097,15 +3088,6 @@
             pointer-events: none !important;
             z-index: 2 !important;
             white-space: nowrap !important;
-            clip-path: circle(0px at var(--rx, 50%) var(--ry, 50%));
-            transition: clip-path 0.45s cubic-bezier(0.16, 1, 0.3, 1) !important;
+            clip-path: circle(0px at 50% 50%);
             will-change: clip-path;
-        }
-
-        .btn-explore-capsule.btn-ripple-spread:hover {
-            background: var(--accent) !important;
-            border-color: var(--accent) !important;
-            color: #FFFFFF !important;
-            box-shadow: none !important;
-            transform: none !important;
         }
