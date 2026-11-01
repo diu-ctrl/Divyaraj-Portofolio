@@ -268,3 +268,150 @@
 .btn-b4:hover::after, .nav-link-b4:hover::after, .nav-dropdown-link:hover::after, .service-lane-link:hover::after {
   transform: scaleX(1);
 }
+
+
+/* ==========================================================================
+   BOX / PANEL SYSTEM (P1–P3) & MEDIA RULES — SITE-WIDE
+   ========================================================================== */
+
+/* ─── P1 Info Panel ───
+   surface bg · 2px radius · 1px hairline · 24px padding (32px desktop)
+   header row = mono eyebrow label + index number in accent
+   interactive panels: hover border -> --hairline-strong only. Zero drop shadows. */
+.panel-p1, .service-lane, .service-card, .analytics-card, .metric-card, .stat-card,
+.spec-card, .meta-grid, .event-meta-grid, .work-card-specs, .meta-box, .sidebar-card,
+.pp-contact-card, .tool-box, .closing-box, .features-table-wrapper, .cert-card, .asset-card {
+  background-color: var(--surface) !important;
+  border: var(--hairline) !important;
+  border-radius: var(--r-panel) !important;
+  box-shadow: none !important;
+  padding: 24px;
+  transition: border-color var(--t-fast);
+}
+
+@media (min-width: 1024px) {
+  .panel-p1, .service-lane, .analytics-card, .sidebar-card, .pp-contact-card {
+    padding: 32px;
+  }
+}
+
+.panel-p1:hover, .service-lane:hover, .service-card:hover, .analytics-card:hover,
+.sidebar-card:hover, .cert-card:hover, .asset-card:hover {
+  border-color: var(--hairline-strong) !important;
+  box-shadow: none !important;
+}
+
+/* ─── P2 Case-Study Card ───
+   hairline box, image flush full-bleed to card edges (no radius, no inner padding around media),
+   index number oversized serif-italic ghost at 8% white beside/behind the title,
+   body padding 24px, meta row divided by hairline.
+   Hover: image scale 1.02 (400ms) + title -> accent + B3 arrow nudge.
+   Collaborations cards keep their existing interaction logic — visual tokens only. */
+.card-p2, .web-row, .case-study-card, .film-card, .film-row, .work-card {
+  background-color: var(--surface) !important;
+  border: var(--hairline) !important;
+  border-radius: var(--r-panel) !important;
+  box-shadow: none !important;
+  transition: border-color var(--t-fast);
+}
+
+.card-p2:hover, .web-row:hover, .case-study-card:hover, .film-card:hover, .work-card:hover {
+  border-color: var(--hairline-strong) !important;
+  box-shadow: none !important;
+}
+
+.card-p2:hover h3, .web-row:hover h3, .case-study-card:hover h3, .film-card:hover h3,
+.card-p2:hover .case-study-title, .web-row:hover .web-row-title, .work-card:hover .work-card-title {
+  color: var(--accent) !important;
+  transition: color var(--t-fast);
+}
+
+/* Collaborations Cards (P2 visual tokens, logic protected) */
+.folio-card {
+  background-color: var(--surface) !important;
+  border: var(--hairline) !important;
+  border-radius: var(--r-panel) !important;
+  box-shadow: none !important;
+  transition: border-color var(--t-fast), filter var(--t-fast) !important;
+}
+
+.folio-card:hover {
+  border-color: var(--hairline-strong) !important;
+  box-shadow: none !important;
+}
+
+.folio-card img {
+  border-radius: var(--r-media, 0) !important;
+}
+
+/* Ghost index numbers for case studies */
+.ghost-index {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: clamp(3.5rem, 6vw, 5.5rem);
+  line-height: 0.9;
+  color: rgba(255, 255, 255, 0.08);
+  user-select: none;
+  pointer-events: none;
+}
+
+/* ─── P3 Testimonial (De-boxed) ───
+   No card at all — editorial pull-quote: oversized " mark in accent,
+   quote in serif italic 1.25–1.5rem, attribution in mono micro. A 2px accent left rule groups the set. */
+.quote-p3, .quote-block, .closing-quote, .testimonial-deboxed {
+  background: transparent !important;
+  border: none !important;
+  border-left: 2px solid var(--accent) !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  padding: 16px 0 16px 24px !important;
+  margin: 32px 0 !important;
+}
+
+.quote-p3 .quote-mark, .quote-block::before, .testimonial-deboxed .quote-mark {
+  content: '“';
+  display: block;
+  font-family: var(--font-display);
+  font-size: 3.5rem;
+  line-height: 1;
+  color: var(--accent);
+  margin-bottom: -16px;
+}
+
+.quote-p3 blockquote, .quote-block blockquote, .quote-block p, .closing-quote p {
+  font-family: var(--font-display) !important;
+  font-style: italic !important;
+  font-size: clamp(1.25rem, 2vw, 1.5rem) !important;
+  line-height: 1.4 !important;
+  color: var(--text) !important;
+}
+
+.quote-p3 .author, .quote-author, .quote-attribution {
+  font-family: var(--font-mono) !important;
+  font-size: var(--micro) !important;
+  letter-spacing: var(--track) !important;
+  text-transform: uppercase !important;
+  color: var(--muted) !important;
+  margin-top: 12px;
+}
+
+/* ─── Media Rules ───
+   radius 0, 1px hairline border.
+   Optional (Selected Web Work thumbnails only): default filter: grayscale(15%) -> 0 on hover (400ms).
+   Never apply filters inside protected sections. */
+.web-image-wrapper {
+  border-radius: var(--r-media, 0) !important;
+  overflow: hidden;
+  border: var(--hairline);
+}
+
+.web-image-wrapper img {
+  border-radius: var(--r-media, 0) !important;
+  filter: grayscale(15%);
+  transition: transform var(--t-media), filter var(--t-media);
+}
+
+.web-row:hover .web-image-wrapper img {
+  filter: grayscale(0%);
+  transform: scale(1.02);
+}
