@@ -474,3 +474,77 @@
   color: var(--muted);
   max-width: 640px;
 }
+
+
+/* ==========================================================================
+   FINISHING DETAILS — GRAIN, MARQUEE MASKS, SELECTION, SCROLLBAR, FOCUS
+   ========================================================================== */
+
+/* Film Grain Overlay: 2.5% opacity, pointer-events: none, disabled on mobile */
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-image: url('/images/film-grain.png');
+  background-repeat: repeat;
+  background-size: 200px 200px;
+  opacity: 0.025;
+  pointer-events: none;
+  z-index: 1;
+}
+
+@media (max-width: 767px) {
+  body::before {
+    display: none !important;
+  }
+}
+
+/* Marquee Edges: 24px mask-image fade left/right so tags don't hard-clip */
+.marquee-container, .marquee-track-container {
+  -webkit-mask-image: linear-gradient(to right, transparent, black 24px, black calc(100% - 24px), transparent);
+  mask-image: linear-gradient(to right, transparent, black 24px, black calc(100% - 24px), transparent);
+}
+
+/* Selection Color: accent bg + accent-ink text */
+::selection {
+  background-color: var(--accent) !important;
+  color: var(--accent-ink) !important;
+}
+
+::-moz-selection {
+  background-color: var(--accent) !important;
+  color: var(--accent-ink) !important;
+}
+
+/* Custom Scrollbar: thin, --raised thumb */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--raised);
+  border-radius: var(--r-pill);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--hairline-strong);
+}
+
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--raised) var(--bg);
+}
+
+/* Keyboard Only Focus States (2px accent outline offset 3px) */
+:focus-visible {
+  outline: 2px solid var(--accent) !important;
+  outline-offset: 3px !important;
+}
