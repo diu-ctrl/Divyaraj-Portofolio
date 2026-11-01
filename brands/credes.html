@@ -1886,24 +1886,5 @@
             });
         });
     </script>
-
-    <!-- Dynamic Return-to-Position Back Button Script -->
-    <script>
-    (function() {
-        if ('scrollRestoration' in history) {
-            history.scrollRestoration = 'auto';
-        }
-        var backBtn = document.querySelector('.back-btn, .pp-back-link, .banner-back');
-        if (backBtn) {
-            backBtn.addEventListener('click', function(e) {
-                var ref = document.referrer;
-                if (window.history.length > 1 && ref && (ref.indexOf(window.location.host) !== -1 || ref.indexOf('divyarajchauhan.in') !== -1)) {
-                    e.preventDefault();
-                    window.history.back();
-                }
-            });
-        }
-    })();
-    </script>
 </body>
 </html>

@@ -362,6 +362,10 @@
             display: flex;
             flex-direction: column;
             gap: 16px;
+            background: transparent !important;
+            border: none !important;
+            padding: 0 !important;
+            box-shadow: none !important;
         }
 
         .detail-block h3 {
@@ -629,8 +633,9 @@
             background: #000;
             border-bottom-left-radius: 14px !important;
             border-bottom-right-radius: 14px !important;
-            overflow: hidden !important;
+            overflow: visible !important;
             position: relative;
+            z-index: 10;
         }
 
         .web-img-wrap img {
@@ -691,23 +696,30 @@
         }
 
         /* Hotspot Tooltip container styling */
+        .hotspot {
+            position: absolute;
+            z-index: 50 !important;
+            transform: translate(-50%, -50%);
+            cursor: pointer;
+        }
+
         .hotspot-tooltip {
             position: absolute;
             bottom: 40px;
             left: 50%;
             transform: translateX(-50%) translateY(10px);
             width: 280px;
-            background: #000000;
-            border: 1px solid #282723;
-            
-            border-radius: 0px;
+            background: #111113 !important;
+            border: 1px solid rgba(255, 255, 255, 0.22) !important;
+            border-radius: 8px !important;
+            box-shadow: 0 12px 36px rgba(0, 0, 0, 0.9) !important;
             padding: 16px;
             color: #fff;
             opacity: 0;
             visibility: hidden;
             pointer-events: none;
             transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-            z-index: 20;
+            z-index: 9999 !important;
         }
 
         .hotspot-tooltip::after {
@@ -718,7 +730,20 @@
             transform: translateX(-50%);
             border-width: 6px;
             border-style: solid;
-            border-color: #000000 transparent transparent transparent;
+            border-color: #111113 transparent transparent transparent;
+        }
+
+        /* Downward tooltip for hotspots near top of image */
+        .hotspot.tip-down .hotspot-tooltip {
+            bottom: auto !important;
+            top: 38px !important;
+            transform: translateX(-50%) translateY(-10px);
+        }
+
+        .hotspot.tip-down .hotspot-tooltip::after {
+            top: auto !important;
+            bottom: 100% !important;
+            border-color: transparent transparent #111113 transparent !important;
         }
 
         /* Hover behavior for tooltips */
@@ -1213,7 +1238,7 @@
                             <div class="web-img-wrap hotspot-container">
                                 <img src="images/8bit website/8bit landing.png" alt="8Bit Creatives landing page — full scroll capture showing hero, about section with rotating red half-eclipse, creators coverflow carousel, case studies, services, esports roster, founders, CTA, and footer" loading="lazy">
                                 
-                                <div class="hotspot" style="left: 65%; top: 4.3%;">
+                                <div class="hotspot tip-down" style="left: 65%; top: 4.3%;">
                                     <div class="hotspot-dot">1</div>
                                     <div class="hotspot-tooltip">
                                         <h4>Editorial Gaming Hero</h4>
@@ -1221,7 +1246,7 @@
                                     </div>
                                 </div>
                                 
-                                <div class="hotspot" style="left: 50%; top: 15%;">
+                                <div class="hotspot tip-down" style="left: 50%; top: 15%;">
                                     <div class="hotspot-dot">2</div>
                                     <div class="hotspot-tooltip">
                                         <h4>Rotating Red Half-Eclipse</h4>
@@ -1405,24 +1430,6 @@
                 behavior: 'smooth'
             });
         });
-    </script>
-    <!-- Dynamic Return-to-Position Back Button Script -->
-    <script>
-    (function() {
-        if ('scrollRestoration' in history) {
-            history.scrollRestoration = 'auto';
-        }
-        var backBtn = document.querySelector('.back-btn, .pp-back-link, .banner-back');
-        if (backBtn) {
-            backBtn.addEventListener('click', function(e) {
-                var ref = document.referrer;
-                if (window.history.length > 1 && ref && (ref.indexOf(window.location.host) !== -1 || ref.indexOf('divyarajchauhan.in') !== -1)) {
-                    e.preventDefault();
-                    window.history.back();
-                }
-            });
-        }
-    })();
     </script>
 </body>
 </html>

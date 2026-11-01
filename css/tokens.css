@@ -633,7 +633,7 @@ button, input[type="submit"], input[type="button"], .btn-b1, .btn-b2 {
 }
 
 /* 4. Inner Details Boxes (Category, Role, Timeline, Status) */
-.meta-row, .meta-grid, .event-meta-grid, .work-card-specs, .meta-box, .detail-block {
+.meta-row, .meta-grid, .event-meta-grid, .work-card-specs, .meta-box {
   border-radius: var(--r-meta, 12px) !important;
   background: #0C0C0C !important;
   border: 1px solid rgba(255, 255, 255, 0.10) !important;
@@ -760,5 +760,16 @@ button, input[type="submit"], input[type="button"], .btn-b1, .btn-b2 {
   background: transparent !important;
   background-color: transparent !important;
   border: none !important;
+  box-shadow: none !important;
+}
+
+
+/* Case Details Grid & Detail Blocks: Clean editorial presentation on main card background */
+.detail-block, .challenge-block, .scope-block {
+  background: transparent !important;
+  background-color: transparent !important;
+  border: none !important;
+  padding: 0 !important;
+  border-radius: 0 !important;
   box-shadow: none !important;
 }
