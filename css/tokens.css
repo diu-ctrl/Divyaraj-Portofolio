@@ -1,0 +1,72 @@
+/* ==========================================================================
+   PORTFOLIO DESIGN REFINEMENT TOKEN SYSTEM — "Editorial Brutalism: Gallery Edition"
+   Single Source of Truth for Tokens, Laws, and Core Visual Language
+   ========================================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&display=swap');
+
+:root {
+  /* Surfaces */
+  --bg: #0A0A0A;            /* page */
+  --surface: #101010;       /* panels */
+  --raised: #141414;        /* nested emphasis */
+
+  /* Lines */
+  --hairline: 1px solid rgba(255, 255, 255, 0.10);
+  --hairline-strong: rgba(255, 255, 255, 0.24);
+
+  /* Ink */
+  --text: #F4F1EA;          /* warm white, not #FFF */
+  --muted: #A6A29A;
+  --faint: #6B6862;
+
+  /* Accent — REUSE the site's existing orange hex from the repo (keep it, do not invent a new hue).
+     Text/icon color on top of accent: */
+  --accent: #EB4604;
+  --accent-ink: #0A0A0A;
+
+  /* Type (reuse the fonts ALREADY loaded — do not add new families) */
+  --font-display: 'Instrument Serif', Georgia, serif;
+  --font-body: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-mono: 'IBM Plex Mono', monospace;
+  --micro: 0.7125rem;       /* 11.4px eyebrow/label size */
+  --track: .16em;           /* eyebrow letter-spacing */
+
+  /* Space — 8px grid */
+  --s1: 8px;
+  --s2: 16px;
+  --s3: 24px;
+  --s4: 32px;
+  --s6: 48px;
+  --s8: 64px;
+  --section-pad: clamp(5rem, 12vh, 9rem);
+
+  /* Radius */
+  --r-panel: 2px;           /* boxes are sharp */
+  --r-pill: 999px;          /* tags + buttons stay pills */
+  --r-media: 0;             /* images never rounded */
+
+  /* Motion */
+  --t-fast: 160ms cubic-bezier(.2, .6, .2, 1);   /* color/border */
+  --t-media: 400ms ease-out;                      /* image scale */
+
+  /* Backwards compatibility aliases */
+  --primary: var(--accent);
+  --primary-light: var(--accent);
+  --primary-dim: var(--surface);
+  --accent-1: var(--accent);
+  --accent-glow: var(--accent);
+  --card: var(--surface);
+  --border: rgba(255, 255, 255, 0.10);
+  --text-muted: var(--muted);
+  --font-sans: var(--font-body);
+  --font-serif: var(--font-display);
+}
+
+/*
+ * LAWS:
+ * L1: No hover lift. No transform: translate* on any button/body hover (already removed — keep it removed).
+ * L2: No drop shadows on boxes. Hierarchy comes from hairlines + surface tone, not shadows.
+ * L3: One accent color. White/ink/muted do the rest.
+ * L4: Only the hero name and section titles use the serif italic. Everything else grotesk/mono.
+ */
