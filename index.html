@@ -1421,7 +1421,7 @@
             }
         })();
 
-        // ─── Scattered Portfolio Card Stamping Animation ───
+        // ─── Scattered Portfolio Card Stamping Animation (Physical Sticker-on-Wall Slap) ───
         (function() {
             const canvas = document.querySelector('.scattered-canvas');
             if (!canvas) return;
@@ -1429,55 +1429,88 @@
             const cards = Array.from(canvas.querySelectorAll('.folio-card'));
             if (cards.length === 0) return;
 
-            // Store original transforms and set initial state
+            // If mobile view, skip stamping delay to let mobile carousel manage display
+            if (window.innerWidth < 768) {
+                cards.forEach(card => card.classList.remove('not-stamped'));
+                return;
+            }
+
+            // Store original transforms and set initial elevated off-wall state
             cards.forEach(card => {
-                const origTransform = card.style.transform || '';
+                const origTransform = card.style.transform || card.getAttribute('data-orig-transform') || '';
                 card.setAttribute('data-orig-transform', origTransform);
                 
-                // Add class to hide card initially
+                // Hide card initially until its stamp turn
                 card.classList.add('not-stamped');
                 
-                // Parse rotation to scale it up initially
+                // Parse rotation to scale it up initially (elevated in air before slamming down)
                 const rotateMatch = origTransform.match(/rotate\([^)]+\)/);
                 const rotation = rotateMatch ? rotateMatch[0] : 'rotate(0deg)';
-                card.style.transform = `scale(1.8) ${rotation}`;
-                
-                // Apply transition override for stamp motion
-                card.style.transition = 'transform 0.45s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0.35s ease, border-color 0.3s ease, filter 0.3s ease, box-shadow 0.3s ease';
+                card.style.transform = `scale(2.0) ${rotation}`;
             });
 
-            // Intersection Observer to trigger stamping
+            let hasStamped = false;
+            function triggerStamping() {
+                if (hasStamped) return;
+                hasStamped = true;
+                if (observer) observer.disconnect();
+                stampCards();
+            }
+
+            // Intersection Observer to trigger stamping when canvas enters viewport
             const observerOptions = {
                 root: null,
-                threshold: 0.1
+                threshold: 0.05
             };
 
             const observer = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
-                        stampCards();
-                        observer.unobserve(entry.target);
+                        triggerStamping();
                     }
                 });
             }, observerOptions);
 
             observer.observe(canvas);
 
+            // Immediate check if canvas is already in viewport on load or page refresh
+            function checkImmediate() {
+                const rect = canvas.getBoundingClientRect();
+                if (rect.top < (window.innerHeight || document.documentElement.clientHeight) && rect.bottom > 0) {
+                    triggerStamping();
+                }
+            }
+            checkImmediate();
+            window.addEventListener('load', checkImmediate);
+            window.addEventListener('scroll', checkImmediate, { passive: true });
+
             function stampCards() {
-                // Sort cards: background first, featured-front last
+                // Sort cards: background stack first, featured-front cards last (slamming on top)
                 const sortedCards = [...cards].sort((a, b) => {
                     const aFeatured = a.classList.contains('featured-front') ? 1 : 0;
                     const bFeatured = b.classList.contains('featured-front') ? 1 : 0;
                     return aFeatured - bFeatured;
                 });
 
-                // Stamp one by one
+                // Stamp one by one with rapid physical cadence (75ms stagger)
                 sortedCards.forEach((card, index) => {
                     setTimeout(() => {
-                        const origTransform = card.getAttribute('data-orig-transform');
+                        const origTransform = card.getAttribute('data-orig-transform') || '';
+                        
+                        // Reveal card and configure physical stamp impact transition
                         card.classList.remove('not-stamped');
+                        card.style.visibility = 'visible';
+                        card.style.pointerEvents = 'auto';
+                        card.style.transition = 'transform 0.38s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0.15s ease-out';
+                        
+                        // Snap down onto the wall like a sticker stamp
                         card.style.transform = `scale(1) ${origTransform}`;
-                    }, index * 120); // 120ms staggered delay
+
+                        // Once settled, clean up inline transition so hover & magnetic dragging are frictionless
+                        setTimeout(() => {
+                            card.style.transition = '';
+                        }, 400);
+                    }, index * 75); // 75ms rapid physical cadence (~1.0s total sequence)
                 });
             }
         })();
