@@ -715,7 +715,7 @@ img { display: block; width: 100%; height: 100%; object-fit: cover; }
   display: block;
 }
 
-.character-image-full:hover img { transform: scale(1.02); }
+.character-image-full:hover img { transform: none !important; }
 
 /* Details row — stats left, strategy right */
 .character-details-row {
@@ -811,7 +811,7 @@ img { display: block; width: 100%; height: 100%; object-fit: cover; }
   transition: transform 0.8s ease;
 }
 
-.location-card:hover .location-img img { transform: scale(1.05); }
+.location-card:hover .location-img img { transform: none !important; }
 
 .location-overlay {
   position: absolute;

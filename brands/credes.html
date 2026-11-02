@@ -236,7 +236,7 @@
             transition: transform 0.5s cubic-bezier(0.16,1,0.3,1);
             cursor: pointer;
         }
-        .phone-frame:hover { transform: scale(1.03) translateY(-4px); }
+        .phone-frame:hover { transform: translateY(-4px); }
 
         /* Side cards */
         .phone-frame-back {
@@ -261,7 +261,7 @@
             z-index: 0;
         }
         .phone-frame { z-index: 2; left: 50%; transform: translateX(-50%); }
-        .phone-frame:hover { transform: translateX(-50%) scale(1.03) translateY(-4px); }
+        .phone-frame:hover { transform: translateX(-50%) translateY(-4px); }
 
         .reel-video {
             width: 100%;
@@ -722,7 +722,7 @@
             transition: all 0.3s ease;
         }
         .gallery-item img { width:100%; height:100%; object-fit:cover; display:block; transition: transform 0.4s; }
-        .gallery-item:hover img { transform: scale(1.05); }
+        .gallery-item:hover img { transform: none !important; }
 
         .gallery-item-tall {
             height: 340px;
@@ -906,7 +906,7 @@
             display: block;
             transition: transform 0.6s ease;
         }
-        .role-board-img:hover img { transform: scale(1.03); }
+        .role-board-img:hover img { transform: none !important; }
 
         /* ─── Role Overview Split: stretch left to match right ─── */
         .role-split { align-items: stretch; }
@@ -977,7 +977,7 @@
             position: relative;
         }
         .bb-item img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.5s ease; }
-        .bb-item:hover img { transform: scale(1.04); }
+        .bb-item:hover img { transform: none !important; }
         .bb-item.bb-span2 { grid-column: span 2; }
         .bb-item.bb-span2 { aspect-ratio: 16/7; }
 

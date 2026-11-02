@@ -419,7 +419,37 @@
 
 .web-row:hover .web-image-wrapper img {
   filter: grayscale(0%);
-  transform: scale(1.02);
+  transform: none !important;
+}
+
+/* Global thumbnail & media: no zoom on hover across the entire website */
+:hover > img,
+:hover img,
+.thumbnail img,
+.thumb img,
+.media-thumb img,
+.card-img img,
+.cinema-strip-card img,
+.cinema-strip-card:hover img,
+.web-row img,
+.web-row:hover img,
+.web-card img,
+.web-card:hover img,
+.case-study-card img,
+.case-study-card:hover img,
+.film-card img,
+.film-card:hover img,
+.video-card img,
+.video-card:hover img,
+.gallery-card img,
+.gallery-card:hover img,
+.grid-wrapper img,
+.grid-wrapper:hover img,
+.lane-card img,
+.lane-card:hover img,
+.reel-card img,
+.reel-card:hover img {
+  transform: none !important;
 }
 
 

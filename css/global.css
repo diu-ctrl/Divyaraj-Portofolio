@@ -2374,7 +2374,7 @@
         }
 
         .web-card:hover .web-img-wrap-teaser img {
-            transform: scale(1.03);
+            transform: none !important;
         }
 
         .web-card-content {
@@ -3526,9 +3526,9 @@
         }
 
         .cinema-strip-card:hover {
-            transform: translateY(-2px) scale(1.03);
-            border-color: rgba(235, 70, 4, 0.7);
-            box-shadow: 0 14px 35px rgba(235, 70, 4, 0.25);
+            transform: none !important;
+            border-color: rgba(255, 255, 255, 0.12) !important;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6) !important;
             z-index: 10;
         }
 
@@ -3537,11 +3537,11 @@
             height: 100%;
             object-fit: cover;
             display: block;
-            transition: transform 0.5s ease;
+            transition: none !important;
         }
 
         .cinema-strip-card:hover img {
-            transform: scale(1.06);
+            transform: none !important;
         }
 
         .cinema-strip-card-overlay {
