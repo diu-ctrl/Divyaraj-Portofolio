@@ -326,7 +326,7 @@
                         <span class="meta-label">Brand Integration</span>
                         <span class="meta-num">01</span>
                     </div>
-                    <img src="images/Logos of the brands/credes techlabs.jpg" alt="Credes Techlabs Showcase">
+                    <img src="images/Logos of the brands/credes techlabs.jpg" alt="Credes Techlabs Showcase" style="background: #5B52DF !important;">
                     <div class="folio-card-details">
                         <span class="folio-card-title">Credes Techlabs</span>
                         <span class="folio-card-tag">Social Media &amp; Brand Identity</span>
@@ -371,7 +371,7 @@
                         <span class="meta-label">Identity System</span>
                         <span class="meta-num">04</span>
                     </div>
-                    <img src="images/Logos of the brands/finanvo.png" alt="Finanvo Showcase">
+                    <img src="images/Logos of the brands/finanvo.png" alt="Finanvo Showcase" style="background: #ffffff !important;">
                     <div class="folio-card-details">
                         <span class="folio-card-title">Finanvo</span>
                         <span class="folio-card-tag">Brand Design &amp; Content Strategy</span>
@@ -386,7 +386,7 @@
                         <span class="meta-label">Content Pipeline</span>
                         <span class="meta-num">05</span>
                     </div>
-                    <img src="images/Logos of the brands/giffy.jpg" alt="Giffy Showcase">
+                    <img src="images/Logos of the brands/giffy.jpg" alt="Giffy Showcase" style="background: #FEAF48 !important;">
                     <div class="folio-card-details">
                         <span class="folio-card-title">Giffy</span>
                         <span class="folio-card-tag">Social Media Operations</span>
@@ -431,7 +431,7 @@
                         <span class="meta-label">Commerce Deploy</span>
                         <span class="meta-num">08</span>
                     </div>
-                    <img src="images/Logos of the brands/scuff.jpeg" alt="Scuff Showcase">
+                    <img src="images/Logos of the brands/scuff.jpeg" alt="Scuff Showcase" style="background: #FB3B52 !important;">
                     <div class="folio-card-details">
                         <span class="folio-card-title">Scuff Clothing</span>
                         <span class="folio-card-tag">E-Commerce Brand Management</span>
@@ -461,7 +461,7 @@
                         <span class="meta-label">Growth Engine</span>
                         <span class="meta-num">10</span>
                     </div>
-                    <img src="images/Logos of the brands/shift.jpg" alt="Shift Showcase">
+                    <img src="images/Logos of the brands/shift.jpg" alt="Shift Showcase" style="background: #f7f7f7 !important;">
                     <div class="folio-card-details">
                         <span class="folio-card-title">Shift</span>
                         <span class="folio-card-tag">Growth Strategy &amp; Content</span>
@@ -506,7 +506,7 @@
                         <span class="meta-label">Identity System</span>
                         <span class="meta-num">13</span>
                     </div>
-                    <img src="images/Logos of the brands/aspire.jpg" alt="Aspire Showcase">
+                    <img src="images/Logos of the brands/aspire.jpg" alt="Aspire Showcase" style="background: #ffffff !important;">
                     <div class="folio-card-details">
                         <span class="folio-card-title">Aspire</span>
                         <span class="folio-card-tag">Brand Design &amp; SMM</span>
@@ -521,7 +521,7 @@
                         <span class="meta-label">AI Creative</span>
                         <span class="meta-num">14</span>
                     </div>
-                    <img src="images/Logos of the brands/untagd.png" alt="UNTAGD Showcase" style="object-fit: contain; background: #000;">
+                    <img src="images/Logos of the brands/untagd.png" alt="UNTAGD Showcase" style="background: #000000 !important;">
                     <div class="folio-card-details">
                         <span class="folio-card-title">Untagd</span>
                         <span class="folio-card-tag">AI Creative &amp; Content Production</span>
@@ -1252,13 +1252,19 @@
             }
         });
 
-        // ─── Draggable Scattered Cards JS (Smooth Magnetic Physics & Tap Navigation) ───
+        // ─── Draggable Scattered Cards JS (3D Perspective Tilt, Solid Opaque Stacking & Magnetic Drag) ───
         (function() {
             const canvas = document.querySelector('.scattered-canvas');
             if (!canvas) return;
 
             const cards = canvas.querySelectorAll('.folio-card');
-            let highestZ = 50;
+            let highestZ = 100;
+
+            // Set initial z-index order based on DOM order or featured-front
+            cards.forEach((card, idx) => {
+                const isFeatured = card.classList.contains('featured-front');
+                card.style.zIndex = isFeatured ? (30 + idx) : (10 + idx);
+            });
 
             cards.forEach(card => {
                 const link = card.querySelector('a');
@@ -1276,8 +1282,16 @@
                     img.addEventListener('dragstart', (e) => e.preventDefault());
                 }
 
+                // Parse base rotation from inline style (e.g. rotate(-6deg))
+                const rawStyle = card.getAttribute('style') || '';
+                const rotMatch = rawStyle.match(/rotate\(([-0-9.]+)deg\)/);
+                const baseRot = rotMatch ? parseFloat(rotMatch[1]) : 0;
+                card.setAttribute('data-base-rot', baseRot);
+
                 let isDragging = false;
+                let isHovered = false;
                 let hasMoved = false;
+
                 let startPointerX = 0;
                 let startPointerY = 0;
                 let cardStartX = 0;
@@ -1287,6 +1301,84 @@
                 let currentX = 0;
                 let currentY = 0;
                 let rafId = null;
+
+                // 3D Perspective Tilt state
+                let currentTiltX = 0;
+                let currentTiltY = 0;
+                let targetTiltX = 0;
+                let targetTiltY = 0;
+                let tiltScale = 1.0;
+                let tiltRafId = null;
+
+                function updateTransform() {
+                    // Combine 3D perspective tilt with subtle scale and the card's resting rotation
+                    card.style.transform = `perspective(1000px) rotateX(${currentTiltX.toFixed(2)}deg) rotateY(${currentTiltY.toFixed(2)}deg) scale3d(${tiltScale.toFixed(3)}, ${tiltScale.toFixed(3)}, 1) rotate(${baseRot}deg)`;
+                }
+
+                function tiltLoop() {
+                    const ease = 0.16;
+                    currentTiltX += (targetTiltX - currentTiltX) * ease;
+                    currentTiltY += (targetTiltY - currentTiltY) * ease;
+
+                    updateTransform();
+
+                    const dist = Math.hypot(targetTiltX - currentTiltX, targetTiltY - currentTiltY);
+                    if (!isHovered && !isDragging && dist < 0.05) {
+                        currentTiltX = 0;
+                        currentTiltY = 0;
+                        tiltScale = 1.0;
+                        updateTransform();
+                        tiltRafId = null;
+                        return;
+                    }
+                    tiltRafId = requestAnimationFrame(tiltLoop);
+                }
+
+                function startTiltLoop() {
+                    if (!tiltRafId) {
+                        tiltRafId = requestAnimationFrame(tiltLoop);
+                    }
+                }
+
+                // 3D Perspective Tilt on Hover
+                card.addEventListener('pointerenter', (e) => {
+                    if (window.innerWidth <= 900) return;
+                    isHovered = true;
+                    tiltScale = 1.05;
+                    startTiltLoop();
+                });
+
+                card.addEventListener('pointermove', (e) => {
+                    if (window.innerWidth <= 900) return;
+                    if (isDragging) return; // Handled dynamically during active drag
+
+                    const rect = card.getBoundingClientRect();
+                    const x = e.clientX - rect.left;
+                    const y = e.clientY - rect.top;
+                    const cx = rect.width / 2;
+                    const cy = rect.height / 2;
+
+                    // Normalized from -1 to 1
+                    const normX = Math.max(-1, Math.min(1, (x - cx) / cx));
+                    const normY = Math.max(-1, Math.min(1, (y - cy) / cy));
+
+                    // Realistic perspective tilt: cursor near top tilts card backwards (-X), cursor near right tilts card right (+Y)
+                    const maxTilt = 15; // deg
+                    targetTiltX = -normY * maxTilt;
+                    targetTiltY = normX * maxTilt;
+                    tiltScale = 1.05;
+
+                    startTiltLoop();
+                });
+
+                card.addEventListener('pointerleave', (e) => {
+                    if (isDragging) return;
+                    isHovered = false;
+                    targetTiltX = 0;
+                    targetTiltY = 0;
+                    tiltScale = 1.0;
+                    startTiltLoop();
+                });
 
                 function startSmoothFollow() {
                     if (rafId) cancelAnimationFrame(rafId);
@@ -1316,10 +1408,11 @@
                 }
 
                 function onPointerDown(e) {
-                    // Only desktop/tablet spatial mode (> 900px)
                     if (window.innerWidth <= 900) return;
-                    // Left mouse button or touch
                     if (e.pointerType === 'mouse' && e.button !== 0) return;
+
+                    // Immediately bring this packet to the TOP of the entire stack!
+                    card.style.zIndex = ++highestZ;
 
                     isDragging = true;
                     hasMoved = false;
@@ -1334,8 +1427,11 @@
                     targetX = cardStartX;
                     targetY = cardStartY;
 
-                    // Bring this card to front
-                    card.style.zIndex = ++highestZ;
+                    // Elevate scale & tilt during drag
+                    tiltScale = 1.07;
+                    targetTiltX = 0;
+                    targetTiltY = 0;
+                    startTiltLoop();
 
                     window.addEventListener('pointermove', onPointerMove, { passive: false });
                     window.addEventListener('pointerup', onPointerUp);
@@ -1350,7 +1446,7 @@
                     const dist = Math.hypot(deltaX, deltaY);
 
                     // Threshold to distinguish between click/tap and intentional drag
-                    if (!hasMoved && dist > 5) {
+                    if (!hasMoved && dist > 4) {
                         hasMoved = true;
                         card.classList.add('active-drag');
                         startSmoothFollow();
@@ -1358,6 +1454,12 @@
 
                     if (hasMoved) {
                         if (e.cancelable) e.preventDefault();
+
+                        // Dynamic slight tilt in direction of movement
+                        const vx = Math.max(-10, Math.min(10, (e.movementX || 0) * 1.5));
+                        const vy = Math.max(-10, Math.min(10, (e.movementY || 0) * 1.5));
+                        targetTiltY = vx;
+                        targetTiltX = -vy;
 
                         const marginX = 8;
                         const maxLeft = Math.max(marginX, canvas.clientWidth - card.offsetWidth - marginX);
@@ -1379,8 +1481,18 @@
 
                     if (hasMoved) {
                         card.classList.remove('active-drag');
-                        // RAF loop smoothly settles at targetX, targetY
+                        card.style.left = targetX + 'px';
+                        card.style.top = targetY + 'px';
+                        currentX = targetX;
+                        currentY = targetY;
+                        // The packet stays at targetX, targetY and stays on top of the stack!
                     }
+
+                    // Reset tilt smoothly
+                    targetTiltX = 0;
+                    targetTiltY = 0;
+                    tiltScale = isHovered ? 1.05 : 1.0;
+                    startTiltLoop();
                 }
 
                 card.addEventListener('pointerdown', onPointerDown);

@@ -559,6 +559,8 @@
             height: calc(100% - 80px);
             margin: 0 auto;
             z-index: 1;
+            perspective: 1200px;
+            transform-style: preserve-3d;
         }
 
         .folio-card,
@@ -581,45 +583,42 @@
 
         .folio-card {
             position: absolute;
-            width: 220px; /* Decreased width to support multiple cards */
-            background: #000000;
-            border: 1px solid rgba(255, 255, 255, 0.25); /* White border, muted in background */
-            border-radius: 10px !important; /* Slightly curved corners */
+            width: 220px;
+            background: #000000 !important;
+            border: 1px solid rgba(255, 255, 255, 0.22);
+            border-radius: 10px !important;
             padding: 12px;
-            transition: transform 0.3s cubic-bezier(0.25, 0.8, 0.25, 1), 
-                        border-color 0.3s ease, 
-                        filter 0.3s ease, 
-                        opacity 0.3s ease, 
-                        box-shadow 0.3s ease;
             cursor: grab;
             user-select: none;
-            z-index: 5;
+            z-index: 10;
+            transform-style: preserve-3d;
+            will-change: transform;
 
-            /* Layering Hierarchy: background cards are dim with shadow */
-            opacity: 0.65;
-            filter: brightness(0.55) contrast(0.95);
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.7);
+            /* 100% Solid Opaque Packet — No transparency so stacked packets are completely solid */
+            opacity: 1 !important;
+            filter: none !important;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.85);
+            transition: border-color 0.25s ease, box-shadow 0.25s ease;
         }
 
-        .folio-card:hover, .folio-card.active-drag {
-            z-index: 100 !important;
-            border-color: #ffffff; /* Bright white border in front */
-            opacity: 1;
-            filter: brightness(1) contrast(1); /* Bright in front */
-            box-shadow: 0 20px 45px rgba(0, 0, 0, 0.95); /* Deep shadow below */
-            transform: scale(1.05) rotate(0deg) !important;
+        .folio-card:hover {
+            border-color: rgba(255, 255, 255, 0.85);
+            box-shadow: 0 16px 40px rgba(0, 0, 0, 0.95);
+        }
+
+        .folio-card.active-drag,
+        .folio-card.active-drag a {
+            cursor: grabbing !important;
+            border-color: #ffffff !important;
+            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.98);
         }
 
         .folio-card.featured-front {
-            opacity: 1 !important;
-            filter: brightness(1) contrast(1) !important;
-            z-index: 25 !important; /* Visual hierarchy: sits in the front by default */
-            border-color: rgba(255, 255, 255, 0.5) !important;
+            border-color: rgba(255, 255, 255, 0.45);
         }
 
         .folio-card.featured-front:hover {
             border-color: #ffffff !important;
-            z-index: 100 !important;
         }
 
         /* Enforce absolute hidden visibility state before stamp animation runs */
