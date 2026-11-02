@@ -3401,7 +3401,7 @@
             opacity: 0.95;
             filter: blur(0px);
             transform: scale(1);
-            pointer-events: auto;
+            pointer-events: none; /* Keep container transparent to mouse events */
         }
 
         .cinema-strip {
@@ -3442,10 +3442,7 @@
             animation-play-state: running;
         }
 
-        .cinema-strips-wrapper:hover .track-rtl,
-        .cinema-strips-wrapper:hover .track-ltr {
-            animation-play-state: paused;
-        }
+        /* Continuous marquee scrolling - never paused on hover per user request */
 
         @keyframes cinema-marquee-rtl {
             0% { transform: translate3d(0, 0, 0); }
@@ -3469,6 +3466,8 @@
             border: 1px solid rgba(255, 255, 255, 0.12);
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
             text-decoration: none;
+            pointer-events: auto; /* Allow direct clicks/taps to navigate */
+            cursor: pointer;
             transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), 
                         border-color 0.3s ease, 
                         box-shadow 0.3s ease;
@@ -3476,9 +3475,9 @@
         }
 
         .cinema-strip-card:hover {
-            transform: translateY(-4px) scale(1.04);
+            transform: translateY(-2px) scale(1.03);
             border-color: rgba(235, 70, 4, 0.7);
-            box-shadow: 0 16px 40px rgba(235, 70, 4, 0.25);
+            box-shadow: 0 14px 35px rgba(235, 70, 4, 0.25);
             z-index: 10;
         }
 
@@ -3495,18 +3494,7 @@
         }
 
         .cinema-strip-card-overlay {
-            position: absolute;
-            inset: auto 10px 10px 10px;
-            display: flex;
-            align-items: center;
-            gap: 7px;
-            padding: 5px 10px;
-            border-radius: 100px;
-            background: rgba(10, 10, 10, 0.75);
-            backdrop-filter: blur(8px);
-            -webkit-backdrop-filter: blur(8px);
-            border: 1px solid rgba(255, 255, 255, 0.12);
-            transition: background 0.25s ease, border-color 0.25s ease;
+            display: none !important; /* Removed text/pill overlay per user request */
         }
 
         .cinema-strip-card:hover .cinema-strip-card-overlay {
