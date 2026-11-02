@@ -1,24 +1,10 @@
 # Ignore Vercel metadata
 .vercel
 
-# Ignore massive raw assets and node_modules
-**/SATCON'26 Media-Graphics/
-**/SATCON'26 Media-Videos/
-react-hero-gallery/node_modules/
-
-# Ignore non-web video formats
+# Ignore non-web video formats if any
 *.mov
 *.avi
 *.mkv
 
-# Ignore internal templates and scripts
-brands/_apply_brand_nav.ps1
-brands/brand_template.html
-
 # Ignore scratch files
 scratch/
-check_sizes.py
-check_sizes.js
-inspect_brands.py
-prepare_brands.py
-check_videos.py
