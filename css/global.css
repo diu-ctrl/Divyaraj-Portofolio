@@ -521,25 +521,44 @@
             background: linear-gradient(
                 to right,
                 #040404 0%,
-                #040404 calc(50% - min(32vw, 550px)),
-                #000000 calc(50% - min(32vw, 550px)),
-                #000000 calc(50% + min(32vw, 550px)),
-                #040404 calc(50% + min(32vw, 550px)),
+                #040404 calc(50% - min(47vw, 780px)),
+                #000000 calc(50% - min(47vw, 780px)),
+                #000000 calc(50% + min(47vw, 780px)),
+                #040404 calc(50% + min(47vw, 780px)),
                 #040404 100%
             ) !important;
             padding: 40px 0;
             border-bottom: 1px solid var(--border);
         }
 
+        /* Framed black playground area border */
+        #portfolio::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: min(94vw, 1560px);
+            background: #000000;
+            border-left: 1px solid rgba(255, 255, 255, 0.12);
+            border-right: 1px solid rgba(255, 255, 255, 0.12);
+            pointer-events: none;
+            z-index: 0;
+        }
+
         #portfolio h2 {
             font-size: clamp(1.8rem, 4.5vw, 2.8rem);
+            position: relative;
+            z-index: 1;
         }
         .scattered-canvas {
             position: relative;
-            width: 100%;
+            width: min(94vw, 1560px);
+            max-width: 1560px;
             height: calc(100% - 80px);
-            max-width: 1200px;
             margin: 0 auto;
+            z-index: 1;
         }
 
         .folio-card,
@@ -672,6 +691,10 @@
                 height: auto;
                 overflow: visible;
                 padding-bottom: 80px;
+                background: #000000 !important;
+            }
+            #portfolio::before {
+                display: none !important;
             }
             .scattered-canvas {
                 display: grid;

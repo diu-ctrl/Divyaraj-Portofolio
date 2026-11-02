@@ -1359,11 +1359,13 @@
                     if (hasMoved) {
                         if (e.cancelable) e.preventDefault();
 
-                        const maxLeft = Math.max(0, canvas.clientWidth - card.offsetWidth);
-                        const maxTop = Math.max(0, canvas.clientHeight - card.offsetHeight);
+                        const marginX = 8;
+                        const maxLeft = Math.max(marginX, canvas.clientWidth - card.offsetWidth - marginX);
+                        targetX = Math.max(marginX, Math.min(cardStartX + deltaX, maxLeft));
 
-                        targetX = Math.max(0, Math.min(cardStartX + deltaX, maxLeft));
-                        targetY = Math.max(0, Math.min(cardStartY + deltaY, maxTop));
+                        const marginTop = 6;
+                        const maxTop = Math.max(marginTop, canvas.clientHeight - card.offsetHeight - marginTop);
+                        targetY = Math.max(marginTop, Math.min(cardStartY + deltaY, maxTop));
                     }
                 }
 

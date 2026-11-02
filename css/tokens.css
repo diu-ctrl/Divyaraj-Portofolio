@@ -960,16 +960,35 @@ button, input[type="submit"], input[type="button"], .btn-b1, .btn-b2 {
   background: linear-gradient(
     to right,
     #040404 0%,
-    #040404 calc(50% - min(32vw, 550px)),
-    #000000 calc(50% - min(32vw, 550px)),
-    #000000 calc(50% + min(32vw, 550px)),
-    #040404 calc(50% + min(32vw, 550px)),
+    #040404 calc(50% - min(47vw, 780px)),
+    #000000 calc(50% - min(47vw, 780px)),
+    #000000 calc(50% + min(47vw, 780px)),
+    #040404 calc(50% + min(47vw, 780px)),
     #040404 100%
   ) !important;
+  position: relative !important;
 }
 
-@media (max-width: 768px) {
+#portfolio::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: min(94vw, 1560px);
+  background: #000000;
+  border-left: 1px solid rgba(255, 255, 255, 0.12);
+  border-right: 1px solid rgba(255, 255, 255, 0.12);
+  pointer-events: none;
+  z-index: 0;
+}
+
+@media (max-width: 900px) {
   #portfolio {
     background: #000000 !important;
+  }
+  #portfolio::before {
+    display: none !important;
   }
 }
