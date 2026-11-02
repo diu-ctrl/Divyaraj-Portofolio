@@ -861,9 +861,30 @@ button, input[type="submit"], input[type="button"], .btn-b1, .btn-b2 {
 .btn-ripple-container.theme-dark-to-orange .btn-label-base {
   color: var(--text, #FFFFFF) !important;
 }
+.btn-ripple-container.theme-dark-to-orange .btn-label-base svg {
+  stroke: #FFFFFF !important;
+  color: #FFFFFF !important;
+}
+.btn-ripple-container.theme-dark-to-orange .btn-label-base svg circle[fill="currentColor"] {
+  fill: #FFFFFF !important;
+  stroke: none !important;
+}
 .btn-ripple-container.theme-dark-to-orange .btn-ripple-overlay {
   background: var(--accent, #EB4604) !important;
   color: #FFFFFF !important;
+}
+.btn-ripple-container.theme-dark-to-orange .btn-ripple-overlay svg,
+.btn-ripple-container.theme-dark-to-orange .btn-ripple-overlay svg path,
+.btn-ripple-container.theme-dark-to-orange .btn-ripple-overlay svg rect,
+.btn-ripple-container.theme-dark-to-orange .btn-ripple-overlay svg circle,
+.btn-ripple-container.theme-dark-to-orange .btn-ripple-overlay svg line,
+.btn-ripple-container.theme-dark-to-orange .btn-ripple-overlay svg polyline {
+  stroke: #FFFFFF !important;
+  color: #FFFFFF !important;
+}
+.btn-ripple-container.theme-dark-to-orange .btn-ripple-overlay svg circle[fill="currentColor"] {
+  fill: #FFFFFF !important;
+  stroke: none !important;
 }
 .btn-ripple-container.theme-dark-to-orange:hover {
   background-color: transparent !important;

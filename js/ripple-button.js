@@ -30,6 +30,7 @@
             '.btn-brutalist-outline',
             '.back-btn',
             '.social-mail-btn',
+            '.social-icon-btn',
             '.download-pdf-btn',
             '.nav-capsule',
             '.brand-nav-btn:not(.dc-home)',

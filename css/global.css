@@ -1706,23 +1706,23 @@
             flex-shrink: 0;
         }
 
-        .social-icon-btn:hover {
+        .social-icon-btn:not(.btn-ripple-container):hover {
             background: rgba(235, 70, 4, 0.08) !important;
             border-color: var(--accent) !important;
             color: var(--accent) !important;
         }
 
-        .social-icon-btn:hover svg,
-        .social-icon-btn:hover svg path,
-        .social-icon-btn:hover svg rect,
-        .social-icon-btn:hover svg circle,
-        .social-icon-btn:hover svg line,
-        .social-icon-btn:hover svg polyline {
+        .social-icon-btn:not(.btn-ripple-container):hover svg,
+        .social-icon-btn:not(.btn-ripple-container):hover svg path,
+        .social-icon-btn:not(.btn-ripple-container):hover svg rect,
+        .social-icon-btn:not(.btn-ripple-container):hover svg circle,
+        .social-icon-btn:not(.btn-ripple-container):hover svg line,
+        .social-icon-btn:not(.btn-ripple-container):hover svg polyline {
             stroke: var(--accent) !important;
             color: var(--accent) !important;
         }
 
-        .social-icon-btn:hover svg circle[fill="currentColor"] {
+        .social-icon-btn:not(.btn-ripple-container):hover svg circle[fill="currentColor"] {
             fill: var(--accent) !important;
             stroke: none !important;
         }
@@ -1753,16 +1753,16 @@
             flex-shrink: 0;
         }
 
-        .social-mail-btn:hover {
+        .social-mail-btn:not(.btn-ripple-container):hover {
             background: rgba(235, 70, 4, 0.08) !important;
             border-color: var(--accent) !important;
             color: var(--accent) !important;
         }
 
-        .social-mail-btn:hover svg,
-        .social-mail-btn:hover svg path,
-        .social-mail-btn:hover svg rect,
-        .social-mail-btn:hover svg polyline {
+        .social-mail-btn:not(.btn-ripple-container):hover svg,
+        .social-mail-btn:not(.btn-ripple-container):hover svg path,
+        .social-mail-btn:not(.btn-ripple-container):hover svg rect,
+        .social-mail-btn:not(.btn-ripple-container):hover svg polyline {
             stroke: var(--accent) !important;
             color: var(--accent) !important;
         }
