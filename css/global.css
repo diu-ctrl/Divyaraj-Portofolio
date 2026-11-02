@@ -2732,13 +2732,86 @@
             }
         }
 
-        /* --- Web Showcase Section --- */
+        /* Lenis Smooth Scroll Recommended Base Rules */
+        html.lenis, html.lenis body {
+            height: auto;
+        }
+        .lenis.lenis-smooth {
+            scroll-behavior: auto !important;
+        }
+        .lenis.lenis-smooth [data-lenis-prevent] {
+            overscroll-behavior: contain;
+        }
+        .lenis.lenis-stopped {
+            overflow: hidden;
+        }
+
+        /* --- Web Showcase Section (Pinned Vertical Scroll) --- */
         .web-showcase-section {
             position: relative;
             padding: 100px 6% 80px;
             max-width: 1300px;
             margin: 0 auto;
             overflow: hidden;
+        }
+
+        .web-showcase-section.web-scroll-track {
+            position: relative;
+            height: 420vh;
+            padding: 0 !important;
+            max-width: 100% !important;
+            margin: 0 !important;
+            background: transparent;
+            overflow: visible !important;
+        }
+
+        .web-sticky-stage {
+            position: sticky;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            padding-top: 36px;
+            box-sizing: border-box;
+            background: var(--bg, #050505);
+            z-index: 10;
+        }
+
+        .web-sticky-header {
+            text-align: center;
+            margin-bottom: 24px;
+            flex-shrink: 0;
+            z-index: 10;
+        }
+
+        .web-cards-viewport {
+            position: relative;
+            width: 100%;
+            max-width: 1240px;
+            padding: 0 4%;
+            height: calc(100vh - 150px);
+            overflow: hidden;
+            box-sizing: border-box;
+        }
+
+        .web-cards-strip {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            gap: 36px;
+            will-change: transform;
+            padding-bottom: 120px;
+        }
+
+        .web-cards-strip .web-row {
+            min-height: 340px;
+            box-sizing: border-box;
+            transition: opacity 0.25s ease, transform 0.25s ease, border-color 0.3s ease;
         }
 
         .web-showcase-header {
@@ -2851,6 +2924,31 @@
         }
 
         @media (max-width: 900px) {
+            .web-showcase-section.web-scroll-track {
+                height: auto !important;
+                padding: 60px 4% 40px !important;
+                overflow: hidden !important;
+            }
+            .web-sticky-stage {
+                position: static !important;
+                height: auto !important;
+                overflow: visible !important;
+                padding-top: 0 !important;
+            }
+            .web-cards-viewport {
+                height: auto !important;
+                overflow: visible !important;
+                padding: 0 !important;
+            }
+            .web-cards-strip {
+                transform: none !important;
+                padding-bottom: 0 !important;
+                gap: 40px !important;
+            }
+            .web-cards-strip .web-row {
+                opacity: 1 !important;
+                transform: none !important;
+            }
             .web-row, .web-row.reverse {
                 grid-template-columns: 1fr !important;
                 gap: 30px !important;

@@ -533,14 +533,18 @@
     </section>
 
     <!-- Web Showcase Section -->
-    <section id="web-showcase" class="web-showcase-section">
-        <div class="web-showcase-header reveal">
-            <h2 class="display-serif-statement">Selected Web <span class="gradient-text">Work</span></h2>
-        </div>
+        <!-- Web Showcase Section (Pinned Vertical Scroll with Lenis) -->
+    <section id="web-showcase" class="web-showcase-section web-scroll-track">
+        <div class="web-sticky-stage">
+            <div class="web-sticky-header">
+                <h2 class="display-serif-statement">Selected Web <span class="gradient-text">Work</span></h2>
+            </div>
 
-        <div class="web-showcase-container">
+            <div class="web-cards-viewport" id="webCardsViewport">
+                <div class="web-cards-strip" id="webCardsStrip">
+
             <!-- Row 1: 8Bit Creatives (Visual Left, Text Right) -->
-            <div class="web-row reveal reverse reveal-deep">
+            <div class="web-row reverse">
                 <div class="web-row-content">
                     <h3>8Bit Creatives</h3>
                     <p class="web-row-desc">
@@ -559,7 +563,7 @@
             </div>
 
             <!-- Row 2: ChemOps ERP (Text Left, Visual Right) -->
-            <div class="web-row reveal reveal-deep">
+            <div class="web-row">
                 <div class="web-row-content">
                     <h3>ChemOps ERP</h3>
                     <p class="web-row-desc">
@@ -578,7 +582,7 @@
             </div>
 
             <!-- Row 3: The Sky Box (Visual Left, Text Right) -->
-            <div class="web-row reveal reverse reveal-deep">
+            <div class="web-row reverse">
                 <div class="web-row-content">
                     <h3>The Sky Box</h3>
                     <p class="web-row-desc">
@@ -597,7 +601,7 @@
             </div>
 
             <!-- Row 4: KXM Clothing (Text Left, Visual Right) -->
-            <div class="web-row reveal reveal-deep">
+            <div class="web-row">
                 <div class="web-row-content">
                     <h3>KXM Clothing</h3>
                     <p class="web-row-desc">
@@ -616,7 +620,7 @@
             </div>
 
             <!-- Row 5: Abhushan Jewelry (Visual Left, Text Right) -->
-            <div class="web-row reveal reverse reveal-deep">
+            <div class="web-row reverse">
                 <div class="web-row-content">
                     <h3>Abhushan Jewelry</h3>
                     <p class="web-row-desc">
@@ -635,7 +639,7 @@
             </div>
 
             <!-- Row 6: Detailing Cars (Text Left, Visual Right) -->
-            <div class="web-row reveal reveal-deep">
+            <div class="web-row">
                 <div class="web-row-content">
                     <h3>Detailing Cars</h3>
                     <p class="web-row-desc">
@@ -650,6 +654,8 @@
                     <div class="web-image-wrapper">
                         <img src="images/detailing_cars_showcase.png" alt="Detailing Cars Portal">
                     </div>
+                </div>
+            </div>
                 </div>
             </div>
         </div>
@@ -2610,5 +2616,87 @@
 
         <!-- Direction-Aware Spreading Ripple Button System -->
     <script src="/js/ripple-button.js" defer></script>
+    <!-- Lenis Smooth Scroll & Pinned Web Showcase Controller -->
+    <script src="js/lenis.min.js"></script>
+    <script>
+    (function() {
+        // Initialize Lenis Smooth Scroll
+        const lenis = new Lenis({
+            duration: 1.2,
+            easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+            smoothWheel: true,
+            touchMultiplier: 1.2
+        });
+        window.__lenis = lenis;
+
+        function raf(time) {
+            lenis.raf(time);
+            requestAnimationFrame(raf);
+        }
+        requestAnimationFrame(raf);
+
+        // Selected Web Work Pinned Vertical Scroll System
+        const track = document.getElementById('web-showcase');
+        const viewport = document.getElementById('webCardsViewport');
+        const strip = document.getElementById('webCardsStrip');
+        if (!track || !viewport || !strip) return;
+
+        const rows = Array.from(strip.querySelectorAll('.web-row'));
+        if (!rows.length) return;
+
+        function updateWebPinnedScroll() {
+            if (window.innerWidth < 768) {
+                strip.style.transform = 'none';
+                rows.forEach(r => {
+                    r.style.opacity = '1';
+                    r.style.transform = 'none';
+                });
+                return;
+            }
+
+            const trackRect = track.getBoundingClientRect();
+            const maxScroll = track.offsetHeight - window.innerHeight;
+            const scrollDistance = -trackRect.top;
+
+            let progress = 0;
+            if (scrollDistance > 0 && maxScroll > 0) {
+                progress = Math.min(1, Math.max(0, scrollDistance / maxScroll));
+            }
+
+            const vpHeight = viewport.clientHeight;
+            const firstRow = rows[0];
+            const lastRow = rows[rows.length - 1];
+
+            // Card 1 centered at progress = 0; Card 6 centered at progress = 1
+            const firstRowTargetY = firstRow.offsetTop - (vpHeight - firstRow.offsetHeight) / 2;
+            const lastRowTargetY = lastRow.offsetTop - (vpHeight - lastRow.offsetHeight) / 2;
+            const minTranslateY = Math.max(0, firstRowTargetY);
+            const maxTranslateY = Math.max(0, lastRowTargetY);
+
+            const currentTranslateY = minTranslateY + progress * (maxTranslateY - minTranslateY);
+            strip.style.transform = 'translate3d(0, -' + currentTranslateY.toFixed(1) + 'px, 0)';
+
+            // Focal emphasis: cards near the vertical center are opaque and crisp
+            const vpCenterY = viewport.getBoundingClientRect().top + vpHeight / 2;
+            rows.forEach(row => {
+                const r = row.getBoundingClientRect();
+                const rowCenterY = r.top + r.height / 2;
+                const distFromCenter = Math.abs(rowCenterY - vpCenterY);
+                const maxDist = vpHeight / 2;
+                const factor = Math.max(0, 1 - distFromCenter / maxDist);
+
+                const opacity = 0.5 + factor * 0.5;
+                const scale = 0.97 + factor * 0.03;
+                row.style.opacity = opacity.toFixed(2);
+                row.style.transform = 'scale(' + scale.toFixed(3) + ')';
+            });
+        }
+
+        lenis.on('scroll', updateWebPinnedScroll);
+        window.addEventListener('scroll', updateWebPinnedScroll, { passive: true });
+        window.addEventListener('resize', updateWebPinnedScroll);
+        updateWebPinnedScroll();
+    })();
+    </script>
 </body>
 </html>
