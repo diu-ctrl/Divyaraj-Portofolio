@@ -2760,15 +2760,14 @@
             font-family: var(--font-sans) !important;
             font-weight: 700 !important;
             font-size: 2.2rem !important;
-            color: #FFFFFF;
+            color: #FFFFFF !important;
             letter-spacing: -0.01em !important;
             margin: 0 !important;
             line-height: 1.2 !important;
             transition: color var(--t-fast, 0.2s) ease;
         }
 
-        .web-row:hover h3,
-        .web-row h3.title-orange {
+        .web-row:hover h3 {
             color: var(--accent) !important;
         }
 
