@@ -3191,7 +3191,26 @@
             max-width: none !important;
             margin: 0 !important;
             background: #000000 !important;
-            padding: 100px 0 !important;
+            padding: 0 !important;
+            min-height: 850px !important;
+            height: 100vh !important;
+            max-height: 1000px !important;
+            overflow: hidden !important;
+        }
+
+        #testimonials-3d-root {
+            width: 100% !important;
+            height: 100% !important;
+            display: flex !important;
+            justify-content: center !important;
+            align-items: center !important;
+        }
+
+        #testimonials-3d-root > div {
+            width: 100% !important;
+            height: 100% !important;
+            min-height: 850px !important;
+            border-radius: 0 !important;
         }
 
         #testimonials-3d-demo .w-50 {
