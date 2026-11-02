@@ -622,6 +622,57 @@
         }
 
         /* Enforce absolute hidden visibility state before stamp animation runs */
+        
+        /* Brand Packets Vapor Reveal Animation (React Bits Vapor Type Style) */
+        .brand-vapor-canvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 25;
+        }
+
+        .folio-card.vapor-condensing {
+            visibility: visible !important;
+            pointer-events: none !important;
+            opacity: 1 !important;
+            animation: vaporPacketCondense 0.52s cubic-bezier(0.16, 1, 0.3, 1) forwards !important;
+            will-change: filter, transform, opacity, -webkit-mask-position;
+        }
+
+        @keyframes vaporPacketCondense {
+            0% {
+                opacity: 0;
+                filter: blur(14px) brightness(1.7) drop-shadow(0 0 28px rgba(177, 158, 239, 0.9)) drop-shadow(0 0 8px rgba(255, 255, 255, 0.85));
+                -webkit-mask-image: linear-gradient(115deg, #000 0%, rgba(0, 0, 0, 0.8) 12%, rgba(0, 0, 0, 0.15) 26%, transparent 45%);
+                mask-image: linear-gradient(115deg, #000 0%, rgba(0, 0, 0, 0.8) 12%, rgba(0, 0, 0, 0.15) 26%, transparent 45%);
+                -webkit-mask-size: 260% 100%;
+                mask-size: 260% 100%;
+                -webkit-mask-position: 100% 0;
+                mask-position: 100% 0;
+            }
+            45% {
+                opacity: 0.88;
+                filter: blur(6px) brightness(1.25) drop-shadow(0 0 18px rgba(177, 158, 239, 0.6));
+                -webkit-mask-position: 50% 0;
+                mask-position: 50% 0;
+            }
+            80% {
+                opacity: 0.98;
+                filter: blur(1px) brightness(1.05) drop-shadow(0 2px 10px rgba(177, 158, 239, 0.3));
+                -webkit-mask-position: 15% 0;
+                mask-position: 15% 0;
+            }
+            100% {
+                opacity: 1;
+                filter: none;
+                -webkit-mask-image: none;
+                mask-image: none;
+            }
+        }
+
         .folio-card.not-stamped, .folio-card.featured-front.not-stamped {
             opacity: 0 !important;
             pointer-events: none !important;
