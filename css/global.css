@@ -1216,7 +1216,9 @@
             gap: 16px;
             width: 100%;
             align-items: stretch;
+            height: 500px;
             min-height: 500px;
+            max-height: 500px;
             margin-top: 50px;
         }
 
@@ -1224,6 +1226,7 @@
             position: relative;
             flex: 1;
             min-width: 0;
+            height: 100%;
             background: #0d0d0d;
             border: 1px solid rgba(255, 255, 255, 0.1);
             border-radius: 20px;
@@ -1282,19 +1285,7 @@
         }
 
         .lane-card-badge {
-            font-family: var(--font-mono);
-            font-size: 11px;
-            font-weight: 500;
-            color: rgba(255, 255, 255, 0.4);
-            border: 1px solid rgba(255, 255, 255, 0.15);
-            border-radius: 6px;
-            padding: 2px 7px;
-            letter-spacing: 0.05em;
-        }
-
-        .lane-card.active .lane-card-badge {
-            border-color: rgba(255, 255, 255, 0.3);
-            color: #ffffff;
+            display: none !important;
         }
 
         /* Collapsed state */
@@ -1303,7 +1294,7 @@
             flex-direction: column;
             gap: 8px;
             margin-top: auto;
-            transition: opacity 0.25s ease, transform 0.25s ease;
+            transition: opacity 0.3s ease, transform 0.3s ease;
         }
 
         .lane-card.active .lane-card-collapsed-view {
@@ -1341,7 +1332,7 @@
             position: absolute;
             visibility: hidden;
             transform: translateY(6px);
-            transition: opacity 0.35s ease 0.12s, transform 0.35s ease 0.12s;
+            transition: opacity 0.25s ease, transform 0.25s ease, visibility 0.25s ease;
         }
 
         .lane-card.active .lane-card-expanded-view {
@@ -1354,12 +1345,13 @@
             flex-direction: column;
             gap: 26px;
             width: 100%;
+            transition: opacity 0.35s ease 0.1s, transform 0.35s ease 0.1s;
         }
 
         .lane-expanded-top {
             display: grid;
-            grid-template-columns: 1fr 180px;
-            gap: 20px;
+            grid-template-columns: 1fr 140px;
+            gap: 16px;
             align-items: start;
         }
 
@@ -1374,11 +1366,13 @@
 
         .lane-expanded-tag {
             font-family: var(--font-sans);
-            font-size: 11px;
+            font-size: clamp(9.5px, 0.85vw, 11px);
             font-weight: 700;
-            letter-spacing: 0.08em;
+            letter-spacing: 0.04em;
             color: #EB4604;
             text-transform: uppercase;
+            white-space: nowrap;
+            display: block;
         }
 
         .lane-expanded-image {
@@ -1411,33 +1405,32 @@
             font-size: 14.5px;
             color: rgba(255, 255, 255, 0.88);
             line-height: 1.5;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            transition: color 0.2s ease, transform 0.2s ease;
+            display: block;
+            transition: color 0.2s ease;
+            transform: none !important;
         }
 
         .lane-expanded-list li:hover {
             color: #ffffff;
-            transform: translateX(4px);
+            transform: none !important;
         }
 
         .lane-bullet {
-            color: #EB4604;
-            font-size: 10px;
-            line-height: 1;
-            flex-shrink: 0;
+            display: none !important;
         }
 
         @media (max-width: 900px) {
             .services-accordion-lanes {
                 flex-direction: column;
-                min-height: auto;
+                height: auto !important;
+                min-height: auto !important;
+                max-height: none !important;
             }
             .lane-card, .lane-card.active {
                 flex: none;
                 width: 100%;
-                min-height: auto;
+                height: auto !important;
+                min-height: auto !important;
             }
             .lane-card-collapsed-view {
                 display: none !important;
