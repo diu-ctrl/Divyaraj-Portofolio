@@ -21,7 +21,7 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital,wght@0,400;1,400&family=Inter:wght@300;400;500;600;700;800;900&display=swap&family=IBM+Plex+Mono:wght@400;500" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital,wght@0,400;1,400&family=Inter+Tight:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/css/tokens.css">
     <style>
         :root {
@@ -44,7 +44,7 @@
             --secondary-3: var(--text);
             --surface: var(--card);
             --surface-flat: var(--card);
-            --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            --font-sans: 'Inter Tight', 'Inter Local', system-ui, sans-serif;
             --font-serif: 'Instrument Serif', Georgia, serif;
             /* --font-mono removed — entire site uses only --font-serif and --font-sans */
             --credes-surface: var(--card);
@@ -67,7 +67,7 @@
         }
 
         body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            font-family: var(--font-sans);
             background: var(--bg-deep);
             color: var(--text);
             line-height: 1.5;
@@ -566,7 +566,7 @@
                 margin: 0 !important;
                 font-size: 8.5pt !important;
                 line-height: 1.35 !important;
-                font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif !important;
+                font-family: var(--font-sans) !important;
             }
             .resume-container {
                 padding: 0 !important;
@@ -584,7 +584,7 @@
 
             /* ── Typography reset — override brutalist Instrument Serif/Inter ── */
             *, *::before, *::after {
-                font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif !important;
+                font-family: var(--font-sans) !important;
                 font-style: normal !important;
                 
                 box-shadow: none !important;
@@ -593,7 +593,7 @@
                 mix-blend-mode: normal !important;
             }
             h1, h2 {
-                font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif !important;
+                font-family: var(--font-sans) !important;
                 font-style: normal !important;
                 font-size: inherit !important;
                 font-weight: inherit !important;

@@ -19,9 +19,9 @@
             --secondary-3: var(--text);
             --surface: var(--card);
             --surface-flat: var(--card);
-            --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            --font-sans: 'Inter Tight', 'Inter Local', system-ui, sans-serif;
             --font-serif: 'Instrument Serif', Georgia, serif;
-            /* --font-mono removed — entire site uses only --font-serif and --font-sans */
+            --font-mono: 'Inter Tight', 'Inter Local', system-ui, sans-serif;
             --credes-surface: var(--card);
             --credes-border: var(--border);
         }
@@ -143,7 +143,7 @@
         body {
             overflow-x: clip;
             overflow-y: visible;
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            font-family: var(--font-sans);
             background: var(--bg);
             color: var(--text);
             line-height: 1.6;
@@ -3106,7 +3106,7 @@
 
         #testimonials-3d-demo .testimonial-name {
             color: #f4f1ea !important;
-            font-family: 'Inter', sans-serif !important;
+            font-family: var(--font-sans) !important;
             font-weight: 600 !important;
             font-size: 15px !important;
             line-height: 1.25 !important;
@@ -3114,7 +3114,7 @@
 
         #testimonials-3d-demo .testimonial-country {
             color: #99A57D !important;
-            font-family: 'Inter', sans-serif !important;
+            font-family: var(--font-sans) !important;
             font-size: 11px !important;
             margin-left: 4px !important;
         }
@@ -3128,7 +3128,7 @@
 
         #testimonials-3d-demo .testimonial-body {
             color: #f4f1ea !important;
-            font-family: 'Inter', sans-serif !important;
+            font-family: var(--font-sans) !important;
             font-size: 14px !important;
             line-height: 1.5 !important;
             font-weight: 400 !important;

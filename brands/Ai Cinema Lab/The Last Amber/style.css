@@ -21,9 +21,9 @@
   --text-dim:  #4a4538;
   --border:    rgba(212,165,116,0.12);
   --border-dim:rgba(255,255,255,0.05);
-  --ff-serif:  'Playfair Display', Georgia, serif;
-  --ff-cinzel: 'Cinzel', serif;
-  --ff-sans:   'Inter', system-ui, sans-serif;
+  --ff-serif:  'Instrument Serif', Georgia, serif;
+  --ff-cinzel: 'Instrument Serif', Georgia, serif;
+  --ff-sans:   'Inter Tight', 'Inter Local', system-ui, sans-serif;
   --max-w:     1200px;
   --radius:    4px;
 }
@@ -1254,7 +1254,7 @@ img { display: block; width: 100%; height: 100%; object-fit: cover; }
 }
 
 .cn-icon {
-  font-family: serif;
+  font-family: var(--ff-serif);
   font-size: 32px;
   color: var(--amber);
   flex-shrink: 0;
@@ -2116,7 +2116,7 @@ blockquote.shot-vo {
 }
 
 .methodology-text p {
-  font-family: 'Inter', sans-serif;
+  font-family: var(--font-sans);
   font-size: 1.2rem;
   font-weight: 300;
   color: #ffffff;
@@ -2155,7 +2155,7 @@ blockquote.shot-vo {
 }
 
 .method-stat-label {
-  font-family: 'Inter', sans-serif;
+  font-family: var(--font-sans);
   font-size: 0.8rem;
   font-weight: 400;
   color: rgba(255,255,255,0.5);

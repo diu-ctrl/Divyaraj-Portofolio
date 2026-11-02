@@ -35,7 +35,7 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital,wght@0,400;1,400&family=Inter:wght@300;400;500;600;700;800;900&display=swap&family=IBM+Plex+Mono:wght@400;500" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital,wght@0,400;1,400&family=Inter+Tight:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/css/tokens.css">
     <style>
         * {
@@ -69,7 +69,7 @@
             --secondary-3: var(--text);
             --surface: var(--card);
             --surface-flat: var(--card);
-            --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            --font-sans: 'Inter Tight', 'Inter Local', system-ui, sans-serif;
             --font-serif: 'Instrument Serif', Georgia, serif;
             /* --font-mono removed — entire site uses only --font-serif and --font-sans */
             --credes-surface: var(--card);
@@ -79,7 +79,7 @@
         * { margin:0; padding:0; box-sizing:border-box; }
 
         body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            font-family: var(--font-sans);
             background: var(--bg);
             color: var(--text);
             overflow-x: hidden;
