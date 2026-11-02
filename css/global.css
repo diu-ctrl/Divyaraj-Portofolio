@@ -2574,7 +2574,7 @@
             line-height: 0.95 !important;
             text-align: center;
             letter-spacing: -0.03em !important;
-            transform: none !important;
+            transform: translateY(0.12em) !important;
         }
 
         .cinema-scale-copy {
