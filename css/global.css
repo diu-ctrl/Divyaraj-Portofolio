@@ -3275,7 +3275,7 @@
     pointer-events: all !important;
 }
 
-.back-to-top-btn:hover {
+.back-to-top-btn:not(.btn-ripple-container):hover {
     background: #FFFFFF !important;
     color: #000000 !important;
     border-color: #FFFFFF !important;

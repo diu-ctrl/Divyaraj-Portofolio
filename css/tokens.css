@@ -889,6 +889,33 @@ button, input[type="submit"], input[type="button"], .btn-b1, .btn-b2 {
   color: #000000 !important;
 }
 
+/* Back To Top Floating Button with Direction-Aware Spreading Ripple */
+.back-to-top-btn.btn-ripple-container {
+  position: fixed !important;
+  transition: opacity 0.3s cubic-bezier(0.16, 1, 0.3, 1), 
+              border-color 0.3s ease, 
+              background-color 0.3s ease,
+              box-shadow 0.3s ease !important;
+}
+.back-to-top-btn.btn-ripple-container:hover {
+  background: var(--accent, #EB4604) !important;
+  background-color: var(--accent, #EB4604) !important;
+  border-color: #FFFFFF !important;
+}
+.back-to-top-btn.btn-ripple-container .btn-label-base,
+.back-to-top-btn.btn-ripple-container .btn-ripple-overlay {
+  font-size: 1.5rem !important;
+  font-weight: 700 !important;
+  line-height: 1 !important;
+}
+@media (max-width: 640px) {
+  .back-to-top-btn.btn-ripple-container .btn-label-base,
+  .back-to-top-btn.btn-ripple-container .btn-ripple-overlay {
+    font-size: 1.25rem !important;
+  }
+}
+
+
 
 /* ─── Dither Card Section Full-Width Pure Black ─── */
 .dither-card-section {

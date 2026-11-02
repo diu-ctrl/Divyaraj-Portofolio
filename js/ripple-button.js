@@ -34,7 +34,8 @@
             '.nav-capsule',
             '.brand-nav-btn:not(.dc-home)',
             '.tab-btn',
-            '.case-study-btn'
+            '.case-study-btn',
+            '.back-to-top-btn'
         ];
 
         const buttons = document.querySelectorAll(selectors.join(', '));
@@ -46,7 +47,7 @@
             let theme = 'theme-dark-to-orange';
             if (btn.classList.contains('btn-explore-capsule')) {
                 theme = 'theme-white-to-orange';
-            } else if (btn.classList.contains('btn-primary-gold') || btn.classList.contains('download-pdf-btn')) {
+            } else if (btn.classList.contains('btn-primary-gold') || btn.classList.contains('download-pdf-btn') || btn.classList.contains('back-to-top-btn')) {
                 theme = 'theme-orange-to-white';
             } else {
                 theme = 'theme-dark-to-orange';
