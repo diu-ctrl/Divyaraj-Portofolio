@@ -23,7 +23,7 @@
   /* Accent — REUSE the site's existing orange hex from the repo (keep it, do not invent a new hue).
      Text/icon color on top of accent: */
   --accent: #EB4604;
-  --accent-ink: #0A0A0A;
+  --accent-ink: #FFFFFF;
 
   /* Type (reuse the fonts ALREADY loaded — do not add new families) */
   --font-display: 'Instrument Serif', Georgia, serif;
@@ -896,23 +896,29 @@ button, input[type="submit"], input[type="button"], .btn-b1, .btn-b2 {
 .btn-ripple-container.theme-orange-to-white {
   background-color: var(--accent, #EB4604) !important;
   border-color: var(--accent, #EB4604) !important;
+  color: #FFFFFF !important;
 }
 .btn-ripple-container.theme-orange-to-white .btn-label-base {
-  color: #000000 !important;
+  color: #FFFFFF !important;
 }
 .btn-ripple-container.theme-orange-to-white .btn-ripple-overlay {
-  background: #FFFFFF !important;
-  color: #000000 !important;
+  background: #000000 !important;
+  color: #FFFFFF !important;
 }
 .btn-ripple-container.theme-orange-to-white:hover {
   background-color: var(--accent, #EB4604) !important;
   border-color: #FFFFFF !important;
-  color: #000000 !important;
+  color: #FFFFFF !important;
 }
+
 
 /* Back To Top Floating Button with Direction-Aware Spreading Ripple */
 .back-to-top-btn.btn-ripple-container {
   position: fixed !important;
+  background: var(--accent, #EB4604) !important;
+  background-color: var(--accent, #EB4604) !important;
+  color: #FFFFFF !important;
+  border-color: var(--accent, #EB4604) !important;
   transition: opacity 0.3s cubic-bezier(0.16, 1, 0.3, 1), 
               border-color 0.3s ease, 
               background-color 0.3s ease,
@@ -923,8 +929,19 @@ button, input[type="submit"], input[type="button"], .btn-b1, .btn-b2 {
   background-color: var(--accent, #EB4604) !important;
   border-color: #FFFFFF !important;
 }
-.back-to-top-btn.btn-ripple-container .btn-label-base,
+.back-to-top-btn.btn-ripple-container .btn-label-base {
+  color: #FFFFFF !important;
+  fill: #FFFFFF !important;
+  stroke: #FFFFFF !important;
+  font-size: 1.5rem !important;
+  font-weight: 700 !important;
+  line-height: 1 !important;
+}
 .back-to-top-btn.btn-ripple-container .btn-ripple-overlay {
+  background: #000000 !important;
+  color: #FFFFFF !important;
+  fill: #FFFFFF !important;
+  stroke: #FFFFFF !important;
   font-size: 1.5rem !important;
   font-weight: 700 !important;
   line-height: 1 !important;
