@@ -1857,7 +1857,16 @@
                 card.classList.add('vapor-hidden');
             });
 
-            // True React Bits Vapor Type Pixel Particle Class
+            // True React Bits Vapor Type Pixel Particle Class (White & Orange Only, High-Density Micro-Stipple)
+            const VAPOR_COLORS = [
+                '255, 255, 255', // Pure Crisp White
+                '255, 250, 240', // Warm Soft White
+                '255, 120, 36',  // Signature Portfolio Orange
+                '255, 150, 48',  // Warm Amber Orange
+                '255, 95, 18',   // Deep Radiant Orange
+                '255, 185, 70'   // Bright Golden Orange
+            ];
+
             class VaporPixel {
                 constructor(targetX, targetY, delay, color, isPlume = false) {
                     this.targetX = targetX;
@@ -1865,13 +1874,15 @@
                     this.delay = delay;
                     this.color = color;
                     this.isPlume = isPlume;
-                    this.size = 1.0 + Math.random() * 1.4;
 
-                    // Start dispersed in a vapor drift cloud to the right/top of the target
-                    const angle = (Math.random() - 0.25) * Math.PI * 0.85;
-                    const dist = 25 + Math.random() * 75;
+                    // Ultra-fine micro-size (0.75px to 1.35px) for authentic vapor stipple
+                    this.size = 0.75 + Math.random() * 0.6;
+
+                    // Dispersed start position around card
+                    const angle = (Math.random() - 0.25) * Math.PI * 0.9;
+                    const dist = 30 + Math.random() * 80;
                     this.startX = targetX + Math.cos(angle) * dist + 15;
-                    this.startY = targetY + Math.sin(angle) * dist - 12;
+                    this.startY = targetY + Math.sin(angle) * dist - 15;
 
                     this.x = this.startX;
                     this.y = this.startY;
@@ -1887,33 +1898,39 @@
                     const localP = Math.min(1, (progress - this.delay) / (1 - this.delay));
 
                     if (this.isPlume) {
-                        // Trailing vapor plume drifts away into air and fades out
-                        this.x = this.startX + localP * 55 + Math.sin(localP * 4) * 6;
-                        this.y = this.startY - localP * 35;
-                        this.alpha = (1 - localP) * 0.55;
+                        // Floating ambient mist plume that softly disperses and dissolves
+                        this.x = this.startX + localP * 45 + Math.sin(localP * 4) * 8;
+                        this.y = this.startY - localP * 28;
+                        this.alpha = Math.max(0, (1 - localP) * 0.55);
                         return localP < 1;
                     }
 
-                    // Ease out cubic condensation into exact card surface location
+                    // Smooth cubic deceleration toward target card position
                     const ease = 1 - Math.pow(1 - localP, 3);
                     this.x = this.startX + (this.targetX - this.startX) * ease;
                     this.y = this.startY + (this.targetY - this.startY) * ease;
 
-                    // Subtle micro-jitter while condensing from mist
-                    if (localP < 0.82) {
-                        const jitter = (1 - localP) * 2.2;
+                    if (localP < 0.75) {
+                        const jitter = (1 - localP) * 1.4;
                         this.x += (Math.random() - 0.5) * jitter;
                         this.y += (Math.random() - 0.5) * jitter;
                     }
 
-                    this.alpha = Math.min(1, localP * 1.8);
+                    // Smooth bell-curve alpha: Fades IN as mist gathers, then smoothly absorbs into solidified card
+                    if (localP < 0.28) {
+                        this.alpha = localP / 0.28;
+                    } else if (localP < 0.65) {
+                        this.alpha = 1.0;
+                    } else {
+                        this.alpha = Math.max(0, (1 - localP) / 0.35); // Gentle fade-out as card solidifies
+                    }
+
                     return localP < 1;
                 }
 
                 draw(c) {
                     if (this.alpha <= 0.01) return;
                     c.fillStyle = `rgba(${this.color}, ${this.alpha.toFixed(3)})`;
-                    // Crisp square sand pixel (React Bits Vapor Type)
                     c.fillRect(this.x, this.y, this.size, this.size);
                 }
             }
@@ -1925,44 +1942,35 @@
                 const cardH = card.offsetHeight;
 
                 const cardParticles = [];
-                const count = 480; // High-density pixel matrix
+                const count = 1200; // High-density micro-particle stipple matrix
 
-                const colors = [
-                    '177, 158, 239', // Signature Vapor Lavender (#B19EEF)
-                    '255, 255, 255', // Pure white stipple
-                    '224, 215, 250', // Soft violet mist
-                    '177, 158, 239'
-                ];
-
-                // Sample points across card surface
                 for (let i = 0; i < count; i++) {
-                    const u = Math.random(); // 0 (left) to 1 (right)
-                    const v = Math.random(); // 0 (top) to 1 (bottom)
-
-                    const tx = cardLeft + u * cardW;
-                    const ty = cardTop + v * cardH;
-
-                    // Left side condenses first, sweeping across to the right
-                    const delay = u * 0.48 + Math.random() * 0.12;
-                    const color = colors[Math.floor(Math.random() * colors.length)];
-
-                    cardParticles.push(new VaporPixel(tx, ty, delay, color));
-                }
-
-                // Add trailing billowing plume particles
-                for (let i = 0; i < 75; i++) {
-                    const u = 0.5 + Math.random() * 0.5;
+                    const u = Math.random();
                     const v = Math.random();
                     const tx = cardLeft + u * cardW;
                     const ty = cardTop + v * cardH;
-                    const delay = 0.28 + Math.random() * 0.4;
-                    cardParticles.push(new VaporPixel(tx, ty, delay, '177, 158, 239', true));
+
+                    // Sweeps across from left to right with organic spread
+                    const delay = u * 0.42 + Math.random() * 0.14;
+                    const color = VAPOR_COLORS[Math.floor(Math.random() * VAPOR_COLORS.length)];
+                    cardParticles.push(new VaporPixel(tx, ty, delay, color));
+                }
+
+                // Trailing warm mist plumes (white and orange only)
+                for (let i = 0; i < 110; i++) {
+                    const u = 0.4 + Math.random() * 0.6;
+                    const v = Math.random();
+                    const tx = cardLeft + u * cardW;
+                    const ty = cardTop + v * cardH;
+                    const delay = 0.25 + Math.random() * 0.4;
+                    const color = VAPOR_COLORS[Math.floor(Math.random() * VAPOR_COLORS.length)];
+                    cardParticles.push(new VaporPixel(tx, ty, delay, color, true));
                 }
 
                 return {
                     card,
                     startTime,
-                    duration: 450, // 450ms condensation per card
+                    duration: 720, // Silky 720ms duration per card
                     particles: cardParticles,
                     done: false
                 };
@@ -1970,26 +1978,22 @@
 
             let activeRenders = [];
             let hasTriggered = false;
+            let canvasFadeOut = 1.0;
 
             function triggerVaporReveal() {
                 if (hasTriggered) return;
                 hasTriggered = true;
 
                 // Group cards #01 to #14 in fast staggered waves of 2-3 cards
-                // Wave 0: #01, #02 (0ms)
-                // Wave 1: #03, #04 (120ms)
-                // Wave 2: #05, #06, #07 (240ms)
-                // Wave 3: #08, #09, #10 (360ms)
-                // Wave 4: #11, #12, #13, #14 (480ms)
                 const waves = [
-                    sortedCards.slice(0, 2),
-                    sortedCards.slice(2, 4),
-                    sortedCards.slice(4, 7),
-                    sortedCards.slice(7, 10),
-                    sortedCards.slice(10, 14)
+                    sortedCards.slice(0, 2),    // Wave 0: #01, #02
+                    sortedCards.slice(2, 5),    // Wave 1: #03, #04, #05
+                    sortedCards.slice(5, 8),    // Wave 2: #06, #07, #08
+                    sortedCards.slice(8, 11),   // Wave 3: #09, #10, #11
+                    sortedCards.slice(11, 14)   // Wave 4: #12, #13, #14
                 ];
 
-                const waveDelay = 120; // Fast stagger
+                const waveDelay = 130; // Fast organic stagger
                 const baseNow = performance.now();
 
                 waves.forEach((wave, waveIdx) => {
@@ -2009,63 +2013,85 @@
                 const rect = canvasContainer.getBoundingClientRect();
                 ctx.clearRect(0, 0, rect.width, rect.height);
 
-                let allDone = true;
+                let allCardsDone = true;
 
                 for (const item of activeRenders) {
-                    if (item.done) continue;
-
                     if (now < item.startTime) {
-                        allDone = false;
+                        allCardsDone = false;
                         continue;
                     }
 
-                    allDone = false;
                     const elapsed = now - item.startTime;
                     const progress = Math.min(1, elapsed / item.duration);
 
-                    // Directional horizontal pixel sweep: NO stamp scaling, NO drop, NO bounce!
-                    // Card reveals in-place exactly where positioned
-                    item.card.classList.remove('vapor-hidden');
-                    item.card.classList.add('vapor-condensing');
+                    if (!item.done) {
+                        allCardsDone = false;
+                        item.card.classList.remove('vapor-hidden');
+                        item.card.classList.add('vapor-condensing');
 
-                    const sweep = Math.min(100, Math.max(0, (progress * 135) - 20));
-                    const p1 = Math.max(0, sweep - 18);
-                    const p2 = Math.min(100, sweep + 4);
+                        // Card opacity smoothly fades in (0 to 1) with zero pop
+                        const cardAlpha = Math.min(1, Math.max(0, progress * 1.6));
+                        item.card.style.opacity = cardAlpha.toFixed(3);
 
-                    item.card.style.maskImage = `linear-gradient(to right, #000 0%, #000 ${p1}%, transparent ${p2}%)`;
-                    item.card.style.webkitMaskImage = `linear-gradient(to right, #000 0%, #000 ${p1}%, transparent ${p2}%)`;
+                        // Eased sweep that extends past 100% so the card is ALREADY 100% solid before mask removal
+                        const sweep = -20 + progress * 170; // -20% to 150%
+                        const p1 = Math.max(0, sweep - 30);
+                        const p2 = Math.min(100, sweep + 10);
 
-                    // Update & render vapor pixels
+                        if (p1 >= 100) {
+                            // Entire card width is now covered by 100% black in gradient!
+                            item.card.style.maskImage = 'none';
+                            item.card.style.webkitMaskImage = 'none';
+                        } else {
+                            item.card.style.maskImage = `linear-gradient(to right, #000 0%, #000 ${p1.toFixed(1)}%, transparent ${p2.toFixed(1)}%)`;
+                            item.card.style.webkitMaskImage = `linear-gradient(to right, #000 0%, #000 ${p1.toFixed(1)}%, transparent ${p2.toFixed(1)}%)`;
+                        }
+
+                        // Solidify cleanly once duration + buffer passes
+                        if (progress >= 1 && elapsed > item.duration + 120) {
+                            item.done = true;
+                            item.card.classList.remove('vapor-condensing');
+                            item.card.style.maskImage = 'none';
+                            item.card.style.webkitMaskImage = 'none';
+                            item.card.style.opacity = '1';
+                            item.card.style.visibility = 'visible';
+                            item.card.style.pointerEvents = 'auto';
+                        }
+                    }
+
+                    // Render micro-particles
                     for (const p of item.particles) {
                         p.update(progress);
                         p.draw(ctx);
                     }
-
-                    // Once sweep completes + plume dissipates: solidify card completely
-                    if (progress >= 1 && elapsed > item.duration + 180) {
-                        item.done = true;
-                        item.card.classList.remove('vapor-condensing');
-                        item.card.style.maskImage = 'none';
-                        item.card.style.webkitMaskImage = 'none';
-                        item.card.style.pointerEvents = 'auto';
-                        item.card.style.opacity = '1';
-                        item.card.style.visibility = 'visible';
-                    }
                 }
 
-                if (!allDone) {
+                if (!allCardsDone) {
                     animId = requestAnimationFrame(renderLoop);
                 } else {
-                    ctx.clearRect(0, 0, rect.width, rect.height);
-                    // Ensure all cards are cleanly interactive
-                    sortedCards.forEach(c => {
-                        c.classList.remove('vapor-hidden', 'vapor-condensing');
-                        c.style.maskImage = 'none';
-                        c.style.webkitMaskImage = 'none';
-                        c.style.pointerEvents = 'auto';
-                        c.style.opacity = '1';
-                        c.style.visibility = 'visible';
-                    });
+                    // Gracefully fade out any remaining mist particles over 250ms (zero instant wipe jerk)
+                    canvasFadeOut -= 0.05;
+                    if (canvasFadeOut > 0) {
+                        ctx.save();
+                        ctx.globalAlpha = canvasFadeOut;
+                        for (const item of activeRenders) {
+                            for (const p of item.particles) {
+                                p.draw(ctx);
+                            }
+                        }
+                        ctx.restore();
+                        animId = requestAnimationFrame(renderLoop);
+                    } else {
+                        ctx.clearRect(0, 0, rect.width, rect.height);
+                        sortedCards.forEach(c => {
+                            c.classList.remove('vapor-hidden', 'vapor-condensing');
+                            c.style.maskImage = 'none';
+                            c.style.webkitMaskImage = 'none';
+                            c.style.opacity = '1';
+                            c.style.visibility = 'visible';
+                            c.style.pointerEvents = 'auto';
+                        });
+                    }
                 }
             }
 
@@ -2088,9 +2114,9 @@
                 }
             }
             checkImmediate();
-            window.addEventListener('load', checkImmediate);
-            window.addEventListener('scroll', checkImmediate, { passive: true });
-        })();
+            window.addEventListener('scroll', checkImmediate, { passive: true, once: true });
+        
+    })();
 
         // ─── Dither Canvas – Marquee Text Animation ───
         (function() {
