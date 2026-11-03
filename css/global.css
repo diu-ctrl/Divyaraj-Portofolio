@@ -1642,12 +1642,28 @@
             padding: 80px 6% !important;
             width: 100vw;
             max-width: none !important;
-            background: #000000;
+            background: #0A0A0A;
             border-top: 1px solid var(--border);
             margin-left: 50%;
             transform: translateX(-50%);
             position: relative;
             z-index: 10;
+            overflow: hidden !important;
+        }
+
+        .cta-section > *:not(canvas) {
+            position: relative;
+            z-index: 2;
+        }
+
+        .cta-section > canvas {
+            position: absolute !important;
+            top: 0 !important;
+            left: 0 !important;
+            width: 100% !important;
+            height: 100% !important;
+            pointer-events: none !important;
+            z-index: 0 !important;
         }
 
         .brutalist-contact-block {
