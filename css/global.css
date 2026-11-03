@@ -2733,7 +2733,7 @@
             color: #FFFFFF !important;
             text-align: center;
             letter-spacing: 0.12em !important;
-            text-transform: uppercase !important;
+            text-transform: none !important;
             background: rgba(255, 255, 255, 0.14) !important;
             border: 3px solid rgba(255, 255, 255, 0.35) !important;
             border-radius: var(--r-pill, 999px) !important;
@@ -3827,7 +3827,7 @@
             gap: 8px;
             font-family: var(--font-mono);
             font-size: 11px;
-            text-transform: uppercase;
+            text-transform: none;
             letter-spacing: 0.08em;
             color: #d4d4d8;
             background: rgba(255, 255, 255, 0.04);
@@ -4010,7 +4010,7 @@
             font-family: var(--font-mono);
             font-size: 11px;
             font-weight: 600;
-            text-transform: uppercase;
+            text-transform: none;
             letter-spacing: 0.08em;
             color: var(--accent, #f45d00);
         }
@@ -4202,7 +4202,7 @@
             gap: 8px;
             font-family: var(--font-mono);
             font-size: 11px;
-            text-transform: uppercase;
+            text-transform: none;
             letter-spacing: 0.08em;
             color: #d4d4d8;
             background: rgba(255, 255, 255, 0.04);
@@ -4255,3 +4255,12 @@
             }
         }
 
+
+/* ─── Global Heading & Eyebrow Casing Rule (No All-Caps) ─── */
+h1, h2, h3, h4, h5, h6,
+.hero-title, .section-title, .title,
+.hero-eyebrow, .section-eyebrow, .eyebrow,
+.em-label, .metric-label, .meta-label, .badge,
+.event-card-title, .service-title {
+    text-transform: none !important;
+}

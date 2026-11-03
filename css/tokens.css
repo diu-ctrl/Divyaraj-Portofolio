@@ -401,7 +401,7 @@ html, body {
   font-family: var(--font-mono) !important;
   font-size: var(--micro) !important;
   letter-spacing: var(--track) !important;
-  text-transform: uppercase !important;
+  text-transform: none !important;
   color: var(--muted) !important;
   margin-top: 12px;
 }
@@ -473,7 +473,7 @@ html, body {
   font-size: var(--micro) !important;
   font-weight: 500 !important;
   letter-spacing: var(--track) !important;
-  text-transform: uppercase !important;
+  text-transform: none !important;
   color: var(--muted) !important;
   line-height: 1.4;
 }
@@ -1045,4 +1045,103 @@ button, input[type="submit"], input[type="button"], .btn-b1, .btn-b2 {
   #portfolio::before {
     display: none !important;
   }
+}
+
+
+/* ==========================================================================
+   UNIVERSAL BRAND SUBPAGE REFINEMENTS — ALL BRAND PAGES
+   ========================================================================== */
+
+/* 1. Decreased & Balanced Hero Title Size */
+h1, .hero-title, .brand-title {
+    font-size: clamp(2.4rem, 4.5vw, 3.8rem) !important;
+    line-height: 1.15 !important;
+    font-family: var(--font-serif) !important;
+    font-style: italic !important;
+    letter-spacing: -0.02em !important;
+    text-transform: none !important;
+}
+
+/* 2. Increased Prominent Stat Numbers */
+.hero-stat .val,
+.analytics-num,
+.analytics-row-val,
+.metric-value,
+.psm-val,
+.meta-box-val,
+.fc-value,
+.em-value,
+.bar-num {
+    font-size: 2.2rem !important;
+    font-weight: 800 !important;
+    color: #FFFFFF !important;
+    line-height: 1.1 !important;
+    font-family: var(--font-sans) !important;
+    letter-spacing: -0.02em !important;
+}
+
+.hero-stat .lbl,
+.analytics-row-label,
+.metric-label,
+.em-label,
+.meta-box-lbl,
+.psm-label {
+    font-size: 0.72rem !important;
+    color: #BDBDBF !important;
+    letter-spacing: 0.04em !important;
+    text-transform: capitalize !important;
+    margin-top: 6px !important;
+}
+
+/* 3. Universal Rounded Corners on Videos, Cards, and Containers */
+.hero-right,
+.video-brutalist-frame,
+.hero-video-element,
+.video-card,
+.video-container,
+.reel-card,
+.reel-card-scuff,
+.reel-video-container,
+.scuff-reel-video,
+.phone-frame,
+.ai-reel-media,
+.event-card,
+.service-card,
+.metric-card,
+.platform-card,
+.analytics-card,
+.sidebar-card,
+.work-card,
+.film-card,
+.film-card-visual,
+.asset-card,
+.cert-card,
+.closing-box,
+.carousel-wrap {
+    border-radius: 20px !important;
+    overflow: hidden !important;
+}
+
+.event-meta-item,
+.meta-box,
+.bb-item {
+    border-radius: 14px !important;
+}
+
+.brand-logo-frame {
+    border-radius: 16px !important;
+    overflow: hidden !important;
+}
+
+/* 4. Global Eyebrow & Headline Casing (Capitalize first letter only, no all-caps) */
+.section-eyebrow,
+.hero-eyebrow,
+.event-card-title,
+.metric-label,
+.em-label,
+.meta-label,
+.brand-eyebrow,
+.eyebrow-e1,
+.section-label {
+    text-transform: none !important;
 }
