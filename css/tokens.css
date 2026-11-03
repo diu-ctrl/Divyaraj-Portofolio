@@ -1,3 +1,9 @@
+/* ─── Global Pure Black Root Fix ─── */
+html, body {
+  background: #000000 !important;
+  background-color: #000000 !important;
+}
+
 /* ==========================================================================
    PORTFOLIO DESIGN REFINEMENT TOKEN SYSTEM — "Editorial Brutalism: Gallery Edition"
    Single Source of Truth for Tokens, Laws, and Core Visual Language

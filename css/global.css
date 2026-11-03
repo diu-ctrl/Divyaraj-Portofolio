@@ -132,19 +132,24 @@
         body {
             width: 100%;
             margin: 0;
+            background: #000000 !important;
+            background-color: #000000 !important;
         }
 
         html {
             overflow-x: clip;
             overflow-y: auto;
             scroll-behavior: smooth;
+            background: #000000 !important;
+            background-color: #000000 !important;
         }
 
         body {
             overflow-x: clip;
             overflow-y: visible;
             font-family: var(--font-sans);
-            background: var(--bg);
+            background: #000000 !important;
+            background-color: #000000 !important;
             color: var(--text);
             line-height: 1.6;
         }
@@ -2873,6 +2878,8 @@
         /* Lenis Smooth Scroll Recommended Base Rules */
         html.lenis, html.lenis body {
             height: auto;
+            background: #000000 !important;
+            background-color: #000000 !important;
         }
         .lenis.lenis-smooth {
             scroll-behavior: auto !important;
