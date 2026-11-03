@@ -985,14 +985,15 @@ button, input[type="submit"], input[type="button"], .btn-b1, .btn-b2 {
 
 
 
-/* ─── Dither Card Section Full-Width Pure Black ─── */
+/* ─── Dither Card Section Centered in Footer ─── */
 .dither-card-section {
-  width: 100vw !important;
-  max-width: none !important;
-  margin-left: 50% !important;
-  transform: translateX(-50%) !important;
-  background: #000000 !important;
-  background-color: #000000 !important;
+  width: 100% !important;
+  max-width: 1200px !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  transform: none !important;
+  background: transparent !important;
+  background-color: transparent !important;
   position: relative !important;
   z-index: 10 !important;
 }
