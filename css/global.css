@@ -464,7 +464,7 @@
             font-family: var(--font-sans) !important;
             font-size: 12px !important;
             font-weight: 500 !important;
-            color: var(--accent) !important;
+            color: #BDBDBF !important;
             letter-spacing: 0.04em !important;
             line-height: 1.4 !important;
             margin: 0;
@@ -472,7 +472,7 @@
         }
 
         .stat-suffix {
-            color: var(--primary);
+            color: #BDBDBF !important;
         }
 
         @media (max-width: 768px) and (min-width: 481px) {
