@@ -1238,18 +1238,18 @@
             content: none !important;
         }
 
-        /* ═══════════════════════════════════════════════
+        /* ===============================================
            SERVICES ACCORDION LANES (Interactive Hover Boxes)
-           ═══════════════════════════════════════════════ */
+           =============================================== */
         .services-accordion-lanes {
             display: flex;
             gap: 16px;
             width: 100%;
             align-items: stretch;
-            height: 500px;
-            min-height: 500px;
-            max-height: 500px;
-            margin-top: 50px;
+            height: 530px;
+            min-height: 530px;
+            max-height: 530px;
+            margin-top: 40px;
         }
 
         .lane-card {
@@ -1260,12 +1260,12 @@
             background: #0d0d0d;
             border: 1px solid rgba(255, 255, 255, 0.1);
             border-radius: 20px;
-            padding: 30px 24px;
+            padding: 22px 20px;
             overflow: hidden;
             cursor: pointer;
             display: flex;
             flex-direction: column;
-            justify-content: space-between;
+            justify-content: flex-start;
             transition: flex 0.45s cubic-bezier(0.25, 1, 0.5, 1), 
                         border-color 0.3s ease, 
                         background 0.3s ease, 
@@ -1273,15 +1273,15 @@
         }
 
         .lane-card.active {
-            flex: 2.7;
+            flex: 2.85;
             border-color: rgba(255, 255, 255, 0.28);
             background: #111111;
-            box-shadow: 0 20px 45px rgba(0, 0, 0, 0.8), 0 0 30px rgba(235, 70, 4, 0.06);
+            box-shadow: 0 20px 45px rgba(0, 0, 0, 0.8), 0 0 30px rgba(235, 70, 4, 0.08);
         }
 
         .lane-card:hover:not(.active) {
             border-color: rgba(255, 255, 255, 0.22);
-            background: #0f0f0f;
+            background: #121212;
         }
 
         .lane-card-link {
@@ -1290,21 +1290,23 @@
             display: flex;
             flex-direction: column;
             height: 100%;
-            justify-content: space-between;
+            width: 100%;
         }
 
+        /* 1. Header (Number + Arrow) */
         .lane-card-header {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 24px;
+            margin-bottom: 14px;
             width: 100%;
+            flex-shrink: 0;
         }
 
         .lane-card-eyebrow {
             font-family: var(--font-sans);
             font-weight: 800;
-            font-size: 22px;
+            font-size: 20px;
             color: rgba(255, 255, 255, 0.35);
             transition: color 0.3s ease;
             letter-spacing: -0.01em;
@@ -1314,28 +1316,65 @@
             color: #EB4604;
         }
 
-        .lane-card-badge {
-            display: none !important;
-        }
-
-        /* Collapsed state */
-        .lane-card-collapsed-view {
+        .lane-card-arrow {
             display: flex;
-            flex-direction: column;
-            gap: 8px;
-            margin-top: auto;
-            transition: opacity 0.3s ease, transform 0.3s ease;
+            align-items: center;
+            justify-content: center;
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.05);
+            color: rgba(255, 255, 255, 0.4);
+            transition: all 0.3s ease;
         }
 
-        .lane-card.active .lane-card-collapsed-view {
-            opacity: 0;
-            pointer-events: none;
-            position: absolute;
-            visibility: hidden;
-            transform: translateY(10px);
+        .lane-card.active .lane-card-arrow {
+            background: rgba(235, 70, 4, 0.15);
+            color: #EB4604;
+            transform: rotate(45deg);
         }
 
-        .lane-collapsed-title {
+        /* 2. Hero Image at Top (Enlarged) */
+        .lane-card-image-wrap {
+            width: 100%;
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            background: #050505;
+            flex-shrink: 0;
+            margin-bottom: 16px;
+            height: 180px;
+            transition: height 0.45s cubic-bezier(0.25, 1, 0.5, 1), border-color 0.3s ease;
+        }
+
+        .lane-card.active .lane-card-image-wrap {
+            height: 200px;
+            border-color: rgba(255, 255, 255, 0.22);
+        }
+
+        .lane-card-image-wrap img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            filter: grayscale(20%);
+            transition: filter 0.3s ease;
+            transform: none !important;
+        }
+
+        .lane-card.active .lane-card-image-wrap img,
+        .lane-card:hover .lane-card-image-wrap img {
+            filter: grayscale(0%);
+            transform: none !important;
+        }
+
+        /* 3. Title (Directly below image, no orange subtitle) */
+        .lane-card-title-wrap {
+            margin-bottom: 14px;
+            flex-shrink: 0;
+        }
+
+        .lane-card-title {
             font-family: var(--font-sans);
             font-size: 20px;
             font-weight: 700;
@@ -1343,110 +1382,97 @@
             margin: 0;
             line-height: 1.25;
             white-space: normal;
-            word-break: break-word;
+            transition: font-size 0.3s ease, color 0.3s ease;
         }
 
-        .lane-collapsed-sub {
-            font-family: var(--font-sans);
-            font-size: 13px;
-            color: rgba(255, 255, 255, 0.5);
-            margin: 0;
-            line-height: 1.4;
-            white-space: normal;
-        }
-
-        /* Expanded state */
-        .lane-card-expanded-view {
-            opacity: 0;
-            pointer-events: none;
-            position: absolute;
-            visibility: hidden;
-            transform: translateY(6px);
-            transition: opacity 0.25s ease, transform 0.25s ease, visibility 0.25s ease;
-        }
-
-        .lane-card.active .lane-card-expanded-view {
-            opacity: 1;
-            pointer-events: auto;
-            position: relative;
-            visibility: visible;
-            transform: translateY(0);
-            display: flex;
-            flex-direction: column;
-            gap: 26px;
-            width: 100%;
-            transition: opacity 0.35s ease 0.1s, transform 0.35s ease 0.1s;
-        }
-
-        .lane-expanded-top {
-            display: grid;
-            grid-template-columns: 1fr 140px;
-            gap: 16px;
-            align-items: start;
-        }
-
-        .lane-expanded-title {
-            font-family: var(--font-sans);
-            font-size: 28px;
-            font-weight: 700;
+        .lane-card.active .lane-card-title {
+            font-size: 26px;
             color: #ffffff;
-            margin: 0 0 6px 0;
-            line-height: 1.2;
         }
 
-        .lane-expanded-tag {
-            font-family: var(--font-sans);
-            font-size: clamp(9.5px, 0.85vw, 11px);
-            font-weight: 700;
-            letter-spacing: 0.04em;
-            color: #EB4604;
-            text-transform: none;
-            white-space: nowrap;
-            display: block;
-        }
-
-        .lane-expanded-image {
-            width: 100%;
-            aspect-ratio: 16 / 10;
-            border-radius: 10px;
-            overflow: hidden;
-            border: 1px solid rgba(255, 255, 255, 0.15);
-            background: #000;
-        }
-
-        .lane-expanded-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            display: block;
-        }
-
-        .lane-expanded-list {
+        /* 4. Deliverables Pointers (Expanded View) */
+        .lane-card-list {
             list-style: none;
             padding: 0;
             margin: 0;
             display: flex;
             flex-direction: column;
-            gap: 12px;
+            gap: 11px;
+            width: 100%;
+            opacity: 0;
+            max-height: 0;
+            overflow: hidden;
+            pointer-events: none;
+            transform: translateY(8px);
+            transition: opacity 0.3s ease, transform 0.3s ease, max-height 0.4s ease;
         }
 
-        .lane-expanded-list li {
+        .lane-card.active .lane-card-list {
+            opacity: 1;
+            max-height: 250px;
+            pointer-events: auto;
+            transform: translateY(0);
+            transition: opacity 0.35s ease 0.1s, transform 0.35s ease 0.1s, max-height 0.4s ease;
+        }
+
+        .lane-card-list li {
             font-family: var(--font-sans);
-            font-size: 14.5px;
-            color: rgba(255, 255, 255, 0.88);
-            line-height: 1.5;
-            display: block;
-            transition: color 0.2s ease;
+            font-size: 16px;
+            font-weight: 500;
+            color: rgba(255, 255, 255, 0.9);
+            line-height: 1.4;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
             transform: none !important;
         }
 
-        .lane-expanded-list li:hover {
+        .lane-card-list li:hover {
             color: #ffffff;
             transform: none !important;
         }
 
-        .lane-bullet {
-            display: none !important;
+        .lane-bullet-icon {
+            display: inline-block;
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: #EB4604;
+            flex-shrink: 0;
+            box-shadow: 0 0 6px rgba(235, 70, 4, 0.6);
+        }
+
+        /* 5. Collapsed Card Footer */
+        .lane-collapsed-footer {
+            margin-top: auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding-top: 12px;
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+            font-family: var(--font-sans);
+            font-size: 13px;
+            color: rgba(255, 255, 255, 0.45);
+            font-weight: 500;
+            transition: opacity 0.25s ease;
+        }
+
+        .lane-card.active .lane-collapsed-footer {
+            display: none;
+        }
+
+        .lane-card:hover:not(.active) .lane-collapsed-footer {
+            color: rgba(255, 255, 255, 0.8);
+            border-top-color: rgba(255, 255, 255, 0.16);
+        }
+
+        .lane-collapsed-footer .plus-icon {
+            color: #EB4604;
+            font-size: 15px;
+            font-weight: 700;
         }
 
         @media (max-width: 900px) {
@@ -1455,25 +1481,35 @@
                 height: auto !important;
                 min-height: auto !important;
                 max-height: none !important;
+                gap: 20px;
+                margin-top: 30px;
             }
             .lane-card, .lane-card.active {
                 flex: none;
                 width: 100%;
                 height: auto !important;
                 min-height: auto !important;
+                max-height: none !important;
+                padding: 24px 20px;
             }
-            .lane-card-collapsed-view {
-                display: none !important;
+            .lane-card-image-wrap, .lane-card.active .lane-card-image-wrap {
+                height: 190px !important;
             }
-            .lane-card-expanded-view, .lane-card.active .lane-card-expanded-view {
+            .lane-card-title, .lane-card.active .lane-card-title {
+                font-size: 24px !important;
+            }
+            .lane-card-list, .lane-card.active .lane-card-list {
                 opacity: 1 !important;
-                visibility: visible !important;
-                position: relative !important;
+                max-height: none !important;
                 pointer-events: auto !important;
                 transform: none !important;
+                margin-top: 4px;
             }
-            .lane-expanded-top {
-                grid-template-columns: 1fr;
+            .lane-card-list li {
+                white-space: normal;
+            }
+            .lane-collapsed-footer {
+                display: none !important;
             }
         }
 
