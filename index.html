@@ -26,6 +26,13 @@
     <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital,wght@0,400;1,400&family=Inter+Tight:ital,wght@0,100..900;1,100..900&family=Space+Mono:wght@700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/css/tokens.css">
     <link rel="stylesheet" href="css/navigation.css">
+    <!-- Preload Hero 3D Gallery Textures for Instant Smooth Blur-In -->
+    <link rel="preload" as="image" href="hero-images/1.png">
+    <link rel="preload" as="image" href="hero-images/2.png">
+    <link rel="preload" as="image" href="hero-images/3.png">
+    <link rel="preload" as="image" href="hero-images/4.png">
+    <link rel="preload" as="image" href="hero-images/5.png">
+    <link rel="preload" as="image" href="hero-images/6.png">
     <script>
       tailwind = {
         config: {
@@ -250,6 +257,44 @@
         <div class="hero-sticky">
             <div class="hero-3d-gallery-container">
                 <div class="hero-3d-gallery-scene" id="hero-3d-scene"></div>
+            <script>
+            // Smooth first-reveal blur-in effect for Hero 3D Gallery images
+            (function initHeroBlurReveal() {
+                const scene = document.getElementById('hero-3d-scene');
+                if (!scene) return;
+
+                let isRevealed = false;
+                function triggerBlurReveal() {
+                    if (isRevealed) return;
+                    isRevealed = true;
+                    // Ensure the canvas has completed its first WebGL draw call
+                    requestAnimationFrame(() => {
+                        requestAnimationFrame(() => {
+                            setTimeout(() => {
+                                scene.classList.add('hero-revealed');
+                            }, 150);
+                        });
+                    });
+                }
+
+                // Check when canvas is actually inserted into the DOM by React
+                const observer = new MutationObserver(() => {
+                    const canvas = scene.querySelector('canvas');
+                    if (canvas) {
+                        observer.disconnect();
+                        triggerBlurReveal();
+                    }
+                });
+                observer.observe(scene, { childList: true, subtree: true });
+
+                // If canvas already exists or fallback timeout
+                if (scene.querySelector('canvas')) {
+                    triggerBlurReveal();
+                } else {
+                    setTimeout(triggerBlurReveal, 800);
+                }
+            })();
+            </script>
             </div>
 
             <div class="hero-main-content">

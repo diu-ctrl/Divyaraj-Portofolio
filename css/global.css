@@ -3188,6 +3188,16 @@
             max-width: none;
             margin: 0;
             padding: 0;
+            opacity: 0;
+            filter: blur(36px);
+            transition: opacity 1.6s cubic-bezier(0.22, 1, 0.36, 1),
+                        filter 1.8s cubic-bezier(0.22, 1, 0.36, 1);
+            will-change: opacity, filter;
+        }
+
+        #hero-3d-scene.hero-revealed {
+            opacity: 1;
+            filter: blur(0px);
         }
 
         #hero-3d-scene > div,
