@@ -540,11 +540,54 @@
             left: 50%;
             transform: translateX(-50%);
             width: min(94vw, 1560px);
-            background: #000000;
+            background: transparent;
             border-left: 1px solid rgba(255, 255, 255, 0.12);
             border-right: 1px solid rgba(255, 255, 255, 0.12);
             pointer-events: none;
+            z-index: 2;
+        }
+
+        /* White spray / brushed background strictly bounded inside Brand Collaborations box */
+        .brand-spray-bg-box {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: min(94vw, 1560px);
+            overflow: hidden;
+            pointer-events: none;
             z-index: 0;
+            background: #000000;
+        }
+
+        .brand-spray-bg-img {
+            position: absolute;
+            inset: -4%;
+            width: 108%;
+            height: 108%;
+            object-fit: cover;
+            object-position: center 38%;
+            opacity: 0.65;
+            filter: contrast(1.18) brightness(0.96);
+            pointer-events: none;
+            user-select: none;
+            will-change: transform;
+            transition: transform 0.25s cubic-bezier(0.2, 0, 0.2, 1);
+        }
+
+        .brand-spray-vignette {
+            position: absolute;
+            inset: 0;
+            background: 
+                radial-gradient(ellipse at 50% 50%, transparent 30%, rgba(0, 0, 0, 0.45) 75%, rgba(0, 0, 0, 0.85) 100%),
+                linear-gradient(to bottom, #000000 0%, rgba(0, 0, 0, 0.3) 10%, transparent 20%, transparent 80%, rgba(0, 0, 0, 0.4) 90%, #000000 100%);
+            pointer-events: none;
+        }
+
+        .brand-collaborations-header {
+            position: relative;
+            z-index: 3;
         }
 
         #portfolio h2 {
@@ -724,6 +767,11 @@
             }
             #portfolio::before {
                 display: none !important;
+            }
+            .brand-spray-bg-box {
+                width: 100%;
+                left: 0;
+                transform: none;
             }
             .scattered-canvas {
                 display: grid;

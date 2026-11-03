@@ -347,6 +347,12 @@
     <!-- Portfolio -->
     <!-- Scattered Portfolio / Spatial Showcase -->
     <section id="portfolio">
+        <!-- White Spray / Brushed Mist Background strictly bounded to Brand Collaborations box -->
+        <div class="brand-spray-bg-box" aria-hidden="true">
+            <img src="images/brand-spray-bg.webp" alt="" class="brand-spray-bg-img" />
+            <div class="brand-spray-vignette"></div>
+        </div>
+
         <div class="section-header reveal brand-collaborations-header" style="text-align: center; margin-bottom: 40px; padding: 0 6%;">
             <h2 class="display-serif-statement">Brand <span class="gradient-text">Collaborations</span></h2>
             <div class="brand-mobile-controls" id="brand-mobile-controls">
@@ -2523,6 +2529,45 @@
             }
             checkImmediate();
             window.addEventListener('scroll', checkImmediate, { passive: true, once: true });
+        })();
+
+        // Subtle spray background parallax inside Brand Collaborations
+        (function() {
+            const section = document.getElementById('portfolio');
+            const sprayImg = document.querySelector('.brand-spray-bg-img');
+            if (!section || !sprayImg) return;
+
+            let targetX = 0, targetY = 0;
+            let currentX = 0, currentY = 0;
+            let ticking = false;
+
+            section.addEventListener('mousemove', (e) => {
+                const rect = section.getBoundingClientRect();
+                const normX = ((e.clientX - rect.left) / rect.width) * 2 - 1;
+                const normY = ((e.clientY - rect.top) / rect.height) * 2 - 1;
+                targetX = normX * 18;
+                targetY = normY * 12;
+                if (!ticking) {
+                    ticking = true;
+                    requestAnimationFrame(updateParallax);
+                }
+            }, { passive: true });
+
+            section.addEventListener('mouseleave', () => {
+                targetX = 0;
+                targetY = 0;
+            });
+
+            function updateParallax() {
+                currentX += (targetX - currentX) * 0.08;
+                currentY += (targetY - currentY) * 0.08;
+                sprayImg.style.transform = `translate3d(${currentX.toFixed(2)}px, ${currentY.toFixed(2)}px, 0)`;
+                if (Math.abs(targetX - currentX) > 0.05 || Math.abs(targetY - currentY) > 0.05) {
+                    requestAnimationFrame(updateParallax);
+                } else {
+                    ticking = false;
+                }
+            }
         })();
 
         // ─── Dither Canvas – Marquee Text Animation ───
