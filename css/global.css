@@ -1669,9 +1669,9 @@
         .brutalist-contact-block {
             text-align: left;
             display: grid;
-            grid-template-columns: 1.2fr 0.8fr;
-            align-items: center;
-            gap: 60px;
+            grid-template-columns: 1.15fr 0.85fr;
+            align-items: center !important;
+            gap: 50px;
             padding: 40px 0 20px 0 !important;
             background: transparent;
             border: none;
@@ -3736,3 +3736,440 @@
         .video-brutalist-frame video {
             border-radius: 16px !important;
         }
+
+
+        /* ─── Redesigned Split Contact & Reviews Section ─── */
+        .contact-availability-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-family: var(--font-mono);
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: #d4d4d8;
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            padding: 5px 12px;
+            border-radius: 9999px;
+            margin-bottom: -10px;
+        }
+
+        .live-pulse-dot {
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+            background: #22c55e;
+            box-shadow: 0 0 8px #22c55e;
+            animation: pulseGreenGlow 2s infinite;
+        }
+
+        @keyframes pulseGreenGlow {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.4; transform: scale(0.85); }
+        }
+
+        .contact-intro-desc {
+            color: #a1a1aa;
+            font-family: var(--font-sans);
+            font-size: 14.5px;
+            line-height: 1.6;
+            margin: -8px 0 6px 0;
+            max-width: 520px;
+        }
+
+        .btn-book-coffee {
+            display: inline-flex;
+            align-items: center;
+            gap: 9px;
+            background: var(--accent, #f45d00);
+            color: #ffffff !important;
+            font-family: var(--font-sans);
+            font-size: 14px;
+            font-weight: 600;
+            padding: 13px 22px;
+            border-radius: 9999px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            cursor: pointer;
+            transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+            text-decoration: none;
+            box-shadow: 0 4px 18px rgba(244, 93, 0, 0.3);
+            white-space: nowrap;
+        }
+
+        .btn-book-coffee:hover, .btn-book-coffee.active {
+            background: #ff6a14;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 28px rgba(244, 93, 0, 0.5);
+            border-color: rgba(255, 255, 255, 0.35);
+        }
+
+        .btn-book-coffee .coffee-icon {
+            width: 17px;
+            height: 17px;
+            stroke: #ffffff;
+            flex-shrink: 0;
+        }
+
+        .btn-book-coffee .btn-badge {
+            background: rgba(0, 0, 0, 0.3);
+            padding: 2px 7px;
+            border-radius: 9999px;
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 0.04em;
+        }
+
+        /* Inline Calendly Booking Panel */
+        .calendly-booking-panel {
+            width: 100%;
+            margin-top: 18px;
+            background: #0d0d0d;
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.7), 0 0 0 1px rgba(244, 93, 0, 0.15);
+            animation: slideDownFade 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+
+        @keyframes slideDownFade {
+            0% { opacity: 0; transform: translateY(-12px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+
+        .calendly-panel-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 12px 18px;
+            background: #141414;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .calendly-header-title {
+            display: flex;
+            align-items: center;
+            gap: 9px;
+            font-family: var(--font-sans);
+            font-size: 13px;
+            font-weight: 600;
+            color: #ffffff;
+            letter-spacing: 0.02em;
+        }
+
+        .calendly-actions {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .calendly-ext-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            color: #a1a1aa;
+            font-family: var(--font-sans);
+            font-size: 12px;
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .calendly-ext-link:hover {
+            color: #ffffff;
+        }
+
+        .calendly-close-btn {
+            background: transparent;
+            border: 1px solid rgba(255, 255, 255, 0.18);
+            color: #d4d4d8;
+            font-family: var(--font-sans);
+            font-size: 12px;
+            font-weight: 500;
+            padding: 4px 12px;
+            border-radius: 9999px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .calendly-close-btn:hover {
+            background: rgba(255, 255, 255, 0.1);
+            color: #ffffff;
+            border-color: rgba(255, 255, 255, 0.35);
+        }
+
+        .calendly-frame-wrap iframe {
+            width: 100%;
+            height: 620px;
+            border: none;
+            display: block;
+            background: #0a0a0a;
+        }
+
+        /* ─── Right Portion: Founder Reviews Marquee ─── */
+        .contact-reviews-right {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+            min-width: 0;
+        }
+
+        .reviews-marquee-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 4px;
+        }
+
+        .reviews-badge-title {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-family: var(--font-mono);
+            font-size: 11px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: var(--accent, #f45d00);
+        }
+
+        .reviews-badge-title .star-icon {
+            width: 14px;
+            height: 14px;
+            flex-shrink: 0;
+        }
+
+        .reviews-pause-hint {
+            font-family: var(--font-mono);
+            font-size: 10px;
+            color: #71717a;
+            letter-spacing: 0.04em;
+        }
+
+        .reviews-marquee-viewport {
+            position: relative;
+            height: 520px;
+            overflow: hidden;
+            mask-image: linear-gradient(to bottom, transparent 0%, black 8%, black 92%, transparent 100%);
+            -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 8%, black 92%, transparent 100%);
+        }
+
+        .reviews-marquee-track {
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+            animation: reviewsScrollVertical 40s linear infinite;
+        }
+
+        .reviews-marquee-viewport:hover .reviews-marquee-track {
+            animation-play-state: paused;
+        }
+
+        @keyframes reviewsScrollVertical {
+            0% {
+                transform: translateY(0);
+            }
+            100% {
+                transform: translateY(-50%);
+            }
+        }
+
+        .founder-review-card {
+            background: rgba(14, 14, 14, 0.82);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 16px;
+            padding: 18px 20px;
+            position: relative;
+            transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .founder-review-card:hover {
+            background: rgba(22, 22, 22, 0.95);
+            border-color: rgba(244, 93, 0, 0.45);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 28px rgba(0, 0, 0, 0.45);
+        }
+
+        .founder-review-card::before {
+            content: "";
+            position: absolute;
+            top: -1px;
+            left: 18px;
+            width: 24px;
+            height: 2px;
+            background: var(--accent, #f45d00);
+            border-radius: 2px;
+        }
+
+        .review-author-row {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 10px;
+        }
+
+        .review-avatar-badge {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background: #181818;
+            border: 1px solid rgba(244, 93, 0, 0.4);
+            color: var(--accent, #f45d00);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: var(--font-sans);
+            font-weight: 700;
+            font-size: 14px;
+            flex-shrink: 0;
+        }
+
+        .review-author-meta {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .review-name-wrap {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .review-founder-name {
+            color: #ffffff;
+            font-family: var(--font-sans);
+            font-weight: 600;
+            font-size: 14px;
+            line-height: 1.2;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .review-location-pill {
+            font-family: var(--font-mono);
+            font-size: 10px;
+            color: #99A57D;
+            background: rgba(153, 165, 125, 0.12);
+            padding: 2px 6px;
+            border-radius: 4px;
+            white-space: nowrap;
+        }
+
+        .review-handle {
+            color: #71717a;
+            font-family: var(--font-mono);
+            font-size: 11px;
+            margin-top: 2px;
+        }
+
+        .review-quote-body {
+            color: #d4d4d8;
+            font-family: var(--font-sans);
+            font-size: 13.5px;
+            line-height: 1.55;
+            font-weight: 400;
+            margin: 0;
+        }
+
+        @media (max-width: 900px) {
+            .brutalist-contact-block {
+                grid-template-columns: 1fr !important;
+                gap: 40px !important;
+            }
+            .reviews-marquee-viewport {
+                height: 420px;
+            }
+        }
+
+
+
+        /* ─── Reviews & Direct Booking Section ─── */
+        .reviews-split-section {
+            width: 100%;
+            max-width: 1200px;
+            margin: 100px auto 60px auto;
+            padding: 0 4%;
+            position: relative;
+            z-index: 5;
+            box-sizing: border-box;
+        }
+
+        .reviews-split-grid {
+            display: grid;
+            grid-template-columns: 1.12fr 0.88fr;
+            gap: 48px;
+            align-items: start;
+            width: 100%;
+        }
+
+        .reviews-info-left {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 20px;
+            width: 100%;
+            min-width: 0;
+        }
+
+        .reviews-availability-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-family: var(--font-mono);
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: #d4d4d8;
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            padding: 6px 14px;
+            border-radius: 9999px;
+        }
+
+        .reviews-headline {
+            font-size: clamp(2.4rem, 4.5vw, 3.8rem);
+            line-height: 1.08;
+            letter-spacing: -0.02em;
+            color: #ffffff;
+            margin: 0;
+            font-weight: 400;
+        }
+
+        .reviews-intro-desc {
+            color: #a1a1aa;
+            font-family: var(--font-sans);
+            font-size: 15px;
+            line-height: 1.6;
+            margin: 0;
+            max-width: 500px;
+        }
+
+        .reviews-action-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 14px;
+            margin-top: 6px;
+        }
+
+        .reviews-marquee-column {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+            min-width: 0;
+        }
+
+        @media (max-width: 900px) {
+            .reviews-split-grid {
+                grid-template-columns: 1fr !important;
+                gap: 40px !important;
+            }
+            .reviews-marquee-viewport {
+                height: 440px !important;
+            }
+        }
+

@@ -1005,15 +1005,386 @@
         })();
     </script>
 
-    <!-- 3D Testimonials Section -->
-    <section
-      id="testimonials-3d-demo"
-      class="flex min-h-screen w-full items-center justify-center overflow-hidden bg-background p-0"
-    >
-      <div id="testimonials-3d-root" class="w-full flex justify-center"></div>
+    <!-- Reviews & Direct Booking Section -->
+    <section id="reviews" class="reviews-split-section reveal">
+        <div class="reviews-split-grid">
+            <!-- LEFT PORTION: Booking & Collaboration Hub -->
+            <div class="reviews-info-left">
+                <div class="reviews-availability-tag">
+                    <span class="live-pulse-dot"></span>
+                    <span>Direct Briefs &amp; Strategy Calls Open &middot; Q4 2026</span>
+                </div>
+
+                <h2 class="reviews-headline display-serif-statement">
+                    Let's work <span class="italic-gradient">together.</span>
+                </h2>
+
+                <p class="reviews-intro-desc">
+                    Fifteen minutes from clarifying your campaign scope, AI film pipeline, or web systems. Pick a coffee slot or send a brief.
+                </p>
+
+                <div class="reviews-action-buttons">
+                    <!-- Book a Coffee Button (opens inline Calendly window) -->
+                    <button id="bookCoffeeBtn" class="btn-book-coffee" aria-label="Book a Coffee with Divyaraj">
+                        <svg class="coffee-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M18 8h1a4 4 0 0 1 0 8h-1"></path>
+                            <path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"></path>
+                            <line x1="6" y1="1" x2="6" y2="4"></line>
+                            <line x1="10" y1="1" x2="10" y2="4"></line>
+                            <line x1="14" y1="1" x2="14" y2="4"></line>
+                        </svg>
+                        <span>Book a Coffee</span>
+                        <span class="btn-badge">15m</span>
+                    </button>
+
+                    <!-- Email Direct Button -->
+                    <a href="mailto:divyarajc2@gmail.com" class="btn-brutalist btn-brutalist-outline">
+                        <span>Email Direct</span>
+                        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="margin-left: 6px;"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+                    </a>
+
+                    <!-- View Resume -->
+                    <a href="divyaraj-resume" target="_blank" class="btn-brutalist btn-brutalist-outline">View Resume</a>
+                </div>
+
+                <!-- Inline Calendly Booking Window -->
+                <div id="calendlyContainer" class="calendly-booking-panel" style="display: none;">
+                    <div class="calendly-panel-header">
+                        <div class="calendly-header-title">
+                            <span class="live-pulse-dot"></span>
+                            <span>Select Date &amp; Time &middot; 15 min Coffee</span>
+                        </div>
+                        <div class="calendly-actions">
+                            <a href="https://calendly.com/divyarajc2/30min" target="_blank" rel="noopener" class="calendly-ext-link" title="Open in new tab">
+                                <span>Full Screen</span>
+                                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+                            </a>
+                            <button id="closeCalendlyBtn" class="calendly-close-btn" aria-label="Close Calendly">&times; Close</button>
+                        </div>
+                    </div>
+                    <div class="calendly-frame-wrap">
+                        <iframe 
+                            id="calendlyIframe" 
+                            src="about:blank"
+                            data-src="https://calendly.com/divyarajc2/30min?hide_landing_page_details=1&hide_gdpr_banner=1&background_color=0a0a0a&text_color=ffffff&primary_color=f45d00" 
+                            width="100%" 
+                            height="600" 
+                            frameborder="0"
+                            title="Calendly Scheduling"
+                        ></iframe>
+                    </div>
+                </div>
+            </div>
+
+            <!-- RIGHT PORTION: Scrolling comments from founders -->
+            <div class="reviews-marquee-column">
+                <div class="reviews-marquee-header">
+                    <span class="reviews-badge-title">
+                        <svg class="star-icon" viewBox="0 0 24 24" fill="#f45d00" stroke="#f45d00" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        Client Endorsements &middot; Founders &amp; Operators
+                    </span>
+                    <span class="reviews-pause-hint">Hover to pause</span>
+                </div>
+
+                <div class="reviews-marquee-viewport">
+                    <div class="reviews-marquee-track">
+                        <!-- Loop 1 of Founder Reviews -->
+                            <div class="founder-review-card">
+                                <div class="review-author-row">
+                                    <div class="review-avatar-badge">J</div>
+                                    <div class="review-author-meta">
+                                        <div class="review-name-wrap">
+                                            <span class="review-founder-name">Jayesh Thakker</span>
+                                            <span class="review-location-pill">Mumbai</span>
+                                        </div>
+                                        <div class="review-handle">@jayesh_t</div>
+                                    </div>
+                                </div>
+                                <p class="review-quote-body">&ldquo;Brilliant strategy and perfect positioning! Working with Divyaraj was a complete game changer for our brand setup.&rdquo;</p>
+                            </div>
+                            <div class="founder-review-card">
+                                <div class="review-author-row">
+                                    <div class="review-avatar-badge">K</div>
+                                    <div class="review-author-meta">
+                                        <div class="review-name-wrap">
+                                            <span class="review-founder-name">Kartik Mistry</span>
+                                            <span class="review-location-pill">Gujarat</span>
+                                        </div>
+                                        <div class="review-handle">@kartik_gt</div>
+                                    </div>
+                                </div>
+                                <p class="review-quote-body">&ldquo;Gujarat Tigers designs were absolutely spot on. Highly recommended digital strategist!&rdquo;</p>
+                            </div>
+                            <div class="founder-review-card">
+                                <div class="review-author-row">
+                                    <div class="review-avatar-badge">S</div>
+                                    <div class="review-author-meta">
+                                        <div class="review-name-wrap">
+                                            <span class="review-founder-name">Ravi Somani</span>
+                                            <span class="review-location-pill">Noida</span>
+                                        </div>
+                                        <div class="review-handle">@ravi_finanvo</div>
+                                    </div>
+                                </div>
+                                <p class="review-quote-body">&ldquo;Finanvo branding identity looks extremely bold and clean. Simplest user flow and solid execution.&rdquo;</p>
+                            </div>
+                            <div class="founder-review-card">
+                                <div class="review-author-row">
+                                    <div class="review-avatar-badge">G</div>
+                                    <div class="review-author-meta">
+                                        <div class="review-name-wrap">
+                                            <span class="review-founder-name">Gaurang Shah</span>
+                                            <span class="review-location-pill">Delhi</span>
+                                        </div>
+                                        <div class="review-handle">@gaurang_whms</div>
+                                    </div>
+                                </div>
+                                <p class="review-quote-body">&ldquo;White Horse Media Solutions campaigns got incredible engagement. Visually striking assets delivered on time.&rdquo;</p>
+                            </div>
+                            <div class="founder-review-card">
+                                <div class="review-author-row">
+                                    <div class="review-avatar-badge">A</div>
+                                    <div class="review-author-meta">
+                                        <div class="review-name-wrap">
+                                            <span class="review-founder-name">Ananya Sen</span>
+                                            <span class="review-location-pill">Mumbai</span>
+                                        </div>
+                                        <div class="review-handle">@ananya_kxm</div>
+                                    </div>
+                                </div>
+                                <p class="review-quote-body">&ldquo;KXM Clothing streetwear campaign was a massive hit. The visual SMM strategy and assets got solid traction!&rdquo;</p>
+                            </div>
+                            <div class="founder-review-card">
+                                <div class="review-author-row">
+                                    <div class="review-avatar-badge">S</div>
+                                    <div class="review-author-meta">
+                                        <div class="review-name-wrap">
+                                            <span class="review-founder-name">Siddhant Siwach</span>
+                                            <span class="review-location-pill">Greater Noida</span>
+                                        </div>
+                                        <div class="review-handle">@siddhant_cr</div>
+                                    </div>
+                                </div>
+                                <p class="review-quote-body">&ldquo;Shift and Shelf platform assets are top level. Extremely clean visual interface styling.&rdquo;</p>
+                            </div>
+                            <div class="founder-review-card">
+                                <div class="review-author-row">
+                                    <div class="review-avatar-badge">U</div>
+                                    <div class="review-author-meta">
+                                        <div class="review-name-wrap">
+                                            <span class="review-founder-name">Ujjwal Singh</span>
+                                            <span class="review-location-pill">Pune</span>
+                                        </div>
+                                        <div class="review-handle">@ujjwal_cr</div>
+                                    </div>
+                                </div>
+                                <p class="review-quote-body">&ldquo;Brutalist portfolio designs for Credes and Scuff look very premium. Smooth project coordination.&rdquo;</p>
+                            </div>
+                            <div class="founder-review-card">
+                                <div class="review-author-row">
+                                    <div class="review-avatar-badge">R</div>
+                                    <div class="review-author-meta">
+                                        <div class="review-name-wrap">
+                                            <span class="review-founder-name">Raghubar Jha</span>
+                                            <span class="review-location-pill">Mumbai</span>
+                                        </div>
+                                        <div class="review-handle">@raghubar_giffy</div>
+                                    </div>
+                                </div>
+                                <p class="review-quote-body">&ldquo;SMM output for Giffy launch was absolutely stellar. Amazing planned social media strategy!&rdquo;</p>
+                            </div>
+                            <div class="founder-review-card">
+                                <div class="review-author-row">
+                                    <div class="review-avatar-badge">R</div>
+                                    <div class="review-author-meta">
+                                        <div class="review-name-wrap">
+                                            <span class="review-founder-name">Ramkrishna Pamidimukkla</span>
+                                            <span class="review-location-pill">Pune</span>
+                                        </div>
+                                        <div class="review-handle">@ram_aspire</div>
+                                    </div>
+                                </div>
+                                <p class="review-quote-body">&ldquo;Aspire positioning strategy was extremely structured. Perfect visual asset design!&rdquo;</p>
+                            </div>
+                            <div class="founder-review-card">
+                                <div class="review-author-row">
+                                    <div class="review-avatar-badge">A</div>
+                                    <div class="review-author-meta">
+                                        <div class="review-name-wrap">
+                                            <span class="review-founder-name">Abhishek Biswas</span>
+                                            <span class="review-location-pill">Delhi</span>
+                                        </div>
+                                        <div class="review-handle">@abhishek_sattvik</div>
+                                    </div>
+                                </div>
+                                <p class="review-quote-body">&ldquo;Sattvik certifications platform UI/UX is highly accessible and looks very clean.&rdquo;</p>
+                            </div>
+                            <div class="founder-review-card">
+                                <div class="review-author-row">
+                                    <div class="review-avatar-badge">L</div>
+                                    <div class="review-author-meta">
+                                        <div class="review-name-wrap">
+                                            <span class="review-founder-name">Lokesh Suji</span>
+                                            <span class="review-location-pill">Gujarat</span>
+                                        </div>
+                                        <div class="review-handle">@lokesh_esfi</div>
+                                    </div>
+                                </div>
+                                <p class="review-quote-body">&ldquo;ESFI esports tournament graphics got solid traction. Stark and impactful layouts.&rdquo;</p>
+                            </div>
+
+                        <!-- Loop 2 of Founder Reviews for continuous infinite scroll -->
+                            <div class="founder-review-card">
+                                <div class="review-author-row">
+                                    <div class="review-avatar-badge">J</div>
+                                    <div class="review-author-meta">
+                                        <div class="review-name-wrap">
+                                            <span class="review-founder-name">Jayesh Thakker</span>
+                                            <span class="review-location-pill">Mumbai</span>
+                                        </div>
+                                        <div class="review-handle">@jayesh_t</div>
+                                    </div>
+                                </div>
+                                <p class="review-quote-body">&ldquo;Brilliant strategy and perfect positioning! Working with Divyaraj was a complete game changer for our brand setup.&rdquo;</p>
+                            </div>
+                            <div class="founder-review-card">
+                                <div class="review-author-row">
+                                    <div class="review-avatar-badge">K</div>
+                                    <div class="review-author-meta">
+                                        <div class="review-name-wrap">
+                                            <span class="review-founder-name">Kartik Mistry</span>
+                                            <span class="review-location-pill">Gujarat</span>
+                                        </div>
+                                        <div class="review-handle">@kartik_gt</div>
+                                    </div>
+                                </div>
+                                <p class="review-quote-body">&ldquo;Gujarat Tigers designs were absolutely spot on. Highly recommended digital strategist!&rdquo;</p>
+                            </div>
+                            <div class="founder-review-card">
+                                <div class="review-author-row">
+                                    <div class="review-avatar-badge">S</div>
+                                    <div class="review-author-meta">
+                                        <div class="review-name-wrap">
+                                            <span class="review-founder-name">Ravi Somani</span>
+                                            <span class="review-location-pill">Noida</span>
+                                        </div>
+                                        <div class="review-handle">@ravi_finanvo</div>
+                                    </div>
+                                </div>
+                                <p class="review-quote-body">&ldquo;Finanvo branding identity looks extremely bold and clean. Simplest user flow and solid execution.&rdquo;</p>
+                            </div>
+                            <div class="founder-review-card">
+                                <div class="review-author-row">
+                                    <div class="review-avatar-badge">G</div>
+                                    <div class="review-author-meta">
+                                        <div class="review-name-wrap">
+                                            <span class="review-founder-name">Gaurang Shah</span>
+                                            <span class="review-location-pill">Delhi</span>
+                                        </div>
+                                        <div class="review-handle">@gaurang_whms</div>
+                                    </div>
+                                </div>
+                                <p class="review-quote-body">&ldquo;White Horse Media Solutions campaigns got incredible engagement. Visually striking assets delivered on time.&rdquo;</p>
+                            </div>
+                            <div class="founder-review-card">
+                                <div class="review-author-row">
+                                    <div class="review-avatar-badge">A</div>
+                                    <div class="review-author-meta">
+                                        <div class="review-name-wrap">
+                                            <span class="review-founder-name">Ananya Sen</span>
+                                            <span class="review-location-pill">Mumbai</span>
+                                        </div>
+                                        <div class="review-handle">@ananya_kxm</div>
+                                    </div>
+                                </div>
+                                <p class="review-quote-body">&ldquo;KXM Clothing streetwear campaign was a massive hit. The visual SMM strategy and assets got solid traction!&rdquo;</p>
+                            </div>
+                            <div class="founder-review-card">
+                                <div class="review-author-row">
+                                    <div class="review-avatar-badge">S</div>
+                                    <div class="review-author-meta">
+                                        <div class="review-name-wrap">
+                                            <span class="review-founder-name">Siddhant Siwach</span>
+                                            <span class="review-location-pill">Greater Noida</span>
+                                        </div>
+                                        <div class="review-handle">@siddhant_cr</div>
+                                    </div>
+                                </div>
+                                <p class="review-quote-body">&ldquo;Shift and Shelf platform assets are top level. Extremely clean visual interface styling.&rdquo;</p>
+                            </div>
+                            <div class="founder-review-card">
+                                <div class="review-author-row">
+                                    <div class="review-avatar-badge">U</div>
+                                    <div class="review-author-meta">
+                                        <div class="review-name-wrap">
+                                            <span class="review-founder-name">Ujjwal Singh</span>
+                                            <span class="review-location-pill">Pune</span>
+                                        </div>
+                                        <div class="review-handle">@ujjwal_cr</div>
+                                    </div>
+                                </div>
+                                <p class="review-quote-body">&ldquo;Brutalist portfolio designs for Credes and Scuff look very premium. Smooth project coordination.&rdquo;</p>
+                            </div>
+                            <div class="founder-review-card">
+                                <div class="review-author-row">
+                                    <div class="review-avatar-badge">R</div>
+                                    <div class="review-author-meta">
+                                        <div class="review-name-wrap">
+                                            <span class="review-founder-name">Raghubar Jha</span>
+                                            <span class="review-location-pill">Mumbai</span>
+                                        </div>
+                                        <div class="review-handle">@raghubar_giffy</div>
+                                    </div>
+                                </div>
+                                <p class="review-quote-body">&ldquo;SMM output for Giffy launch was absolutely stellar. Amazing planned social media strategy!&rdquo;</p>
+                            </div>
+                            <div class="founder-review-card">
+                                <div class="review-author-row">
+                                    <div class="review-avatar-badge">R</div>
+                                    <div class="review-author-meta">
+                                        <div class="review-name-wrap">
+                                            <span class="review-founder-name">Ramkrishna Pamidimukkla</span>
+                                            <span class="review-location-pill">Pune</span>
+                                        </div>
+                                        <div class="review-handle">@ram_aspire</div>
+                                    </div>
+                                </div>
+                                <p class="review-quote-body">&ldquo;Aspire positioning strategy was extremely structured. Perfect visual asset design!&rdquo;</p>
+                            </div>
+                            <div class="founder-review-card">
+                                <div class="review-author-row">
+                                    <div class="review-avatar-badge">A</div>
+                                    <div class="review-author-meta">
+                                        <div class="review-name-wrap">
+                                            <span class="review-founder-name">Abhishek Biswas</span>
+                                            <span class="review-location-pill">Delhi</span>
+                                        </div>
+                                        <div class="review-handle">@abhishek_sattvik</div>
+                                    </div>
+                                </div>
+                                <p class="review-quote-body">&ldquo;Sattvik certifications platform UI/UX is highly accessible and looks very clean.&rdquo;</p>
+                            </div>
+                            <div class="founder-review-card">
+                                <div class="review-author-row">
+                                    <div class="review-avatar-badge">L</div>
+                                    <div class="review-author-meta">
+                                        <div class="review-name-wrap">
+                                            <span class="review-founder-name">Lokesh Suji</span>
+                                            <span class="review-location-pill">Gujarat</span>
+                                        </div>
+                                        <div class="review-handle">@lokesh_esfi</div>
+                                    </div>
+                                </div>
+                                <p class="review-quote-body">&ldquo;ESFI esports tournament graphics got solid traction. Stark and impactful layouts.&rdquo;</p>
+                            </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
     </section>
 
-    <!-- Contact -->
+    <!-- Contact & Footer Section -->
     <section id="contact" class="cta-section">
         
         <div class="brutalist-contact-block reveal">
@@ -1089,7 +1460,7 @@
         </div>
     </section>
 
-    <!-- Custom Alert Box -->
+<!-- Custom Alert Box -->
     <div id="customAlert" class="custom-alert">
         <p id="customAlertMessage"></p>
         <button onclick="closeCustomAlert()">Got it</button>
@@ -2763,5 +3134,42 @@
     <!-- Three.js & Ring Field Background for Footer -->
     <script src="js/three.min.js"></script>
     <script src="js/ring-field.js" defer></script>
+    <!-- Calendly Interactive Toggle Controller -->
+    <script>
+    (function initCalendlyController() {
+        const bookBtn = document.getElementById('bookCoffeeBtn');
+        const container = document.getElementById('calendlyContainer');
+        const iframe = document.getElementById('calendlyIframe');
+        const closeBtn = document.getElementById('closeCalendlyBtn');
+
+        if (bookBtn && container) {
+            bookBtn.addEventListener('click', function(e) {
+                e.preventDefault();
+                const isHidden = container.style.display === 'none' || !container.style.display;
+                if (isHidden) {
+                    container.style.display = 'block';
+                    bookBtn.classList.add('active');
+                    if (iframe && (!iframe.src || iframe.src === 'about:blank')) {
+                        iframe.src = iframe.getAttribute('data-src');
+                    }
+                    setTimeout(() => {
+                        container.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                    }, 100);
+                } else {
+                    container.style.display = 'none';
+                    bookBtn.classList.remove('active');
+                }
+            });
+        }
+
+        if (closeBtn && container) {
+            closeBtn.addEventListener('click', function(e) {
+                e.preventDefault();
+                container.style.display = 'none';
+                if (bookBtn) bookBtn.classList.remove('active');
+            });
+        }
+    })();
+    </script>
 </body>
 </html>
