@@ -258,40 +258,65 @@
             <div class="hero-3d-gallery-container">
                 <div class="hero-3d-gallery-scene" id="hero-3d-scene"></div>
             <script>
-            // Smooth first-reveal blur-in effect for Hero 3D Gallery images
+            // Smooth blur-in effect for Hero 3D Gallery images (on initial load and every return visit)
             (function initHeroBlurReveal() {
                 const scene = document.getElementById('hero-3d-scene');
+                const heroTrack = document.getElementById('hero');
                 if (!scene) return;
 
-                let isRevealed = false;
+                let revealRafId = null;
+
                 function triggerBlurReveal() {
-                    if (isRevealed) return;
-                    isRevealed = true;
-                    // Ensure the canvas has completed its first WebGL draw call
-                    requestAnimationFrame(() => {
-                        requestAnimationFrame(() => {
-                            setTimeout(() => {
-                                scene.classList.add('hero-revealed');
-                            }, 150);
+                    if (revealRafId) cancelAnimationFrame(revealRafId);
+                    revealRafId = requestAnimationFrame(() => {
+                        revealRafId = requestAnimationFrame(() => {
+                            scene.style.transition = '';
+                            scene.classList.add('hero-revealed');
+                            revealRafId = null;
                         });
                     });
                 }
 
-                // Check when canvas is actually inserted into the DOM by React
-                const observer = new MutationObserver(() => {
+                function resetBlurState() {
+                    if (revealRafId) {
+                        cancelAnimationFrame(revealRafId);
+                        revealRafId = null;
+                    }
+                    scene.style.transition = 'none';
+                    scene.classList.remove('hero-revealed');
+                    void scene.offsetHeight; // Force reflow
+                }
+
+                // 1. Observe canvas additions/removals inside #hero-3d-scene (handles React mount/unmount)
+                const mutObserver = new MutationObserver(() => {
                     const canvas = scene.querySelector('canvas');
                     if (canvas) {
-                        observer.disconnect();
-                        triggerBlurReveal();
+                        if (!scene.classList.contains('hero-revealed')) {
+                            triggerBlurReveal();
+                        }
+                    } else {
+                        resetBlurState();
                     }
                 });
-                observer.observe(scene, { childList: true, subtree: true });
+                mutObserver.observe(scene, { childList: true, subtree: true });
 
-                // If canvas already exists or fallback timeout
+                // 2. Also observe #hero intersection so offscreen state resets cleanly before unmount
+                if (heroTrack && 'IntersectionObserver' in window) {
+                    const heroObserver = new IntersectionObserver((entries) => {
+                        entries.forEach(entry => {
+                            if (!entry.isIntersecting) {
+                                resetBlurState();
+                            } else if (scene.querySelector('canvas') && !scene.classList.contains('hero-revealed')) {
+                                triggerBlurReveal();
+                            }
+                        });
+                    }, { threshold: 0.05 });
+                    heroObserver.observe(heroTrack);
+                }
+
+                // Initial check if canvas is already present
                 if (scene.querySelector('canvas')) {
                     triggerBlurReveal();
-                } else {
-                    setTimeout(triggerBlurReveal, 800);
                 }
             })();
             </script>

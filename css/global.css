@@ -1059,7 +1059,7 @@
         .timeline-date {
             font-family: var(--font-sans) !important;
             font-size: 12px !important;
-            color: var(--accent) !important;
+            color: #BDBDBF !important;
             font-weight: 500 !important;
             letter-spacing: 0.04em !important;
         }
