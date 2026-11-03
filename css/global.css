@@ -3312,7 +3312,8 @@
         }
 
         /* ─── 3D Testimonials Section ─── */
-        #testimonials-3d-demo {
+        #testimonials-3d-demo,
+        .reviews-3d-column-wrap {
             --background: #000000;
             --foreground: #ffffff;
             --card: #101010;
@@ -3335,14 +3336,17 @@
 
             position: relative;
             width: 100% !important;
-            max-width: none !important;
+            max-width: 100% !important;
             margin: 0 !important;
             background: #000000 !important;
             padding: 0 !important;
-            min-height: 850px !important;
-            height: 100vh !important;
-            max-height: 1000px !important;
+            min-height: 560px !important;
+            height: 580px !important;
+            max-height: 620px !important;
             overflow: hidden !important;
+            border-radius: 20px !important;
+            border: 1px solid rgba(255, 255, 255, 0.08) !important;
+            box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.8) !important;
         }
 
         #testimonials-3d-root {
@@ -3356,12 +3360,16 @@
         #testimonials-3d-root > div {
             width: 100% !important;
             height: 100% !important;
-            min-height: 850px !important;
-            border-radius: 0 !important;
+            min-height: unset !important;
+            max-height: 600px !important;
+            border-radius: 20px !important;
         }
 
-        #testimonials-3d-demo .w-50 {
-            width: 200px !important;
+        #testimonials-3d-demo .w-50,
+        .reviews-3d-column-wrap .w-50 {
+            width: 185px !important;
+            min-width: 185px !important;
+            max-width: 185px !important;
         }
 
         /* Specific Testimonial Card Styling */
@@ -4181,9 +4189,9 @@
 
         .reviews-split-grid {
             display: grid;
-            grid-template-columns: 1.12fr 0.88fr;
-            gap: 48px;
-            align-items: start;
+            grid-template-columns: 1.05fr 0.95fr;
+            gap: 44px;
+            align-items: center;
             width: 100%;
         }
 
@@ -4245,13 +4253,22 @@
             min-width: 0;
         }
 
-        @media (max-width: 900px) {
+                @media (max-width: 900px) {
             .reviews-split-grid {
                 grid-template-columns: 1fr !important;
-                gap: 40px !important;
+                gap: 36px !important;
             }
-            .reviews-marquee-viewport {
-                height: 440px !important;
+            #testimonials-3d-demo,
+            .reviews-3d-column-wrap {
+                min-height: 480px !important;
+                height: 480px !important;
+                max-height: 480px !important;
+            }
+            #testimonials-3d-demo .w-50,
+            .reviews-3d-column-wrap .w-50 {
+                width: 160px !important;
+                min-width: 160px !important;
+                max-width: 160px !important;
             }
         }
 
