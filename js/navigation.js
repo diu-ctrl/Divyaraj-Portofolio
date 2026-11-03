@@ -56,6 +56,8 @@
             hoverTimer = null;
         }
         navContainer.classList.remove('is-hovered');
+        handleBtn.classList.remove('has-function-hover');
+        updateHandleLabel();
     }
 
     function openDrawer() {
@@ -73,6 +75,7 @@
         navContainer.classList.remove('is-open');
         navContainer.style.transform = '';
         handleBtn.setAttribute('aria-expanded', 'false');
+        handleBtn.classList.remove('has-function-hover');
         updateHandleLabel();
     }
 
@@ -234,10 +237,25 @@
         });
     }
 
-    // Navigation links click handlers
+    // Navigation links hover & click handlers
     navItems.forEach((item) => {
         const href = item.getAttribute('href');
         const targetAttr = item.getAttribute('data-target');
+        const tooltipEl = item.querySelector('.nav-tooltip');
+        const functionName = tooltipEl ? tooltipEl.textContent.trim() : (targetAttr ? targetAttr.charAt(0).toUpperCase() + targetAttr.slice(1) : '');
+
+        // Dynamic function label on hover: adds has-item-hover to cleanly hide CLOSE and show only function text
+        item.addEventListener('mouseenter', () => {
+            if (!isMobile()) {
+                navContainer.classList.add('has-item-hover');
+            }
+        });
+
+        item.addEventListener('mouseleave', () => {
+            if (!isMobile()) {
+                navContainer.classList.remove('has-item-hover');
+            }
+        });
 
         item.addEventListener('click', (e) => {
             if (targetAttr === 'contact' || href === '#contact') {

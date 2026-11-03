@@ -60,20 +60,28 @@
     transition: border-color 0.25s ease, background-color 0.25s ease;
 }
 
-/* Mechanical Drawer Handle Button (Default Closed: Left, Right, Bottom Orange Border) */
+/* When closed, keep signature primary orange on PULL DOWN handle */
+.limelight-nav-container:not(.is-open) .limelight-drawer-handle {
+    border-left: 1px solid var(--primary) !important;
+    border-right: 1px solid var(--primary) !important;
+    border-bottom: 1px solid var(--primary) !important;
+    color: var(--primary) !important;
+}
+
+/* Mechanical Drawer Handle Button */
 .limelight-drawer-handle {
     pointer-events: auto;
     display: flex;
     align-items: center;
     justify-content: center;
     background: #000000 !important;
-    border-left: 1px solid var(--primary) !important;
-    border-right: 1px solid var(--primary) !important;
-    border-bottom: 1px solid var(--primary) !important;
+    border-left: 1px solid rgba(255, 255, 255, 0.14) !important;
+    border-right: 1px solid rgba(255, 255, 255, 0.14) !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.14) !important;
     border-top: none !important; /* Top border removed for seamless integration */
     border-bottom-left-radius: 14px !important;
     border-bottom-right-radius: 14px !important;
-    color: var(--primary);
+    color: #EDEDED;
     font-family: var(--font-sans);
     font-size: 12px;
     font-weight: 700;
@@ -135,9 +143,9 @@
         transform: translateY(-6px);
     }
 
-    /* 2. Explicit JS-managed .is-hovered state on open container */
+    /* 2. Explicit JS-managed .is-hovered state on open container (Clean neutral borders, NO orange border) */
     .limelight-nav-container.is-open.is-hovered .limelight-nav {
-        border-color: var(--primary) !important;
+        border-color: rgba(255, 255, 255, 0.18) !important;
     }
 
     .limelight-nav-container.is-open.is-hovered .limelight-drawer-handle,
@@ -146,6 +154,9 @@
         visibility: visible !important;
         pointer-events: auto !important;
         transform: translateY(0);
+        border-left: 1px solid rgba(255, 255, 255, 0.18) !important;
+        border-right: 1px solid rgba(255, 255, 255, 0.18) !important;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.18) !important;
     }
 }
 
@@ -220,30 +231,40 @@
     opacity: 1;
 }
 
-/* Tooltips */
+/* Tooltips - Clean text only on hover, NO orange border */
 .nav-tooltip {
     position: absolute;
-    top: 60px;
-    background: #000000;
-    border: 1px solid var(--primary);
-    color: var(--text);
-    font-family: var(--font-sans);
-    font-size: 11px;
-    font-weight: 500;
-    letter-spacing: 0.02em;
-    padding: 4px 8px;
-    
+    top: 57px;
+    left: 50%;
+    transform: translateX(-50%) translateY(-2px);
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+    color: #FFFFFF !important;
+    font-family: 'Inter Tight', var(--font-sans), sans-serif !important;
+    font-size: 11px !important;
+    font-weight: 600 !important;
+    letter-spacing: 0.04em !important;
+    padding: 0 !important;
+    margin: 0 !important;
     opacity: 0;
     pointer-events: none;
     transition: opacity 0.2s ease, transform 0.2s ease;
-    transform: translateY(-5px);
     white-space: nowrap;
     z-index: 100;
 }
 
 .limelight-nav-item:hover .nav-tooltip {
     opacity: 1;
-    transform: translateY(0);
+    transform: translateX(-50%) translateY(0);
+}
+
+/* When hovering any nav item, hide CLOSE in drawer handle so only the function text is shown */
+.limelight-nav-container.has-item-hover .drawer-handle-content,
+.limelight-nav-container:has(.limelight-nav-item:hover) .drawer-handle-content {
+    opacity: 0 !important;
+    pointer-events: none !important;
+    transition: opacity 0.15s ease;
 }
 
 /* Sequential Downward Chevron Animation */
