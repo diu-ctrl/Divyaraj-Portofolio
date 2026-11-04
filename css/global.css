@@ -523,43 +523,24 @@
             max-width: none !important;
             margin-left: 50%;
             transform: translateX(-50%);
-            background: linear-gradient(
-                to right,
-                #040404 0%,
-                #040404 calc(50% - min(47vw, 780px)),
-                #000000 calc(50% - min(47vw, 780px)),
-                #000000 calc(50% + min(47vw, 780px)),
-                #040404 calc(50% + min(47vw, 780px)),
-                #040404 100%
-            ) !important;
+            background: #000000 !important;
             padding: 40px 0;
             border-bottom: 1px solid var(--border);
         }
 
-        /* Framed black playground area border */
+        /* Framed black playground area border - Removed vertical borders to fix gap */
         #portfolio::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            bottom: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            width: min(94vw, 1560px);
-            background: transparent;
-            border-left: 1px solid rgba(255, 255, 255, 0.12);
-            border-right: 1px solid rgba(255, 255, 255, 0.12);
-            pointer-events: none;
-            z-index: 2;
+            display: none !important;
         }
 
-        /* White spray / brushed background strictly bounded inside Brand Collaborations box */
+        /* White spray / brushed background full-bleed across Brand Collaborations section */
         .brand-spray-bg-box {
             position: absolute;
             top: 0;
             bottom: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            width: min(94vw, 1560px);
+            left: 0;
+            right: 0;
+            width: 100%;
             overflow: hidden;
             pointer-events: none;
             z-index: 0;
