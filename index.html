@@ -65,6 +65,7 @@
     </script>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="css/global.css">
+    <script src="js/dappled-light.js"></script>
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-K3GE4GK5HR"></script>
     <script>
@@ -772,6 +773,10 @@
         class="cinema-scroll-track"
     >
         <div class="cinema-sticky-stage">
+            <!-- Dappled Light Sunlight & Foliage Background Effect -->
+            <div class="kutch-dappled-light" id="kutchDappledLight">
+                <canvas id="dappledLightCanvas"></canvas>
+            </div>
             <!-- Ambient Cinema Video Strips (Active in Kutch section) -->
             <div class="cinema-strips-wrapper" id="cinemaStripsWrapper">
                 <!-- Top Strip: Scrolls Right to Left -->
@@ -1672,6 +1677,40 @@
             const stripsWrapper =
                 document.getElementById('cinemaStripsWrapper');
 
+            const dappledLightEl =
+                document.getElementById('kutchDappledLight');
+            const dappledLightCanvas =
+                document.getElementById('dappledLightCanvas');
+
+            let dappledController = null;
+            if (dappledLightCanvas && window.createDappledLight) {
+                dappledController = window.createDappledLight(dappledLightCanvas, {
+                    plant: "fern",
+                    placement: "top-right",
+                    scale: 1.2,
+                    density: 1,
+                    depth: 0.7,
+                    softness: 1.1,
+                    shadowStrength: 1,
+                    lightColor: "#FFB27A",
+                    shadowColor: "#C8B6A6",
+                    backgroundColor: "#0A0A0A",
+                    window: "on",
+                    windowAngle: 28,
+                    windowSize: 0.52,
+                    intensity: 0.9,
+                    bloom: 0.6,
+                    wind: 0.5,
+                    windSpeed: 1,
+                    clouds: 0.15,
+                    breeze: true,
+                    grain: 0.25,
+                    seed: 1,
+                    intro: true,
+                    paused: false
+                });
+            }
+
             if (!track || !stage || !card) {
                 console.error(
                     '[Cinema Scale] Required elements missing.'
@@ -1774,6 +1813,25 @@
                     '--cinema-radius',
                     `${radius.toFixed(2)}px`
                 );
+
+                // ── Dappled Light Sunlight Background Logic ──
+                if (dappledLightEl) {
+                    const trackRect = track.getBoundingClientRect();
+                    const inView = trackRect.top < window.innerHeight && trackRect.bottom > 0;
+                    const isKutchActive = inView && rawProgress >= 0.01 && rawProgress <= 0.96;
+
+                    if (isKutchActive) {
+                        if (!dappledLightEl.classList.contains('is-active')) {
+                            dappledLightEl.classList.add('is-active');
+                            if (dappledController) dappledController.start();
+                        }
+                    } else {
+                        if (dappledLightEl.classList.contains('is-active')) {
+                            dappledLightEl.classList.remove('is-active');
+                            if (dappledController) dappledController.stop();
+                        }
+                    }
+                }
 
                 // ── Ambient Video Strips Scroll-Linked Logic ──
                 if (stripsWrapper) {
