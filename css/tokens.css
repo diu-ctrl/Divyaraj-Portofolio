@@ -1093,7 +1093,8 @@ h1, .hero-title, .brand-title {
     margin-top: 6px !important;
 }
 
-/* 3. Universal Rounded Corners on Videos, Cards, and Containers */
+/* 3. Universal Rounded Corners on Videos, Cards, Containers, Boxes, Tabs, Pills & Textboxes */
+/* Large Cards, Media Wrappers, Stages & Containers (20px) */
 .hero-right,
 .video-brutalist-frame,
 .hero-video-element,
@@ -1104,6 +1105,7 @@ h1, .hero-title, .brand-title {
 .reel-video-container,
 .scuff-reel-video,
 .phone-frame,
+.phone-frame-back,
 .ai-reel-media,
 .event-card,
 .service-card,
@@ -1114,23 +1116,149 @@ h1, .hero-title, .brand-title {
 .work-card,
 .film-card,
 .film-card-visual,
+.film-row-visual,
 .asset-card,
 .cert-card,
 .closing-box,
-.carousel-wrap {
+.carousel-wrap,
+.lane-card,
+.folio-card,
+.chapter-card,
+.case-study-card,
+.brand-spray-bg-box,
+.brand-packet-card,
+.grid-image-wrap,
+.gallery-media,
+.role-visual-panel,
+.features-table-wrapper {
     border-radius: 20px !important;
     overflow: hidden !important;
 }
 
-.event-meta-item,
-.meta-box,
-.bb-item {
-    border-radius: 14px !important;
+/* Workflow Step Boxes, Flow Cards, Tool Boxes & Mid-size Cards (18px) */
+.workflow-step,
+.workflow-grid .workflow-step,
+.tool-box,
+.tools-grid .tool-box,
+.flow-step,
+.booking-flow-steps,
+.step-item,
+.exp-item,
+.edu-item,
+.timeline-item,
+.chapter-box,
+.post-cell {
+    border-radius: 18px !important;
+    overflow: hidden !important;
 }
 
-.brand-logo-frame {
+/* Textboxes, Quotes, Callout Blocks, Detail Panels & Form Fields (16px) */
+.highlight-block,
+.quote-block,
+.big-desc,
+.detail-block,
+.challenge-block,
+.results-block,
+.scope-block,
+.section-block,
+.admin-portal-block,
+.pp-contact-card,
+textarea,
+input[type="text"],
+input[type="email"],
+input[type="search"],
+input[type="tel"],
+select {
     border-radius: 16px !important;
+}
+
+/* Meta Boxes, Stat Modules & Compact Card Items (14px) */
+.event-meta-item,
+.meta-box,
+.bb-item,
+.rvp-stat-card,
+.platform-stat-mini,
+.analytics-row,
+.bar-row,
+.bar-track,
+.mini-bar,
+.brand-logo-frame,
+.bnb-logo {
+    border-radius: 14px !important;
     overflow: hidden !important;
+}
+
+/* Badges, Eyebrows, Tabs, Buttons & Pill Capsules (Pill radius: 9999px) */
+.header-badge,
+.hero-eyebrow,
+.brand-eyebrow,
+.section-eyebrow,
+.section-label,
+.eyebrow-e1,
+.pp-eyebrow,
+.hospital-capsule,
+.player-capsule,
+.brand-capsule,
+.timeline-brand-capsules,
+.nav-capsule,
+.subpage-nav-capsules a,
+.case-study-badge,
+.gallery-badge,
+.video-badge,
+.reel-badge,
+.credes-badge,
+.credes-badge-pill,
+.reel-concept-badge,
+.cinema-badge,
+.folio-card-tag,
+.film-badge-chip,
+.web-badge,
+.outcome-badge,
+.stat-lbl,
+.tag,
+.tags .tag,
+.spec-pill,
+.work-card-specs .spec-pill,
+.role-pill,
+.skill-tag,
+.tech-tag,
+.platform-tag,
+.service-tag,
+.metric-tag,
+.back-btn,
+.brand-nav-btn,
+.next-project-link,
+.tab-btn,
+.assets-tabs button,
+.carousel-btn,
+.cert-btn,
+.case-study-btn,
+.btn-action,
+.btn-explore-capsule,
+.btn-book-coffee,
+.btn-brutalist,
+.btn-brutalist-outline,
+.btn-primary-gold,
+.download-pdf-btn,
+.watch-btn,
+.social-icon-btn,
+.social-mail-btn {
+    border-radius: 9999px !important;
+}
+
+/* Ensure pulse dots inside badges stay circular */
+.header-badge span,
+.hero-eyebrow span,
+.metric-label .dot,
+.status-dot,
+.pulse-dot {
+    border-radius: 50% !important;
+}
+
+/* Video caption bar inside rounded video frame */
+.video-caption-bar {
+    border-bottom-left-radius: 20px !important;
+    border-bottom-right-radius: 20px !important;
 }
 
 /* 4. Global Eyebrow & Headline Casing (Capitalize first letter only, no all-caps) */

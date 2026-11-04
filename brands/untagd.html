@@ -116,7 +116,28 @@
         .back-to-top-btn { position:fixed; bottom:30px; right:30px; width:44px; height:44px; background:var(--card); border:1px solid var(--border); color:#ffffff; font-family:var(--font-sans); font-size:1.1rem; cursor:pointer; z-index:1000; display:flex; align-items:center; justify-content:center; opacity:0; pointer-events:none; transition:all 0.3s ease; }
         .back-to-top-btn.visible { opacity:1; pointer-events:auto; }
         .back-to-top-btn:hover { border-color:var(--accent); background:#3a221b; color:var(--accent); }
-    </style>
+    
+        /* Explicit Brand Component Corner Rounding */
+        .back-btn { border-radius: 100px !important; }
+        .header-badge { border-radius: 100px !important; }
+        .hero-eyebrow { border-radius: 100px !important; }
+        .section-eyebrow { border-radius: 100px !important; }
+        .brand-logo-frame { border-radius: 16px !important; }
+        .meta-box { border-radius: 14px !important; }
+        .highlight-block { border-radius: 16px !important; }
+        .sidebar-card { border-radius: 20px !important; }
+        .tag { border-radius: 100px !important; }
+        .spec-pill { border-radius: 100px !important; }
+        .workflow-step { border-radius: 18px !important; }
+        .work-card { border-radius: 20px !important; }
+        .work-card-media { border-radius: 20px !important; }
+        .tool-box { border-radius: 16px !important; }
+        .closing-box { border-radius: 24px !important; }
+        .brand-nav-btn { border-radius: 100px !important; }
+        .video-brutalist-frame { border-radius: 20px !important; }
+        .video-brutalist-frame, .work-card-media, .brand-logo-frame { overflow: hidden !important; }
+        .header-badge span, .hero-eyebrow span, .dot { border-radius: 50% !important; }
+</style>
     <!-- Vercel Web Analytics (view data in Vercel project → Analytics tab) -->
     <script defer src="/_vercel/insights/script.js"></script>
     <!-- Vercel Speed Insights (Web Vitals, same Analytics tab) -->
@@ -351,10 +372,10 @@
                         All deliverables were synthesized and mastered under strict fidelity requirements: zero artifact hallucinations, accurate dynamic lighting, and precise temporal coherence.
                     </p>
                     <div style="display:flex; flex-direction:column; gap:8px;">
-                        <div style="background:#141412; border:1px solid #282723; padding:8px 12px; font-family:var(--font-sans); font-size:0.72rem; color:#fff;">
+                        <div style="background:#141412; border:1px solid #282723; padding:8px 12px; font-family:var(--font-sans); font-size:0.72rem; color:#fff; border-radius:10px;">
                             Ratios: 9:16 Vertical + 16:9 Widescreen
                         </div>
-                        <div style="background:#141412; border:1px solid #282723; padding:8px 12px; font-family:var(--font-sans); font-size:0.72rem; color:#fff;">
+                        <div style="background:#141412; border:1px solid #282723; padding:8px 12px; font-family:var(--font-sans); font-size:0.72rem; color:#fff; border-radius:10px;">
                             Pipeline: Prompt → Generate → Cut → Grade
                         </div>
                     </div>
