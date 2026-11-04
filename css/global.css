@@ -3348,9 +3348,9 @@
             margin: 0 !important;
             background: #000000 !important;
             padding: 0 !important;
-            min-height: 560px !important;
-            height: 580px !important;
-            max-height: 620px !important;
+            min-height: 460px !important;
+            height: 480px !important;
+            max-height: 500px !important;
             overflow: hidden !important;
             border-radius: 20px !important;
             border: 1px solid rgba(255, 255, 255, 0.08) !important;
@@ -3371,15 +3371,15 @@
             width: 100% !important;
             height: 100% !important;
             min-height: unset !important;
-            max-height: 600px !important;
+            max-height: 480px !important;
             border-radius: 20px !important;
         }
 
         #testimonials-3d-demo .w-50,
         .reviews-3d-column-wrap .w-50 {
-            width: 185px !important;
-            min-width: 185px !important;
-            max-width: 185px !important;
+            width: 255px !important;
+            min-width: 255px !important;
+            max-width: 255px !important;
         }
 
         /* Specific Testimonial Card Styling */
@@ -3387,13 +3387,13 @@
             position: relative !important;
             background: #101010 !important;
             border: 1px solid rgba(235, 70, 4, 0.45) !important;
-            border-radius: 6px !important;
+            border-radius: 12px !important;
             color: #f4f1ea !important;
             transition: all 0.25s ease-in-out !important;
         }
 
         #testimonials-3d-demo .testimonial-card-content {
-            padding: 14px 16px !important;
+            padding: 12px 14px !important;
         }
 
         #testimonials-3d-demo .testimonial-card::before {
@@ -3405,6 +3405,7 @@
             height: 2px !important;
             background: var(--accent) !important;
             z-index: 5 !important;
+            border-radius: 2px !important;
         }
 
         #testimonials-3d-demo .testimonial-card:hover {
@@ -3413,52 +3414,47 @@
             box-shadow: 0 0 0 1px rgba(235, 70, 4, 0.12) !important;
         }
 
-        /* Avatar and Fallback */
-        #testimonials-3d-demo .testimonial-avatar {
-            border: 1px solid var(--accent) !important;
-            background: #181818 !important;
-            width: 36px !important;
-            height: 36px !important;
-            border-radius: 9999px !important;
-            overflow: hidden !important;
-        }
-
-        #testimonials-3d-demo .testimonial-avatar-fallback {
-            background: #181818 !important;
-            color: var(--accent) !important;
-            border: 1px solid rgba(235, 70, 4, 0.3) !important;
-            font-weight: 600 !important;
-            border-radius: 9999px !important;
+        /* Header: Founder Name in One Line + Brand Name */
+        #testimonials-3d-demo .testimonial-header {
+            display: flex !important;
+            align-items: baseline !important;
+            justify-content: space-between !important;
+            gap: 8px !important;
+            margin-bottom: 6px !important;
+            width: 100% !important;
         }
 
         #testimonials-3d-demo .testimonial-name {
             color: #f4f1ea !important;
             font-family: var(--font-sans) !important;
             font-weight: 600 !important;
-            font-size: 15px !important;
+            font-size: 13.5px !important;
             line-height: 1.25 !important;
+            white-space: nowrap !important;
+            overflow: hidden !important;
+            text-overflow: ellipsis !important;
+            letter-spacing: -0.01em !important;
+            margin: 0 !important;
         }
 
-        #testimonials-3d-demo .testimonial-country {
-            color: #99A57D !important;
-            font-family: var(--font-sans) !important;
+        #testimonials-3d-demo .testimonial-brand {
+            color: var(--accent, #eb4604) !important;
+            font-family: var(--font-mono) !important;
             font-size: 11px !important;
-            margin-left: 4px !important;
-        }
-
-        #testimonials-3d-demo .testimonial-username {
-            color: #888888 !important;
-            font-family: var(--font-sans) !important;
-            font-size: 11px !important;
-            margin-top: 1px !important;
+            font-weight: 600 !important;
+            letter-spacing: 0.04em !important;
+            white-space: nowrap !important;
+            flex-shrink: 0 !important;
+            opacity: 0.95 !important;
         }
 
         #testimonials-3d-demo .testimonial-body {
-            color: #f4f1ea !important;
+            color: #b5b5ba !important;
             font-family: var(--font-sans) !important;
-            font-size: 14px !important;
-            line-height: 1.5 !important;
+            font-size: 12px !important;
+            line-height: 1.45 !important;
             font-weight: 400 !important;
+            margin: 0 !important;
         }
 
         /* Gradient Edge Overlays mapping to existing black background */
@@ -4273,15 +4269,24 @@
             }
             #testimonials-3d-demo,
             .reviews-3d-column-wrap {
-                min-height: 480px !important;
-                height: 480px !important;
-                max-height: 480px !important;
+                min-height: 400px !important;
+                height: 420px !important;
+                max-height: 420px !important;
             }
             #testimonials-3d-demo .w-50,
             .reviews-3d-column-wrap .w-50 {
-                width: 160px !important;
-                min-width: 160px !important;
-                max-width: 160px !important;
+                width: 180px !important;
+                min-width: 180px !important;
+                max-width: 180px !important;
+            }
+            #testimonials-3d-demo .testimonial-name {
+                font-size: 12px !important;
+            }
+            #testimonials-3d-demo .testimonial-brand {
+                font-size: 10px !important;
+            }
+            #testimonials-3d-demo .testimonial-body {
+                font-size: 11px !important;
             }
         }
 
