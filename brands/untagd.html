@@ -25,8 +25,8 @@
         header { padding:24px 6%; max-width:1340px; margin:0 auto; display:flex; justify-content:space-between; align-items:center; position:relative; z-index:100; }
         .back-btn { display:inline-flex; align-items:center; gap:10px; padding:10px 24px; border:1px solid var(--border); background:var(--card); color:var(--text-muted); text-decoration:none; font-family:var(--font-sans); font-size:0.82rem; font-weight:600; letter-spacing:0.01em; transition:all 0.25s ease; }
         .back-btn:hover { color:#ffffff; border-color:var(--accent); background:#3a221b; }
-        .header-badge { display:flex; align-items:center; gap:8px; padding:8px 18px; background:var(--card); border:1px solid var(--border); font-family:var(--font-sans); font-size:0.76rem; color:var(--accent); font-weight:700; letter-spacing:0.02em; }
-        .header-badge span { width:7px; height:7px; background:var(--accent); display:inline-block; animation:pulse-dot 2s ease-in-out infinite; }
+        .header-badge { display:flex; align-items:center; gap:8px; padding:8px 18px; background:var(--card); border:1px solid var(--border); font-family:var(--font-sans); font-size:0.76rem; background: linear-gradient(135deg, #FFFFFF 0%, #FFB27A 45%, #EB4604 100%) !important; -webkit-background-clip: text !important; -webkit-text-fill-color: transparent !important; background-clip: text !important; font-weight:700; letter-spacing:0.02em; }
+        .header-badge span { display: none !important; }
         @keyframes pulse-dot { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:0.4;transform:scale(0.8)} }
         .hero { padding:60px 6% 40px; max-width:1340px; margin:0 auto; display:grid; grid-template-columns:1fr 1fr; gap:60px; align-items:center; position:relative; z-index:1; }
         .hero-left { position:relative; }
@@ -34,7 +34,7 @@
         .brand-logo-frame { width:76px; height:76px; border:1px solid var(--border); background:#000; padding:10px; display:flex; align-items:center; justify-content:center; margin-bottom:20px; }
         .brand-logo-frame img { width:100%; height:100%; object-fit:contain; }
         .hero-title { font-family:var(--font-serif); font-size:clamp(3rem,6.5vw,5.5rem); font-style:italic; font-weight:400; line-height:1.02; letter-spacing:-0.025em; color:#ffffff; margin-bottom:20px; }
-        .hero-title .grad { color:var(--accent); display:block; font-family:var(--font-sans); font-size:clamp(1.2rem,2.2vw,1.7rem); font-style:normal; font-weight:700; letter-spacing:-0.01em; margin-top:6px; }
+        .hero-title .grad { background: linear-gradient(135deg, #FFFFFF 0%, #FFB27A 45%, #EB4604 100%) !important; -webkit-background-clip: text !important; -webkit-text-fill-color: transparent !important; background-clip: text !important; display:block; font-family:var(--font-sans); font-size:clamp(1.2rem,2.2vw,1.7rem); font-style:normal; font-weight:700; letter-spacing:-0.01em; margin-top:6px; }
         .hero-tagline { font-size:1.05rem; color:var(--text-muted); line-height:1.75; margin-bottom:36px; max-width:540px; }
         .hero-meta-strip { display:grid; grid-template-columns:repeat(3,1fr); gap:14px; margin-top:24px; }
         .meta-box { background:var(--card); border:1px solid var(--border); padding:14px 16px; }
@@ -53,12 +53,12 @@
         .section-desc { font-size:1.05rem; color:var(--text-muted); max-width:720px; line-height:1.7; margin-bottom:40px; }
         .main-content { padding:20px 6% 60px; max-width:1340px; margin:0 auto; display:grid; grid-template-columns:1.25fr 0.75fr; gap:60px; }
         .case-study h2 { font-family:var(--font-serif); font-size:clamp(2rem,3vw,2.8rem); font-style:italic; font-weight:400; color:#ffffff; margin-bottom:18px; letter-spacing:-0.02em; }
-        .case-study h2 span { color:var(--accent); }
+        .case-study h2 span, .case-study h2 span, .section-title span { background: linear-gradient(135deg, #FFFFFF 0%, #FFB27A 45%, #EB4604 100%) !important; -webkit-background-clip: text !important; -webkit-text-fill-color: transparent !important; background-clip: text !important; display: inline-block; }
         .case-study p { font-size:1.02rem; color:#E4E4E7; line-height:1.75; margin-bottom:22px; }
         .highlight-block { background:var(--card); border-left:3px solid var(--accent); border-top:1px solid var(--border); border-right:1px solid var(--border); border-bottom:1px solid var(--border); padding:24px 28px; margin:32px 0; font-size:1.05rem; line-height:1.7; color:#ffffff; }
         .sidebar { display:flex; flex-direction:column; gap:24px; }
         .sidebar-card { background:var(--card); border:1px solid var(--border); padding:30px; }
-        .sidebar-card h3 { font-family:var(--font-sans); font-size:0.78rem; font-weight:700; color:var(--accent); letter-spacing:0.04em; margin-bottom:20px; padding-bottom:12px; border-bottom:1px solid rgba(255,255,255,0.08); }
+        .sidebar-card h3 { font-family:var(--font-sans); font-size:0.78rem; font-weight:700; background: linear-gradient(135deg, #FFFFFF 0%, #FFB27A 45%, #EB4604 100%) !important; -webkit-background-clip: text !important; -webkit-text-fill-color: transparent !important; background-clip: text !important; display: inline-block; letter-spacing:0.04em; margin-bottom:20px; padding-bottom:12px; border-bottom:1px solid rgba(255,255,255,0.08); }
         .task-list { list-style:none; display:flex; flex-direction:column; gap:12px; }
         .task-list li { font-size:0.9rem; color:#E4E4E7; display:flex; align-items:flex-start; gap:10px; line-height:1.5; }
         .task-list .check { color:var(--accent); font-weight:bold; flex-shrink:0; }
@@ -294,7 +294,6 @@
     <header>
         <a href="/#portfolio" class="back-btn" id="back-btn">Back to Portfolio</a>
         <div class="header-badge">
-            <span></span>
             Kuwait · Creative Studio
         </div>
     </header>

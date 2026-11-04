@@ -4344,3 +4344,39 @@ h1, h2, h3, h4, h5, h6,
             align-items: center !important;
             justify-content: center !important;
         }
+
+
+/* ─── Universal Title & Subtitle Linear Gradient (White to Orange/Peach) ─── */
+h1 span.grad,
+h1 .grad,
+.hero-title .grad,
+.hero-title span.grad,
+.hero-subtitle span,
+.case-study h2 span,
+.section-title span,
+h2 span,
+.sidebar-card h3,
+.event-card-title,
+.event-name span,
+.pp-section-title,
+.exp-title {
+    background: linear-gradient(135deg, #FFFFFF 0%, #FFB27A 45%, #EB4604 100%) !important;
+    -webkit-background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+    background-clip: text !important;
+    display: inline-block;
+}
+
+/* ─── Globally Remove All Blinking / Pulse Dots ─── */
+.header-badge span,
+.blinking-dot,
+.pulse-dot,
+.status-dot,
+.live-pulse-dot {
+    display: none !important;
+    opacity: 0 !important;
+    visibility: hidden !important;
+    animation: none !important;
+    width: 0 !important;
+    height: 0 !important;
+}
