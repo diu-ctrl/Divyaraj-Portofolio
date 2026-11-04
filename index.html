@@ -261,17 +261,19 @@
             // Smooth blur-in effect for Hero 3D Gallery images (on initial load and every return visit)
             (function initHeroBlurReveal() {
                 const scene = document.getElementById('hero-3d-scene');
-                const heroTrack = document.getElementById('hero');
                 if (!scene) return;
 
                 let revealRafId = null;
+                let isAwayFromHero = false;
+                let isRevealed = false;
 
                 function triggerBlurReveal() {
                     if (revealRafId) cancelAnimationFrame(revealRafId);
                     revealRafId = requestAnimationFrame(() => {
+                        scene.style.transition = 'opacity 1.6s cubic-bezier(0.22, 1, 0.36, 1), filter 1.8s cubic-bezier(0.22, 1, 0.36, 1)';
                         revealRafId = requestAnimationFrame(() => {
-                            scene.style.transition = '';
                             scene.classList.add('hero-revealed');
+                            isRevealed = true;
                             revealRafId = null;
                         });
                     });
@@ -284,39 +286,66 @@
                     }
                     scene.style.transition = 'none';
                     scene.classList.remove('hero-revealed');
-                    void scene.offsetHeight; // Force reflow
+                    isRevealed = false;
+                    void scene.offsetHeight; // Force synchronous reflow so blur(36px) takes effect instantly
                 }
 
-                // 1. Observe canvas additions/removals inside #hero-3d-scene (handles React mount/unmount)
+                // Global controller so handleScroll and Lenis trigger the blur-in whenever returning to hero
+                window.heroBlurController = {
+                    trigger: triggerBlurReveal,
+                    reset: resetBlurState,
+                    checkScroll: function(scrollTop) {
+                        const leaveThreshold = Math.max(window.innerHeight * 0.45, 380);
+                        const returnThreshold = 200;
+                        const hasCanvas = !!scene.querySelector('canvas');
+
+                        if (scrollTop > leaveThreshold) {
+                            if (!isAwayFromHero) {
+                                isAwayFromHero = true;
+                                resetBlurState();
+                            }
+                        } else if (scrollTop <= returnThreshold) {
+                            if (isAwayFromHero) {
+                                isAwayFromHero = false;
+                                if (hasCanvas && !isRevealed) {
+                                    triggerBlurReveal();
+                                }
+                            } else if (!isRevealed && hasCanvas) {
+                                triggerBlurReveal();
+                            }
+                        }
+                    },
+                    onCanvasMount: function() {
+                        const scrollTop = window.scrollY || window.pageYOffset || 0;
+                        const returnThreshold = 200;
+                        if (scrollTop <= returnThreshold) {
+                            isAwayFromHero = false;
+                            triggerBlurReveal();
+                        } else {
+                            // Canvas mounted while user is scrolled down; keep it primed & blurred
+                            isAwayFromHero = true;
+                            resetBlurState();
+                        }
+                    },
+                    onCanvasUnmount: function() {
+                        resetBlurState();
+                    }
+                };
+
+                // Observe canvas additions/removals inside #hero-3d-scene (handles React mount/unmount)
                 const mutObserver = new MutationObserver(() => {
                     const canvas = scene.querySelector('canvas');
                     if (canvas) {
-                        if (!scene.classList.contains('hero-revealed')) {
-                            triggerBlurReveal();
-                        }
+                        window.heroBlurController.onCanvasMount();
                     } else {
-                        resetBlurState();
+                        window.heroBlurController.onCanvasUnmount();
                     }
                 });
                 mutObserver.observe(scene, { childList: true, subtree: true });
 
-                // 2. Also observe #hero intersection so offscreen state resets cleanly before unmount
-                if (heroTrack && 'IntersectionObserver' in window) {
-                    const heroObserver = new IntersectionObserver((entries) => {
-                        entries.forEach(entry => {
-                            if (!entry.isIntersecting) {
-                                resetBlurState();
-                            } else if (scene.querySelector('canvas') && !scene.classList.contains('hero-revealed')) {
-                                triggerBlurReveal();
-                            }
-                        });
-                    }, { threshold: 0.05 });
-                    heroObserver.observe(heroTrack);
-                }
-
                 // Initial check if canvas is already present
                 if (scene.querySelector('canvas')) {
-                    triggerBlurReveal();
+                    window.heroBlurController.onCanvasMount();
                 }
             })();
             </script>
@@ -1213,6 +1242,11 @@
                 if (galleryContainer) {
                     galleryContainer.style.opacity = opacity;
                     galleryContainer.style.visibility = progress >= 1 ? 'hidden' : 'visible';
+                }
+
+                // Coordinate hero 3D gallery blur-in animation on return visits
+                if (window.heroBlurController) {
+                    window.heroBlurController.checkScroll(scrollTop);
                 }
             }
 
@@ -2799,10 +2833,14 @@
                     }
                 });
                 backToTopBtn.addEventListener('click', () => {
-                    window.scrollTo({
-                        top: 0,
-                        behavior: 'smooth'
-                    });
+                    if (window.__lenis) {
+                        window.__lenis.scrollTo(0, { duration: 1.2 });
+                    } else {
+                        window.scrollTo({
+                            top: 0,
+                            behavior: 'smooth'
+                        });
+                    }
                 });
             }
         })();
@@ -2828,6 +2866,14 @@
             requestAnimationFrame(raf);
         }
         requestAnimationFrame(raf);
+
+        // Keep hero blur controller updated during smooth wheel scrolling
+        lenis.on('scroll', () => {
+            const scrollTop = window.scrollY || window.pageYOffset || 0;
+            if (window.heroBlurController) {
+                window.heroBlurController.checkScroll(scrollTop);
+            }
+        });
 
         // Selected Web Work Pinned Vertical Scroll System
         const track = document.getElementById('web-showcase');
