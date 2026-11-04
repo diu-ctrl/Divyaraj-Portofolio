@@ -1280,6 +1280,24 @@ select {
     border-radius: 16px !important;
 }
 
+/* Editorial Inset Vertical Accent Rule for Highlight Blocks & Callouts (replaces curved outer border-left) */
+.highlight-block {
+    position: relative !important;
+    border-left: 1px solid var(--border, rgba(255, 255, 255, 0.08)) !important;
+}
+
+.highlight-block::before {
+    content: '' !important;
+    position: absolute !important;
+    left: 24px !important;
+    top: 22px !important;
+    bottom: 22px !important;
+    width: 2px !important;
+    background: var(--brand-accent, var(--brand-color, var(--accent, #EB4604))) !important;
+    border-radius: 2px !important;
+    pointer-events: none !important;
+}
+
 /* Meta Boxes, Stat Modules & Compact Card Items (14px) */
 .event-meta-item,
 .meta-box,

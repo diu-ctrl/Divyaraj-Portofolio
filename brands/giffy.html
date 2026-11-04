@@ -299,17 +299,29 @@
         }
         .case-study p strong { color: #fff; }
 
-        .highlight-block {
+        .highlight-block {    position: relative;
+
             background: var(--giffy-surface);
             border: 1px solid var(--giffy-border);
-            border-left: 3px solid var(--giffy-amber);
+            
             border-radius: 12px;
-            padding: 20px 24px;
+            padding: 24px 28px 24px 54px;
             margin: 28px 0;
             font-size: 1.05rem;
             color: var(--text-muted);
             line-height: 1.7;
             font-style: italic;
+        }
+        .highlight-block::before {
+            content: '';
+            position: absolute;
+            left: 24px;
+            top: 22px;
+            bottom: 22px;
+            width: 2px;
+            background: var(--giffy-amber);
+            border-radius: 2px;
+            pointer-events: none;
         }
         .highlight-block strong { color: var(--giffy-light); }
 
