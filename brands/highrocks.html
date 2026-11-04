@@ -638,13 +638,204 @@
             }
         }
 
-        /* ─── No-Video Hero Layout Style ─── */
-        .hero.no-video {
-            grid-template-columns: 1fr !important;
-            max-width: 900px !important;
+        /* ─── Hero with Analytics Layout ─── */
+        .hero.hero-with-analytics {
+            display: grid !important;
+            grid-template-columns: 1.25fr 0.75fr !important;
+            gap: 60px !important;
+            align-items: center !important;
+            max-width: 1300px !important;
+            margin: 0 auto !important;
+            padding: 40px 6% 40px !important;
+            min-height: auto !important;
+            box-sizing: border-box !important;
         }
-        .hero.no-video .hero-left {
-            max-width: 100% !important;
+
+        .hero.hero-with-analytics .hero-left {
+            max-width: 680px !important;
+            width: 100% !important;
+            justify-self: start !important;
+        }
+
+        .hero.hero-with-analytics .brand-intro {
+            display: flex !important;
+            flex-direction: row !important;
+            flex-wrap: nowrap !important;
+            align-items: center !important;
+            gap: 24px !important;
+            margin-bottom: 22px !important;
+        }
+
+        .hero.hero-with-analytics .brand-logo-frame {
+            width: 90px !important;
+            height: 90px !important;
+            flex-shrink: 0 !important;
+            border-radius: 18px !important;
+            border: 1px solid var(--border) !important;
+            background: rgba(255, 255, 255, 0.02) !important;
+            overflow: hidden !important;
+        }
+
+        .hero.hero-with-analytics .brand-logo-frame img {
+            width: 100% !important;
+            height: 100% !important;
+            object-fit: cover !important;
+        }
+
+        .hero.hero-with-analytics h1 {
+            font-size: clamp(3.2rem, 6.5vw, 5.2rem) !important;
+            font-family: var(--font-serif) !important;
+            font-style: italic !important;
+            letter-spacing: -0.02em !important;
+            font-weight: 400 !important;
+            line-height: 1.05 !important;
+            margin: 0 !important;
+            color: #FFFFFF !important;
+        }
+
+        .hero.hero-with-analytics .hero-sub {
+            font-size: 1.05rem !important;
+            line-height: 1.8 !important;
+            color: var(--text-muted) !important;
+            max-width: 640px !important;
+            margin-top: 14px !important;
+        }
+
+        .hero-analytics-right {
+            display: flex !important;
+            justify-content: flex-end !important;
+            align-items: center !important;
+            width: 100% !important;
+        }
+
+        .analytics-tab-container {
+            display: flex !important;
+            flex-direction: column !important;
+            align-items: flex-start !important;
+            width: 100% !important;
+            max-width: 420px !important;
+        }
+
+        .analytics-tab-container .section-label {
+            margin-bottom: 14px !important;
+            padding: 6px 14px !important;
+            font-size: 0.72rem !important;
+            font-weight: 700 !important;
+            letter-spacing: 0.1em !important;
+            color: #EB4604 !important;
+            background: rgba(235, 70, 4, 0.08) !important;
+            border: 1px solid rgba(235, 70, 4, 0.22) !important;
+            border-radius: 100px !important;
+            align-self: flex-start !important;
+        }
+
+        .analytics-tab-container .analytics-card {
+            width: 100% !important;
+            max-width: 420px !important;
+            padding: 24px 26px !important;
+            border-radius: 20px !important;
+            background: rgba(40, 39, 35, 0.75) !important;
+            border: 1px solid rgba(255, 255, 255, 0.08) !important;
+            box-shadow: 0 16px 48px rgba(0, 0, 0, 0.7), 0 0 24px 1px rgba(0, 0, 0, 0.5) !important;
+            box-sizing: border-box !important;
+            backdrop-filter: blur(20px) !important;
+            -webkit-backdrop-filter: blur(20px) !important;
+        }
+
+        .analytics-tab-container .analytics-card-header {
+            margin-bottom: 18px !important;
+            gap: 12px !important;
+        }
+
+        .analytics-tab-container .platform-icon-styled {
+            width: 40px !important;
+            height: 40px !important;
+            border-radius: 12px !important;
+            background: rgba(255, 255, 255, 0.05) !important;
+            border: 1px solid rgba(255, 255, 255, 0.1) !important;
+        }
+
+        .analytics-tab-container .analytics-card-header h3 {
+            font-size: 1.02rem !important;
+            font-weight: 700 !important;
+            color: #fff !important;
+            margin: 0 !important;
+        }
+
+        .analytics-tab-container .analytics-card-header .period {
+            font-size: 0.74rem !important;
+            color: var(--text-muted) !important;
+            margin-top: 2px !important;
+        }
+
+        .analytics-tab-container .analytics-row {
+            padding: 9px 0 !important;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.06) !important;
+        }
+
+        .analytics-tab-container .analytics-row-label {
+            font-size: 0.82rem !important;
+            color: var(--text-muted) !important;
+        }
+
+        .analytics-tab-container .analytics-num {
+            font-size: 1.02rem !important;
+            font-weight: 800 !important;
+            color: #FFFFFF !important;
+        }
+
+        .analytics-tab-container .analytics-grow {
+            font-size: 0.72rem !important;
+            font-weight: 700 !important;
+        }
+
+        .analytics-tab-container .bar-chart {
+            margin-top: 16px !important;
+            gap: 8px !important;
+        }
+
+        .analytics-tab-container .bar-row-label {
+            font-size: 0.76rem !important;
+            width: 90px !important;
+        }
+
+        .analytics-tab-container .bar-track {
+            height: 6px !important;
+            background: rgba(255, 255, 255, 0.06) !important;
+            border-radius: 100px !important;
+        }
+
+        .analytics-tab-container .bar-fill {
+            height: 100% !important;
+            background: #EB4604 !important;
+            border-radius: 100px !important;
+        }
+
+        /* Spacing justification across page */
+        .main-content {
+            padding: 30px 6% 64px !important;
+            border-top: 1px solid rgba(255, 255, 255, 0.06) !important;
+            margin-top: 20px !important;
+        }
+
+        @media (max-width: 960px) {
+            .hero.hero-with-analytics {
+                grid-template-columns: 1fr !important;
+                gap: 36px !important;
+                padding-top: 30px !important;
+            }
+            .hero.hero-with-analytics .brand-intro {
+                flex-wrap: wrap !important;
+            }
+            .hero-analytics-right {
+                justify-content: flex-start !important;
+            }
+            .analytics-tab-container {
+                max-width: 100% !important;
+            }
+            .analytics-tab-container .analytics-card {
+                max-width: 100% !important;
+            }
         }
 
 
@@ -835,81 +1026,78 @@
 
     <main>
         <!-- Hero -->
-        <section class="hero no-video">
+        <section class="hero hero-with-analytics reveal">
             <div class="hero-left">
-                <div class="brand-intro ">
-                <div class="brand-logo-frame">
-                    <img src="../images/Logos of the brands/highrocks.jpg" alt="Highrocks Logo">
-                </div>
-                <div>
-                    <div style="display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 16px; align-items: center;">
-                        <div class="brand-eyebrow">Oct 2025 — Aug 2026 · Product & Brand</div>
-                        <div class="credes-badge-pill" style="display: inline-flex; align-items: center; padding: 6px 14px; border-radius: 100px; background: rgba(139, 92, 246, 0.08); border: 1px solid rgba(139, 92, 246, 0.2); font-size: 0.72rem; font-weight: 700; color: #a78bfa; letter-spacing: 0.05em;">Credes Techlabs Campaign</div>
+                <div class="brand-intro">
+                    <div class="brand-logo-frame">
+                        <img src="../images/Logos of the brands/highrocks.jpg" alt="Highrocks Logo">
                     </div>
-                    <h1>Highrocks</h1>
+                    <div>
+                        <div style="display: flex; gap: 10px; flex-wrap: nowrap; margin-bottom: 16px; align-items: center;">
+                            <div class="brand-eyebrow">Oct 2025 — Aug 2026 · Product & Brand</div>
+                            <div class="credes-badge-pill" style="display: inline-flex; align-items: center; padding: 6px 14px; border-radius: 100px; background: rgba(139, 92, 246, 0.08); border: 1px solid rgba(139, 92, 246, 0.2); font-size: 0.72rem; font-weight: 700; color: #a78bfa; letter-spacing: 0.05em;">Credes Techlabs Campaign</div>
+                        </div>
+                        <h1>Highrocks</h1>
+                    </div>
                 </div>
+                <p class="hero-sub">Orchestrated the complete social media marketing, visual data design, and community growth strategy for HighRocks. Translated complex athletic pacing analytics and race metrics into highly shareable, platform-native content across Instagram, Facebook, and Threads to capture the attention of fitness competitors.</p>
             </div>
-                <p class="hero-sub ">Orchestrated the complete social media marketing, visual data design, and community growth strategy for HighRocks. Translated complex athletic pacing analytics and race metrics into highly shareable, platform-native content across Instagram, Facebook, and Threads to capture the attention of fitness competitors.</p>
-            </div>
-            </section>
 
-        <!-- SMM Performance Cards -->
-        <section class="analytics-section">
-            <div class="section-label reveal">Monthly Performance Summary</div>
-            <div class="analytics-grid" style="display: flex; justify-content: center;">
-
-                <!-- Instagram & Threads Performance -->
-                <div class="analytics-card reveal" style="max-width: 480px; width: 100%;">
-                    <div class="analytics-card-header">
-                        <div class="platform-icon-styled insta-styled">
-                            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <rect x="2" y="2" width="20" height="20" rx="6" stroke="white" stroke-width="1.8"/>
-                                <circle cx="12" cy="12" r="4.5" stroke="white" stroke-width="1.8"/>
-                                <circle cx="17.5" cy="6.5" r="1" fill="white"/>
-                            </svg>
-                        </div>
-                        <div>
-                            <h3>Social Media Performance</h3>
-                            <div class="period">Instagram, Facebook, &amp; Threads</div>
-                        </div>
-                    </div>
-                    <div class="analytics-stats">
-                        <div class="analytics-row">
-                            <span class="analytics-row-label">Pacing Reels Views</span>
-                            <div class="analytics-row-val">
-                                <span class="analytics-num">520K+</span>
-                                <span class="analytics-grow">↑ 340%</span>
+            <!-- Right Column: Monthly Performance Summary Tab -->
+            <div class="hero-analytics-right">
+                <div class="analytics-tab-container">
+                    <div class="section-label">Monthly Performance Summary</div>
+                    <div class="analytics-card">
+                        <div class="analytics-card-header">
+                            <div class="platform-icon-styled insta-styled">
+                                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <rect x="2" y="2" width="20" height="20" rx="6" stroke="white" stroke-width="1.8"/>
+                                    <circle cx="12" cy="12" r="4.5" stroke="white" stroke-width="1.8"/>
+                                    <circle cx="17.5" cy="6.5" r="1" fill="white"/>
+                                </svg>
+                            </div>
+                            <div>
+                                <h3>Social Media Performance</h3>
+                                <div class="period">Instagram, Facebook, &amp; Threads</div>
                             </div>
                         </div>
-                        <div class="analytics-row">
-                            <span class="analytics-row-label">Profile Interactions</span>
-                            <div class="analytics-row-val">
-                                <span class="analytics-num">190K+</span>
-                                <span class="analytics-grow">↑ 280%</span>
+                        <div class="analytics-stats">
+                            <div class="analytics-row">
+                                <span class="analytics-row-label">Pacing Reels Views</span>
+                                <div class="analytics-row-val">
+                                    <span class="analytics-num">520K+</span>
+                                    <span class="analytics-grow">↑ 340%</span>
+                                </div>
+                            </div>
+                            <div class="analytics-row">
+                                <span class="analytics-row-label">Profile Interactions</span>
+                                <div class="analytics-row-val">
+                                    <span class="analytics-num">190K+</span>
+                                    <span class="analytics-grow">↑ 280%</span>
+                                </div>
+                            </div>
+                            <div class="analytics-row">
+                                <span class="analytics-row-label">Athlete Link Clicks</span>
+                                <div class="analytics-row-val">
+                                    <span class="analytics-num">+14K</span>
+                                    <span class="analytics-grow">↑ 210%</span>
+                                </div>
                             </div>
                         </div>
-                        <div class="analytics-row">
-                            <span class="analytics-row-label">Athlete Link Clicks</span>
-                            <div class="analytics-row-val">
-                                <span class="analytics-num">+14K</span>
-                                <span class="analytics-grow">↑ 210%</span>
+                        <div class="bar-chart">
+                            <div class="bar-row">
+                                <span class="bar-row-label">Pacing Reels Views</span>
+                                <div class="bar-track"><div class="bar-fill pink" style="width:100%"></div></div>
+                                <span class="bar-num">520K+</span>
                             </div>
-                        </div>
-                    </div>
-                    <div class="bar-chart">
-                        <div class="bar-row">
-                            <span class="bar-row-label">Pacing Reels Views</span>
-                            <div class="bar-track"><div class="bar-fill pink" style="width:100%"></div></div>
-                            <span class="bar-num">520K+</span>
-                        </div>
-                        <div class="bar-row">
-                            <span class="bar-row-label">Profile Interactions</span>
-                            <div class="bar-track"><div class="bar-fill pink" style="width:25%"></div></div>
-                            <span class="bar-num">190K+</span>
+                            <div class="bar-row">
+                                <span class="bar-row-label">Profile Interactions</span>
+                                <div class="bar-track"><div class="bar-fill pink" style="width:25%"></div></div>
+                                <span class="bar-num">190K+</span>
+                            </div>
                         </div>
                     </div>
                 </div>
-
             </div>
         </section>
 
