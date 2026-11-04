@@ -1692,7 +1692,7 @@
         /* ─── Brutalist Contact Block ─── */
         /* ─── Full-width Smoky Black Contact Section ─── */
         .cta-section {
-            padding: 80px 6% !important;
+            padding: clamp(24px, 3.5vh, 40px) 6% !important;
             width: 100vw;
             max-width: none !important;
             background: #0A0A0A;
@@ -1702,6 +1702,11 @@
             position: relative;
             z-index: 10;
             overflow: hidden !important;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            box-sizing: border-box;
         }
 
         .cta-section > *:not(canvas) {
@@ -1722,35 +1727,47 @@
         .brutalist-contact-block {
             text-align: left;
             display: grid;
-            grid-template-columns: 1.15fr 0.85fr;
+            grid-template-columns: 1.18fr 0.82fr;
             align-items: center !important;
-            gap: 50px;
-            padding: 40px 0 20px 0 !important;
+            gap: 32px;
+            padding: 0 !important;
             background: transparent;
             border: none;
-            max-width: 1200px;
+            max-width: 1100px;
+            width: 100%;
             margin: 0 auto;
+            box-sizing: border-box;
         }
 
         .contact-info-left {
             display: flex;
             flex-direction: column;
             align-items: flex-start;
-            gap: 28px;
+            gap: 16px !important;
             width: 100%;
             background: rgba(10, 10, 10, 0.72);
             backdrop-filter: blur(20px);
             -webkit-backdrop-filter: blur(20px);
             border: 1px solid rgba(255, 255, 255, 0.08);
-            border-radius: 24px;
-            padding: 36px 40px;
+            border-radius: 20px;
+            padding: 22px 28px !important;
             box-shadow: 0 20px 60px rgba(0, 0, 0, 0.85), 0 0 35px 2px rgba(0, 0, 0, 0.7);
             position: relative;
             z-index: 2;
+            box-sizing: border-box;
         }
 
         .contact-headline {
             text-shadow: 0 4px 24px rgba(0, 0, 0, 0.95);
+            font-family: var(--font-serif) !important;
+            font-size: clamp(1.8rem, 2.7vw, 2.7rem) !important;
+            font-style: italic !important;
+            font-weight: 400 !important;
+            letter-spacing: -0.02em;
+            color: var(--text);
+            margin: 0;
+            line-height: 1.12 !important;
+            text-align: left;
         }
 
         .contact-video-right {
@@ -1762,11 +1779,11 @@
 
         .portrait-video-wrapper {
             width: 100%;
-            max-width: 250px !important;
+            max-width: 155px !important;
             aspect-ratio: 9/16;
             background: #000000;
             border: 1px solid rgba(255, 255, 255, 0.12);
-            border-radius: 18px !important;
+            border-radius: 16px !important;
             overflow: hidden !important;
             position: relative;
             box-shadow: 0 20px 60px rgba(0, 0, 0, 0.9), 0 0 35px 2px rgba(0, 0, 0, 0.7);
@@ -1781,21 +1798,9 @@
             display: block;
         }
 
-        .contact-headline {
-            font-family: var(--font-serif) !important;
-            font-size: clamp(2.5rem, 6vw, 5rem) !important;
-            font-style: italic !important;
-            font-weight: 400 !important;
-            letter-spacing: -0.02em;
-            color: var(--text);
-            margin: 0;
-            line-height: 1.1 !important;
-            text-align: left;
-        }
-
         .contact-buttons {
             display: flex;
-            gap: 20px;
+            gap: 12px;
             flex-wrap: wrap;
             justify-content: flex-start;
             align-items: center;
@@ -1847,18 +1852,18 @@
         /* ─── Social Icon Buttons Row ─── */
         .contact-social-row {
             display: flex;
-            gap: 12px;
+            gap: 10px;
             flex-wrap: wrap;
             align-items: center;
-            margin-top: 10px;
+            margin-top: 2px !important;
         }
 
         .social-icon-btn {
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            width: 46px;
-            height: 46px;
+            width: 38px !important;
+            height: 38px !important;
             border: 1px solid rgba(255,255,255,0.18);
             border-radius: var(--r-pill, 999px) !important;
             background: transparent;
@@ -1870,8 +1875,8 @@
         }
 
         .social-icon-btn svg {
-            width: 20px;
-            height: 20px;
+            width: 17px !important;
+            height: 17px !important;
             flex-shrink: 0;
         }
 
@@ -1899,16 +1904,16 @@
         .social-mail-btn {
             display: inline-flex;
             align-items: center;
-            gap: 8px;
-            height: 46px;
-            padding: 0 22px !important;
+            gap: 7px;
+            height: 38px !important;
+            padding: 0 16px !important;
             border: 1px solid rgba(255,255,255,0.18);
             border-radius: var(--r-pill, 999px) !important;
             background: transparent;
             color: #ffffff;
             text-decoration: none;
             font-family: var(--font-sans) !important;
-            font-size: 13px !important;
+            font-size: 12px !important;
             font-weight: 600 !important;
             letter-spacing: 0.02em !important;
             transition: background 0.25s ease, border-color 0.25s ease, color 0.25s ease;
@@ -1917,8 +1922,8 @@
         }
 
         .social-mail-btn svg {
-            width: 16px;
-            height: 16px;
+            width: 14px !important;
+            height: 14px !important;
             flex-shrink: 0;
         }
 
@@ -1941,41 +1946,42 @@
             text-align: left;
             color: #A1A1AA !important;
             font-family: var(--font-sans) !important;
-            font-size: 12px !important;
+            font-size: 11px !important;
             font-weight: 500 !important;
             letter-spacing: 0.02em !important;
-            margin-top: 24px !important;
-            margin-bottom: 0px;
-            line-height: 1.6;
+            margin-top: 14px !important;
+            margin-bottom: 0px !important;
+            line-height: 1.45;
             border: 1px solid rgba(255, 255, 255, 0.06);
-            border-radius: 14px;
-            background: rgba(10, 10, 10, 0.55);
+            border-radius: 12px;
+            background: rgba(10, 10, 10, 0.85);
             backdrop-filter: blur(16px);
             -webkit-backdrop-filter: blur(16px);
-            padding: 14px 24px !important;
+            padding: 8px 20px !important;
             width: 100%;
-            max-width: 1200px;
+            max-width: 1100px;
             margin-left: auto;
             margin-right: auto;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7), 0 0 20px rgba(0, 0, 0, 0.5);
             text-shadow: 0 2px 10px rgba(0, 0, 0, 0.9);
+            box-sizing: border-box;
         }
 
         .refresh-date {
             font-family: var(--font-sans) !important;
-            font-size: 11px !important;
+            font-size: 10px !important;
             font-weight: 500 !important;
             color: #A1A1AA !important;
-            margin-top: 6px;
+            margin-top: 2px !important;
             letter-spacing: 0.02em;
             opacity: 0.5;
         }
 
         /* ─── Dither Card Section ─── */
         .dither-card-section {
-            padding: 40px 0 0 0 !important;
+            padding: 14px 0 0 0 !important;
             width: 100%;
-            max-width: 1200px;
+            max-width: 1100px;
             margin: 0 auto !important;
             transform: none !important;
             display: flex;
@@ -1985,16 +1991,17 @@
             background-color: transparent !important;
             position: relative !important;
             z-index: 10 !important;
+            box-sizing: border-box;
         }
 
         body .dither-card-container {
             position: relative;
             width: 100% !important;
-            max-width: 1200px !important;
-            height: 360px;
+            max-width: 1100px !important;
+            height: 200px !important;
             background: rgba(0, 0, 0, 0.88);
             border: 1px solid rgba(255, 255, 255, 0.12) !important;
-            border-radius: 24px !important;
+            border-radius: 18px !important;
             overflow: hidden;
             display: flex;
             align-items: center;
@@ -2003,6 +2010,7 @@
             box-shadow: 0 25px 70px rgba(0, 0, 0, 0.95), 0 0 40px 4px rgba(0, 0, 0, 0.8);
             backdrop-filter: blur(20px);
             -webkit-backdrop-filter: blur(20px);
+            box-sizing: border-box;
         }
 
         .dither-banner-canvas {
@@ -3125,11 +3133,11 @@
 
         .slide-button-track {
             position: relative;
-            width: 280px;
-            height: 56px;
+            width: 210px !important;
+            height: 46px !important;
             background: #282723;
             border: 1px solid var(--border);
-            border-radius: 28px !important; /* Force rounded capsule layout */
+            border-radius: 23px !important; /* Force rounded capsule layout */
             display: flex;
             align-items: center;
             justify-content: center;
@@ -4281,3 +4289,11 @@ h1, h2, h3, h4, h5, h6,
 .event-card-title, .service-title {
     text-transform: none !important;
 }
+
+        .contact-buttons .btn-brutalist-outline {
+            height: 46px !important;
+            min-height: 46px !important;
+            padding: 0 24px !important;
+            font-size: 13px !important;
+            border-radius: 23px !important;
+        }
