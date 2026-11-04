@@ -1380,3 +1380,161 @@ select {
 .section-label {
     text-transform: none !important;
 }
+
+
+/* ==========================================================================
+   CANONICAL BRAND FOOTER NAVIGATION (SATTVIK STANDARD — ALL BRAND SUBPAGES)
+   ========================================================================== */
+.brand-nav-bar {
+    background: rgba(8, 10, 20, 0.97) !important;
+    border-top: 1px solid rgba(255, 255, 255, 0.06) !important;
+    padding: 40px 5% 52px !important;
+    position: relative !important;
+    z-index: 10 !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+}
+
+.brand-nav-inner {
+    max-width: 1240px !important;
+    margin: 0 auto !important;
+}
+
+.brand-nav-label {
+    text-align: center !important;
+    font-size: 0.68rem !important;
+    font-weight: 700 !important;
+    letter-spacing: 0.18em !important;
+    color: rgba(255, 255, 255, 0.35) !important;
+    margin-bottom: 28px !important;
+    text-transform: uppercase !important;
+    font-family: var(--font-sans) !important;
+}
+
+.brand-nav-grid {
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    gap: 24px !important;
+    flex-wrap: nowrap !important;
+}
+
+.brand-nav-group {
+    display: grid !important;
+    grid-template-columns: repeat(3, 1fr) !important;
+    gap: 12px !important;
+    flex: 1 !important;
+    max-width: 520px !important;
+}
+
+.brand-nav-divider {
+    width: 1px !important;
+    height: 84px !important;
+    background: rgba(255, 255, 255, 0.12) !important;
+    flex-shrink: 0 !important;
+}
+
+.brand-nav-btn {
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 9px !important;
+    padding: 9px 18px 9px 10px !important;
+    border-radius: 100px !important;
+    border: 1px solid rgba(255, 255, 255, 0.08) !important;
+    background: rgba(255, 255, 255, 0.04) !important;
+    color: rgba(255, 255, 255, 0.7) !important;
+    font-size: 0.8rem !important;
+    font-weight: 600 !important;
+    text-decoration: none !important;
+    transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1) !important;
+    white-space: nowrap !important;
+    min-height: 44px !important;
+    box-sizing: border-box !important;
+    font-family: var(--font-sans) !important;
+}
+
+.brand-nav-btn:hover {
+    border-color: rgba(235, 70, 4, 0.45) !important;
+    background: rgba(235, 70, 4, 0.12) !important;
+    color: #FFFFFF !important;
+}
+
+.brand-nav-btn.active-brand {
+    border-color: rgba(235, 70, 4, 0.5) !important;
+    background: rgba(235, 70, 4, 0.16) !important;
+    color: #EB4604 !important;
+    pointer-events: none !important;
+}
+
+.brand-nav-btn .bnb-logo {
+    width: 26px !important;
+    height: 26px !important;
+    border-radius: 50% !important;
+    object-fit: cover !important;
+    flex-shrink: 0 !important;
+    border: 1px solid rgba(255, 255, 255, 0.12) !important;
+}
+
+.brand-nav-btn.dc-home {
+    width: 64px !important;
+    height: 64px !important;
+    border-radius: 50% !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    background: rgba(235, 70, 4, 0.15) !important;
+    border: 2px solid rgba(235, 70, 4, 0.35) !important;
+    color: #EB4604 !important;
+    padding: 0 !important;
+    flex-shrink: 0 !important;
+    min-height: unset !important;
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+.brand-nav-btn.dc-home:hover {
+    background: rgba(235, 70, 4, 0.28) !important;
+    border-color: rgba(235, 70, 4, 0.7) !important;
+    color: #FFFFFF !important;
+    transform: scale(1.08) !important;
+}
+
+.brand-nav-btn.dc-home img {
+    width: 28px !important;
+    height: 28px !important;
+}
+
+@media (max-width: 1150px) {
+    .brand-nav-grid {
+        flex-direction: column !important;
+        gap: 20px !important;
+    }
+    .brand-nav-divider {
+        display: none !important;
+    }
+    .brand-nav-group {
+        max-width: 500px !important;
+        width: 100% !important;
+    }
+}
+
+@media (max-width: 640px) {
+    .brand-nav-group {
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 8px !important;
+    }
+    .brand-nav-btn {
+        font-size: 0.72rem !important;
+        padding: 7px 14px 7px 8px !important;
+        gap: 7px !important;
+    }
+    .brand-nav-btn .bnb-logo {
+        width: 22px !important;
+        height: 22px !important;
+    }
+}
+
+@media (max-width: 480px) {
+    .brand-nav-group {
+        grid-template-columns: 1fr !important;
+    }
+}
