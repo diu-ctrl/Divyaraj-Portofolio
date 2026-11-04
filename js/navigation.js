@@ -17,8 +17,9 @@
 
     // Detect current page
     const pathname = window.location.pathname;
-    const filename = pathname.split('/').pop().toLowerCase() || 'index.html';
-    const isAboutPage = filename === 'about.html' || filename === 'about';
+    const cleanPath = pathname.replace(/^\/+|\/+$/g, '').toLowerCase();
+    const isHomePage = cleanPath === '' || cleanPath === 'index.html' || cleanPath === 'index';
+    const isAboutPage = cleanPath === 'about' || cleanPath === 'about.html';
 
     const isMobile = () => window.innerWidth < 768;
 
@@ -214,6 +215,11 @@
     const contactSection = document.getElementById('contact');
 
     function scrollSpy() {
+        if (!isHomePage && !isAboutPage) {
+            navItems.forEach((item) => item.classList.remove('active'));
+            return;
+        }
+
         const scrollPos = window.scrollY + window.innerHeight / 3;
         let activeIndex = isAboutPage ? 0 : 1;
 
@@ -259,21 +265,26 @@
 
         item.addEventListener('click', (e) => {
             if (targetAttr === 'contact' || href === '#contact') {
-                e.preventDefault();
-                if (!isMobile()) closeDrawer(); // Do NOT close on mobile when tapping item
                 const contactEl = document.getElementById('contact');
                 if (contactEl) {
+                    e.preventDefault();
+                    if (!isMobile()) closeDrawer();
                     contactEl.scrollIntoView({ behavior: 'smooth' });
                     history.pushState(null, null, '#contact');
+                } else {
+                    if (!isMobile()) closeDrawer();
+                    window.location.href = '/#contact';
                 }
             } else if (targetAttr === 'work') {
-                if (!isAboutPage) {
+                if (isHomePage) {
                     e.preventDefault();
                     if (!isMobile()) closeDrawer();
                     window.scrollTo({ top: 0, behavior: 'smooth' });
                     history.pushState(null, null, '#hero');
                 } else {
                     if (!isMobile()) closeDrawer();
+                    // Explicitly redirect to divyarajchauhan.in
+                    window.location.href = '/';
                 }
             } else if (targetAttr === 'about') {
                 if (isAboutPage) {
@@ -283,6 +294,7 @@
                     history.pushState(null, null, '#hero');
                 } else {
                     if (!isMobile()) closeDrawer();
+                    window.location.href = '/about';
                 }
             }
         });
