@@ -36,7 +36,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital,wght@0,400;1,400&family=Inter+Tight:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="/css/tokens.css?v=20261105g">
+    <link rel="stylesheet" href="/css/tokens.css?v=20261105i">
     <style>
         * {
             margin: 0;
@@ -709,10 +709,10 @@
         }
         .hero.hero-with-channels .brand-intro {
             display: flex !important;
-            flex-direction: column !important;
-            align-items: flex-start !important;
-            gap: 16px !important;
-            margin-bottom: 20px !important;
+            flex-direction: row !important;
+            align-items: center !important;
+            gap: 24px !important;
+            margin-bottom: 24px !important;
             width: 100% !important;
             text-align: left !important;
         }
@@ -734,9 +734,11 @@
         }
         .hero.hero-with-channels .hero-eyebrow {
             display: inline-flex !important;
+            width: fit-content !important;
+            align-self: flex-start !important;
             align-items: center !important;
             gap: 10px !important;
-            margin-bottom: 0 !important;
+            margin-bottom: 24px !important;
         }
         .hero.hero-with-channels h1 {
             
@@ -1198,16 +1200,16 @@
         <!-- Hero -->
         <section class="hero hero-with-channels">
             <div class="hero-left">
+                <div class="hero-eyebrow">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="10"/>
+                        <path d="M8.56 2.75c4.37 6.03 6.02 9.42 8.03 17.72m2.54-15.38c-3.72 4.35-8.94 5.66-16.88 5.85m19.5 1.9c-3.5-.93-6.63-.82-8.94 0-2.58.92-5.01 2.86-7.44 6.32"/>
+                    </svg>
+                    <span>Nov 2025 — Dec 2025 · Healthcare SMM</span>
+                </div>
                 <div class="brand-intro">
                     <div class="brand-logo-frame">
                         <img src="../images/brand-icons/white horse.jpg" alt="White Horse Logo">
-                    </div>
-                    <div class="hero-eyebrow">
-                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                            <circle cx="12" cy="12" r="10"/>
-                            <path d="M8.56 2.75c4.37 6.03 6.02 9.42 8.03 17.72m2.54-15.38c-3.72 4.35-8.94 5.66-16.88 5.85m19.5 1.9c-3.5-.93-6.63-.82-8.94 0-2.58.92-5.01 2.86-7.44 6.32"/>
-                        </svg>
-                        <span>Nov 2025 — Dec 2025 · Healthcare SMM</span>
                     </div>
                     <h1>White Horse<br>Media Solution</h1>
                 </div>
