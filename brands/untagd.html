@@ -247,6 +247,38 @@
             color: transparent !important;
         }
 
+
+        /* === UNIVERSAL ORANGE CAPSULE TAGS === */
+        .tags, .service-tags {
+            display: flex !important;
+            flex-wrap: wrap !important;
+            gap: 8px !important;
+            margin-top: 18px !important;
+        }
+
+        .tag, .service-tag, .work-card-tag {
+            font-size: 0.72rem !important;
+            font-weight: 600 !important;
+            padding: 5px 12px !important;
+            border-radius: 9999px !important;
+            background: rgba(235, 70, 4, 0.12) !important;
+            border: 1px solid rgba(235, 70, 4, 0.35) !important;
+            color: #FFA875 !important;
+            display: inline-flex !important;
+            align-items: center !important;
+            letter-spacing: 0.02em !important;
+            line-height: 1.2 !important;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25) !important;
+            transition: all 0.2s ease !important;
+        }
+
+        .tag:hover, .service-tag:hover, .work-card-tag:hover {
+            background: rgba(235, 70, 4, 0.22) !important;
+            border-color: rgba(235, 70, 4, 0.6) !important;
+            color: #FFFFFF !important;
+            transform: translateY(-1px) !important;
+        }
+
 </style>
     <!-- Vercel Web Analytics (view data in Vercel project → Analytics tab) -->
     <script defer src="/_vercel/insights/script.js"></script>
@@ -394,7 +426,7 @@
                 </h1>
 
                 <p class="hero-tagline">
-                    Directing AI-driven visual development, cinematic commercial styleframes, and prompt-to-render production pipelines for Kuwait-based creative studio <strong style="color:#fff">Untagd</strong>.
+                    Directed AI-driven visual development, cinematic commercial styleframes, and prompt-to-render production pipelines for Kuwait-based creative studio <strong style="color:#fff">Untagd</strong>.
                 </p>
 
                 <div class="hero-meta-strip">
@@ -430,7 +462,6 @@
         <!-- ─── OVERVIEW & CASE STUDY ─── -->
         <section class="main-content">
             <div class="case-study reveal">
-                <div class="section-eyebrow">Creative Overview</div>
                 <h2>Generative Direction &amp; <span>Visual Craft</span></h2>
                 <p>
                     During my tenure with <strong>Untagd</strong>, a progressive creative studio headquartered in Kuwait, I operated as an <strong>AI Junior Creator</strong>. My responsibility centered on bridging high-level creative ideation with technical AI video and image synthesis — translating agency briefs into high-fidelity visual deliverables.
@@ -496,7 +527,6 @@
 
         <!-- ─── CREATIVE PROCESS / WORKFLOW ─── -->
         <section class="section">
-            <div class="section-eyebrow reveal">Methodology</div>
             <h2 class="section-title reveal">The AI Creative <span>Workflow</span></h2>
             <p class="section-desc reveal">
                 A disciplined six-stage production loop turning initial briefs into polished cinematic output with human creative intent guiding every generation.
@@ -556,7 +586,6 @@
         <div class="divider"></div>
         <!-- ─── SELECTED WORK / VIDEO SHOWCASE ─── -->
         <section class="section">
-            <div class="section-eyebrow reveal">Portfolio Deliverables</div>
             <h2 class="section-title reveal">Selected Works for <span>Untagd</span></h2>
             <p class="section-desc reveal">
                 Real video assets produced during the collaboration, demonstrating versatility across commercial ads, automotive cinema, dynamic character studies, and concept films.
@@ -703,7 +732,6 @@
 
         <!-- ─── TOOLS & PIPELINE STACK ─── -->
         <section class="section">
-            <div class="section-eyebrow reveal">Technical Stack</div>
             <h2 class="section-title reveal">Tools &amp; <span>Generative Engines</span></h2>
             <p class="section-desc reveal">
                 The software suite, neural generation engines, and editing environments utilized during the Untagd creative engagements.

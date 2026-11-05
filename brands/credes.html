@@ -1242,6 +1242,112 @@
             color: transparent !important;
         }
 
+
+        /* Credes Floating Stat Cards (anchored to .phone-stack) */
+        .floating-card {
+            position: absolute !important;
+            background: rgba(14, 18, 30, 0.94) !important;
+            backdrop-filter: blur(16px) !important;
+            -webkit-backdrop-filter: blur(16px) !important;
+            border: 1px solid rgba(235, 70, 4, 0.45) !important;
+            border-radius: 16px !important;
+            padding: 12px 18px !important;
+            z-index: 30 !important;
+            box-shadow: 0 16px 36px rgba(0, 0, 0, 0.8), 0 0 20px rgba(235, 70, 4, 0.15) !important;
+            white-space: nowrap !important;
+            pointer-events: none !important;
+        }
+        .phone-stack .floating-card.top-left,
+        .floating-card.top-left {
+            top: 25px !important;
+            left: -115px !important;
+            animation: float-card 4s ease-in-out infinite !important;
+        }
+        .phone-stack .floating-card.bottom-right,
+        .floating-card.bottom-right {
+            bottom: 60px !important;
+            right: -115px !important;
+            animation: float-card 4s ease-in-out infinite 2s !important;
+        }
+        .fc-label {
+            font-size: 0.72rem !important;
+            font-weight: 700 !important;
+            color: #FFA875 !important;
+            letter-spacing: 0.08em !important;
+            text-transform: uppercase !important;
+            margin-bottom: 4px !important;
+        }
+        .fc-value {
+            font-size: 1.35rem !important;
+            font-weight: 800 !important;
+            color: #FFFFFF !important;
+            letter-spacing: -0.02em !important;
+        }
+        .fc-sub {
+            font-size: 0.75rem !important;
+            color: #99A57D !important;
+            font-weight: 500 !important;
+            margin-top: 2px !important;
+        }
+        .phone-mute-btn {
+            position: absolute !important;
+            top: 16px !important;
+            right: 16px !important;
+            width: 38px !important;
+            height: 38px !important;
+            border-radius: 50% !important;
+            background: rgba(0, 0, 0, 0.75) !important;
+            border: 1px solid rgba(255, 255, 255, 0.25) !important;
+            display: flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+            color: #FFFFFF !important;
+            cursor: pointer !important;
+            z-index: 25 !important;
+            transition: all 0.25s ease !important;
+        }
+        .phone-mute-btn:hover {
+            background: #EB4604 !important;
+            border-color: #EB4604 !important;
+            transform: scale(1.08) !important;
+        }
+        @media (max-width: 1024px) {
+            .floating-card.top-left { left: -10px !important; }
+            .floating-card.bottom-right { right: -10px !important; }
+        }
+
+
+        /* === UNIVERSAL ORANGE CAPSULE TAGS === */
+        .tags, .service-tags {
+            display: flex !important;
+            flex-wrap: wrap !important;
+            gap: 8px !important;
+            margin-top: 18px !important;
+        }
+
+        .tag, .service-tag, .work-card-tag {
+            font-size: 0.72rem !important;
+            font-weight: 600 !important;
+            padding: 5px 12px !important;
+            border-radius: 9999px !important;
+            background: rgba(235, 70, 4, 0.12) !important;
+            border: 1px solid rgba(235, 70, 4, 0.35) !important;
+            color: #FFA875 !important;
+            display: inline-flex !important;
+            align-items: center !important;
+            letter-spacing: 0.02em !important;
+            line-height: 1.2 !important;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25) !important;
+            transition: all 0.2s ease !important;
+        }
+
+        .tag:hover, .service-tag:hover, .work-card-tag:hover {
+            background: rgba(235, 70, 4, 0.22) !important;
+            border-color: rgba(235, 70, 4, 0.6) !important;
+            color: #FFFFFF !important;
+            transform: translateY(-1px) !important;
+        }
+
 </style>
 
     <!-- ─── Back To Top Button Styles ─── -->
@@ -1424,11 +1530,15 @@
                 <span class="line-dim">Create · Develop · Secure</span>
             </h1>
             <p class="hero-tagline">
-                Managing the entire digital presence of a full-stack tech agency — from viral reels hitting millions of views to engineering a 10-platform community ecosystem, product beta testing, and brand identity that <strong style="color:#fff">commands attention</strong>.
+                Managed the entire digital presence of a full-stack tech agency — from viral reels hitting millions of views to engineering a 10-platform community ecosystem, product beta testing, and brand identity that <strong style="color:#fff">commanded attention</strong>.
             </p>
         </div>
 
         <div class="hero-right reveal reveal-delay-2">
+            
+
+            <!-- Phone stack -->
+            <div class="phone-stack">
             <!-- Floating cards -->
             <div class="floating-card top-left">
                 <div class="fc-label">Top Reel</div>
@@ -1440,9 +1550,6 @@
                 <div class="fc-value">10+</div>
                 <div class="fc-sub">channels managed</div>
             </div>
-
-            <!-- Phone stack -->
-            <div class="phone-stack">
                 <!-- Back phones -->
                 <div class="phone-frame-back left">
                     <img src="Credes/Videos/HB.png" style="width:100%;height:100%;object-fit:cover;" alt="Reel preview">
@@ -1455,13 +1562,14 @@
                 <div class="phone-frame" id="mainPhone">
                     <!-- Custom Mute/Unmute Button (Top Right) -->
                     <button class="phone-mute-btn" id="heroMuteBtn" aria-label="Mute/Unmute">
-                        <!-- Muted Icon -->
-                        <svg class="muted-icon" viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
-                            <path d="M16.5 12c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM12 4L9.91 6.09 12 8.18V4zm-8.8 1.9L2 7.1 6.9 12 2 16.9l1.1 1.1 4.9-4.9L12 17.2V14.5l3.8 3.8c-.7.5-1.5.9-2.3 1.1v2.1c1.4-.3 2.6-.9 3.7-1.8l3.7 3.7 1.1-1.1L3.2 5.9z"/>
+                        <svg class="muted-icon" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
+                            <line x1="23" y1="9" x2="17" y2="15"></line>
+                            <line x1="17" y1="9" x2="23" y2="15"></line>
                         </svg>
-                        <!-- Volume/Unmuted Icon -->
-                        <svg class="volume-icon" viewBox="0 0 24 24" width="16" height="16" fill="currentColor" style="display: none;">
-                            <path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/>
+                        <svg class="volume-icon" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display: none;">
+                            <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
+                            <path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"></path>
                         </svg>
                     </button>
                     <video class="reel-video" id="heroReel" muted loop playsinline
@@ -1494,7 +1602,6 @@
 
     <!-- ─── ROLE OVERVIEW ─── -->
     <section class="section">
-        <div class="section-eyebrow reveal">Role Overview</div>
         <h2 class="section-title reveal">The Full Stack of Digital Management</h2>
 
         <!-- 3-column: left pills | center image | right pills -->
@@ -1567,7 +1674,6 @@
 
     <!-- ─── REELS SHOWCASE ─── -->
     <section class="section">
-        <div class="section-eyebrow reveal">Content Showcase</div>
         <h2 class="section-title reveal">Reels That Break Every Record</h2>
         <p class="section-desc reveal">Each reel is crafted to hook in the first 2 seconds, deliver value, and drive real engagement — click any reel to play.</p>
 
@@ -1671,8 +1777,7 @@
 
     <!-- ─── SERVICES ─── -->
     <section class="section">
-        <div class="section-eyebrow reveal">Services Delivered</div>
-        <h2 class="section-title reveal">What I Do for Credes</h2>
+        <h2 class="section-title reveal">What I Did for Credes</h2>
 
         <div class="services-grid reveal">
             <div class="service-card">
@@ -1694,7 +1799,7 @@
                     <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
                 </div>
                 <div class="service-title">Full-Stack Social Management</div>
-                <div class="service-desc">End-to-end management of Instagram, Facebook, X, Threads, LinkedIn, and YouTube — content calendars, posting schedules, and real-time engagement.</div>
+                <div class="service-desc">Directed end-to-end management of Instagram, Facebook, X, Threads, LinkedIn, and YouTube — content calendars, posting schedules, and real-time engagement.</div>
                 <div class="service-tags">
                     <span class="service-tag">Strategy</span>
                     <span class="service-tag">Scheduling</span>
@@ -1708,7 +1813,7 @@
                     <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
                 </div>
                 <div class="service-title">Community Architecture</div>
-                <div class="service-desc">Built and actively manages WhatsApp Business, Community, and Channel alongside a Discord server — creating direct, trust-based connections between Credes and its audience.</div>
+                <div class="service-desc">Built and managed WhatsApp Business, Community, and Channel alongside a Discord server — creating direct, trust-based connections between Credes and its audience.</div>
                 <div class="service-tags">
                     <span class="service-tag">Discord</span>
                     <span class="service-tag">WhatsApp</span>
@@ -1721,7 +1826,7 @@
                     <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
                 </div>
                 <div class="service-title">App Beta & QA Coordination</div>
-                <div class="service-desc">Managing tester recruitment pipelines through Google Forms, drafting structured bug reports, and coordinating launch communication to synchronize dev and community timelines.</div>
+                <div class="service-desc">Managed tester recruitment pipelines through Google Forms, drafting structured bug reports, and coordinating launch communication to synchronize dev and community timelines.</div>
                 <div class="service-tags">
                     <span class="service-tag">Beta Testing</span>
                     <span class="service-tag">Bug Reports</span>
@@ -1748,7 +1853,7 @@
                     <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
                 </div>
                 <div class="service-title">Talent & Growth Pipeline</div>
-                <div class="service-desc">Strategic hiring presence — crafting job posts that attract quality talent while simultaneously positioning Credes as a premium employer brand in the tech ecosystem.</div>
+                <div class="service-desc">Strategic hiring presence — crafted job posts that attracted quality talent while positioning Credes as a premium employer brand in the tech ecosystem.</div>
                 <div class="service-tags">
                     <span class="service-tag">LinkedIn</span>
                     <span class="service-tag">Job Posts</span>
@@ -1762,7 +1867,6 @@
 
     <!-- ─── BRAND ASSET GALLERY BENTO ─── -->
     <section class="section">
-        <div class="section-eyebrow reveal">Brand Identity</div>
         <h2 class="section-title reveal">Credes Visual World</h2>
         <p class="section-desc reveal">From 3D logo explorations to real-world OOH placements — the visual language of Credes, built to command.</p>
 
