@@ -36,7 +36,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital,wght@0,400;1,400&family=Inter+Tight:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="/css/tokens.css">
+    <link rel="stylesheet" href="/css/tokens.css?v=20261105c">
     <style>
         * {
             margin: 0;
@@ -248,7 +248,7 @@
 
         /* Brand nav bar */
                 /* --- Brand Nav Bar --- */
-        .brand-nav-bar { background:#000000; position:relative; overflow:hidden;  border-top:1px solid rgba(255,255,255,0.06); padding:40px 5% 52px; }
+        .brand-nav-bar { background:#000000; position:relative; overflow:hidden;  border-top: none; padding:40px 5% 52px; }
         .brand-nav-inner { max-width:1240px; margin:0 auto; }
         .brand-nav-label { text-align:center; font-size:0.68rem; font-weight:700; letter-spacing:0.18em; color:rgba(255,255,255,0.25); margin-bottom:28px; }
         .brand-nav-grid { display:flex; justify-content:center; align-items:center; gap:24px; }
@@ -275,7 +275,7 @@
             background: rgba(235, 70, 4,0.28);
             border-color: rgba(235, 70, 4,0.7);
             color: #fff;
-            transform: scale(1.08);
+            transform: none !important;
         }
         @media(max-width:1150px) {
             .brand-nav-grid { flex-direction:column; gap:20px; }
@@ -818,7 +818,7 @@
     <!-- Brand Navigation Bar -->
     <nav class="brand-nav-bar">
         <div class="brand-nav-inner">
-            <div class="brand-nav-label">Explore All Brands Where I've Worked</div>
+            <div class="brand-nav-label">Explore all brands where I've worked</div>
             <div class="brand-nav-grid">
                 <div class="brand-nav-group left-group">
                     <a href="untagd" class="brand-nav-btn "><img class="bnb-logo" src="../images/brand-icons/untagd.png" alt="">Untagd</a>
@@ -874,7 +874,7 @@
             });
         });
     </script>
-    <script src="/js/ripple-button.js" defer></script>
+    <script src="/js/ripple-button.js?v=20261105c" defer></script>
     <script src="/js/navigation.js"></script>
 </body>
 </html>

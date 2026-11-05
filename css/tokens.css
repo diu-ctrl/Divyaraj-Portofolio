@@ -1141,7 +1141,7 @@ h1, .hero-title, .brand-title {
     font-weight: 600 !important;
     color: #8A8A8E !important;
     letter-spacing: 0.06em !important;
-    text-transform: uppercase !important;
+    text-transform: none !important;
     margin-bottom: 5px !important;
     margin-top: 0 !important;
     line-height: 1.2 !important;
@@ -1420,7 +1420,7 @@ select {
    ========================================================================== */
 .brand-nav-bar {
     background: #000000 !important;
-    border-top: 1px solid rgba(255, 255, 255, 0.08) !important;
+    border-top: none !important;
     padding: 40px 5% 52px !important;
     position: relative !important;
     overflow: hidden !important;
@@ -1470,7 +1470,7 @@ select {
     letter-spacing: 0.18em !important;
     color: rgba(255, 255, 255, 0.35) !important;
     margin-bottom: 28px !important;
-    text-transform: uppercase !important;
+    text-transform: none !important;
     font-family: var(--font-sans) !important;
 }
 
@@ -1538,6 +1538,8 @@ select {
     border: 1px solid rgba(255, 255, 255, 0.12) !important;
 }
 
+/* Theme 4: Orange To Dark / Transparent (DC Home Logo in Brand Nav Footer) */
+.btn-ripple-container.theme-orange-to-dark,
 .brand-nav-btn.dc-home {
     width: 64px !important;
     height: 64px !important;
@@ -1545,20 +1547,66 @@ select {
     display: inline-flex !important;
     align-items: center !important;
     justify-content: center !important;
-    background: rgba(235, 70, 4, 0.15) !important;
-    border: 2px solid rgba(235, 70, 4, 0.35) !important;
-    color: #EB4604 !important;
+    background-color: var(--accent, #EB4604) !important;
+    background: var(--accent, #EB4604) !important;
+    border: 1.5px solid var(--accent, #EB4604) !important;
+    color: #FFFFFF !important;
     padding: 0 !important;
     flex-shrink: 0 !important;
     min-height: unset !important;
-    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1) !important;
+    position: relative !important;
+    overflow: hidden !important;
+    transform: none !important;
+    box-shadow: 0 4px 18px rgba(235, 70, 4, 0.35) !important;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease !important;
 }
 
+.btn-ripple-container.theme-orange-to-dark .btn-label-base,
+.brand-nav-btn.dc-home .btn-label-base {
+    color: #FFFFFF !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    width: 100% !important;
+    height: 100% !important;
+    position: relative !important;
+    z-index: 1 !important;
+    transform: none !important;
+}
+
+.btn-ripple-container.theme-orange-to-dark .btn-ripple-overlay,
+.brand-nav-btn.dc-home .btn-ripple-overlay {
+    background: #000000 !important;
+    background-color: #000000 !important;
+    color: #FFFFFF !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    position: absolute !important;
+    inset: 0 !important;
+    border-radius: 50% !important;
+    z-index: 2 !important;
+    pointer-events: none !important;
+    transform: none !important;
+}
+
+.btn-ripple-container.theme-orange-to-dark .btn-label-base img,
+.btn-ripple-container.theme-orange-to-dark .btn-ripple-overlay img,
+.brand-nav-btn.dc-home img {
+    width: 28px !important;
+    height: 28px !important;
+    display: block !important;
+    object-fit: contain !important;
+    transform: none !important;
+}
+
+.btn-ripple-container.theme-orange-to-dark:hover,
 .brand-nav-btn.dc-home:hover {
-    background: rgba(235, 70, 4, 0.28) !important;
+    background-color: var(--accent, #EB4604) !important;
     border-color: rgba(235, 70, 4, 0.7) !important;
     color: #FFFFFF !important;
-    transform: scale(1.08) !important;
+    transform: none !important;
+    box-shadow: 0 4px 22px rgba(235, 70, 4, 0.45) !important;
 }
 
 .brand-nav-btn.dc-home img {
@@ -1723,3 +1771,77 @@ h2 span,
             transform: translateY(-1px) !important;
         }
 
+
+/* ==========================================================================
+   GLOBAL DIRECTIVES (USER SPECIFICATION)
+   1. Disable all-caps globally (preserve natural title/sentence casing)
+   2. Zero-popup / zero-scale on hover across all elements site-wide
+   3. Single-line 'Where I've Worked' heading
+   4. Brand footer seamless blend without border strip divider
+   ========================================================================== */
+
+/* 1. Global No Forced All-Caps */
+*, *::before, *::after {
+    text-transform: none;
+}
+
+/* 2. Global No Hover Popup / Sizing Big */
+.brand-nav-btn.dc-home:hover,
+.brand-nav-btn:hover,
+.dc-home:hover,
+.channel-icon-wrap-3,
+.channel-icon-wrap-6,
+.channel-tab-3:hover .channel-icon-wrap-3,
+.channel-tab-6:hover .channel-icon-wrap-6,
+.phone-mute-btn:hover,
+.card-mute-btn:hover,
+.folio-card:hover,
+.holo-card:hover,
+.founder-review-card:hover,
+.tag:hover,
+.service-tag:hover,
+.work-card-tag:hover,
+.btn-primary-gold:hover,
+.btn-outline:hover,
+.btn-brutalist-filled:hover,
+.btn-brutalist-outline:hover,
+.btn-book-coffee:hover,
+.social-icon-btn:hover,
+.social-mail-btn:hover,
+.download-pdf-btn:hover,
+.back-btn:hover,
+.nav-capsule:hover,
+.tab-btn:hover,
+.case-study-btn:hover,
+.timeline-thumb:hover,
+.brand-capsule:hover,
+.web-row:hover,
+.web-card:hover,
+.case-study-card:hover,
+.film-card:hover,
+.video-card:hover,
+.lane-card:hover,
+.reel-card:hover,
+.cinema-strip-card:hover,
+.cinema-scale-link:hover,
+.limelight-nav-item:hover,
+.limelight-nav-item:hover .nav-icon {
+    transform: none !important;
+}
+
+.carousel-btn:hover,
+.slider-btn:hover {
+    transform: translateY(-50%) !important;
+}
+
+/* 3. Single-Line Where I've Worked Heading */
+#experience .section-header .display-serif-statement {
+    white-space: nowrap !important;
+}
+
+@media (max-width: 480px) {
+    #experience .section-header .display-serif-statement {
+        font-size: clamp(26px, 7vw, 36px) !important;
+        white-space: nowrap !important;
+    }
+}

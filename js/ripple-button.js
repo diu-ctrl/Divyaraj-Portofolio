@@ -33,7 +33,7 @@
             '.social-icon-btn',
             '.download-pdf-btn',
             '.nav-capsule',
-            '.brand-nav-btn:not(.dc-home)',
+            '.brand-nav-btn',
             '.tab-btn',
             '.case-study-btn',
             '.back-to-top-btn',
@@ -47,7 +47,9 @@
 
             // Determine Theme
             let theme = 'theme-dark-to-orange';
-            if (btn.classList.contains('btn-explore-capsule')) {
+            if (btn.classList.contains('dc-home')) {
+                theme = 'theme-orange-to-dark';
+            } else if (btn.classList.contains('btn-explore-capsule')) {
                 theme = 'theme-white-to-orange';
             } else if (btn.classList.contains('btn-primary-gold') || btn.classList.contains('download-pdf-btn') || btn.classList.contains('back-to-top-btn') || btn.classList.contains('btn-book-coffee')) {
                 theme = 'theme-orange-to-white';
