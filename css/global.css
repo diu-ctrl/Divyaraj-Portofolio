@@ -774,7 +774,7 @@
                 cursor: default;
             }
             .folio-card:hover {
-                transform: translateY(-5px) !important;
+                transform: none !important;
                 border-color: var(--accent);
             }
         }
@@ -1591,9 +1591,7 @@
             overflow: hidden;
         }
 
-        .holo-card:hover {
-            transform: translateY(-4px) rotateX(2deg) rotateY(-2deg);
-            border-color: var(--accent);
+        .holo-card:hover { transform: none !important;
         }
 
         /* Color-dodge shimmer effect across the border */
@@ -4142,7 +4140,7 @@
         .founder-review-card:hover {
             background: rgba(22, 22, 22, 0.95);
             border-color: rgba(244, 93, 0, 0.45);
-            transform: translateY(-2px);
+            transform: none !important;
             box-shadow: 0 10px 28px rgba(0, 0, 0, 0.45);
         }
 

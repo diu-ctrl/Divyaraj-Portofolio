@@ -17,7 +17,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital,wght@0,400;1,400&family=Inter+Tight:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="/css/tokens.css?v=20261105d">
+    <link rel="stylesheet" href="/css/tokens.css?v=20261105e">
     <style>
         * { margin:0; padding:0; box-sizing:border-box;  box-shadow:none !important; backdrop-filter:none !important; -webkit-backdrop-filter:none !important; mix-blend-mode:normal !important; }
         :root { --bg:#000000; --bg-deep:#000000; --card:#282723; --text:#FFFFFF; --text-muted:#99A57D; --border:#282723; --accent:#EB4604; --primary:var(--accent); --surface:var(--card); --font-sans:'Inter Tight','Inter Local',system-ui,sans-serif; --font-serif:'Instrument Serif',Georgia,serif; /* --font-mono removed — entire site uses only --font-serif and --font-sans */ }
@@ -88,7 +88,7 @@
         .workflow-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:20px; margin:40px 0; }
         @media(max-width:900px){ .workflow-grid{grid-template-columns:1fr;} }
         .workflow-step { background:var(--card); border:1px solid var(--border); padding:26px 24px; position:relative; transition:all 0.3s ease; }
-        .workflow-step:hover { border-color:var(--accent); transform:translateY(-2px); }
+        .workflow-step:hover { border-color:var(--accent); transform: none !important; }
         .step-num { font-family:var(--font-sans); font-size:0.72rem; font-weight:700; color:var(--accent); letter-spacing:0.04em; margin-bottom:12px; }
         .step-title { font-size:1.15rem; font-weight:700; color:#ffffff; margin-bottom:10px; letter-spacing:-0.01em; }
         .step-desc { font-size:0.88rem; color:var(--text-muted); line-height:1.6; }
@@ -112,7 +112,7 @@
         @media(max-width:960px){ .tools-grid{grid-template-columns:repeat(2,1fr);} }
         @media(max-width:540px){ .tools-grid{grid-template-columns:1fr;} }
         .tool-box { background:var(--card); border:1px solid var(--border); padding:24px 20px; transition:all 0.3s ease; }
-        .tool-box:hover { border-color:var(--accent); transform:translateY(-2px); }
+        .tool-box:hover { border-color:var(--accent); transform: none !important; }
         .tool-category { font-family:var(--font-sans); font-size:0.68rem; font-weight:700; color:var(--accent); letter-spacing:0.04em; margin-bottom:12px; }
         .tool-name { font-size:1.1rem; font-weight:700; color:#ffffff; margin-bottom:8px; }
         .tool-desc { font-size:0.84rem; color:var(--text-muted); line-height:1.5; }
@@ -276,7 +276,7 @@
             background: rgba(235, 70, 4, 0.22) !important;
             border-color: rgba(235, 70, 4, 0.6) !important;
             color: #FFFFFF !important;
-            transform: translateY(-1px) !important;
+            transform: none !important;
         }
 
 </style>
@@ -796,7 +796,7 @@
                     <a href="/" class="brand-nav-btn dc-home" title="Back to Home"><img src="/dc-logo.png" alt="DC"></a>
                     <div class="brand-nav-divider"></div>
                     <div class="brand-nav-group right-group">
-                        <a href="esfi" class="brand-nav-btn bnb-esfi"><img class="bnb-logo" src="../images/brand-icons/esfi.jpg" alt="ESFI">ESFI</a>
+                        <a href="esfi" class="brand-nav-btn bnb-esfi"><img class="bnb-logo" src="../images/brand-icons/esfi.jpg?v=20261105e" alt="ESFI">ESFI</a>
                         <a href="white-horse" class="brand-nav-btn bnb-white-horse"><img class="bnb-logo" src="../images/brand-icons/white horse.jpg" alt="White Horse">White Horse</a>
                         <a href="finanvo" class="brand-nav-btn bnb-finanvo"><img class="bnb-logo" src="../images/brand-icons/finanvo.png" alt="Finanvo">Finanvo</a>
                         <a href="shift" class="brand-nav-btn bnb-shift"><img class="bnb-logo" src="../images/brand-icons/shift.jpg" alt="Shift">Shift</a>

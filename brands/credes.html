@@ -36,7 +36,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital,wght@0,400;1,400&family=Inter+Tight:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="/css/tokens.css?v=20261105d">
+    <link rel="stylesheet" href="/css/tokens.css?v=20261105e">
     <style>
         * {
             margin: 0;
@@ -236,7 +236,7 @@
             transition: transform 0.5s cubic-bezier(0.16,1,0.3,1);
             cursor: pointer;
         }
-        .phone-frame:hover { transform: translateY(-4px); }
+        .phone-frame:hover { transform: none !important; }
 
         /* Side cards */
         .phone-frame-back {
@@ -261,7 +261,7 @@
             z-index: 0;
         }
         .phone-frame { z-index: 2; left: 50%; transform: translateX(-50%); }
-        .phone-frame:hover { transform: translateX(-50%) translateY(-4px); }
+        .phone-frame:hover { transform: translateX(-50%) !important; }
 
         .reel-video {
             width: 100%;
@@ -302,14 +302,24 @@
             z-index: 5;
         }
         .reel-dot {
-            width: 24px;
-            height: 4px;
-            border-radius: 2px;
-            background: rgba(235, 70, 4,0.3);
-            cursor: pointer;
-            transition: all 0.3s;
+            width: 8px !important;
+            height: 8px !important;
+            min-width: 8px !important;
+            min-height: 8px !important;
+            aspect-ratio: 1 / 1 !important;
+            border-radius: 50% !important;
+            background: rgba(255, 255, 255, 0.25) !important;
+            cursor: pointer !important;
+            transition: all 0.25s ease !important;
+            padding: 0 !important;
+            box-sizing: border-box !important;
         }
-        .reel-dot.active { background: var(--primary-light); width: 36px; }
+        .reel-dot.active {
+            background: #EB4604 !important;
+            width: 8px !important;
+            height: 8px !important;
+            border-radius: 50% !important;
+        }
 
         /* Floating info card */
         .floating-card {
@@ -1345,7 +1355,7 @@
             background: rgba(235, 70, 4, 0.22) !important;
             border-color: rgba(235, 70, 4, 0.6) !important;
             color: #FFFFFF !important;
-            transform: translateY(-1px) !important;
+            transform: none !important;
         }
 
 </style>
@@ -1938,7 +1948,7 @@
                 <a href="/" class="brand-nav-btn dc-home" title="Back to Home"><img src="/dc-logo.png" alt="DC"></a>
                 <div class="brand-nav-divider"></div>
                 <div class="brand-nav-group right-group">
-                    <a href="esfi" class="brand-nav-btn bnb-esfi "><img class="bnb-logo" src="../images/brand-icons/esfi.jpg" alt="">ESFI</a>
+                    <a href="esfi" class="brand-nav-btn bnb-esfi "><img class="bnb-logo" src="../images/brand-icons/esfi.jpg?v=20261105e" alt="">ESFI</a>
                     <a href="white-horse" class="brand-nav-btn bnb-white-horse "><img class="bnb-logo" src="../images/brand-icons/white horse.jpg" alt="">White Horse</a>
                     <a href="finanvo" class="brand-nav-btn bnb-finanvo "><img class="bnb-logo" src="../images/brand-icons/finanvo.png" alt="">Finanvo</a>
                     <a href="shift" class="brand-nav-btn bnb-shift "><img class="bnb-logo" src="../images/brand-icons/shift.jpg" alt="">Shift</a>

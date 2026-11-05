@@ -36,7 +36,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital,wght@0,400;1,400&family=Inter+Tight:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="/css/tokens.css?v=20261105d">
+    <link rel="stylesheet" href="/css/tokens.css?v=20261105e">
     <style>
         * {
             margin: 0;
@@ -163,7 +163,7 @@
             z-index: 10;
             transition: all 0.25s ease;
         }
-        .carousel-btn:hover { background: rgba(249,115,22,0.25); border-color: rgba(249,115,22,0.7); transform: translateY(-50%) scale(1.08); }
+        .carousel-btn:hover { background: rgba(249,115,22,0.25); border-color: rgba(249,115,22,0.7); transform: translateY(-50%) !important; }
         .carousel-btn.prev { left: 16px; }
         .carousel-btn.next { right: 16px; }
         .carousel-dots {
@@ -174,14 +174,14 @@
             background: rgba(8,8,20,0.6);
         }
         .carousel-dot {
-            width: 7px;
-            height: 7px;
+            width: 8px !important;
+            height: 8px !important;
             border-radius: 50%;
             background: rgba(255,255,255,0.2);
             cursor: pointer;
             transition: all 0.3s ease;
         }
-        .carousel-dot.active { background: var(--primary-light); width: 22px; border-radius: 4px; }
+        .carousel-dot.active { background: #EB4604 !important; width: 8px !important; height: 8px !important; border-radius: 50% !important; }
         .carousel-count {
             position: absolute;
             top: 14px;
@@ -525,7 +525,7 @@
             background: rgba(235, 70, 4, 0.22) !important;
             border-color: rgba(235, 70, 4, 0.6) !important;
             color: #FFFFFF !important;
-            transform: translateY(-1px) !important;
+            transform: none !important;
         }
 
 </style>
@@ -937,7 +937,7 @@
                 <a href="/" class="brand-nav-btn dc-home" title="Back to Home"><img src="/dc-logo.png" alt="DC"></a>
                 <div class="brand-nav-divider"></div>
                 <div class="brand-nav-group right-group">
-                    <a href="esfi" class="brand-nav-btn bnb-esfi "><img class="bnb-logo" src="../images/brand-icons/esfi.jpg" alt="">ESFI</a>
+                    <a href="esfi" class="brand-nav-btn bnb-esfi "><img class="bnb-logo" src="../images/brand-icons/esfi.jpg?v=20261105e" alt="">ESFI</a>
                     <a href="white-horse" class="brand-nav-btn bnb-white-horse "><img class="bnb-logo" src="../images/brand-icons/white horse.jpg" alt="">White Horse</a>
                     <a href="finanvo" class="brand-nav-btn bnb-finanvo "><img class="bnb-logo" src="../images/brand-icons/finanvo.png" alt="">Finanvo</a>
                     <a href="shift" class="brand-nav-btn bnb-shift "><img class="bnb-logo" src="../images/brand-icons/shift.jpg" alt="">Shift</a>

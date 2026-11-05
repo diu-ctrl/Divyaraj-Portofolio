@@ -36,7 +36,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital,wght@0,400;1,400&family=Inter+Tight:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="/css/tokens.css?v=20261105d">
+    <link rel="stylesheet" href="/css/tokens.css?v=20261105e">
     <style>
         * {
             margin: 0;
@@ -230,7 +230,7 @@
             transition: opacity 0.4s;
         }
         .analytics-card:hover { 
-            transform: translateY(-6px); 
+            transform: none !important; 
             border-color: var(--ef-border); 
         }
         .analytics-card:hover::before { opacity: 1; }
@@ -463,7 +463,7 @@
             justify-content: space-between;
         }
         .cert-card:hover {
-            transform: translateY(-6px);
+            transform: none !important;
             border-color: var(--ef-border);
         }
         .cert-header {
@@ -560,7 +560,7 @@
             transition: all 0.3s ease;
         }
         .asset-card:hover {
-            transform: translateY(-4px);
+            transform: none !important;
             border-color: var(--ef-border) !important;
         }
 
@@ -812,12 +812,14 @@
             text-align: left !important;
         }
         .hero.hero-with-cert-carousel .brand-logo-frame {
-            width: 80px !important;
-            height: 80px !important;
+            width: 88px !important;
+            height: 88px !important;
             flex-shrink: 0 !important;
             border-radius: 18px !important;
-            border: 1px solid var(--border) !important;
-            background: rgba(255, 255, 255, 0.03) !important;
+            border: 1px solid rgba(255, 255, 255, 0.15) !important;
+            background: #FFFFFF !important;
+            padding: 8px !important;
+            box-sizing: border-box !important;
             overflow: hidden !important;
             margin: 0 0 4px 0 !important;
             box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4) !important;
@@ -826,6 +828,7 @@
             width: 100% !important;
             height: 100% !important;
             object-fit: contain !important;
+            display: block !important;
         }
         .hero.hero-with-cert-carousel .hero-eyebrow {
             display: inline-flex !important;
@@ -935,7 +938,7 @@
             transition: transform 0.35s ease !important;
         }
         .cert-img-link:hover .cert-slide-img {
-            transform: scale(1.02) !important;
+            transform: none !important;
         }
         .cert-expand-hint {
             position: absolute !important;
@@ -978,51 +981,64 @@
         }
         .cert-nav-btn {
             position: absolute !important;
-            top: calc(50% - 24px) !important;
-            width: 36px !important;
-            height: 36px !important;
+            top: 50% !important;
+            transform: translateY(-50%) !important;
+            width: 38px !important;
+            height: 38px !important;
+            min-width: 38px !important;
+            min-height: 38px !important;
+            aspect-ratio: 1 / 1 !important;
             border-radius: 50% !important;
-            background: rgba(10, 10, 10, 0.75) !important;
-            border: 1px solid rgba(255, 255, 255, 0.15) !important;
+            background: rgba(14, 14, 14, 0.85) !important;
+            border: 1px solid rgba(255, 255, 255, 0.2) !important;
             color: #FFFFFF !important;
-            font-size: 1.3rem !important;
             display: flex !important;
             align-items: center !important;
             justify-content: center !important;
             cursor: pointer !important;
-            backdrop-filter: blur(10px) !important;
-            -webkit-backdrop-filter: blur(10px) !important;
-            transition: all 0.2s ease !important;
+            backdrop-filter: blur(12px) !important;
+            -webkit-backdrop-filter: blur(12px) !important;
+            transition: background 0.2s ease, border-color 0.2s ease, color 0.2s ease !important;
             z-index: 10 !important;
-            line-height: 1 !important;
+            padding: 0 !important;
+            box-sizing: border-box !important;
         }
         .cert-nav-btn:hover {
             background: #EB4604 !important;
             border-color: #EB4604 !important;
-            transform: scale(1.1) !important;
+            color: #FFFFFF !important;
+            transform: translateY(-50%) !important;
         }
-        .cert-prev { left: 12px !important; }
-        .cert-next { right: 12px !important; }
+        .cert-prev { left: 14px !important; }
+        .cert-next { right: 14px !important; }
 
         .cert-carousel-dots {
             display: flex !important;
             justify-content: center !important;
+            align-items: center !important;
             gap: 8px !important;
-            margin-top: 12px !important;
+            margin-top: 14px !important;
         }
         .cert-dot {
-            width: 24px !important;
-            height: 4px !important;
-            border-radius: 100px !important;
-            background: rgba(255, 255, 255, 0.18) !important;
+            width: 8px !important;
+            height: 8px !important;
+            min-width: 8px !important;
+            min-height: 8px !important;
+            aspect-ratio: 1 / 1 !important;
+            border-radius: 50% !important;
+            background: rgba(255, 255, 255, 0.25) !important;
             border: none !important;
             cursor: pointer !important;
-            transition: all 0.3s ease !important;
+            transition: background 0.25s ease, opacity 0.25s ease !important;
             padding: 0 !important;
+            box-sizing: border-box !important;
         }
         .cert-dot.active {
             background: #EB4604 !important;
-            width: 36px !important;
+            width: 8px !important;
+            height: 8px !important;
+            border-radius: 50% !important;
+            opacity: 1 !important;
         }
 
         @media (max-width: 960px) {
@@ -1158,7 +1174,7 @@
             background: rgba(235, 70, 4, 0.22) !important;
             border-color: rgba(235, 70, 4, 0.6) !important;
             color: #FFFFFF !important;
-            transform: translateY(-1px) !important;
+            transform: none !important;
         }
 
 </style>
@@ -1335,7 +1351,7 @@
             <div class="hero-left">
                 <div class="brand-intro">
                     <div class="brand-logo-frame">
-                        <img src="../images/brand-icons/esfi.jpg" alt="ESFI Logo">
+                        <img src="../images/brand-icons/esfi.jpg?v=20261105e" alt="ESFI Logo">
                     </div>
                     <div class="hero-eyebrow">
                         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
@@ -1354,9 +1370,9 @@
                 <div class="cert-carousel-container">
                     <div class="cert-carousel-eyebrow">
                         <div class="cert-eyebrow-badge">
-                            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#EB4604" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
-                                <path d="M12 15l-2 5l-5-2l2-5"/>
-                                <circle cx="12" cy="9" r="6"/>
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#EB4604" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                                <circle cx="12" cy="8" r="6"/>
+                                <path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"/>
                             </svg>
                             <span>Official Volunteering Credentials</span>
                         </div>
@@ -1395,8 +1411,8 @@
                                 </div>
                             </div>
                         </div>
-                        <button class="cert-nav-btn cert-prev" id="certPrev" aria-label="Previous Certificate">&#8249;</button>
-                        <button class="cert-nav-btn cert-next" id="certNext" aria-label="Next Certificate">&#8250;</button>
+                        <button class="cert-nav-btn cert-prev" id="certPrev" aria-label="Previous Certificate"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg></button>
+                        <button class="cert-nav-btn cert-next" id="certNext" aria-label="Next Certificate"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg></button>
                     </div>
                     <div class="cert-carousel-dots" id="certDots">
                         <button class="cert-dot active" data-index="0" aria-label="Certificate 1"></button>
@@ -2120,7 +2136,7 @@
                 <a href="/" class="brand-nav-btn dc-home" title="Back to Home"><img src="/dc-logo.png" alt="DC"></a>
                 <div class="brand-nav-divider"></div>
                 <div class="brand-nav-group right-group">
-                    <a href="esfi" class="brand-nav-btn bnb-esfi active-brand"><img class="bnb-logo" src="../images/brand-icons/esfi.jpg" alt="">ESFI</a>
+                    <a href="esfi" class="brand-nav-btn bnb-esfi active-brand"><img class="bnb-logo" src="../images/brand-icons/esfi.jpg?v=20261105e" alt="">ESFI</a>
                     <a href="white-horse" class="brand-nav-btn bnb-white-horse "><img class="bnb-logo" src="../images/brand-icons/white horse.jpg" alt="">White Horse</a>
                     <a href="finanvo" class="brand-nav-btn bnb-finanvo "><img class="bnb-logo" src="../images/brand-icons/finanvo.png" alt="">Finanvo</a>
                     <a href="shift" class="brand-nav-btn bnb-shift "><img class="bnb-logo" src="../images/brand-icons/shift.jpg" alt="">Shift</a>

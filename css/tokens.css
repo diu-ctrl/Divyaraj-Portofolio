@@ -2064,7 +2064,7 @@ h2 span,
             background: rgba(235, 70, 4, 0.22) !important;
             border-color: rgba(235, 70, 4, 0.6) !important;
             color: #FFFFFF !important;
-            transform: translateY(-1px) !important;
+            transform: none !important;
         }
 
 
@@ -2081,7 +2081,8 @@ h2 span,
     text-transform: none;
 }
 
-/* 2. Global No Hover Popup / Sizing Big */
+/* 2. Global No Hover Popup / Float / Scale / Image Zoom (Strictly Enforced) */
+/* Prevent all cards, boxes, tabs, textboxes, components, and buttons from floating/moving up on hover */
 .brand-nav-btn.dc-home:hover,
 .brand-nav-btn:hover,
 .dc-home:hover,
@@ -2108,6 +2109,33 @@ h2 span,
 .back-btn:hover,
 .nav-capsule:hover,
 .tab-btn:hover,
+.tab:hover,
+.box:hover,
+.textbox:hover,
+.component:hover,
+.analytics-card:hover,
+.cert-card:hover,
+.asset-card:hover,
+.channel-tab:hover,
+.channel-tab-3:hover,
+.phone-frame:hover,
+.post-cell:hover,
+.reel-card:hover,
+.reel-card-scuff:hover,
+.workflow-step:hover,
+.tool-box:hover,
+.work-card:hover,
+.feature-card:hover,
+.card-p2:hover,
+.service-card:hover,
+.cert-btn:hover,
+.carousel-dot:hover,
+.cert-dot:hover,
+.reel-dot:hover,
+.modal-close-btn:hover,
+.copy-url-btn:hover,
+.control-btn:hover,
+.hotspot:hover .hotspot-dot,
 .case-study-btn:hover,
 .timeline-thumb:hover,
 .brand-capsule:hover,
@@ -2117,17 +2145,57 @@ h2 span,
 .film-card:hover,
 .video-card:hover,
 .lane-card:hover,
-.reel-card:hover,
 .cinema-strip-card:hover,
 .cinema-scale-link:hover,
 .limelight-nav-item:hover,
-.limelight-nav-item:hover .nav-icon {
+.limelight-nav-item:hover .nav-icon,
+[class*="card"]:hover,
+[class*="box"]:hover,
+[class*="tab"]:hover,
+[class*="frame"]:hover,
+[class*="badge"]:hover,
+[class*="thumb"]:hover {
     transform: none !important;
 }
 
+/* Maintain vertical centering for carousel navigation buttons without scaling or floating */
 .carousel-btn:hover,
-.slider-btn:hover {
+.slider-btn:hover,
+.cert-nav-btn:hover {
     transform: translateY(-50%) !important;
+}
+
+/* Maintain center alignment for play buttons without scale */
+.reel-play-btn:hover,
+.reel-play-pause-btn:hover {
+    transform: translate(-50%, -50%) !important;
+}
+
+/* Strictly ban all image zooming/scaling on hovering over any card, box, tab, component, or media */
+img,
+img:hover,
+:hover > img,
+:hover img,
+.tab:hover img,
+.box:hover img,
+.card:hover img,
+[class*="card"]:hover img,
+[class*="tab"]:hover img,
+[class*="box"]:hover img,
+[class*="frame"]:hover img,
+[class*="thumb"]:hover img,
+[class*="media"]:hover img,
+.cert-slide-inner:hover img,
+.cert-img-link:hover img,
+.cert-slide-img:hover,
+.lane-card:hover .lane-card-image-wrap img,
+.web-row:hover .web-image-wrapper img,
+.channel-icon-wrap,
+:hover .channel-icon-wrap,
+.channel-tab:hover .channel-icon-wrap,
+.brand-capsule:hover img,
+.brand-nav-btn:hover img {
+    transform: none !important;
 }
 
 /* 3. Single-Line Where I've Worked Heading */
