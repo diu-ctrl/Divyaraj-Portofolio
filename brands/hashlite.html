@@ -597,9 +597,8 @@
             .brand-logo-frame {
                 margin: 0 auto !important;
             }
-            h1 {
-                font-size: clamp(2rem, 6.5vw, 2.5rem) !important;
-            }
+            h1, .hero h1, .hero-title, .hero.hero-with-analytics h1, .hero.hero-with-cert-carousel h1, .hero.hero-with-channels h1 { font-size: clamp(2.4rem, 7.5vw, 3.2rem) !important; }
+            h2, .case-study h2, .main-content h2, .section-title, .ai-reel-info h2, .gallery-section-title { font-size: clamp(1.75rem, 5.5vw, 2.2rem) !important; }
         }
         /* --- End Mobile Responsiveness Overrides --- */
 
@@ -609,14 +608,7 @@
             object-fit: contain;
         }
 
-        h1, h2 {
-            font-family: var(--font-serif) !important;
-            font-style: italic !important;
-            letter-spacing: -0.02em !important;
-            font-size: clamp(3.5rem, 8vw, 7rem) !important;
-            font-weight: 400 !important;
-            line-height: 1.05 !important;
-        }
+        
 
         /* ─── Brutalist Video/Image Hero Grid Overrides ─── */
         .hero {
@@ -738,6 +730,59 @@
         .metric-card { border-radius: 20px !important; }
         .video-brutalist-frame, .work-card-media, .brand-logo-frame { overflow: hidden !important; }
         .header-badge span, .hero-eyebrow span, .dot { border-radius: 50% !important; }
+
+
+        /* === GLOBAL BRAND PAGE TYPOGRAPHY HIERARCHY === */
+        /* Brand Name at Top: Largest heading on the entire brand page */
+        h1, .hero h1, .hero-title,
+        .hero.hero-with-analytics h1,
+        .hero.hero-with-cert-carousel h1,
+        .hero.hero-with-channels h1 {
+            font-family: var(--font-serif) !important;
+            font-style: italic !important;
+            letter-spacing: -0.02em !important;
+            font-size: clamp(3.2rem, 6vw, 4.8rem) !important;
+            font-weight: 400 !important;
+            line-height: 1.08 !important;
+            background: linear-gradient(135deg, #FFFFFF 20%, #FFA875 60%, #EB4604 100%) !important;
+            -webkit-background-clip: text !important;
+            -webkit-text-fill-color: transparent !important;
+            background-clip: text !important;
+            color: transparent !important;
+            display: inline-block !important;
+        }
+
+        /* Section Subtitles / Headers: Decreased size with compulsory white-to-orange/peach gradient */
+        h2, .case-study h2, .main-content h2, .section-title, .ai-reel-info h2, .gallery-section-title {
+            font-family: var(--font-serif) !important;
+            font-style: italic !important;
+            letter-spacing: -0.02em !important;
+            font-size: clamp(2rem, 3.6vw, 2.8rem) !important;
+            font-weight: 400 !important;
+            line-height: 1.15 !important;
+            margin-bottom: 22px !important;
+            background: linear-gradient(135deg, #FFFFFF 20%, #FFA875 60%, #EB4604 100%) !important;
+            -webkit-background-clip: text !important;
+            -webkit-text-fill-color: transparent !important;
+            background-clip: text !important;
+            color: transparent !important;
+            display: inline-block !important;
+        }
+
+        /* Spans inherit gradient cleanly */
+        h1 span, .hero h1 span, .hero-title span,
+        .hero.hero-with-analytics h1 span,
+        .hero.hero-with-cert-carousel h1 span,
+        .hero.hero-with-channels h1 span,
+        h2 span, .case-study h2 span, .main-content h2 span, .section-title span,
+        .ai-reel-info h2 span, .gallery-section-title span {
+            background: inherit !important;
+            -webkit-background-clip: text !important;
+            -webkit-text-fill-color: transparent !important;
+            background-clip: text !important;
+            color: transparent !important;
+        }
+
 </style>
 
     <!-- ─── Back To Top Button Styles ─── -->
