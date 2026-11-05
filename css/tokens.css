@@ -1497,45 +1497,341 @@ select {
     flex-shrink: 0 !important;
 }
 
+/* ==========================================================================
+   UNIQUE BRAND CAPSULE THEMES (CANONICAL BRAND FOOTER NAVIGATION)
+   - Unique idle background, text color, and logo separation border per brand
+   - Direction-aware liquid ripple to orange background (#EB4604) & white text
+   - Zero-shift pixel-perfect alignment between base and overlay (no popping/jumping)
+   ========================================================================== */
+
+/* 1. Base Layout & Zero-Shift Geometry */
 .brand-nav-btn {
     display: inline-flex !important;
     align-items: center !important;
-    gap: 9px !important;
-    padding: 9px 18px 9px 10px !important;
     border-radius: 100px !important;
-    border: 1px solid rgba(255, 255, 255, 0.08) !important;
-    background: rgba(255, 255, 255, 0.04) !important;
-    color: rgba(255, 255, 255, 0.7) !important;
-    font-size: 0.8rem !important;
-    font-weight: 600 !important;
     text-decoration: none !important;
-    transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1) !important;
     white-space: nowrap !important;
     min-height: 44px !important;
     box-sizing: border-box !important;
+    position: relative !important;
+    overflow: hidden !important;
+    padding: 9px 18px 9px 10px !important;
+    gap: 9px !important;
+    font-size: 0.8rem !important;
+    font-weight: 600 !important;
     font-family: var(--font-sans) !important;
+    line-height: 1 !important;
+    transition: box-shadow 0.25s ease, border-color 0.25s ease !important;
+    transform: none !important;
 }
 
-.brand-nav-btn:hover {
-    border-color: rgba(235, 70, 4, 0.45) !important;
-    background: rgba(235, 70, 4, 0.12) !important;
-    color: #FFFFFF !important;
+/* When ripple initialized, transfer padding/gap to inner layers with exact inset: 0 */
+.brand-nav-btn.btn-ripple-container:not(.dc-home) {
+    padding: 0 !important;
 }
 
-.brand-nav-btn.active-brand {
-    border-color: rgba(235, 70, 4, 0.5) !important;
-    background: rgba(235, 70, 4, 0.16) !important;
-    color: #EB4604 !important;
+.brand-nav-btn:not(.dc-home) .btn-label-base,
+.brand-nav-btn:not(.dc-home) .btn-ripple-overlay {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: flex-start !important;
+    gap: 9px !important;
+    padding: 9px 18px 9px 10px !important;
+    font-size: 0.8rem !important;
+    font-weight: 600 !important;
+    line-height: 1 !important;
+    font-family: var(--font-sans) !important;
+    box-sizing: border-box !important;
+    width: 100% !important;
+    height: 100% !important;
+    white-space: nowrap !important;
+    border-radius: inherit !important;
+    margin: 0 !important;
+    transform: none !important;
+}
+
+.brand-nav-btn:not(.dc-home) .btn-label-base {
+    position: relative !important;
+    z-index: 1 !important;
     pointer-events: none !important;
 }
 
+.brand-nav-btn:not(.dc-home) .btn-ripple-overlay {
+    position: absolute !important;
+    inset: 0 !important;
+    z-index: 2 !important;
+    pointer-events: none !important;
+    clip-path: circle(0px at 50% 50%);
+    will-change: clip-path;
+    background: var(--accent, #EB4604) !important;
+    background-color: var(--accent, #EB4604) !important;
+    color: #FFFFFF !important;
+}
+
+.brand-nav-btn:hover {
+    transform: none !important;
+}
+
+/* Logo Sizing & Separation Border */
 .brand-nav-btn .bnb-logo {
     width: 26px !important;
     height: 26px !important;
     border-radius: 50% !important;
     object-fit: cover !important;
     flex-shrink: 0 !important;
-    border: 1px solid rgba(255, 255, 255, 0.12) !important;
+    box-sizing: border-box !important;
+    display: block !important;
+    transform: none !important;
+}
+
+.brand-nav-btn .btn-ripple-overlay .bnb-logo {
+    border: 1px solid rgba(255, 255, 255, 0.4) !important;
+}
+
+/* 2. Brand-Specific Idle Color Specifications */
+
+/* Untagd: Black bg, Untagd Logo Brown text */
+.brand-nav-btn[href*="untagd"],
+.brand-nav-btn.bnb-untagd {
+    background-color: #000000 !important;
+    background: #000000 !important;
+    color: #8E5731 !important;
+    border: 1px solid rgba(142, 87, 49, 0.5) !important;
+}
+.brand-nav-btn[href*="untagd"] .btn-label-base,
+.brand-nav-btn.bnb-untagd .btn-label-base {
+    color: #8E5731 !important;
+}
+.brand-nav-btn[href*="untagd"] .bnb-logo,
+.brand-nav-btn.bnb-untagd .bnb-logo {
+    border: 1px solid rgba(255, 255, 255, 0.28) !important;
+}
+
+/* Credes: Purple bg (same as logo), White text */
+.brand-nav-btn[href*="credes"],
+.brand-nav-btn.bnb-credes {
+    background-color: #5B52DF !important;
+    background: #5B52DF !important;
+    color: #FFFFFF !important;
+    border: 1px solid #5B52DF !important;
+}
+.brand-nav-btn[href*="credes"] .btn-label-base,
+.brand-nav-btn.bnb-credes .btn-label-base {
+    color: #FFFFFF !important;
+}
+.brand-nav-btn[href*="credes"] .bnb-logo,
+.brand-nav-btn.bnb-credes .bnb-logo {
+    border: 1px solid rgba(255, 255, 255, 0.4) !important;
+}
+
+/* Gujarat Tigers: Black bg, Red text */
+.brand-nav-btn[href*="gujarat-tigers"],
+.brand-nav-btn.bnb-gujarat-tigers {
+    background-color: #000000 !important;
+    background: #000000 !important;
+    color: #F62E24 !important;
+    border: 1px solid rgba(246, 46, 36, 0.5) !important;
+}
+.brand-nav-btn[href*="gujarat-tigers"] .btn-label-base,
+.brand-nav-btn.bnb-gujarat-tigers .btn-label-base {
+    color: #F62E24 !important;
+}
+.brand-nav-btn[href*="gujarat-tigers"] .bnb-logo,
+.brand-nav-btn.bnb-gujarat-tigers .bnb-logo {
+    border: 1px solid rgba(255, 255, 255, 0.28) !important;
+}
+
+/* Sattvik: White bg, Orange text */
+.brand-nav-btn[href*="sattvik"],
+.brand-nav-btn.bnb-sattvik {
+    background-color: #FFFFFF !important;
+    background: #FFFFFF !important;
+    color: #F5811E !important;
+    border: 1px solid #FFFFFF !important;
+}
+.brand-nav-btn[href*="sattvik"] .btn-label-base,
+.brand-nav-btn.bnb-sattvik .btn-label-base {
+    color: #F5811E !important;
+}
+.brand-nav-btn[href*="sattvik"] .bnb-logo,
+.brand-nav-btn.bnb-sattvik .bnb-logo {
+    border: 1px solid rgba(0, 0, 0, 0.16) !important;
+}
+
+/* Scuff: Pink bg (similar to logo bg), White text */
+.brand-nav-btn[href*="scuff"],
+.brand-nav-btn.bnb-scuff {
+    background-color: #FB3B52 !important;
+    background: #FB3B52 !important;
+    color: #FFFFFF !important;
+    border: 1px solid #FB3B52 !important;
+}
+.brand-nav-btn[href*="scuff"] .btn-label-base,
+.brand-nav-btn.bnb-scuff .btn-label-base {
+    color: #FFFFFF !important;
+}
+.brand-nav-btn[href*="scuff"] .bnb-logo,
+.brand-nav-btn.bnb-scuff .bnb-logo {
+    border: 1px solid rgba(255, 255, 255, 0.4) !important;
+}
+
+/* HighRocks: Black bg, White text */
+.brand-nav-btn[href*="highrocks"],
+.brand-nav-btn.bnb-highrocks {
+    background-color: #000000 !important;
+    background: #000000 !important;
+    color: #FFFFFF !important;
+    border: 1px solid rgba(255, 255, 255, 0.28) !important;
+}
+.brand-nav-btn[href*="highrocks"] .btn-label-base,
+.brand-nav-btn.bnb-highrocks .btn-label-base {
+    color: #FFFFFF !important;
+}
+.brand-nav-btn[href*="highrocks"] .bnb-logo,
+.brand-nav-btn.bnb-highrocks .bnb-logo {
+    border: 1px solid rgba(255, 255, 255, 0.28) !important;
+}
+
+/* Shelf: Black bg, Cyan text */
+.brand-nav-btn[href*="shelf"],
+.brand-nav-btn.bnb-shelf {
+    background-color: #000000 !important;
+    background: #000000 !important;
+    color: #3EA0AD !important;
+    border: 1px solid rgba(62, 160, 173, 0.5) !important;
+}
+.brand-nav-btn[href*="shelf"] .btn-label-base,
+.brand-nav-btn.bnb-shelf .btn-label-base {
+    color: #3EA0AD !important;
+}
+.brand-nav-btn[href*="shelf"] .bnb-logo,
+.brand-nav-btn.bnb-shelf .bnb-logo {
+    border: 1px solid rgba(255, 255, 255, 0.28) !important;
+}
+
+/* ESFI: White bg, Black text */
+.brand-nav-btn[href*="esfi"],
+.brand-nav-btn.bnb-esfi {
+    background-color: #FFFFFF !important;
+    background: #FFFFFF !important;
+    color: #000000 !important;
+    border: 1px solid #FFFFFF !important;
+}
+.brand-nav-btn[href*="esfi"] .btn-label-base,
+.brand-nav-btn.bnb-esfi .btn-label-base {
+    color: #000000 !important;
+}
+.brand-nav-btn[href*="esfi"] .bnb-logo,
+.brand-nav-btn.bnb-esfi .bnb-logo {
+    border: 1px solid rgba(0, 0, 0, 0.16) !important;
+}
+
+/* White Horse: Black bg, Orange text */
+.brand-nav-btn[href*="white-horse"],
+.brand-nav-btn.bnb-white-horse {
+    background-color: #000000 !important;
+    background: #000000 !important;
+    color: #EB4604 !important;
+    border: 1px solid rgba(235, 70, 4, 0.5) !important;
+}
+.brand-nav-btn[href*="white-horse"] .btn-label-base,
+.brand-nav-btn.bnb-white-horse .btn-label-base {
+    color: #EB4604 !important;
+}
+.brand-nav-btn[href*="white-horse"] .bnb-logo,
+.brand-nav-btn.bnb-white-horse .bnb-logo {
+    border: 1px solid rgba(255, 255, 255, 0.28) !important;
+}
+
+/* Finanvo: White bg, Green text */
+.brand-nav-btn[href*="finanvo"],
+.brand-nav-btn.bnb-finanvo {
+    background-color: #FFFFFF !important;
+    background: #FFFFFF !important;
+    color: #2E7D32 !important;
+    border: 1px solid #FFFFFF !important;
+}
+.brand-nav-btn[href*="finanvo"] .btn-label-base,
+.brand-nav-btn.bnb-finanvo .btn-label-base {
+    color: #2E7D32 !important;
+}
+.brand-nav-btn[href*="finanvo"] .bnb-logo,
+.brand-nav-btn.bnb-finanvo .bnb-logo {
+    border: 1px solid rgba(0, 0, 0, 0.16) !important;
+}
+
+/* Shift: White bg, Orange text */
+.brand-nav-btn[href*="shift"],
+.brand-nav-btn.bnb-shift {
+    background-color: #FFFFFF !important;
+    background: #FFFFFF !important;
+    color: #FB5910 !important;
+    border: 1px solid #FFFFFF !important;
+}
+.brand-nav-btn[href*="shift"] .btn-label-base,
+.brand-nav-btn.bnb-shift .btn-label-base {
+    color: #FB5910 !important;
+}
+.brand-nav-btn[href*="shift"] .bnb-logo,
+.brand-nav-btn.bnb-shift .bnb-logo {
+    border: 1px solid rgba(0, 0, 0, 0.16) !important;
+}
+
+/* Giffy: Yellow bg, Brown text */
+.brand-nav-btn[href*="giffy"],
+.brand-nav-btn.bnb-giffy {
+    background-color: #FEAF48 !important;
+    background: #FEAF48 !important;
+    color: #5A2900 !important;
+    border: 1px solid #FEAF48 !important;
+}
+.brand-nav-btn[href*="giffy"] .btn-label-base,
+.brand-nav-btn.bnb-giffy .btn-label-base {
+    color: #5A2900 !important;
+}
+.brand-nav-btn[href*="giffy"] .bnb-logo,
+.brand-nav-btn.bnb-giffy .bnb-logo {
+    border: 1px solid rgba(90, 41, 0, 0.28) !important;
+}
+
+/* Hashlite: Light Green bg, Pink text */
+.brand-nav-btn[href*="hashlite"],
+.brand-nav-btn.bnb-hashlite {
+    background-color: #DDF5E5 !important;
+    background: #DDF5E5 !important;
+    color: #D81B60 !important;
+    border: 1px solid #DDF5E5 !important;
+}
+.brand-nav-btn[href*="hashlite"] .btn-label-base,
+.brand-nav-btn.bnb-hashlite .btn-label-base {
+    color: #D81B60 !important;
+}
+.brand-nav-btn[href*="hashlite"] .bnb-logo,
+.brand-nav-btn.bnb-hashlite .bnb-logo {
+    border: 1px solid rgba(0, 0, 0, 0.14) !important;
+}
+
+/* Aspire: White bg, Black text */
+.brand-nav-btn[href*="aspire"],
+.brand-nav-btn.bnb-aspire {
+    background-color: #FFFFFF !important;
+    background: #FFFFFF !important;
+    color: #000000 !important;
+    border: 1px solid #FFFFFF !important;
+}
+.brand-nav-btn[href*="aspire"] .btn-label-base,
+.brand-nav-btn.bnb-aspire .btn-label-base {
+    color: #000000 !important;
+}
+.brand-nav-btn[href*="aspire"] .bnb-logo,
+.brand-nav-btn.bnb-aspire .bnb-logo {
+    border: 1px solid rgba(0, 0, 0, 0.16) !important;
+}
+
+/* Active brand: retain capsule theme and add glowing active ring */
+.brand-nav-btn.active-brand {
+    box-shadow: 0 0 0 2px var(--accent, #EB4604), 0 2px 10px rgba(235, 70, 4, 0.35) !important;
+    pointer-events: none !important;
 }
 
 /* Theme 4: Orange To Dark / Transparent (DC Home Logo in Brand Nav Footer) */
