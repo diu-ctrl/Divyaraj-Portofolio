@@ -694,13 +694,225 @@
             }
         }
 
-        /* ─── No-Video Hero Layout Style ─── */
-        .hero.no-video {
-            grid-template-columns: 1fr !important;
-            max-width: 900px !important;
+        /* ─── White Horse Hero 2-Column with Channels Box ─── */
+        .hero.hero-with-channels {
+            display: grid !important;
+            grid-template-columns: 1.15fr 0.85fr !important;
+            gap: 50px !important;
+            align-items: center !important;
+            max-width: 1300px !important;
+            margin: 0 auto !important;
+            padding: 40px 6% 40px !important;
+            min-height: auto !important;
+            box-sizing: border-box !important;
         }
-        .hero.no-video .hero-left {
-            max-width: 100% !important;
+        .hero.hero-with-channels .hero-left {
+            max-width: 660px !important;
+            width: 100% !important;
+            justify-self: start !important;
+            display: flex !important;
+            flex-direction: column !important;
+            align-items: flex-start !important;
+            text-align: left !important;
+        }
+        .hero.hero-with-channels .brand-intro {
+            display: flex !important;
+            flex-direction: column !important;
+            align-items: flex-start !important;
+            gap: 16px !important;
+            margin-bottom: 20px !important;
+            width: 100% !important;
+            text-align: left !important;
+        }
+        .hero.hero-with-channels .brand-logo-frame {
+            width: 80px !important;
+            height: 80px !important;
+            flex-shrink: 0 !important;
+            border-radius: 18px !important;
+            border: 1px solid var(--border) !important;
+            background: rgba(255, 255, 255, 0.03) !important;
+            overflow: hidden !important;
+            margin: 0 0 4px 0 !important;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4) !important;
+        }
+        .hero.hero-with-channels .brand-logo-frame img {
+            width: 100% !important;
+            height: 100% !important;
+            object-fit: contain !important;
+        }
+        .hero.hero-with-channels .hero-eyebrow {
+            display: inline-flex !important;
+            align-items: center !important;
+            gap: 10px !important;
+            margin-bottom: 0 !important;
+        }
+        .hero.hero-with-channels h1 {
+            font-size: clamp(2.8rem, 5.2vw, 4.2rem) !important;
+            font-family: var(--font-serif) !important;
+            font-style: italic !important;
+            letter-spacing: -0.02em !important;
+            font-weight: 400 !important;
+            line-height: 1.08 !important;
+            margin: 0 !important;
+            color: #FFFFFF !important;
+            text-align: left !important;
+        }
+        .hero.hero-with-channels .hero-sub {
+            font-size: 1.02rem !important;
+            line-height: 1.75 !important;
+            color: var(--text-muted) !important;
+            max-width: 620px !important;
+            margin-top: 0 !important;
+            text-align: left !important;
+        }
+
+        /* Right Column: Channels Box */
+        .hero-channels-right {
+            display: flex !important;
+            justify-content: flex-end !important;
+            align-items: center !important;
+            width: 100% !important;
+        }
+        .channels-box-container {
+            width: 100% !important;
+            max-width: 530px !important;
+            display: flex !important;
+            flex-direction: column !important;
+        }
+        .channels-box-header {
+            display: flex !important;
+            align-items: center !important;
+            justify-content: space-between !important;
+            margin-bottom: 12px !important;
+            padding: 0 4px !important;
+        }
+        .channels-eyebrow-badge {
+            display: inline-flex !important;
+            align-items: center !important;
+            gap: 8px !important;
+            font-size: 0.72rem !important;
+            font-weight: 700 !important;
+            letter-spacing: 0.08em !important;
+            color: #A1A1AA !important;
+            text-transform: uppercase !important;
+        }
+        .channels-counter {
+            font-size: 0.72rem !important;
+            color: #71717A !important;
+            font-weight: 700 !important;
+            letter-spacing: 0.05em !important;
+        }
+        .channels-card-frame {
+            position: relative !important;
+            width: 100% !important;
+            border-radius: 20px !important;
+            border: 1px solid rgba(255, 255, 255, 0.1) !important;
+            background: rgba(18, 18, 18, 0.85) !important;
+            backdrop-filter: blur(20px) !important;
+            -webkit-backdrop-filter: blur(20px) !important;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.8), 0 0 35px 2px rgba(0, 0, 0, 0.6) !important;
+            padding: 18px !important;
+            box-sizing: border-box !important;
+        }
+        .channels-grid {
+            display: grid !important;
+            grid-template-columns: repeat(3, 1fr) !important;
+            gap: 12px !important;
+        }
+        .channel-tab {
+            background: rgba(255, 255, 255, 0.03) !important;
+            border: 1px solid rgba(255, 255, 255, 0.07) !important;
+            border-radius: 14px !important;
+            padding: 14px 12px !important;
+            display: flex !important;
+            flex-direction: column !important;
+            align-items: flex-start !important;
+            gap: 10px !important;
+            transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1) !important;
+            cursor: default !important;
+            box-sizing: border-box !important;
+        }
+        .channel-tab:hover {
+            background: rgba(255, 255, 255, 0.06) !important;
+            border-color: rgba(235, 70, 4, 0.4) !important;
+            transform: translateY(-2px) !important;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4) !important;
+        }
+        .channel-icon-wrap {
+            width: 36px !important;
+            height: 36px !important;
+            border-radius: 10px !important;
+            display: flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+            flex-shrink: 0 !important;
+            transition: transform 0.25s ease !important;
+        }
+        .channel-tab:hover .channel-icon-wrap {
+            transform: scale(1.08) !important;
+        }
+        .gmb-icon-wrap {
+            background: rgba(66, 133, 244, 0.12) !important;
+            color: #4285F4 !important;
+            border: 1px solid rgba(66, 133, 244, 0.25) !important;
+        }
+        .meta-icon-wrap {
+            background: rgba(0, 129, 251, 0.12) !important;
+            color: #0081FB !important;
+            border: 1px solid rgba(0, 129, 251, 0.25) !important;
+        }
+        .insta-icon-wrap {
+            background: rgba(225, 48, 108, 0.12) !important;
+            color: #E1306C !important;
+            border: 1px solid rgba(225, 48, 108, 0.25) !important;
+        }
+        .yt-icon-wrap {
+            background: rgba(255, 0, 0, 0.12) !important;
+            color: #FF0000 !important;
+            border: 1px solid rgba(255, 0, 0, 0.25) !important;
+        }
+        .fb-icon-wrap {
+            background: rgba(24, 119, 242, 0.12) !important;
+            color: #1877F2 !important;
+            border: 1px solid rgba(24, 119, 242, 0.25) !important;
+        }
+        .wa-icon-wrap {
+            background: rgba(37, 211, 102, 0.12) !important;
+            color: #25D366 !important;
+            border: 1px solid rgba(37, 211, 102, 0.25) !important;
+        }
+        .channel-info {
+            display: flex !important;
+            flex-direction: column !important;
+            gap: 3px !important;
+        }
+        .channel-title {
+            font-size: 0.85rem !important;
+            font-weight: 700 !important;
+            color: #FFFFFF !important;
+            line-height: 1.2 !important;
+        }
+        .channel-role {
+            font-size: 0.68rem !important;
+            color: var(--text-muted) !important;
+            line-height: 1.3 !important;
+        }
+
+        @media (max-width: 960px) {
+            .hero.hero-with-channels {
+                grid-template-columns: 1fr !important;
+                gap: 36px !important;
+                padding-top: 30px !important;
+            }
+            .hero-channels-right {
+                justify-content: center !important;
+            }
+            .channels-box-container {
+                max-width: 100% !important;
+            }
+            .channels-grid {
+                grid-template-columns: repeat(2, 1fr) !important;
+            }
         }
 
         .hero-eyebrow {
@@ -907,20 +1119,128 @@
 
     <main>
         <!-- Hero -->
-        <section class="hero no-video">
+        <section class="hero hero-with-channels">
             <div class="hero-left">
-                <div class="brand-intro ">
-                <div class="brand-logo-frame">
-                    <img src="../images/Logos of the brands/white horse.jpg" alt="White Horse Logo">
-                </div>
-                <div>
-                    <div class="hero-eyebrow"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M8.56 2.75c4.37 6.03 6.02 9.42 8.03 17.72m2.54-15.38c-3.72 4.35-8.94 5.66-16.88 5.85m19.5 1.9c-3.5-.93-6.63-.82-8.94 0-2.58.92-5.01 2.86-7.44 6.32"/></svg> Nov 2025 — Dec 2025 · Healthcare SMM</div>
+                <div class="brand-intro">
+                    <div class="brand-logo-frame">
+                        <img src="../images/Logos of the brands/white horse.jpg" alt="White Horse Logo">
+                    </div>
+                    <div class="hero-eyebrow">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="12" cy="12" r="10"/>
+                            <path d="M8.56 2.75c4.37 6.03 6.02 9.42 8.03 17.72m2.54-15.38c-3.72 4.35-8.94 5.66-16.88 5.85m19.5 1.9c-3.5-.93-6.63-.82-8.94 0-2.58.92-5.01 2.86-7.44 6.32"/>
+                        </svg>
+                        <span>Nov 2025 — Dec 2025 · Healthcare SMM</span>
+                    </div>
                     <h1>White Horse<br>Media Solution</h1>
                 </div>
+                <p class="hero-sub">Gujarat's leading healthcare marketing and social media agency. During my time at White Horse Media Solution, I led digital marketing campaigns for local clinics, dental academies, and multi-specialty hospitals — driving patient acquisition through Local SEO (GMB), content marketing, and high-impact Meta ad campaigns.</p>
             </div>
-                <p class="hero-sub ">Gujarat's leading healthcare marketing and social media agency. During my time at White Horse Media Solution, I led digital marketing campaigns for local clinics, dental academies, and multi-specialty hospitals — driving patient acquisition through Local SEO (GMB), content marketing, and high-impact Meta ad campaigns.</p>
+
+            <!-- Right Column: 6 Social Media Channels Box -->
+            <div class="hero-channels-right">
+                <div class="channels-box-container">
+                    <div class="channels-box-header">
+                        <div class="channels-eyebrow-badge">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#EB4604" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                                <rect x="3" y="3" width="7" height="7"/>
+                                <rect x="14" y="3" width="7" height="7"/>
+                                <rect x="14" y="14" width="7" height="7"/>
+                                <rect x="3" y="14" width="7" height="7"/>
+                            </svg>
+                            <span>Platforms &amp; Channels Managed</span>
+                        </div>
+                        <span class="channels-counter">6 Platforms</span>
+                    </div>
+
+                    <div class="channels-card-frame">
+                        <div class="channels-grid">
+                            <!-- 1. Google My Business / Local SEO -->
+                            <div class="channel-tab">
+                                <div class="channel-icon-wrap gmb-icon-wrap">
+                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/>
+                                        <circle cx="12" cy="9" r="2.5"/>
+                                    </svg>
+                                </div>
+                                <div class="channel-info">
+                                    <div class="channel-title">Google (GMB)</div>
+                                    <div class="channel-role">Local SEO &amp; Maps</div>
+                                </div>
+                            </div>
+
+                            <!-- 2. Meta Ads -->
+                            <div class="channel-tab">
+                                <div class="channel-icon-wrap meta-icon-wrap">
+                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+                                    </svg>
+                                </div>
+                                <div class="channel-info">
+                                    <div class="channel-title">Meta Ads</div>
+                                    <div class="channel-role">Lead Gen Campaigns</div>
+                                </div>
+                            </div>
+
+                            <!-- 3. Instagram -->
+                            <div class="channel-tab">
+                                <div class="channel-icon-wrap insta-icon-wrap">
+                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+                                        <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
+                                        <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
+                                    </svg>
+                                </div>
+                                <div class="channel-info">
+                                    <div class="channel-title">Instagram</div>
+                                    <div class="channel-role">Healthcare Reels &amp; SMM</div>
+                                </div>
+                            </div>
+
+                            <!-- 4. YouTube -->
+                            <div class="channel-tab">
+                                <div class="channel-icon-wrap yt-icon-wrap">
+                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <polygon points="23 7 16 12 23 17 23 7"/>
+                                        <rect x="1" y="5" width="15" height="14" rx="2"/>
+                                    </svg>
+                                </div>
+                                <div class="channel-info">
+                                    <div class="channel-title">YouTube</div>
+                                    <div class="channel-role">Doctor Podcasts &amp; Video</div>
+                                </div>
+                            </div>
+
+                            <!-- 5. Facebook -->
+                            <div class="channel-tab">
+                                <div class="channel-icon-wrap fb-icon-wrap">
+                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
+                                    </svg>
+                                </div>
+                                <div class="channel-info">
+                                    <div class="channel-title">Facebook</div>
+                                    <div class="channel-role">Hospital Pages &amp; Camps</div>
+                                </div>
+                            </div>
+
+                            <!-- 6. WhatsApp Business -->
+                            <div class="channel-tab">
+                                <div class="channel-icon-wrap wa-icon-wrap">
+                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/>
+                                    </svg>
+                                </div>
+                                <div class="channel-info">
+                                    <div class="channel-title">WhatsApp</div>
+                                    <div class="channel-role">Patient Inquiries &amp; Funnels</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-            </section>
+        </section>
 
         <!-- Analytics Deep Dive -->
         <section class="analytics-section">
