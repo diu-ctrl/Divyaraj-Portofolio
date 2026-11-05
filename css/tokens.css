@@ -1,3 +1,18 @@
+@font-face {
+    font-family: 'Libre Caslon Display';
+    src: url('/fonts/LibreCaslonDisplay-Regular.ttf') format('truetype');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+@font-face {
+    font-family: 'Libre Caslon Display';
+    src: url('/fonts/LibreCaslonDisplay-Regular.ttf') format('truetype');
+    font-weight: 400;
+    font-style: italic;
+    font-display: swap;
+}
+
 /* ─── Global Pure Black Root Fix ─── */
 html, body {
   background: #000000 !important;
@@ -9,7 +24,7 @@ html, body {
    Single Source of Truth for Tokens, Laws, and Core Visual Language
    ========================================================================== */
 
-@import url('https://fonts.googleapis.com/css2?family=Instrument+Serif:ital,wght@0,400;1,400&family=Inter+Tight:ital,wght@0,100..900;1,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Libre+Caslon+Display&family=Inter+Tight:ital,wght@0,100..900;1,100..900&display=swap');
 
 :root {
   /* Surfaces */
@@ -32,7 +47,7 @@ html, body {
   --accent-ink: #FFFFFF;
 
   /* Type (reuse the fonts ALREADY loaded — do not add new families) */
-  --font-display: 'Instrument Serif', Georgia, serif;
+  --font-display: 'Libre Caslon Display', Georgia, serif;
   --font-body: 'Inter Tight', 'Inter Local', system-ui, sans-serif;
   --font-mono: 'Inter Tight', 'Inter Local', system-ui, sans-serif;
   --micro: 0.7125rem;       /* 11.4px eyebrow/label size */
