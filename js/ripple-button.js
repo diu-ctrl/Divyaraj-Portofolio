@@ -36,7 +36,8 @@
             '.brand-nav-btn:not(.dc-home)',
             '.tab-btn',
             '.case-study-btn',
-            '.back-to-top-btn'
+            '.back-to-top-btn',
+            '.btn-book-coffee'
         ];
 
         const buttons = document.querySelectorAll(selectors.join(', '));
@@ -48,7 +49,7 @@
             let theme = 'theme-dark-to-orange';
             if (btn.classList.contains('btn-explore-capsule')) {
                 theme = 'theme-white-to-orange';
-            } else if (btn.classList.contains('btn-primary-gold') || btn.classList.contains('download-pdf-btn') || btn.classList.contains('back-to-top-btn')) {
+            } else if (btn.classList.contains('btn-primary-gold') || btn.classList.contains('download-pdf-btn') || btn.classList.contains('back-to-top-btn') || btn.classList.contains('btn-book-coffee')) {
                 theme = 'theme-orange-to-white';
             } else {
                 theme = 'theme-dark-to-orange';

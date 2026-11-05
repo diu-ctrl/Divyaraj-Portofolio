@@ -3907,7 +3907,7 @@
             display: inline-flex;
             align-items: center;
             gap: 9px;
-            background: var(--accent, #f45d00);
+            background: var(--accent, #EB4604);
             color: #ffffff !important;
             font-family: var(--font-sans);
             font-size: 14px;
@@ -3916,23 +3916,23 @@
             border-radius: 9999px;
             border: 1px solid rgba(255, 255, 255, 0.2);
             cursor: pointer;
-            transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+            transition: border-color 0.3s ease, background-color 0.3s ease, box-shadow 0.25s ease;
             text-decoration: none;
-            box-shadow: 0 4px 18px rgba(244, 93, 0, 0.3);
+            box-shadow: 0 4px 18px rgba(235, 70, 4, 0.3);
             white-space: nowrap;
+            transform: none !important;
         }
 
-        .btn-book-coffee:hover, .btn-book-coffee.active {
-            background: #ff6a14;
-            transform: translateY(-2px);
-            box-shadow: 0 8px 28px rgba(244, 93, 0, 0.5);
+        .btn-book-coffee:hover, .btn-book-coffee.active, .btn-book-coffee:focus {
+            transform: none !important;
+            box-shadow: 0 4px 22px rgba(235, 70, 4, 0.45);
             border-color: rgba(255, 255, 255, 0.35);
         }
 
         .btn-book-coffee .coffee-icon {
             width: 17px;
             height: 17px;
-            stroke: #ffffff;
+            stroke: currentColor;
             flex-shrink: 0;
         }
 

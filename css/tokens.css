@@ -144,7 +144,8 @@ html, body {
 .btn-primary-gold:hover, .banner-cta:hover, .ember-cta-btn:hover, .btn-action:hover,
 .back-btn:hover, .pp-back-link:hover, .banner-back:hover, .btn-outline:hover,
 .btn-brutalist:hover, .brand-nav-btn:hover, .cert-btn:hover, .tab-btn:hover,
-.control-btn:hover, .back-to-top-btn:hover, .social-mail-btn:hover, .social-icon-btn:hover {
+.control-btn:hover, .back-to-top-btn:hover, .social-mail-btn:hover, .social-icon-btn:hover,
+.btn-book-coffee:hover, .btn-book-coffee.active, .btn-book-coffee:focus {
   transform: none !important;
 }
 
@@ -928,23 +929,37 @@ button, input[type="submit"], input[type="button"], .btn-b1, .btn-b2 {
   color: #FFFFFF !important;
 }
 
-/* Theme 3: Orange Primary (e.g. .btn-primary-gold, .download-pdf-btn) */
+/* Theme 3: Orange Primary (e.g. .btn-primary-gold, .download-pdf-btn, .btn-book-coffee) */
 .btn-ripple-container.theme-orange-to-white {
   background-color: var(--accent, #EB4604) !important;
   border-color: var(--accent, #EB4604) !important;
   color: #FFFFFF !important;
+  transform: none !important;
 }
 .btn-ripple-container.theme-orange-to-white .btn-label-base {
+  color: #FFFFFF !important;
+}
+.btn-ripple-container.theme-orange-to-white .btn-label-base svg,
+.btn-ripple-container.theme-orange-to-white .btn-label-base svg path,
+.btn-ripple-container.theme-orange-to-white .btn-label-base svg line {
+  stroke: #FFFFFF !important;
   color: #FFFFFF !important;
 }
 .btn-ripple-container.theme-orange-to-white .btn-ripple-overlay {
   background: #000000 !important;
   color: #FFFFFF !important;
 }
+.btn-ripple-container.theme-orange-to-white .btn-ripple-overlay svg,
+.btn-ripple-container.theme-orange-to-white .btn-ripple-overlay svg path,
+.btn-ripple-container.theme-orange-to-white .btn-ripple-overlay svg line {
+  stroke: #FFFFFF !important;
+  color: #FFFFFF !important;
+}
 .btn-ripple-container.theme-orange-to-white:hover {
   background-color: var(--accent, #EB4604) !important;
-  border-color: #FFFFFF !important;
+  border-color: var(--accent, #EB4604) !important;
   color: #FFFFFF !important;
+  transform: none !important;
 }
 
 
