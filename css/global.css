@@ -3389,6 +3389,7 @@
             display: flex !important;
             justify-content: center !important;
             align-items: center !important;
+            overflow: hidden !important;
         }
 
         #testimonials-3d-root > div {
@@ -3397,6 +3398,7 @@
             min-height: 600px !important;
             max-height: 690px !important;
             border-radius: 24px !important;
+            overflow: hidden !important;
         }
 
         #testimonials-3d-demo .w-50,
