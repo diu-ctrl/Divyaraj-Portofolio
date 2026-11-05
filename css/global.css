@@ -1709,14 +1709,14 @@
             text-align: left;
             display: flex;
             justify-content: space-between;
-            align-items: flex-start !important;
+            align-items: stretch !important;
             gap: 40px;
             padding: 0 !important;
             background: transparent;
             border: none;
             max-width: 1200px;
             width: 100%;
-            margin: 0 auto;
+            margin: 0 auto 14px auto !important;
             box-sizing: border-box;
         }
 
@@ -1724,6 +1724,8 @@
             display: flex;
             flex-direction: column;
             align-items: flex-start;
+            justify-content: space-between !important;
+            align-self: stretch !important;
             flex: 1;
             max-width: 590px;
             min-width: 0;
@@ -1947,7 +1949,7 @@
             font-size: 11.5px !important;
             font-weight: 500 !important;
             letter-spacing: 0.02em !important;
-            margin-top: 14px !important;
+            margin-top: auto !important;
             margin-bottom: 0px !important;
             line-height: 1.45;
             border: none !important;
@@ -1974,9 +1976,22 @@
             opacity: 0.5;
         }
 
-        /* ─── Dither Card Section ─── */
+        /* ─── Bright White Thin Horizontal Divider Line ─── */
+        .contact-divider-line {
+            width: 100% !important;
+            max-width: 1200px !important;
+            height: 1px !important;
+            background: #FFFFFF !important;
+            opacity: 0.95 !important;
+            margin: 0 auto !important;
+            position: relative !important;
+            z-index: 10 !important;
+            box-sizing: border-box !important;
+        }
+
+        /* ─── Dither Card Section (moved slightly down) ─── */
         .dither-card-section {
-            padding: 16px 0 0 0 !important;
+            padding: 32px 0 0 0 !important;
             width: 100%;
             max-width: 1200px;
             margin: 0 auto !important;
@@ -2039,7 +2054,19 @@
                 grid-template-columns: 1fr auto;
                 padding: 40px 0;
                 gap: 20px;
-                align-items: start;
+                align-items: start !important;
+                margin-bottom: 16px !important;
+            }
+            .contact-left-col {
+                align-self: auto !important;
+                justify-content: flex-start !important;
+            }
+            .copyright-above {
+                margin-top: 16px !important;
+                margin-bottom: 0px !important;
+            }
+            .dither-card-section {
+                padding: 24px 0 0 0 !important;
             }
             .contact-video-right {
                 justify-content: flex-end;
