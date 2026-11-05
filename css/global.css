@@ -2313,7 +2313,7 @@
             /* 4. Correct spacing around “Pick a lane. I’ll do the rest.” */
             #services.services-section {
                 padding-top: 50px !important; /* experience-to-services gap = experience padding-bottom (50) + services padding-top (50) = 100px */
-                padding-bottom: 60px !important;
+                padding-bottom: 24px !important;
             }
             #services .section-header {
                 margin-bottom: 65px !important; /* Services heading to Platform Growth: 60px-75px */
@@ -3345,11 +3345,11 @@
             margin: 0 !important;
             background: #000000 !important;
             padding: 0 !important;
-            min-height: 460px !important;
-            height: 480px !important;
-            max-height: 500px !important;
+            min-height: 600px !important;
+            height: 650px !important;
+            max-height: 690px !important;
             overflow: hidden !important;
-            border-radius: 20px !important;
+            border-radius: 24px !important;
             border: 1px solid rgba(255, 255, 255, 0.08) !important;
             box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.8) !important;
             isolation: isolate !important;
@@ -3367,16 +3367,16 @@
         #testimonials-3d-root > div {
             width: 100% !important;
             height: 100% !important;
-            min-height: unset !important;
-            max-height: 480px !important;
-            border-radius: 20px !important;
+            min-height: 600px !important;
+            max-height: 690px !important;
+            border-radius: 24px !important;
         }
 
         #testimonials-3d-demo .w-50,
         .reviews-3d-column-wrap .w-50 {
-            width: 255px !important;
-            min-width: 255px !important;
-            max-width: 255px !important;
+            width: 285px !important;
+            min-width: 285px !important;
+            max-width: 285px !important;
         }
 
         /* Specific Testimonial Card Styling */
@@ -3384,13 +3384,13 @@
             position: relative !important;
             background: #101010 !important;
             border: 1px solid rgba(235, 70, 4, 0.45) !important;
-            border-radius: 12px !important;
+            border-radius: 14px !important;
             color: #f4f1ea !important;
             transition: all 0.25s ease-in-out !important;
         }
 
         #testimonials-3d-demo .testimonial-card-content {
-            padding: 12px 14px !important;
+            padding: 15px 18px !important;
         }
 
         #testimonials-3d-demo .testimonial-card::before {
@@ -3425,7 +3425,7 @@
             color: #f4f1ea !important;
             font-family: var(--font-sans) !important;
             font-weight: 600 !important;
-            font-size: 13.5px !important;
+            font-size: 15px !important;
             line-height: 1.25 !important;
             white-space: nowrap !important;
             overflow: hidden !important;
@@ -3437,7 +3437,7 @@
         #testimonials-3d-demo .testimonial-brand {
             color: var(--accent, #eb4604) !important;
             font-family: var(--font-mono) !important;
-            font-size: 11px !important;
+            font-size: 12px !important;
             font-weight: 600 !important;
             letter-spacing: 0.04em !important;
             white-space: nowrap !important;
@@ -3448,8 +3448,8 @@
         #testimonials-3d-demo .testimonial-body {
             color: #b5b5ba !important;
             font-family: var(--font-sans) !important;
-            font-size: 12px !important;
-            line-height: 1.45 !important;
+            font-size: 13px !important;
+            line-height: 1.5 !important;
             font-weight: 400 !important;
             margin: 0 !important;
         }
@@ -4211,24 +4211,28 @@
 
 
 
-        /* ─── Reviews & Direct Booking Section ─── */
+        /* ─── Reviews & Direct Booking Section (Full 1920x1080 Viewport Scale) ─── */
         .reviews-split-section {
             width: 100%;
-            max-width: 1200px;
-            margin: 100px auto 60px auto;
-            padding: 0 4%;
+            max-width: 1680px;
+            min-height: calc(100vh - 60px);
+            margin: 0 auto;
+            padding: 30px clamp(24px, 4.5vw, 80px) 40px;
             position: relative;
             z-index: 5;
             box-sizing: border-box;
             isolation: isolate !important;
             contain: paint !important;
             overflow: hidden !important;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
         }
 
         .reviews-split-grid {
             display: grid;
             grid-template-columns: 1.05fr 0.95fr;
-            gap: 44px;
+            gap: clamp(40px, 5vw, 80px);
             align-items: center;
             width: 100%;
         }
@@ -4237,7 +4241,7 @@
             display: flex;
             flex-direction: column;
             align-items: flex-start;
-            gap: 20px;
+            gap: 28px;
             width: 100%;
             min-width: 0;
         }
@@ -4258,9 +4262,9 @@
         }
 
         .reviews-headline {
-            font-size: clamp(2.4rem, 4.5vw, 3.8rem);
-            line-height: 1.08;
-            letter-spacing: -0.02em;
+            font-size: clamp(3.2rem, 5vw, 5.2rem);
+            line-height: 1.05;
+            letter-spacing: -0.03em;
             color: #ffffff;
             margin: 0;
             font-weight: 400;
@@ -4269,18 +4273,31 @@
         .reviews-intro-desc {
             color: #a1a1aa;
             font-family: var(--font-sans);
-            font-size: 15px;
-            line-height: 1.6;
+            font-size: clamp(16px, 1.1vw, 19px);
+            line-height: 1.65;
             margin: 0;
-            max-width: 500px;
+            max-width: 580px;
         }
 
         .reviews-action-buttons {
             display: flex;
             flex-wrap: wrap;
             align-items: center;
-            gap: 14px;
-            margin-top: 6px;
+            gap: 16px;
+            margin-top: 8px;
+        }
+
+        .reviews-action-buttons .btn-book-coffee,
+        .reviews-action-buttons .btn-brutalist {
+            padding: 16px 30px !important;
+            font-size: 16px !important;
+            font-weight: 600 !important;
+            gap: 11px !important;
+        }
+
+        .reviews-action-buttons .coffee-icon {
+            width: 20px !important;
+            height: 20px !important;
         }
 
         .reviews-marquee-column {
