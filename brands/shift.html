@@ -651,13 +651,234 @@
             }
         }
 
-        /* ─── No-Video Hero Layout Style ─── */
-        .hero.no-video {
-            grid-template-columns: 1fr !important;
-            max-width: 900px !important;
+        /* ─── Shift Hero 2-Column with 3 Channels Box ─── */
+        .hero.hero-with-channels {
+            display: grid !important;
+            grid-template-columns: 1.15fr 0.85fr !important;
+            gap: 50px !important;
+            align-items: center !important;
+            max-width: 1300px !important;
+            margin: 0 auto !important;
+            padding: 40px 6% 40px !important;
+            min-height: auto !important;
+            box-sizing: border-box !important;
         }
-        .hero.no-video .hero-left {
-            max-width: 100% !important;
+        .hero.hero-with-channels .hero-left {
+            max-width: 660px !important;
+            width: 100% !important;
+            justify-self: start !important;
+            display: flex !important;
+            flex-direction: column !important;
+            align-items: flex-start !important;
+            text-align: left !important;
+        }
+        .hero.hero-with-channels .brand-intro {
+            display: flex !important;
+            flex-direction: row !important;
+            flex-wrap: nowrap !important;
+            align-items: center !important;
+            gap: 22px !important;
+            margin-bottom: 20px !important;
+            width: 100% !important;
+            text-align: left !important;
+        }
+        .hero.hero-with-channels .brand-logo-frame {
+            width: 80px !important;
+            height: 80px !important;
+            flex-shrink: 0 !important;
+            border-radius: 18px !important;
+            border: 1px solid var(--border) !important;
+            background: rgba(255, 255, 255, 0.03) !important;
+            overflow: hidden !important;
+            margin: 0 !important;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4) !important;
+        }
+        .hero.hero-with-channels .brand-logo-frame img {
+            width: 100% !important;
+            height: 100% !important;
+            object-fit: contain !important;
+        }
+        .hero.hero-with-channels h1 {
+            font-size: clamp(2.8rem, 5.2vw, 4.2rem) !important;
+            font-family: var(--font-serif) !important;
+            font-style: italic !important;
+            letter-spacing: -0.02em !important;
+            font-weight: 400 !important;
+            line-height: 1.08 !important;
+            margin: 0 !important;
+            color: #FFFFFF !important;
+            text-align: left !important;
+        }
+        .hero.hero-with-channels .hero-sub {
+            font-size: 1.02rem !important;
+            line-height: 1.75 !important;
+            color: var(--text-muted) !important;
+            max-width: 620px !important;
+            margin-top: 0 !important;
+            text-align: left !important;
+        }
+
+        /* Right Column: 3 Channels Box */
+        .hero-channels-right {
+            display: flex !important;
+            justify-content: flex-end !important;
+            align-items: center !important;
+            width: 100% !important;
+        }
+        .channels-box-container {
+            width: 100% !important;
+            max-width: 530px !important;
+            display: flex !important;
+            flex-direction: column !important;
+        }
+        .channels-box-header {
+            display: flex !important;
+            align-items: center !important;
+            justify-content: space-between !important;
+            margin-bottom: 12px !important;
+            padding: 0 4px !important;
+        }
+        .channels-eyebrow-badge {
+            display: inline-flex !important;
+            align-items: center !important;
+            gap: 8px !important;
+            font-size: 0.72rem !important;
+            font-weight: 700 !important;
+            letter-spacing: 0.08em !important;
+            color: #A1A1AA !important;
+            text-transform: uppercase !important;
+        }
+        .channels-counter {
+            font-size: 0.72rem !important;
+            color: #71717A !important;
+            font-weight: 700 !important;
+            letter-spacing: 0.05em !important;
+        }
+        .channels-card-frame {
+            position: relative !important;
+            width: 100% !important;
+            border-radius: 20px !important;
+            border: 1px solid rgba(255, 255, 255, 0.1) !important;
+            background: rgba(18, 18, 18, 0.85) !important;
+            backdrop-filter: blur(20px) !important;
+            -webkit-backdrop-filter: blur(20px) !important;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.8), 0 0 35px 2px rgba(0, 0, 0, 0.6) !important;
+            padding: 22px 20px !important;
+            box-sizing: border-box !important;
+        }
+        .channels-grid-3 {
+            display: grid !important;
+            grid-template-columns: repeat(3, 1fr) !important;
+            gap: 14px !important;
+        }
+        .channel-tab-3 {
+            background: rgba(255, 255, 255, 0.03) !important;
+            border: 1px solid rgba(255, 255, 255, 0.07) !important;
+            border-radius: 16px !important;
+            padding: 20px 14px 18px !important;
+            display: flex !important;
+            flex-direction: column !important;
+            align-items: center !important;
+            text-align: center !important;
+            gap: 12px !important;
+            transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1) !important;
+            cursor: default !important;
+            box-sizing: border-box !important;
+        }
+        .channel-tab-3:hover {
+            background: rgba(255, 255, 255, 0.06) !important;
+            border-color: rgba(235, 70, 4, 0.4) !important;
+            transform: translateY(-3px) !important;
+            box-shadow: 0 12px 28px rgba(0, 0, 0, 0.5) !important;
+        }
+        .channel-icon-wrap-3 {
+            width: 44px !important;
+            height: 44px !important;
+            border-radius: 12px !important;
+            display: flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+            flex-shrink: 0 !important;
+            transition: transform 0.25s ease !important;
+        }
+        .channel-tab-3:hover .channel-icon-wrap-3 {
+            transform: scale(1.1) !important;
+        }
+        .insta-icon-wrap {
+            background: rgba(225, 48, 108, 0.15) !important;
+            color: #E1306C !important;
+            border: 1px solid rgba(225, 48, 108, 0.3) !important;
+        }
+        .fb-icon-wrap {
+            background: rgba(24, 119, 242, 0.15) !important;
+            color: #1877F2 !important;
+            border: 1px solid rgba(24, 119, 242, 0.3) !important;
+        }
+        .threads-icon-wrap {
+            background: rgba(255, 255, 255, 0.08) !important;
+            color: #FFFFFF !important;
+            border: 1px solid rgba(255, 255, 255, 0.2) !important;
+        }
+        .channel-info-3 {
+            display: flex !important;
+            flex-direction: column !important;
+            align-items: center !important;
+            gap: 6px !important;
+            width: 100% !important;
+        }
+        .channel-title-3 {
+            font-size: 0.92rem !important;
+            font-weight: 700 !important;
+            color: #FFFFFF !important;
+            line-height: 1.2 !important;
+            white-space: nowrap !important;
+        }
+        .channel-badge-2words {
+            font-size: 0.72rem !important;
+            font-weight: 600 !important;
+            color: #A1A1AA !important;
+            background: rgba(255, 255, 255, 0.04) !important;
+            border: 1px solid rgba(255, 255, 255, 0.08) !important;
+            padding: 4px 10px !important;
+            border-radius: 100px !important;
+            letter-spacing: 0.02em !important;
+            white-space: nowrap !important;
+        }
+        .channel-tab-3:hover .channel-badge-2words {
+            color: #EB4604 !important;
+            border-color: rgba(235, 70, 4, 0.3) !important;
+            background: rgba(235, 70, 4, 0.08) !important;
+        }
+
+        @media (max-width: 960px) {
+            .hero.hero-with-channels {
+                grid-template-columns: 1fr !important;
+                gap: 36px !important;
+                padding-top: 30px !important;
+            }
+            .hero.hero-with-channels .brand-intro {
+                flex-wrap: wrap !important;
+            }
+            .hero-channels-right {
+                justify-content: center !important;
+            }
+            .channels-box-container {
+                max-width: 100% !important;
+            }
+            .channels-grid-3 {
+                grid-template-columns: repeat(3, 1fr) !important;
+                gap: 10px !important;
+            }
+            .channel-tab-3 {
+                padding: 16px 8px 14px !important;
+            }
+            .channel-title-3 {
+                font-size: 0.82rem !important;
+            }
+            .channel-badge-2words {
+                font-size: 0.65rem !important;
+                padding: 3px 6px !important;
+            }
         }
 
 
@@ -846,25 +1067,87 @@
 
     <main>
         <!-- Hero -->
-        <section class="hero no-video">
+        <section class="hero hero-with-channels">
             <div class="hero-left">
-                <div class="brand-intro ">
-                <div class="brand-logo-frame">
-                    <img src="../images/Logos of the brands/shift.jpg" alt="Shift Logo">
-                </div>
-                <div>
-                    <div style="display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 16px; align-items: center;">
-                        <div class="brand-eyebrow">Oct 2025 — Aug 2026 · Fitness App SMM</div>
-                        <div class="credes-badge-pill" style="display: inline-flex; align-items: center; padding: 6px 14px; border-radius: 100px; background: rgba(139, 92, 246, 0.08); border: 1px solid rgba(139, 92, 246, 0.2); font-size: 0.72rem; font-weight: 700; color: #a78bfa; letter-spacing: 0.05em;">Credes Techlabs Campaign</div>
+                <div class="brand-intro">
+                    <div class="brand-logo-frame">
+                        <img src="../images/Logos of the brands/shift.jpg" alt="Shift Logo">
                     </div>
-                    <h1>Shift</h1>
+                    <div>
+                        <div style="display: flex; gap: 10px; flex-wrap: nowrap; margin-bottom: 16px; align-items: center;">
+                            <div class="brand-eyebrow" style="white-space: nowrap !important;">Oct 2025 — Aug 2026 · Fitness App SMM</div>
+                            <div class="credes-badge-pill" style="display: inline-flex; align-items: center; padding: 6px 14px; border-radius: 100px; background: rgba(139, 92, 246, 0.08); border: 1px solid rgba(139, 92, 246, 0.2); font-size: 0.72rem; font-weight: 700; color: #a78bfa; letter-spacing: 0.05em; white-space: nowrap !important;">Credes Techlabs Campaign</div>
+                        </div>
+                        <h1>Shift</h1>
+                    </div>
+                </div>
+                <p class="hero-sub">How I designed a digital launch pipeline and built an organic fitness community for a state-driven, interruption-safe interval training engine.</p>
+            </div>
+
+            <!-- Right Column: 3 Social Media Channels Box -->
+            <div class="hero-channels-right">
+                <div class="channels-box-container">
+                    <div class="channels-box-header">
+                        <div class="channels-eyebrow-badge">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#EB4604" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                                <rect x="3" y="3" width="7" height="7"/>
+                                <rect x="14" y="3" width="7" height="7"/>
+                                <rect x="14" y="14" width="7" height="7"/>
+                                <rect x="3" y="14" width="7" height="7"/>
+                            </svg>
+                            <span>Launch Channels Managed</span>
+                        </div>
+                        <span class="channels-counter">3 Platforms</span>
+                    </div>
+
+                    <div class="channels-card-frame">
+                        <div class="channels-grid-3">
+                            <!-- 1. Instagram -->
+                            <div class="channel-tab-3">
+                                <div class="channel-icon-wrap-3 insta-icon-wrap">
+                                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+                                        <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
+                                        <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
+                                    </svg>
+                                </div>
+                                <div class="channel-info-3">
+                                    <div class="channel-title-3">Instagram</div>
+                                    <div class="channel-badge-2words">Video Reach</div>
+                                </div>
+                            </div>
+
+                            <!-- 2. Facebook Ads -->
+                            <div class="channel-tab-3">
+                                <div class="channel-icon-wrap-3 fb-icon-wrap">
+                                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
+                                    </svg>
+                                </div>
+                                <div class="channel-info-3">
+                                    <div class="channel-title-3">Facebook Ads</div>
+                                    <div class="channel-badge-2words">App Installs</div>
+                                </div>
+                            </div>
+
+                            <!-- 3. Threads -->
+                            <div class="channel-tab-3">
+                                <div class="channel-icon-wrap-3 threads-icon-wrap">
+                                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <circle cx="12" cy="12" r="4"/>
+                                        <path d="M16 8v5a3 3 0 0 0 6 0v-1a10 10 0 1 0-4 8"/>
+                                    </svg>
+                                </div>
+                                <div class="channel-info-3">
+                                    <div class="channel-title-3">Threads</div>
+                                    <div class="channel-badge-2words">Community Polls</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
-                <p class="hero-sub ">
-                How I designed a digital launch pipeline and built an organic fitness community for a state-driven, interruption-safe interval training engine.
-            </p>
-            </div>
-            </section>
+        </section>
 
         <!-- SMM Metrics Section -->
         <section class="metrics-section reveal reveal-delay-2">
