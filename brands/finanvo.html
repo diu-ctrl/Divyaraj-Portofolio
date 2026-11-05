@@ -656,13 +656,235 @@
             }
         }
 
-        /* ─── No-Video Hero Layout Style ─── */
-        .hero.no-video {
-            grid-template-columns: 1fr !important;
-            max-width: 900px !important;
+        /* ─── Finanvo Hero 2-Column with 3 Channels Box ─── */
+        .hero.hero-with-channels {
+            display: grid !important;
+            grid-template-columns: 1.15fr 0.85fr !important;
+            gap: 50px !important;
+            align-items: center !important;
+            max-width: 1300px !important;
+            margin: 0 auto !important;
+            padding: 40px 6% 40px !important;
+            min-height: auto !important;
+            box-sizing: border-box !important;
         }
-        .hero.no-video .hero-left {
-            max-width: 100% !important;
+        .hero.hero-with-channels .hero-left {
+            max-width: 660px !important;
+            width: 100% !important;
+            justify-self: start !important;
+            display: flex !important;
+            flex-direction: column !important;
+            align-items: flex-start !important;
+            text-align: left !important;
+        }
+        .hero.hero-with-channels .brand-intro {
+            display: flex !important;
+            flex-direction: column !important;
+            align-items: flex-start !important;
+            gap: 16px !important;
+            margin-bottom: 20px !important;
+            width: 100% !important;
+            text-align: left !important;
+        }
+        .hero.hero-with-channels .brand-logo-frame {
+            width: 80px !important;
+            height: 80px !important;
+            flex-shrink: 0 !important;
+            border-radius: 18px !important;
+            border: 1px solid var(--border) !important;
+            background: rgba(255, 255, 255, 0.03) !important;
+            overflow: hidden !important;
+            margin: 0 0 4px 0 !important;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4) !important;
+        }
+        .hero.hero-with-channels .brand-logo-frame img {
+            width: 100% !important;
+            height: 100% !important;
+            object-fit: contain !important;
+        }
+        .hero.hero-with-channels .hero-eyebrow {
+            display: inline-flex !important;
+            align-items: center !important;
+            gap: 10px !important;
+            margin-bottom: 0 !important;
+        }
+        .hero.hero-with-channels h1 {
+            font-size: clamp(2.8rem, 5.2vw, 4.2rem) !important;
+            font-family: var(--font-serif) !important;
+            font-style: italic !important;
+            letter-spacing: -0.02em !important;
+            font-weight: 400 !important;
+            line-height: 1.08 !important;
+            margin: 0 !important;
+            color: #FFFFFF !important;
+            text-align: left !important;
+        }
+        .hero.hero-with-channels .hero-sub {
+            font-size: 1.02rem !important;
+            line-height: 1.75 !important;
+            color: var(--text-muted) !important;
+            max-width: 620px !important;
+            margin-top: 0 !important;
+            text-align: left !important;
+        }
+
+        /* Right Column: 3 Channels Box */
+        .hero-channels-right {
+            display: flex !important;
+            justify-content: flex-end !important;
+            align-items: center !important;
+            width: 100% !important;
+        }
+        .channels-box-container {
+            width: 100% !important;
+            max-width: 530px !important;
+            display: flex !important;
+            flex-direction: column !important;
+        }
+        .channels-box-header {
+            display: flex !important;
+            align-items: center !important;
+            justify-content: space-between !important;
+            margin-bottom: 12px !important;
+            padding: 0 4px !important;
+        }
+        .channels-eyebrow-badge {
+            display: inline-flex !important;
+            align-items: center !important;
+            gap: 8px !important;
+            font-size: 0.72rem !important;
+            font-weight: 700 !important;
+            letter-spacing: 0.08em !important;
+            color: #A1A1AA !important;
+            text-transform: uppercase !important;
+        }
+        .channels-counter {
+            font-size: 0.72rem !important;
+            color: #71717A !important;
+            font-weight: 700 !important;
+            letter-spacing: 0.05em !important;
+        }
+        .channels-card-frame {
+            position: relative !important;
+            width: 100% !important;
+            border-radius: 20px !important;
+            border: 1px solid rgba(255, 255, 255, 0.1) !important;
+            background: rgba(18, 18, 18, 0.85) !important;
+            backdrop-filter: blur(20px) !important;
+            -webkit-backdrop-filter: blur(20px) !important;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.8), 0 0 35px 2px rgba(0, 0, 0, 0.6) !important;
+            padding: 22px 20px !important;
+            box-sizing: border-box !important;
+        }
+        .channels-grid-3 {
+            display: grid !important;
+            grid-template-columns: repeat(3, 1fr) !important;
+            gap: 14px !important;
+        }
+        .channel-tab-3 {
+            background: rgba(255, 255, 255, 0.03) !important;
+            border: 1px solid rgba(255, 255, 255, 0.07) !important;
+            border-radius: 16px !important;
+            padding: 20px 14px 18px !important;
+            display: flex !important;
+            flex-direction: column !important;
+            align-items: center !important;
+            text-align: center !important;
+            gap: 12px !important;
+            transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1) !important;
+            cursor: default !important;
+            box-sizing: border-box !important;
+        }
+        .channel-tab-3:hover {
+            background: rgba(255, 255, 255, 0.06) !important;
+            border-color: rgba(235, 70, 4, 0.4) !important;
+            transform: translateY(-3px) !important;
+            box-shadow: 0 12px 28px rgba(0, 0, 0, 0.5) !important;
+        }
+        .channel-icon-wrap-3 {
+            width: 44px !important;
+            height: 44px !important;
+            border-radius: 12px !important;
+            display: flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+            flex-shrink: 0 !important;
+            transition: transform 0.25s ease !important;
+        }
+        .channel-tab-3:hover .channel-icon-wrap-3 {
+            transform: scale(1.1) !important;
+        }
+        .li-icon-wrap {
+            background: rgba(10, 102, 194, 0.15) !important;
+            color: #0A66C2 !important;
+            border: 1px solid rgba(10, 102, 194, 0.3) !important;
+        }
+        .x-icon-wrap {
+            background: rgba(255, 255, 255, 0.08) !important;
+            color: #FFFFFF !important;
+            border: 1px solid rgba(255, 255, 255, 0.2) !important;
+        }
+        .insta-icon-wrap {
+            background: rgba(225, 48, 108, 0.15) !important;
+            color: #E1306C !important;
+            border: 1px solid rgba(225, 48, 108, 0.3) !important;
+        }
+        .channel-info-3 {
+            display: flex !important;
+            flex-direction: column !important;
+            align-items: center !important;
+            gap: 6px !important;
+            width: 100% !important;
+        }
+        .channel-title-3 {
+            font-size: 0.95rem !important;
+            font-weight: 700 !important;
+            color: #FFFFFF !important;
+            line-height: 1.2 !important;
+        }
+        .channel-badge-2words {
+            font-size: 0.72rem !important;
+            font-weight: 600 !important;
+            color: #A1A1AA !important;
+            background: rgba(255, 255, 255, 0.04) !important;
+            border: 1px solid rgba(255, 255, 255, 0.08) !important;
+            padding: 4px 10px !important;
+            border-radius: 100px !important;
+            letter-spacing: 0.02em !important;
+            white-space: nowrap !important;
+        }
+        .channel-tab-3:hover .channel-badge-2words {
+            color: #EB4604 !important;
+            border-color: rgba(235, 70, 4, 0.3) !important;
+            background: rgba(235, 70, 4, 0.08) !important;
+        }
+
+        @media (max-width: 960px) {
+            .hero.hero-with-channels {
+                grid-template-columns: 1fr !important;
+                gap: 36px !important;
+                padding-top: 30px !important;
+            }
+            .hero-channels-right {
+                justify-content: center !important;
+            }
+            .channels-box-container {
+                max-width: 100% !important;
+            }
+            .channels-grid-3 {
+                grid-template-columns: repeat(3, 1fr) !important;
+                gap: 10px !important;
+            }
+            .channel-tab-3 {
+                padding: 16px 8px 14px !important;
+            }
+            .channel-title-3 {
+                font-size: 0.85rem !important;
+            }
+            .channel-badge-2words {
+                font-size: 0.65rem !important;
+                padding: 3px 6px !important;
+            }
         }
 
         .hero-eyebrow {
@@ -869,20 +1091,89 @@
 
     <main>
         <!-- Hero -->
-        <section class="hero no-video">
+        <section class="hero hero-with-channels">
             <div class="hero-left">
-                <div class="brand-intro ">
-                <div class="brand-logo-frame">
-                    <img src="../images/Logos of the brands/finanvo.png" alt="Finanvo Logo">
-                </div>
-                <div>
-                    <div class="hero-eyebrow"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M8.56 2.75c4.37 6.03 6.02 9.42 8.03 17.72m2.54-15.38c-3.72 4.35-8.94 5.66-16.88 5.85m19.5 1.9c-3.5-.93-6.63-.82-8.94 0-2.58.92-5.01 2.86-7.44 6.32"/></svg> Feb 2025 — Mar 2025 · B2B Social Media</div>
+                <div class="brand-intro">
+                    <div class="brand-logo-frame">
+                        <img src="../images/Logos of the brands/finanvo.png" alt="Finanvo Logo">
+                    </div>
+                    <div class="hero-eyebrow">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="12" cy="12" r="10"/>
+                            <path d="M8.56 2.75c4.37 6.03 6.02 9.42 8.03 17.72m2.54-15.38c-3.72 4.35-8.94 5.66-16.88 5.85m19.5 1.9c-3.5-.93-6.63-.82-8.94 0-2.58.92-5.01 2.86-7.44 6.32"/>
+                        </svg>
+                        <span>Feb 2025 — Mar 2025 · B2B Social Media</span>
+                    </div>
                     <h1>Finanvo<br>B2B Intelligence</h1>
                 </div>
+                <p class="hero-sub">India's leading business intelligence and corporate research engine. During my tenure as Social Media Manager and Content Lead, I conceptualized and deployed a cross-platform corporate communication strategy—managing executive narratives across LinkedIn, X (Twitter), Facebook, and Instagram, while driving organic discovery through published thought leadership on Medium, Quora, and Tumblr.</p>
             </div>
-                <p class="hero-sub ">India's leading business intelligence and corporate research engine. During my tenure as Social Media Manager and Content Lead, I conceptualized and deployed a cross-platform corporate communication strategy—managing executive narratives across LinkedIn, X (Twitter), Facebook, and Instagram, while driving organic discovery through published thought leadership on Medium, Quora, and Tumblr.</p>
+
+            <!-- Right Column: 3 Social Media Channels Box -->
+            <div class="hero-channels-right">
+                <div class="channels-box-container">
+                    <div class="channels-box-header">
+                        <div class="channels-eyebrow-badge">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#EB4604" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                                <rect x="3" y="3" width="7" height="7"/>
+                                <rect x="14" y="3" width="7" height="7"/>
+                                <rect x="14" y="14" width="7" height="7"/>
+                                <rect x="3" y="14" width="7" height="7"/>
+                            </svg>
+                            <span>Core Channels Managed</span>
+                        </div>
+                        <span class="channels-counter">3 Platforms</span>
+                    </div>
+
+                    <div class="channels-card-frame">
+                        <div class="channels-grid-3">
+                            <!-- 1. LinkedIn -->
+                            <div class="channel-tab-3">
+                                <div class="channel-icon-wrap-3 li-icon-wrap">
+                                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
+                                        <rect x="2" y="9" width="4" height="12"/>
+                                        <circle cx="4" cy="4" r="2"/>
+                                    </svg>
+                                </div>
+                                <div class="channel-info-3">
+                                    <div class="channel-title-3">LinkedIn</div>
+                                    <div class="channel-badge-2words">B2B Authority</div>
+                                </div>
+                            </div>
+
+                            <!-- 2. X / Twitter -->
+                            <div class="channel-tab-3">
+                                <div class="channel-icon-wrap-3 x-icon-wrap">
+                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M4 4l16 16M4 20L20 4"/>
+                                    </svg>
+                                </div>
+                                <div class="channel-info-3">
+                                    <div class="channel-title-3">X / Twitter</div>
+                                    <div class="channel-badge-2words">Executive Voice</div>
+                                </div>
+                            </div>
+
+                            <!-- 3. Instagram -->
+                            <div class="channel-tab-3">
+                                <div class="channel-icon-wrap-3 insta-icon-wrap">
+                                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+                                        <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
+                                        <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
+                                    </svg>
+                                </div>
+                                <div class="channel-info-3">
+                                    <div class="channel-title-3">Instagram</div>
+                                    <div class="channel-badge-2words">Visual SMM</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-            </section>
+        </section>
 
         <!-- SMM Performance Cards -->
         <section class="analytics-section">
