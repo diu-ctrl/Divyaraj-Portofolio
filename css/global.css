@@ -3441,17 +3441,17 @@ html, body {
 
             position: relative;
             width: 100% !important;
-            max-width: 490px !important;
+            max-width: 600px !important;
             margin: 0 auto !important;
             background: #000000 !important;
             padding: 0 !important;
-            min-height: 430px !important;
-            height: 450px !important;
-            max-height: 460px !important;
+            min-height: 600px !important;
+            height: 620px !important;
+            max-height: 640px !important;
             overflow: hidden !important;
-            border-radius: 22px !important;
-            border: 1px solid rgba(255, 255, 255, 0.08) !important;
-            box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.8) !important;
+            border-radius: 26px !important;
+            border: 1px solid rgba(255, 255, 255, 0.1) !important;
+            box-shadow: 0 25px 60px -15px rgba(0, 0, 0, 0.9), 0 0 35px 2px rgba(235, 70, 4, 0.08) !important;
             isolation: isolate !important;
             contain: paint !important;
         }
@@ -3459,6 +3459,7 @@ html, body {
         #testimonials-3d-root {
             width: 100% !important;
             height: 100% !important;
+            min-height: 600px !important;
             display: flex !important;
             justify-content: center !important;
             align-items: center !important;
@@ -3468,17 +3469,22 @@ html, body {
         #testimonials-3d-root > div {
             width: 100% !important;
             height: 100% !important;
-            min-height: 430px !important;
-            max-height: 460px !important;
-            border-radius: 22px !important;
+            min-height: 600px !important;
+            max-height: 640px !important;
+            border-radius: 26px !important;
             overflow: hidden !important;
+            perspective: 1000px !important;
+        }
+
+        #testimonials-3d-root > div > div {
+            transform: translateX(0px) translateY(0px) translateZ(-30px) rotateX(13deg) rotateY(-8deg) rotateZ(11deg) !important;
         }
 
         #testimonials-3d-demo .w-50,
         .reviews-3d-column-wrap .w-50 {
-            width: 210px !important;
-            min-width: 210px !important;
-            max-width: 210px !important;
+            width: 245px !important;
+            min-width: 245px !important;
+            max-width: 245px !important;
         }
 
         /* Specific Testimonial Card Styling */
@@ -4006,6 +4012,7 @@ html, body {
         .btn-book-coffee {
             display: inline-flex;
             align-items: center;
+            justify-content: center;
             gap: 9px;
             background: var(--accent, #EB4604);
             color: #ffffff !important;
@@ -4021,6 +4028,30 @@ html, body {
             box-shadow: 0 4px 18px rgba(235, 70, 4, 0.3);
             white-space: nowrap;
             transform: none !important;
+            position: relative !important;
+            overflow: hidden !important;
+            isolation: isolate !important;
+        }
+
+        .btn-book-coffee .btn-label-base {
+            display: inline-flex !important;
+            align-items: center !important;
+            gap: 8px !important;
+            position: relative !important;
+            z-index: 1 !important;
+        }
+
+        .btn-book-coffee .btn-ripple-overlay {
+            position: absolute !important;
+            inset: -1px !important;
+            border-radius: inherit !important;
+            display: inline-flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+            gap: 8px !important;
+            pointer-events: none !important;
+            z-index: 2 !important;
+            clip-path: circle(0px at 50% 50%) !important;
         }
 
         .btn-book-coffee:hover, .btn-book-coffee.active, .btn-book-coffee:focus {
@@ -4045,89 +4076,94 @@ html, body {
             letter-spacing: 0.04em;
         }
 
-        /* Inline Calendly Booking Panel */
+        /* Inline Calendly Booking Panel (In-Place Swap) */
         .calendly-booking-panel {
             width: 100%;
-            margin-top: 18px;
-            background: #0d0d0d;
+            max-width: 540px;
+            height: 620px;
+            min-height: 620px;
+            background: rgba(14, 14, 14, 0.95);
             border: 1px solid rgba(255, 255, 255, 0.12);
-            border-radius: 20px;
+            border-radius: 26px;
+            backdrop-filter: blur(24px);
+            -webkit-backdrop-filter: blur(24px);
+            box-shadow: 0 25px 60px -15px rgba(0, 0, 0, 0.9), 0 0 35px 2px rgba(235, 70, 4, 0.08);
+            display: none;
+            flex-direction: column;
             overflow: hidden;
-            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.7), 0 0 0 1px rgba(244, 93, 0, 0.15);
-            animation: slideDownFade 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-        }
-
-        @keyframes slideDownFade {
-            0% { opacity: 0; transform: translateY(-12px); }
-            100% { opacity: 1; transform: translateY(0); }
+            animation: fadeInReviews 0.3s ease-out;
+            box-sizing: border-box;
         }
 
         .calendly-panel-header {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 12px 18px;
-            background: #141414;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+            display: flex !important;
+            align-items: center !important;
+            justify-content: space-between !important;
+            padding: 14px 20px !important;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
+            background: rgba(22, 22, 22, 0.8) !important;
+            box-sizing: border-box !important;
+        }
+
+        .calendly-back-btn {
+            display: inline-flex !important;
+            align-items: center !important;
+            gap: 8px !important;
+            background: rgba(255, 255, 255, 0.06) !important;
+            border: 1px solid rgba(255, 255, 255, 0.12) !important;
+            color: #f4f1ea !important;
+            padding: 6px 14px !important;
+            border-radius: 9999px !important;
+            font-family: var(--font-sans) !important;
+            font-size: 12.5px !important;
+            font-weight: 500 !important;
+            cursor: pointer !important;
+            transition: all 0.2s ease !important;
+        }
+
+        .calendly-back-btn:hover {
+            background: rgba(255, 255, 255, 0.15) !important;
+            color: #ffffff !important;
+            border-color: rgba(255, 255, 255, 0.25) !important;
         }
 
         .calendly-header-title {
-            display: flex;
-            align-items: center;
-            gap: 9px;
-            font-family: var(--font-sans);
-            font-size: 13px;
-            font-weight: 600;
-            color: #ffffff;
-            letter-spacing: 0.02em;
-        }
-
-        .calendly-actions {
-            display: flex;
-            align-items: center;
-            gap: 10px;
+            display: flex !important;
+            align-items: center !important;
+            font-family: var(--font-sans) !important;
+            font-size: 13px !important;
+            font-weight: 600 !important;
+            color: #ffffff !important;
+            letter-spacing: 0.02em !important;
         }
 
         .calendly-ext-link {
-            display: inline-flex;
-            align-items: center;
-            gap: 5px;
-            color: #a1a1aa;
-            font-family: var(--font-sans);
-            font-size: 12px;
-            text-decoration: none;
-            transition: color 0.2s;
+            display: inline-flex !important;
+            align-items: center !important;
+            color: #a1a1aa !important;
+            padding: 6px !important;
+            border-radius: 8px !important;
+            transition: color 0.2s !important;
         }
 
         .calendly-ext-link:hover {
-            color: #ffffff;
+            color: #eb4604 !important;
         }
 
-        .calendly-close-btn {
-            background: transparent;
-            border: 1px solid rgba(255, 255, 255, 0.18);
-            color: #d4d4d8;
-            font-family: var(--font-sans);
-            font-size: 12px;
-            font-weight: 500;
-            padding: 4px 12px;
-            border-radius: 9999px;
-            cursor: pointer;
-            transition: all 0.2s;
-        }
-
-        .calendly-close-btn:hover {
-            background: rgba(255, 255, 255, 0.1);
-            color: #ffffff;
-            border-color: rgba(255, 255, 255, 0.35);
+        .calendly-frame-wrap {
+            flex: 1 !important;
+            width: 100% !important;
+            height: calc(100% - 54px) !important;
+            overflow: hidden !important;
+            background: #0a0a0a !important;
         }
 
         .calendly-frame-wrap iframe {
-            width: 100%;
-            height: 620px;
-            border: none;
-            display: block;
-            background: #0a0a0a;
+            width: 100% !important;
+            height: 100% !important;
+            border: none !important;
+            display: block !important;
+            background: #0a0a0a !important;
         }
 
         /* ─── Right Portion: Founder Reviews Marquee ─── */
@@ -4311,41 +4347,108 @@ html, body {
 
 
 
-        /* ─── Reviews & Direct Booking Section (Aligned Proportion) ─── */
+        /* ─── Reviews & Direct Booking Section (Full 1920x1080 Viewport Coverage) ─── */
         .reviews-split-section {
             width: 100%;
-            max-width: 1200px;
-            min-height: auto !important;
+            max-width: 1400px;
+            min-height: 100vh !important;
+            min-height: 100svh !important;
             margin: 0 auto;
-            padding: clamp(50px, 7vh, 80px) clamp(24px, 4vw, 40px);
+            padding: clamp(60px, 8vh, 100px) clamp(24px, 4vw, 60px) !important;
             position: relative;
             z-index: 5;
             box-sizing: border-box;
             isolation: isolate !important;
             contain: paint !important;
             overflow: hidden !important;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
+            display: flex !important;
+            flex-direction: column !important;
+            justify-content: center !important;
+            align-items: center !important;
         }
 
         .reviews-split-grid {
-            display: grid;
-            grid-template-columns: 1fr auto;
-            gap: clamp(32px, 5vw, 60px);
-            align-items: center;
-            justify-content: space-between;
+            display: grid !important;
+            grid-template-columns: minmax(460px, 540px) minmax(500px, 600px) !important;
+            gap: clamp(40px, 5vw, 80px) !important;
+            align-items: center !important;
+            justify-content: space-between !important;
+            width: 100% !important;
+        }
+
+        .reviews-left-col {
             width: 100%;
+            max-width: 540px;
+            min-height: 620px;
+            height: 620px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            position: relative;
         }
 
         .reviews-info-left {
             display: flex;
             flex-direction: column;
+            justify-content: center;
             align-items: flex-start;
-            gap: 20px;
+            gap: 26px;
             width: 100%;
-            max-width: 480px;
-            min-width: 0;
+            height: 100%;
+            animation: fadeInReviews 0.3s ease-out;
+        }
+
+        /* Swap view when booking is active */
+        .reviews-left-col.booking-active .reviews-info-left {
+            display: none !important;
+        }
+
+        .reviews-left-col.booking-active .calendly-booking-panel {
+            display: flex !important;
+        }
+
+        .reviews-availability-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-family: var(--font-mono);
+            font-size: 11.5px;
+            letter-spacing: 0.06em;
+            color: #d4d4d8;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 7px 16px;
+            border-radius: 9999px;
+            width: fit-content;
+        }
+
+        .reviews-pulse-dot {
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+            background: #22c55e;
+            box-shadow: 0 0 8px #22c55e;
+            animation: pulseDot 2s infinite ease-in-out;
+        }
+
+        @keyframes pulseDot {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.4; transform: scale(0.85); }
+        }
+
+        .reviews-trust-meta {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 12.5px;
+            color: #71717a;
+            margin-top: 4px;
+            font-family: var(--font-sans);
+        }
+
+        @keyframes fadeInReviews {
+            from { opacity: 0; transform: scale(0.98); }
+            to { opacity: 1; transform: scale(1); }
         }
 
         .reviews-availability-tag {
@@ -4364,21 +4467,22 @@ html, body {
         }
 
         .reviews-headline {
-            font-size: clamp(2.4rem, 3.8vw, 3.5rem);
-            line-height: 1.08;
-            letter-spacing: -0.025em;
+            font-size: clamp(3.2rem, 4.4vw, 4.4rem) !important;
+            line-height: 1.06 !important;
+            letter-spacing: -0.03em !important;
             color: #ffffff;
             margin: 0;
             font-weight: 400;
+            font-style: italic !important;
         }
 
         .reviews-intro-desc {
             color: #a1a1aa;
             font-family: var(--font-sans);
-            font-size: clamp(14px, 1.05vw, 15.5px);
-            line-height: 1.6;
+            font-size: clamp(15.5px, 1.15vw, 17px) !important;
+            line-height: 1.65 !important;
             margin: 0;
-            max-width: 450px;
+            max-width: 480px;
         }
 
         .reviews-action-buttons {
@@ -4391,12 +4495,12 @@ html, body {
 
         .reviews-action-buttons .btn-book-coffee,
         .reviews-action-buttons .btn-brutalist {
-            height: 48px !important;
-            padding: 0 22px !important;
-            font-size: 13.5px !important;
+            height: 52px !important;
+            padding: 0 28px !important;
+            font-size: 14.5px !important;
             font-weight: 600 !important;
-            border-radius: 24px !important;
-            gap: 8px !important;
+            border-radius: 9999px !important;
+            gap: 10px !important;
             box-sizing: border-box !important;
         }
 
@@ -4414,9 +4518,20 @@ html, body {
         }
 
                 @media (max-width: 900px) {
+            .reviews-split-section {
+                min-height: auto !important;
+                height: auto !important;
+                padding: 70px 24px !important;
+            }
             .reviews-split-grid {
                 grid-template-columns: 1fr !important;
                 gap: 36px !important;
+            }
+            .reviews-left-col {
+                width: 100% !important;
+                max-width: 100% !important;
+                height: auto !important;
+                min-height: auto !important;
             }
             #testimonials-3d-demo,
             .reviews-3d-column-wrap {
@@ -4760,7 +4875,9 @@ h2 span,
 
     /* ─── Testimonials & Direct Booking (#reviews) ─── */
     .reviews-split-section {
-        padding: 50px 16px !important;
+        min-height: auto !important;
+        height: auto !important;
+        padding: 60px 16px !important;
         width: 100% !important;
         max-width: 100% !important;
         overflow: hidden !important;
@@ -4768,28 +4885,45 @@ h2 span,
     }
     .reviews-split-grid {
         grid-template-columns: 1fr !important;
-        gap: 28px !important;
+        gap: 32px !important;
+    }
+    .reviews-left-col {
+        width: 100% !important;
+        max-width: 100% !important;
+        height: auto !important;
+        min-height: auto !important;
+    }
+    .reviews-info-left {
+        gap: 20px !important;
     }
     .reviews-headline {
-        font-size: clamp(2rem, 7.5vw, 2.7rem) !important;
-        line-height: 1.15 !important;
+        font-size: clamp(2.2rem, 8vw, 3rem) !important;
+        line-height: 1.12 !important;
     }
     .reviews-intro-desc {
-        font-size: 14.5px !important;
+        font-size: 15px !important;
         line-height: 1.55 !important;
+        max-width: 100% !important;
     }
     .reviews-action-buttons {
         display: flex !important;
         flex-direction: column !important;
         width: 100% !important;
-        gap: 10px !important;
+        gap: 12px !important;
     }
     .reviews-action-buttons .btn-book-coffee,
     .reviews-action-buttons .btn-brutalist {
         width: 100% !important;
         justify-content: center !important;
-        height: 48px !important;
-        font-size: 14px !important;
+        height: 50px !important;
+        font-size: 14.5px !important;
+    }
+    .calendly-booking-panel {
+        width: 100% !important;
+        max-width: 100% !important;
+        height: 560px !important;
+        min-height: 520px !important;
+        border-radius: 20px !important;
     }
     #testimonials-3d-demo,
     .reviews-3d-column-wrap {

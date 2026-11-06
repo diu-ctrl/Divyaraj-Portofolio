@@ -1084,70 +1084,86 @@
     <section id="reviews" class="reviews-split-section reveal">
         <div class="reviews-split-grid">
             <!-- LEFT PORTION: Booking & Collaboration Hub -->
-            <div class="reviews-info-left">
-                <h2 class="reviews-headline display-serif-statement">
-                    Let's work <span class="italic-gradient">together.</span>
-                </h2>
+            <div class="reviews-left-col">
+                <!-- View 1: Intro Information & Actions -->
+                <div class="reviews-info-left" id="reviewsIntroView">
+                    <div class="reviews-availability-pill">
+                        <span class="reviews-pulse-dot"></span>
+                        <span>Available for Q1 · Direct Collaboration</span>
+                    </div>
 
-                <p class="reviews-intro-desc">
-                    Fifteen minutes from clarifying your campaign scope, AI film pipeline, or web systems. Pick a coffee slot or send a brief.
-                </p>
+                    <h2 class="reviews-headline display-serif-statement">
+                        Let's work <span class="italic-gradient">together.</span>
+                    </h2>
 
-                <div class="reviews-action-buttons">
-                    <!-- Book a Coffee Button (opens inline Calendly window) -->
-                    <button id="bookCoffeeBtn" class="btn-book-coffee btn-ripple-container theme-orange-to-white" aria-label="Book a Coffee with Divyaraj">
-                        <span class="btn-label-base">
-                            <svg class="coffee-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <path d="M18 8h1a4 4 0 0 1 0 8h-1"></path>
-                                <path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"></path>
-                                <line x1="6" y1="1" x2="6" y2="4"></line>
-                                <line x1="10" y1="1" x2="10" y2="4"></line>
-                                <line x1="14" y1="1" x2="14" y2="4"></line>
-                            </svg>
-                            <span>Book a Coffee</span>
-                        </span>
-                        <span class="btn-ripple-overlay" aria-hidden="true">
-                            <svg class="coffee-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <path d="M18 8h1a4 4 0 0 1 0 8h-1"></path>
-                                <path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"></path>
-                                <line x1="6" y1="1" x2="6" y2="4"></line>
-                                <line x1="10" y1="1" x2="10" y2="4"></line>
-                                <line x1="14" y1="1" x2="14" y2="4"></line>
-                            </svg>
-                            <span>Book a Coffee</span>
-                        </span>
-                    </button>
+                    <p class="reviews-intro-desc">
+                        Fifteen minutes from clarifying your campaign scope, AI film pipeline, or web systems. Pick a coffee slot or send a brief.
+                    </p>
 
-                    <!-- Email Direct Button -->
-                    <a href="mailto:divyarajc2@gmail.com" class="btn-brutalist btn-brutalist-outline">
-                        <span>Email Direct</span>
-                    </a>
+                    <div class="reviews-action-buttons">
+                        <!-- Book a Coffee Button (swaps view to inline Calendly) -->
+                        <button id="bookCoffeeBtn" class="btn-book-coffee btn-ripple-container theme-orange-to-white" aria-label="Book a Coffee with Divyaraj">
+                            <span class="btn-label-base">
+                                <svg class="coffee-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M18 8h1a4 4 0 0 1 0 8h-1"></path>
+                                    <path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"></path>
+                                    <line x1="6" y1="1" x2="6" y2="4"></line>
+                                    <line x1="10" y1="1" x2="10" y2="4"></line>
+                                    <line x1="14" y1="1" x2="14" y2="4"></line>
+                                </svg>
+                                <span>Book a Coffee</span>
+                            </span>
+                            <span class="btn-ripple-overlay" aria-hidden="true">
+                                <svg class="coffee-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M18 8h1a4 4 0 0 1 0 8h-1"></path>
+                                    <path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"></path>
+                                    <line x1="6" y1="1" x2="6" y2="4"></line>
+                                    <line x1="10" y1="1" x2="10" y2="4"></line>
+                                    <line x1="14" y1="1" x2="14" y2="4"></line>
+                                </svg>
+                                <span>Book a Coffee</span>
+                            </span>
+                        </button>
 
-                    <!-- View Resume -->
-                    <a href="https://wa.me/qr/KQJFSZ2WY5FSO1" target="_blank" rel="noopener noreferrer" class="btn-brutalist btn-brutalist-outline">WhatsApp</a>
+                        <!-- Email Direct Button -->
+                        <a href="mailto:divyarajc2@gmail.com" class="btn-brutalist btn-brutalist-outline">
+                            <span>Email Direct</span>
+                        </a>
+
+                        <!-- WhatsApp -->
+                        <a href="https://wa.me/qr/KQJFSZ2WY5FSO1" target="_blank" rel="noopener noreferrer" class="btn-brutalist btn-brutalist-outline">WhatsApp</a>
+                    </div>
+
+                    <div class="reviews-trust-meta">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+                        <span>Direct founder access &middot; Avg response under 2 hours</span>
+                    </div>
                 </div>
 
-                <!-- Inline Calendly Booking Window -->
+                <!-- View 2: Inline Calendly Interactive Booking Window (In-Place Swap) -->
                 <div id="calendlyContainer" class="calendly-booking-panel" style="display: none;">
                     <div class="calendly-panel-header">
+                        <button id="closeCalendlyBtn" class="calendly-back-btn" type="button" aria-label="Back to details">
+                            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                                <line x1="19" y1="12" x2="5" y2="12"></line>
+                                <polyline points="12 19 5 12 12 5"></polyline>
+                            </svg>
+                            <span>Back to info</span>
+                        </button>
                         <div class="calendly-header-title">
-                            <span>Select Date &amp; Time</span>
+                            <span>Select 15-Min Coffee Slot</span>
                         </div>
-                        <div class="calendly-actions">
-                            <a href="https://calendly.com/divyarajc2/30min" target="_blank" rel="noopener" class="calendly-ext-link" title="Open in new tab">
-                                <span>Full Screen</span>
-                                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
-                            </a>
-                            <button id="closeCalendlyBtn" class="calendly-close-btn" aria-label="Close Calendly">&times; Close</button>
-                        </div>
+                        <a href="https://calendly.com/divyarajc2/30min" target="_blank" rel="noopener" class="calendly-ext-link" title="Open full screen in new tab">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+                        </a>
                     </div>
                     <div class="calendly-frame-wrap">
                         <iframe 
                             id="calendlyIframe" 
                             src="about:blank"
-                            data-src="https://calendly.com/divyarajc2/30min?hide_landing_page_details=1&hide_gdpr_banner=1&background_color=0a0a0a&text_color=ffffff&primary_color=f45d00" 
+                            data-src="https://calendly.com/divyarajc2/30min?hide_landing_page_details=1&hide_gdpr_banner=1&background_color=0a0a0a&text_color=ffffff&primary_color=eb4604" 
                             width="100%" 
-                            height="600" 
+                            height="100%" 
                             frameborder="0"
                             title="Calendly Scheduling"
                         ></iframe>
@@ -2992,35 +3008,24 @@
     <script>
     (function initCalendlyController() {
         const bookBtn = document.getElementById('bookCoffeeBtn');
-        const container = document.getElementById('calendlyContainer');
+        const leftCol = document.querySelector('.reviews-left-col');
         const iframe = document.getElementById('calendlyIframe');
         const closeBtn = document.getElementById('closeCalendlyBtn');
 
-        if (bookBtn && container) {
+        if (bookBtn && leftCol) {
             bookBtn.addEventListener('click', function(e) {
                 e.preventDefault();
-                const isHidden = container.style.display === 'none' || !container.style.display;
-                if (isHidden) {
-                    container.style.display = 'block';
-                    bookBtn.classList.add('active');
-                    if (iframe && (!iframe.src || iframe.src === 'about:blank')) {
-                        iframe.src = iframe.getAttribute('data-src');
-                    }
-                    setTimeout(() => {
-                        container.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-                    }, 100);
-                } else {
-                    container.style.display = 'none';
-                    bookBtn.classList.remove('active');
+                leftCol.classList.add('booking-active');
+                if (iframe && (!iframe.src || iframe.src === 'about:blank')) {
+                    iframe.src = iframe.getAttribute('data-src');
                 }
             });
         }
 
-        if (closeBtn && container) {
+        if (closeBtn && leftCol) {
             closeBtn.addEventListener('click', function(e) {
                 e.preventDefault();
-                container.style.display = 'none';
-                if (bookBtn) bookBtn.classList.remove('active');
+                leftCol.classList.remove('booking-active');
             });
         }
     })();
