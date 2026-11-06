@@ -587,6 +587,17 @@
             z-index: 3;
         }
 
+        #portfolio .brand-collaborations-header .display-serif-statement,
+        #portfolio .brand-collaborations-header .display-serif-statement span,
+        .brand-collaborations-header .display-serif-statement,
+        .brand-collaborations-header .display-serif-statement span {
+            color: #000000 !important;
+            -webkit-text-fill-color: #000000 !important;
+            background: none !important;
+            -webkit-background-clip: initial !important;
+            background-clip: initial !important;
+        }
+
         #portfolio h2 {
             font-size: clamp(1.8rem, 4.5vw, 2.8rem);
             position: relative;

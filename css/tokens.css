@@ -497,6 +497,18 @@ html, body {
   margin-bottom: 20px;
 }
 
+/* Brand Collaborations Header in Portfolio - Pure Black */
+#portfolio .brand-collaborations-header .display-serif-statement,
+#portfolio .brand-collaborations-header .display-serif-statement span,
+.brand-collaborations-header .display-serif-statement,
+.brand-collaborations-header .display-serif-statement span {
+    color: #000000 !important;
+    -webkit-text-fill-color: #000000 !important;
+    background: none !important;
+    -webkit-background-clip: initial !important;
+    background-clip: initial !important;
+}
+
 /* Section Header Typography */
 .section-header h2, .display-serif-statement, h2.section-title, .web-showcase-header h2 {
   font-family: var(--font-display) !important;
