@@ -2150,30 +2150,40 @@ html, body {
                 min-width: 100px;
             }
             .contact-buttons {
-                flex-direction: column;
-                align-items: flex-start;
+                flex-direction: row;
+                align-items: center;
                 width: 100%;
-                gap: 12px;
+                gap: 10px;
+                flex-wrap: nowrap;
             }
-            .btn-brutalist {
-                width: 100%;
-                padding: 14px 20px;
-                font-size: 12px !important;
+            .contact-buttons .btn-brutalist,
+            .btn-brutalist-outline {
+                width: auto !important;
+                padding: 0 16px !important;
+                font-size: 13px !important;
+                height: 50px !important;
             }
             .slide-button-container {
-                width: 100%;
+                width: auto !important;
+                flex-shrink: 0;
             }
             .slide-button-track {
-                width: 100% !important;
+                width: 156px !important;
+                height: 50px !important;
             }
             .contact-social-row {
-                gap: 10px;
+                flex-direction: row;
+                align-items: center;
+                gap: 8px;
+                flex-wrap: nowrap;
             }
             .social-mail-btn {
-                font-size: 12px !important;
-                padding: 0 16px;
-                width: 100%;
+                font-size: 12.5px !important;
+                padding: 0 16px !important;
+                width: auto !important;
+                height: 44px !important;
                 justify-content: center;
+                flex-shrink: 0;
             }
         }
 
@@ -5475,7 +5485,7 @@ h2 span,
         order: 1 !important;
         width: 100% !important;
         max-width: 100% !important;
-        padding: 24px 20px !important;
+        padding: 24px 16px !important;
         border-radius: 20px !important;
         box-sizing: border-box !important;
     }
@@ -5488,26 +5498,61 @@ h2 span,
     }
     .contact-buttons {
         display: flex !important;
-        flex-direction: column !important;
-        gap: 14px !important;
+        flex-direction: row !important;
+        align-items: center !important;
+        justify-content: flex-start !important;
+        gap: 8px !important;
         width: 100% !important;
+        flex-wrap: nowrap !important;
     }
-    .contact-row-primary {
+    .slide-button-container {
+        width: auto !important;
+        flex-shrink: 0 !important;
+    }
+    .slide-button-track {
+        width: 152px !important;
+        height: 50px !important;
+    }
+    .contact-buttons .btn-brutalist-outline,
+    .btn-brutalist.btn-brutalist-outline {
+        width: auto !important;
+        height: 50px !important;
+        min-height: 50px !important;
+        padding: 0 16px !important;
+        font-size: 13px !important;
+        border-radius: 25px !important;
+        white-space: nowrap !important;
+        flex-shrink: 0 !important;
+        display: inline-flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+    }
+    .contact-social-row {
         display: flex !important;
         flex-direction: row !important;
         align-items: center !important;
-        gap: 12px !important;
+        justify-content: flex-start !important;
+        gap: 8px !important;
         width: 100% !important;
-        flex-wrap: wrap !important;
+        flex-wrap: nowrap !important;
+        margin-top: 10px !important;
     }
-    .slide-button-track {
-        width: 156px !important;
+    .social-icon-btn {
+        width: 44px !important;
+        height: 44px !important;
+        flex-shrink: 0 !important;
     }
-    .btn-view-resume {
+    .social-mail-btn {
         width: auto !important;
-        padding: 0 20px !important;
-        height: 48px !important;
-        border-radius: var(--r-pill, 999px) !important;
+        height: 44px !important;
+        padding: 0 16px !important;
+        font-size: 12.5px !important;
+        white-space: nowrap !important;
+        flex-shrink: 0 !important;
+        display: inline-flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        gap: 7px !important;
     }
     .contact-video-right {
         order: 2 !important;
