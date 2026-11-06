@@ -1250,7 +1250,7 @@
                     <span class="nav-tooltip">Work</span>
                 </a>
                 <!-- Contact -->
-                <a href="/#contact" class="limelight-nav-item" data-target="contact">
+                <a href="/" class="limelight-nav-item" data-target="contact">
                     <div class="limelight-beam"></div>
                     <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
                     <span class="nav-tooltip">Contact</span>
@@ -1287,8 +1287,8 @@
 
     <!-- Navigation Header -->
     <header>
-        <a href="/#ai-cinema" class="back-btn">Back to Portfolio</a>
-        <a href="index#hero" class="logo">
+        <a href="/" class="back-btn">Back to Portfolio</a>
+        <a href="/" class="logo">
             <img src="/dc-logo.png" style="height: 32px; width: auto;" alt="DC">
         </a>
     </header>
@@ -2513,14 +2513,14 @@
             drawer.classList.add('active');
             
             // Update URL hash without reload
-            history.pushState(null, null, '#' + caseId);
+            if (history.replaceState) history.replaceState(null, '', window.location.pathname);
         };
 
         const closeDrawer = () => {
             drawer.classList.remove('active');
             drawerBackdrop.classList.remove('active');
             // Remove hash from URL
-            history.pushState(null, null, ' ');
+            if (history.replaceState) history.replaceState(null, '', window.location.pathname);
         };
 
         document.querySelectorAll('.case-study-btn').forEach(btn => {

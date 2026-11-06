@@ -1,3 +1,9 @@
+html, body {
+    overflow-x: clip !important;
+    max-width: 100vw !important;
+    width: 100% !important;
+    position: relative;
+}
 @import url('tokens.css');
 :root {
             --bg: #000000;
@@ -4491,4 +4497,411 @@ h2 span,
     animation: none !important;
     width: 0 !important;
     height: 0 !important;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════════
+   COMPREHENSIVE MOBILE VIEWPORT & RESPONSIVENESS OVERHAUL (max-width: 768px)
+   ═══════════════════════════════════════════════════════════════════════════════ */
+@media (max-width: 768px) {
+    /* Global lock against horizontal bleed or shake */
+    html, body {
+        overflow-x: clip !important;
+        max-width: 100vw !important;
+        width: 100% !important;
+        position: relative !important;
+    }
+
+    /* ─── Hero Section ─── */
+    .hero-scroll-track {
+        width: 100% !important;
+        max-width: 100% !important;
+        overflow: hidden !important;
+    }
+    .hero-sticky {
+        width: 100% !important;
+        max-width: 100% !important;
+        overflow: hidden !important;
+    }
+    .hero-top-meta {
+        top: calc(54px + env(safe-area-inset-top)) !important;
+        left: 16px !important;
+        right: 16px !important;
+        display: flex !important;
+        justify-content: space-between !important;
+        align-items: center !important;
+        font-size: 10px !important;
+        letter-spacing: 0.08em !important;
+        text-transform: uppercase !important;
+        z-index: 15 !important;
+    }
+    .hero-bottom-meta {
+        bottom: calc(18px + env(safe-area-inset-bottom)) !important;
+        left: 16px !important;
+        right: 16px !important;
+        display: flex !important;
+        justify-content: space-between !important;
+        align-items: center !important;
+        font-size: 10px !important;
+        letter-spacing: 0.08em !important;
+        z-index: 15 !important;
+    }
+    .meta-desktop-text {
+        display: none !important;
+    }
+    .meta-mobile-text {
+        display: inline !important;
+    }
+    .hero-title,
+    #hero .hero-title,
+    #hero .hero-title span,
+    .hero-main-content .hero-title,
+    .hero-main-content .hero-title span {
+        font-size: clamp(46px, 13.5vw, 68px) !important;
+        line-height: 1.05 !important;
+        letter-spacing: -0.03em !important;
+    }
+    .hero-subtitle-mono {
+        font-size: 14px !important;
+        max-width: 300px !important;
+        line-height: 1.5 !important;
+        margin: 12px auto 0 !important;
+    }
+
+    /* ─── Marquee Section ─── */
+    .marquee-section {
+        width: 100% !important;
+        max-width: 100% !important;
+        margin: 0 !important;
+        transform: none !important;
+        left: 0 !important;
+        overflow: hidden !important;
+    }
+
+    /* ─── Brand Collaborations Section (#portfolio) ─── */
+    #portfolio {
+        width: 100% !important;
+        max-width: 100% !important;
+        margin-left: 0 !important;
+        transform: none !important;
+        left: 0 !important;
+        overflow: hidden !important;
+        height: auto !important;
+        min-height: auto !important;
+        padding: 36px 0 50px 0 !important;
+    }
+    #portfolio .brand-collaborations-header {
+        display: flex !important;
+        align-items: center !important;
+        justify-content: space-between !important;
+        padding: 0 16px !important;
+        margin-bottom: 20px !important;
+        width: 100% !important;
+        box-sizing: border-box !important;
+    }
+    #portfolio .brand-collaborations-header .display-serif-statement,
+    #portfolio .brand-collaborations-header .display-serif-statement span {
+        font-size: clamp(1.45rem, 6vw, 1.9rem) !important;
+        line-height: 1.15 !important;
+        margin: 0 !important;
+        text-align: left !important;
+    }
+    .brand-mobile-controls {
+        display: flex !important;
+        align-items: center !important;
+        gap: 8px !important;
+        flex-shrink: 0 !important;
+    }
+    .brand-arrow-btn {
+        width: 40px !important;
+        height: 40px !important;
+        min-width: 40px !important;
+        min-height: 40px !important;
+        border-radius: 50% !important;
+        background: #eb4604 !important;
+        color: #ffffff !important;
+        border: none !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        box-shadow: 0 2px 10px rgba(235, 70, 4, 0.4) !important;
+    }
+    .scattered-canvas {
+        display: grid !important;
+        grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+        gap: 12px !important;
+        padding: 0 16px !important;
+        width: 100% !important;
+        box-sizing: border-box !important;
+        position: static !important;
+        height: auto !important;
+    }
+    .folio-card {
+        position: static !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        min-width: 0 !important;
+        transform: none !important;
+        margin: 0 !important;
+        box-sizing: border-box !important;
+        padding: 10px !important;
+        border-radius: 10px !important;
+        overflow: hidden !important;
+    }
+    .folio-card img {
+        width: 100% !important;
+        max-width: 100% !important;
+        height: auto !important;
+        aspect-ratio: 1 / 1 !important;
+        object-fit: contain !important;
+        border-radius: 6px !important;
+        display: block !important;
+    }
+    .folio-card-meta {
+        margin-bottom: 8px !important;
+        display: flex !important;
+        justify-content: space-between !important;
+        align-items: center !important;
+    }
+    .meta-label {
+        font-size: 9px !important;
+        white-space: nowrap !important;
+        overflow: hidden !important;
+        text-overflow: ellipsis !important;
+    }
+    .meta-num {
+        font-size: 9px !important;
+    }
+    .folio-card-title {
+        font-size: 13px !important;
+        line-height: 1.25 !important;
+        white-space: nowrap !important;
+        overflow: hidden !important;
+        text-overflow: ellipsis !important;
+        display: block !important;
+    }
+    .folio-card-tag {
+        font-size: 10px !important;
+        line-height: 1.3 !important;
+        white-space: nowrap !important;
+        overflow: hidden !important;
+        text-overflow: ellipsis !important;
+        display: block !important;
+    }
+
+    /* ─── Selected Web Work (#web-showcase) ─── */
+    .web-showcase-section {
+        padding: 40px 16px 50px !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        box-sizing: border-box !important;
+    }
+    .web-row {
+        gap: 20px !important;
+        margin-bottom: 40px !important;
+    }
+    .web-row-content h3 {
+        font-size: clamp(1.6rem, 6.5vw, 2.2rem) !important;
+    }
+    .web-row-desc {
+        font-size: 14px !important;
+        line-height: 1.55 !important;
+    }
+    .btn-explore-capsule {
+        width: 100% !important;
+        justify-content: center !important;
+        height: 46px !important;
+        font-size: 13.5px !important;
+    }
+
+    /* ─── AI Cinema Section (#ai-cinema) ─── */
+    #ai-cinema.cinema-scroll-track {
+        height: 220vh !important;
+        height: 220svh !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        overflow: hidden !important;
+    }
+    .cinema-scale-card {
+        width: 100vw !important;
+        height: 60vh !important;
+        height: 60svh !important;
+        max-height: 500px !important;
+        border-radius: 20px !important;
+    }
+    .cinema-scale-title,
+    #ai-cinema .cinema-scale-title {
+        font-size: clamp(2.4rem, 8.5vw, 3.2rem) !important;
+    }
+    .cinema-strips-wrapper {
+        padding: 16px 0 !important;
+    }
+    .cinema-strip {
+        width: 100% !important;
+        max-width: 100% !important;
+    }
+
+    /* ─── Services / Bento Section (#services) ─── */
+    .services-section {
+        padding: 45px 16px !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        box-sizing: border-box !important;
+    }
+    .services-section .display-serif-statement {
+        font-size: clamp(2rem, 7.5vw, 2.7rem) !important;
+        line-height: 1.15 !important;
+    }
+    .lane-card-title {
+        font-size: 1.35rem !important;
+    }
+    .lane-card-list li {
+        font-size: 13.5px !important;
+    }
+
+    /* ─── Testimonials & Direct Booking (#reviews) ─── */
+    .reviews-split-section {
+        padding: 50px 16px !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        overflow: hidden !important;
+        box-sizing: border-box !important;
+    }
+    .reviews-split-grid {
+        grid-template-columns: 1fr !important;
+        gap: 28px !important;
+    }
+    .reviews-headline {
+        font-size: clamp(2rem, 7.5vw, 2.7rem) !important;
+        line-height: 1.15 !important;
+    }
+    .reviews-intro-desc {
+        font-size: 14.5px !important;
+        line-height: 1.55 !important;
+    }
+    .reviews-action-buttons {
+        display: flex !important;
+        flex-direction: column !important;
+        width: 100% !important;
+        gap: 10px !important;
+    }
+    .reviews-action-buttons .btn-book-coffee,
+    .reviews-action-buttons .btn-brutalist {
+        width: 100% !important;
+        justify-content: center !important;
+        height: 48px !important;
+        font-size: 14px !important;
+    }
+    #testimonials-3d-demo,
+    .reviews-3d-column-wrap {
+        height: 380px !important;
+        max-height: 380px !important;
+        min-height: 380px !important;
+        width: 100% !important;
+        border-radius: 18px !important;
+    }
+
+    /* ─── Footer & Contact Section (#contact) ─── */
+    .cta-section {
+        padding: 50px 16px 40px 16px !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        overflow: hidden !important;
+        box-sizing: border-box !important;
+    }
+    .brutalist-contact-block {
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        padding: 0 !important;
+        gap: 24px !important;
+        margin-bottom: 20px !important;
+        width: 100% !important;
+    }
+    .contact-left-col {
+        display: contents !important;
+    }
+    .contact-info-left {
+        order: 1 !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        padding: 24px 20px !important;
+        border-radius: 20px !important;
+        box-sizing: border-box !important;
+    }
+    .contact-headline {
+        font-size: clamp(1.8rem, 6.8vw, 2.3rem) !important;
+        line-height: 1.15 !important;
+        text-align: left !important;
+        white-space: normal !important;
+        word-break: break-word !important;
+    }
+    .contact-buttons {
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 14px !important;
+        width: 100% !important;
+    }
+    .contact-row-primary {
+        display: flex !important;
+        flex-direction: row !important;
+        align-items: center !important;
+        gap: 12px !important;
+        width: 100% !important;
+        flex-wrap: wrap !important;
+    }
+    .slide-button-track {
+        width: 156px !important;
+    }
+    .btn-view-resume {
+        width: auto !important;
+        padding: 0 20px !important;
+        height: 48px !important;
+        border-radius: var(--r-pill, 999px) !important;
+    }
+    .contact-video-right {
+        order: 2 !important;
+        width: 100% !important;
+        display: flex !important;
+        justify-content: center !important;
+        align-items: center !important;
+        margin: 8px 0 !important;
+    }
+    .portrait-video-wrapper {
+        width: min(220px, 60vw) !important;
+        max-width: 220px !important;
+        aspect-ratio: 9/16 !important;
+        border-radius: 20px !important;
+        margin: 0 auto !important;
+        background: #000000 !important;
+    }
+    .contact-portrait-video {
+        background: #000000 !important;
+    }
+    .copyright-above {
+        order: 3 !important;
+        text-align: center !important;
+        width: 100% !important;
+        margin-top: 16px !important;
+        font-size: 11px !important;
+        line-height: 1.6 !important;
+        background: transparent !important;
+    }
+    .dither-card-section {
+        width: 100% !important;
+        padding: 16px 0 0 0 !important;
+    }
+    .dither-card-container {
+        height: 220px !important;
+        width: 100% !important;
+        border-radius: 16px !important;
+    }
+}
+
+@media (min-width: 769px) {
+    .meta-mobile-text {
+        display: none !important;
+    }
+    .meta-desktop-text {
+        display: inline !important;
+    }
 }

@@ -1228,7 +1228,7 @@
                     <span class="nav-tooltip">Work</span>
                 </a>
                 <!-- Contact -->
-                <a href="/#contact" class="limelight-nav-item" data-target="contact">
+                <a href="/" class="limelight-nav-item" data-target="contact">
                     <div class="limelight-beam"></div>
                     <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
                     <span class="nav-tooltip">Contact</span>
@@ -1265,7 +1265,7 @@
 
     <!-- Navigation Header -->
     <header>
-        <a href="/#web-showcase" class="back-btn">Back to Portfolio</a>
+        <a href="/" class="back-btn">Back to Portfolio</a>
     </header>
 
     <main>
@@ -2634,16 +2634,17 @@
                 }
 
                 showTab(targetId, true);
-                if (history.pushState) {
-                    history.pushState(null, null, targetId);
-                } else {
-                    window.location.hash = targetId;
+                if (history.replaceState) {
+                    history.replaceState(null, '', window.location.pathname);
                 }
             });
         });
 
         function initTab() {
             let hash = window.location.hash;
+            if (hash && history.replaceState) {
+                history.replaceState(null, '', window.location.pathname);
+            }
             if (hash === '#8bit-creatives') {
                 window.location.href = '/8bit-creatives';
                 return;

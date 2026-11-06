@@ -270,20 +270,20 @@
                     e.preventDefault();
                     if (!isMobile()) closeDrawer();
                     contactEl.scrollIntoView({ behavior: 'smooth' });
-                    history.pushState(null, null, '#contact');
+                    if (history.replaceState) history.replaceState(null, '', window.location.pathname);
                 } else {
                     if (!isMobile()) closeDrawer();
-                    window.location.href = '/#contact';
+                    sessionStorage.setItem('dc_scroll_to_contact', '1');
+                    window.location.href = '/';
                 }
             } else if (targetAttr === 'work') {
                 if (isHomePage) {
                     e.preventDefault();
                     if (!isMobile()) closeDrawer();
                     window.scrollTo({ top: 0, behavior: 'smooth' });
-                    history.pushState(null, null, '#hero');
+                    if (history.replaceState) history.replaceState(null, '', window.location.pathname);
                 } else {
                     if (!isMobile()) closeDrawer();
-                    // Explicitly redirect to divyarajchauhan.in
                     window.location.href = '/';
                 }
             } else if (targetAttr === 'about') {
@@ -291,13 +291,53 @@
                     e.preventDefault();
                     if (!isMobile()) closeDrawer();
                     window.scrollTo({ top: 0, behavior: 'smooth' });
-                    history.pushState(null, null, '#hero');
+                    if (history.replaceState) history.replaceState(null, '', window.location.pathname);
                 } else {
                     if (!isMobile()) closeDrawer();
                     window.location.href = '/about';
                 }
             }
         });
+    });
+
+    // Check for pending scroll to contact from cross-page redirect
+    if (sessionStorage.getItem('dc_scroll_to_contact') === '1') {
+        sessionStorage.removeItem('dc_scroll_to_contact');
+        setTimeout(() => {
+            const contactEl = document.getElementById('contact');
+            if (contactEl) contactEl.scrollIntoView({ behavior: 'smooth' });
+        }, 150);
+    }
+
+    // Clean any legacy hash from URL without breaking in-page scroll
+    if (window.location.hash) {
+        try {
+            const targetEl = document.querySelector(window.location.hash);
+            if (targetEl) {
+                setTimeout(() => targetEl.scrollIntoView({ behavior: 'smooth' }), 100);
+            }
+        } catch (_) {}
+        if (history.replaceState) {
+            history.replaceState(null, '', window.location.pathname + window.location.search);
+        }
+    }
+
+    // Intercept internal hash clicks to prevent dirtying address bar with #
+    document.addEventListener('click', (e) => {
+        const link = e.target.closest('a[href^="#"]');
+        if (!link) return;
+        const hash = link.getAttribute('href');
+        if (!hash || hash === '#') return;
+        try {
+            const target = document.querySelector(hash);
+            if (target) {
+                e.preventDefault();
+                target.scrollIntoView({ behavior: 'smooth' });
+                if (history.replaceState) {
+                    history.replaceState(null, '', window.location.pathname + window.location.search);
+                }
+            }
+        } catch (_) {}
     });
 
     window.addEventListener('resize', updateHandleLabel);
