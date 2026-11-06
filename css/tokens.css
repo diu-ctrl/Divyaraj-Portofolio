@@ -497,16 +497,23 @@ html, body {
   margin-bottom: 20px;
 }
 
-/* Brand Collaborations Header in Portfolio - Pure Black */
+/* Brand Collaborations Header in Portfolio - Editorial White with Ambient Depth */
 #portfolio .brand-collaborations-header .display-serif-statement,
 #portfolio .brand-collaborations-header .display-serif-statement span,
 .brand-collaborations-header .display-serif-statement,
 .brand-collaborations-header .display-serif-statement span {
-    color: #000000 !important;
-    -webkit-text-fill-color: #000000 !important;
+    font-family: var(--font-serif) !important;
+    font-style: italic !important;
+    font-weight: 400 !important;
+    font-size: clamp(2.4rem, 4.8vw, 3.8rem) !important;
+    line-height: 1.1 !important;
+    letter-spacing: -0.02em !important;
+    color: #ffffff !important;
+    -webkit-text-fill-color: #ffffff !important;
     background: none !important;
     -webkit-background-clip: initial !important;
     background-clip: initial !important;
+    text-shadow: 0 4px 24px rgba(0, 0, 0, 0.9), 0 1px 3px rgba(0, 0, 0, 0.8) !important;
 }
 
 /* Section Header Typography */
@@ -2052,8 +2059,8 @@ h2 span,
             background: none !important;
             -webkit-background-clip: initial !important;
             background-clip: initial !important;
-            line-height: 1.15 !important;
-            padding-bottom: 0.18em !important;
+            line-height: 1.05 !important;
+            padding-bottom: 0.04em !important;
             overflow: visible !important;
             mix-blend-mode: difference !important;
         }
