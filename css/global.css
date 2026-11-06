@@ -56,10 +56,10 @@ html, body {
 
         .display-serif-statement {
             font-family: var(--font-serif) !important;
-            font-size: clamp(42px, 5vw, 76px) !important;
+            font-size: 60px !important;
             font-weight: 400 !important;
             font-style: italic !important;
-            line-height: 1.05 !important;
+            line-height: 1.08 !important;
             letter-spacing: -0.02em !important;
             color: #F5F5F7 !important;
             padding: 0.05em 0 !important;
@@ -600,8 +600,8 @@ html, body {
             font-family: var(--font-serif) !important;
             font-style: italic !important;
             font-weight: 400 !important;
-            font-size: clamp(2.4rem, 4.8vw, 3.8rem) !important;
-            line-height: 1.1 !important;
+            font-size: 60px !important;
+            line-height: 1.08 !important;
             letter-spacing: -0.02em !important;
             color: #ffffff !important;
             -webkit-text-fill-color: #ffffff !important;
@@ -613,7 +613,7 @@ html, body {
         }
 
         #portfolio h2 {
-            font-size: clamp(2.4rem, 4.8vw, 3.8rem) !important;
+            font-size: 60px !important;
             position: relative;
             z-index: 1;
         }
@@ -1245,6 +1245,12 @@ html, body {
             margin: 0 auto;
         }
 
+        #services .display-serif-statement,
+        #services .section-header h2 {
+            font-size: 60px !important;
+            line-height: 1.08 !important;
+        }
+
         .services-grid-four-lanes {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
@@ -1811,13 +1817,13 @@ html, body {
         .contact-headline {
             text-shadow: 0 4px 24px rgba(0, 0, 0, 0.95);
             font-family: var(--font-serif) !important;
-            font-size: clamp(2.3rem, 3.6vw, 3.6rem) !important;
+            font-size: 60px !important;
             font-style: italic !important;
             font-weight: 400 !important;
             letter-spacing: -0.02em;
             color: var(--text);
             margin: 0;
-            line-height: 1.12 !important;
+            line-height: 1.08 !important;
             text-align: left;
         }
 
@@ -3066,6 +3072,12 @@ html, body {
             margin-bottom: 24px;
             flex-shrink: 0;
             z-index: 10;
+        }
+
+        .web-sticky-header h2,
+        .web-sticky-header .display-serif-statement {
+            font-size: 60px !important;
+            line-height: 1.08 !important;
         }
 
         .web-cards-viewport {
@@ -4501,8 +4513,8 @@ html, body {
         }
 
         .reviews-headline {
-            font-size: clamp(3.2rem, 4.4vw, 4.4rem) !important;
-            line-height: 1.06 !important;
+            font-size: 60px !important;
+            line-height: 1.08 !important;
             letter-spacing: -0.03em !important;
             color: #ffffff;
             margin: 0;
@@ -4646,6 +4658,22 @@ h2 span,
     animation: none !important;
     width: 0 !important;
     height: 0 !important;
+}
+
+/* ─── Unified 60px Section Headings on Desktop (min-width: 769px) ─── */
+@media (min-width: 769px) {
+    .display-serif-statement,
+    .web-sticky-header h2,
+    .web-sticky-header .display-serif-statement,
+    #services .display-serif-statement,
+    #services .section-header h2,
+    .reviews-headline,
+    .contact-headline,
+    .brand-collaborations-header .display-serif-statement,
+    #portfolio .brand-collaborations-header .display-serif-statement {
+        font-size: 60px !important;
+        line-height: 1.08 !important;
+    }
 }
 
 /* ═══════════════════════════════════════════════════════════════════════════════
@@ -5112,7 +5140,8 @@ h2 span,
         margin-bottom: 16px !important;
     }
 
-    #services .display-serif-statement {
+    #services .display-serif-statement,
+    #services .section-header h2 {
         font-size: clamp(1.85rem, 7vw, 2.3rem) !important;
         line-height: 1.15 !important;
         margin: 0 !important;
@@ -5421,7 +5450,10 @@ h2 span,
         min-height: auto !important;
     }
     .reviews-info-left {
-        gap: 20px !important;
+        gap: 18px !important;
+    }
+    .reviews-availability-pill {
+        display: none !important;
     }
     .reviews-headline {
         font-size: clamp(2.2rem, 8vw, 3rem) !important;
@@ -5434,16 +5466,50 @@ h2 span,
     }
     .reviews-action-buttons {
         display: flex !important;
-        flex-direction: column !important;
+        flex-direction: row !important;
+        align-items: center !important;
+        justify-content: space-between !important;
         width: 100% !important;
-        gap: 12px !important;
+        gap: 8px !important;
+        flex-wrap: nowrap !important;
+        margin-top: 4px !important;
     }
     .reviews-action-buttons .btn-book-coffee,
     .reviews-action-buttons .btn-brutalist {
-        width: 100% !important;
+        flex: 1 1 0 !important;
+        width: 0 !important;
+        min-width: 0 !important;
+        max-width: 100% !important;
+        height: 42px !important;
+        min-height: 42px !important;
+        padding: 0 4px !important;
+        font-size: 11.5px !important;
+        font-weight: 600 !important;
+        letter-spacing: -0.01em !important;
+        border-radius: 9999px !important;
+        display: inline-flex !important;
+        align-items: center !important;
         justify-content: center !important;
-        height: 50px !important;
-        font-size: 14.5px !important;
+        white-space: nowrap !important;
+        box-sizing: border-box !important;
+    }
+    .reviews-action-buttons .btn-label-base,
+    .reviews-action-buttons .btn-ripple-overlay {
+        gap: 4px !important;
+        font-size: 11.5px !important;
+        padding: 0 !important;
+        display: inline-flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+    }
+    .reviews-action-buttons .coffee-icon {
+        width: 13px !important;
+        height: 13px !important;
+        margin-right: 3px !important;
+        flex-shrink: 0 !important;
+    }
+    .reviews-trust-meta {
+        display: none !important;
     }
     .calendly-booking-panel {
         width: 100% !important;
@@ -5454,11 +5520,22 @@ h2 span,
     }
     #testimonials-3d-demo,
     .reviews-3d-column-wrap {
-        height: 380px !important;
-        max-height: 380px !important;
-        min-height: 380px !important;
+        height: 340px !important;
+        max-height: 340px !important;
+        min-height: 320px !important;
         width: 100% !important;
-        border-radius: 18px !important;
+        background: transparent !important;
+        border: none !important;
+        box-shadow: none !important;
+        border-radius: 0 !important;
+        padding: 0 !important;
+    }
+    #testimonials-3d-root,
+    #testimonials-3d-root > div {
+        background: transparent !important;
+        border: none !important;
+        box-shadow: none !important;
+        border-radius: 0 !important;
     }
 
     /* ─── Footer & Contact Section (#contact) ─── */
@@ -5555,12 +5632,7 @@ h2 span,
         gap: 7px !important;
     }
     .contact-video-right {
-        order: 2 !important;
-        width: 100% !important;
-        display: flex !important;
-        justify-content: center !important;
-        align-items: center !important;
-        margin: 8px 0 !important;
+        display: none !important;
     }
     .portrait-video-wrapper {
         width: min(220px, 60vw) !important;
