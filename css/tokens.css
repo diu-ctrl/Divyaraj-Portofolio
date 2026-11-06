@@ -2016,7 +2016,7 @@ h2 span,
         }
 
         /* Section Subtitles / Headers: Decreased size with compulsory white-to-orange/peach gradient */
-        h2, .case-study h2, .main-content h2, .section-title, .ai-reel-info h2, .gallery-section-title {
+        h2:not(.cinema-scale-title), .case-study h2, .main-content h2, .section-title, .ai-reel-info h2, .gallery-section-title {
             font-family: var(--font-serif) !important;
             font-style: italic !important;
             letter-spacing: -0.02em !important;
@@ -2032,7 +2032,17 @@ h2 span,
             display: inline-block !important;
         }
 
-        /* Homepage hero title: pure white with full descender clearance (no clipping of y and j) */
+        /* Kutch Cinema Scale Title - Pure White */
+.cinema-scale-title,
+#ai-cinema .cinema-scale-title {
+    color: #ffffff !important;
+    -webkit-text-fill-color: #ffffff !important;
+    background: none !important;
+    -webkit-background-clip: initial !important;
+    background-clip: initial !important;
+}
+
+/* Homepage hero title: pure white with full descender clearance (no clipping of y and j) */
         #hero .hero-title,
         #hero .hero-title span,
         .hero-main-content .hero-title,

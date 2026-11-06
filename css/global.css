@@ -2768,7 +2768,8 @@
         }
 
         /* Cinema card starts at scale 0.27 — text sizes must compensate */
-        .cinema-scale-title {
+        .cinema-scale-title,
+        #ai-cinema .cinema-scale-title {
             font-family: var(--font-serif) !important;
             /* 120px at scale 0.27 → visually ~32px thumbnail, grows to fill full screen */
             font-size: clamp(90px, 11vw, 140px) !important;
@@ -2776,7 +2777,11 @@
             font-style: italic !important;
             margin: 0;
             padding: 0;
-            color: #F5F5F7 !important;
+            color: #ffffff !important;
+            -webkit-text-fill-color: #ffffff !important;
+            background: none !important;
+            -webkit-background-clip: initial !important;
+            background-clip: initial !important;
             line-height: 0.95 !important;
             text-align: center;
             letter-spacing: -0.03em !important;
