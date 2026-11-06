@@ -1068,7 +1068,7 @@ button, input[type="submit"], input[type="button"], .btn-b1, .btn-b2 {
    ========================================================================== */
 
 /* 1. Decreased & Balanced Hero Title Size */
-h1, .hero-title, .brand-title {
+.brand-page h1, .hero:not(#hero) .hero-title, .brand-title {
     font-size: clamp(2.4rem, 4.5vw, 3.8rem) !important;
     line-height: 1.15 !important;
     font-family: var(--font-serif) !important;
@@ -1985,7 +1985,7 @@ h2 span,
 
         /* === GLOBAL BRAND PAGE TYPOGRAPHY HIERARCHY === */
         /* Brand Name at Top: Largest heading on the entire brand page */
-        h1, .hero h1, .hero-title,
+        .hero:not(#hero) h1,
         .hero.hero-with-analytics h1,
         .hero.hero-with-cert-carousel h1,
         .hero.hero-with-channels h1 {
@@ -2018,6 +2018,22 @@ h2 span,
             background-clip: text !important;
             color: transparent !important;
             display: inline-block !important;
+        }
+
+        /* Homepage hero title: pure white with full descender clearance (no clipping of y and j) */
+        #hero .hero-title,
+        #hero .hero-title span,
+        .hero-main-content .hero-title,
+        .hero-main-content .hero-title span {
+            color: #ffffff !important;
+            -webkit-text-fill-color: #ffffff !important;
+            background: none !important;
+            -webkit-background-clip: initial !important;
+            background-clip: initial !important;
+            line-height: 1.15 !important;
+            padding-bottom: 0.18em !important;
+            overflow: visible !important;
+            mix-blend-mode: difference !important;
         }
 
         /* Spans inherit gradient cleanly */

@@ -304,21 +304,30 @@
             mix-blend-mode: difference !important;
         }
 
-        .hero-title {
+        .hero-title,
+        #hero .hero-title,
+        #hero .hero-title span,
+        .hero-main-content .hero-title,
+        .hero-main-content .hero-title span {
             position: relative;
             inset: auto;
             margin: 0;
-            padding: 0;
+            padding: 0 0 0.18em 0 !important;
             text-align: center;
             transform: none;
             font-family: var(--font-serif) !important;
             font-size: clamp(76px, 10vw, 160px) !important;
             font-weight: 400 !important;
             font-style: italic !important;
-            line-height: 0.95 !important;
+            line-height: 1.15 !important;
             letter-spacing: -0.035em !important;
             color: #ffffff !important;
+            -webkit-text-fill-color: #ffffff !important;
+            background: none !important;
+            -webkit-background-clip: initial !important;
+            background-clip: initial !important;
             mix-blend-mode: difference !important;
+            overflow: visible !important;
             z-index: 15;
             pointer-events: none;
             white-space: nowrap;
