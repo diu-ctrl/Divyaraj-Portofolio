@@ -3435,15 +3435,15 @@
 
             position: relative;
             width: 100% !important;
-            max-width: 100% !important;
-            margin: 0 !important;
+            max-width: 490px !important;
+            margin: 0 auto !important;
             background: #000000 !important;
             padding: 0 !important;
-            min-height: 600px !important;
-            height: 650px !important;
-            max-height: 690px !important;
+            min-height: 430px !important;
+            height: 450px !important;
+            max-height: 460px !important;
             overflow: hidden !important;
-            border-radius: 24px !important;
+            border-radius: 22px !important;
             border: 1px solid rgba(255, 255, 255, 0.08) !important;
             box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.8) !important;
             isolation: isolate !important;
@@ -3462,17 +3462,17 @@
         #testimonials-3d-root > div {
             width: 100% !important;
             height: 100% !important;
-            min-height: 600px !important;
-            max-height: 690px !important;
-            border-radius: 24px !important;
+            min-height: 430px !important;
+            max-height: 460px !important;
+            border-radius: 22px !important;
             overflow: hidden !important;
         }
 
         #testimonials-3d-demo .w-50,
         .reviews-3d-column-wrap .w-50 {
-            width: 285px !important;
-            min-width: 285px !important;
-            max-width: 285px !important;
+            width: 210px !important;
+            min-width: 210px !important;
+            max-width: 210px !important;
         }
 
         /* Specific Testimonial Card Styling */
@@ -3480,21 +3480,21 @@
             position: relative !important;
             background: #101010 !important;
             border: 1px solid rgba(235, 70, 4, 0.45) !important;
-            border-radius: 14px !important;
+            border-radius: 11px !important;
             color: #f4f1ea !important;
             transition: all 0.25s ease-in-out !important;
         }
 
         #testimonials-3d-demo .testimonial-card-content {
-            padding: 15px 18px !important;
+            padding: 11px 14px !important;
         }
 
         #testimonials-3d-demo .testimonial-card::before {
             content: "" !important;
             position: absolute !important;
             top: -1px !important;
-            left: 14px !important;
-            width: 28px !important;
+            left: 12px !important;
+            width: 22px !important;
             height: 2px !important;
             background: var(--accent) !important;
             z-index: 5 !important;
@@ -3512,8 +3512,8 @@
             display: flex !important;
             align-items: baseline !important;
             justify-content: space-between !important;
-            gap: 8px !important;
-            margin-bottom: 6px !important;
+            gap: 6px !important;
+            margin-bottom: 4px !important;
             width: 100% !important;
         }
 
@@ -3521,7 +3521,7 @@
             color: #f4f1ea !important;
             font-family: var(--font-sans) !important;
             font-weight: 600 !important;
-            font-size: 15px !important;
+            font-size: 12.5px !important;
             line-height: 1.25 !important;
             white-space: nowrap !important;
             overflow: hidden !important;
@@ -3533,7 +3533,7 @@
         #testimonials-3d-demo .testimonial-brand {
             color: var(--accent, #eb4604) !important;
             font-family: var(--font-mono) !important;
-            font-size: 12px !important;
+            font-size: 10px !important;
             font-weight: 600 !important;
             letter-spacing: 0.04em !important;
             white-space: nowrap !important;
@@ -3544,8 +3544,8 @@
         #testimonials-3d-demo .testimonial-body {
             color: #b5b5ba !important;
             font-family: var(--font-sans) !important;
-            font-size: 13px !important;
-            line-height: 1.5 !important;
+            font-size: 11px !important;
+            line-height: 1.45 !important;
             font-weight: 400 !important;
             margin: 0 !important;
         }
@@ -4305,13 +4305,13 @@
 
 
 
-        /* ─── Reviews & Direct Booking Section (Full 1920x1080 Viewport Scale) ─── */
+        /* ─── Reviews & Direct Booking Section (Aligned Proportion) ─── */
         .reviews-split-section {
             width: 100%;
-            max-width: 1680px;
-            min-height: calc(100vh - 60px);
+            max-width: 1200px;
+            min-height: auto !important;
             margin: 0 auto;
-            padding: 30px clamp(24px, 4.5vw, 80px) 40px;
+            padding: clamp(50px, 7vh, 80px) clamp(24px, 4vw, 40px);
             position: relative;
             z-index: 5;
             box-sizing: border-box;
@@ -4325,9 +4325,10 @@
 
         .reviews-split-grid {
             display: grid;
-            grid-template-columns: 1.05fr 0.95fr;
-            gap: clamp(40px, 5vw, 80px);
+            grid-template-columns: 1fr auto;
+            gap: clamp(32px, 5vw, 60px);
             align-items: center;
+            justify-content: space-between;
             width: 100%;
         }
 
@@ -4335,8 +4336,9 @@
             display: flex;
             flex-direction: column;
             align-items: flex-start;
-            gap: 28px;
+            gap: 20px;
             width: 100%;
+            max-width: 480px;
             min-width: 0;
         }
 
@@ -4356,9 +4358,9 @@
         }
 
         .reviews-headline {
-            font-size: clamp(3.2rem, 5vw, 5.2rem);
-            line-height: 1.05;
-            letter-spacing: -0.03em;
+            font-size: clamp(2.4rem, 3.8vw, 3.5rem);
+            line-height: 1.08;
+            letter-spacing: -0.025em;
             color: #ffffff;
             margin: 0;
             font-weight: 400;
@@ -4367,31 +4369,34 @@
         .reviews-intro-desc {
             color: #a1a1aa;
             font-family: var(--font-sans);
-            font-size: clamp(16px, 1.1vw, 19px);
-            line-height: 1.65;
+            font-size: clamp(14px, 1.05vw, 15.5px);
+            line-height: 1.6;
             margin: 0;
-            max-width: 580px;
+            max-width: 450px;
         }
 
         .reviews-action-buttons {
             display: flex;
             flex-wrap: wrap;
             align-items: center;
-            gap: 16px;
-            margin-top: 8px;
+            gap: 12px;
+            margin-top: 4px;
         }
 
         .reviews-action-buttons .btn-book-coffee,
         .reviews-action-buttons .btn-brutalist {
-            padding: 16px 30px !important;
-            font-size: 16px !important;
+            height: 48px !important;
+            padding: 0 22px !important;
+            font-size: 13.5px !important;
             font-weight: 600 !important;
-            gap: 11px !important;
+            border-radius: 24px !important;
+            gap: 8px !important;
+            box-sizing: border-box !important;
         }
 
         .reviews-action-buttons .coffee-icon {
-            width: 20px !important;
-            height: 20px !important;
+            width: 17px !important;
+            height: 17px !important;
         }
 
         .reviews-marquee-column {
@@ -4409,24 +4414,25 @@
             }
             #testimonials-3d-demo,
             .reviews-3d-column-wrap {
-                min-height: 400px !important;
-                height: 420px !important;
-                max-height: 420px !important;
+                min-height: 380px !important;
+                height: 400px !important;
+                max-height: 400px !important;
+                max-width: 100% !important;
             }
             #testimonials-3d-demo .w-50,
             .reviews-3d-column-wrap .w-50 {
-                width: 180px !important;
-                min-width: 180px !important;
-                max-width: 180px !important;
+                width: 165px !important;
+                min-width: 165px !important;
+                max-width: 165px !important;
             }
             #testimonials-3d-demo .testimonial-name {
-                font-size: 12px !important;
+                font-size: 11.5px !important;
             }
             #testimonials-3d-demo .testimonial-brand {
-                font-size: 10px !important;
+                font-size: 9.5px !important;
             }
             #testimonials-3d-demo .testimonial-body {
-                font-size: 11px !important;
+                font-size: 10.5px !important;
             }
         }
 
