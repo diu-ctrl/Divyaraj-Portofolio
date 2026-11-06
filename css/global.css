@@ -637,8 +637,10 @@ html, body {
             user-drag: none !important;
         }
 
-        .folio-card {
-            touch-action: none;
+        @media (min-width: 901px) {
+            .folio-card {
+                touch-action: none;
+            }
         }
 
         .folio-card.active-drag,
@@ -808,6 +810,19 @@ html, body {
                 width: 100%;
                 transform: none !important;
                 cursor: default;
+                touch-action: pan-y !important;
+            }
+            #portfolio,
+            .scattered-canvas,
+            .folio-card a,
+            .folio-card img {
+                touch-action: pan-y !important;
+                -webkit-user-drag: none !important;
+            }
+            #brandVaporCanvas,
+            .brand-vapor-canvas {
+                display: none !important;
+                pointer-events: none !important;
             }
             .folio-card:hover {
                 transform: none !important;
@@ -4761,6 +4776,19 @@ h2 span,
         padding: 10px !important;
         border-radius: 10px !important;
         overflow: hidden !important;
+        touch-action: pan-y !important;
+    }
+    #portfolio,
+    .scattered-canvas,
+    .folio-card a,
+    .folio-card img {
+        touch-action: pan-y !important;
+        -webkit-user-drag: none !important;
+    }
+    #brandVaporCanvas,
+    .brand-vapor-canvas {
+        display: none !important;
+        pointer-events: none !important;
     }
     .folio-card img {
         width: 100% !important;
@@ -4828,31 +4856,86 @@ h2 span,
         font-size: 13.5px !important;
     }
 
-    /* ─── AI Cinema Section (#ai-cinema) ─── */
+    /* ─── AI Cinema Section (#ai-cinema) — Mobile Scroll-Lock & Scale ─── */
     #ai-cinema.cinema-scroll-track {
-        height: 220vh !important;
-        height: 220svh !important;
+        position: relative !important;
         width: 100% !important;
-        max-width: 100% !important;
+        max-width: none !important;
+        height: 300vh !important;
+        height: 300svh !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        background: #000000 !important;
+        overflow: visible !important;
+    }
+    .cinema-sticky-stage {
+        position: -webkit-sticky !important;
+        position: sticky !important;
+        top: 0 !important;
+        width: 100% !important;
+        height: 100vh !important;
+        height: 100svh !important;
         overflow: hidden !important;
+        background: #000000 !important;
+        isolation: isolate !important;
+        z-index: 10 !important;
     }
     .cinema-scale-card {
+        position: absolute !important;
+        top: 50% !important;
+        left: 50% !important;
+        z-index: 2 !important;
+        display: block !important;
         width: 100vw !important;
-        height: 60vh !important;
-        height: 60svh !important;
-        max-height: 500px !important;
-        border-radius: 20px !important;
+        height: 100vh !important;
+        height: 100svh !important;
+        max-height: none !important;
+        border-radius: var(--cinema-radius, 18px) !important;
+        overflow: hidden !important;
+        will-change: transform, border-radius !important;
+        transform: translate3d(-50%, -50%, 0) scale(var(--cinema-scale, 0.58)) !important;
+    }
+    .cinema-scale-image {
+        width: 100% !important;
+        height: 100% !important;
+        object-fit: cover !important;
+        object-position: center !important;
     }
     .cinema-scale-title,
     #ai-cinema .cinema-scale-title {
-        font-size: clamp(2.4rem, 8.5vw, 3.2rem) !important;
+        font-family: var(--font-serif) !important;
+        font-size: clamp(52px, 14vw, 78px) !important;
+        font-weight: 400 !important;
+        font-style: italic !important;
+        margin: 0 !important;
+        color: #ffffff !important;
+        -webkit-text-fill-color: #ffffff !important;
+        background: none !important;
+        text-align: center !important;
+        pointer-events: none !important;
     }
     .cinema-strips-wrapper {
-        padding: 16px 0 !important;
+        position: absolute !important;
+        inset: 0 !important;
+        width: 100% !important;
+        height: 100% !important;
+        display: flex !important;
+        flex-direction: column !important;
+        justify-content: space-between !important;
+        padding: 24px 0 !important;
+        pointer-events: none !important;
+        z-index: 1 !important;
+        box-sizing: border-box !important;
     }
     .cinema-strip {
         width: 100% !important;
         max-width: 100% !important;
+        overflow: hidden !important;
+    }
+    .cinema-strip-card {
+        width: 180px !important;
+        aspect-ratio: 16 / 9 !important;
+        border-radius: 10px !important;
     }
 
     /* ─── Services / Bento Section (#services) ─── */
