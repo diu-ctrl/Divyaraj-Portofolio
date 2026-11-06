@@ -1754,8 +1754,8 @@
             align-items: flex-start;
             justify-content: space-between !important;
             align-self: stretch !important;
-            flex: 1;
-            max-width: 590px;
+            flex: 0 1 auto;
+            max-width: 480px;
             min-width: 0;
             box-sizing: border-box;
         }
@@ -1766,8 +1766,8 @@
             justify-content: flex-start;
             align-items: flex-start;
             gap: 20px;
-            width: 100%;
-            max-width: 590px;
+            width: fit-content;
+            max-width: 480px;
             height: auto;
             min-height: auto;
             background: rgba(10, 10, 10, 0.72);
@@ -1775,7 +1775,7 @@
             -webkit-backdrop-filter: blur(20px);
             border: 1px solid rgba(255, 255, 255, 0.08);
             border-radius: 22px;
-            padding: 28px 34px !important;
+            padding: 28px 30px !important;
             box-shadow: 0 20px 60px rgba(0, 0, 0, 0.85), 0 0 35px 2px rgba(0, 0, 0, 0.7);
             position: relative;
             z-index: 2;
@@ -1865,10 +1865,10 @@
             background: transparent;
             color: var(--text);
             border: 1px solid var(--border);
-            height: 56px !important;
-            min-height: 56px !important;
-            border-radius: 28px !important;
-            padding: 0 32px !important;
+            height: 52px !important;
+            min-height: 52px !important;
+            border-radius: 26px !important;
+            padding: 0 24px !important;
             box-sizing: border-box !important;
         }
 
@@ -1972,36 +1972,54 @@
         /* ─── Copyright left-aligned ─── */
         .copyright-above {
             text-align: left;
-            color: #A1A1AA !important;
+            color: rgba(255, 255, 255, 0.95) !important;
             font-family: var(--font-sans) !important;
-            font-size: 11.5px !important;
+            font-size: 12px !important;
             font-weight: 500 !important;
             letter-spacing: 0.02em !important;
             margin-top: auto !important;
             margin-bottom: 0px !important;
-            line-height: 1.45;
+            line-height: 1.5;
             border: none !important;
             background: transparent !important;
             backdrop-filter: none !important;
             -webkit-backdrop-filter: none !important;
             padding: 0 !important;
             width: 100%;
-            max-width: 590px;
+            max-width: 480px;
             margin-left: 0 !important;
             margin-right: 0 !important;
             box-shadow: none !important;
-            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.9);
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.95), 0 1px 3px rgba(0, 0, 0, 0.8) !important;
             box-sizing: border-box;
+        }
+
+        .copyright-above div {
+            color: rgba(255, 255, 255, 0.95) !important;
+        }
+
+        .copyright-above a {
+            color: #ffffff !important;
+            text-decoration: underline !important;
+            text-underline-offset: 3px !important;
+            opacity: 0.95;
+            transition: opacity 0.2s ease, color 0.2s ease;
+        }
+
+        .copyright-above a:hover {
+            opacity: 1;
+            color: var(--accent) !important;
         }
 
         .refresh-date {
             font-family: var(--font-sans) !important;
-            font-size: 10px !important;
+            font-size: 11px !important;
             font-weight: 500 !important;
-            color: #A1A1AA !important;
-            margin-top: 2px !important;
+            color: rgba(255, 255, 255, 0.88) !important;
+            margin-top: 3px !important;
             letter-spacing: 0.02em;
-            opacity: 0.5;
+            opacity: 0.92 !important;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.95), 0 1px 3px rgba(0, 0, 0, 0.8) !important;
         }
 
         /* ─── Bright White Thin Horizontal Divider Line ─── */
@@ -3201,7 +3219,7 @@
 
         .slide-button-track {
             position: relative;
-            width: 250px !important;
+            width: 156px !important;
             height: 52px !important;
             background: #282723;
             border: 1px solid var(--border);
@@ -3213,6 +3231,7 @@
             user-select: none;
             cursor: pointer;
             transition: width 0.4s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.3s ease;
+            box-sizing: border-box;
         }
 
         .slide-button-progress {
@@ -3228,15 +3247,19 @@
 
         .slide-button-text {
             font-family: var(--font-sans);
-            font-size: 13.5px !important;
+            font-size: 11.5px !important;
             font-weight: 700;
             color: var(--text-muted);
-            letter-spacing: 0.02em;
+            letter-spacing: -0.01em;
             pointer-events: none;
             z-index: 1;
             transition: opacity 0.3s ease;
             white-space: nowrap;
-            padding-left: 36px !important;
+            padding-left: 50px !important;
+            padding-right: 8px !important;
+            box-sizing: border-box;
+            width: 100%;
+            text-align: center;
         }
 
         .slide-button-handle {
