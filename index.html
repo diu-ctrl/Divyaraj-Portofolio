@@ -1173,6 +1173,105 @@
                 </a>
             </div>
         </div>
+
+        <!-- Mobile 4-Tab 2x2 Grid (Mobile View Only <= 768px) -->
+        <div class="services-mobile-grid" id="servicesMobileGrid">
+            <!-- Tab 01: Platform Growth -->
+            <div class="services-mobile-tab" data-service="1" role="button" tabindex="0">
+                <div class="services-tab-top">
+                    <span class="services-tab-eyebrow">01</span>
+                    <span class="services-tab-action" aria-hidden="true">
+                        <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg>
+                    </span>
+                </div>
+                <div class="services-tab-main">
+                    <h3 class="services-tab-title">Platform Growth</h3>
+                    <p class="services-tab-desc">Strategy, scheduling, audits &amp; analytics.</p>
+                </div>
+                <div class="services-tab-badge">
+                    <span class="dot"></span>
+                    <span>5 Deliverables</span>
+                </div>
+            </div>
+
+            <!-- Tab 02: Digital Storefronts -->
+            <div class="services-mobile-tab" data-service="2" role="button" tabindex="0">
+                <div class="services-tab-top">
+                    <span class="services-tab-eyebrow">02</span>
+                    <span class="services-tab-action" aria-hidden="true">
+                        <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg>
+                    </span>
+                </div>
+                <div class="services-tab-main">
+                    <h3 class="services-tab-title">Digital Storefronts</h3>
+                    <p class="services-tab-desc">Custom design, bookings, checkout &amp; SEO.</p>
+                </div>
+                <div class="services-tab-badge">
+                    <span class="dot"></span>
+                    <span>5 Deliverables</span>
+                </div>
+            </div>
+
+            <!-- Tab 03: AI Cinema Lab -->
+            <div class="services-mobile-tab" data-service="3" role="button" tabindex="0">
+                <div class="services-tab-top">
+                    <span class="services-tab-eyebrow">03</span>
+                    <span class="services-tab-action" aria-hidden="true">
+                        <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg>
+                    </span>
+                </div>
+                <div class="services-tab-main">
+                    <h3 class="services-tab-title">AI Cinema Lab</h3>
+                    <p class="services-tab-desc">Style frames, neural synthesis &amp; sound FX.</p>
+                </div>
+                <div class="services-tab-badge">
+                    <span class="dot"></span>
+                    <span>5 Deliverables</span>
+                </div>
+            </div>
+
+            <!-- Tab 04: Full Campaigns -->
+            <div class="services-mobile-tab" data-service="4" role="button" tabindex="0">
+                <div class="services-tab-top">
+                    <span class="services-tab-eyebrow">04</span>
+                    <span class="services-tab-action" aria-hidden="true">
+                        <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg>
+                    </span>
+                </div>
+                <div class="services-tab-main">
+                    <h3 class="services-tab-title">Full Campaigns</h3>
+                    <p class="services-tab-desc">End-to-end asset creation &amp; execution.</p>
+                </div>
+                <div class="services-tab-badge">
+                    <span class="dot"></span>
+                    <span>5 Deliverables</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Service Details Mobile Popup Modal -->
+        <div class="service-modal-backdrop" id="serviceModalBackdrop" role="dialog" aria-modal="true" aria-hidden="true">
+            <div class="service-modal-card" id="serviceModalCard">
+                <div class="service-modal-header">
+                    <span class="service-modal-eyebrow" id="serviceModalEyebrow">01 / Service Scope</span>
+                    <button type="button" class="service-modal-close" id="serviceModalClose" aria-label="Close modal">
+                        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 6L6 18M6 6l12 12"/></svg>
+                    </button>
+                </div>
+                <div class="service-modal-image-wrap">
+                    <img id="serviceModalImage" src="images/lanes/platform-growth.jpg" alt="Service Preview">
+                </div>
+                <h3 class="service-modal-title" id="serviceModalTitle">Platform Growth</h3>
+                <ul class="service-modal-list" id="serviceModalList">
+                    <li><span class="bullet" aria-hidden="true"></span><span>Content Strategy &amp; Ideation</span></li>
+                    <li><span class="bullet" aria-hidden="true"></span><span>Calendar Scheduling &amp; Posting</span></li>
+                    <li><span class="bullet" aria-hidden="true"></span><span>Organic Pipeline Audits</span></li>
+                    <li><span class="bullet" aria-hidden="true"></span><span>Community Engagement</span></li>
+                    <li><span class="bullet" aria-hidden="true"></span><span>Performance Analytics</span></li>
+                </ul>
+                <a href="#contact" class="service-modal-cta" id="serviceModalCta">Discuss this Scope &rarr;</a>
+            </div>
+        </div>
     </section>
 
     <script>
@@ -3147,6 +3246,8 @@
     <script src="js/ring-field.js" defer></script>
     <!-- Mobile Circular Gallery Controller -->
     <script src="js/web-circular-gallery.js" defer></script>
+    <!-- Services Mobile 2x2 Grid Modal Controller -->
+    <script src="js/services-mobile-modal.js" defer></script>
     <!-- Calendly Interactive Toggle Controller -->
     <script>
     (function initCalendlyController() {
