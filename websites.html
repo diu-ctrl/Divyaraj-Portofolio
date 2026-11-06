@@ -218,9 +218,7 @@
             gap: 80px;
         }
 
-        .showcase-container:not(:has(.case-study-card.active)) {
-            display: none;
-        }
+        /* Showcase container always displayed */
 
         /* Case Study Card Structure */
         .case-study-card {
@@ -237,6 +235,18 @@
 
         .case-study-card.active {
             display: flex; /* Show active case study */
+            animation: caseStudyFadeIn 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+
+        @keyframes caseStudyFadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(12px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         /* Hero Block inside Case Study */
@@ -1404,7 +1414,7 @@
                                 <div class="browser-address">chemops-erp.vercel.app/dashboard — Operations Control Center</div>
                             </div>
                             <div class="web-img-wrap hotspot-container">
-                                <img src="images/chemops/dashboard.png" alt="ChemOps ERP Command Center Dashboard">
+                                <img src="images/chemops/dashboard.png" alt="ChemOps ERP Command Center Dashboard" loading="lazy" decoding="async">
                                 
                                 <div class="hotspot tip-down" style="left: 15%; top: 4%;">
                                     <div class="hotspot-dot">1</div>
@@ -1445,7 +1455,7 @@
                                 <div class="browser-address">chemops-erp.vercel.app/quotations — B2B Quotation Engine</div>
                             </div>
                             <div class="web-img-wrap hotspot-container">
-                                <img src="images/chemops/quotations.png" alt="ChemOps ERP Quotations Management">
+                                <img src="images/chemops/quotations.png" alt="ChemOps ERP Quotations Management" loading="lazy" decoding="async">
                                 
                                 <div class="hotspot" style="left: 20%; top: 22%;">
                                     <div class="hotspot-dot">4</div>
@@ -1486,7 +1496,7 @@
                                 <div class="browser-address">chemops-erp.vercel.app/production — Batch Manufacturing Tracker</div>
                             </div>
                             <div class="web-img-wrap hotspot-container">
-                                <img src="images/chemops/production.png" alt="ChemOps ERP Production Management">
+                                <img src="images/chemops/production.png" alt="ChemOps ERP Production Management" loading="lazy" decoding="async">
                                 
                                 <div class="hotspot" style="left: 25%; top: 25%;">
                                     <div class="hotspot-dot">7</div>
@@ -1519,7 +1529,7 @@
                                 <div class="browser-address">chemops-erp.vercel.app/flowmap — Supply Chain Architecture</div>
                             </div>
                             <div class="web-img-wrap hotspot-container">
-                                <img src="images/chemops/flowmap.png" alt="ChemOps ERP Process Flowmap">
+                                <img src="images/chemops/flowmap.png" alt="ChemOps ERP Process Flowmap" loading="lazy" decoding="async">
                                 
                                 <div class="hotspot" style="left: 50%; top: 30%;">
                                     <div class="hotspot-dot">9</div>
@@ -2051,7 +2061,7 @@
                                 <div class="browser-address">abhushan-by-divyaraj.vercel.app</div>
                             </div>
                             <div class="web-img-wrap hotspot-container">
-                                <img src="images/abhushan_landing.png" alt="Abhushan E-commerce Showcase">
+                                <img src="images/abhushan_landing.png" alt="Abhushan E-commerce Showcase" loading="lazy" decoding="async">
                                 
                                 <div class="hotspot tip-down" style="left: 50%; top: 1.5%;">
                                     <div class="hotspot-dot">1</div>
@@ -2092,7 +2102,7 @@
                                 <div class="browser-address">abhushan-by-divyaraj.vercel.app/admin — Appointment Portal</div>
                             </div>
                             <div class="web-img-wrap hotspot-container">
-                                <img src="images/abhushan_admin.png" alt="Abhushan Admin Dashboard">
+                                <img src="images/abhushan_admin.png" alt="Abhushan Admin Dashboard" loading="lazy" decoding="async">
                                 
                                 <div class="hotspot" style="left: 18%; top: 22%;">
                                     <div class="hotspot-dot">4</div>
@@ -2279,7 +2289,7 @@
                                 <div class="browser-address">dc-by-divyaraj.vercel.app</div>
                             </div>
                             <div class="web-img-wrap hotspot-container">
-                                <img src="images/detailing_cars_landing.png" alt="Detailing Cars Landing Page">
+                                <img src="images/detailing_cars_landing.png" alt="Detailing Cars Landing Page" loading="lazy" decoding="async">
                                 
                                 <div class="hotspot tip-down" style="left: 50%; top: 1.2%;">
                                     <div class="hotspot-dot">1</div>
@@ -2312,7 +2322,7 @@
                                 <div class="browser-address">dc-by-divyaraj.vercel.app/admin — Admin Dashboard</div>
                             </div>
                             <div class="web-img-wrap hotspot-container">
-                                <img src="images/detailing_cars_admin.png" alt="Detailing Cars Admin Dashboard">
+                                <img src="images/detailing_cars_admin.png" alt="Detailing Cars Admin Dashboard" loading="lazy" decoding="async">
                                 
                                 <div class="hotspot" style="left: 18%; top: 22%;">
                                     <div class="hotspot-dot">3</div>
@@ -2482,7 +2492,7 @@
                                 <div class="browser-address">kxm-by-divyaraj.vercel.app</div>
                             </div>
                             <div class="web-img-wrap hotspot-container">
-                                <img src="images/kxm_landing.png" alt="KXM Fashion E-commerce Landing Page">
+                                <img src="images/kxm_landing.png" alt="KXM Fashion E-commerce Landing Page" loading="lazy" decoding="async">
                                 
                                 <div class="hotspot tip-down" style="left: 50%; top: 1.2%;">
                                     <div class="hotspot-dot">1</div>
@@ -2568,15 +2578,23 @@
         const sections = document.querySelectorAll('.case-study-card');
         const showcaseContainer = document.querySelector('.showcase-container');
 
+        const validTabs = ['chemops', 'skybox', 'abhushan', 'kxm', 'detailing-cars'];
+
         function showTab(targetId, shouldScroll = false) {
-            let cleanId = (targetId && targetId.startsWith('#')) ? targetId.replace('#', '') : '';
+            let cleanId = (targetId && targetId.startsWith('#')) ? targetId.replace('#', '') : (targetId || '');
             if (cleanId === 'turf') cleanId = 'skybox';
-            let hasActive = false;
+            
+            // If cleanId is invalid or empty, default to chemops
+            if (!validTabs.includes(cleanId)) {
+                cleanId = 'chemops';
+            }
+
+            let activeSection = null;
 
             sections.forEach(section => {
-                if (cleanId && section.id === cleanId) {
+                if (section.id === cleanId) {
                     section.classList.add('active');
-                    hasActive = true;
+                    activeSection = section;
                 } else {
                     section.classList.remove('active');
                 }
@@ -2584,7 +2602,7 @@
 
             capsules.forEach(capsule => {
                 const href = capsule.getAttribute('href');
-                if (cleanId && (href === '#' + cleanId || (cleanId === 'skybox' && href === '#skybox'))) {
+                if (href === '#' + cleanId || (cleanId === 'skybox' && (href === '#skybox' || href === '#turf'))) {
                     capsule.classList.add('active');
                 } else {
                     capsule.classList.remove('active');
@@ -2592,27 +2610,34 @@
             });
 
             if (showcaseContainer) {
-                showcaseContainer.style.display = hasActive ? 'flex' : 'none';
+                showcaseContainer.style.display = 'flex';
             }
 
-            if (shouldScroll && hasActive) {
-                window.scrollTo({ top: 0, behavior: 'smooth' });
+            if (shouldScroll && activeSection) {
+                const headerOffset = 100;
+                const rect = activeSection.getBoundingClientRect();
+                const scrollTarget = window.pageYOffset + rect.top - headerOffset;
+                window.scrollTo({ top: Math.max(0, scrollTarget), behavior: 'smooth' });
             }
         }
 
         capsules.forEach(capsule => {
             capsule.addEventListener('click', (e) => {
                 const targetId = capsule.getAttribute('href');
-                if (!targetId.startsWith('#')) return;
+                if (!targetId || !targetId.startsWith('#')) return; // Allow normal navigation for /8bit-creatives
                 e.preventDefault();
 
                 if (capsule.classList.contains('active')) {
-                    // Clicking active tab closes it to return to overview state
-                    showTab('', false);
-                    history.pushState(null, null, window.location.pathname);
-                } else {
+                    // Smooth scroll to the current case study
                     showTab(targetId, true);
+                    return;
+                }
+
+                showTab(targetId, true);
+                if (history.pushState) {
                     history.pushState(null, null, targetId);
+                } else {
+                    window.location.hash = targetId;
                 }
             });
         });
@@ -2620,16 +2645,23 @@
         function initTab() {
             let hash = window.location.hash;
             if (hash === '#8bit-creatives') {
-                window.location.href = '8bit-creatives.html';
+                window.location.href = '/8bit-creatives';
                 return;
             }
-            if (hash === '#abhushan' || hash === '#detailing-cars' || hash === '#kxm' || hash === '#chemops' || hash === '#skybox' || hash === '#turf') {
+            if (hash === '#turf') hash = '#skybox';
+
+            let cleanHash = hash ? hash.replace('#', '') : '';
+            if (validTabs.includes(cleanHash)) {
                 showTab(hash, false);
             } else {
-                showTab('', false);
+                // Default to first case study tab (ChemOps ERP)
+                showTab('#chemops', false);
             }
         }
 
+        // Run immediately without waiting for huge images to load
+        initTab();
+        document.addEventListener('DOMContentLoaded', initTab);
         window.addEventListener('load', initTab);
         window.addEventListener('hashchange', initTab);
 

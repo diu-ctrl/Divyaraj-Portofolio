@@ -664,7 +664,7 @@
                 </div>
                 <div class="web-row-visual">
                     <div class="web-image-wrapper">
-                        <img src="images/8bit-website-hero-card.png" alt="8Bit Creatives Gaming Creator Agency">
+                        <img src="images/8bit-website-hero-card.png" alt="8Bit Creatives Gaming Creator Agency" loading="lazy" decoding="async">
                     </div>
                 </div>
             </div>
@@ -676,14 +676,14 @@
                     <p class="web-row-desc">
                         A mission-critical enterprise operations and manufacturing ERP engineered for specialty chemical production. Features 8 department role-based access models, live transactional state machines, automated GST document generation, and atomic stock lot reconciliation.
                     </p>
-                    <a href="websites#chemops" class="btn-explore-capsule">
+                    <a href="/websites#chemops" class="btn-explore-capsule">
                         <span class="btn-label-base">Explore Case Study</span>
                         <span class="btn-ripple-overlay" aria-hidden="true">Explore Case Study</span>
                     </a>
                 </div>
                 <div class="web-row-visual">
                     <div class="web-image-wrapper">
-                        <img src="images/chemops_showcase.png" alt="ChemOps ERP Chemical Manufacturing Platform">
+                        <img src="images/chemops_showcase.png" alt="ChemOps ERP Chemical Manufacturing Platform" loading="lazy" decoding="async">
                     </div>
                 </div>
             </div>
@@ -695,14 +695,14 @@
                     <p class="web-row-desc">
                         A real-time slot booking platform for box-cricket arenas. Players scan a QR, see live slot availability and pay by UPI in under a minute — no login, no app install. Venues get a real-time console for orders, payment verification and refunds.
                     </p>
-                    <a href="websites#skybox" class="btn-explore-capsule">
+                    <a href="/websites#skybox" class="btn-explore-capsule">
                         <span class="btn-label-base">Explore Case Study</span>
                         <span class="btn-ripple-overlay" aria-hidden="true">Explore Case Study</span>
                     </a>
                 </div>
                 <div class="web-row-visual">
                     <div class="web-image-wrapper">
-                        <img src="images/turf_showcase.png" alt="The Sky Box Slot Booking Platform">
+                        <img src="images/turf_showcase.png" alt="The Sky Box Slot Booking Platform" loading="lazy" decoding="async">
                     </div>
                 </div>
             </div>
@@ -714,14 +714,14 @@
                     <p class="web-row-desc">
                         A minimal, modern storefront engineered for a streetwear apparel brand. Optimized for lightning-fast loads, robust filtering, and seamless mobile purchasing.
                     </p>
-                    <a href="websites#kxm" class="btn-explore-capsule">
+                    <a href="/websites#kxm" class="btn-explore-capsule">
                         <span class="btn-label-base">Explore Case Study</span>
                         <span class="btn-ripple-overlay" aria-hidden="true">Explore Case Study</span>
                     </a>
                 </div>
                 <div class="web-row-visual">
                     <div class="web-image-wrapper">
-                        <img src="images/kxm_showcase.png" alt="KXM Clothing Storefront">
+                        <img src="images/kxm_showcase.png" alt="KXM Clothing Storefront" loading="lazy" decoding="async">
                     </div>
                 </div>
             </div>
@@ -733,14 +733,14 @@
                     <p class="web-row-desc">
                         A high-end custom e-commerce solution engineered for luxury retail. Developed with fluid navigation, responsive product displays, and an optimized checkout sequence.
                     </p>
-                    <a href="websites#abhushan" class="btn-explore-capsule">
+                    <a href="/websites#abhushan" class="btn-explore-capsule">
                         <span class="btn-label-base">Explore Case Study</span>
                         <span class="btn-ripple-overlay" aria-hidden="true">Explore Case Study</span>
                     </a>
                 </div>
                 <div class="web-row-visual">
                     <div class="web-image-wrapper">
-                        <img src="images/abhushan_showcase.png" alt="Abhushan Jewelry E-Commerce">
+                        <img src="images/abhushan_showcase.png" alt="Abhushan Jewelry E-Commerce" loading="lazy" decoding="async">
                     </div>
                 </div>
             </div>
@@ -752,14 +752,14 @@
                     <p class="web-row-desc">
                         A high-conversion custom platform developed for an elite automotive detailing service. Featuring an interactive service configurator and clean brand asset placements.
                     </p>
-                    <a href="websites#detailing-cars" class="btn-explore-capsule">
+                    <a href="/websites#detailing-cars" class="btn-explore-capsule">
                         <span class="btn-label-base">Explore Case Study</span>
                         <span class="btn-ripple-overlay" aria-hidden="true">Explore Case Study</span>
                     </a>
                 </div>
                 <div class="web-row-visual">
                     <div class="web-image-wrapper">
-                        <img src="images/detailing_cars_showcase.png" alt="Detailing Cars Portal">
+                        <img src="images/detailing_cars_showcase.png" alt="Detailing Cars Portal" loading="lazy" decoding="async">
                     </div>
                 </div>
             </div>
@@ -899,7 +899,7 @@
 
             <a
                 class="cinema-scale-card"
-                href="ai-cinema#kutch"
+                href="/ai-cinema#kutch"
                 aria-label="Open Kutch AI Cinema project"
             >
                 <img
@@ -1832,6 +1832,8 @@
                     `${radius.toFixed(2)}px`
                 );
 
+                card.style.transform = `translate3d(-50%, -50%, 0) scale(${scale.toFixed(5)})`;
+
                 // ── Dappled Light Sunlight Background Logic ──
                 if (dappledLightEl) {
                     const trackRect = track.getBoundingClientRect();
@@ -1921,52 +1923,10 @@
                 recalculate
             );
 
-            // ── Verification log (REMOVE AFTER TESTING) ──
-            window.addEventListener(
-                'scroll',
-                () => {
-                    const trackRect =
-                        track.getBoundingClientRect();
-
-                    const stageRect =
-                        stage.getBoundingClientRect();
-
-                    const cardRect =
-                        card.getBoundingClientRect();
-
-                    console.table({
-                        trackTop:
-                            trackRect.top.toFixed(1),
-
-                        stageTop:
-                            stageRect.top.toFixed(1),
-
-                        cardCenterX:
-                            (
-                                cardRect.left +
-                                cardRect.width / 2
-                            ).toFixed(1),
-
-                        cardCenterY:
-                            (
-                                cardRect.top +
-                                cardRect.height / 2
-                            ).toFixed(1),
-
-                        viewportCenterX:
-                            (
-                                window.innerWidth / 2
-                            ).toFixed(1),
-
-                        viewportCenterY:
-                            (
-                                window.innerHeight / 2
-                            ).toFixed(1)
-                    });
-                },
-                { passive: true }
-            );
-            // ──────────────────────────────────────────────────
+            window.requestCinemaUpdate = requestUpdate;
+            if (window.__lenis) {
+                window.__lenis.on('scroll', requestUpdate);
+            }
 
             calculateMinimumScale();
             update();
@@ -2090,7 +2050,7 @@
             });
 
             // Mobile: let mobile carousel manage display natively
-            if (window.innerWidth < 768) {
+            if (window.innerWidth <= 900) {
                 sortedCards.forEach(card => card.classList.remove('vapor-hidden'));
                 return;
             }
@@ -2949,6 +2909,9 @@
             if (window.heroBlurController) {
                 window.heroBlurController.checkScroll(scrollTop);
             }
+            if (window.requestCinemaUpdate) {
+                window.requestCinemaUpdate();
+            }
         });
 
         // Selected Web Work Pinned Vertical Scroll System
@@ -2961,7 +2924,7 @@
         if (!rows.length) return;
 
         function updateWebPinnedScroll() {
-            if (window.innerWidth < 768) {
+            if (window.innerWidth <= 900) {
                 strip.style.transform = 'none';
                 rows.forEach(r => {
                     r.style.opacity = '1';
