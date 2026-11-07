@@ -1294,11 +1294,6 @@
             <div class="reviews-left-col">
                 <!-- View 1: Intro Information & Actions -->
                 <div class="reviews-info-left" id="reviewsIntroView">
-                    <div class="reviews-availability-pill">
-                        <span class="reviews-pulse-dot"></span>
-                        <span>Available for Q1 · Direct Collaboration</span>
-                    </div>
-
                     <h2 class="reviews-headline display-serif-statement">
                         Let's work <span class="italic-gradient">together.</span>
                     </h2>
@@ -1332,19 +1327,15 @@
                             </span>
                         </button>
 
-                        <!-- Email Direct Button -->
+                        <!-- Email Button -->
                         <a href="mailto:divyarajc2@gmail.com" class="btn-brutalist btn-brutalist-outline">
-                            <span>Email Direct</span>
+                            <span>Email</span>
                         </a>
 
                         <!-- WhatsApp -->
                         <a href="https://wa.me/qr/KQJFSZ2WY5FSO1" target="_blank" rel="noopener noreferrer" class="btn-brutalist btn-brutalist-outline">WhatsApp</a>
                     </div>
 
-                    <div class="reviews-trust-meta">
-                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
-                        <span>Direct founder access &middot; Avg response under 2 hours</span>
-                    </div>
                 </div>
 
                 <!-- View 2: Inline Calendly Interactive Booking Window (In-Place Swap) -->
@@ -1358,7 +1349,7 @@
                             <span>Back to info</span>
                         </button>
                         <div class="calendly-header-title">
-                            <span>Select 15-Min Coffee Slot</span>
+                            <span>Select Your Preferred Slot</span>
                         </div>
                         <a href="https://calendly.com/divyarajc2/30min" target="_blank" rel="noopener" class="calendly-ext-link" title="Open full screen in new tab">
                             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
@@ -3179,7 +3170,7 @@
             }
         });
 
-        // Selected Web Work Pinned Vertical Scroll System
+        // Selected Web Work Pinned Vertical Scroll System (Butter-Smooth Zero-Thrashing Engine)
         const track = document.getElementById('web-showcase');
         const viewport = document.getElementById('webCardsViewport');
         const strip = document.getElementById('webCardsStrip');
@@ -3188,8 +3179,15 @@
         const rows = Array.from(strip.querySelectorAll('.web-row'));
         if (!rows.length) return;
 
-        function updateWebPinnedScroll() {
-            if (window.innerWidth <= 900) {
+        let vpHeight = 0;
+        let translateY_0 = 0;
+        let translateY_last = 0;
+        let rowMetrics = [];
+        let isDesktop = false;
+
+        function measureWebMetrics() {
+            isDesktop = window.innerWidth > 900;
+            if (!isDesktop) {
                 strip.style.transform = 'none';
                 rows.forEach(r => {
                     r.style.opacity = '1';
@@ -3197,6 +3195,30 @@
                 });
                 return;
             }
+
+            vpHeight = viewport.clientHeight;
+            rowMetrics = rows.map(r => {
+                const h = r.offsetHeight;
+                const top = r.offsetTop;
+                return {
+                    offsetTop: top,
+                    offsetHeight: h,
+                    center: top + h / 2
+                };
+            });
+
+            // Card 1 centered at progress = 0; Card 6 centered at progress = 1
+            const card1Center = rowMetrics[0].center;
+            const cardLastCenter = rowMetrics[rowMetrics.length - 1].center;
+            translateY_0 = card1Center - vpHeight / 2;
+            translateY_last = cardLastCenter - vpHeight / 2;
+        }
+
+        measureWebMetrics();
+
+        let isTicking = false;
+        function updateWebPinnedScroll() {
+            if (!isDesktop) return;
 
             const trackRect = track.getBoundingClientRect();
             const maxScroll = track.offsetHeight - window.innerHeight;
@@ -3207,39 +3229,55 @@
                 progress = Math.min(1, Math.max(0, scrollDistance / maxScroll));
             }
 
-            const vpHeight = viewport.clientHeight;
-            const firstRow = rows[0];
-            const lastRow = rows[rows.length - 1];
+            // Entry buffer (0 to 0.05) & exit buffer (0.95 to 1.0) for comfortable reading
+            let animProgress;
+            if (progress <= 0.05) {
+                animProgress = 0;
+            } else if (progress >= 0.95) {
+                animProgress = 1;
+            } else {
+                animProgress = (progress - 0.05) / 0.90;
+            }
 
-            // Card 1 centered at progress = 0; Card 6 centered at progress = 1
-            const firstRowTargetY = firstRow.offsetTop - (vpHeight - firstRow.offsetHeight) / 2;
-            const lastRowTargetY = lastRow.offsetTop - (vpHeight - lastRow.offsetHeight) / 2;
-            const minTranslateY = Math.max(0, firstRowTargetY);
-            const maxTranslateY = Math.max(0, lastRowTargetY);
+            const currentTranslateY = translateY_0 + animProgress * (translateY_last - translateY_0);
+            strip.style.transform = 'translate3d(0, ' + (-currentTranslateY).toFixed(1) + 'px, 0)';
 
-            const currentTranslateY = minTranslateY + progress * (maxTranslateY - minTranslateY);
-            strip.style.transform = 'translate3d(0, -' + currentTranslateY.toFixed(1) + 'px, 0)';
-
-            // Focal emphasis: cards near the vertical center are opaque and crisp
-            const vpCenterY = viewport.getBoundingClientRect().top + vpHeight / 2;
-            rows.forEach(row => {
-                const r = row.getBoundingClientRect();
-                const rowCenterY = r.top + r.height / 2;
-                const distFromCenter = Math.abs(rowCenterY - vpCenterY);
-                const maxDist = vpHeight / 2;
+            // Butter-smooth focal emphasis without layout thrashing
+            const vpCenter = vpHeight / 2;
+            const maxDist = vpHeight * 0.55;
+            for (let i = 0; i < rows.length; i++) {
+                const rowCenterInVp = rowMetrics[i].center - currentTranslateY;
+                const distFromCenter = Math.abs(rowCenterInVp - vpCenter);
                 const factor = Math.max(0, 1 - distFromCenter / maxDist);
 
-                const opacity = 0.5 + factor * 0.5;
-                const scale = 0.97 + factor * 0.03;
-                row.style.opacity = opacity.toFixed(2);
-                row.style.transform = 'scale(' + scale.toFixed(3) + ')';
-            });
+                const opacity = (0.7 + factor * 0.3).toFixed(2);
+                const scale = (0.98 + factor * 0.02).toFixed(3);
+                rows[i].style.opacity = opacity;
+                rows[i].style.transform = 'scale(' + scale + ')';
+            }
         }
 
-        lenis.on('scroll', updateWebPinnedScroll);
-        window.addEventListener('scroll', updateWebPinnedScroll, { passive: true });
-        window.addEventListener('resize', updateWebPinnedScroll);
-        updateWebPinnedScroll();
+        function requestWebScroll() {
+            if (!isTicking) {
+                requestAnimationFrame(() => {
+                    updateWebPinnedScroll();
+                    isTicking = false;
+                });
+                isTicking = true;
+            }
+        }
+
+        lenis.on('scroll', requestWebScroll);
+        window.addEventListener('resize', () => {
+            measureWebMetrics();
+            requestWebScroll();
+        });
+        // Initial measurement and render after fonts/layout settle
+        setTimeout(() => {
+            measureWebMetrics();
+            requestWebScroll();
+        }, 100);
+        requestWebScroll();
     })();
     </script>
     <!-- Ring Field Background for Footer -->
