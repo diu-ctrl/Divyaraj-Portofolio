@@ -2299,3 +2299,46 @@ h2.contact-headline {
     font-size: 60px !important;
     line-height: 1.08 !important;
 }
+
+/* ==========================================================================
+   Brand Pages - High-Performance Media Blur-In Reveal
+   ========================================================================== */
+.media-blur-reveal {
+    opacity: 0;
+    filter: blur(14px);
+    transition: opacity 0.45s cubic-bezier(0.22, 1, 0.36, 1),
+                filter 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+    will-change: opacity, filter;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+    transform: translateZ(0);
+}
+
+.media-blur-reveal.revealed {
+    opacity: 1;
+    filter: blur(0px);
+}
+
+/* Once fully transitioned into view, release GPU layers */
+.media-blur-reveal.revealed.settled {
+    filter: none !important;
+    will-change: auto !important;
+    transform: none !important;
+}
+
+/* Instant reset off-screen so scrolling back blurs in cleanly */
+.media-blur-reveal.media-resetting {
+    transition: none !important;
+    opacity: 0 !important;
+    filter: blur(14px) !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .media-blur-reveal {
+        opacity: 1 !important;
+        filter: none !important;
+        transition: none !important;
+        will-change: auto !important;
+        transform: none !important;
+    }
+}
