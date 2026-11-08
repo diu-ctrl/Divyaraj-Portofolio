@@ -2030,7 +2030,7 @@ h1 .grad,
         }
 
         /* Section Subtitles / Headers: Decreased size with compulsory white-to-orange/peach gradient */
-        h2:not(.cinema-scale-title), .case-study h2, .main-content h2, .section-title, .ai-reel-info h2, .gallery-section-title {
+        .case-study h2, .main-content h2, .section-title, .ai-reel-info h2, .gallery-section-title {
             font-family: var(--font-serif) !important;
             font-style: italic !important;
             letter-spacing: -0.02em !important;
@@ -2260,4 +2260,13 @@ img:hover,
         font-size: clamp(26px, 7vw, 36px) !important;
         white-space: nowrap !important;
     }
+}
+
+/* Unified 60px Editorial Headlines */
+.reviews-headline,
+.contact-headline,
+h2.reviews-headline,
+h2.contact-headline {
+    font-size: 60px !important;
+    line-height: 1.08 !important;
 }

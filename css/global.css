@@ -5675,3 +5675,12 @@ h1 .grad,
         display: inline !important;
     }
 }
+
+/* Unified 60px Editorial Headlines */
+.reviews-headline,
+.contact-headline,
+h2.reviews-headline,
+h2.contact-headline {
+    font-size: 60px !important;
+    line-height: 1.08 !important;
+}
