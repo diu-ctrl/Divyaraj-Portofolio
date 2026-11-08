@@ -499,9 +499,9 @@ html, body {
 
 /* Brand Collaborations Header in Portfolio - Editorial White with Ambient Depth */
 #portfolio .brand-collaborations-header .display-serif-statement,
-#portfolio .brand-collaborations-header .display-serif-statement span,
+#portfolio .brand-collaborations-header .display-serif-statement span:not(.gradient-text),
 .brand-collaborations-header .display-serif-statement,
-.brand-collaborations-header .display-serif-statement span {
+.brand-collaborations-header .display-serif-statement span:not(.gradient-text) {
     font-family: var(--font-serif) !important;
     font-style: italic !important;
     font-weight: 400 !important;
@@ -514,6 +514,15 @@ html, body {
     -webkit-background-clip: initial !important;
     background-clip: initial !important;
     text-shadow: 0 4px 24px rgba(0, 0, 0, 0.9), 0 1px 3px rgba(0, 0, 0, 0.8) !important;
+}
+
+#portfolio .brand-collaborations-header .display-serif-statement span.gradient-text,
+.brand-collaborations-header .display-serif-statement span.gradient-text {
+    color: transparent !important;
+    -webkit-text-fill-color: transparent !important;
+    background: linear-gradient(90deg, #FFFFFF 0%, #FFFFFF 42%, #EB4604 88%, #EB4604 100%) !important;
+    -webkit-background-clip: text !important;
+    background-clip: text !important;
 }
 
 /* Section Header Typography */
@@ -1972,9 +1981,7 @@ h1 .grad,
 .hero-title .grad,
 .hero-title span.grad,
 .hero-subtitle span,
-.case-study h2 span,
-.section-title span,
-h2 span,
+.case-study .section-title span,
 .sidebar-card h3,
 .event-card-title,
 .event-name span,
