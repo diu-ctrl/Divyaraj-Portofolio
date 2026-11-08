@@ -1,5 +1,15 @@
 {
   "cleanUrls": true,
+  "rewrites": [
+    {
+      "source": "/contact",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/contact/",
+      "destination": "/index.html"
+    }
+  ],
   "redirects": [
     {
       "source": "/divyaraj_resume",

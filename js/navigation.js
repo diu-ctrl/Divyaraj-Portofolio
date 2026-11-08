@@ -227,6 +227,11 @@
             const contactTop = contactSection.offsetTop;
             if (scrollPos >= contactTop) {
                 activeIndex = 2;
+                if (isHomePage && window.location.pathname !== '/contact') {
+                    if (history.replaceState) history.replaceState(null, '', '/contact');
+                }
+            } else if (isHomePage && window.location.pathname === '/contact' && window.scrollY < 200) {
+                if (history.replaceState) history.replaceState(null, '', '/');
             }
         }
 
@@ -264,17 +269,18 @@
         });
 
         item.addEventListener('click', (e) => {
-            if (targetAttr === 'contact' || href === '#contact') {
+            if (targetAttr === 'contact' || href === '/contact' || href === '#contact') {
+                e.preventDefault();
+                if (!isMobile()) closeDrawer();
                 const contactEl = document.getElementById('contact');
                 if (contactEl) {
-                    e.preventDefault();
-                    if (!isMobile()) closeDrawer();
                     contactEl.scrollIntoView({ behavior: 'smooth' });
-                    if (history.replaceState) history.replaceState(null, '', window.location.pathname);
+                    if (history.pushState && window.location.pathname !== '/contact') {
+                        history.pushState(null, '', '/contact');
+                    }
                 } else {
-                    if (!isMobile()) closeDrawer();
                     sessionStorage.setItem('dc_scroll_to_contact', '1');
-                    window.location.href = '/';
+                    window.location.href = '/contact';
                 }
             } else if (targetAttr === 'work') {
                 if (isHomePage) {
@@ -300,44 +306,78 @@
         });
     });
 
-    // Check for pending scroll to contact from cross-page redirect
+    // Clean URL /contact or legacy #contact initial routing
+    function handleInitialRoute() {
+        const hasContactParam = window.location.search.includes('route=contact');
+        if (window.location.hash === '#contact' || isContactRoute || hasContactParam) {
+            if (window.location.hash === '#contact' && history.replaceState) {
+                history.replaceState(null, '', '/contact');
+            }
+            const contactEl = document.getElementById('contact');
+            if (contactEl) {
+                setTimeout(() => {
+                    contactEl.scrollIntoView({ behavior: 'smooth' });
+                }, 120);
+            }
+        } else if (window.location.hash) {
+            // Strip any other legacy hash and keep clean URL
+            const legacyHash = window.location.hash;
+            try {
+                const targetEl = document.querySelector(legacyHash);
+                if (targetEl) setTimeout(() => targetEl.scrollIntoView({ behavior: 'smooth' }), 100);
+            } catch (_) {}
+            if (history.replaceState) {
+                history.replaceState(null, '', window.location.pathname + window.location.search);
+            }
+        }
+    }
+
     if (sessionStorage.getItem('dc_scroll_to_contact') === '1') {
         sessionStorage.removeItem('dc_scroll_to_contact');
         setTimeout(() => {
             const contactEl = document.getElementById('contact');
             if (contactEl) contactEl.scrollIntoView({ behavior: 'smooth' });
+            if (history.replaceState) history.replaceState(null, '', '/contact');
         }, 150);
+    } else {
+        handleInitialRoute();
     }
 
-    // Clean any legacy hash from URL without breaking in-page scroll
-    if (window.location.hash) {
-        try {
-            const targetEl = document.querySelector(window.location.hash);
-            if (targetEl) {
-                setTimeout(() => targetEl.scrollIntoView({ behavior: 'smooth' }), 100);
-            }
-        } catch (_) {}
-        if (history.replaceState) {
-            history.replaceState(null, '', window.location.pathname + window.location.search);
-        }
-    }
-
-    // Intercept internal hash clicks to prevent dirtying address bar with #
+    // Intercept clicks on contact links or hash links to prevent # citation in address bar
     document.addEventListener('click', (e) => {
-        const link = e.target.closest('a[href^="#"]');
+        const link = e.target.closest('a[href="/contact"], a[href="#contact"], a[href^="#"]');
         if (!link) return;
-        const hash = link.getAttribute('href');
-        if (!hash || hash === '#') return;
-        try {
-            const target = document.querySelector(hash);
+        const href = link.getAttribute('href');
+        if (!href || href === '#') return;
+
+        if (href === '/contact' || href === '#contact') {
+            const target = document.getElementById('contact');
             if (target) {
                 e.preventDefault();
                 target.scrollIntoView({ behavior: 'smooth' });
-                if (history.replaceState) {
-                    history.replaceState(null, '', window.location.pathname + window.location.search);
+                if (history.pushState && window.location.pathname !== '/contact') {
+                    history.pushState(null, '', '/contact');
                 }
+            } else {
+                e.preventDefault();
+                sessionStorage.setItem('dc_scroll_to_contact', '1');
+                window.location.href = '/contact';
             }
-        } catch (_) {}
+            return;
+        }
+
+        if (href.startsWith('#')) {
+            try {
+                const target = document.querySelector(href);
+                if (target) {
+                    e.preventDefault();
+                    target.scrollIntoView({ behavior: 'smooth' });
+                    if (history.replaceState) {
+                        history.replaceState(null, '', window.location.pathname + window.location.search);
+                    }
+                }
+            } catch (_) {}
+        }
     });
 
     window.addEventListener('resize', updateHandleLabel);
