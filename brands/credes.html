@@ -236,8 +236,6 @@
             transition: transform 0.5s cubic-bezier(0.16,1,0.3,1);
             cursor: pointer;
         }
-        .phone-frame:hover { transform: none !important; }
-
         /* Side cards */
         .phone-frame-back {
             position: absolute;
@@ -247,6 +245,7 @@
             background: #06091a;
             border: 1px solid rgba(235, 70, 4,0.25);
             overflow: hidden;
+            pointer-events: none !important;
         }
         .phone-frame-back.left {
             left: -110px; top: 60px;
@@ -254,13 +253,19 @@
             filter: brightness(0.65);
             z-index: 0;
         }
+        .phone-frame-back.left:hover {
+            transform: perspective(600px) rotateY(12deg) scale(0.88) !important;
+        }
         .phone-frame-back.right {
             right: -110px; top: 60px;
             transform: perspective(600px) rotateY(-12deg) scale(0.88);
             filter: brightness(0.65);
             z-index: 0;
         }
-        .phone-frame { z-index: 2; left: 50%; transform: translateX(-50%); }
+        .phone-frame-back.right:hover {
+            transform: perspective(600px) rotateY(-12deg) scale(0.88) !important;
+        }
+        .phone-frame { z-index: 2; left: 50%; transform: translateX(-50%) !important; }
         .phone-frame:hover { transform: translateX(-50%) !important; }
 
         .reel-video {
@@ -274,10 +279,9 @@
             position: absolute;
             bottom: 18px;
             left: 50%;
-            transform: translateX(-50%);
+            transform: translateX(-50%) !important;
             z-index: 10;
             background: rgba(0,0,0,0.7);
-            
             border: 1px solid rgba(255,255,255,0.12);
             border-radius: 100px;
             padding: 6px 16px;
@@ -288,6 +292,13 @@
             display: flex;
             align-items: center;
             gap: 6px;
+            pointer-events: none !important;
+            user-select: none;
+            -webkit-user-select: none;
+        }
+        .reel-badge:hover,
+        #heroReelBadge:hover {
+            transform: translateX(-50%) !important;
         }
         .reel-badge .views-icon { font-size: 0.8rem; color: var(--secondary-3); }
 
@@ -296,10 +307,13 @@
             position: absolute;
             bottom: -40px;
             left: 50%;
-            transform: translateX(-50%);
+            transform: translateX(-50%) !important;
             display: flex;
             gap: 8px;
             z-index: 5;
+        }
+        .reel-dots:hover {
+            transform: translateX(-50%) !important;
         }
         .reel-dot {
             width: 8px !important;

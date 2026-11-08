@@ -5776,3 +5776,22 @@ h2.contact-headline {
 .pp-eyebrow {
     color: #8E8B84 !important;
 }
+
+/* ─── Strict Jitter & Layout Drift Elimination ─── */
+.reel-badge,
+#heroReelBadge {
+    pointer-events: none !important;
+    transform: translateX(-50%) !important;
+}
+.reel-badge:hover,
+#heroReelBadge:hover {
+    transform: translateX(-50%) !important;
+}
+
+.browser-address {
+    pointer-events: none !important;
+}
+
+.web-circ-card:hover {
+    filter: none;
+}

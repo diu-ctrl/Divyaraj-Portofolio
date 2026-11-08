@@ -2221,11 +2221,11 @@ h1 .grad,
 /* cinema-scale-card excluded */
 .limelight-nav-item:hover,
 .limelight-nav-item:hover .nav-icon,
-[class*="card"]:not(.cinema-scale-card):hover,
+[class*="card"]:not(.cinema-scale-card):not(.web-circ-card):not(.floating-card):hover,
 [class*="box"]:hover,
 [class*="tab"]:hover,
-[class*="frame"]:hover,
-[class*="badge"]:hover,
+[class*="frame"]:not(.phone-frame-back):not(.phone-frame):hover,
+[class*="badge"]:not(.reel-badge):not(#heroReelBadge):hover,
 [class*="thumb"]:hover {
     transform: none !important;
 }
@@ -2241,6 +2241,38 @@ h1 .grad,
 .reel-play-btn:hover,
 .reel-play-pause-btn:hover {
     transform: translate(-50%, -50%) !important;
+}
+
+/* Maintain horizontal centering for elements positioned with translateX(-50%) */
+.reel-badge,
+.reel-badge:hover,
+#heroReelBadge,
+#heroReelBadge:hover,
+.phone-frame,
+.phone-frame:hover,
+.reel-dots,
+.reel-dots:hover,
+.browser-address,
+.browser-address:hover,
+.hero-instructions,
+.hero-instructions:hover,
+.loading-test-dock,
+.loading-test-dock:hover {
+    transform: translateX(-50%) !important;
+}
+
+/* Maintain 3D perspective orientation for phone frames in Credes */
+.phone-frame-back,
+.phone-frame-back:hover {
+    pointer-events: none !important;
+}
+.phone-frame-back.left,
+.phone-frame-back.left:hover {
+    transform: perspective(600px) rotateY(12deg) scale(0.88) !important;
+}
+.phone-frame-back.right,
+.phone-frame-back.right:hover {
+    transform: perspective(600px) rotateY(-12deg) scale(0.88) !important;
 }
 
 /* Strictly ban all image zooming/scaling on hovering over any card, box, tab, component, or media */
