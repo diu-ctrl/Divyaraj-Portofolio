@@ -36,6 +36,25 @@
     transform: translateX(-50%) translateY(0);
 }
 
+/* Hardened Center-Lock Safeguard: Guarantees translateX(-50%) cannot be stripped or shifted */
+#limelight-nav-container:not(.is-open):not(.is-dragging),
+.limelight-nav-container:not(.is-open):not(.is-dragging) {
+    left: 50% !important;
+    right: auto !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    transform: translateX(-50%) translateY(calc(-100% + var(--handle-height) - var(--nav-top-spacing))) !important;
+}
+
+#limelight-nav-container.is-open:not(.is-dragging),
+.limelight-nav-container.is-open:not(.is-dragging) {
+    left: 50% !important;
+    right: auto !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    transform: translateX(-50%) translateY(0) !important;
+}
+
 .limelight-nav-panel {
     pointer-events: auto;
     width: 100%;

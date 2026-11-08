@@ -123,7 +123,7 @@
 .hero-loading-primed .limelight-nav-container,
 body:has(.hero-loading-primed) .limelight-nav-container {
     opacity: 0 !important;
-    transform: translateY(-28px) !important;
+    pointer-events: none !important;
     transition: none !important;
 }
 
@@ -177,10 +177,8 @@ body:has(.hero-loading-primed) .limelight-nav-container {
 body:has(.hero-animated-in) .limelight-nav-container,
 .hero-animated-in ~ #limelight-nav-container {
     opacity: 1 !important;
-    transform: translateY(0) !important;
-    transition: 
-        opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.8s,
-        transform 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.8s !important;
+    pointer-events: auto !important;
+    transition: opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.8s !important;
 }
 
 /* ─── Instant Bypass when Loader is Skipped (Internal Navigation / Deep Links) ─── */
@@ -213,7 +211,7 @@ body.no-loader .hero-loading-primed .hero-bottom-meta,
 html.no-loader .limelight-nav-container,
 body.no-loader .limelight-nav-container {
     opacity: 1 !important;
-    transform: none !important;
+    pointer-events: auto !important;
     filter: none !important;
     transition: none !important;
 }

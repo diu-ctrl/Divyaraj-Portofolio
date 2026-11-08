@@ -2407,3 +2407,28 @@ h2.contact-headline {
         width: 100%;
     }
 }
+
+/* ==========================================================================
+   Limelight Navigation Bar Center-Lock Safeguard
+   Guarantees the floating navigation drawer is always centered horizontally
+   and cannot be shifted or broken by any transitions, scripts, or loaders.
+   ========================================================================== */
+#limelight-nav-container,
+.limelight-nav-container {
+    left: 50% !important;
+    right: auto !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+}
+
+#limelight-nav-container:not(.is-open):not(.is-dragging),
+.limelight-nav-container:not(.is-open):not(.is-dragging) {
+    left: 50% !important;
+    transform: translateX(-50%) translateY(calc(-100% + var(--handle-height, 32px) - var(--nav-top-spacing, 16px))) !important;
+}
+
+#limelight-nav-container.is-open:not(.is-dragging),
+.limelight-nav-container.is-open:not(.is-dragging) {
+    left: 50% !important;
+    transform: translateX(-50%) translateY(0) !important;
+}
