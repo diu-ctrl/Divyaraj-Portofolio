@@ -26,6 +26,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital,wght@0,400;1,400&family=Inter+Tight:ital,wght@0,100..900;1,100..900&family=Space+Mono:wght@700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/css/tokens.css?v=20261108e">
     <link rel="stylesheet" href="css/navigation.css">
+    <link rel="stylesheet" href="css/side-rays.css?v=20261108a">
     <!-- Preload Hero 3D Gallery Textures for Instant Smooth Blur-In -->
     <link rel="preload" as="image" href="hero-images/1.png" crossorigin="anonymous">
     <link rel="preload" as="image" href="hero-images/2.png" crossorigin="anonymous">
@@ -1036,6 +1037,10 @@
 
     <!-- Services Section -->
     <section id="services" class="services-section">
+        <!-- Ambient WebGL Side Rays Effect -->
+        <div class="side-rays services-side-rays" id="services-side-rays" aria-hidden="true">
+            <canvas class="side-rays__canvas" id="services-side-rays-canvas"></canvas>
+        </div>
         <div class="section-header reveal">
             <h2 class="display-serif-statement"><span style="color: #ffffff;">Pick a lane</span><br><span style="color: #ffffff;">I'll do the rest.</span></h2>
         </div>
@@ -3315,5 +3320,6 @@
         }
     })();
     </script>
+<script src="js/side-rays.js?v=20261108a" defer></script>
 </body>
 </html>

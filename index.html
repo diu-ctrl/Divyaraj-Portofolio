@@ -27,6 +27,7 @@
     <link rel="stylesheet" href="/css/tokens.css?v=20261108e">
     <link rel="stylesheet" href="css/navigation.css">
     <link rel="stylesheet" href="css/loading-transition.css?v=20261108f">
+    <link rel="stylesheet" href="css/side-rays.css?v=20261108a">
     <script>
     // Immediate early-check in head to eliminate flash of loader when returning from subpages
     (function() {
@@ -1097,6 +1098,10 @@
 
     <!-- Services Section -->
     <section id="services" class="services-section">
+        <!-- Ambient WebGL Side Rays Effect -->
+        <div class="side-rays services-side-rays" id="services-side-rays" aria-hidden="true">
+            <canvas class="side-rays__canvas" id="services-side-rays-canvas"></canvas>
+        </div>
         <div class="section-header reveal">
             <h2 class="display-serif-statement"><span style="color: #ffffff;">Pick a lane</span><br><span style="color: #ffffff;">I'll do the rest.</span></h2>
         </div>
@@ -3377,6 +3382,7 @@
     })();
     </script>
     <!-- Liquid Ink Dissolve Loading Transition -->
+    <script src="js/side-rays.js?v=20261108a" defer></script>
     <script src="js/loading-transition.js?v=20261108f"></script>
 </body>
 </html>
