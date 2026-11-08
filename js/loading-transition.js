@@ -2,9 +2,12 @@
  * InkLoaderTransition
  * 
  * High-performance vanilla WebGL FBM fluid ink dissolve transition
- * Reverse-engineered from Jason Jerez (2024.jasonjerez.com)
- * Enhanced with brutalist brand edge contour & choreographed hero reveal.
- * Pure vanilla WebGL, zero external dependencies, 120 FPS.
+ * Customized for Divyaraj Chauhan Portfolio (divyarajchauhan.in).
+ * Features:
+ *  - Pure electric-white liquid contour warp
+ *  - Real-time preloading & GPU decoding of all heavy hero & showcase textures
+ *  - Smart navigation routing: plays on first visit & hero reloads; skips on internal returns & deep links
+ *  - 120 FPS WebGL fragment dissolve, zero external dependencies.
  */
 (function(window) {
   'use strict';
@@ -70,7 +73,7 @@
     }
 
     void main() {
-      // Scale coordinates using CSS viewport resolution (Jason Jerez: gl_FragCoord.xy / (u_res * 0.17))
+      // Scale coordinates using CSS viewport resolution
       float n = fbm(gl_FragCoord.xy / (u_res * 0.17));
       
       // Remap p so that dissolve sweeps through the full range of fbm values (~0.05 to ~0.72)
@@ -82,20 +85,36 @@
       float progress = smoothstep(threshold, threshold - 0.018, n);
       float alpha = clamp(progress, 0.0, 1.0);
 
-      // Subtle brutalist orange liquid edge contour along the expanding apertures
+      // Pure radiant white liquid edge contour along the expanding apertures
       float edgeDist = abs(n - threshold);
       float edge = smoothstep(0.024, 0.0, edgeDist) * (1.0 - smoothstep(0.92, 1.0, p)) * smoothstep(0.02, 0.18, p);
       
       vec3 inkColor = vec3(0.0, 0.0, 0.0); // pitch black #000000
-      vec3 rimColor = vec3(0.92, 0.28, 0.02); // #EB4604 signature brutalist orange
+      vec3 rimColor = vec3(1.0, 1.0, 1.0); // radiant pure white #FFFFFF
       
-      vec3 finalColor = mix(inkColor, rimColor, edge * 0.95);
-      float finalAlpha = clamp(alpha + edge * 0.9, 0.0, 1.0);
+      vec3 finalColor = mix(inkColor, rimColor, edge * 0.98);
+      float finalAlpha = clamp(alpha + edge * 0.95, 0.0, 1.0);
 
       // Pre-multiplied alpha output
       gl_FragColor = vec4(finalColor * finalAlpha, finalAlpha);
     }
   `;
+
+  // Critical heavy assets preloaded & decoded in advance
+  const PRELOAD_ASSETS = [
+    '/hero-images/1.png',
+    '/hero-images/2.png',
+    '/hero-images/3.png',
+    '/hero-images/4.png',
+    '/hero-images/5.png',
+    '/hero-images/6.png',
+    '/images/brand-spray-bg.webp',
+    '/images/chemops/dashboard.png',
+    '/images/skybox/editor.png',
+    '/images/abhushan/landing.png',
+    '/images/kxm/lookbook.png',
+    '/images/detailing-cars/hero.png'
+  ];
 
   class InkLoaderTransition {
     constructor(options = {}) {
@@ -111,9 +130,75 @@
       this.isRunning = false;
       this.isDissolving = false;
       this.rafId = null;
+      this.counterRaf = null;
+
+      this.loadedAssetsCount = 0;
+      this.totalAssetsCount = PRELOAD_ASSETS.length + 2; // +1 for fonts, +1 for DOM ready
 
       this.initGL();
       this.bindEvents();
+    }
+
+    static shouldRun() {
+      // Always run on prototype test page /loading1
+      if (window.location.pathname.includes('/loading1')) {
+        return true;
+      }
+
+      // If user came with a section hash (e.g. /#portfolio, /#contact), skip loader
+      const hash = window.location.hash;
+      if (hash && hash !== '#hero' && hash !== '#' && hash !== '#top') {
+        return false;
+      }
+
+      // Check navigation timing API
+      let navType = '';
+      try {
+        const entries = performance.getEntriesByType && performance.getEntriesByType('navigation');
+        if (entries && entries.length > 0) {
+          navType = entries[0].type;
+        } else if (performance.navigation) {
+          if (performance.navigation.type === 1) navType = 'reload';
+          else if (performance.navigation.type === 2) navType = 'back_forward';
+          else navType = 'navigate';
+        }
+      } catch (e) {}
+
+      // Back/Forward button -> DO NOT PLAY
+      if (navType === 'back_forward') {
+        return false;
+      }
+
+      // If user refreshed the page:
+      if (navType === 'reload') {
+        // Only play if on hero section (near top)
+        const currentScroll = window.scrollY || window.pageYOffset || 0;
+        if (currentScroll > 300) {
+          return false;
+        }
+        return true;
+      }
+
+      // Check explicit session skip flag (set when tapping "Back to Portfolio" or brand navigation buttons)
+      if (sessionStorage.getItem('dc_skip_loader') === 'true') {
+        sessionStorage.removeItem('dc_skip_loader');
+        return false;
+      }
+
+      // Check if referrer is internal (user tapped a link from a subpage on divyarajchauhan.in)
+      const ref = document.referrer;
+      if (ref && navType !== 'reload') {
+        try {
+          const refUrl = new URL(ref);
+          if (refUrl.origin === window.location.origin) {
+            // Arrived from within the site -> DO NOT PLAY
+            return false;
+          }
+        } catch (e) {}
+      }
+
+      // First time landing on the portfolio -> PLAY
+      return true;
     }
 
     initGL() {
@@ -152,12 +237,15 @@
         return;
       }
       this.program = program;
-      gl.useProgram(program);
 
-      // Full screen quad buffer
-      const positionBuffer = gl.createBuffer();
-      gl.bindBuffer(gl.ARRAY_BUFFER, positionBuffer);
-      const quadVertices = new Float32Array([
+      // Uniforms
+      this.uResLoc = gl.getUniformLocation(program, 'u_res');
+      this.uTimeLoc = gl.getUniformLocation(program, 'uTime');
+      this.pLoc = gl.getUniformLocation(program, 'p');
+      this.npLoc = gl.getUniformLocation(program, 'np');
+
+      // Fullscreen quad buffer
+      const quadVerts = new Float32Array([
         -1.0, -1.0,
          1.0, -1.0,
         -1.0,  1.0,
@@ -165,17 +253,13 @@
          1.0, -1.0,
          1.0,  1.0
       ]);
-      gl.bufferData(gl.ARRAY_BUFFER, quadVertices, gl.STATIC_DRAW);
+      const buf = gl.createBuffer();
+      gl.bindBuffer(gl.ARRAY_BUFFER, buf);
+      gl.bufferData(gl.ARRAY_BUFFER, quadVerts, gl.STATIC_DRAW);
 
-      const posAttrib = gl.getAttribLocation(program, 'position');
-      gl.enableVertexAttribArray(posAttrib);
-      gl.vertexAttribPointer(posAttrib, 2, gl.FLOAT, false, 0, 0);
-
-      // Uniform locations
-      this.uResLoc = gl.getUniformLocation(program, 'u_res');
-      this.uTimeLoc = gl.getUniformLocation(program, 'uTime');
-      this.pLoc = gl.getUniformLocation(program, 'p');
-      this.npLoc = gl.getUniformLocation(program, 'np');
+      const posLoc = gl.getAttribLocation(program, 'position');
+      gl.enableVertexAttribArray(posLoc);
+      gl.vertexAttribPointer(posLoc, 2, gl.FLOAT, false, 0, 0);
 
       this.resize();
     }
@@ -196,16 +280,11 @@
       const dpr = Math.min(window.devicePixelRatio || 1, 2);
       const w = window.innerWidth;
       const h = window.innerHeight;
-
       this.canvas.width = Math.round(w * dpr);
       this.canvas.height = Math.round(h * dpr);
       this.canvas.style.width = w + 'px';
       this.canvas.style.height = h + 'px';
-
       this.gl.viewport(0, 0, this.canvas.width, this.canvas.height);
-      this.gl.useProgram(this.program);
-      // Pass CSS logical pixels to u_res matching Jason Jerez scale
-      this.gl.uniform2f(this.uResLoc, w, h);
     }
 
     bindEvents() {
@@ -213,105 +292,120 @@
     }
 
     renderFrame() {
-      if (!this.gl) return;
       const gl = this.gl;
+      if (!gl || !this.program) return;
 
       gl.useProgram(this.program);
+      gl.uniform2f(this.uResLoc, this.canvas.width, this.canvas.height);
       gl.uniform1f(this.uTimeLoc, this.uTime);
       gl.uniform1f(this.pLoc, this.p);
       gl.uniform1f(this.npLoc, this.np);
 
-      gl.clearColor(0.0, 0.0, 0.0, 0.0);
+      gl.clearColor(0, 0, 0, 0);
       gl.clear(gl.COLOR_BUFFER_BIT);
       gl.drawArrays(gl.TRIANGLES, 0, 6);
     }
 
+    /**
+     * Real background preloading & decoding of all critical heavy assets
+     */
+    startAssetPreloading() {
+      const onAssetReady = () => {
+        this.loadedAssetsCount++;
+      };
+
+      // 1. Preload & GPU-decode all critical images
+      PRELOAD_ASSETS.forEach((src) => {
+        const img = new Image();
+        img.src = src;
+        if (img.decode) {
+          img.decode().then(onAssetReady).catch(onAssetReady);
+        } else {
+          img.onload = onAssetReady;
+          img.onerror = onAssetReady;
+        }
+      });
+
+      // 2. Wait for web fonts (Instrument Serif & Inter Tight)
+      if (document.fonts && document.fonts.ready) {
+        document.fonts.ready.then(onAssetReady).catch(onAssetReady);
+      } else {
+        onAssetReady();
+      }
+
+      // 3. Wait for DOM ready
+      if (document.readyState === 'complete') {
+        onAssetReady();
+      } else {
+        window.addEventListener('load', onAssetReady, { once: true });
+      }
+    }
+
     start() {
+      if (this.isRunning) return;
+      this.isRunning = true;
       this.resetStates();
 
-      // Ensure elements are in initial state
-      if (this.loaderEl) {
-        this.loaderEl.style.opacity = '1';
-        this.loaderEl.style.display = 'flex';
-        this.loaderEl.style.pointerEvents = 'all';
-      }
-      if (this.canvas) {
-        this.canvas.style.display = 'block';
-        this.canvas.style.opacity = '1';
+      // Ensure hero components are primed/waiting behind the ink
+      if (this.heroContainer) {
+        this.heroContainer.classList.add('hero-loading-primed');
+        this.heroContainer.classList.remove('hero-animated-in');
       }
 
-      this.p = 1.0;
-      this.np = 1.0;
+      // Render 100% black WebGL initial frame
       this.renderFrame();
 
-      // Arm the hero components reveal initial states
-      this.prepareHeroReveal();
+      // Kick off background asset preloading
+      this.startAssetPreloading();
 
-      // Start counter progression
+      // Run progress counter tracking both natural time progression & real asset completion
       this.runCounter();
     }
 
-    prepareHeroReveal() {
-      const hero = this.heroContainer || document.getElementById('hero');
-      if (!hero) return;
-
-      hero.classList.remove('hero-animated-in');
-      hero.classList.add('hero-loading-primed');
-    }
-
-    triggerHeroReveal() {
-      const hero = this.heroContainer || document.getElementById('hero');
-      if (!hero) return;
-
-      hero.classList.remove('hero-loading-primed');
-      hero.classList.add('hero-animated-in');
-
-      // Trigger the 3D gallery blur-in controller if present
-      if (window.heroBlurController && typeof window.heroBlurController.trigger === 'function') {
-        window.heroBlurController.trigger();
-      }
-    }
-
     runCounter() {
-      let current = 0;
-      let target = 0;
       const startTime = performance.now();
-      const totalDuration = 1800; // ~1.8s count up
+      const minDuration = 1450; // 1.45s min duration for visual rhythm
+      const maxSafetyTimeout = 3200; // max 3.2s safety timeout
+
+      let current = 0;
 
       const tick = (now) => {
         const elapsed = now - startTime;
-        const progressRatio = Math.min(elapsed / totalDuration, 1.0);
+        const timeRatio = Math.min(elapsed / minDuration, 1.0);
+        const realAssetRatio = Math.min(this.loadedAssetsCount / this.totalAssetsCount, 1.0);
 
-        // Organic multi-stage velocity curve:
-        // stage 1: 0 - 35% brisk (fast start)
-        // stage 2: 35 - 78% steady flow
-        // stage 3: 78 - 92% deceleration
-        // stage 4: 92 - 100% snap to finish
+        // Smooth curve progression
         let curveVal;
-        if (progressRatio < 0.25) {
-          curveVal = (progressRatio / 0.25) * 0.35;
-        } else if (progressRatio < 0.65) {
-          curveVal = 0.35 + ((progressRatio - 0.25) / 0.40) * 0.43;
-        } else if (progressRatio < 0.88) {
-          curveVal = 0.78 + ((progressRatio - 0.65) / 0.23) * 0.14;
+        if (timeRatio < 0.25) {
+          curveVal = (timeRatio / 0.25) * 0.35;
+        } else if (timeRatio < 0.65) {
+          curveVal = 0.35 + ((timeRatio - 0.25) / 0.40) * 0.43;
+        } else if (timeRatio < 0.88) {
+          curveVal = 0.78 + ((timeRatio - 0.65) / 0.23) * 0.12;
         } else {
-          curveVal = 0.92 + ((progressRatio - 0.88) / 0.12) * 0.08;
+          curveVal = 0.90 + ((timeRatio - 0.88) / 0.12) * 0.10;
         }
 
-        target = curveVal * 100;
-        current += (target - current) * 0.22;
+        // Cap at 90% until real heavy assets are completely loaded & decoded (or safety timeout reached)
+        const isAssetsReady = (realAssetRatio >= 0.95) || (elapsed >= maxSafetyTimeout);
+        let target = curveVal * 100;
+        if (!isAssetsReady && target > 89) {
+          target = 89;
+        }
 
+        current += (target - current) * 0.22;
         const displayVal = Math.min(100, Math.round(current));
+        
         if (this.counterEl) {
           this.counterEl.textContent = `${displayVal}%`;
         }
 
-        if (progressRatio < 1.0 || current < 99.5) {
+        if (displayVal < 100 || !isAssetsReady) {
           this.counterRaf = requestAnimationFrame(tick);
         } else {
-          // Exactly 100%
+          // Exactly 100% - all heavy assets are loaded and decoded
           if (this.counterEl) this.counterEl.textContent = '100%';
-          setTimeout(() => this.startDissolve(), 180);
+          setTimeout(() => this.startDissolve(), 160);
         }
       };
 
@@ -342,7 +436,7 @@
         }
       }, 150);
 
-      // 2. Start WebGL FBM fluid ink dissolve
+      // 2. Start WebGL FBM fluid ink dissolve with pure white liquid contours
       const dissolveStart = performance.now();
       const pDuration = 1450; // 1.45s dissolve
       const npDuration = 1600; // 1.60s curtain lift
@@ -380,7 +474,32 @@
       this.rafId = requestAnimationFrame(animateGL);
     }
 
+    triggerHeroReveal() {
+      if (!this.heroContainer) return;
+      this.heroContainer.classList.remove('hero-loading-primed');
+      this.heroContainer.classList.add('hero-animated-in');
+
+      if (window.heroBlurController && typeof window.heroBlurController.trigger === 'function') {
+        window.heroBlurController.trigger();
+      }
+    }
+
     onDissolveComplete() {
+      this.isDissolving = false;
+      this.isRunning = false;
+      if (this.canvas) {
+        this.canvas.style.display = 'none';
+      }
+      if (this.loaderEl) {
+        this.loaderEl.style.display = 'none';
+      }
+      // Notify page that intro transition is complete
+      document.documentElement.classList.remove('has-loader');
+      document.documentElement.classList.add('loader-complete');
+    }
+
+    bypassInstantly() {
+      this.isRunning = false;
       this.isDissolving = false;
       if (this.canvas) {
         this.canvas.style.display = 'none';
@@ -388,7 +507,13 @@
       if (this.loaderEl) {
         this.loaderEl.style.display = 'none';
       }
-      console.log('Ink dissolve transition complete!');
+      if (this.heroContainer) {
+        this.heroContainer.classList.remove('hero-loading-primed');
+        this.heroContainer.classList.add('hero-animated-in');
+      }
+      if (window.heroBlurController && typeof window.heroBlurController.trigger === 'function') {
+        window.heroBlurController.trigger();
+      }
     }
 
     resetStates() {
@@ -431,11 +556,28 @@
 
   window.InkLoaderTransition = InkLoaderTransition;
 
+  // Global listener: clicking any back button or logo home link flags internal navigation
+  document.addEventListener('click', (e) => {
+    const a = e.target.closest('a');
+    if (a) {
+      const href = a.getAttribute('href') || '';
+      if (a.classList.contains('back-btn') || a.classList.contains('dc-home') || href === '/' || href === '/index.html' || href === 'https://www.divyarajchauhan.in/' || href === 'https://divyarajchauhan.in/') {
+        sessionStorage.setItem('dc_skip_loader', 'true');
+      }
+    }
+  }, { capture: true, passive: true });
+
   // Auto-initialize when DOM is ready
   document.addEventListener('DOMContentLoaded', () => {
+    const shouldRun = InkLoaderTransition.shouldRun();
     const loader = new InkLoaderTransition();
     window.siteLoader = loader;
-    loader.start();
+
+    if (shouldRun) {
+      loader.start();
+    } else {
+      loader.bypassInstantly();
+    }
   });
 
 })(window);

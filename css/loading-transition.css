@@ -1,5 +1,5 @@
 /* ═══════════════════════════════════════════════════════════════════════════════
-   INK LOADER & FLUID DISSOLVE TRANSITION (Test Page: /loading1)
+   INK LOADER & FLUID DISSOLVE TRANSITION (divyarajchauhan.in)
    ═══════════════════════════════════════════════════════════════════════════════ */
 
 /* Full-Screen Pure Black Loader Overlay */
@@ -36,28 +36,18 @@
     will-change: transform, opacity;
 }
 
+/* Orange blinking dot completely removed as requested */
 .loader-meta-tag .live-dot {
-    width: 6px;
-    height: 6px;
-    border-radius: 50%;
-    background: #EB4604;
-    box-shadow: 0 0 10px rgba(235, 70, 4, 0.8);
-    display: inline-block;
-    animation: loaderPulse 1.4s ease-in-out infinite;
+    display: none !important;
 }
 
-@keyframes loaderPulse {
-    0%, 100% { opacity: 0.3; transform: scale(0.85); }
-    50% { opacity: 1; transform: scale(1.15); }
-}
-
-/* Massive Numeric Percentage Counter (matching Jason Jerez typography) */
+/* Massive Numeric Percentage Counter (User specified size: 200) */
 #loader-counter {
     font-family: 'Inter Tight', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif !important;
-    font-size: clamp(6.5rem, 19vw, 22rem);
+    font-size: clamp(72px, 15vw, 200px) !important;
     font-weight: 800;
     color: #FFFFFF;
-    line-height: 0.88;
+    line-height: 0.9;
     letter-spacing: -0.06em;
     margin: 0;
     padding: 0;
@@ -193,7 +183,42 @@ body:has(.hero-animated-in) .limelight-nav-container,
         transform 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.8s !important;
 }
 
-/* ─── Interactive Replay & Test Dock ─── */
+/* ─── Instant Bypass when Loader is Skipped (Internal Navigation / Deep Links) ─── */
+html.no-loader #loader-overlay,
+html.no-loader #loader-gl-canvas,
+body.no-loader #loader-overlay,
+body.no-loader #loader-gl-canvas {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+    opacity: 0 !important;
+}
+
+html.no-loader .hero-loading-primed .hero-3d-gallery-scene,
+body.no-loader .hero-loading-primed .hero-3d-gallery-scene {
+    opacity: 1 !important;
+    filter: none !important;
+    transform: none !important;
+    transition: none !important;
+}
+
+html.no-loader .hero-loading-primed .hero-title,
+body.no-loader .hero-loading-primed .hero-title,
+html.no-loader .hero-loading-primed .hero-subtitle-mono,
+body.no-loader .hero-loading-primed .hero-subtitle-mono,
+html.no-loader .hero-loading-primed .hero-top-meta,
+body.no-loader .hero-loading-primed .hero-top-meta,
+html.no-loader .hero-loading-primed .hero-bottom-meta,
+body.no-loader .hero-loading-primed .hero-bottom-meta,
+html.no-loader .limelight-nav-container,
+body.no-loader .limelight-nav-container {
+    opacity: 1 !important;
+    transform: none !important;
+    filter: none !important;
+    transition: none !important;
+}
+
+/* ─── Interactive Replay & Test Dock (Visible on /loading1 only) ─── */
 .loading-test-dock {
     position: fixed;
     bottom: 28px;
@@ -204,6 +229,10 @@ body:has(.hero-animated-in) .limelight-nav-container,
     align-items: center;
     gap: 12px;
     pointer-events: all;
+}
+
+body:not(.is-loading1-page) .loading-test-dock {
+    display: none !important;
 }
 
 .replay-animation-btn {

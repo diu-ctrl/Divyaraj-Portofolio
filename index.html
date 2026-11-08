@@ -26,6 +26,53 @@
     <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital,wght@0,400;1,400&family=Inter+Tight:ital,wght@0,100..900;1,100..900&family=Space+Mono:wght@700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/css/tokens.css?v=20261108e">
     <link rel="stylesheet" href="css/navigation.css">
+    <link rel="stylesheet" href="css/loading-transition.css?v=20261108f">
+    <script>
+    // Immediate early-check in head to eliminate flash of loader when returning from subpages
+    (function() {
+      var hash = window.location.hash;
+      if (hash && hash !== '#hero' && hash !== '#' && hash !== '#top') {
+        document.documentElement.classList.add('no-loader');
+        return;
+      }
+      var navEntries = performance.getEntriesByType && performance.getEntriesByType('navigation');
+      var navType = (navEntries && navEntries[0]) ? navEntries[0].type : '';
+      var isReload = (navType === 'reload') || (performance.navigation && performance.navigation.type === 1);
+      var isBackForward = (navType === 'back_forward') || (performance.navigation && performance.navigation.type === 2);
+      
+      if (isBackForward) {
+        document.documentElement.classList.add('no-loader');
+        return;
+      }
+
+      if (sessionStorage.getItem('dc_skip_loader') === 'true') {
+        sessionStorage.removeItem('dc_skip_loader');
+        document.documentElement.classList.add('no-loader');
+        return;
+      }
+
+      var ref = document.referrer;
+      if (ref && !isReload) {
+        try {
+          var refUrl = new URL(ref);
+          if (refUrl.origin === window.location.origin) {
+            document.documentElement.classList.add('no-loader');
+            return;
+          }
+        } catch(e) {}
+      }
+
+      if (isReload) {
+        var scrollY = window.scrollY || window.pageYOffset || 0;
+        if (scrollY > 300) {
+          document.documentElement.classList.add('no-loader');
+          return;
+        }
+      }
+
+      document.documentElement.classList.add('has-loader');
+    })();
+    </script>
     <!-- Preload Hero 3D Gallery Textures for Instant Smooth Blur-In -->
     <link rel="preload" as="image" href="hero-images/1.png" crossorigin="anonymous">
     <link rel="preload" as="image" href="hero-images/2.png" crossorigin="anonymous">
@@ -203,6 +250,20 @@
 </head>
 <body>
 
+    <!-- 1. FULL-SCREEN BRUTALIST PERCENTAGE LOADER -->
+    <div id="loader-overlay" aria-live="polite" aria-label="Loading portfolio experience">
+        <div class="loader-meta-tag" id="loader-tag">
+            <span>Divyaraj Chauhan</span>
+        </div>
+        <div id="loader-counter">0%</div>
+        <div class="loader-status-sub">
+            <span>Personal Portfolio &copy; 2026</span>
+        </div>
+    </div>
+
+    <!-- 2. FULL-SCREEN WEBGL FBM LIQUID INK DISSOLVE CANVAS -->
+    <canvas id="loader-gl-canvas"></canvas>
+
     <!-- Ambient Background -->
 
                 <!-- Limelight Floating Drawer Navigation Bar -->
@@ -255,7 +316,7 @@
     </div>
 
     <!-- Hero -->
-    <section class="hero-scroll-track" id="hero">
+    <section class="hero-scroll-track hero-loading-primed" id="hero">
         <div class="hero-sticky">
             <div class="hero-3d-gallery-container">
                 <div class="hero-3d-gallery-scene" id="hero-3d-scene"></div>
@@ -3315,5 +3376,7 @@
         }
     })();
     </script>
+    <!-- Liquid Ink Dissolve Loading Transition -->
+    <script src="js/loading-transition.js?v=20261108f"></script>
 </body>
 </html>
