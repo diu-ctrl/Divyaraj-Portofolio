@@ -1753,8 +1753,8 @@ html, body {
             padding: clamp(36px, 4.5vh, 60px) 6% !important;
             width: 100vw;
             max-width: none !important;
-            background: #0A0A0A;
-            border-top: 1px solid var(--border);
+            background: #000000 !important;
+            border-top: none !important;
             margin-left: 50%;
             transform: translateX(-50%);
             position: relative;
@@ -1765,6 +1765,29 @@ html, body {
             flex-direction: column;
             justify-content: center;
             box-sizing: border-box;
+        }
+
+        /* Seamless blended gradient & blur at intersection with the section above */
+        .cta-section::before {
+            content: '' !important;
+            position: absolute !important;
+            top: 0 !important;
+            left: 0 !important;
+            right: 0 !important;
+            width: 100% !important;
+            height: clamp(160px, 22vh, 260px) !important;
+            background: linear-gradient(
+                to bottom,
+                #000000 0%,
+                rgba(0, 0, 0, 0.96) 25%,
+                rgba(0, 0, 0, 0.75) 50%,
+                rgba(0, 0, 0, 0.25) 75%,
+                transparent 100%
+            ) !important;
+            backdrop-filter: blur(8px) !important;
+            -webkit-backdrop-filter: blur(8px) !important;
+            pointer-events: none !important;
+            z-index: 1 !important;
         }
 
         .cta-section > *:not(canvas) {
@@ -1780,6 +1803,22 @@ html, body {
             height: 100% !important;
             pointer-events: none !important;
             z-index: 0 !important;
+            mask-image: linear-gradient(
+                to bottom,
+                transparent 0%,
+                rgba(0, 0, 0, 0.08) 35px,
+                rgba(0, 0, 0, 0.45) 90px,
+                rgba(0, 0, 0, 0.85) 160px,
+                #000000 240px
+            ) !important;
+            -webkit-mask-image: linear-gradient(
+                to bottom,
+                transparent 0%,
+                rgba(0, 0, 0, 0.08) 35px,
+                rgba(0, 0, 0, 0.45) 90px,
+                rgba(0, 0, 0, 0.85) 160px,
+                #000000 240px
+            ) !important;
         }
 
         .brutalist-contact-block {
