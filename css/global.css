@@ -883,9 +883,11 @@ html, body {
 
         .gradient-text,
         .italic-gradient {
-            background: linear-gradient(90deg, #FFFFFF 0%, #FFFFFF 58%, #EB4604 95%);
+            background: linear-gradient(90deg, #FFFFFF 0%, #FFFFFF 68%, #FF5A19 92%, #EB4604 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
+            text-shadow: none !important;
+            filter: drop-shadow(0 4px 20px rgba(0, 0, 0, 0.95));
             display: inline-block;
             padding-right: 0.15em; /* Prevent italic character clipping */
             margin-right: -0.15em;
@@ -5777,7 +5779,14 @@ h2.contact-headline {
     color: #8E8B84 !important;
 }
 
-/* ─── Strict Jitter & Layout Drift Elimination ─── */
+/* ─── Contact Headline Bright Gradient ─── */
+.contact-headline .gradient-text {
+    background: linear-gradient(90deg, #FFFFFF 0%, #FFFFFF 68%, #FF5A19 92%, #EB4604 100%) !important;
+    -webkit-background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+    text-shadow: none !important;
+    filter: drop-shadow(0 4px 20px rgba(0, 0, 0, 0.95)) !important;
+}
 .reel-badge,
 #heroReelBadge {
     pointer-events: none !important;

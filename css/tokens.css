@@ -527,11 +527,15 @@ html, body {
 
 .italic-gradient {
 
-    background: linear-gradient(90deg, #FFFFFF 0%, #FFFFFF 58%, #EB4604 95%);
+    background: linear-gradient(90deg, #FFFFFF 0%, #FFFFFF 68%, #FF5A19 92%, #EB4604 100%) !important;
 
-    -webkit-background-clip: text;
+    -webkit-background-clip: text !important;
 
-    -webkit-text-fill-color: transparent;
+    -webkit-text-fill-color: transparent !important;
+
+    text-shadow: none !important;
+
+    filter: drop-shadow(0 4px 20px rgba(0, 0, 0, 0.95));
 
     display: inline-block;
 
