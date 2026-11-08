@@ -2048,16 +2048,16 @@ html, body {
         }
 
         .copyright-above a {
-            color: #ffffff !important;
+            color: #919C77 !important;
             text-decoration: underline !important;
             text-underline-offset: 3px !important;
-            opacity: 0.95;
+            opacity: 1;
             transition: opacity 0.2s ease, color 0.2s ease;
         }
 
         .copyright-above a:hover {
             opacity: 1;
-            color: var(--accent) !important;
+            color: #ffffff !important;
         }
 
         .refresh-date {
