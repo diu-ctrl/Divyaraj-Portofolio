@@ -2398,3 +2398,12 @@ h2.contact-headline {
         margin-left: 0 !important;
     }
 }
+
+/* Contact Tab Extended Width */
+@media (min-width: 769px) {
+    .contact-left-col,
+    .contact-info-left {
+        max-width: 700px !important;
+        width: 100%;
+    }
+}
