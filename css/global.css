@@ -1821,7 +1821,7 @@ html, body {
         .contact-headline {
             text-shadow: 0 4px 24px rgba(0, 0, 0, 0.95);
             font-family: var(--font-serif) !important;
-            font-size: 60px !important;
+            font-size: 55px !important;
             font-style: italic !important;
             font-weight: 400 !important;
             letter-spacing: -0.02em;
@@ -4678,10 +4678,14 @@ h1 .grad,
     #services .display-serif-statement,
     #services .section-header h2,
     .reviews-headline,
-    .contact-headline,
     .brand-collaborations-header .display-serif-statement,
     #portfolio .brand-collaborations-header .display-serif-statement {
         font-size: 60px !important;
+        line-height: 1.08 !important;
+    }
+
+    .contact-headline {
+        font-size: 55px !important;
         line-height: 1.08 !important;
     }
 }
@@ -5684,11 +5688,15 @@ h1 .grad,
     }
 }
 
-/* Unified 60px Editorial Headlines */
+/* Unified Editorial Headlines */
 .reviews-headline,
-.contact-headline,
-h2.reviews-headline,
-h2.contact-headline {
+h2.reviews-headline {
     font-size: 60px !important;
+    line-height: 1.08 !important;
+}
+
+.contact-headline,
+h2.contact-headline {
+    font-size: 55px !important;
     line-height: 1.08 !important;
 }
