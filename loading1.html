@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Divyaraj Chauhan — Loading Screen & Fluid Reveal Prototype (/loading1)</title>
+    <meta name="robots" content="noindex, nofollow">
+
+    <!-- Favicons -->
+    <link rel="icon" type="image/x-icon" href="/dc-favicon.ico?v=3">
+    <link rel="icon" type="image/png" sizes="32x32" href="/dc-favicon-32x32.png?v=3">
+    <link rel="icon" type="image/png" sizes="16x16" href="/dc-favicon-16x16.png?v=3">
+    <link rel="apple-touch-icon" sizes="180x180" href="/dc-apple-touch-icon.png?v=3">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital,wght@0,400;1,400&family=Inter+Tight:ital,wght@0,100..900;1,100..900&family=Space+Mono:wght@700&display=swap" rel="stylesheet">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="/css/tokens.css?v=20261108d">
+    <link rel="stylesheet" href="/css/navigation.css">
+    <link rel="stylesheet" href="/css/global.css?v=20261108d">
+    <link rel="stylesheet" href="/css/loading-transition.css?v=20261108a">
+
+    <!-- Preload Hero 3D Textures for Instant Smooth Blur-In -->
+    <link rel="preload" as="image" href="/hero-images/1.png" crossorigin="anonymous">
+    <link rel="preload" as="image" href="/hero-images/2.png" crossorigin="anonymous">
+    <link rel="preload" as="image" href="/hero-images/3.png" crossorigin="anonymous">
+    <link rel="preload" as="image" href="/hero-images/4.png" crossorigin="anonymous">
+    <link rel="preload" as="image" href="/hero-images/5.png" crossorigin="anonymous">
+    <link rel="preload" as="image" href="/hero-images/6.png" crossorigin="anonymous">
+
+    <!-- Tailwind -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="/js/three.min.js"></script>
+    <script src="/js/dappled-light.js"></script>
+</head>
+<body class="bg-black text-white antialiased overflow-x-hidden selection:bg-[#EB4604] selection:text-white">
+
+    <!-- 1. FULL-SCREEN BRUTALIST PERCENTAGE LOADER -->
+    <div id="loader-overlay" aria-live="polite" aria-label="Loading portfolio experience">
+        <div class="loader-meta-tag" id="loader-tag">
+            <span class="live-dot" aria-hidden="true"></span>
+            <span>2026 // Divyaraj Chauhan</span>
+        </div>
+        <div id="loader-counter">0%</div>
+        <div class="loader-status-sub">
+            <span>Loading 3D Engine & Assets</span>
+        </div>
+    </div>
+
+    <!-- 2. FULL-SCREEN WEBGL FBM LIQUID INK DISSOLVE CANVAS -->
+    <canvas id="loader-gl-canvas"></canvas>
+
+    <!-- 3. LIMELIGHT NAVIGATION (Revealed in sync with hero) -->
+    <div class="limelight-nav-container" id="limelight-nav-container">
+        <nav class="limelight-nav-panel" id="limelight-nav-panel" aria-label="Main Navigation">
+            <div class="limelight-nav">
+                <a href="/about" class="limelight-nav-item" data-target="about">
+                    <div class="limelight-beam"></div>
+                    <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                    <span class="nav-tooltip">About</span>
+                </a>
+                <a href="/" class="limelight-nav-item active" data-target="work">
+                    <div class="limelight-beam"></div>
+                    <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg>
+                    <span class="nav-tooltip">Work</span>
+                </a>
+                <a href="/#contact" class="limelight-nav-item" data-target="contact">
+                    <div class="limelight-beam"></div>
+                    <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                    <span class="nav-tooltip">Contact</span>
+                </a>
+                <a href="https://wa.me/qr/KQJFSZ2WY5FSO1" target="_blank" rel="noopener noreferrer" class="limelight-nav-item" data-target="whatsapp">
+                    <div class="limelight-beam"></div>
+                    <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+                    <span class="nav-tooltip">WhatsApp</span>
+                </a>
+                <a href="/divyaraj-resume" target="_blank" rel="noopener" class="limelight-nav-item" data-target="resume">
+                    <div class="limelight-beam"></div>
+                    <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><line x1="10" y1="9" x2="8" y2="9"/></svg>
+                    <span class="nav-tooltip">Resume</span>
+                </a>
+            </div>
+        </nav>
+        <button class="limelight-drawer-handle" id="limelight-drawer-handle" aria-expanded="false" aria-controls="limelight-nav-panel" aria-label="Toggle navigation menu">
+            <span class="drawer-handle-content">
+                <span class="drawer-handle-text" id="drawer-handle-text">Pull Down</span>
+                <svg class="drawer-stacked-chevrons" id="drawer-chevrons-icon" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                    <polyline class="chevron-line chevron-top" points="2 2 7 5 12 2"/>
+                    <polyline class="chevron-line chevron-mid" points="2 6 7 9 12 6"/>
+                    <polyline class="chevron-line chevron-bot" points="2 10 7 13 12 10"/>
+                </svg>
+            </span>
+        </button>
+    </div>
+
+    <!-- 4. CURRENT HERO SECTION (The End Screen) -->
+    <section class="hero-scroll-track hero-loading-primed" id="hero">
+        <div class="hero-sticky">
+            <div class="hero-3d-gallery-container">
+                <div class="hero-3d-gallery-scene" id="hero-3d-scene"></div>
+                <script>
+                // Hero 3D Gallery blur-reveal controller
+                (function initHeroBlurReveal() {
+                    const scene = document.getElementById('hero-3d-scene');
+                    if (!scene) return;
+
+                    let revealRafId = null;
+                    function triggerBlurReveal() {
+                        if (revealRafId) cancelAnimationFrame(revealRafId);
+                        revealRafId = requestAnimationFrame(() => {
+                            scene.style.transition = 'opacity 1.6s cubic-bezier(0.16, 1, 0.3, 1), filter 1.8s cubic-bezier(0.16, 1, 0.3, 1), transform 1.8s cubic-bezier(0.16, 1, 0.3, 1)';
+                            revealRafId = requestAnimationFrame(() => {
+                                scene.classList.add('hero-revealed');
+                                revealRafId = null;
+                            });
+                        });
+                    }
+
+                    function resetBlurState() {
+                        if (revealRafId) {
+                            cancelAnimationFrame(revealRafId);
+                            revealRafId = null;
+                        }
+                        scene.style.transition = 'none';
+                        scene.classList.remove('hero-revealed');
+                        void scene.offsetHeight;
+                    }
+
+                    window.heroBlurController = {
+                        trigger: triggerBlurReveal,
+                        reset: resetBlurState
+                    };
+                })();
+                </script>
+            </div>
+
+            <div class="hero-main-content">
+                <h1 class="hero-title" aria-label="Divyaraj Chauhan">
+                    <span class="sr-only" style="position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0;">Divyaraj Chauhan — </span>Divyaraj.
+                </h1>
+                <p class="hero-subtitle-mono">A digital strategist building brands, platforms, and cinematic stories.</p>
+            </div>
+
+            <div class="hero-content-overlay">
+                <div class="hero-top-meta">
+                    <span class="hero-availability">
+                        <span class="meta-desktop-text">Open to Work · Freelance</span>
+                        <span class="meta-mobile-text">Open to Work</span>
+                    </span>
+                    <span class="hero-location">Ahmedabad, IN</span>
+                </div>
+
+                <div class="hero-bottom-meta">
+                    <span class="hero-copyright">© 2026 Divyaraj Chauhan</span>
+                    <span class="hero-scroll-label">
+                        <span class="meta-desktop-text">Scroll to Explore ↓</span>
+                        <span class="meta-mobile-text">Scroll ↓</span>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 5. FLOATING TEST CONTROLS (Easily replay animation on /loading1) -->
+    <div class="loading-test-dock">
+        <button type="button" class="replay-animation-btn" id="replayBtn" aria-label="Replay loading animation">
+            <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/>
+                <path d="M3 3v5h5"/>
+            </svg>
+            <span>Replay Animation</span>
+        </button>
+        <span class="replay-shortcut-hint">Space / R</span>
+    </div>
+
+    <!-- Scripts -->
+    <script src="/js/navigation.js"></script>
+    <script type="module" src="/js/hero-gallery.js?v=9"></script>
+    <script src="/js/loading-transition.js?v=20261108a"></script>
+
+    <!-- Keyboard shortcut for replay -->
+    <script>
+    (function() {
+        const replayBtn = document.getElementById('replayBtn');
+        if (replayBtn) {
+            replayBtn.addEventListener('click', () => {
+                if (window.siteLoader) window.siteLoader.replay();
+            });
+        }
+        window.addEventListener('keydown', (e) => {
+            if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
+            if (e.code === 'Space' || e.key === 'r' || e.key === 'R') {
+                e.preventDefault();
+                if (window.siteLoader) window.siteLoader.replay();
+            }
+        });
+    })();
+    </script>
+</body>
+</html>
