@@ -612,14 +612,7 @@ html, body {
             mix-blend-mode: normal !important;
         }
 
-        #portfolio .brand-collaborations-header .display-serif-statement span.gradient-text,
-        .brand-collaborations-header .display-serif-statement span.gradient-text {
-            color: transparent !important;
-            -webkit-text-fill-color: transparent !important;
-            background: linear-gradient(90deg, #FFFFFF 0%, #FFFFFF 42%, #EB4604 88%, #EB4604 100%) !important;
-            -webkit-background-clip: text !important;
-            background-clip: text !important;
-        }
+
 
         #portfolio h2 {
             font-size: 60px !important;
