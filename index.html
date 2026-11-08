@@ -64,7 +64,7 @@
       }
     </script>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="css/global.css?v=20261105b">
+    <link rel="stylesheet" href="css/global.css?v=20261108a">
     <script src="js/three.min.js"></script>
     <script src="js/dappled-light.js"></script>
     <!-- Google tag (gtag.js) -->
@@ -3180,9 +3180,7 @@
         if (!rows.length) return;
 
         let vpHeight = 0;
-        let translateY_0 = 0;
-        let translateY_last = 0;
-        let rowMetrics = [];
+        let maxTranslateY = 0;
         let isDesktop = false;
 
         function measureWebMetrics() {
@@ -3197,26 +3195,14 @@
             }
 
             vpHeight = viewport.clientHeight;
-            rowMetrics = rows.map(r => {
-                const h = r.offsetHeight;
-                const top = r.offsetTop;
-                return {
-                    offsetTop: top,
-                    offsetHeight: h,
-                    center: top + h / 2
-                };
-            });
-
-            // Card 1 centered at progress = 0; Card 6 centered at progress = 1
-            const card1Center = rowMetrics[0].center;
-            const cardLastCenter = rowMetrics[rowMetrics.length - 1].center;
-            translateY_0 = card1Center - vpHeight / 2;
-            translateY_last = cardLastCenter - vpHeight / 2;
+            const lastRow = rows[rows.length - 1];
+            // Center the last card in the viewport when scroll progress reaches 1
+            const lastRowTargetY = lastRow.offsetTop - (vpHeight - lastRow.offsetHeight) / 2;
+            maxTranslateY = Math.max(0, lastRowTargetY);
         }
 
         measureWebMetrics();
 
-        let isTicking = false;
         function updateWebPinnedScroll() {
             if (!isDesktop) return;
 
@@ -3229,55 +3215,45 @@
                 progress = Math.min(1, Math.max(0, scrollDistance / maxScroll));
             }
 
-            // Entry buffer (0 to 0.05) & exit buffer (0.95 to 1.0) for comfortable reading
-            let animProgress;
-            if (progress <= 0.05) {
-                animProgress = 0;
-            } else if (progress >= 0.95) {
-                animProgress = 1;
-            } else {
-                animProgress = (progress - 0.05) / 0.90;
-            }
-
-            const currentTranslateY = translateY_0 + animProgress * (translateY_last - translateY_0);
+            const currentTranslateY = progress * maxTranslateY;
             strip.style.transform = 'translate3d(0, ' + (-currentTranslateY).toFixed(1) + 'px, 0)';
 
-            // Butter-smooth focal emphasis without layout thrashing
+            // Clean focal opacity without scale pulsation (respecting zero-hover/zero-zoom design system)
             const vpCenter = vpHeight / 2;
             const maxDist = vpHeight * 0.55;
             for (let i = 0; i < rows.length; i++) {
-                const rowCenterInVp = rowMetrics[i].center - currentTranslateY;
+                const r = rows[i];
+                const rowCenterInVp = (r.offsetTop + r.offsetHeight / 2) - currentTranslateY;
                 const distFromCenter = Math.abs(rowCenterInVp - vpCenter);
                 const factor = Math.max(0, 1 - distFromCenter / maxDist);
 
-                const opacity = (0.7 + factor * 0.3).toFixed(2);
-                const scale = (0.98 + factor * 0.02).toFixed(3);
-                rows[i].style.opacity = opacity;
-                rows[i].style.transform = 'scale(' + scale + ')';
+                r.style.opacity = (0.55 + factor * 0.45).toFixed(2);
+                r.style.transform = 'none';
             }
         }
 
-        function requestWebScroll() {
-            if (!isTicking) {
-                requestAnimationFrame(() => {
-                    updateWebPinnedScroll();
-                    isTicking = false;
-                });
-                isTicking = true;
-            }
-        }
-
-        lenis.on('scroll', requestWebScroll);
+        // Direct synchronous updates on Lenis and window scroll for zero 1-frame lag/jitter
+        lenis.on('scroll', updateWebPinnedScroll);
+        window.addEventListener('scroll', updateWebPinnedScroll, { passive: true });
         window.addEventListener('resize', () => {
             measureWebMetrics();
-            requestWebScroll();
+            updateWebPinnedScroll();
         });
-        // Initial measurement and render after fonts/layout settle
+        window.addEventListener('load', () => {
+            measureWebMetrics();
+            updateWebPinnedScroll();
+        });
+        if (document.fonts && document.fonts.ready) {
+            document.fonts.ready.then(() => {
+                measureWebMetrics();
+                updateWebPinnedScroll();
+            });
+        }
         setTimeout(() => {
             measureWebMetrics();
-            requestWebScroll();
-        }, 100);
-        requestWebScroll();
+            updateWebPinnedScroll();
+        }, 150);
+        updateWebPinnedScroll();
     })();
     </script>
     <!-- Ring Field Background for Footer -->
