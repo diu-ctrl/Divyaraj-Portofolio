@@ -3158,8 +3158,14 @@ html, body {
         .web-cards-strip .web-row {
             min-height: 340px;
             box-sizing: border-box;
-            transition: opacity 0.25s ease, border-color 0.3s ease;
-            will-change: transform, opacity;
+            opacity: 1 !important;
+            transition: border-color 0.3s ease;
+            will-change: transform;
+        }
+
+        .web-cards-strip .web-row:hover {
+            border-color: var(--primary) !important;
+            opacity: 1 !important;
         }
 
         .web-showcase-header {

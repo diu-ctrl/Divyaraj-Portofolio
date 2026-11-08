@@ -142,39 +142,7 @@
     }
 
     function init() {
-        // 1. "A Glimpse Into My Practice" in about.html
-        const practiceHeading = document.querySelector('#about-section .section-header h2.display-serif-statement');
-        if (practiceHeading) {
-            applyBlurText(practiceHeading, {
-                delay: 200,
-                stepDuration: 0.35,
-                blur: 10,
-                distance: 50,
-                direction: 'top',
-                threshold: 0.1
-            });
-        }
-
-        // 2. Pillars: "Growth", "Cinema", "Code" in about.html
-        const pillarContainer = document.querySelector('#about-section .about-pillars');
-        const pillarH3s = Array.from(document.querySelectorAll('#about-section .about-pillars .pillar-col h3'));
-
-        if (pillarContainer && pillarH3s.length) {
-            pillarH3s.forEach((h3, pIdx) => {
-                applyBlurText(h3, {
-                    triggerElement: pillarContainer,
-                    delay: 0,
-                    globalDelay: pIdx * 200, // 200ms stagger between Growth, Cinema, Code
-                    stepDuration: 0.35,
-                    blur: 10,
-                    distance: 50,
-                    direction: 'top',
-                    threshold: 0.1
-                });
-            });
-        }
-
-        // 3. Declarative data-blur-text elements
+        // Declarative data-blur-text elements only
         document.querySelectorAll('[data-blur-text]').forEach(el => {
             applyBlurText(el);
         });

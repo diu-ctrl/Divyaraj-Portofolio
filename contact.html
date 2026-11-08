@@ -3192,6 +3192,7 @@
         let vpHeight = 0;
         let maxTranslateY = 0;
         let isDesktop = false;
+        let ticking = false;
 
         function measureWebMetrics() {
             isDesktop = window.innerWidth > 900;
@@ -3209,61 +3210,77 @@
             // Center the last card in the viewport when scroll progress reaches 1
             const lastRowTargetY = lastRow.offsetTop - (vpHeight - lastRow.offsetHeight) / 2;
             maxTranslateY = Math.max(0, lastRowTargetY);
+
+            // Ensure all rows maintain 100% solid, crisp visibility with zero hover/scroll flicker
+            rows.forEach(r => {
+                r.style.opacity = '1';
+                r.style.transform = 'none';
+            });
         }
 
         measureWebMetrics();
 
         function updateWebPinnedScroll() {
+            ticking = false;
             if (!isDesktop) return;
 
             const trackRect = track.getBoundingClientRect();
             const maxScroll = track.offsetHeight - window.innerHeight;
             const scrollDistance = -trackRect.top;
 
-            let progress = 0;
+            let rawProgress = 0;
             if (scrollDistance > 0 && maxScroll > 0) {
-                progress = Math.min(1, Math.max(0, scrollDistance / maxScroll));
+                rawProgress = Math.min(1, Math.max(0, scrollDistance / maxScroll));
+            }
+
+            // Comfortable cushion holds: 8% start hold, 12% end hold for rock-solid stability
+            const HOLD_START = 0.08;
+            const HOLD_END = 0.88;
+
+            let progress = 0;
+            if (rawProgress <= HOLD_START) {
+                progress = 0;
+            } else if (rawProgress >= HOLD_END) {
+                progress = 1;
+            } else {
+                const t = (rawProgress - HOLD_START) / (HOLD_END - HOLD_START);
+                // Butter-smooth cubic ease curve (eliminates abrupt linear snapping)
+                progress = t * t * (3 - 2 * t);
             }
 
             const currentTranslateY = progress * maxTranslateY;
             strip.style.transform = 'translate3d(0, ' + (-currentTranslateY).toFixed(1) + 'px, 0)';
+        }
 
-            // Clean focal opacity without scale pulsation (respecting zero-hover/zero-zoom design system)
-            const vpCenter = vpHeight / 2;
-            const maxDist = vpHeight * 0.55;
-            for (let i = 0; i < rows.length; i++) {
-                const r = rows[i];
-                const rowCenterInVp = (r.offsetTop + r.offsetHeight / 2) - currentTranslateY;
-                const distFromCenter = Math.abs(rowCenterInVp - vpCenter);
-                const factor = Math.max(0, 1 - distFromCenter / maxDist);
-
-                r.style.opacity = (0.55 + factor * 0.45).toFixed(2);
-                r.style.transform = 'none';
+        function requestWebUpdate() {
+            if (!ticking) {
+                ticking = true;
+                requestAnimationFrame(updateWebPinnedScroll);
             }
         }
 
-        // Direct synchronous updates on Lenis and window scroll for zero 1-frame lag/jitter
-        lenis.on('scroll', updateWebPinnedScroll);
-        window.addEventListener('scroll', updateWebPinnedScroll, { passive: true });
+        // Direct requestAnimationFrame decoupled updates on Lenis and window scroll
+        lenis.on('scroll', requestWebUpdate);
+        window.addEventListener('scroll', requestWebUpdate, { passive: true });
         window.addEventListener('resize', () => {
             measureWebMetrics();
-            updateWebPinnedScroll();
+            requestWebUpdate();
         });
         window.addEventListener('load', () => {
             measureWebMetrics();
-            updateWebPinnedScroll();
+            requestWebUpdate();
         });
         if (document.fonts && document.fonts.ready) {
             document.fonts.ready.then(() => {
                 measureWebMetrics();
-                updateWebPinnedScroll();
+                requestWebUpdate();
             });
         }
         setTimeout(() => {
             measureWebMetrics();
-            updateWebPinnedScroll();
+            requestWebUpdate();
         }, 150);
-        updateWebPinnedScroll();
+        requestWebUpdate();
     })();
     </script>
     <!-- Ring Field Background for Footer -->
