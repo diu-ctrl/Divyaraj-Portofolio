@@ -3,11 +3,13 @@
    React Bits WebGL2 SideRays implementation for #services section
    ═══════════════════════════════════════════════════════════════════════════════ */
 
-/* Section Canvas Container */
+/* Section Canvas Container — Full Viewport Bleed (Edge to Edge) */
 .side-rays {
     position: absolute;
-    inset: 0;
-    width: 100%;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100vw;
     height: 100%;
     overflow: hidden;
     pointer-events: none;
@@ -30,10 +32,10 @@
     pointer-events: none;
 }
 
-/* Ensure Services Section establishes positioning context */
+/* Ensure Services Section establishes positioning context & allows full-bleed canvas */
 #services.services-section {
     position: relative !important;
-    overflow: hidden !important;
+    overflow: visible !important;
 }
 
 #services .section-header,
@@ -43,8 +45,9 @@
 }
 
 /* ═══════════════════════════════════════════════════════════════════════════════
-   SPECULAR TAB BORDER REFLECTIONS (Rays falling from Top-Right)
-   Top and right edges catch incident amber (#FFC46B) & cyan (#96C8FF) light
+   SPECULAR TAB BORDER REFLECTIONS (Incident Light from Top-Right)
+   Top and right edges catch soft amber (#FFC46B) & cyan (#96C8FF) directional reflection.
+   NO outer shadow/glow added to cards per user specification.
    ═══════════════════════════════════════════════════════════════════════════════ */
 
 .lane-card::before {
@@ -55,7 +58,7 @@
     pointer-events: none;
     z-index: 4;
     opacity: 0;
-    transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.4s ease, box-shadow 0.4s ease;
+    transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.4s ease;
     border: 1px solid transparent;
 }
 
@@ -64,105 +67,58 @@
     opacity: 1;
 }
 
-/* Card 04 (Rightmost — closest to top-right light source):
-   Strongest specular incident rim light & warm amber/cyan surface wash */
+/* Card 04 (Rightmost — closest to top-right sunray origin):
+   Clear, soft specular top and right border reflection */
 .lane-card[data-lane="4"]::before {
-    border-top: 1.5px solid rgba(255, 205, 125, 0.85);
-    border-right: 1.5px solid rgba(160, 215, 255, 0.72);
+    border-top: 1px solid rgba(255, 205, 125, 0.42);
+    border-right: 1px solid rgba(160, 215, 255, 0.32);
     border-bottom: 1px solid transparent;
     border-left: 1px solid transparent;
     background: radial-gradient(
-        ellipse 95% 65% at 88% 0%,
-        rgba(255, 196, 107, 0.16) 0%,
-        rgba(150, 200, 255, 0.08) 38%,
-        transparent 75%
-    );
-    box-shadow: 
-        inset 1px 1px 3px 0 rgba(255, 225, 170, 0.55),
-        inset 0 1px 2px 0 rgba(255, 196, 107, 0.4);
-}
-
-/* Card 03: Balanced warm & cyan specular reflection */
-.lane-card[data-lane="3"]::before {
-    border-top: 1.5px solid rgba(255, 196, 107, 0.68);
-    border-right: 1.5px solid rgba(150, 200, 255, 0.55);
-    border-bottom: 1px solid transparent;
-    border-left: 1px solid transparent;
-    background: radial-gradient(
-        ellipse 90% 60% at 85% 0%,
-        rgba(255, 196, 107, 0.12) 0%,
-        rgba(150, 200, 255, 0.06) 35%,
-        transparent 72%
-    );
-    box-shadow: 
-        inset 1px 1px 2px 0 rgba(255, 220, 160, 0.4),
-        inset 0 1px 1px 0 rgba(255, 196, 107, 0.3);
-}
-
-/* Card 02: Medium ambient edge reflection */
-.lane-card[data-lane="2"]::before {
-    border-top: 1px solid rgba(255, 196, 107, 0.50);
-    border-right: 1px solid rgba(150, 200, 255, 0.38);
-    border-bottom: 1px solid transparent;
-    border-left: 1px solid transparent;
-    background: radial-gradient(
-        ellipse 85% 55% at 85% 0%,
-        rgba(255, 196, 107, 0.09) 0%,
-        rgba(150, 200, 255, 0.04) 30%,
-        transparent 68%
-    );
-    box-shadow: 
-        inset 1px 1px 2px 0 rgba(255, 220, 160, 0.28);
-}
-
-/* Card 01: Soft diffused edge light */
-.lane-card[data-lane="1"]::before {
-    border-top: 1px solid rgba(255, 196, 107, 0.36);
-    border-right: 1px solid rgba(150, 200, 255, 0.26);
-    border-bottom: 1px solid transparent;
-    border-left: 1px solid transparent;
-    background: radial-gradient(
-        ellipse 80% 50% at 85% 0%,
-        rgba(255, 196, 107, 0.06) 0%,
-        rgba(150, 200, 255, 0.03) 25%,
+        ellipse 90% 60% at 90% 0%,
+        rgba(255, 196, 107, 0.08) 0%,
         transparent 65%
     );
 }
 
-/* Outer Specular Bloom on Tab Components */
-#services.rays-active .lane-card[data-lane="4"] {
-    box-shadow:
-        2px -2px 35px -2px rgba(255, 196, 107, 0.26),
-        0 -3px 25px -2px rgba(150, 200, 255, 0.20);
+/* Card 03: Soft specular top and right reflection */
+.lane-card[data-lane="3"]::before {
+    border-top: 1px solid rgba(255, 196, 107, 0.28);
+    border-right: 1px solid rgba(150, 200, 255, 0.22);
+    border-bottom: 1px solid transparent;
+    border-left: 1px solid transparent;
+    background: radial-gradient(
+        ellipse 85% 55% at 85% 0%,
+        rgba(255, 196, 107, 0.05) 0%,
+        transparent 60%
+    );
 }
 
-#services.rays-active .lane-card[data-lane="3"] {
-    box-shadow:
-        1px -1px 25px -3px rgba(255, 196, 107, 0.18),
-        0 -2px 18px -3px rgba(150, 200, 255, 0.14);
+/* Card 02: Subtle glancing edge reflection */
+.lane-card[data-lane="2"]::before {
+    border-top: 1px solid rgba(255, 196, 107, 0.18);
+    border-right: 1px solid rgba(150, 200, 255, 0.14);
+    border-bottom: 1px solid transparent;
+    border-left: 1px solid transparent;
 }
 
-#services.rays-active .lane-card[data-lane="2"] {
-    box-shadow:
-        1px -1px 20px -4px rgba(255, 196, 107, 0.12),
-        0 -2px 14px -4px rgba(150, 200, 255, 0.09);
+/* Card 01: Very faint ambient glancing reflection */
+.lane-card[data-lane="1"]::before {
+    border-top: 1px solid rgba(255, 196, 107, 0.10);
+    border-right: 1px solid rgba(150, 200, 255, 0.08);
+    border-bottom: 1px solid transparent;
+    border-left: 1px solid transparent;
 }
 
-#services.rays-active .lane-card[data-lane="1"] {
-    box-shadow:
-        1px -1px 16px -4px rgba(255, 196, 107, 0.08),
-        0 -1px 12px -4px rgba(150, 200, 255, 0.06);
-}
-
-#services.rays-active .lane-card.active {
-    box-shadow:
-        0 20px 45px rgba(0, 0, 0, 0.8),
-        2px -2px 38px -2px rgba(255, 196, 107, 0.32),
-        0 -3px 26px -3px rgba(150, 200, 255, 0.24) !important;
+/* Strictly NO shadow glow on any tab (clean cards only) */
+#services.rays-active .lane-card,
+#services.rays-active .lane-card.active,
+#services.rays-active .lane-card:hover {
+    box-shadow: none !important;
 }
 
 #services.rays-active .lane-card:hover::before {
-    filter: brightness(1.3);
+    filter: brightness(1.2);
 }
 
 /* Mobile responsive adjustments */

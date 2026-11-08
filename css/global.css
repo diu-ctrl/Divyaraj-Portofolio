@@ -3145,8 +3145,8 @@ html, body {
             min-height: 340px;
             box-sizing: border-box;
             opacity: 1 !important;
+            transform: none !important;
             transition: border-color 0.3s ease;
-            will-change: transform;
         }
 
         .web-cards-strip .web-row:hover {

@@ -491,7 +491,7 @@ void main() {
       origin: 'top-right',
       speed: 2.5,
       intensity: 2,
-      spread: 2,
+      spread: 3.4,
       density: 5,
       followMouse: true,
       blend: 0.6,
