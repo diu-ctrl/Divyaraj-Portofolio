@@ -23,7 +23,7 @@ html, body {
 
   /* Ink */
   --text: #F4F1EA;          /* warm white, not #FFF */
-  --muted: #A6A29A;
+  --muted: #8E8B84;
   --faint: #6B6862;
 
   /* Accent — REUSE the site's existing orange hex from the repo (keep it, do not invent a new hue).
@@ -398,12 +398,12 @@ html, body {
   color: var(--text) !important;
 }
 
-.quote-p3 .author, .quote-author, .quote-attribution {
+.quote-p3 .author, .quote-author, .quote-attribution, .closing-author {
   font-family: var(--font-mono) !important;
   font-size: var(--micro) !important;
   letter-spacing: var(--track) !important;
   text-transform: none !important;
-  color: var(--muted) !important;
+  color: #8E8B84 !important;
   margin-top: 12px;
 }
 
@@ -464,18 +464,21 @@ html, body {
    EYEBROW SYSTEM (E1) & SECTION HEADERS — SITE-WIDE
    ========================================================================== */
 
-/* E1 Eyebrow Base: Mono, uppercase, 11–12px, letter-spacing .16em, color --muted with index in accent */
+/* E1 Eyebrow Base: Mono, uppercase, 11–12px, letter-spacing .16em, color #8E8B84 with index in accent */
 .eyebrow-e1, .web-row-num, .case-study-badge, .section-label, .section-eyebrow,
 .hero-eyebrow, .methodology-eyebrow, .meta-label, .fc-label, .metric-label,
 .psm-label, .brand-eyebrow, .arc-label, .bts-total-label, .char-stat-label,
 .fpart-label, .vo-label, .em-label, .tag, .tech-tag, .service-tag, .spec-pill,
-.tool-category, .flow-step-num, .step-num, .hero-availability {
+.tool-category, .flow-step-num, .step-num, .hero-availability,
+.closing-author, .quote-author, .quote-attribution, .services-tab-eyebrow,
+.service-modal-eyebrow, .lane-card-eyebrow, .pp-eyebrow, .channels-eyebrow-badge,
+.cert-eyebrow-badge, .ai-reel-eyebrow, .ember-cta-eyebrow {
   font-family: var(--font-mono) !important;
   font-size: var(--micro) !important;
   font-weight: 500 !important;
   letter-spacing: var(--track) !important;
   text-transform: none !important;
-  color: var(--muted) !important;
+  color: #8E8B84 !important;
   line-height: 1.4;
 }
 

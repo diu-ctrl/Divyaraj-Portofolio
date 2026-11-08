@@ -908,7 +908,7 @@ html, body {
             font-size: 12px;
             font-weight: 700;
             letter-spacing: 0.04em;
-            color: var(--secondary-3);
+            color: #8E8B84 !important;
             margin-bottom: 20px;
             display: inline-flex;
             align-items: center;
@@ -2678,7 +2678,7 @@ html, body {
             align-self: flex-start;
             font-size: 11px !important;
             font-weight: 700;
-            color: var(--secondary-3);
+            color: #8E8B84 !important;
             letter-spacing: 0.08em;
             background: #282723;
             border: 1px solid #282723;
@@ -4056,7 +4056,7 @@ html, body {
 
         .cinema-strip-play {
             font-size: 8px;
-            color: var(--accent, #EB4604);
+            color: #8E8B84 !important;
             line-height: 1;
         }
 
@@ -5269,7 +5269,7 @@ h1 .grad,
         font-size: 11px;
         font-weight: 700;
         letter-spacing: 0.05em;
-        color: var(--accent, #EB4604);
+        color: #8E8B84 !important;
     }
 
     .services-tab-action {
@@ -5396,7 +5396,7 @@ h1 .grad,
     .service-modal-eyebrow {
         font-size: 11px;
         font-weight: 700;
-        color: var(--accent, #EB4604);
+        color: #8E8B84 !important;
         letter-spacing: 0.08em;
         text-transform: uppercase;
     }
@@ -5757,4 +5757,22 @@ h2.reviews-headline {
 h2.contact-headline {
     font-size: 55px !important;
     line-height: 1.08 !important;
+}
+
+/* ─── Global Eyebrow & Quote Author Palette ─── */
+.closing-author,
+.quote-author,
+.quote-attribution,
+.closing-box .closing-author,
+.quote-block .quote-author,
+.hero-eyebrow,
+.section-eyebrow,
+.brand-eyebrow,
+.cert-eyebrow-badge,
+.channels-eyebrow-badge,
+.ai-reel-eyebrow,
+.methodology-eyebrow,
+.ember-cta-eyebrow,
+.pp-eyebrow {
+    color: #8E8B84 !important;
 }
