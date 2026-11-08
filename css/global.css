@@ -1244,9 +1244,21 @@ html, body {
         }
 
         .services-section {
-            padding: 100px 6% 80px;
-            max-width: 1200px;
+            padding: 100px clamp(24px, 3.5vw, 48px) 80px;
+            max-width: 1440px;
             margin: 0 auto;
+            box-sizing: border-box;
+        }
+
+        #services .section-header {
+            margin-bottom: 28px;
+            text-align: left;
+        }
+
+        @media (min-width: 1024px) {
+            #services .section-header {
+                margin-left: -28px !important;
+            }
         }
 
         #services .display-serif-statement,
@@ -1346,24 +1358,24 @@ html, body {
            =============================================== */
         .services-accordion-lanes {
             display: flex;
-            gap: 16px;
+            gap: 20px;
             width: 100%;
             align-items: stretch;
-            height: 530px;
-            min-height: 530px;
-            max-height: 530px;
-            margin-top: 40px;
+            height: 540px;
+            min-height: 540px;
+            max-height: 540px;
+            margin-top: 36px;
         }
 
         .lane-card {
             position: relative;
             flex: 1;
-            min-width: 0;
+            min-width: 220px;
             height: 100%;
             background: #0d0d0d;
             border: 1px solid rgba(255, 255, 255, 0.1);
             border-radius: 20px;
-            padding: 22px 20px;
+            padding: 24px 22px;
             overflow: hidden;
             cursor: pointer;
             display: flex;
@@ -1377,6 +1389,7 @@ html, body {
 
         .lane-card.active {
             flex: 2.85;
+            min-width: 580px;
             border-color: rgba(255, 255, 255, 0.28);
             background: #111111;
             box-shadow: 0 20px 45px rgba(0, 0, 0, 0.8), 0 0 30px rgba(235, 70, 4, 0.08);
@@ -1451,7 +1464,7 @@ html, body {
         }
 
         .lane-card.active .lane-card-image-wrap {
-            height: 200px;
+            height: 210px;
             border-color: rgba(255, 255, 255, 0.22);
         }
 
