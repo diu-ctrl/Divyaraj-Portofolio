@@ -3152,6 +3152,16 @@
             touchMultiplier: 1.2
         });
         window.__lenis = lenis;
+        /* Lenis Contact Auto-Scroll */
+        if (window.location.pathname === '/contact' || window.location.pathname === '/contact/' || window.location.search.includes('route=contact') || window.location.hash === '#contact') {
+            if (window.location.hash === '#contact' && history.replaceState) {
+                history.replaceState(null, '', '/contact');
+            }
+            setTimeout(() => {
+                const cEl = document.getElementById('contact');
+                if (cEl) lenis.scrollTo(cEl, { duration: 1.2 });
+            }, 300);
+        }
 
         function raf(time) {
             lenis.raf(time);

@@ -274,7 +274,11 @@
                 if (!isMobile()) closeDrawer();
                 const contactEl = document.getElementById('contact');
                 if (contactEl) {
-                    contactEl.scrollIntoView({ behavior: 'smooth' });
+                    if (window.__lenis) {
+                        window.__lenis.scrollTo(contactEl, { duration: 1.2 });
+                    } else {
+                        contactEl.scrollIntoView({ behavior: 'smooth' });
+                    }
                     if (history.pushState && window.location.pathname !== '/contact') {
                         history.pushState(null, '', '/contact');
                     }
@@ -307,18 +311,27 @@
     });
 
     // Clean URL /contact or legacy #contact initial routing
+    function scrollToContactSection() {
+        const contactEl = document.getElementById('contact');
+        if (!contactEl) return;
+        if (window.__lenis) {
+            window.__lenis.scrollTo(contactEl, { duration: 1.2 });
+        } else {
+            contactEl.scrollIntoView({ behavior: 'smooth' });
+        }
+    }
+
     function handleInitialRoute() {
         const hasContactParam = window.location.search.includes('route=contact');
         if (window.location.hash === '#contact' || isContactRoute || hasContactParam) {
             if (window.location.hash === '#contact' && history.replaceState) {
                 history.replaceState(null, '', '/contact');
             }
-            const contactEl = document.getElementById('contact');
-            if (contactEl) {
-                setTimeout(() => {
-                    contactEl.scrollIntoView({ behavior: 'smooth' });
-                }, 120);
-            }
+            setTimeout(scrollToContactSection, 200);
+            setTimeout(scrollToContactSection, 600);
+            window.addEventListener('load', () => {
+                setTimeout(scrollToContactSection, 300);
+            });
         } else if (window.location.hash) {
             // Strip any other legacy hash and keep clean URL
             const legacyHash = window.location.hash;
@@ -354,7 +367,11 @@
             const target = document.getElementById('contact');
             if (target) {
                 e.preventDefault();
-                target.scrollIntoView({ behavior: 'smooth' });
+                if (window.__lenis) {
+                    window.__lenis.scrollTo(target, { duration: 1.2 });
+                } else {
+                    target.scrollIntoView({ behavior: 'smooth' });
+                }
                 if (history.pushState && window.location.pathname !== '/contact') {
                     history.pushState(null, '', '/contact');
                 }
