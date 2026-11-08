@@ -2287,6 +2287,11 @@ img:hover,
 }
 
 /* Unified 60px Editorial Headlines */
+#about-section .section-header h2,
+#about-section h2.display-serif-statement,
+#about-section .display-serif-statement,
+#experience .section-header h2,
+#experience h2.display-serif-statement,
 .reviews-headline,
 .contact-headline,
 h2.reviews-headline,
