@@ -898,6 +898,14 @@ html, body {
             margin-right: -0.15em;
         }
 
+        .gradient-text .blur-text-word,
+        .italic-gradient .blur-text-word {
+            background: inherit;
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
         /* ─── Section Headers ─── */
         .section-header {
             margin-bottom: 80px;

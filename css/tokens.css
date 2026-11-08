@@ -525,6 +525,42 @@ html, body {
     background-clip: text !important;
 }
 
+
+
+.gradient-text,
+
+.italic-gradient {
+
+    background: linear-gradient(90deg, #FFFFFF 0%, #FFFFFF 58%, #EB4604 95%);
+
+    -webkit-background-clip: text;
+
+    -webkit-text-fill-color: transparent;
+
+    display: inline-block;
+
+    padding-right: 0.15em;
+
+    margin-right: -0.15em;
+
+}
+
+
+
+.gradient-text .blur-text-word,
+
+.italic-gradient .blur-text-word {
+
+    background: inherit;
+
+    -webkit-background-clip: text;
+
+    background-clip: text;
+
+    -webkit-text-fill-color: transparent;
+
+}
+
 /* Section Header Typography */
 .section-header h2, .display-serif-statement, h2.section-title, .web-showcase-header h2 {
   font-family: var(--font-display) !important;
@@ -2072,19 +2108,7 @@ h1 .grad,
             mix-blend-mode: difference !important;
         }
 
-        /* Spans inherit gradient cleanly */
-        h1 span, .hero h1 span, .hero-title span,
-        .hero.hero-with-analytics h1 span,
-        .hero.hero-with-cert-carousel h1 span,
-        .hero.hero-with-channels h1 span,
-        h2 span, .case-study h2 span, .main-content h2 span, .section-title span,
-        .ai-reel-info h2 span, .gallery-section-title span {
-            background: inherit !important;
-            -webkit-background-clip: text !important;
-            -webkit-text-fill-color: transparent !important;
-            background-clip: text !important;
-            color: transparent !important;
-        }
+        /* Spans inherit gradient cleanly removed to prevent breaking non-gradient spans and word wrappers */
 
 
 
