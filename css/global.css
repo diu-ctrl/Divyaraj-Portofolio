@@ -1259,8 +1259,21 @@ html, body {
 
         @media (min-width: 1024px) {
             #services .section-header {
-                margin-left: -28px !important;
+                margin-left: 0 !important;
             }
+        }
+
+        /* Services Section Heading — Pure Editorial White (No Gradient) */
+        #services .display-serif-statement,
+        #services .display-serif-statement span,
+        #services .section-header h2,
+        #services .section-header h2 span {
+            color: #ffffff !important;
+            -webkit-text-fill-color: #ffffff !important;
+            background: none !important;
+            -webkit-background-clip: initial !important;
+            background-clip: initial !important;
+            text-shadow: 0 4px 24px rgba(0, 0, 0, 0.9), 0 1px 3px rgba(0, 0, 0, 0.8) !important;
         }
 
         #services .display-serif-statement,
