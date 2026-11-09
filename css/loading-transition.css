@@ -94,13 +94,6 @@ html.has-loader:not(.no-loader) #loader-gl-canvas {
 /* ─── Hero Section Component Revealing Choreography ─── */
 
 /* 1. Primed / Waiting state (hidden behind the ink) - ONLY when has-loader is actively active */
-html.has-loader:not(.no-loader) .hero-loading-primed .hero-3d-gallery-scene {
-    opacity: 0 !important;
-    filter: blur(36px) !important;
-    transform: scale(0.92) !important;
-    transition: none !important;
-}
-
 html.has-loader:not(.no-loader) .hero-loading-primed .hero-title {
     opacity: 0 !important;
     transform: translateY(48px) !important;
@@ -137,13 +130,10 @@ html.has-loader:not(.no-loader) body:has(.hero-loading-primed) .limelight-nav-co
 }
 
 /* 2. When has-loader is NOT present or when no-loader is present: Hero is 100% visible immediately */
-html:not(.has-loader) .hero-loading-primed .hero-3d-gallery-scene,
 html:not(.has-loader) .hero-loading-primed .hero-title,
 html:not(.has-loader) .hero-loading-primed .hero-subtitle-mono,
 html:not(.has-loader) .hero-loading-primed .hero-top-meta,
 html:not(.has-loader) .hero-loading-primed .hero-bottom-meta,
-html.no-loader .hero-loading-primed .hero-3d-gallery-scene,
-body.no-loader .hero-loading-primed .hero-3d-gallery-scene,
 html.no-loader .hero-loading-primed .hero-title,
 body.no-loader .hero-loading-primed .hero-title,
 html.no-loader .hero-loading-primed .hero-subtitle-mono,
@@ -168,15 +158,6 @@ body.no-loader .limelight-nav-container {
 }
 
 /* 3. Animated-In State (orchestrated staggered bloom as ink opens) */
-.hero-animated-in .hero-3d-gallery-scene {
-    opacity: 1 !important;
-    filter: blur(0px) !important;
-    transform: scale(1) !important;
-    transition: 
-        opacity 1.6s cubic-bezier(0.16, 1, 0.3, 1) 0.1s,
-        filter 1.8s cubic-bezier(0.16, 1, 0.3, 1) 0.1s,
-        transform 1.8s cubic-bezier(0.16, 1, 0.3, 1) 0.1s !important;
-}
 
 .hero-animated-in .hero-title {
     opacity: 1 !important;

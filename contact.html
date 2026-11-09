@@ -269,11 +269,13 @@
                 let revealRafId = null;
                 let isAwayFromHero = false;
                 let isRevealed = false;
+                let lastScrollY = window.scrollY || window.pageYOffset || 0;
 
                 function triggerBlurReveal() {
+                    if (isRevealed) return;
                     if (revealRafId) cancelAnimationFrame(revealRafId);
                     revealRafId = requestAnimationFrame(() => {
-                        scene.style.transition = 'opacity 1.6s cubic-bezier(0.22, 1, 0.36, 1), filter 1.8s cubic-bezier(0.22, 1, 0.36, 1)';
+                        scene.style.transition = 'opacity 1.4s cubic-bezier(0.16, 1, 0.3, 1), filter 1.6s cubic-bezier(0.16, 1, 0.3, 1), transform 1.6s cubic-bezier(0.16, 1, 0.3, 1)';
                         revealRafId = requestAnimationFrame(() => {
                             scene.classList.add('hero-revealed');
                             isRevealed = true;
@@ -298,30 +300,40 @@
                     trigger: triggerBlurReveal,
                     reset: resetBlurState,
                     checkScroll: function(scrollTop) {
-                        const leaveThreshold = Math.max(window.innerHeight * 0.45, 380);
-                        const returnThreshold = 200;
+                        const leaveThreshold = 420;
+                        const returnThreshold = 480;
                         const hasCanvas = !!scene.querySelector('canvas');
+                        const isScrollingDown = scrollTop >= lastScrollY;
+                        lastScrollY = scrollTop;
 
-                        if (scrollTop > leaveThreshold) {
-                            if (!isAwayFromHero) {
+                        if (isScrollingDown) {
+                            if (scrollTop > leaveThreshold && !isAwayFromHero) {
                                 isAwayFromHero = true;
                                 resetBlurState();
                             }
-                        } else if (scrollTop <= returnThreshold) {
-                            if (isAwayFromHero) {
-                                isAwayFromHero = false;
-                                if (hasCanvas && !isRevealed) {
+                        } else {
+                            // Scrolling UP towards hero
+                            if (scrollTop <= returnThreshold) {
+                                if (isAwayFromHero) {
+                                    isAwayFromHero = false;
+                                    if (hasCanvas && !isRevealed) {
+                                        triggerBlurReveal();
+                                    }
+                                } else if (!isRevealed && hasCanvas) {
                                     triggerBlurReveal();
                                 }
-                            } else if (!isRevealed && hasCanvas) {
-                                triggerBlurReveal();
                             }
+                        }
+
+                        // Safety check: if user is at or near the very top (e.g. Back-to-Top click or refresh)
+                        if (scrollTop <= 80 && !isRevealed && hasCanvas) {
+                            isAwayFromHero = false;
+                            triggerBlurReveal();
                         }
                     },
                     onCanvasMount: function() {
                         const scrollTop = window.scrollY || window.pageYOffset || 0;
-                        const returnThreshold = 200;
-                        if (scrollTop <= returnThreshold) {
+                        if (scrollTop <= 480) {
                             isAwayFromHero = false;
                             triggerBlurReveal();
                         } else {
@@ -1478,7 +1490,7 @@
             const galleryContainer = document.querySelector('.hero-3d-gallery-container');
 
             function handleScroll() {
-                const scrollTop = window.scrollY || window.pageYOffset;
+                const scrollTop = window.scrollY || window.pageYOffset || 0;
                 const fadeDistance = window.innerHeight * 0.45;
                 const progress = Math.min(scrollTop / fadeDistance, 1);
                 const opacity = (1 - progress).toFixed(3);
@@ -1492,8 +1504,7 @@
                     heroMainContent.style.visibility = progress >= 1 ? 'hidden' : 'visible';
                 }
                 if (galleryContainer) {
-                    galleryContainer.style.opacity = opacity;
-                    galleryContainer.style.visibility = progress >= 1 ? 'hidden' : 'visible';
+                    galleryContainer.style.visibility = progress >= 1.5 ? 'hidden' : 'visible';
                 }
 
                 // Coordinate hero 3D gallery blur-in animation on return visits
