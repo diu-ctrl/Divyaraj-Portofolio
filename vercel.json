@@ -14,7 +14,7 @@
       "destination": "/Divyaraj-Resume.pdf"
     }
   ],
-    "redirects": [
+  "redirects": [
     {
       "source": "/contact.html",
       "destination": "/contact",
@@ -64,6 +64,17 @@
       "source": "/brands/Ai%20Cinema%20Lab/The%20Last%20Amber",
       "destination": "/brands/ai-cinema-lab/the-last-amber",
       "permanent": true
+    }
+  ],
+  "headers": [
+    {
+      "source": "/(favicon.*|apple-touch-icon.*|android-chrome.*|dc-favicon.*|dc-apple-touch-icon.*|dc-android-chrome.*|site.webmanifest)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=86400, s-maxage=604800, stale-while-revalidate=86400"
+        }
+      ]
     }
   ]
 }
