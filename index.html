@@ -25,8 +25,8 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital,wght@0,400;1,400&family=Inter+Tight:ital,wght@0,100..900;1,100..900&family=Space+Mono:wght@700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/css/tokens.css?v=20261109a">
-    <link rel="stylesheet" href="css/navigation.css">
-        <link rel="stylesheet" href="css/loading-transition.css?v=20261109b">
+    <link rel="stylesheet" href="css/navigation.css?v=20261109a">
+        <link rel="stylesheet" href="css/loading-transition.css?v=20261109c">
     <link rel="stylesheet" href="css/side-rays.css?v=20261108a">
     <script>
     // Immediate early-check in head: ONLY run loader on Hero of home (/) or about (/about)
@@ -83,11 +83,10 @@
           } catch(e) {}
         }
 
-        // 5. On Reload: Check if user was scrolled down past hero (threshold: 120px) or in another section
+        // 5. On Reload: Check if user was scrolled down past hero (threshold: 120px)
         if (isReload) {
           var storedScroll = parseInt(sessionStorage.getItem('dc_scroll_' + cleanPath) || '0', 10);
-          var activeSec = sessionStorage.getItem('dc_active_section') || '';
-          if (storedScroll > 120 || (activeSec && activeSec !== 'hero')) {
+          if (storedScroll > 120) {
             document.documentElement.classList.add('no-loader');
             return;
           }
@@ -3109,7 +3108,7 @@
             });
         })();
     </script>
-    <script src="js/navigation.js"></script>
+    <script src="js/navigation.js?v=20261109a"></script>
 
     <!-- Mathematical Verification of Title Centering & Canvas Dimensions -->
     <script>
@@ -3436,6 +3435,6 @@
     </script>
     <!-- Liquid Ink Dissolve Loading Transition -->
     <script src="js/side-rays.js?v=20261108a" defer></script>
-    <script src="js/loading-transition.js?v=20261109a"></script>
+    <script src="js/loading-transition.js?v=20261109b"></script>
 </body>
 </html>

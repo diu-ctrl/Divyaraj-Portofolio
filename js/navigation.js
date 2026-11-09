@@ -65,7 +65,7 @@
         isOpen = true;
         clearHoverState();
         navContainer.classList.add('is-open');
-        navContainer.style.transform = '';
+        navContainer.style.removeProperty('transform');
         handleBtn.setAttribute('aria-expanded', 'true');
         updateHandleLabel();
     }
@@ -74,7 +74,7 @@
         isOpen = false;
         clearHoverState();
         navContainer.classList.remove('is-open');
-        navContainer.style.transform = '';
+        navContainer.style.removeProperty('transform');
         handleBtn.setAttribute('aria-expanded', 'false');
         handleBtn.classList.remove('has-function-hover');
         updateHandleLabel();
@@ -128,7 +128,7 @@
         handleBtn.classList.add('is-grabbing');
     });
 
-    handleBtn.addEventListener('pointermove', (e) => {
+    function onPointerMove(e) {
         if (!isDragging) return;
 
         const deltaY = e.clientY - startY;
@@ -138,8 +138,11 @@
 
         targetY = Math.max(closedY - 10, Math.min(20, targetY));
 
-        navContainer.style.transform = `translateX(-50%) translateY(${targetY}px)`;
-    });
+        navContainer.style.setProperty('transform', `translateX(-50%) translateY(${targetY}px)`, 'important');
+    }
+
+    handleBtn.addEventListener('pointermove', onPointerMove);
+    window.addEventListener('pointermove', onPointerMove, { passive: true });
 
     function endDrag(e) {
         if (!isDragging) return;
@@ -165,7 +168,9 @@
     }
 
     handleBtn.addEventListener('pointerup', endDrag);
+    window.addEventListener('pointerup', endDrag);
     handleBtn.addEventListener('pointercancel', endDrag);
+    window.addEventListener('pointercancel', endDrag);
 
     // Handle Click behavior
     handleBtn.addEventListener('click', (e) => {
@@ -334,6 +339,7 @@
     }
 
     function handleInitialRoute() {
+        const isContactRoute = window.location.pathname.replace(/\/+$/, '').toLowerCase() === '/contact';
         const hasContactParam = window.location.search.includes('route=contact');
         if (window.location.hash === '#contact' || isContactRoute || hasContactParam) {
             if (window.location.hash === '#contact' && history.replaceState) {

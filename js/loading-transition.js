@@ -102,23 +102,23 @@
 
   // Critical heavy assets preloaded & decoded in advance
   const PRELOAD_ASSETS = [
-    'hero-images/1.png',
-    'hero-images/2.png',
-    'hero-images/3.png',
-    'hero-images/4.png',
-    'hero-images/5.png',
-    'hero-images/6.png',
-    'images/8bit-website-hero-card.png',
-    'images/chemops_showcase.png',
-    'images/turf_showcase.png',
-    'images/kxm_showcase.png',
-    'images/abhushan_showcase.png',
-    'images/detailing_cars_showcase.png',
-    'images/lanes/platform-growth.jpg',
-    'images/lanes/digital-storefronts.jpg',
-    'images/lanes/ai-cinema.jpg',
-    'images/lanes/full-campaigns.jpg',
-    'images/brand-spray-bg.webp'
+    '/hero-images/1.png',
+    '/hero-images/2.png',
+    '/hero-images/3.png',
+    '/hero-images/4.png',
+    '/hero-images/5.png',
+    '/hero-images/6.png',
+    '/images/8bit-website-hero-card.png',
+    '/images/chemops_showcase.png',
+    '/images/turf_showcase.png',
+    '/images/kxm_showcase.png',
+    '/images/abhushan_showcase.png',
+    '/images/detailing_cars_showcase.png',
+    '/images/lanes/platform-growth.jpg',
+    '/images/lanes/digital-storefronts.jpg',
+    '/images/lanes/ai-cinema.jpg',
+    '/images/lanes/full-campaigns.jpg',
+    '/images/brand-spray-bg.webp'
   ];
 
   class InkLoaderTransition {
@@ -216,9 +216,8 @@
       if (navType === 'reload') {
         const storedScroll = parseInt(sessionStorage.getItem('dc_scroll_' + cleanPath) || '0', 10);
         const liveScroll = window.scrollY || window.pageYOffset || 0;
-        const activeSec = sessionStorage.getItem('dc_active_section') || '';
 
-        if (storedScroll > 120 || liveScroll > 120 || (activeSec && activeSec !== 'hero')) {
+        if (storedScroll > 120 || liveScroll > 120) {
           return false;
         }
         return true;
@@ -657,8 +656,8 @@
     }
   }, { capture: true, passive: true });
 
-  // Auto-initialize when DOM is ready
-  document.addEventListener('DOMContentLoaded', () => {
+  // Auto-initialize when DOM is ready or already interactive
+  function bootLoader() {
     const shouldRun = InkLoaderTransition.shouldRun();
     const loader = new InkLoaderTransition();
     window.siteLoader = loader;
@@ -668,6 +667,12 @@
     } else {
       loader.bypassInstantly();
     }
-  });
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', bootLoader);
+  } else {
+    bootLoader();
+  }
 
 })(window);
