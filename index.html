@@ -3297,7 +3297,7 @@
             const progress = Math.min(1, Math.max(0, scrollDistance / maxScroll));
 
             const currentY = startY + progress * (endY - startY);
-            strip.style.transform = 'translate3d(0, ' + (-currentY).toFixed(1) + 'px, 0)';
+            strip.style.setProperty('transform', 'translate3d(0, ' + (-currentY).toFixed(1) + 'px, 0)', 'important');
         }
 
         // Direct synchronous execution on Lenis scroll tick for zero 1-frame lag/jitter

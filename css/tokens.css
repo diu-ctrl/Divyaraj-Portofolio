@@ -2225,7 +2225,7 @@ h1 .grad,
 /* cinema-scale-card excluded */
 .limelight-nav-item:hover,
 .limelight-nav-item:hover .nav-icon,
-[class*="card"]:not(.cinema-scale-card):not(.web-circ-card):not(.floating-card):hover,
+[class*="card"]:not(.cinema-scale-card):not(.web-circ-card):not(.floating-card):not(.web-cards-strip):not(.web-cards-viewport):not(#webCardsStrip):hover,
 [class*="box"]:hover,
 [class*="tab"]:hover,
 [class*="frame"]:not(.phone-frame-back):not(.phone-frame):hover,
