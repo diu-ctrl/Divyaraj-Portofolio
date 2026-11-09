@@ -14,7 +14,12 @@
       "destination": "/Divyaraj-Resume.pdf"
     }
   ],
-  "redirects": [
+    "redirects": [
+    {
+      "source": "/contact.html",
+      "destination": "/contact",
+      "permanent": true
+    },
     {
       "source": "/divyaraj_resume",
       "destination": "/divyaraj-resume",

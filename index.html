@@ -3287,8 +3287,17 @@
                 history.replaceState(null, '', '/contact');
             }
             setTimeout(() => {
-                const cEl = document.getElementById('contact');
-                if (cEl) lenis.scrollTo(cEl, { duration: 1.2 });
+                const cEl = document.getElementById('contact') || document.getElementById('reviews');
+                if (cEl) {
+                    lenis.scrollTo(cEl, {
+                        duration: 1.2,
+                        onComplete: () => {
+                            if (window.lanyardInstance && typeof window.lanyardInstance.resize === 'function') {
+                                window.lanyardInstance.resize();
+                            }
+                        }
+                    });
+                }
             }, 300);
         }
 
@@ -3417,32 +3426,48 @@
     })();
     </script>
     <!-- 3D Interactive Lanyard ID Badge Controller -->
-    <script src="js/lanyard.js?v=20261109d" defer></script>
+    <script src="/js/lanyard.js?v=20261109e"></script>
     <script>
-    document.addEventListener('DOMContentLoaded', function() {
-        const lanyardContainer = document.getElementById('reviewsLanyardContainer');
-        if (lanyardContainer && window.initLanyard) {
-            window.lanyardInstance = window.initLanyard(lanyardContainer, {
-                frontPhoto: 'images/divyaraj_sticker.png?v=20261109d',
-                logo: 'images/dc-logo.png?v=20261109d',
-                cardColor: '#121316',
-                strapColor: '#111114',
-                metal: 'silver',
-                finish: 'glossy',
-                orientation: 'portrait',
-                anchor: 'center',
-                size: 0.6,
-                strapLength: 0.5,
-                strapWidth: 0.72,
-                gravity: 1,
-                damping: 0.5,
-                elasticity: 0.5,
-                breeze: 0.35,
-                interactive: true,
-                intro: true
-            });
+    (function initLanyardBootstrap() {
+        let attempts = 0;
+        function mountLanyard() {
+            if (window.lanyardInstance) return;
+            const container = document.getElementById('reviewsLanyardContainer');
+            if (!container) return;
+
+            if (typeof window.initLanyard === 'function') {
+                window.lanyardInstance = window.initLanyard(container, {
+                    frontPhoto: '/images/divyaraj_sticker.png?v=20261109d',
+                    logo: '/images/dc-logo.png?v=20261109d',
+                    cardColor: '#121316',
+                    strapColor: '#111114',
+                    metal: 'silver',
+                    finish: 'glossy',
+                    orientation: 'portrait',
+                    anchor: 'center',
+                    size: 0.6,
+                    strapLength: 0.5,
+                    strapWidth: 0.72,
+                    gravity: 1,
+                    damping: 0.5,
+                    elasticity: 0.5,
+                    breeze: 0.35,
+                    interactive: true,
+                    intro: true
+                });
+            } else if (attempts < 60) {
+                attempts++;
+                setTimeout(mountLanyard, 50);
+            }
         }
-    });
+
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', mountLanyard);
+        } else {
+            mountLanyard();
+        }
+        window.addEventListener('load', mountLanyard);
+    })();
     </script>
     <!-- Liquid Ink Dissolve Loading Transition -->
     <script src="js/side-rays.js?v=20261108a" defer></script>
