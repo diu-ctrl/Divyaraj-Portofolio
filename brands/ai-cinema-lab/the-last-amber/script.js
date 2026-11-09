@@ -363,4 +363,48 @@ document.addEventListener('DOMContentLoaded', () => {
     arcObserver.observe(arcBar);
   }
 
+
+  /* ============================================================
+     10. FOOTER SPRAY PARALLAX
+     ============================================================ */
+  const footerEl = document.querySelector('.site-footer');
+  const footerSprayImg = document.querySelector('.footer-spray-bg-img');
+  if (footerEl && footerSprayImg) {
+    let targetX = 0, targetY = 0;
+    let currentX = 0, currentY = 0;
+    let ticking = false;
+
+    const updateFooterParallax = () => {
+      currentX += (targetX - currentX) * 0.08;
+      currentY += (targetY - currentY) * 0.08;
+      footerSprayImg.style.transform = `translate3d(${currentX.toFixed(2)}px, ${currentY.toFixed(2)}px, 0)`;
+      if (Math.abs(targetX - currentX) > 0.05 || Math.abs(targetY - currentY) > 0.05) {
+        requestAnimationFrame(updateFooterParallax);
+      } else {
+        ticking = false;
+      }
+    };
+
+    footerEl.addEventListener('mousemove', (e) => {
+      const rect = footerEl.getBoundingClientRect();
+      const normX = ((e.clientX - rect.left) / rect.width) * 2 - 1;
+      const normY = ((e.clientY - rect.top) / rect.height) * 2 - 1;
+      targetX = normX * 16;
+      targetY = normY * 10;
+      if (!ticking) {
+        ticking = true;
+        requestAnimationFrame(updateFooterParallax);
+      }
+    }, { passive: true });
+
+    footerEl.addEventListener('mouseleave', () => {
+      targetX = 0;
+      targetY = 0;
+      if (!ticking) {
+        ticking = true;
+        requestAnimationFrame(updateFooterParallax);
+      }
+    }, { passive: true });
+  }
+
 });

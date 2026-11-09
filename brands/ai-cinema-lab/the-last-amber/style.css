@@ -2737,3 +2737,137 @@ body, p, li, span, a, div {
   box-shadow: 0 6px 24px rgba(255, 255, 255, 0.5) !important;
   transform: translateY(-2px) !important;
 }
+
+
+/* ============================================================
+   WHITE SPRAY VIGNETTE TEXTURED FOOTER BACKGROUND
+   ============================================================ */
+.site-footer {
+  position: relative !important;
+  background: #000000 !important;
+  border-top: 1px solid rgba(255, 255, 255, 0.12) !important;
+  padding: 100px 0 70px !important;
+  overflow: hidden !important;
+}
+
+.footer-spray-bg-box {
+  position: absolute !important;
+  inset: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  overflow: hidden !important;
+  pointer-events: none !important;
+  z-index: 0 !important;
+  background: #000000 !important;
+}
+
+.footer-spray-bg-img {
+  position: absolute !important;
+  top: -8% !important;
+  left: -5% !important;
+  width: 110% !important;
+  height: 120% !important;
+  max-width: none !important;
+  min-width: 110% !important;
+  object-fit: cover !important;
+  object-position: center center !important;
+  opacity: 0.52 !important;
+  filter: contrast(1.22) brightness(1.05) !important;
+  pointer-events: none !important;
+  user-select: none !important;
+  will-change: transform !important;
+  transition: transform 0.25s cubic-bezier(0.2, 0, 0.2, 1) !important;
+}
+
+.footer-spray-vignette {
+  position: absolute !important;
+  inset: 0 !important;
+  background: 
+    radial-gradient(ellipse 90% 75% at 50% 50%, transparent 15%, rgba(0, 0, 0, 0.45) 55%, #000000 100%),
+    linear-gradient(to bottom, #000000 0%, rgba(0, 0, 0, 0.75) 10%, rgba(0, 0, 0, 0.15) 24%, transparent 35%, transparent 68%, rgba(0, 0, 0, 0.6) 85%, #000000 100%) !important;
+  pointer-events: none !important;
+}
+
+.site-footer .container {
+  position: relative !important;
+  z-index: 2 !important;
+}
+
+/* ─── Footer Readability & Visibility Enhancements ─── */
+.footer-title {
+  text-shadow: 0 4px 28px rgba(0, 0, 0, 0.95), 0 1px 6px rgba(0, 0, 0, 0.9) !important;
+}
+
+.footer-title em {
+  text-shadow: 0 0 28px rgba(235, 70, 4, 0.55), 0 2px 10px rgba(0, 0, 0, 0.9) !important;
+}
+
+.footer-sub {
+  color: #D4A574 !important;
+  font-family: var(--ff-mono) !important;
+  font-size: 0.76rem !important;
+  letter-spacing: 0.18em !important;
+  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.95) !important;
+}
+
+.footer-divider {
+  background: linear-gradient(90deg, transparent 0%, rgba(255, 255, 255, 0.22) 20%, rgba(255, 255, 255, 0.22) 80%, transparent 100%) !important;
+  box-shadow: 0 1px 10px rgba(0, 0, 0, 0.8) !important;
+}
+
+.footer-name {
+  color: #FFFFFF !important;
+  font-weight: 700 !important;
+  font-size: 1.05rem !important;
+  text-shadow: 0 2px 16px rgba(0, 0, 0, 0.95) !important;
+}
+
+.footer-role {
+  color: #EB4604 !important;
+  font-family: var(--ff-mono) !important;
+  font-size: 0.76rem !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.08em !important;
+  text-transform: uppercase !important;
+  text-shadow: 0 1px 8px rgba(0, 0, 0, 0.9) !important;
+}
+
+.footer-date {
+  color: rgba(255, 255, 255, 0.75) !important;
+  font-size: 0.82rem !important;
+  text-shadow: 0 1px 8px rgba(0, 0, 0, 0.9) !important;
+}
+
+.footer-tools-label {
+  color: #EB4604 !important;
+  font-family: var(--ff-mono) !important;
+  font-size: 0.72rem !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.2em !important;
+  text-shadow: 0 1px 8px rgba(0, 0, 0, 0.9) !important;
+}
+
+.footer-tools {
+  color: rgba(255, 255, 255, 0.8) !important;
+  font-size: 0.82rem !important;
+  text-shadow: 0 2px 14px rgba(0, 0, 0, 0.95) !important;
+}
+
+.footer-tools .sep {
+  color: rgba(255, 255, 255, 0.35) !important;
+}
+
+.footer-cite-item {
+  background: rgba(14, 14, 12, 0.85) !important;
+  backdrop-filter: blur(16px) !important;
+  -webkit-backdrop-filter: blur(16px) !important;
+  border: 1px solid rgba(255, 255, 255, 0.2) !important;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.6) !important;
+}
+
+.footer-cite-item:hover {
+  background: rgba(24, 24, 20, 0.95) !important;
+  border-color: #EB4604 !important;
+  box-shadow: 0 0 20px rgba(235, 70, 4, 0.45) !important;
+  transform: translateY(-2px) !important;
+}
