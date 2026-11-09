@@ -2,24 +2,11 @@
   "cleanUrls": true,
   "rewrites": [
     {
-      "source": "/contact",
-      "destination": "/index.html"
-    },
-    {
-      "source": "/contact/",
-      "destination": "/index.html"
-    },
-    {
       "source": "/divyaraj-resume.pdf",
       "destination": "/Divyaraj-Resume.pdf"
     }
   ],
   "redirects": [
-    {
-      "source": "/contact.html",
-      "destination": "/contact",
-      "permanent": true
-    },
     {
       "source": "/divyaraj_resume",
       "destination": "/divyaraj-resume",
