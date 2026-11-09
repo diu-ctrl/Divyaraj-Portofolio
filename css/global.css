@@ -854,16 +854,49 @@ html, body {
             }
         }
 
-        /* ─── About Section Layout ─── */
-        #about-section {
+        /* ─── Combined Stats & About Wrapper with Light Rays ─── */
+        .about-rays-wrapper {
+            position: relative !important;
             width: 100% !important;
             max-width: none !important;
             background: #000000 !important;
             margin: 0 !important;
-            padding: 120px 0 80px !important;
-            position: relative;
+            padding: 0 !important;
             overflow: hidden !important;
             z-index: 10;
+        }
+
+        .about-rays-wrapper .stats-section,
+        .about-rays-wrapper #about-section {
+            background: transparent !important;
+            position: relative;
+            z-index: 2;
+        }
+
+        .about-rays-wrapper .stats-grid,
+        .about-rays-wrapper .about-grid-top,
+        .about-rays-wrapper .about-pillars {
+            position: relative;
+            z-index: 2;
+        }
+
+        .about-rays-wrapper .stats-section {
+            width: 100% !important;
+            max-width: none !important;
+            padding: 80px 0 40px !important;
+            margin: 0 !important;
+        }
+
+        /* ─── About Section Layout ─── */
+        #about-section {
+            width: 100% !important;
+            max-width: none !important;
+            background: transparent !important;
+            margin: 0 !important;
+            padding: 60px 0 80px !important;
+            position: relative;
+            overflow: visible !important;
+            z-index: 2;
         }
 
         .light-rays-bg {
