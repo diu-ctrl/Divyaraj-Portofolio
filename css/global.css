@@ -1967,13 +1967,15 @@ html, body {
         .social-connect-label {
             font-family: var(--font-sans, 'Inter Tight', sans-serif);
             font-size: 12px !important;
-            color: #464B3A !important;
+            color: #A8B48B !important;
             font-weight: 500 !important;
             letter-spacing: 0.02em !important;
             white-space: nowrap !important;
             line-height: 1 !important;
             user-select: none;
             margin-right: 6px !important;
+            text-shadow: none !important;
+            filter: none !important;
         }
 
         .social-icon-btn {

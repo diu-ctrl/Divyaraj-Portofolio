@@ -2552,3 +2552,19 @@ h2.contact-headline {
     mask-image: none !important;
     -webkit-mask-image: none !important;
 }
+
+/* Social Connect Label in Footer */
+.social-connect-label {
+    font-family: var(--font-sans, 'Inter Tight', sans-serif) !important;
+    font-size: 12px !important;
+    color: #A8B48B !important;
+    font-weight: 500 !important;
+    letter-spacing: 0.02em !important;
+    white-space: nowrap !important;
+    line-height: 1 !important;
+    user-select: none !important;
+    margin-right: 6px !important;
+    text-shadow: none !important;
+    box-shadow: none !important;
+    filter: none !important;
+}
