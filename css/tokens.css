@@ -2439,19 +2439,30 @@ h2.contact-headline {
 .reviews-split-section {
     position: relative !important;
     z-index: 10 !important;
+    width: 100vw !important;
+    max-width: none !important;
+    margin-left: 50% !important;
+    transform: translateX(-50%) !important;
     background: #000000 !important;
     border-bottom-left-radius: 0 !important;
     border-bottom-right-radius: 0 !important;
     border-bottom: none !important;
     box-shadow: none !important;
     margin-bottom: 0 !important;
+    box-sizing: border-box !important;
+}
+
+.reviews-split-grid {
+    width: 100% !important;
+    max-width: 1400px !important;
+    margin: 0 auto !important;
 }
 
 .reviews-split-section::after {
     display: none !important;
 }
 
-/* Atmospheric Upward Gradient Drop Shadow projecting above CTA top border */
+/* Atmospheric Upward White Smoke & Ethereal Steam Haze projecting above CTA top border */
 .cta-accent-drop-shadow {
     position: relative !important;
     width: 100vw !important;
@@ -2465,19 +2476,57 @@ h2.contact-headline {
 .cta-accent-drop-shadow::before {
     content: '' !important;
     position: absolute !important;
-    bottom: 0 !important;
-    left: 2% !important;
-    right: 2% !important;
-    height: 120px !important;
-    background: radial-gradient(
-        ellipse 70% 65% at 50% 100%,
-        rgba(235, 70, 4, 0.35) 0%,
-        rgba(255, 90, 25, 0.22) 35%,
-        rgba(255, 196, 107, 0.08) 65%,
-        transparent 100%
-    ) !important;
-    filter: blur(32px) !important;
+    bottom: -2px !important;
+    left: 0 !important;
+    right: 0 !important;
+    width: 100% !important;
+    height: clamp(140px, 18vh, 220px) !important;
+    background: 
+        radial-gradient(
+            ellipse 55% 85% at 50% 100%,
+            rgba(255, 255, 255, 0.35) 0%,
+            rgba(245, 248, 252, 0.22) 28%,
+            rgba(230, 238, 248, 0.10) 58%,
+            transparent 100%
+        ),
+        radial-gradient(
+            ellipse 85% 55% at 50% 100%,
+            rgba(255, 255, 255, 0.20) 0%,
+            rgba(240, 245, 250, 0.12) 40%,
+            rgba(220, 230, 242, 0.04) 70%,
+            transparent 100%
+        ),
+        radial-gradient(
+            ellipse 40% 70% at 28% 100%,
+            rgba(255, 255, 255, 0.18) 0%,
+            rgba(240, 245, 252, 0.08) 45%,
+            transparent 80%
+        ),
+        radial-gradient(
+            ellipse 40% 70% at 72% 100%,
+            rgba(255, 255, 255, 0.18) 0%,
+            rgba(240, 245, 252, 0.08) 45%,
+            transparent 80%
+        ) !important;
+    filter: blur(28px) !important;
     pointer-events: none !important;
+    animation: whiteSteamBillow 8s ease-in-out infinite alternate !important;
+    transform-origin: 50% 100% !important;
+}
+
+@keyframes whiteSteamBillow {
+    0% {
+        transform: scale(1) translateY(0);
+        opacity: 0.88;
+    }
+    50% {
+        transform: scale(1.03, 1.08) translateY(-8px);
+        opacity: 1;
+    }
+    100% {
+        transform: scale(0.98, 1.03) translateY(-4px);
+        opacity: 0.92;
+    }
 }
 
 .cta-section {
@@ -2486,13 +2535,13 @@ h2.contact-headline {
     border-top-left-radius: clamp(36px, 5vw, 64px) !important;
     border-top-right-radius: clamp(36px, 5vw, 64px) !important;
     overflow: hidden !important;
-    border-top: 1px solid rgba(255, 255, 255, 0.16) !important;
+    border-top: 1px solid rgba(255, 255, 255, 0.22) !important;
     box-shadow: 
-        0 -1px 0 rgba(255, 255, 255, 0.14),
-        0 -15px 35px -5px rgba(235, 70, 4, 0.38),
-        0 -30px 65px -10px rgba(235, 70, 4, 0.25),
-        0 -50px 100px -15px rgba(255, 90, 25, 0.16),
-        0 -80px 150px -25px rgba(255, 196, 107, 0.08) !important;
+        0 -1px 0 rgba(255, 255, 255, 0.26),
+        0 -10px 30px -2px rgba(255, 255, 255, 0.20),
+        0 -25px 55px -6px rgba(240, 246, 252, 0.14),
+        0 -50px 95px -12px rgba(225, 235, 248, 0.08),
+        0 -80px 140px -20px rgba(210, 225, 242, 0.04) !important;
 }
 
 .cta-section::before {

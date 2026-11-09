@@ -1783,11 +1783,11 @@ html, body {
             justify-content: center;
             box-sizing: border-box;
             box-shadow: 
-                0 -1px 0 rgba(255, 255, 255, 0.14),
-                0 -15px 35px -5px rgba(235, 70, 4, 0.38),
-                0 -30px 65px -10px rgba(235, 70, 4, 0.25),
-                0 -50px 100px -15px rgba(255, 90, 25, 0.16),
-                0 -80px 150px -25px rgba(255, 196, 107, 0.08) !important;
+                0 -1px 0 rgba(255, 255, 255, 0.26),
+                0 -10px 30px -2px rgba(255, 255, 255, 0.20),
+                0 -25px 55px -6px rgba(240, 246, 252, 0.14),
+                0 -50px 95px -12px rgba(225, 235, 248, 0.08),
+                0 -80px 140px -20px rgba(210, 225, 242, 0.04) !important;
         }
 
         .cta-section::before {
@@ -4460,11 +4460,14 @@ html, body {
 
         /* ─── Reviews & Direct Booking Section (Full 1920x1080 Viewport Coverage) ─── */
         .reviews-split-section {
-            width: 100%;
-            max-width: 1400px;
+            width: 100vw !important;
+            max-width: none !important;
+            margin-left: 50% !important;
+            transform: translateX(-50%) !important;
             min-height: 100vh !important;
             min-height: 100svh !important;
-            margin: 0 auto !important;
+            margin-top: 0 !important;
+            margin-bottom: 0 !important;
             padding: clamp(60px, 8vh, 100px) clamp(24px, 4vw, 60px) !important;
             position: relative;
             z-index: 10 !important;
@@ -4491,6 +4494,8 @@ html, body {
             align-items: center !important;
             justify-content: space-between !important;
             width: 100% !important;
+            max-width: 1400px !important;
+            margin: 0 auto !important;
         }
 
         .reviews-left-col {
