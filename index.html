@@ -3277,12 +3277,9 @@
             const firstRow = rows[0];
             const lastRow = rows[rows.length - 1];
 
-            // Card 1 centered in viewport at progress = 0; Card 6 centered at progress = 1
-            const firstCardCenter = firstRow.offsetTop + firstRow.offsetHeight / 2;
-            const lastCardCenter = lastRow.offsetTop + lastRow.offsetHeight / 2;
-
-            startY = firstCardCenter - vpHeight / 2;
-            endY = lastCardCenter - vpHeight / 2;
+            // Card 1 sits comfortably close below heading at progress = 0; Card 6 docks at progress = 1
+            startY = 0;
+            endY = lastRow.offsetTop;
         }
 
         measureWebMetrics();
