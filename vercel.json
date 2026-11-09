@@ -8,6 +8,10 @@
     {
       "source": "/contact/",
       "destination": "/index.html"
+    },
+    {
+      "source": "/divyaraj-resume.pdf",
+      "destination": "/Divyaraj-Resume.pdf"
     }
   ],
   "redirects": [

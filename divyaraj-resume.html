@@ -71,31 +71,44 @@
             background: var(--bg-deep);
             color: var(--text);
             line-height: 1.5;
-            padding: 40px 20px;
+            padding: 32px 20px 80px;
             display: flex;
-            justify-content: center;
+            flex-direction: column;
             align-items: center;
+            justify-content: flex-start;
             min-height: 100vh;
         }
 
         /* Resume Container */
         .resume-container {
             background: var(--bg);
-            max-width: 900px;
+            max-width: 920px;
             width: 100%;
             border-radius: 16px;
             border: 2px solid var(--border);
-            padding: 50px;
+            padding: 44px;
             position: relative;
-            overflow: hidden;
+            overflow: visible;
         }
 
         /* Top Action Bar (hidden in print) */
         .action-bar {
+            position: sticky;
+            top: 16px;
+            z-index: 100;
             display: flex;
             justify-content: flex-end;
-            margin-bottom: 30px;
+            margin-bottom: 24px;
             gap: 12px;
+            padding: 8px 14px;
+            background: rgba(20, 20, 18, 0.9);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border-radius: 999px;
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            width: fit-content;
+            margin-left: auto;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
         }
 
         .btn-action {
@@ -259,8 +272,8 @@
         /* Main Grid */
         .resume-grid {
             display: grid;
-            grid-template-columns: 1fr 2.1fr;
-            gap: 40px;
+            grid-template-columns: minmax(280px, 1.15fr) 2.25fr;
+            gap: 36px;
         }
 
         /* Sidebar Column */
@@ -355,9 +368,11 @@
         }
 
         .edu-degree {
-            font-size: 0.9rem;
+            font-size: 0.92rem;
             font-weight: 700;
             color: var(--text);
+            line-height: 1.35;
+            word-break: break-word;
         }
 
         .edu-school {
@@ -394,17 +409,19 @@
             display: flex;
             justify-content: space-between;
             align-items: flex-start;
-            flex-wrap: nowrap;
+            flex-wrap: wrap;
             margin-bottom: 6px;
-            gap: 12px;
+            gap: 8px 12px;
         }
 
         .exp-title {
             font-size: 1.05rem;
             font-weight: 700;
             color: var(--primary);
-            flex: 1 1 auto;
+            flex: 1 1 240px;
             min-width: 0;
+            line-height: 1.25;
+            word-break: break-word;
         }
 
         .exp-company {
@@ -415,17 +432,22 @@
         }
 
         .exp-date {
-            font-size: 0.8rem;
+            font-size: 0.78rem;
             font-weight: 700;
             color: var(--primary-light);
             background: var(--surface);
-            padding: 3px 10px;
-            border-radius: 4px;
+            padding: 4px 14px !important;
+            border-radius: 999px !important;
             border: 1px solid var(--border);
             margin-left: auto;
             white-space: nowrap;
             flex-shrink: 0;
             text-align: right;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            line-height: 1.2;
+            letter-spacing: 0.01em;
         }
 
         .exp-desc {
@@ -488,6 +510,16 @@
         }
 
         /* Responsive Layout styles */
+        @media screen and (max-width: 860px) {
+            .resume-container {
+                padding: 32px 24px;
+            }
+            .resume-grid {
+                grid-template-columns: 1fr;
+                gap: 32px;
+            }
+        }
+
         @media screen and (max-width: 768px) {
             body {
                 padding: 10px;
@@ -701,16 +733,17 @@
                 display: flex !important;
                 justify-content: space-between !important;
                 align-items: flex-start !important;
-                flex-wrap: nowrap !important;
-                gap: 12px !important;
+                flex-wrap: wrap !important;
+                gap: 6px 12px !important;
                 margin-bottom: 4px !important;
             }
             .exp-title {
-                font-size: 1.05rem !important;
+                font-size: 1.02rem !important;
                 font-weight: 700 !important;
                 color: #1e293b !important;
-                flex: 1 1 auto !important;
+                flex: 1 1 220px !important;
                 min-width: 0 !important;
+                line-height: 1.25 !important;
             }
             .exp-company {
                 font-size: 0.9rem !important;
@@ -719,17 +752,22 @@
                 margin: 1px 0 4px !important;
             }
             .exp-date {
-                font-size: 0.8rem !important;
+                font-size: 0.78rem !important;
                 font-weight: 700 !important;
                 color: #475569 !important;
                 background: #f8fafc !important;
-                padding: 3px 10px !important;
+                padding: 3px 12px !important;
+                border-radius: 999px !important;
                 border: 1px solid #e2e8f0 !important;
                 margin-left: auto !important;
                 white-space: nowrap !important;
                 flex-shrink: 0 !important;
                 align-self: flex-start !important;
                 text-align: right !important;
+                display: inline-flex !important;
+                align-items: center !important;
+                justify-content: center !important;
+                line-height: 1.2 !important;
             }
             .exp-desc {
                 font-size: 8pt !important;
@@ -849,7 +887,7 @@
         <!-- Action Bar (Hidden when printed) -->
         <div class="action-bar">
             <a href="/" class="btn-action back-btn"><span>Back to Portfolio</span></a>
-            <a href="/divyaraj-resume.pdf" download="divyaraj-resume.pdf" class="btn-action btn-primary download-pdf-btn" aria-label="Download PDF" title="Download PDF">
+            <a href="/Divyaraj-Resume.pdf" download="Divyaraj-Resume.pdf" class="btn-action btn-primary download-pdf-btn" aria-label="Download PDF" title="Download PDF">
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-bottom:-1px"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
                 <span>Download PDF</span>
             </a>
