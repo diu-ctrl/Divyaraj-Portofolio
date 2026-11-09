@@ -12,12 +12,46 @@
     {
       "source": "/divyaraj-resume.pdf",
       "destination": "/Divyaraj-Resume.pdf"
+    },
+    {
+      "source": "/brands/the-last-amber",
+      "destination": "/brands/ai-cinema-lab/the-last-amber/index.html"
+    },
+    {
+      "source": "/brands/the-last-amber/",
+      "destination": "/brands/ai-cinema-lab/the-last-amber/index.html"
+    },
+    {
+      "source": "/the-last-amber",
+      "destination": "/brands/ai-cinema-lab/the-last-amber/index.html"
+    },
+    {
+      "source": "/the-last-amber/",
+      "destination": "/brands/ai-cinema-lab/the-last-amber/index.html"
+    },
+    {
+      "source": "/brands/AiCinemaLab/TheLastAmber",
+      "destination": "/brands/ai-cinema-lab/the-last-amber/index.html"
+    },
+    {
+      "source": "/brands/AiCinemaLab/TheLastAmber/",
+      "destination": "/brands/ai-cinema-lab/the-last-amber/index.html"
     }
   ],
   "redirects": [
     {
       "source": "/divyaraj_resume",
       "destination": "/divyaraj-resume",
+      "permanent": true
+    },
+    {
+      "source": "/brands/Ai%20Cinema%20Lab/The%20Last%20Amber/(.*)",
+      "destination": "/brands/the-last-amber/$1",
+      "permanent": true
+    },
+    {
+      "source": "/brands/Ai%20Cinema%20Lab/The%20Last%20Amber",
+      "destination": "/brands/the-last-amber",
       "permanent": true
     }
   ]

@@ -2264,3 +2264,476 @@ blockquote.shot-vo {
   .ember-cta-btn { width: 100%; text-align: center; }
   .ember-cta-back { width: 100%; text-align: center; }
 }
+
+
+/* ==========================================================================
+   THE LAST AMBER — MODERN BRUTALIST DESIGN SYSTEM OVERHAUL
+   Strict typography, rounded corners, capsule buttons, 4-in-a-row grids
+   ========================================================================== */
+
+:root {
+  --ff-serif: 'Instrument Serif', Georgia, serif;
+  --ff-cinzel: 'Instrument Serif', Georgia, serif;
+  --ff-sans: 'Inter Tight', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --ff-mono: 'Space Mono', monospace;
+  --accent: #EB4604;
+  --amber: #EB4604;
+  --card-bg: #111110;
+  --border-subtle: rgba(255, 255, 255, 0.1);
+  --border-hover: rgba(235, 70, 4, 0.45);
+}
+
+/* Typography Uniformity */
+h1, h2, h3, .section-title, .hero-title, .footer-title, .film-title, .story-tagline {
+  font-family: var(--ff-serif) !important;
+  font-style: italic !important;
+  font-weight: 400 !important;
+  letter-spacing: -0.01em !important;
+}
+
+.hero-title em,
+.section-title em,
+.footer-title em,
+.nav-logo em {
+  font-style: italic !important;
+  color: #EB4604 !important;
+}
+
+.section-label, .phase-label, .meta-label, .shot-meta-label, .stat-label {
+  font-family: var(--ff-mono) !important;
+  font-size: 0.72rem !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.12em !important;
+  text-transform: uppercase !important;
+  color: #EB4604 !important;
+}
+
+body, p, li, span, a, div {
+  font-family: var(--ff-sans);
+}
+
+/* Top Process Banner & Capsule Navigation */
+.process-banner {
+  position: sticky !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  width: 100% !important;
+  height: 54px !important;
+  background: rgba(10, 10, 8, 0.85) !important;
+  backdrop-filter: blur(12px) !important;
+  -webkit-backdrop-filter: blur(12px) !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
+  padding: 0 40px !important;
+  display: flex !important;
+  justify-content: space-between !important;
+  align-items: center !important;
+  z-index: 1000 !important;
+}
+
+.banner-label {
+  font-family: var(--ff-sans) !important;
+  font-size: 0.78rem !important;
+  font-weight: 500 !important;
+  color: rgba(255, 255, 255, 0.45) !important;
+}
+
+.banner-label a {
+  color: #EB4604 !important;
+  font-weight: 600 !important;
+  text-decoration: none !important;
+  transition: opacity 0.2s ease !important;
+}
+
+.banner-label a:hover {
+  opacity: 0.75 !important;
+}
+
+.banner-actions {
+  display: flex !important;
+  align-items: center !important;
+  gap: 12px !important;
+}
+
+/* Back to Portfolio Capsule */
+.process-banner a.banner-back {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  height: 36px !important;
+  min-height: 36px !important;
+  padding: 0 20px !important;
+  border-radius: 9999px !important;
+  background: #141412 !important;
+  border: 1px solid rgba(255, 255, 255, 0.16) !important;
+  color: rgba(255, 255, 255, 0.75) !important;
+  font-family: var(--ff-sans) !important;
+  font-size: 0.76rem !important;
+  font-weight: 600 !important;
+  text-decoration: none !important;
+  letter-spacing: 0.01em !important;
+  transition: all 0.25s ease !important;
+  white-space: nowrap !important;
+}
+
+.process-banner a.banner-back:hover {
+  background: #3a221b !important;
+  border-color: #EB4604 !important;
+  color: #FFFFFF !important;
+  transform: translateY(-1px) !important;
+  box-shadow: 0 4px 14px rgba(235, 70, 4, 0.25) !important;
+}
+
+/* Hire Me Capsule with signature hover effect */
+.process-banner a.banner-cta {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  height: 36px !important;
+  min-height: 36px !important;
+  padding: 0 24px !important;
+  border-radius: 9999px !important;
+  background: #EB4604 !important;
+  border: 1px solid #EB4604 !important;
+  color: #FFFFFF !important;
+  font-family: var(--ff-sans) !important;
+  font-size: 0.76rem !important;
+  font-weight: 700 !important;
+  text-decoration: none !important;
+  letter-spacing: 0.01em !important;
+  transition: all 0.25s ease !important;
+  white-space: nowrap !important;
+  box-shadow: 0 0 16px rgba(235, 70, 4, 0.35) !important;
+  cursor: pointer !important;
+}
+
+.process-banner a.banner-cta:hover {
+  background: #FFFFFF !important;
+  border-color: #FFFFFF !important;
+  color: #000000 !important;
+  box-shadow: 0 0 24px rgba(255, 255, 255, 0.5) !important;
+  transform: translateY(-1px) !important;
+}
+
+/* Secondary sticky nav logo */
+.nav-logo {
+  font-family: var(--ff-serif) !important;
+  font-style: italic !important;
+  font-size: 1.45rem !important;
+  font-weight: 400 !important;
+  color: #FFFFFF !important;
+  text-decoration: none !important;
+  letter-spacing: -0.01em !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 4px !important;
+}
+
+/* Hero CTA Button */
+.hero-cta {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  height: 48px !important;
+  min-height: 48px !important;
+  padding: 0 36px !important;
+  border-radius: 9999px !important;
+  background: #EB4604 !important;
+  border: 1px solid #EB4604 !important;
+  color: #FFFFFF !important;
+  font-family: var(--ff-sans) !important;
+  font-size: 0.88rem !important;
+  font-weight: 700 !important;
+  text-decoration: none !important;
+  letter-spacing: 0.02em !important;
+  transition: all 0.25s ease !important;
+  box-shadow: 0 0 20px rgba(235, 70, 4, 0.4) !important;
+}
+
+.hero-cta:hover {
+  background: #FFFFFF !important;
+  border-color: #FFFFFF !important;
+  color: #000000 !important;
+  box-shadow: 0 0 28px rgba(255, 255, 255, 0.5) !important;
+  transform: translateY(-2px) !important;
+}
+
+/* Bottom CTA section buttons */
+.ember-cta-btn {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  height: 48px !important;
+  min-height: 48px !important;
+  padding: 0 36px !important;
+  border-radius: 9999px !important;
+  background: #EB4604 !important;
+  border: 1px solid #EB4604 !important;
+  color: #FFFFFF !important;
+  font-family: var(--ff-sans) !important;
+  font-size: 0.92rem !important;
+  font-weight: 700 !important;
+  text-decoration: none !important;
+  letter-spacing: 0.02em !important;
+  transition: all 0.25s ease !important;
+  box-shadow: 0 0 24px rgba(235, 70, 4, 0.4) !important;
+}
+
+.ember-cta-btn:hover {
+  background: #FFFFFF !important;
+  border-color: #FFFFFF !important;
+  color: #000000 !important;
+  box-shadow: 0 0 32px rgba(255, 255, 255, 0.6) !important;
+  transform: translateY(-2px) !important;
+}
+
+.ember-cta-back {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  height: 48px !important;
+  min-height: 48px !important;
+  padding: 0 32px !important;
+  border-radius: 9999px !important;
+  background: #181816 !important;
+  border: 1px solid rgba(255, 255, 255, 0.18) !important;
+  color: #CCCCCC !important;
+  font-family: var(--ff-sans) !important;
+  font-size: 0.92rem !important;
+  font-weight: 600 !important;
+  text-decoration: none !important;
+  transition: all 0.25s ease !important;
+}
+
+.ember-cta-back:hover {
+  background: #3a221b !important;
+  border-color: #EB4604 !important;
+  color: #FFFFFF !important;
+  transform: translateY(-2px) !important;
+  box-shadow: 0 4px 16px rgba(235, 70, 4, 0.3) !important;
+}
+
+/* ==========================================================================
+   4 IMAGES IN ONE ROW (LOCATIONS & SHOTS)
+   ========================================================================== */
+
+@media (min-width: 992px) {
+  .locations-grid {
+    display: grid !important;
+    grid-template-columns: repeat(4, 1fr) !important;
+    gap: 16px !important;
+    padding: 0 !important;
+  }
+
+  .shots-grid {
+    display: grid !important;
+    grid-template-columns: repeat(4, 1fr) !important;
+    gap: 16px !important;
+    padding: 0 !important;
+  }
+}
+
+@media (min-width: 641px) and (max-width: 991px) {
+  .locations-grid {
+    display: grid !important;
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 16px !important;
+  }
+
+  .shots-grid {
+    display: grid !important;
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 16px !important;
+    padding: 0 !important;
+  }
+}
+
+@media (max-width: 640px) {
+  .locations-grid {
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+    gap: 16px !important;
+  }
+
+  .shots-grid {
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+    gap: 16px !important;
+    padding: 0 !important;
+  }
+}
+
+/* ==========================================================================
+   CARD ROUNDNESS & SHAPE LANGUAGE
+   ========================================================================== */
+
+.location-card,
+.shot-card,
+.process-step,
+.character-detail-card,
+.limitation-card,
+.vo-card,
+.craft-card,
+.score-card,
+.methodology-stat-box {
+  border-radius: 16px !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  background: #111110 !important;
+  overflow: hidden !important;
+  transition: all 0.25s ease !important;
+}
+
+.location-card:hover,
+.shot-card:hover,
+.process-step:hover,
+.character-detail-card:hover,
+.limitation-card:hover,
+.vo-card:hover,
+.craft-card:hover,
+.score-card:hover {
+  border-color: rgba(235, 70, 4, 0.45) !important;
+  transform: translateY(-2px) !important;
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.6) !important;
+}
+
+.location-img,
+.shot-media {
+  border-radius: 14px 14px 0 0 !important;
+  overflow: hidden !important;
+}
+
+.location-img img,
+.shot-media img,
+.shot-media video {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+  display: block !important;
+  transition: transform 0.4s ease !important;
+}
+
+.location-card:hover .location-img img,
+.shot-card:hover .shot-media img {
+  transform: scale(1.03) !important;
+}
+
+/* Tags and Badges */
+.location-tag,
+.night-tag,
+.dawn-tag,
+.morning-tag,
+.shot-tag,
+.scene-badge,
+.shot-num,
+.phase-num {
+  border-radius: 9999px !important;
+}
+
+/* VO Play Button */
+.vo-play-btn {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 6px !important;
+  border-radius: 9999px !important;
+  padding: 6px 14px !important;
+  background: rgba(235, 70, 4, 0.12) !important;
+  border: 1px solid rgba(235, 70, 4, 0.3) !important;
+  color: #EB4604 !important;
+  font-family: var(--ff-mono) !important;
+  font-size: 0.72rem !important;
+  font-weight: 700 !important;
+  transition: all 0.25s ease !important;
+  cursor: pointer !important;
+}
+
+.vo-play-btn:hover {
+  background: #EB4604 !important;
+  border-color: #EB4604 !important;
+  color: #FFFFFF !important;
+  box-shadow: 0 0 12px rgba(235, 70, 4, 0.4) !important;
+}
+
+/* Footer Citations & Badges */
+.footer-title {
+  font-family: var(--ff-serif) !important;
+  font-style: italic !important;
+  font-size: clamp(2.6rem, 5vw, 4.2rem) !important;
+  font-weight: 400 !important;
+  color: #FFFFFF !important;
+  line-height: 1.05 !important;
+  letter-spacing: -0.02em !important;
+  margin-bottom: 8px !important;
+}
+
+.footer-citations {
+  display: flex !important;
+  align-items: center !important;
+  gap: 12px !important;
+  margin-bottom: 12px !important;
+}
+
+.footer-cite-item {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  height: 38px !important;
+  padding: 0 18px !important;
+  border-radius: 9999px !important;
+  background: rgba(255, 255, 255, 0.05) !important;
+  border: 1px solid rgba(255, 255, 255, 0.12) !important;
+  transition: all 0.25s ease !important;
+  text-decoration: none !important;
+}
+
+.footer-cite-item:hover {
+  background: rgba(255, 255, 255, 0.12) !important;
+  border-color: #EB4604 !important;
+  transform: translateY(-1px) !important;
+}
+
+.footer-cite-logo {
+  height: 18px !important;
+  width: auto !important;
+  object-fit: contain !important;
+}
+
+.storyvord-logo {
+  filter: brightness(0) invert(1) !important;
+  opacity: 0.95 !important;
+}
+
+/* Back to Top Circular Button */
+.back-to-top-btn {
+  position: fixed !important;
+  bottom: 32px !important;
+  right: 32px !important;
+  width: 44px !important;
+  height: 44px !important;
+  min-width: 44px !important;
+  min-height: 44px !important;
+  max-width: 44px !important;
+  max-height: 44px !important;
+  border-radius: 50% !important;
+  aspect-ratio: 1 / 1 !important;
+  background: #EB4604 !important;
+  color: #FFFFFF !important;
+  border: 1px solid #EB4604 !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  z-index: 1000 !important;
+  cursor: pointer !important;
+  box-shadow: 0 4px 16px rgba(235, 70, 4, 0.4) !important;
+  transition: all 0.25s ease !important;
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+.back-to-top-btn:hover {
+  background: #FFFFFF !important;
+  color: #000000 !important;
+  border-color: #FFFFFF !important;
+  box-shadow: 0 6px 24px rgba(255, 255, 255, 0.5) !important;
+  transform: translateY(-2px) !important;
+}
