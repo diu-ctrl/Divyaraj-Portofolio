@@ -506,12 +506,16 @@
         </div>
     </section>
 
-    <!-- Experience -->
-    <section id="experience">
-        <div class="section-header reveal">
-            <h2 class="display-serif-statement" style="white-space: nowrap;"><span class="gradient-text">Where I've Worked</span></h2>
-        </div>
-        <div class="timeline">
+    <!-- Experience (Pinned Vertical Stopped Scroll with Lenis) -->
+    <section id="experience" class="experience-scroll-track">
+        <div class="experience-sticky-stage">
+            <div class="experience-sticky-header">
+                <div class="section-header">
+                    <h2 class="display-serif-statement" style="white-space: nowrap;"><span class="gradient-text">Where I've Worked</span></h2>
+                </div>
+            </div>
+            <div class="experience-cards-viewport" id="experienceViewport">
+                <div class="timeline experience-cards-strip" id="experienceStrip">
             <!-- 1. UNTAGD (Full-time Freelance) -->
             <div class="timeline-item reveal">
                 <div class="timeline-header">
@@ -734,6 +738,8 @@
                 </a>
                 <div class="timeline-desc">
                     Built and managed the organization's digital community from scratch. Produced video content, managed talent rosters, and coordinated league operations for regional esports tournaments and gaming festivals.
+                </div>
+            </div>
                 </div>
             </div>
         </div>
@@ -1855,10 +1861,14 @@
                     }
                 });
                 backToTopBtn.addEventListener('click', () => {
-                    window.scrollTo({
-                        top: 0,
-                        behavior: 'smooth'
-                    });
+                    if (window.__lenis) {
+                        window.__lenis.scrollTo(0, { duration: 1.2 });
+                    } else {
+                        window.scrollTo({
+                            top: 0,
+                            behavior: 'smooth'
+                        });
+                    }
                 });
             }
         })();
@@ -1869,5 +1879,99 @@
     <script src="js/ring-field.js" defer></script>
     <!-- Brutalist Percentage WebGL Fluid Dissolve Loader Engine -->
     <script src="js/loading-transition.js?v=20261109b" defer></script>
+
+    <!-- Lenis Smooth Scroll & Pinned Experience Controller -->
+    <script src="js/lenis.min.js"></script>
+    <script>
+    (function() {
+        // Initialize Lenis Smooth Scroll
+        const lenis = new Lenis({
+            duration: 1.2,
+            easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+            smoothWheel: true,
+            touchMultiplier: 1.2
+        });
+        window.__lenis = lenis;
+
+        function raf(time) {
+            lenis.raf(time);
+            requestAnimationFrame(raf);
+        }
+        requestAnimationFrame(raf);
+
+        // Experience Timeline Pinned Vertical Scroll System (Butter-Smooth Lenis Pinned Engine)
+        const track = document.getElementById('experience');
+        const viewport = document.getElementById('experienceViewport');
+        const strip = document.getElementById('experienceStrip');
+        if (!track || !viewport || !strip) return;
+
+        const items = Array.from(strip.querySelectorAll('.timeline-item'));
+        if (!items.length) return;
+
+        let vpHeight = 0;
+        let startY = 0;
+        let endY = 0;
+        let isDesktop = false;
+
+        function measureExperienceMetrics() {
+            isDesktop = window.innerWidth > 900;
+            if (!isDesktop) {
+                strip.style.transform = 'none';
+                return;
+            }
+
+            vpHeight = viewport.clientHeight;
+            startY = 0;
+            // Dock the last card smoothly inside the viewport with comfortable clearance
+            endY = Math.max(0, strip.scrollHeight - vpHeight + 60);
+        }
+
+        measureExperienceMetrics();
+
+        function updateExperiencePinnedScroll() {
+            if (!isDesktop) return;
+
+            const trackRect = track.getBoundingClientRect();
+            const maxScroll = track.offsetHeight - window.innerHeight;
+            if (maxScroll <= 0) return;
+
+            const scrollDistance = -trackRect.top;
+            const progress = Math.min(1, Math.max(0, scrollDistance / maxScroll));
+
+            const currentY = startY + progress * (endY - startY);
+            strip.style.setProperty('transform', 'translate3d(0, ' + (-currentY).toFixed(1) + 'px, 0)', 'important');
+        }
+
+        // Keep hero blur and pinned scroll synced on Lenis scroll tick
+        lenis.on('scroll', () => {
+            const scrollTop = window.scrollY || window.pageYOffset || 0;
+            if (window.heroBlurController) {
+                window.heroBlurController.checkScroll(scrollTop);
+            }
+            updateExperiencePinnedScroll();
+        });
+
+        window.addEventListener('scroll', updateExperiencePinnedScroll, { passive: true });
+        window.addEventListener('resize', () => {
+            measureExperienceMetrics();
+            updateExperiencePinnedScroll();
+        });
+        window.addEventListener('load', () => {
+            measureExperienceMetrics();
+            updateExperiencePinnedScroll();
+        });
+        if (document.fonts && document.fonts.ready) {
+            document.fonts.ready.then(() => {
+                measureExperienceMetrics();
+                updateExperiencePinnedScroll();
+            });
+        }
+        setTimeout(() => {
+            measureExperienceMetrics();
+            updateExperiencePinnedScroll();
+        }, 150);
+        updateExperiencePinnedScroll();
+    })();
+    </script>
 </body>
 </html>

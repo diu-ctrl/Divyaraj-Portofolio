@@ -3325,6 +3325,118 @@ html, body {
                 height: 180px; /* Shrunk mobile container size */
             }
         }
+
+        /* ─── Experience Section (Pinned Vertical Stopped Scroll with Lenis) ─── */
+        .experience-scroll-track {
+            position: relative;
+            height: 480vh;
+            padding: 0 !important;
+            max-width: 100% !important;
+            margin: 0 !important;
+            background: transparent;
+            overflow: visible !important;
+        }
+
+        .experience-sticky-stage {
+            position: sticky;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            height: 100svh;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            padding-top: 40px;
+            box-sizing: border-box;
+            background: var(--bg, #000000);
+            z-index: 10;
+        }
+
+        .experience-sticky-header {
+            width: 100%;
+            max-width: 1240px;
+            padding: 0 4%;
+            text-align: left;
+            margin-bottom: 24px;
+            flex-shrink: 0;
+            z-index: 10;
+            box-sizing: border-box;
+        }
+
+        .experience-sticky-header h2,
+        .experience-sticky-header .display-serif-statement {
+            font-size: 60px !important;
+            line-height: 1.08 !important;
+            margin: 0 !important;
+        }
+
+        .experience-cards-viewport {
+            position: relative;
+            width: 100%;
+            max-width: 1240px;
+            padding: 0 4%;
+            height: calc(100vh - 160px);
+            overflow: hidden;
+            box-sizing: border-box;
+        }
+
+        .experience-cards-strip {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            gap: 28px;
+            will-change: transform;
+            padding-left: 0 !important;
+            padding-bottom: 100px;
+            box-sizing: border-box;
+        }
+
+        .experience-cards-strip .timeline-item {
+            margin-left: 0 !important;
+            margin-bottom: 0 !important;
+            padding: 28px 32px !important;
+            width: 100% !important;
+            box-sizing: border-box;
+            opacity: 1 !important;
+            transform: none !important;
+            transition: border-color 0.3s ease;
+        }
+
+        .experience-cards-strip .timeline-item:hover {
+            border-color: var(--primary) !important;
+            opacity: 1 !important;
+        }
+
+        @media (max-width: 900px) {
+            .experience-scroll-track {
+                height: auto !important;
+                padding: 60px 5% 40px !important;
+                overflow: hidden !important;
+            }
+            .experience-sticky-stage {
+                position: static !important;
+                height: auto !important;
+                overflow: visible !important;
+                padding-top: 0 !important;
+            }
+            .experience-sticky-header {
+                padding: 0 !important;
+                margin-bottom: 36px !important;
+            }
+            .experience-cards-viewport {
+                height: auto !important;
+                overflow: visible !important;
+                padding: 0 !important;
+            }
+            .experience-cards-strip {
+                transform: none !important;
+                padding-bottom: 0 !important;
+                gap: 20px !important;
+            }
+        }
     
 
 
