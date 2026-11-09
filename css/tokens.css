@@ -2043,16 +2043,19 @@ h1 .grad,
     display: inline-block;
 }
 
-/* ─── Globally Remove All Blinking / Pulse Dots ─── */
+/* ─── Globally Remove All Blinking / Pulse / Glowing Dots ─── */
 .header-badge span,
 .blinking-dot,
 .pulse-dot,
 .status-dot,
-.live-pulse-dot {
+.live-pulse-dot,
+.reviews-pulse-dot,
+.live-dot {
     display: none !important;
     opacity: 0 !important;
     visibility: hidden !important;
     animation: none !important;
+    box-shadow: none !important;
     width: 0 !important;
     height: 0 !important;
 }
