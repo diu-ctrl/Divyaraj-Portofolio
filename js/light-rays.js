@@ -82,12 +82,13 @@ void main() {
   float slope = fwidth(angle);
   float depth = distance / uReach;
 
-  float source = exp(-depth * depth * 9.0) * 0.9 + exp(-depth * 3.2) * 0.25;
-  float glowLight = uGlow * source * smoothstep(-0.2, 0.6, cosAngle);
   float spread = pow(max(angle, 0.0), 1.0 / uSpread);
   float lengthFalloff = clamp(1.0 - distance / (uReach * uLength), 0.0, 1.0);
   float fadeFalloff = clamp(1.0 - distance / (uReach * uFade), 0.5, 1.0);
   float envelope = spread * lengthFalloff * fadeFalloff;
+
+  float source = exp(-depth * depth * 9.0) * 0.9 + exp(-depth * 3.2) * 0.25;
+  float glowLight = uGlow * source * envelope * smoothstep(-0.2, 0.6, cosAngle);
   float reveal = uIntensity * uIntro.y * (1.0 - smoothstep(uIntro.x - 0.35, uIntro.x, depth));
   if ((envelope * 1.6 + glowLight) * reveal < 0.0015) {
     fragColor = vec4(0.0);
@@ -140,7 +141,7 @@ void main() {
   }
 
   float near = clamp(1.2 - distance / (uResolution.y / uScale), 0.0, 1.0);
-  vec3 tint = mix(vec3(0.9), vec3(0.1, 0.3, 0.5) + near * vec3(0.8, 0.6, 0.5), uAtmosphere);
+  vec3 tint = mix(vec3(1.0), vec3(0.9, 0.95, 1.0), uAtmosphere);
   float gray = dot(tint, vec3(0.299, 0.587, 0.114));
   vec3 hue = max(mix(vec3(gray), tint, uSaturation), 0.0) * uColor;
 
