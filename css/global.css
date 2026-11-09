@@ -4503,23 +4503,42 @@ html, body {
         .reviews-left-col {
             width: 100%;
             max-width: 540px;
-            min-height: 620px;
-            height: 620px;
+            min-height: 720px;
             display: flex;
             flex-direction: column;
-            justify-content: center;
+            justify-content: flex-start;
             position: relative;
+            transform: translateY(-24px);
         }
 
         .reviews-info-left {
             display: flex;
             flex-direction: column;
-            justify-content: center;
+            justify-content: flex-start;
             align-items: flex-start;
-            gap: 26px;
+            gap: 20px;
             width: 100%;
             height: 100%;
             animation: fadeInReviews 0.3s ease-out;
+        }
+
+        /* 3D Interactive Lanyard ID Badge Container */
+        .reviews-lanyard-wrap {
+            width: 100%;
+            height: 440px;
+            position: relative;
+            margin-top: 4px;
+            border-radius: 16px;
+            overflow: hidden;
+            background: transparent;
+            touch-action: none;
+        }
+
+        .lanyard-canvas {
+            display: block;
+            width: 100%;
+            height: 100%;
+            touch-action: none;
         }
 
         /* Swap view when booking is active */
@@ -4656,6 +4675,11 @@ html, body {
                 max-width: 100% !important;
                 height: auto !important;
                 min-height: auto !important;
+                transform: none !important;
+            }
+            .reviews-lanyard-wrap {
+                height: 350px !important;
+                margin-top: 10px !important;
             }
             #testimonials-3d-demo,
             .reviews-3d-column-wrap {

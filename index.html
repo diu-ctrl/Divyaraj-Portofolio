@@ -1402,6 +1402,8 @@
                         <a href="https://wa.me/qr/KQJFSZ2WY5FSO1" target="_blank" rel="noopener noreferrer" class="btn-brutalist btn-brutalist-outline">WhatsApp</a>
                     </div>
 
+                    <!-- Interactive 3D Lanyard ID Badge -->
+                    <div id="reviewsLanyardContainer" class="reviews-lanyard-wrap" aria-label="Divyaraj Chauhan Interactive 3D ID Badge"></div>
                 </div>
 
                 <!-- View 2: Inline Calendly Interactive Booking Window (In-Place Swap) -->
@@ -3352,9 +3354,41 @@
             closeBtn.addEventListener('click', function(e) {
                 e.preventDefault();
                 leftCol.classList.remove('booking-active');
+                if (window.lanyardInstance) {
+                    window.lanyardInstance.resize();
+                    window.lanyardInstance.start();
+                }
             });
         }
     })();
+    </script>
+    <!-- 3D Interactive Lanyard ID Badge Controller -->
+    <script src="js/lanyard.js?v=20261109a" defer></script>
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const lanyardContainer = document.getElementById('reviewsLanyardContainer');
+        if (lanyardContainer && window.initLanyard) {
+            window.lanyardInstance = window.initLanyard(lanyardContainer, {
+                frontPhoto: 'images/divyaraj pp 2.png',
+                logo: 'images/dc-logo.png',
+                cardColor: '#0e0f12',
+                strapColor: '#141416',
+                metal: 'silver',
+                finish: 'glossy',
+                orientation: 'portrait',
+                anchor: 0.38,
+                size: 0.58,
+                strapLength: 0.48,
+                strapWidth: 0.8,
+                gravity: 1,
+                damping: 0.5,
+                elasticity: 0.5,
+                breeze: 0.35,
+                interactive: true,
+                intro: true
+            });
+        }
+    });
     </script>
     <!-- Liquid Ink Dissolve Loading Transition -->
     <script src="js/side-rays.js?v=20261108a" defer></script>
