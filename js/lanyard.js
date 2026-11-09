@@ -470,16 +470,13 @@ if (foilStrength > 0.0) {
     ctx.lineWidth = 1.5;
     ctx.stroke();
 
-    // Top Left: DC Logo (crisp pure white)
+    // Top Left: DC Logo (transparent PNG with white mark)
     if (logo) {
       ctx.save();
       const logoSize = 82;
       const logoX = 72;
       const logoY = 72;
       ctx.drawImage(logo, logoX, logoY, logoSize, logoSize);
-      ctx.globalCompositeOperation = 'source-in';
-      ctx.fillStyle = '#ffffff';
-      ctx.fillRect(logoX, logoY, logoSize, logoSize);
       ctx.restore();
     }
 
@@ -530,16 +527,13 @@ if (foilStrength > 0.0) {
     ctx.lineWidth = 1.5;
     ctx.stroke();
 
-    // Centerpiece: DC Logo slightly bigger (pure white, crisp visibility)
+    // Centerpiece: DC Logo slightly bigger (crisp transparent white mark)
     if (logo) {
       ctx.save();
       const logoSize = 440;
       const logoX = (w - logoSize) / 2;
       const logoY = (h - logoSize) / 2 - 30;
       ctx.drawImage(logo, logoX, logoY, logoSize, logoSize);
-      ctx.globalCompositeOperation = 'source-in';
-      ctx.fillStyle = 'rgba(255, 255, 255, 0.95)';
-      ctx.fillRect(logoX, logoY, logoSize, logoSize);
       ctx.restore();
     }
 
@@ -583,16 +577,13 @@ if (foilStrength > 0.0) {
       ctx.fillRect(across - 12.5, y, 2.5, 6);
     }
 
-    // Exactly ONE DC Logo in the middle center of the strap (slightly bigger, pure white)
+    // Exactly ONE DC Logo in the middle center of the strap (crisp transparent white mark)
     if (image) {
       const logoSize = 92;
       const logoX = (across - logoSize) / 2;
       const logoY = (along - logoSize) / 2;
       ctx.save();
       ctx.drawImage(image, logoX, logoY, logoSize, logoSize);
-      ctx.globalCompositeOperation = 'source-in';
-      ctx.fillStyle = '#ffffff';
-      ctx.fillRect(logoX, logoY, logoSize, logoSize);
       ctx.restore();
     }
 
@@ -905,10 +896,10 @@ if (foilStrength > 0.0) {
     const environment = buildEnvironment(THREE, renderer);
     scene.environment = environment.texture;
     const camera = new THREE.PerspectiveCamera(FOV, 1, 0.1, 200);
-    const ambientLight = new THREE.AmbientLight(0xffffff, 1.1);
-    const keyLight = new THREE.DirectionalLight(0xffffff, 2.2);
+    const ambientLight = new THREE.AmbientLight(0xffffff, 0.25);
+    const keyLight = new THREE.DirectionalLight(0xffffff, 1.5);
     keyLight.position.set(-2.5, 4, 6);
-    const fillLight = new THREE.DirectionalLight(0xffffff, 0.8);
+    const fillLight = new THREE.DirectionalLight(0xffffff, 0.45);
     fillLight.position.set(3, -1, 4);
     scene.add(ambientLight, keyLight, fillLight);
 
