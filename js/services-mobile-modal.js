@@ -11,7 +11,7 @@
             points: [
                 "Content Strategy & Ideation",
                 "Calendar Scheduling & Posting",
-                "Organic Pipeline Audits",
+                "Organic Reach & Profile Audits",
                 "Community Engagement",
                 "Performance Analytics"
             ]
@@ -22,7 +22,7 @@
             image: "images/lanes/digital-storefronts.jpg",
             points: [
                 "Custom Design Mockups",
-                "Responsive Web Engineering",
+                "Responsive Web Development",
                 "Booking & Reservation Systems",
                 "Custom Checkout Design",
                 "Speed & SEO Optimization"
@@ -34,10 +34,10 @@
             image: "images/lanes/ai-cinema.jpg",
             points: [
                 "Conceptual Style Frames",
-                "AI Cinematic Synthesis",
-                "Sound FX & Score Synthesis",
+                "AI Video Generation",
+                "Sound Design & Music Scoring",
                 "Color Grading & Editing",
-                "Generative Brand Films"
+                "AI Commercials & Brand Films"
             ]
         },
         4: {
@@ -45,11 +45,11 @@
             title: "Full Campaigns",
             image: "images/lanes/full-campaigns.jpg",
             points: [
-                "End-to-End Asset Creation",
-                "Multi-Channel Execution",
+                "Complete Creative Production",
+                "Social & Web Launch Strategy",
                 "Brand Identity Guidelines",
-                "Comprehensive Asset Delivery",
-                "Dedicated Project Pipeline"
+                "Full Asset Delivery Pack",
+                "Direct 1-on-1 Collaboration"
             ]
         }
     };
