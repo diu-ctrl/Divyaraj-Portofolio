@@ -152,7 +152,26 @@
         return true;
       }
 
-      // If user came with a section hash (e.g. /#portfolio, /#contact), skip loader
+      // If documentElement already explicitly marked no-loader
+      if (document.documentElement.classList.contains('no-loader')) {
+        return false;
+      }
+
+      const path = (window.location.pathname || '/').replace(/\/+$/, '') || '/';
+      const cleanPath = path.toLowerCase();
+
+      // ONLY allow on hero of home ('/' or '/index.html') or about ('/about' or '/about.html')
+      const isAllowedPage = (cleanPath === '/' || cleanPath === '/index.html' || cleanPath === '/about' || cleanPath === '/about.html');
+      if (!isAllowedPage) {
+        return false;
+      }
+
+      // Never run on contact route
+      if (cleanPath === '/contact' || cleanPath === '/contact.html' || cleanPath.includes('contact')) {
+        return false;
+      }
+
+      // If user came with a section hash other than hero, skip
       const hash = window.location.hash;
       if (hash && hash !== '#hero' && hash !== '#' && hash !== '#top') {
         return false;
@@ -176,36 +195,37 @@
         return false;
       }
 
-      // If user refreshed the page:
-      if (navType === 'reload') {
-        // Only play if on hero section (near top)
-        const currentScroll = window.scrollY || window.pageYOffset || 0;
-        if (currentScroll > 300) {
-          return false;
-        }
-        return true;
-      }
-
-      // Check explicit session skip flag (set when tapping "Back to Portfolio" or brand navigation buttons)
+      // Check explicit session skip flag
       if (sessionStorage.getItem('dc_skip_loader') === 'true') {
         sessionStorage.removeItem('dc_skip_loader');
         return false;
       }
 
-      // Check if referrer is internal (user tapped a link from a subpage on divyarajchauhan.in)
+      // Check if referrer is internal (user tapped an internal link on divyarajchauhan.in)
       const ref = document.referrer;
       if (ref && navType !== 'reload') {
         try {
           const refUrl = new URL(ref);
           if (refUrl.origin === window.location.origin) {
-            // Arrived from within the site -> DO NOT PLAY
             return false;
           }
         } catch (e) {}
       }
 
-      // First time landing on the portfolio -> PLAY
-      return true;
+      // If reload: ONLY play if user was on the Hero section (< 120px) before reload
+      if (navType === 'reload') {
+        const storedScroll = parseInt(sessionStorage.getItem('dc_scroll_' + cleanPath) || '0', 10);
+        const liveScroll = window.scrollY || window.pageYOffset || 0;
+        const activeSec = sessionStorage.getItem('dc_active_section') || '';
+
+        if (storedScroll > 120 || liveScroll > 120 || (activeSec && activeSec !== 'hero')) {
+          return false;
+        }
+        return true;
+      }
+
+      // First time landing on hero of home or about
+      return document.documentElement.classList.contains('has-loader');
     }
 
     initGL() {
@@ -564,7 +584,10 @@
       }
       if (this.loaderEl) {
         this.loaderEl.style.display = 'none';
+        try { this.loaderEl.remove(); } catch(e) {}
       }
+      document.documentElement.classList.remove('has-loader');
+      document.documentElement.classList.add('no-loader');
       if (this.heroContainer) {
         this.heroContainer.classList.remove('hero-loading-primed');
         this.heroContainer.classList.add('hero-animated-in');

@@ -2,15 +2,15 @@
    INK LOADER & FLUID DISSOLVE TRANSITION (divyarajchauhan.in)
    ═══════════════════════════════════════════════════════════════════════════════ */
 
-/* Full-Screen Pure Black Loader Overlay */
+/* Full-Screen Pure Black Loader Overlay - HIDDEN BY DEFAULT to prevent any 0% flash */
 #loader-overlay {
+    display: none;
     position: fixed;
     inset: 0;
     width: 100vw;
     height: 100vh;
     background-color: #000000;
     z-index: 99999;
-    display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
@@ -18,6 +18,11 @@
     user-select: none;
     will-change: opacity;
     transition: opacity 0.3s ease;
+}
+
+/* ONLY display when html has class 'has-loader' AND does not have 'no-loader' */
+html.has-loader:not(.no-loader) #loader-overlay {
+    display: flex !important;
 }
 
 /* Brutalist Mono Metadata Tag above Counter */
@@ -70,7 +75,7 @@
     gap: 8px;
 }
 
-/* Full-Screen WebGL FBM Dissolve Canvas */
+/* Full-Screen WebGL FBM Dissolve Canvas - HIDDEN BY DEFAULT */
 #loader-gl-canvas {
     position: fixed;
     top: 0;
@@ -79,55 +84,85 @@
     height: 100vh;
     z-index: 99998;
     pointer-events: none;
-    display: block;
+    display: none;
+}
+
+html.has-loader:not(.no-loader) #loader-gl-canvas {
+    display: block !important;
 }
 
 /* ─── Hero Section Component Revealing Choreography ─── */
 
-/* 1. Primed / Waiting state (hidden behind the ink) */
-.hero-loading-primed .hero-3d-gallery-scene {
+/* 1. Primed / Waiting state (hidden behind the ink) - ONLY when has-loader is actively active */
+html.has-loader:not(.no-loader) .hero-loading-primed .hero-3d-gallery-scene {
     opacity: 0 !important;
     filter: blur(36px) !important;
     transform: scale(0.92) !important;
     transition: none !important;
 }
 
-.hero-loading-primed .hero-title {
+html.has-loader:not(.no-loader) .hero-loading-primed .hero-title {
     opacity: 0 !important;
     transform: translateY(48px) !important;
     filter: blur(14px) !important;
     transition: none !important;
 }
 
-.hero-loading-primed .hero-subtitle-mono {
+html.has-loader:not(.no-loader) .hero-loading-primed .hero-subtitle-mono {
     opacity: 0 !important;
     transform: translateY(24px) !important;
     filter: blur(10px) !important;
     transition: none !important;
 }
 
-.hero-loading-primed .hero-top-meta {
+html.has-loader:not(.no-loader) .hero-loading-primed .hero-top-meta {
     opacity: 0 !important;
     transform: translateY(-16px) !important;
     transition: none !important;
 }
 
-.hero-loading-primed .hero-bottom-meta {
+html.has-loader:not(.no-loader) .hero-loading-primed .hero-bottom-meta {
     opacity: 0 !important;
     transform: translateY(16px) !important;
     transition: none !important;
 }
 
-.hero-loading-primed ~ #limelight-nav-container,
-.hero-loading-primed ~ * .limelight-nav-container,
-.hero-loading-primed .limelight-nav-container,
-body:has(.hero-loading-primed) .limelight-nav-container {
+html.has-loader:not(.no-loader) .hero-loading-primed ~ #limelight-nav-container,
+html.has-loader:not(.no-loader) .hero-loading-primed ~ * .limelight-nav-container,
+html.has-loader:not(.no-loader) .hero-loading-primed .limelight-nav-container,
+html.has-loader:not(.no-loader) body:has(.hero-loading-primed) .limelight-nav-container {
     opacity: 0 !important;
     pointer-events: none !important;
     transition: none !important;
 }
 
-/* 2. Animated-In State (orchestrated staggered bloom as ink opens) */
+/* 2. When has-loader is NOT present or when no-loader is present: Hero is 100% visible immediately */
+html:not(.has-loader) .hero-loading-primed .hero-3d-gallery-scene,
+html:not(.has-loader) .hero-loading-primed .hero-title,
+html:not(.has-loader) .hero-loading-primed .hero-subtitle-mono,
+html:not(.has-loader) .hero-loading-primed .hero-top-meta,
+html:not(.has-loader) .hero-loading-primed .hero-bottom-meta,
+html:not(.has-loader) .limelight-nav-container,
+html.no-loader .hero-loading-primed .hero-3d-gallery-scene,
+body.no-loader .hero-loading-primed .hero-3d-gallery-scene,
+html.no-loader .hero-loading-primed .hero-title,
+body.no-loader .hero-loading-primed .hero-title,
+html.no-loader .hero-loading-primed .hero-subtitle-mono,
+body.no-loader .hero-loading-primed .hero-subtitle-mono,
+html.no-loader .hero-loading-primed .hero-top-meta,
+body.no-loader .hero-loading-primed .hero-top-meta,
+html.no-loader .hero-loading-primed .hero-bottom-meta,
+body.no-loader .hero-loading-primed .hero-bottom-meta,
+html.no-loader .limelight-nav-container,
+body.no-loader .limelight-nav-container {
+    opacity: 1 !important;
+    pointer-events: auto !important;
+    filter: none !important;
+    transform: none !important;
+    transition: none !important;
+}
+
+/* 3. Animated-In State (orchestrated staggered bloom as ink opens) */
 .hero-animated-in .hero-3d-gallery-scene {
     opacity: 1 !important;
     filter: blur(0px) !important;
@@ -190,30 +225,6 @@ body.no-loader #loader-gl-canvas {
     visibility: hidden !important;
     pointer-events: none !important;
     opacity: 0 !important;
-}
-
-html.no-loader .hero-loading-primed .hero-3d-gallery-scene,
-body.no-loader .hero-loading-primed .hero-3d-gallery-scene {
-    opacity: 1 !important;
-    filter: none !important;
-    transform: none !important;
-    transition: none !important;
-}
-
-html.no-loader .hero-loading-primed .hero-title,
-body.no-loader .hero-loading-primed .hero-title,
-html.no-loader .hero-loading-primed .hero-subtitle-mono,
-body.no-loader .hero-loading-primed .hero-subtitle-mono,
-html.no-loader .hero-loading-primed .hero-top-meta,
-body.no-loader .hero-loading-primed .hero-top-meta,
-html.no-loader .hero-loading-primed .hero-bottom-meta,
-body.no-loader .hero-loading-primed .hero-bottom-meta,
-html.no-loader .limelight-nav-container,
-body.no-loader .limelight-nav-container {
-    opacity: 1 !important;
-    pointer-events: auto !important;
-    filter: none !important;
-    transition: none !important;
 }
 
 /* ─── Interactive Replay & Test Dock (Visible on /loading1 only) ─── */

@@ -246,6 +246,18 @@
                 item.classList.remove('active');
             }
         });
+
+        try {
+            const currentPath = (window.location.pathname || '/').replace(/\/+$/, '') || '/';
+            sessionStorage.setItem('dc_scroll_' + currentPath.toLowerCase(), String(window.scrollY || 0));
+            if (window.scrollY < 120) {
+                sessionStorage.setItem('dc_active_section', 'hero');
+            } else if (activeIndex === 2) {
+                sessionStorage.setItem('dc_active_section', 'contact');
+            } else {
+                sessionStorage.setItem('dc_active_section', 'content');
+            }
+        } catch(e) {}
     }
 
     // Navigation links hover & click handlers

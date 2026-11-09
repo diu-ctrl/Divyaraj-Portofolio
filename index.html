@@ -26,52 +26,95 @@
     <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital,wght@0,400;1,400&family=Inter+Tight:ital,wght@0,100..900;1,100..900&family=Space+Mono:wght@700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/css/tokens.css?v=20261109a">
     <link rel="stylesheet" href="css/navigation.css">
-    <link rel="stylesheet" href="css/loading-transition.css?v=20261108f">
+        <link rel="stylesheet" href="css/loading-transition.css?v=20261109b">
     <link rel="stylesheet" href="css/side-rays.css?v=20261108a">
     <script>
-    // Immediate early-check in head to eliminate flash of loader when returning from subpages
+    // Immediate early-check in head: ONLY run loader on Hero of home (/) or about (/about)
     (function() {
-      var hash = window.location.hash;
-      if (hash && hash !== '#hero' && hash !== '#' && hash !== '#top') {
-        document.documentElement.classList.add('no-loader');
-        return;
-      }
-      var navEntries = performance.getEntriesByType && performance.getEntriesByType('navigation');
-      var navType = (navEntries && navEntries[0]) ? navEntries[0].type : '';
-      var isReload = (navType === 'reload') || (performance.navigation && performance.navigation.type === 1);
-      var isBackForward = (navType === 'back_forward') || (performance.navigation && performance.navigation.type === 2);
-      
-      if (isBackForward) {
-        document.documentElement.classList.add('no-loader');
-        return;
-      }
+      try {
+        var path = (window.location.pathname || '/').replace(/\/+$/, '') || '/';
+        var cleanPath = path.toLowerCase();
 
-      if (sessionStorage.getItem('dc_skip_loader') === 'true') {
-        sessionStorage.removeItem('dc_skip_loader');
-        document.documentElement.classList.add('no-loader');
-        return;
-      }
-
-      var ref = document.referrer;
-      if (ref && !isReload) {
-        try {
-          var refUrl = new URL(ref);
-          if (refUrl.origin === window.location.origin) {
-            document.documentElement.classList.add('no-loader');
-            return;
-          }
-        } catch(e) {}
-      }
-
-      if (isReload) {
-        var scrollY = window.scrollY || window.pageYOffset || 0;
-        if (scrollY > 300) {
+        // 1. Only allow on home ('/' or '/index.html') or about ('/about' or '/about.html')
+        var isAllowedPage = (cleanPath === '/' || cleanPath === '/index.html' || cleanPath === '/about' || cleanPath === '/about.html');
+        if (!isAllowedPage) {
           document.documentElement.classList.add('no-loader');
           return;
         }
-      }
 
-      document.documentElement.classList.add('has-loader');
+        // 2. If path is /contact (rewritten by Vercel to index.html), NEVER show loader
+        if (cleanPath === '/contact' || cleanPath === '/contact.html' || cleanPath.indexOf('contact') !== -1) {
+          document.documentElement.classList.add('no-loader');
+          return;
+        }
+
+        // 3. If there is a section hash other than hero (e.g. #reviews, #web-showcase, #contact)
+        var hash = window.location.hash;
+        if (hash && hash !== '#hero' && hash !== '#' && hash !== '#top') {
+          document.documentElement.classList.add('no-loader');
+          return;
+        }
+
+        // 4. Check navigation type
+        var navEntries = performance.getEntriesByType && performance.getEntriesByType('navigation');
+        var navType = (navEntries && navEntries[0]) ? navEntries[0].type : '';
+        var isReload = (navType === 'reload') || (performance.navigation && performance.navigation.type === 1);
+        var isBackForward = (navType === 'back_forward') || (performance.navigation && performance.navigation.type === 2);
+
+        if (isBackForward) {
+          document.documentElement.classList.add('no-loader');
+          return;
+        }
+
+        if (sessionStorage.getItem('dc_skip_loader') === 'true') {
+          sessionStorage.removeItem('dc_skip_loader');
+          document.documentElement.classList.add('no-loader');
+          return;
+        }
+
+        var ref = document.referrer;
+        if (ref && !isReload) {
+          try {
+            var refUrl = new URL(ref);
+            if (refUrl.origin === window.location.origin) {
+              document.documentElement.classList.add('no-loader');
+              return;
+            }
+          } catch(e) {}
+        }
+
+        // 5. On Reload: Check if user was scrolled down past hero (threshold: 120px) or in another section
+        if (isReload) {
+          var storedScroll = parseInt(sessionStorage.getItem('dc_scroll_' + cleanPath) || '0', 10);
+          var activeSec = sessionStorage.getItem('dc_active_section') || '';
+          if (storedScroll > 120 || (activeSec && activeSec !== 'hero')) {
+            document.documentElement.classList.add('no-loader');
+            return;
+          }
+        }
+
+        // Passed all checks: user is on HERO section of home or about
+        document.documentElement.classList.add('has-loader');
+      } catch(err) {
+        document.documentElement.classList.add('no-loader');
+      }
+    })();
+
+    // Continuous scroll & section state recording to ensure refreshes know exactly which section was active
+    (function() {
+      function recordScrollState() {
+        try {
+          var y = window.scrollY || window.pageYOffset || 0;
+          var path = (window.location.pathname || '/').replace(/\/+$/, '') || '/';
+          sessionStorage.setItem('dc_scroll_' + path.toLowerCase(), String(y));
+          if (y < 120) {
+            sessionStorage.setItem('dc_active_section', 'hero');
+          }
+        } catch(e) {}
+      }
+      window.addEventListener('scroll', recordScrollState, { passive: true });
+      window.addEventListener('pagehide', recordScrollState, { passive: true });
+      window.addEventListener('beforeunload', recordScrollState, { passive: true });
     })();
     </script>
     <!-- Preload Hero 3D Gallery Textures for Instant Smooth Blur-In -->
@@ -3389,6 +3432,6 @@
     </script>
     <!-- Liquid Ink Dissolve Loading Transition -->
     <script src="js/side-rays.js?v=20261108a" defer></script>
-    <script src="js/loading-transition.js?v=20261108g"></script>
+    <script src="js/loading-transition.js?v=20261109a"></script>
 </body>
 </html>
