@@ -1586,16 +1586,27 @@ if (foilStrength > 0.0) {
 
     const resize = () => {
       if (!container) return;
-      view.width = Math.max(1, container.clientWidth);
-      view.height = Math.max(1, container.clientHeight);
+      const baseWidth = Math.max(1, container.clientWidth);
+      const baseHeight = Math.max(1, container.clientHeight);
+      // Remove side borders/clipping:
+      // The lanyard strap + badge has a maximum physical length of ~410px from anchor.
+      // Providing generous horizontal clearance on both sides ensures the badge is never
+      // clipped along the left or right edges during full horizontal swinging or pointer dragging.
+      const winWidth = typeof window !== 'undefined' ? window.innerWidth : baseWidth;
+      const sideClearance = Math.max(450, Math.min(800, Math.round((winWidth - baseWidth) * 0.5)));
+      view.width = baseWidth + sideClearance * 2;
+      view.height = baseHeight;
       renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
       renderer.setSize(view.width, view.height, false);
+      canvas.style.width = view.width + 'px';
+      canvas.style.height = view.height + 'px';
       apply();
       render();
     };
 
     const resizeObserver = new ResizeObserver(resize);
     resizeObserver.observe(container);
+    window.addEventListener('resize', resize);
 
     const intersectionObserver = new IntersectionObserver(([entry]) => {
       visible = entry.isIntersecting;
@@ -1615,6 +1626,7 @@ if (foilStrength > 0.0) {
         alive = false;
         cancelAnimationFrame(raf);
         resizeObserver.disconnect();
+        window.removeEventListener('resize', resize);
         intersectionObserver.disconnect();
         document.removeEventListener('visibilitychange', onVisibility);
         canvas.removeEventListener('pointerdown', onPointerDown);
