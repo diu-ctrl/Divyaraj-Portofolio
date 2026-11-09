@@ -862,11 +862,33 @@ html, body {
             margin: 0 !important;
             padding: 120px 0 80px !important;
             position: relative;
+            overflow: hidden !important;
             z-index: 10;
+        }
+
+        .light-rays-bg {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .light-rays-bg canvas {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            display: block;
+            pointer-events: none;
         }
 
         .about-grid-top,
         .about-pillars {
+            position: relative;
+            z-index: 2;
             max-width: 1200px;
             margin-left: auto;
             margin-right: auto;
