@@ -55,7 +55,7 @@
   ],
   "headers": [
     {
-      "source": "/(favicon.*|apple-touch-icon.*|android-chrome.*|dc-favicon.*|dc-apple-touch-icon.*|dc-android-chrome.*|site.webmanifest)",
+      "source": "/(favicon.*|apple-touch-icon.*|android-chrome.*|dc-favicon.*|dc-apple-touch-icon.*|dc-android-chrome.*|site.webmanifest|.*share-card.*|.*og-image.*)",
       "headers": [
         {
           "key": "Cache-Control",
