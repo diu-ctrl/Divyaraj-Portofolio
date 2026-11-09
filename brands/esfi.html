@@ -752,19 +752,10 @@
             width: 100% !important;
             height: 100% !important;
             object-fit: cover !important;
-            filter: grayscale(100%) sepia(100%) hue-rotate(330deg) saturate(800%) contrast(180%) brightness(90%) !important;
+            filter: none !important;
         }
 
-        .video-overlay-grid {
-            position: absolute !important;
-            inset: 0 !important;
-            pointer-events: none !important;
-            background-image: 
-                linear-gradient(rgba(18, 18, 18, 0.45) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(18, 18, 18, 0.45) 1px, transparent 1px) !important;
-            background-size: 3px 3px !important;
-            z-index: 2 !important;
-        }
+        .video-overlay-grid { display: none !important; width: 0 !important; height: 0 !important; opacity: 0 !important; pointer-events: none !important; }
 
         @media (max-width: 900px) {
             .hero {

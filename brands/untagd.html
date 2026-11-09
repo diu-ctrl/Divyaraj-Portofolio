@@ -42,7 +42,7 @@
         .meta-box-val { font-size:0.95rem; font-weight:700; color:#ffffff; }
         .video-brutalist-frame { position:relative; width:100%; aspect-ratio:16/9; background:#000000; border:1px solid var(--border); overflow:hidden; }
         .hero-video-element { width:100%; height:100%; object-fit:cover; display:block; }
-        .video-overlay-grid { position:absolute; inset:0; pointer-events:none; background-image:linear-gradient(rgba(255,255,255,0.03) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,0.03) 1px,transparent 1px); background-size:8px 8px; z-index:2; }
+        .video-overlay-grid { display: none !important; width: 0 !important; height: 0 !important; opacity: 0 !important; pointer-events: none !important; }
         .video-caption-bar { position:absolute; bottom:0; left:0; right:0; background:rgba(0,0,0,0.85); border-top:1px solid var(--border); padding:10px 16px; display:flex; justify-content:space-between; align-items:center; z-index:5; font-family:var(--font-sans); font-size:0.72rem; font-weight:500; letter-spacing:0.02em; color:var(--text-muted); }
         .video-caption-bar strong { color:#ffffff; }
         .divider { width:100%; height:1px; background:var(--border); margin:60px 0; }
@@ -449,7 +449,6 @@
             <div class="hero-right reveal">
                 <div class="video-brutalist-frame">
                     <video src="UNTAGD/Videos/212 all terrains.mp4" poster="../images/212-all-terrains-thumb.jpg" autoplay loop muted playsinline class="hero-video-element" controls></video>
-                    <div class="video-overlay-grid"></div>
                     <div class="video-caption-bar">
                         <span><strong>212 All Terrains</strong> · Commercial Ad Film</span>
                         <span>Cinematic Master</span>
@@ -598,7 +597,6 @@
                 <div class="work-card reveal">
                     <div class="work-card-media">
                         <video src="UNTAGD/Videos/212 all terrains.mp4" controls playsinline preload="metadata" poster="../images/212-all-terrains-thumb.jpg"></video>
-                        <div class="video-overlay-grid"></div>
                     </div>
                     <div class="work-card-content">
                         <div>
@@ -620,7 +618,6 @@
                 <div class="work-card reveal">
                     <div class="work-card-media">
                         <video src="UNTAGD/Videos/212 Cinematic.mp4" controls playsinline preload="metadata" poster="../images/212-cinematic-thumb.jpg"></video>
-                        <div class="video-overlay-grid"></div>
                     </div>
                     <div class="work-card-content">
                         <div>
@@ -642,7 +639,6 @@
                 <div class="work-card reveal">
                     <div class="work-card-media">
                         <video src="UNTAGD/Videos/aston martin hori 2.mp4" controls playsinline preload="metadata" poster="../images/aston-martin-thumb.jpg"></video>
-                        <div class="video-overlay-grid"></div>
                     </div>
                     <div class="work-card-content">
                         <div>
@@ -664,7 +660,6 @@
                 <div class="work-card reveal">
                     <div class="work-card-media">
                         <video src="UNTAGD/Videos/breaking bad 3.mp4" poster="../images/breaking-bad-thumb.jpg" controls playsinline preload="metadata"></video>
-                        <div class="video-overlay-grid"></div>
                     </div>
                     <div class="work-card-content">
                         <div>
@@ -686,7 +681,6 @@
                 <div class="work-card reveal">
                     <div class="work-card-media">
                         <video src="UNTAGD/Videos/Man and dog hanging on a pole.mp4" controls playsinline preload="metadata" poster="../images/wind-pole-reel-thumb.jpg"></video>
-                        <div class="video-overlay-grid"></div>
                     </div>
                     <div class="work-card-content">
                         <div>
@@ -708,7 +702,6 @@
                 <div class="work-card reveal">
                     <div class="work-card-media">
                         <video src="UNTAGD/Videos/spidey4.mp4" poster="../images/spiderman-multiverse-thumb.jpg" controls playsinline preload="metadata"></video>
-                        <div class="video-overlay-grid"></div>
                     </div>
                     <div class="work-card-content">
                         <div>

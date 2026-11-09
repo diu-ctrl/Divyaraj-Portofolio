@@ -673,8 +673,21 @@ body::before {
 }
 
 /* Ensure accessible tap target sizes for interactive elements */
-button, input[type="submit"], input[type="button"], .btn-b1, .btn-b2 {
+button:not(.card-mute-btn):not(.phone-mute-btn):not(.reel-mute-btn):not(.control-btn), input[type="submit"], input[type="button"], .btn-b1, .btn-b2 {
   min-height: 44px;
+}
+
+.card-mute-btn, .phone-mute-btn, .reel-mute-btn, .control-btn {
+  width: 36px !important;
+  height: 36px !important;
+  min-width: 36px !important;
+  min-height: 36px !important;
+  max-width: 36px !important;
+  max-height: 36px !important;
+  border-radius: 50% !important;
+  aspect-ratio: 1 / 1 !important;
+  box-sizing: border-box !important;
+  padding: 0 !important;
 }
 
 
