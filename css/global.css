@@ -484,7 +484,7 @@ html, body {
             font-family: var(--font-sans) !important;
             font-size: 12px !important;
             font-weight: 500 !important;
-            color: #BDBDBF !important;
+            color: #000000 !important;
             letter-spacing: 0.04em !important;
             line-height: 1.4 !important;
             margin: 0;
@@ -492,7 +492,7 @@ html, body {
         }
 
         .stat-suffix {
-            color: #BDBDBF !important;
+            color: #000000 !important;
         }
 
         @media (max-width: 768px) and (min-width: 481px) {
@@ -878,6 +878,11 @@ html, body {
         .about-rays-wrapper .about-pillars {
             position: relative;
             z-index: 2;
+        }
+
+        .about-rays-wrapper .stat-lbl,
+        .about-rays-wrapper .stat-suffix {
+            color: #000000 !important;
         }
 
         .about-rays-wrapper .stats-section {
