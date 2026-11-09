@@ -1964,6 +1964,18 @@ html, body {
             margin-top: 4px !important;
         }
 
+        .social-connect-label {
+            font-family: var(--font-sans, 'Inter Tight', sans-serif);
+            font-size: 12px !important;
+            color: #464B3A !important;
+            font-weight: 500 !important;
+            letter-spacing: 0.02em !important;
+            white-space: nowrap !important;
+            line-height: 1 !important;
+            user-select: none;
+            margin-right: 6px !important;
+        }
+
         .social-icon-btn {
             display: inline-flex;
             align-items: center;
