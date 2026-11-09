@@ -444,12 +444,11 @@ if (foilStrength > 0.0) {
   };
 
   /**
-   * Minimalist High-Resolution Front Face (White Card Edition)
-   * Inspired by React-Bits Lanyard reference:
-   * - Crisp white card body
-   * - Top Left: Subtle DC logo
-   * - Top Right: "Divyaraj" in clean typography
-   * - Center till Bottom Border: Portrait cutout with white paper-cut sticker border
+   * Minimalist High-Resolution Front Face (Dark Obsidian Identity Edition)
+   * - Sleek dark obsidian gradient base
+   * - Top Left: Crisp pure white DC logo
+   * - Top Right: "Divyaraj" in pure white typography
+   * - Center till Bottom Border: User B&W cutout with white paper-cut sticker border
    * - Zero clutter / no congested text
    */
   const paintFrontCard = (canvas, photo, logo, color) => {
@@ -457,42 +456,45 @@ if (foilStrength > 0.0) {
     if (!ctx) return;
     const w = canvas.width, h = canvas.height;
 
-    // Pure white base card background
-    ctx.fillStyle = '#ffffff';
+    // Dark obsidian gradient background
+    const bgGrad = ctx.createLinearGradient(0, 0, 0, h);
+    bgGrad.addColorStop(0, '#15161a');
+    bgGrad.addColorStop(0.5, '#0e0f12');
+    bgGrad.addColorStop(1, '#070709');
+    ctx.fillStyle = bgGrad;
     ctx.fillRect(0, 0, w, h);
 
     // Subtle edge hairline inset for physical realism
     drawCanvasRoundedRect(ctx, 24, 24, w - 48, h - 48, 28);
-    ctx.strokeStyle = 'rgba(0, 0, 0, 0.06)';
+    ctx.strokeStyle = 'rgba(255, 255, 255, 0.12)';
     ctx.lineWidth = 1.5;
     ctx.stroke();
 
-    // Top Left: DC Logo (subtle charcoal / graphite tint)
+    // Top Left: DC Logo (crisp pure white)
     if (logo) {
       ctx.save();
-      const logoSize = 78;
+      const logoSize = 82;
       const logoX = 72;
       const logoY = 72;
       ctx.drawImage(logo, logoX, logoY, logoSize, logoSize);
       ctx.globalCompositeOperation = 'source-in';
-      ctx.fillStyle = '#1c1e22';
+      ctx.fillStyle = '#ffffff';
       ctx.fillRect(logoX, logoY, logoSize, logoSize);
       ctx.restore();
     }
 
-    // Top Right: "Divyaraj"
+    // Top Right: "Divyaraj" (crisp pure white)
     ctx.save();
     ctx.textAlign = 'right';
-    ctx.fillStyle = '#22252a';
-    ctx.font = '600 36px "Plus Jakarta Sans", "Syne", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif';
-    ctx.fillText('Divyaraj', w - 72, 124);
+    ctx.fillStyle = '#ffffff';
+    ctx.font = '600 38px "Plus Jakarta Sans", "Syne", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif';
+    ctx.fillText('Divyaraj', w - 72, 126);
     ctx.restore();
 
-    // Middle till Bottom Border: Divyaraj Photo with Paper Sticker Border
+    // Middle till Bottom Border: Divyaraj B&W Cutout with Paper Sticker Border
     if (photo) {
       ctx.save();
-      // Target height so it rests flush at the bottom border and fills the middle
-      const photoH = 1020;
+      const photoH = 1040;
       const aspect = photo.width / photo.height;
       const photoW = Math.round(photoH * aspect);
       const photoX = (w - photoW) / 2;
@@ -503,11 +505,10 @@ if (foilStrength > 0.0) {
   };
 
   /**
-   * Minimalist High-Resolution Back Face (White Card Edition)
-   * Inspired by React-Bits Lanyard reference:
-   * - Crisp white card body
-   * - Center: DC logo slightly bigger (subtle watermark / luxury debossed look)
-   * - Bottom Middle: "divyarajchauhan.in"
+   * Minimalist High-Resolution Back Face (Dark Obsidian Identity Edition)
+   * - Dark obsidian gradient base matching front
+   * - Center: DC logo slightly bigger (pure white, high visibility)
+   * - Bottom Middle: "divyarajchauhan.in" in pure white
    * - Zero clutter / no congested text
    */
   const paintBackCard = (canvas, logo, color) => {
@@ -515,43 +516,46 @@ if (foilStrength > 0.0) {
     if (!ctx) return;
     const w = canvas.width, h = canvas.height;
 
-    // Pure white base card background
-    ctx.fillStyle = '#ffffff';
+    // Dark obsidian gradient background
+    const bgGrad = ctx.createLinearGradient(0, 0, 0, h);
+    bgGrad.addColorStop(0, '#15161a');
+    bgGrad.addColorStop(0.5, '#0e0f12');
+    bgGrad.addColorStop(1, '#070709');
+    ctx.fillStyle = bgGrad;
     ctx.fillRect(0, 0, w, h);
 
     // Subtle edge hairline inset for physical realism
     drawCanvasRoundedRect(ctx, 24, 24, w - 48, h - 48, 28);
-    ctx.strokeStyle = 'rgba(0, 0, 0, 0.06)';
+    ctx.strokeStyle = 'rgba(255, 255, 255, 0.12)';
     ctx.lineWidth = 1.5;
     ctx.stroke();
 
-    // Centerpiece: DC Logo slightly bigger
+    // Centerpiece: DC Logo slightly bigger (pure white, crisp visibility)
     if (logo) {
       ctx.save();
-      const logoSize = 420;
+      const logoSize = 440;
       const logoX = (w - logoSize) / 2;
       const logoY = (h - logoSize) / 2 - 30;
       ctx.drawImage(logo, logoX, logoY, logoSize, logoSize);
       ctx.globalCompositeOperation = 'source-in';
-      ctx.fillStyle = 'rgba(30, 32, 38, 0.12)'; // Refined subtle watermark gray
+      ctx.fillStyle = 'rgba(255, 255, 255, 0.95)';
       ctx.fillRect(logoX, logoY, logoSize, logoSize);
       ctx.restore();
     }
 
-    // Bottom Middle: divyarajchauhan.in
+    // Bottom Middle: divyarajchauhan.in (pure white, crisp visibility)
     ctx.save();
     ctx.textAlign = 'center';
-    ctx.fillStyle = '#646974';
-    ctx.font = '500 32px "Plus Jakarta Sans", "Syne", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif';
+    ctx.fillStyle = '#ffffff';
+    ctx.font = '500 34px "Plus Jakarta Sans", "Syne", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif';
     ctx.fillText('divyarajchauhan.in', w / 2, h - 90);
     ctx.restore();
   };
 
   /**
    * Minimalist High-Resolution Woven Strap
-   * Inspired by React-Bits Lanyard reference:
    * - Deep matte black woven strap
-   * - Crisp white DC logo repeated along the strap
+   * - Exactly ONE DC logo in the middle center of the strap (slightly bigger, pure white)
    * - No long text, no taglines
    */
   const paintStrap = (canvas, image, color) => {
@@ -567,27 +571,29 @@ if (foilStrength > 0.0) {
     ctx.fillRect(0, 0, across, along);
 
     // Fine woven fabric ribbing
-    ctx.fillStyle = 'rgba(255, 255, 255, 0.025)';
+    ctx.fillStyle = 'rgba(255, 255, 255, 0.03)';
     for (let y = 0; y < along; y += 4) {
       ctx.fillRect(0, y, across, 1.5);
     }
 
     // Jacquard edge stitches
-    ctx.fillStyle = 'rgba(255, 255, 255, 0.18)';
+    ctx.fillStyle = 'rgba(255, 255, 255, 0.2)';
     for (let y = 0; y < along; y += 12) {
       ctx.fillRect(10, y, 2.5, 6);
       ctx.fillRect(across - 12.5, y, 2.5, 6);
     }
 
-    // Repeated DC Logo along the strap (pure white, centered, no text)
+    // Exactly ONE DC Logo in the middle center of the strap (slightly bigger, pure white)
     if (image) {
-      const logoSize = 68;
-      const step = 256;
-      for (let y = step / 2; y < along; y += step) {
-        ctx.save();
-        ctx.drawImage(image, (across - logoSize) / 2, y - logoSize / 2, logoSize, logoSize);
-        ctx.restore();
-      }
+      const logoSize = 92;
+      const logoX = (across - logoSize) / 2;
+      const logoY = (along - logoSize) / 2;
+      ctx.save();
+      ctx.drawImage(image, logoX, logoY, logoSize, logoSize);
+      ctx.globalCompositeOperation = 'source-in';
+      ctx.fillStyle = '#ffffff';
+      ctx.fillRect(logoX, logoY, logoSize, logoSize);
+      ctx.restore();
     }
 
     return along / across;
@@ -899,11 +905,12 @@ if (foilStrength > 0.0) {
     const environment = buildEnvironment(THREE, renderer);
     scene.environment = environment.texture;
     const camera = new THREE.PerspectiveCamera(FOV, 1, 0.1, 200);
-    const keyLight = new THREE.DirectionalLight(0xffffff, 1.6);
+    const ambientLight = new THREE.AmbientLight(0xffffff, 1.1);
+    const keyLight = new THREE.DirectionalLight(0xffffff, 2.2);
     keyLight.position.set(-2.5, 4, 6);
-    const fillLight = new THREE.DirectionalLight(0xffffff, 0.4);
+    const fillLight = new THREE.DirectionalLight(0xffffff, 0.8);
     fillLight.position.set(3, -1, 4);
-    scene.add(keyLight, fillLight);
+    scene.add(ambientLight, keyLight, fillLight);
 
     const imageCache = new Map();
     const loadedAssets = { frontPhoto: null, logo: null, frontImage: null, backImage: null, strapImage: null };

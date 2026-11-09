@@ -4522,9 +4522,10 @@ html, body {
             animation: fadeInReviews 0.3s ease-out;
         }
 
-        /* 3D Interactive Lanyard ID Badge Container - Unclipped Side Space */
+        /* 3D Interactive Lanyard ID Badge Container - Centered directly under text & action buttons */
         .reviews-lanyard-wrap {
             width: 100%;
+            max-width: 426px;
             height: 440px;
             position: relative;
             margin-top: 4px;
@@ -4684,8 +4685,10 @@ html, body {
                 transform: none !important;
             }
             .reviews-lanyard-wrap {
+                width: 100% !important;
+                max-width: 426px !important;
                 height: 350px !important;
-                margin-top: 10px !important;
+                margin: 10px auto 0 auto !important;
                 border-radius: 0 !important;
                 overflow-x: visible !important;
                 overflow-y: clip !important;
