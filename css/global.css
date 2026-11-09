@@ -3356,11 +3356,14 @@ html, body {
         }
 
         .experience-sticky-header {
-            text-align: center;
+            width: 100%;
+            max-width: 1240px;
+            padding: 0 4%;
+            text-align: left;
             margin-bottom: 24px;
             flex-shrink: 0;
             z-index: 10;
-            width: 100%;
+            box-sizing: border-box;
         }
 
         .experience-sticky-header h2,
@@ -3368,7 +3371,7 @@ html, body {
             font-size: 60px !important;
             line-height: 1.08 !important;
             margin: 0 !important;
-            text-align: center !important;
+            text-align: left !important;
         }
 
         .experience-cards-viewport {
