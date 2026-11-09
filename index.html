@@ -3360,23 +3360,23 @@
     })();
     </script>
     <!-- 3D Interactive Lanyard ID Badge Controller -->
-    <script src="js/lanyard.js?v=20261109a" defer></script>
+    <script src="js/lanyard.js?v=20261109b" defer></script>
     <script>
     document.addEventListener('DOMContentLoaded', function() {
         const lanyardContainer = document.getElementById('reviewsLanyardContainer');
         if (lanyardContainer && window.initLanyard) {
             window.lanyardInstance = window.initLanyard(lanyardContainer, {
-                frontPhoto: 'images/divyaraj pp 2.png',
+                frontPhoto: 'images/divyaraj_sticker.png',
                 logo: 'images/dc-logo.png',
-                cardColor: '#0e0f12',
-                strapColor: '#141416',
+                cardColor: '#ffffff',
+                strapColor: '#111114',
                 metal: 'silver',
                 finish: 'glossy',
                 orientation: 'portrait',
-                anchor: 0.38,
-                size: 0.58,
-                strapLength: 0.48,
-                strapWidth: 0.8,
+                anchor: 'center',
+                size: 0.6,
+                strapLength: 0.5,
+                strapWidth: 0.72,
                 gravity: 1,
                 damping: 0.5,
                 elasticity: 0.5,

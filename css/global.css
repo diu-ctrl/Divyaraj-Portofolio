@@ -4492,9 +4492,9 @@ html, body {
         .reviews-split-grid {
             display: grid !important;
             grid-template-columns: minmax(460px, 540px) minmax(500px, 600px) !important;
-            gap: clamp(40px, 5vw, 80px) !important;
+            gap: clamp(50px, 5.5vw, 90px) !important;
             align-items: center !important;
-            justify-content: space-between !important;
+            justify-content: center !important;
             width: 100% !important;
             max-width: 1400px !important;
             margin: 0 auto !important;
@@ -4508,7 +4508,7 @@ html, body {
             flex-direction: column;
             justify-content: flex-start;
             position: relative;
-            transform: translateY(-24px);
+            transform: translate(clamp(24px, 3vw, 50px), -24px);
         }
 
         .reviews-info-left {

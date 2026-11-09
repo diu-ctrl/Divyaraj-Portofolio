@@ -444,345 +444,151 @@ if (foilStrength > 0.0) {
   };
 
   /**
-   * Custom High-Resolution Front Face Generator
+   * Minimalist High-Resolution Front Face (White Card Edition)
+   * Inspired by React-Bits Lanyard reference:
+   * - Crisp white card body
+   * - Top Left: Subtle DC logo
+   * - Top Right: "Divyaraj" in clean typography
+   * - Center till Bottom Border: Portrait cutout with white paper-cut sticker border
+   * - Zero clutter / no congested text
    */
   const paintFrontCard = (canvas, photo, logo, color) => {
     const ctx = canvas.getContext('2d');
     if (!ctx) return;
     const w = canvas.width, h = canvas.height;
 
-    // Dark obsidian gradient background
-    const grad = ctx.createLinearGradient(0, 0, 0, h);
-    grad.addColorStop(0, '#101114');
-    grad.addColorStop(0.5, '#070708');
-    grad.addColorStop(1, '#020203');
-    ctx.fillStyle = grad;
+    // Pure white base card background
+    ctx.fillStyle = '#ffffff';
     ctx.fillRect(0, 0, w, h);
 
-    // Subtle technical background grid
-    ctx.strokeStyle = 'rgba(255, 255, 255, 0.025)';
-    ctx.lineWidth = 1;
-    for (let x = 40; x < w; x += 40) {
-      ctx.beginPath(); ctx.moveTo(x, 0); ctx.lineTo(x, h); ctx.stroke();
-    }
-    for (let y = 40; y < h; y += 40) {
-      ctx.beginPath(); ctx.moveTo(0, y); ctx.lineTo(w, y); ctx.stroke();
-    }
-
-    // Outer card border inset
-    drawCanvasRoundedRect(ctx, 30, 30, w - 60, h - 60, 32);
-    ctx.strokeStyle = 'rgba(255, 255, 255, 0.09)';
-    ctx.lineWidth = 2;
+    // Subtle edge hairline inset for physical realism
+    drawCanvasRoundedRect(ctx, 24, 24, w - 48, h - 48, 28);
+    ctx.strokeStyle = 'rgba(0, 0, 0, 0.06)';
+    ctx.lineWidth = 1.5;
     ctx.stroke();
 
-    // Top orange accent rule (clear of slot punch)
-    const orangeGrad = ctx.createLinearGradient(80, 0, w - 80, 0);
-    orangeGrad.addColorStop(0, 'rgba(235, 70, 4, 0)');
-    orangeGrad.addColorStop(0.2, 'rgba(235, 70, 4, 0.9)');
-    orangeGrad.addColorStop(0.8, 'rgba(235, 70, 4, 0.9)');
-    orangeGrad.addColorStop(1, 'rgba(235, 70, 4, 0)');
-    ctx.fillStyle = orangeGrad;
-    ctx.fillRect(80, 175, w - 160, 3);
-
-    // Top Header (Y = 195 to 275)
+    // Top Left: DC Logo (subtle charcoal / graphite tint)
     if (logo) {
-      ctx.drawImage(logo, 65, 195, 76, 76);
+      ctx.save();
+      const logoSize = 78;
+      const logoX = 72;
+      const logoY = 72;
+      ctx.drawImage(logo, logoX, logoY, logoSize, logoSize);
+      ctx.globalCompositeOperation = 'source-in';
+      ctx.fillStyle = '#1c1e22';
+      ctx.fillRect(logoX, logoY, logoSize, logoSize);
+      ctx.restore();
     }
-    ctx.textAlign = 'left';
-    ctx.fillStyle = '#ffffff';
-    ctx.font = '900 24px "Syne", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif';
-    ctx.fillText('DIVYARAJ CHAUHAN', 155, 228);
-    ctx.fillStyle = '#8E9299';
-    ctx.font = '600 13px monospace';
-    ctx.fillText('CREATIVE STRATEGIST & AI CINEMA', 155, 254);
 
-    // Status Pill (Top Right)
+    // Top Right: "Divyaraj"
     ctx.save();
-    const pillW = 230, pillH = 42, pillX = w - 65 - pillW, pillY = 212;
-    drawCanvasRoundedRect(ctx, pillX, pillY, pillW, pillH, 21);
-    ctx.fillStyle = 'rgba(235, 70, 4, 0.12)';
-    ctx.fill();
-    ctx.strokeStyle = 'rgba(235, 70, 4, 0.45)';
-    ctx.lineWidth = 1.5;
-    ctx.stroke();
-
-    // Glowing green online dot
-    ctx.beginPath();
-    ctx.arc(pillX + 22, pillY + 21, 5.5, 0, Math.PI * 2);
-    ctx.fillStyle = '#10b981';
-    ctx.fill();
-
-    ctx.textAlign = 'left';
-    ctx.fillStyle = '#ffffff';
-    ctx.font = '700 13px monospace';
-    ctx.fillText('ALL-ACCESS PASS', pillX + 38, pillY + 26);
-    ctx.restore();
-
-    // Photo Showcase Frame (Y = 295 to 855)
-    const frameW = 540, frameH = 540;
-    const frameX = (w - frameW) / 2;
-    const frameY = 300;
-
-    // Ambient radial glow behind portrait
-    const photoGlow = ctx.createRadialGradient(w/2, frameY + frameH/2, 100, w/2, frameY + frameH/2, frameW/1.3);
-    photoGlow.addColorStop(0, 'rgba(235, 70, 4, 0.16)');
-    photoGlow.addColorStop(1, 'transparent');
-    ctx.fillStyle = photoGlow;
-    ctx.fillRect(frameX - 40, frameY - 40, frameW + 80, frameH + 80);
-
-    // Photo Clipping & Border
-    ctx.save();
-    drawCanvasRoundedRect(ctx, frameX, frameY, frameW, frameH, 26);
-    ctx.strokeStyle = 'rgba(255, 255, 255, 0.18)';
-    ctx.lineWidth = 3;
-    ctx.stroke();
-    ctx.clip();
-
-    if (photo) {
-      ctx.drawImage(photo, frameX, frameY, frameW, frameH);
-    } else {
-      ctx.fillStyle = '#1c1c20';
-      ctx.fillRect(frameX, frameY, frameW, frameH);
-    }
-    ctx.restore();
-
-    // Photo Corner Badge Tag
-    ctx.save();
-    const tagW = 140, tagH = 34;
-    const tagX = frameX + frameW - tagW - 16;
-    const tagY = frameY + frameH - tagH - 16;
-    drawCanvasRoundedRect(ctx, tagX, tagY, tagW, tagH, 17);
-    ctx.fillStyle = 'rgba(0, 0, 0, 0.85)';
-    ctx.fill();
-    ctx.strokeStyle = 'rgba(235, 70, 4, 0.6)';
-    ctx.lineWidth = 1.5;
-    ctx.stroke();
-    ctx.textAlign = 'center';
-    ctx.fillStyle = '#EB4604';
-    ctx.font = '700 13px monospace';
-    ctx.fillText('DC • HQ 2026', tagX + tagW/2, tagY + 22);
-    ctx.restore();
-
-    // Name & Title Section
-    ctx.textAlign = 'center';
-    ctx.fillStyle = '#ffffff';
-    ctx.font = '900 52px "Syne", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif';
-    ctx.fillText('DIVYARAJ CHAUHAN', w / 2, 915);
-
-    ctx.fillStyle = '#EB4604';
-    ctx.font = '700 24px -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif';
-    ctx.fillText('Creative Strategist & AI Filmmaker', w / 2, 955);
-
-    // Mini Scope Capsule Tags
-    const tags = ['SMM GROWTH', 'AI CINEMA LAB', 'WEB SYSTEMS'];
-    const pillGap = 16;
-    let totalPillW = tags.length * 160 + (tags.length - 1) * pillGap;
-    let curX = (w - totalPillW) / 2;
-    const curY = 1000;
-
-    tags.forEach(t => {
-      drawCanvasRoundedRect(ctx, curX, curY, 160, 36, 18);
-      ctx.fillStyle = 'rgba(255, 255, 255, 0.05)';
-      ctx.fill();
-      ctx.strokeStyle = 'rgba(255, 255, 255, 0.12)';
-      ctx.lineWidth = 1;
-      ctx.stroke();
-
-      ctx.textAlign = 'center';
-      ctx.fillStyle = '#cccccc';
-      ctx.font = '700 13px monospace';
-      ctx.fillText(t, curX + 80, curY + 23);
-      curX += 160 + pillGap;
-    });
-
-    // Hairline Divider
-    ctx.beginPath();
-    ctx.moveTo(70, 1080);
-    ctx.lineTo(w - 70, 1080);
-    ctx.strokeStyle = 'rgba(255, 255, 255, 0.08)';
-    ctx.lineWidth = 1.5;
-    ctx.stroke();
-
-    // Credential Metadata Strip
-    ctx.textAlign = 'left';
-    ctx.fillStyle = '#6E727A';
-    ctx.font = '600 14px monospace';
-    ctx.fillText('LOCATION: AHMEDABAD, INDIA', 75, 1120);
-    ctx.fillText('PORTFOLIO: DIVYARAJCHAUHAN.IN', 75, 1150);
-
     ctx.textAlign = 'right';
-    ctx.fillStyle = '#10b981';
-    ctx.font = '700 14px monospace';
-    ctx.fillText('STATUS: COMMISSIONS OPEN', w - 75, 1120);
-    ctx.fillStyle = '#6E727A';
-    ctx.font = '600 14px monospace';
-    ctx.fillText('AUTH: CRYPTO-VERIFIED ID', w - 75, 1150);
+    ctx.fillStyle = '#22252a';
+    ctx.font = '600 36px "Plus Jakarta Sans", "Syne", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif';
+    ctx.fillText('Divyaraj', w - 72, 124);
+    ctx.restore();
 
-    // Brutalist Security Barcode
-    const bcX = 75, bcW = w - 150, bcY = 1200, bcH = 46;
-    const barCount = 76;
-    const barStep = bcW / barCount;
-    ctx.fillStyle = 'rgba(255, 255, 255, 0.45)';
-    for (let i = 0; i < barCount; i++) {
-      const hash = Math.sin(i * 12.9898 + 78.233) * 43758.5453;
-      const widthMod = ((hash - Math.floor(hash)) > 0.45) ? barStep * 0.75 : barStep * 0.35;
-      if ((hash - Math.floor(hash)) > 0.15) {
-        ctx.fillRect(bcX + i * barStep, bcY, widthMod, bcH);
-      }
+    // Middle till Bottom Border: Divyaraj Photo with Paper Sticker Border
+    if (photo) {
+      ctx.save();
+      // Target height so it rests flush at the bottom border and fills the middle
+      const photoH = 1020;
+      const aspect = photo.width / photo.height;
+      const photoW = Math.round(photoH * aspect);
+      const photoX = (w - photoW) / 2;
+      const photoY = h - photoH; // Flush with bottom border
+      ctx.drawImage(photo, photoX, photoY, photoW, photoH);
+      ctx.restore();
     }
-
-    ctx.textAlign = 'center';
-    ctx.fillStyle = '#555555';
-    ctx.font = '600 14px monospace';
-    ctx.fillText('DC-ID-8802 // VERIFIED DIGITAL ARCHIVE // © 2026', w / 2, 1285);
   };
 
   /**
-   * Custom High-Resolution Back Face Generator
+   * Minimalist High-Resolution Back Face (White Card Edition)
+   * Inspired by React-Bits Lanyard reference:
+   * - Crisp white card body
+   * - Center: DC logo slightly bigger (subtle watermark / luxury debossed look)
+   * - Bottom Middle: "divyarajchauhan.in"
+   * - Zero clutter / no congested text
    */
   const paintBackCard = (canvas, logo, color) => {
     const ctx = canvas.getContext('2d');
     if (!ctx) return;
     const w = canvas.width, h = canvas.height;
 
-    // Deep black base background
-    const grad = ctx.createLinearGradient(0, 0, 0, h);
-    grad.addColorStop(0, '#0a0a0c');
-    grad.addColorStop(0.5, '#0e0f12');
-    grad.addColorStop(1, '#050507');
-    ctx.fillStyle = grad;
+    // Pure white base card background
+    ctx.fillStyle = '#ffffff';
     ctx.fillRect(0, 0, w, h);
 
-    // Card boundary
-    drawCanvasRoundedRect(ctx, 30, 30, w - 60, h - 60, 32);
-    ctx.strokeStyle = 'rgba(255, 255, 255, 0.08)';
-    ctx.lineWidth = 2;
-    ctx.stroke();
-
-    // Top accent bar
-    const orangeGrad = ctx.createLinearGradient(80, 0, w - 80, 0);
-    orangeGrad.addColorStop(0, 'rgba(235, 70, 4, 0)');
-    orangeGrad.addColorStop(0.5, 'rgba(235, 70, 4, 0.85)');
-    orangeGrad.addColorStop(1, 'rgba(235, 70, 4, 0)');
-    ctx.fillStyle = orangeGrad;
-    ctx.fillRect(80, 175, w - 160, 3);
-
-    // Top Header
-    ctx.textAlign = 'center';
-    ctx.fillStyle = '#6E727A';
-    ctx.font = '700 14px monospace';
-    ctx.fillText('OFFICIAL IDENTITY SPECIFICATION', w / 2, 230);
-
-    // Centerpiece Glow
-    const centerGlow = ctx.createRadialGradient(w/2, 540, 50, w/2, 540, 350);
-    centerGlow.addColorStop(0, 'rgba(235, 70, 4, 0.16)');
-    centerGlow.addColorStop(1, 'transparent');
-    ctx.fillStyle = centerGlow;
-    ctx.fillRect(0, 250, w, 600);
-
-    // Large Monogram
-    if (logo) {
-      ctx.save();
-      ctx.shadowColor = 'rgba(235, 70, 4, 0.5)';
-      ctx.shadowBlur = 40;
-      ctx.drawImage(logo, (w - 280) / 2, 400, 280, 280);
-      ctx.restore();
-    }
-
-    // Typography
-    ctx.textAlign = 'center';
-    ctx.fillStyle = '#ffffff';
-    ctx.font = '900 46px "Syne", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif';
-    ctx.fillText('DIVYARAJ CHAUHAN', w / 2, 760);
-
-    ctx.fillStyle = '#EB4604';
-    ctx.font = '700 24px -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif';
-    ctx.fillText('Creative Direction • AI Cinema • SMM', w / 2, 805);
-
-    ctx.fillStyle = '#999EA8';
-    ctx.font = '400 20px -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif';
-    ctx.fillText('Crafting organic authority campaigns, generative film pipelines,', w / 2, 860);
-    ctx.fillText('and conversion-focused digital platforms.', w / 2, 895);
-
-    // Divider Line
-    ctx.beginPath();
-    ctx.moveTo(80, 960);
-    ctx.lineTo(w - 80, 960);
-    ctx.strokeStyle = 'rgba(255, 255, 255, 0.08)';
+    // Subtle edge hairline inset for physical realism
+    drawCanvasRoundedRect(ctx, 24, 24, w - 48, h - 48, 28);
+    ctx.strokeStyle = 'rgba(0, 0, 0, 0.06)';
     ctx.lineWidth = 1.5;
     ctx.stroke();
 
-    // Contact Details
+    // Centerpiece: DC Logo slightly bigger
+    if (logo) {
+      ctx.save();
+      const logoSize = 420;
+      const logoX = (w - logoSize) / 2;
+      const logoY = (h - logoSize) / 2 - 30;
+      ctx.drawImage(logo, logoX, logoY, logoSize, logoSize);
+      ctx.globalCompositeOperation = 'source-in';
+      ctx.fillStyle = 'rgba(30, 32, 38, 0.12)'; // Refined subtle watermark gray
+      ctx.fillRect(logoX, logoY, logoSize, logoSize);
+      ctx.restore();
+    }
+
+    // Bottom Middle: divyarajchauhan.in
+    ctx.save();
     ctx.textAlign = 'center';
-    ctx.fillStyle = '#ffffff';
-    ctx.font = '800 28px -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif';
-    ctx.fillText('divyarajchauhan.in', w / 2, 1030);
-
-    ctx.fillStyle = '#8E9299';
-    ctx.font = '500 20px -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif';
-    ctx.fillText('divyarajc2@gmail.com', w / 2, 1070);
-
-    // Bottom Status Box
-    const stampW = 440, stampH = 80;
-    const stampX = (w - stampW) / 2;
-    const stampY = 1130;
-    drawCanvasRoundedRect(ctx, stampX, stampY, stampW, stampH, 16);
-    ctx.fillStyle = 'rgba(255, 255, 255, 0.03)';
-    ctx.fill();
-    ctx.strokeStyle = 'rgba(255, 255, 255, 0.08)';
-    ctx.lineWidth = 1;
-    ctx.stroke();
-
-    ctx.textAlign = 'center';
-    ctx.fillStyle = '#10b981';
-    ctx.font = '700 13px monospace';
-    ctx.fillText('• STATUS: COMMISSIONS OPEN // WORLDWIDE', w / 2, stampY + 34);
-    ctx.fillStyle = '#6E727A';
-    ctx.font = '600 12px monospace';
-    ctx.fillText('TOUCH & DRAG TO SWING • CLICK TO FLIP BADGE', w / 2, stampY + 60);
+    ctx.fillStyle = '#646974';
+    ctx.font = '500 32px "Plus Jakarta Sans", "Syne", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif';
+    ctx.fillText('divyarajchauhan.in', w / 2, h - 90);
+    ctx.restore();
   };
 
   /**
-   * Custom High-Resolution Jacquard Strap Generator
+   * Minimalist High-Resolution Woven Strap
+   * Inspired by React-Bits Lanyard reference:
+   * - Deep matte black woven strap
+   * - Crisp white DC logo repeated along the strap
+   * - No long text, no taglines
    */
   const paintStrap = (canvas, image, color) => {
     const across = 192;
-    const along = image ? Math.max(64, Math.round((image.width / image.height) * across)) : 768;
+    const along = 768;
     canvas.width = across;
     canvas.height = along;
     const ctx = canvas.getContext('2d');
     if (!ctx) return along / across;
 
+    // Deep matte black strap background
     ctx.fillStyle = toCss(color);
     ctx.fillRect(0, 0, across, along);
 
-    if (image) {
-      ctx.save();
-      ctx.translate(across, 0);
-      ctx.rotate(Math.PI / 2);
-      ctx.drawImage(image, 0, 0, along, across);
-      ctx.restore();
-      return along / across;
+    // Fine woven fabric ribbing
+    ctx.fillStyle = 'rgba(255, 255, 255, 0.025)';
+    for (let y = 0; y < along; y += 4) {
+      ctx.fillRect(0, y, across, 1.5);
     }
 
     // Jacquard edge stitches
-    ctx.fillStyle = 'rgba(255, 255, 255, 0.22)';
-    for (let y = 0; y < along; y += 10) {
-      ctx.fillRect(12, y, 2.5, 5);
-      ctx.fillRect(across - 14.5, y, 2.5, 5);
+    ctx.fillStyle = 'rgba(255, 255, 255, 0.18)';
+    for (let y = 0; y < along; y += 12) {
+      ctx.fillRect(10, y, 2.5, 6);
+      ctx.fillRect(across - 12.5, y, 2.5, 6);
     }
 
-    // Woven repeated text along strap
-    ctx.save();
-    ctx.translate(across / 2, along / 2);
-    ctx.rotate(-Math.PI / 2);
-
-    ctx.textAlign = 'center';
-    ctx.font = '900 26px -apple-system, BlinkMacSystemFont, "Segoe UI", monospace';
-    ctx.fillStyle = 'rgba(255, 255, 255, 0.7)';
-    const phrase = 'DIVYARAJ CHAUHAN   •   AI CINEMA & SMM   •   DIVYARAJ CHAUHAN   •   ';
-    ctx.fillText(phrase, 0, 9);
-    ctx.restore();
+    // Repeated DC Logo along the strap (pure white, centered, no text)
+    if (image) {
+      const logoSize = 68;
+      const step = 256;
+      for (let y = step / 2; y < along; y += step) {
+        ctx.save();
+        ctx.drawImage(image, (across - logoSize) / 2, y - logoSize / 2, logoSize, logoSize);
+        ctx.restore();
+      }
+    }
 
     return along / across;
   };
@@ -1234,7 +1040,7 @@ if (foilStrength > 0.0) {
     };
 
     const repaintStrap = () => {
-      tileRatio = paintStrap(strapCanvas, loadedAssets.strapImage, parseColor(options.strapColor, [0.07, 0.07, 0.07]));
+      tileRatio = paintStrap(strapCanvas, loadedAssets.strapImage || loadedAssets.logo, parseColor(options.strapColor, [0.07, 0.07, 0.07]));
       weave.repeat.set(2, 2 * tileRatio);
       strapTexture.dispose();
       strapTexture.needsUpdate = true;
