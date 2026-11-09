@@ -3349,21 +3349,18 @@ html, body {
             flex-direction: column;
             align-items: center;
             justify-content: flex-start;
-            padding-top: 40px;
+            padding-top: 36px;
             box-sizing: border-box;
             background: var(--bg, #000000);
             z-index: 10;
         }
 
         .experience-sticky-header {
-            width: 100%;
-            max-width: 1240px;
-            padding: 0 4%;
-            text-align: left;
+            text-align: center;
             margin-bottom: 24px;
             flex-shrink: 0;
             z-index: 10;
-            box-sizing: border-box;
+            width: 100%;
         }
 
         .experience-sticky-header h2,
@@ -3371,6 +3368,7 @@ html, body {
             font-size: 60px !important;
             line-height: 1.08 !important;
             margin: 0 !important;
+            text-align: center !important;
         }
 
         .experience-cards-viewport {
@@ -3378,7 +3376,7 @@ html, body {
             width: 100%;
             max-width: 1240px;
             padding: 0 4%;
-            height: calc(100vh - 160px);
+            height: calc(100vh - 150px);
             overflow: hidden;
             box-sizing: border-box;
         }
