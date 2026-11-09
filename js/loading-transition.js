@@ -102,18 +102,23 @@
 
   // Critical heavy assets preloaded & decoded in advance
   const PRELOAD_ASSETS = [
-    '/hero-images/1.png',
-    '/hero-images/2.png',
-    '/hero-images/3.png',
-    '/hero-images/4.png',
-    '/hero-images/5.png',
-    '/hero-images/6.png',
-    '/images/brand-spray-bg.webp',
-    '/images/chemops/dashboard.png',
-    '/images/skybox/editor.png',
-    '/images/abhushan/landing.png',
-    '/images/kxm/lookbook.png',
-    '/images/detailing-cars/hero.png'
+    'hero-images/1.png',
+    'hero-images/2.png',
+    'hero-images/3.png',
+    'hero-images/4.png',
+    'hero-images/5.png',
+    'hero-images/6.png',
+    'images/8bit-website-hero-card.png',
+    'images/chemops_showcase.png',
+    'images/turf_showcase.png',
+    'images/kxm_showcase.png',
+    'images/abhushan_showcase.png',
+    'images/detailing_cars_showcase.png',
+    'images/lanes/platform-growth.jpg',
+    'images/lanes/digital-storefronts.jpg',
+    'images/lanes/ai-cinema.jpg',
+    'images/lanes/full-campaigns.jpg',
+    'images/brand-spray-bg.webp'
   ];
 
   class InkLoaderTransition {
@@ -130,10 +135,12 @@
       this.isRunning = false;
       this.isDissolving = false;
       this.rafId = null;
-      this.counterRaf = null;
+      this.counterTimeout = null;
 
+      this.displayedNumber = 0;
       this.loadedAssetsCount = 0;
       this.totalAssetsCount = PRELOAD_ASSETS.length + 2; // +1 for fonts, +1 for DOM ready
+      this.allAssetsReady = false;
 
       this.initGL();
       this.bindEvents();
@@ -310,14 +317,21 @@
      * Real background preloading & decoding of all critical heavy assets
      */
     startAssetPreloading() {
+      this.loadedAssetsCount = 0;
+      this.allAssetsReady = false;
+
       const onAssetReady = () => {
         this.loadedAssetsCount++;
+        if (this.loadedAssetsCount >= this.totalAssetsCount) {
+          this.allAssetsReady = true;
+        }
       };
 
       // 1. Preload & GPU-decode all critical images
       PRELOAD_ASSETS.forEach((src) => {
+        const resolvedSrc = src.startsWith('http') ? src : (window.location.origin + '/' + src.replace(/^\/+/, ''));
         const img = new Image();
-        img.src = src;
+        img.src = resolvedSrc;
         if (img.decode) {
           img.decode().then(onAssetReady).catch(onAssetReady);
         } else {
@@ -339,6 +353,11 @@
       } else {
         window.addEventListener('load', onAssetReady, { once: true });
       }
+
+      // 4. Safety maximum timeout to guarantee counter never hangs indefinitely
+      setTimeout(() => {
+        this.allAssetsReady = true;
+      }, 2600);
     }
 
     start() {
@@ -358,61 +377,100 @@
       // Kick off background asset preloading
       this.startAssetPreloading();
 
-      // Run progress counter tracking both natural time progression & real asset completion
+      // Run sequential progress counter from 0 to 100% matching background load speed
       this.runCounter();
     }
 
     runCounter() {
-      const startTime = performance.now();
-      const minDuration = 1450; // 1.45s min duration for visual rhythm
-      const maxSafetyTimeout = 3200; // max 3.2s safety timeout
+      if (this.counterTimeout) {
+        clearTimeout(this.counterTimeout);
+        this.counterTimeout = null;
+      }
 
-      let current = 0;
+      // Strictly start at 0% with no negative value ever possible
+      this.displayedNumber = 0;
+      if (this.counterEl) {
+        this.counterEl.textContent = '0%';
+      }
 
-      const tick = (now) => {
-        const elapsed = now - startTime;
-        const timeRatio = Math.min(elapsed / minDuration, 1.0);
-        const realAssetRatio = Math.min(this.loadedAssetsCount / this.totalAssetsCount, 1.0);
+      const step = () => {
+        if (!this.isRunning || this.isDissolving) return;
 
-        // Smooth curve progression
-        let curveVal;
-        if (timeRatio < 0.25) {
-          curveVal = (timeRatio / 0.25) * 0.35;
-        } else if (timeRatio < 0.65) {
-          curveVal = 0.35 + ((timeRatio - 0.25) / 0.40) * 0.43;
-        } else if (timeRatio < 0.88) {
-          curveVal = 0.78 + ((timeRatio - 0.65) / 0.23) * 0.12;
+        // When 100 is reached: hold briefly and start dissolve
+        if (this.displayedNumber >= 100) {
+          this.displayedNumber = 100;
+          if (this.counterEl) {
+            this.counterEl.textContent = '100%';
+          }
+          setTimeout(() => this.startDissolve(), 180);
+          return;
+        }
+
+        // Calculate real background asset loading progress (0.0 to 1.0)
+        const loadRatio = Math.max(0, Math.min(1.0, this.loadedAssetsCount / this.totalAssetsCount));
+
+        // Determine maximum allowed progress based on real background loading
+        let targetCap;
+        if (this.allAssetsReady) {
+          targetCap = 100;
         } else {
-          curveVal = 0.90 + ((timeRatio - 0.88) / 0.12) * 0.10;
+          // As assets finish downloading and GPU-decoding, targetCap scales smoothly up to 95%
+          targetCap = Math.min(95, Math.floor(10 + loadRatio * 85));
         }
 
-        // Cap at 90% until real heavy assets are completely loaded & decoded (or safety timeout reached)
-        const isAssetsReady = (realAssetRatio >= 0.95) || (elapsed >= maxSafetyTimeout);
-        let target = curveVal * 100;
-        if (!isAssetsReady && target > 89) {
-          target = 89;
-        }
+        let delay = 14;
 
-        current += (target - current) * 0.22;
-        const displayVal = Math.min(100, Math.round(current));
-        
-        if (this.counterEl) {
-          this.counterEl.textContent = `${displayVal}%`;
-        }
+        if (this.displayedNumber < targetCap) {
+          // Assets are loaded ahead in background - step quickly without skipping any integer
+          this.displayedNumber++;
+          if (this.counterEl) {
+            this.counterEl.textContent = `${this.displayedNumber}%`;
+          }
 
-        if (displayVal < 100 || !isAssetsReady) {
-          this.counterRaf = requestAnimationFrame(tick);
+          const ahead = targetCap - this.displayedNumber;
+          if (ahead > 30) {
+            delay = 6;
+          } else if (ahead > 15) {
+            delay = 9;
+          } else if (ahead > 5) {
+            delay = 13;
+          } else {
+            delay = 17;
+          }
+        } else if (!this.allAssetsReady) {
+          // Counter has caught up to background loading - pace itself while remaining assets decode
+          if (this.displayedNumber < 95) {
+            this.displayedNumber++;
+            if (this.counterEl) {
+              this.counterEl.textContent = `${this.displayedNumber}%`;
+            }
+            delay = 45 + (this.displayedNumber > 80 ? 25 : 0);
+          } else {
+            // Hold at 95% until all background assets are completely loaded & decoded
+            delay = 30;
+          }
         } else {
-          // Exactly 100% - all heavy assets are loaded and decoded
-          if (this.counterEl) this.counterEl.textContent = '100%';
-          setTimeout(() => this.startDissolve(), 160);
+          // All assets are ready, sprint through the final stretch to 100%
+          this.displayedNumber++;
+          if (this.counterEl) {
+            this.counterEl.textContent = `${this.displayedNumber}%`;
+          }
+          delay = 9;
         }
+
+        this.counterTimeout = setTimeout(step, Math.max(4, delay));
       };
 
-      this.counterRaf = requestAnimationFrame(tick);
+      // Start the sequential step sequence
+      this.counterTimeout = setTimeout(step, 18);
     }
 
     startDissolve() {
+      if (this.counterTimeout) {
+        clearTimeout(this.counterTimeout);
+        this.counterTimeout = null;
+      }
+
       this.isDissolving = true;
 
       // 1. Dim counter and tag smoothly
@@ -517,13 +575,22 @@
     }
 
     resetStates() {
-      if (this.counterRaf) cancelAnimationFrame(this.counterRaf);
-      if (this.rafId) cancelAnimationFrame(this.rafId);
+      if (this.counterTimeout) {
+        clearTimeout(this.counterTimeout);
+        this.counterTimeout = null;
+      }
+      if (this.rafId) {
+        cancelAnimationFrame(this.rafId);
+        this.rafId = null;
+      }
 
       this.p = 1.0;
       this.np = 1.0;
       this.uTime = 0.0;
       this.isDissolving = false;
+      this.displayedNumber = 0;
+      this.loadedAssetsCount = 0;
+      this.allAssetsReady = false;
 
       if (this.counterEl) {
         this.counterEl.style.transition = 'none';

@@ -2434,50 +2434,65 @@ h2.contact-headline {
 }
 
 /* ==========================================================================
-   Reviews to Footer Depth Transition: Rounded Footer & Gradient Shadow
+   Reviews to Footer Depth Transition: Seamless Black Reviews & Upward CTA Accent Shadow
    ========================================================================== */
 .reviews-split-section {
     position: relative !important;
-    z-index: 20 !important;
+    z-index: 10 !important;
     background: #000000 !important;
-    border-bottom-left-radius: clamp(24px, 3.5vw, 44px) !important;
-    border-bottom-right-radius: clamp(24px, 3.5vw, 44px) !important;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
-    box-shadow: 
-        0 20px 45px rgba(0, 0, 0, 0.95),
-        0 35px 75px -10px rgba(235, 70, 4, 0.38),
-        0 55px 110px -20px rgba(255, 90, 25, 0.25),
-        0 75px 150px -30px rgba(255, 196, 107, 0.15) !important;
-    margin-bottom: clamp(20px, 3.5vh, 36px) !important;
+    border-bottom-left-radius: 0 !important;
+    border-bottom-right-radius: 0 !important;
+    border-bottom: none !important;
+    box-shadow: none !important;
+    margin-bottom: 0 !important;
 }
 
 .reviews-split-section::after {
+    display: none !important;
+}
+
+/* Atmospheric Upward Gradient Drop Shadow projecting above CTA top border */
+.cta-accent-drop-shadow {
+    position: relative !important;
+    width: 100vw !important;
+    margin-left: 50% !important;
+    transform: translateX(-50%) !important;
+    height: 0 !important;
+    z-index: 28 !important;
+    pointer-events: none !important;
+}
+
+.cta-accent-drop-shadow::before {
     content: '' !important;
     position: absolute !important;
-    bottom: -35px !important;
-    left: 6% !important;
-    right: 6% !important;
-    height: 70px !important;
+    bottom: 0 !important;
+    left: 2% !important;
+    right: 2% !important;
+    height: 120px !important;
     background: radial-gradient(
-        ellipse 80% 60% at 50% 0%,
-        rgba(255, 90, 25, 0.45) 0%,
-        rgba(235, 70, 4, 0.3) 35%,
-        rgba(255, 196, 107, 0.14) 65%,
+        ellipse 70% 65% at 50% 100%,
+        rgba(235, 70, 4, 0.35) 0%,
+        rgba(255, 90, 25, 0.22) 35%,
+        rgba(255, 196, 107, 0.08) 65%,
         transparent 100%
     ) !important;
-    filter: blur(24px) !important;
+    filter: blur(32px) !important;
     pointer-events: none !important;
-    z-index: 25 !important;
 }
 
 .cta-section {
     position: relative !important;
-    z-index: 10 !important;
+    z-index: 30 !important;
     border-top-left-radius: clamp(36px, 5vw, 64px) !important;
     border-top-right-radius: clamp(36px, 5vw, 64px) !important;
     overflow: hidden !important;
-    border-top: 1px solid rgba(255, 255, 255, 0.14) !important;
-    box-shadow: 0 -1px 0 rgba(255, 255, 255, 0.06), 0 -24px 60px rgba(0, 0, 0, 0.85) !important;
+    border-top: 1px solid rgba(255, 255, 255, 0.16) !important;
+    box-shadow: 
+        0 -1px 0 rgba(255, 255, 255, 0.14),
+        0 -15px 35px -5px rgba(235, 70, 4, 0.38),
+        0 -30px 65px -10px rgba(235, 70, 4, 0.25),
+        0 -50px 100px -15px rgba(255, 90, 25, 0.16),
+        0 -80px 150px -25px rgba(255, 196, 107, 0.08) !important;
 }
 
 .cta-section::before {
