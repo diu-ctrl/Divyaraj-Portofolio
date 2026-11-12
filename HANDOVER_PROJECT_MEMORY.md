@@ -96,6 +96,11 @@ A world-class, ultra-premium portfolio blending **high-fashion editorial typogra
 ### ❌ Rule 8: NO Generic Stock Gradients or Cluttered Social Cards
 * Social Open Graph cards (`1200 × 630`) must be razor-sharp, brutalist, pitch-black, featuring the DC monogram, Instrument Serif italic title, lowercase domain capsule (`divyarajchauhan.in`), and no distracting neon shapes.
 
+### ❌ Rule 9: NO Eyebrow Capsules or Eyebrow Text Anywhere
+* The line, capsule, or metadata word before any section or card (e.g., `04 — REFINED FASHION`, `.hero-eyebrow`, `.brand-eyebrow`, `.case-study-badge`, `.section-eyebrow`) is strictly forbidden globally across the entire website.
+* Sections and case studies must start directly and cleanly with their primary headline (e.g., `<h2>KXM Fashion</h2>`, `<h1>Brand Name</h1>`) with no clutter.
+* All `.case-study-badge`, `.eyebrow-e1`, `.hero-eyebrow`, `.brand-eyebrow`, `.section-eyebrow`, etc. are permanently suppressed in `css/tokens.css`.
+
 ---
 
 ## 4. DETAILED PAGE & FEATURE BLUEPRINT

@@ -70,7 +70,7 @@
             const data = serviceData[id];
             if (!data) return;
 
-            modalEyebrow.textContent = data.eyebrow;
+            if (modalEyebrow) modalEyebrow.textContent = data.eyebrow;
             modalTitle.textContent = data.title;
             modalImg.src = data.image;
             modalImg.alt = data.title;

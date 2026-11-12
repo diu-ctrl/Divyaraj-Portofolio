@@ -2060,6 +2060,33 @@ h1 .grad,
     height: 0 !important;
 }
 
+/* ─── Globally Remove All Eyebrow Capsules & Eyebrow Text ─── */
+.case-study-badge,
+.eyebrow-e1,
+.hero-eyebrow,
+.brand-eyebrow,
+.section-eyebrow,
+.hero-eyebrows-wrap,
+.channels-eyebrow-badge,
+.cert-carousel-eyebrow,
+.cert-eyebrow-badge,
+.ai-reel-eyebrow,
+.methodology-eyebrow,
+.ember-cta-eyebrow,
+.pp-eyebrow,
+.service-modal-eyebrow,
+.eyebrow {
+    display: none !important;
+    opacity: 0 !important;
+    visibility: hidden !important;
+    height: 0 !important;
+    width: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    border: none !important;
+    pointer-events: none !important;
+}
+
 
         /* === GLOBAL BRAND PAGE TYPOGRAPHY HIERARCHY === */
         /* Brand Name at Top: Largest heading on the entire brand page */
