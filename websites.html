@@ -2661,10 +2661,12 @@
             }
 
             if (shouldScroll && activeSection) {
-                const headerOffset = 100;
-                const rect = activeSection.getBoundingClientRect();
-                const scrollTarget = window.pageYOffset + rect.top - headerOffset;
-                window.scrollTo({ top: Math.max(0, scrollTarget), behavior: 'smooth' });
+                setTimeout(() => {
+                    const headerOffset = 100;
+                    const rect = activeSection.getBoundingClientRect();
+                    const scrollTarget = window.pageYOffset + rect.top - headerOffset;
+                    window.scrollTo({ top: Math.max(0, scrollTarget), behavior: 'smooth' });
+                }, 60);
             }
         }
 
@@ -2674,44 +2676,58 @@
                 if (!targetId || !targetId.startsWith('#')) return; // Allow normal navigation for /8bit-creatives
                 e.preventDefault();
 
-                if (capsule.classList.contains('active')) {
-                    // Smooth scroll to the current case study
-                    showTab(targetId, true);
-                    return;
-                }
-
                 showTab(targetId, true);
                 if (history.replaceState) {
-                    history.replaceState(null, '', window.location.pathname);
+                    history.replaceState(null, '', targetId);
+                } else {
+                    window.location.hash = targetId;
                 }
             });
         });
 
-        function initTab() {
+        function getActiveHash() {
             let hash = window.location.hash;
-            if (hash && history.replaceState) {
-                history.replaceState(null, '', window.location.pathname);
-            }
             if (hash === '#8bit-creatives') {
                 window.location.href = '/8bit-creatives';
-                return;
+                return null;
             }
             if (hash === '#turf') hash = '#skybox';
 
             let cleanHash = hash ? hash.replace('#', '') : '';
             if (validTabs.includes(cleanHash)) {
-                showTab(hash, false);
-            } else {
-                // Default to first case study tab (ChemOps ERP)
-                showTab('#chemops', false);
+                return hash;
+            }
+            return '#chemops';
+        }
+
+        function initTab(shouldScroll = false) {
+            const targetTab = getActiveHash();
+            if (targetTab) {
+                showTab(targetTab, shouldScroll);
             }
         }
 
         // Run immediately without waiting for huge images to load
-        initTab();
-        document.addEventListener('DOMContentLoaded', initTab);
-        window.addEventListener('load', initTab);
-        window.addEventListener('hashchange', initTab);
+        initTab(false);
+        document.addEventListener('DOMContentLoaded', () => {
+            if (window.location.hash) {
+                const targetTab = getActiveHash();
+                if (targetTab) {
+                    showTab(targetTab, true);
+                }
+            }
+        });
+        window.addEventListener('load', () => {
+            if (window.location.hash) {
+                const targetTab = getActiveHash();
+                if (targetTab) {
+                    showTab(targetTab, false);
+                }
+            }
+        });
+        window.addEventListener('hashchange', () => {
+            initTab(true);
+        });
 
         // ─── Back To Top Button Logic ───
         const backToTopBtn = document.getElementById('back-to-top');
