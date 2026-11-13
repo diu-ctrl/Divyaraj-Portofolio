@@ -31,3 +31,8 @@ find_css_js.js
 
 .vercel
 .env*
+
+node_modules/
+dist/
+.next/
+

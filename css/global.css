@@ -4081,6 +4081,65 @@ html, body {
             will-change: clip-path;
         }
 
+        /* ─── Selected Web Work Row Actions & GitHub Button ─── */
+        .web-row-actions {
+            display: flex !important;
+            align-items: center !important;
+            gap: 12px !important;
+            flex-wrap: wrap !important;
+            margin-top: 10px !important;
+        }
+
+        .web-circ-actions {
+            display: flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+            gap: 10px !important;
+            flex-wrap: wrap !important;
+            margin-top: 12px !important;
+            width: 100% !important;
+        }
+
+        .btn-github-capsule {
+            display: inline-flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+            gap: 8px !important;
+            padding: 0 20px !important;
+            height: 42px !important;
+            background: #141414 !important;
+            color: #E4E4E7 !important;
+            border: 1px solid rgba(255, 255, 255, 0.16) !important;
+            border-radius: var(--r-pill, 999px) !important;
+            font-family: var(--font-sans) !important;
+            font-size: 13px !important;
+            font-weight: 600 !important;
+            letter-spacing: 0.02em !important;
+            text-decoration: none !important;
+            cursor: pointer !important;
+            white-space: nowrap !important;
+            transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1) !important;
+            box-sizing: border-box !important;
+        }
+
+        .btn-github-capsule:hover {
+            background: #242424 !important;
+            border-color: rgba(255, 255, 255, 0.45) !important;
+            color: #FFFFFF !important;
+            transform: translateY(-1px) !important;
+        }
+
+        .btn-github-capsule svg {
+            flex-shrink: 0;
+            display: block;
+            opacity: 0.85;
+            transition: opacity 0.2s ease;
+        }
+
+        .btn-github-capsule:hover svg {
+            opacity: 1;
+        }
+
 
 
 
