@@ -2350,13 +2350,15 @@ img:hover,
 }
 
 /* 3. Single-Line Where I've Worked Heading */
+#experience .experience-sticky-header .display-serif-statement,
 #experience .section-header .display-serif-statement {
     white-space: nowrap !important;
 }
 
-@media (max-width: 480px) {
+@media (max-width: 768px) {
+    #experience .experience-sticky-header .display-serif-statement,
     #experience .section-header .display-serif-statement {
-        font-size: clamp(26px, 7vw, 36px) !important;
+        font-size: clamp(1.95rem, 7.5vw, 2.5rem) !important;
         white-space: nowrap !important;
     }
 }

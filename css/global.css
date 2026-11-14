@@ -3441,6 +3441,12 @@ html, body {
             text-align: left !important;
         }
 
+        .experience-sticky-header .exp-title-accent {
+            color: #FF5A19 !important;
+            text-shadow: 0 0 24px rgba(255, 90, 25, 0.35) !important;
+            display: inline-block;
+        }
+
         .experience-cards-viewport {
             position: relative;
             width: 100%;
@@ -5510,6 +5516,18 @@ h1 .grad,
         font-size: clamp(1.85rem, 7vw, 2.3rem) !important;
         line-height: 1.15 !important;
         margin: 0 !important;
+    }
+
+    /* ─── Experience Section Heading on Mobile ─── */
+    .experience-sticky-header h2,
+    .experience-sticky-header .display-serif-statement,
+    #experience .experience-sticky-header h2,
+    #experience .display-serif-statement {
+        font-size: clamp(1.95rem, 7.5vw, 2.5rem) !important;
+        line-height: 1.12 !important;
+        white-space: nowrap !important;
+        margin: 0 !important;
+        text-align: left !important;
     }
 
     #services .services-accordion-lanes {
