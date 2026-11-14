@@ -3485,6 +3485,9 @@ html, body {
         }
 
         @media (max-width: 900px) {
+            .section-intersection-divider {
+                display: none !important;
+            }
             .experience-scroll-track {
                 height: auto !important;
                 padding: 60px 5% 40px !important;
@@ -3497,6 +3500,8 @@ html, body {
                 padding-top: 0 !important;
             }
             .experience-sticky-header {
+                position: relative !important;
+                z-index: 30 !important;
                 padding: 0 !important;
                 margin-bottom: 36px !important;
             }

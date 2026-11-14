@@ -2504,6 +2504,12 @@ img:hover,
     overflow: hidden !important;
 }
 
+@media (max-width: 900px) {
+    .section-intersection-divider {
+        display: none !important;
+    }
+}
+
 .section-intersection-divider::before {
     content: '' !important;
     position: absolute !important;
