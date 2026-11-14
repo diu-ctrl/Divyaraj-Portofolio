@@ -2361,23 +2361,25 @@ img:hover,
     }
 }
 
-/* Unified 60px Editorial Headlines */
-#about-section .section-header h2,
-#about-section h2.display-serif-statement,
-#about-section .display-serif-statement,
-#experience .section-header h2,
-#experience h2.display-serif-statement,
-.reviews-headline,
-h2.reviews-headline {
-    font-size: 60px !important;
-    line-height: 1.08 !important;
-}
+/* Unified 60px Editorial Headlines for Desktop */
+@media (min-width: 769px) {
+    #about-section .section-header h2,
+    #about-section h2.display-serif-statement,
+    #about-section .display-serif-statement,
+    #experience .section-header h2,
+    #experience h2.display-serif-statement,
+    .reviews-headline,
+    h2.reviews-headline {
+        font-size: 60px !important;
+        line-height: 1.08 !important;
+    }
 
-/* Contact Headline: 55px */
-.contact-headline,
-h2.contact-headline {
-    font-size: 55px !important;
-    line-height: 1.08 !important;
+    /* Contact Headline: 55px */
+    .contact-headline,
+    h2.contact-headline {
+        font-size: 55px !important;
+        line-height: 1.08 !important;
+    }
 }
 
 /* ==========================================================================

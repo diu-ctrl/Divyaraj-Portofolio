@@ -5811,7 +5811,7 @@ h1 .grad,
     }
     .reviews-split-grid {
         grid-template-columns: 1fr !important;
-        gap: 32px !important;
+        gap: 0 !important;
     }
     .reviews-left-col {
         width: 100% !important;
@@ -5889,23 +5889,18 @@ h1 .grad,
         border-radius: 20px !important;
     }
     #testimonials-3d-demo,
-    .reviews-3d-column-wrap {
-        height: 340px !important;
-        max-height: 340px !important;
-        min-height: 320px !important;
-        width: 100% !important;
-        background: transparent !important;
-        border: none !important;
-        box-shadow: none !important;
-        border-radius: 0 !important;
-        padding: 0 !important;
-    }
+    .reviews-3d-column-wrap,
     #testimonials-3d-root,
     #testimonials-3d-root > div {
-        background: transparent !important;
-        border: none !important;
-        box-shadow: none !important;
-        border-radius: 0 !important;
+        display: none !important;
+        visibility: hidden !important;
+        height: 0 !important;
+        min-height: 0 !important;
+        max-height: 0 !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        overflow: hidden !important;
+        pointer-events: none !important;
     }
 
     /* ─── Footer & Contact Section (#contact) ─── */
@@ -5938,12 +5933,17 @@ h1 .grad,
         border-radius: 20px !important;
         box-sizing: border-box !important;
     }
-    .contact-headline {
-        font-size: clamp(1.8rem, 6.8vw, 2.3rem) !important;
+    .contact-headline,
+    h2.contact-headline {
+        font-size: clamp(1.85rem, 7vw, 2.35rem) !important;
         line-height: 1.15 !important;
         text-align: left !important;
         white-space: normal !important;
-        word-break: break-word !important;
+        word-break: normal !important;
+    }
+    .contact-headline span {
+        display: inline-block !important;
+        white-space: nowrap !important;
     }
     .contact-buttons {
         display: flex !important;
@@ -6044,19 +6044,19 @@ h1 .grad,
     .meta-desktop-text {
         display: inline !important;
     }
-}
 
-/* Unified Editorial Headlines */
-.reviews-headline,
-h2.reviews-headline {
-    font-size: 60px !important;
-    line-height: 1.08 !important;
-}
+    /* Unified Editorial Headlines for Desktop */
+    .reviews-headline,
+    h2.reviews-headline {
+        font-size: 60px !important;
+        line-height: 1.08 !important;
+    }
 
-.contact-headline,
-h2.contact-headline {
-    font-size: 55px !important;
-    line-height: 1.08 !important;
+    .contact-headline,
+    h2.contact-headline {
+        font-size: 55px !important;
+        line-height: 1.08 !important;
+    }
 }
 
 /* ─── Global Eyebrow & Quote Author Palette ─── */
