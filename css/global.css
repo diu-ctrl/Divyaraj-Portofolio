@@ -3235,7 +3235,7 @@ html, body {
         }
 
         .web-cards-strip .web-row:hover {
-            border-color: var(--primary) !important;
+            border-color: #FFFFFF !important;
             opacity: 1 !important;
         }
 
@@ -3264,7 +3264,7 @@ html, body {
         }
 
         .web-row:hover {
-            border-color: var(--primary);
+            border-color: #FFFFFF !important;
         }
 
         .web-row.reverse {
@@ -4054,7 +4054,7 @@ html, body {
 
         .btn-explore-capsule:hover {
             background: #FFFFFF !important;
-            border-color: var(--accent) !important;
+            border-color: #FFFFFF !important;
             color: #000000 !important;
             box-shadow: none !important;
             transform: none !important;

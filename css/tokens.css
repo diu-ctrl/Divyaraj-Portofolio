@@ -964,7 +964,7 @@ button:not(.card-mute-btn):not(.phone-mute-btn):not(.reel-mute-btn):not(.control
 }
 .btn-ripple-container.theme-white-to-orange:hover {
   background-color: #FFFFFF !important;
-  border-color: var(--accent, #EB4604) !important;
+  border-color: #FFFFFF !important;
   color: #000000 !important;
 }
 
