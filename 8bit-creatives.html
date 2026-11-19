@@ -386,6 +386,10 @@
             border-radius: 4px;
         }
 
+        #8bit-creatives .detail-block h3::before {
+            background: #FF5931;
+        }
+
         #abhushan .detail-block h3::before {
             background: #EB4604;
         }
@@ -399,8 +403,8 @@
         }
 
         .challenge-block p {
-            font-size: 1.02rem;
-            line-height: 1.7;
+            font-size: 0.98rem;
+            line-height: 1.68;
             color: var(--text-muted);
         }
 
@@ -408,24 +412,51 @@
             list-style: none;
             display: flex;
             flex-direction: column;
-            gap: 12px;
+            gap: 14px;
+            margin: 0;
+            padding: 0;
         }
 
         .scope-list li {
-            font-size: 0.95rem;
-            line-height: 1.6;
+            font-size: 0.96rem;
+            line-height: 1.65;
             color: var(--text-muted);
-            display: flex;
-            gap: 12px;
-            align-items: flex-start;
+            position: relative;
+            padding-left: 22px;
+            display: block;
         }
 
         .scope-list li::before {
             content: "✦";
             color: var(--primary);
-            font-size: 0.9rem;
-            flex-shrink: 0;
-            margin-top: 2px;
+            font-size: 0.85rem;
+            line-height: 1.65;
+            position: absolute;
+            left: 0;
+            top: 1px;
+        }
+
+        #8bit-creatives .scope-list li::before {
+            color: #FF5931;
+        }
+
+        .scope-list li strong {
+            color: #ffffff;
+            font-weight: 600;
+        }
+
+        .scope-list li em {
+            color: #d0cfcd;
+            font-style: italic;
+        }
+
+        .scope-list li code {
+            color: #FF5931;
+            background: #1a1917;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-size: 0.88em;
+            font-family: inherit;
         }
 
         #abhushan .scope-list li::before {
@@ -1144,7 +1175,7 @@
                 <div class="results-block" style="border-left-color: #FF5931; background: #0c0b0a;">
                     <h3 style="color: #FF5931; font-size: 1.15rem; letter-spacing: 0.05em; text-transform: uppercase;">Project Overview</h3>
                     <p style="font-style: normal; color: #d0cfcd; font-size: 1.02rem; line-height: 1.75;">
-                        8Bit Creatives is the undisputed cultural and commercial epicenter of Indian gaming and esports talent. Managing an exclusive roster of 50+ household creators—including icons like MortaL, Payal Gaming, Snax, and Regaltos—alongside championship-tier Krafton BGMI esports rosters, the agency bridges massive youth audiences with leading global brands. To match this industry stature, I engineered a comprehensive digital ecosystem combining a <strong>kinetic, dark-mode public flagship experience</strong> with a <strong>centralized enterprise operations platform and three dedicated partner dashboards</strong> (<code style="color: #FF5931; background: #1a1917; padding: 2px 6px; border-radius: 4px;">/ops</code>, <code style="color: #FF5931; background: #1a1917; padding: 2px 6px; border-radius: 4px;">/creator</code>, <code style="color: #FF5931; background: #1a1917; padding: 2px 6px; border-radius: 4px;">/brand</code>, <code style="color: #FF5931; background: #1a1917; padding: 2px 6px; border-radius: 4px;">/platform</code>) that eliminate workflow bottlenecks and automate campaign governance.
+                        8Bit Creatives is the undisputed cultural and commercial epicenter of Indian gaming and esports talent. Managing an exclusive roster of 50+ household creators—including icons like MortaL, Payal Gaming, Snax, and Regaltos—alongside championship-tier Krafton BGMI esports rosters, the agency bridges massive youth audiences with leading global brands. To match this industry stature, I engineered a comprehensive digital ecosystem combining a <strong>kinetic, dark-mode public flagship experience</strong> with a <strong>centralized enterprise operations platform and three dedicated partner dashboards</strong> (<code>/ops</code>, <code>/creator</code>, <code>/brand</code>, <code>/platform</code>) that eliminate workflow bottlenecks and automate campaign governance.
                     </p>
                 </div>
 
@@ -1169,8 +1200,8 @@
                             <li><strong>Orbital Celestial Visualizer:</strong> Dynamic scale visualizer anchoring 50+ exclusive creators, 100M+ collective audience, and 3B+ video views.</li>
                             <li><strong>3D Coverflow Talent Showcase:</strong> Cylindrical card perspective with active scaling, headroom framing, and direct multi-platform routing.</li>
                             <li><strong>8Bit Esports BGMI Arena:</strong> Competitive tournament arena profiling Team 8Bit's professional battle-royale lineup with custom canvas glyph physics.</li>
-                            <li><strong>Ops Command Center (/ops):</strong> Dedicated agency operational engine featuring 5-stage Campaign Kanban, 3-stage Content Approvals, File Vault, and talent management.</li>
-                            <li><strong>Multi-Tenant Partner Portals:</strong> Specialized self-serve terminals for represented creators (<code style="color: #FF5931;">/creator</code>), corporate brand sponsors (<code style="color: #FF5931;">/brand</code>), and streaming platforms (<code style="color: #FF5931;">/platform</code>).</li>
+                            <li><strong>Ops Command Center (<code>/ops</code>):</strong> Dedicated agency operational engine featuring 5-stage Campaign Kanban, 3-stage Content Approvals, File Vault, and talent management.</li>
+                            <li><strong>Multi-Tenant Partner Portals:</strong> Specialized self-serve terminals for represented creators (<code>/creator</code>), corporate brand sponsors (<code>/brand</code>), and streaming platforms (<code>/platform</code>).</li>
                         </ul>
                     </div>
                 </div>
