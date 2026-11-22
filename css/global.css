@@ -1832,7 +1832,7 @@ html, body {
         /* ─── Brutalist Contact Block ─── */
         /* ─── Full-width Smoky Black Contact Section ─── */
         .cta-section {
-            padding: clamp(36px, 4.5vh, 60px) 6% !important;
+            padding: clamp(60px, 8vh, 100px) 6% !important;
             width: 100vw;
             max-width: none !important;
             background: #000000 !important;
@@ -1844,7 +1844,7 @@ html, body {
             position: relative;
             z-index: 30 !important;
             overflow: hidden !important;
-            min-height: 100vh;
+            min-height: auto;
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -1889,7 +1889,7 @@ html, body {
             border: none;
             max-width: 1200px;
             width: 100%;
-            margin: 0 auto 14px auto !important;
+            margin: 0 auto !important;
             box-sizing: border-box;
         }
 
@@ -2183,6 +2183,7 @@ html, body {
 
         /* ─── Bright White Thin Horizontal Divider Line ─── */
         .contact-divider-line {
+            display: none !important;
             width: 100% !important;
             max-width: 1200px !important;
             height: 1px !important;
@@ -2196,6 +2197,7 @@ html, body {
 
         /* ─── Dither Card Section (moved slightly down) ─── */
         .dither-card-section {
+            display: none !important;
             padding: 32px 0 0 0 !important;
             width: 100%;
             max-width: 1200px;
