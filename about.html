@@ -772,8 +772,12 @@
     <!-- Contact -->
     <section id="contact" class="cta-section">
         <div class="brutalist-contact-block reveal">
+            <div class="stepped-card-backdrop" id="steppedBackdrop"></div>
+            <svg class="stepped-card-svg" id="steppedSvg" aria-hidden="true">
+                <path id="steppedPath" fill="none" stroke="rgba(255, 255, 255, 0.08)" stroke-width="1" />
+            </svg>
             <div class="contact-left-col">
-                <div class="contact-info-left">
+                <div class="contact-info-left" id="contactInfoLeft">
                     <h2 class="contact-headline display-serif-statement"><span style="color: #ffffff; white-space: nowrap;">Let's build your</span><br><span class="gradient-text" style="white-space: nowrap;">next&nbsp;campaign.</span></h2>
                     <div class="contact-buttons">
                         <!-- Slide to Hire Me Button -->
@@ -832,7 +836,7 @@
                     <div class="refresh-date">Built with raw HTML/CSS &amp; too much coffee &middot; Refreshed November 2026</div>
                 </div>
             </div>
-            <div class="contact-video-right">
+            <div class="contact-video-right" id="contactVideoRight">
                 <div class="portrait-video-wrapper">
                     <video src="description-videos/2.mp4" poster="description-videos/2-thumb.jpg" autoplay loop muted playsinline class="contact-portrait-video"></video>
                 </div>
@@ -2031,5 +2035,6 @@
         }
     })();
     </script>
+    <script src="js/stepped-card.js"></script>
 </body>
 </html>
