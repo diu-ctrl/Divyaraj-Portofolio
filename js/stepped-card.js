@@ -29,9 +29,29 @@
                 d = `M ${r} 0 H ${w - r} A ${r} ${r} 0 0 1 ${w} ${r} V ${hLeft - r} A ${r} ${r} 0 0 1 ${w - r} ${hLeft} H ${r} A ${r} ${r} 0 0 1 0 ${hLeft - r} V ${r} A ${r} ${r} 0 0 1 ${r} 0 Z`;
             } else {
                 // Desktop: L-shaped stepped card enclosing left info and right video
-                const leftEnd = infoLeft.offsetLeft + infoLeft.offsetWidth;
+                // Measure actual extent of content inside infoLeft and copyright
+                let contentRight = 0;
+                const items = infoLeft.querySelectorAll('.contact-headline, .contact-buttons, .contact-social-row');
+                items.forEach(el => {
+                    const rightEdge = el.offsetLeft + el.offsetWidth;
+                    if (rightEdge > contentRight) contentRight = rightEdge;
+                });
+
+                const copyrightEl = document.querySelector('.copyright-above');
+                if (copyrightEl) {
+                    const copyRight = copyrightEl.offsetLeft + copyrightEl.offsetWidth;
+                    if (copyRight > contentRight) contentRight = copyRight;
+                }
+                if (contentRight === 0) contentRight = 460;
+
+                const minSplit = contentRight + 45;
                 const videoStart = videoRight.offsetLeft;
-                const xSplit = Math.round((leftEnd + videoStart) / 2);
+
+                // Move step border to the left: position at ~35% of the remaining gap towards video
+                // Gives balanced ~52/48 composition between left details and right video
+                let xSplit = Math.round(minSplit + (videoStart - minSplit) * 0.35);
+                if (xSplit > videoStart - 40) xSplit = videoStart - 40;
+                if (xSplit < minSplit) xSplit = minSplit;
 
                 d = [
                     `M ${r} 0`,
