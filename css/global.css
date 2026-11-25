@@ -2057,6 +2057,54 @@ html, body {
             background: #282723;
         }
 
+        /* ─── Profile Round Action Button (Ripple Engine Compatible) ─── */
+        .btn-footer-profile {
+            display: inline-flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+            width: 52px !important;
+            height: 52px !important;
+            min-width: 52px !important;
+            min-height: 52px !important;
+            border-radius: 50% !important;
+            background: transparent !important;
+            color: #ffffff !important;
+            border: 1px solid rgba(255, 255, 255, 0.18) !important;
+            text-decoration: none !important;
+            cursor: pointer !important;
+            flex-shrink: 0 !important;
+            box-sizing: border-box !important;
+            position: relative !important;
+            overflow: hidden !important;
+            isolation: isolate !important;
+            padding: 0 !important;
+            transition: border-color 0.3s ease, background-color 0.3s ease !important;
+        }
+
+        .btn-footer-profile svg {
+            width: 22px !important;
+            height: 22px !important;
+            flex-shrink: 0 !important;
+            stroke: currentColor !important;
+            display: block !important;
+        }
+
+        .btn-footer-profile .btn-label-base,
+        .btn-footer-profile .btn-ripple-overlay {
+            width: 100% !important;
+            height: 100% !important;
+            display: inline-flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+            border-radius: 50% !important;
+        }
+
+        .btn-footer-profile:not(.btn-ripple-container):hover {
+            border-color: var(--accent, #EB4604) !important;
+            color: #ffffff !important;
+            background: var(--accent, #EB4604) !important;
+        }
+
         /* ─── Social Icon Buttons Row ─── */
         .contact-social-row {
             display: flex;
@@ -2332,6 +2380,12 @@ html, body {
                 padding: 0 16px !important;
                 font-size: 13px !important;
                 height: 50px !important;
+            }
+            .btn-footer-profile {
+                width: 50px !important;
+                height: 50px !important;
+                min-width: 50px !important;
+                min-height: 50px !important;
             }
             .slide-button-container {
                 width: auto !important;
@@ -6035,6 +6089,12 @@ h1 .grad,
         display: inline-flex !important;
         align-items: center !important;
         justify-content: center !important;
+    }
+    .btn-footer-profile {
+        width: 50px !important;
+        height: 50px !important;
+        min-width: 50px !important;
+        min-height: 50px !important;
     }
     .contact-social-row {
         display: flex !important;

@@ -28,6 +28,7 @@
             '.btn-primary-gold',
             '.btn-outline',
             '.btn-brutalist-outline',
+            '.btn-footer-profile',
             '.back-btn',
             '.social-mail-btn',
             '.social-icon-btn',
@@ -115,4 +116,5 @@
     } else {
         initRippleButtons();
     }
+    window.addEventListener('load', initRippleButtons);
 })();

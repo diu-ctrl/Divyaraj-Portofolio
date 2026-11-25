@@ -1,0 +1,867 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Zero-FOUC Theme Initialization (Pre-CSS execute to avoid any flash) -->
+    <script>
+    (function() {
+        try {
+            var savedTheme = localStorage.getItem('dc-theme');
+            var systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+            var theme = savedTheme ? savedTheme : (systemPrefersDark ? 'dark' : 'light');
+            document.documentElement.setAttribute('data-theme', theme);
+        } catch(e) {}
+    })();
+    </script>
+
+    <!-- Primary Title -->
+    <title>Divyaraj Chauhan</title>
+    
+    <!-- Favicon Suite -->
+    <link rel="icon" type="image/png" sizes="48x48" href="/favicon-48x48.png?v=2">
+    <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png?v=2">
+    <link rel="icon" type="image/png" sizes="192x192" href="/favicon-192x192.png?v=2">
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg?v=2">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png?v=2">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png?v=2">
+    <link rel="shortcut icon" href="/favicon.ico?v=2">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png?v=2">
+    <link rel="manifest" href="/site.webmanifest?v=2">
+
+    <!-- SEO & Metadata -->
+    <meta name="description" content="Official profile of Divyaraj Chauhan — Web Designer, AI Filmmaker, and Creative Strategist based in Ahmedabad, Gujarat, India. Affiliated with St. Xavier's College, Ahmedabad.">
+    <meta name="keywords" content="Divyaraj Chauhan, diu-ctrl, Divyaraj, Web Designer Ahmedabad, AI Filmmaker India, St. Xavier's College Ahmedabad, Creative Strategist Gujarat">
+    <meta name="author" content="Divyaraj Chauhan">
+    <link rel="canonical" href="https://www.divyarajchauhan.in/profile">
+
+    <!-- Open Graph / Meta Profile -->
+    <meta property="og:type" content="profile">
+    <meta property="og:url" content="https://www.divyarajchauhan.in/profile">
+    <meta property="og:title" content="Divyaraj Chauhan — Web Designer & AI Filmmaker">
+    <meta property="og:description" content="Official profile and knowledge entity for Divyaraj Chauhan. Web Designer, AI Filmmaker, and Creative Strategist based in Ahmedabad, affiliated with St. Xavier's College.">
+    <meta property="og:image" content="https://www.divyarajchauhan.in/images/divyaraj-pp-2.png">
+    <meta property="og:image:alt" content="Divyaraj Chauhan Headshot">
+    <meta property="profile:first_name" content="Divyaraj">
+    <meta property="profile:last_name" content="Chauhan">
+    <meta property="profile:username" content="diu-ctrl">
+
+    <!-- Twitter / X Cards -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@divyraj_creates">
+    <meta name="twitter:creator" content="@divyraj_creates">
+    <meta name="twitter:title" content="Divyaraj Chauhan — Web Designer & AI Filmmaker">
+    <meta name="twitter:description" content="Official profile of Divyaraj Chauhan. Web Designer, AI Filmmaker, and Creative Strategist based in Ahmedabad.">
+    <meta name="twitter:image" content="https://www.divyarajchauhan.in/images/divyaraj-pp-2.png">
+
+    <!-- Fonts (Using Inter Tight & Instrument Serif exclusively) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital,wght@0,400;1,400&family=Inter+Tight:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
+    
+    <!-- Design System Tokens -->
+    <link rel="stylesheet" href="/css/tokens.css?v=20261119b">
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-K3GE4GK5HR"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-K3GE4GK5HR');
+    </script>
+
+    <!-- Schema.org Person JSON-LD (Knowledge Panel Entity Specification) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "Person",
+          "@id": "https://www.divyarajchauhan.in/#person",
+          "name": "Divyaraj Chauhan",
+          "givenName": "Divyaraj",
+          "familyName": "Chauhan",
+          "alternateName": [
+            "diu-ctrl",
+            "Divyaraj",
+            "Divyaraj Chauhan India",
+            "Divyaraj Chauhan Gujarat",
+            "Divyaraj Chauhan Ahmedabad"
+          ],
+          "url": "https://www.divyarajchauhan.in/profile",
+          "image": {
+            "@type": "ImageObject",
+            "@id": "https://www.divyarajchauhan.in/profile#headshot",
+            "url": "https://www.divyarajchauhan.in/images/divyaraj-pp-2.png",
+            "caption": "Divyaraj Chauhan"
+          },
+          "jobTitle": [
+            "Web Designer",
+            "AI Filmmaker",
+            "Creative Strategist"
+          ],
+          "worksFor": {
+            "@type": "Organization",
+            "name": "Independent Practice",
+            "url": "https://www.divyarajchauhan.in/"
+          },
+          "affiliation": {
+            "@type": "CollegeOrUniversity",
+            "name": "St. Xavier's College, Ahmedabad",
+            "url": "https://sxca.edu.in/"
+          },
+          "alumniOf": {
+            "@type": "CollegeOrUniversity",
+            "name": "St. Xavier's College, Ahmedabad"
+          },
+          "nationality": {
+            "@type": "Country",
+            "name": "India"
+          },
+          "homeLocation": {
+            "@type": "Place",
+            "name": "Ahmedabad, Gujarat, India"
+          },
+          "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Ahmedabad",
+            "addressRegion": "Gujarat",
+            "addressCountry": "IN"
+          },
+          "sameAs": [
+            "https://github.com/diu-ctrl",
+            "https://www.linkedin.com/in/divyarajchauhan33/",
+            "https://www.instagram.com/divyaraj.creates",
+            "https://x.com/divyraj_creates",
+            "https://www.facebook.com/p/Divyaraj-Chauhan-100070641908052/",
+            "https://www.divyarajchauhan.in/"
+          ],
+          "knowsAbout": [
+            "Web Design",
+            "AI Filmmaking",
+            "Creative Strategy",
+            "Frontend Development",
+            "Brutalist Web Design",
+            "Generative Media Production",
+            "Brand Identity Architecture"
+          ],
+          "description": "Divyaraj Chauhan is an Ahmedabad-based Web Designer, AI Filmmaker, and Creative Strategist affiliated with St. Xavier's College, Ahmedabad.",
+          "mainEntityOfPage": "https://www.divyarajchauhan.in/profile"
+        },
+        {
+          "@type": "ProfilePage",
+          "@id": "https://www.divyarajchauhan.in/profile#webpage",
+          "url": "https://www.divyarajchauhan.in/profile",
+          "name": "Divyaraj Chauhan — Official Profile & Knowledge Entity",
+          "isPartOf": {
+            "@type": "WebSite",
+            "@id": "https://www.divyarajchauhan.in/#website",
+            "name": "Divyaraj Chauhan",
+            "url": "https://www.divyarajchauhan.in/"
+          },
+          "about": {
+            "@id": "https://www.divyarajchauhan.in/#person"
+          },
+          "mainEntity": {
+            "@id": "https://www.divyarajchauhan.in/#person"
+          }
+        }
+      ]
+    }
+    </script>
+
+    <style>
+        :root {
+            /* Dark Theme (Default) */
+            --bg-pure: #000000;
+            --bg-surface: #0E0E0E;
+            --bg-raised: #151515;
+            --border-faint: rgba(255, 255, 255, 0.08);
+            --border-mid: rgba(255, 255, 255, 0.16);
+            --accent: #EB4604;
+            --text-primary: #FFFFFF;
+            --text-secondary: #9E9B93;
+            --text-muted: #6B6862;
+            --grid-line: rgba(255, 255, 255, 0.025);
+            --card-shadow: 0 30px 60px rgba(0, 0, 0, 0.6);
+            --img-shadow: 0 16px 36px rgba(0, 0, 0, 0.5);
+            --tag-bg: rgba(255, 255, 255, 0.04);
+            --font-display: 'Instrument Serif', Georgia, serif;
+            --font-sans: 'Inter Tight', system-ui, -apple-system, sans-serif;
+            --font-mono: 'Inter Tight', system-ui, -apple-system, sans-serif;
+        }
+
+        /* Light Theme (Warm Editorial Paper & Gallery Aesthetic) */
+        [data-theme="light"] {
+            --bg-pure: #F4F1EA;
+            --bg-surface: #FCFAF6;
+            --bg-raised: #ECE8E0;
+            --border-faint: rgba(0, 0, 0, 0.09);
+            --border-mid: rgba(0, 0, 0, 0.18);
+            --accent: #EB4604;
+            --text-primary: #121211;
+            --text-secondary: #57544F;
+            --text-muted: #87847E;
+            --grid-line: rgba(0, 0, 0, 0.035);
+            --card-shadow: 0 20px 45px rgba(0, 0, 0, 0.07);
+            --img-shadow: 0 12px 28px rgba(0, 0, 0, 0.12);
+            --tag-bg: rgba(0, 0, 0, 0.04);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: var(--bg-pure);
+            color: var(--text-primary);
+            font-family: var(--font-sans);
+            min-height: 100vh;
+            line-height: 1.6;
+            padding: 40px 20px 100px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            overflow-x: hidden;
+            position: relative;
+            transition: background-color 0.28s cubic-bezier(0.16, 1, 0.3, 1), color 0.28s ease;
+        }
+
+        /* Subtle grid background */
+        body::before {
+            content: '';
+            position: fixed;
+            inset: 0;
+            background-image: 
+                linear-gradient(var(--grid-line) 1px, transparent 1px),
+                linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
+            background-size: 48px 48px;
+            pointer-events: none;
+            z-index: 0;
+            transition: background-image 0.28s ease;
+        }
+
+        .profile-wrapper {
+            position: relative;
+            z-index: 1;
+            width: 100%;
+            max-width: 860px;
+            display: flex;
+            flex-direction: column;
+            gap: 28px;
+        }
+
+        /* Top Bar Navigation */
+        .top-nav {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding-bottom: 20px;
+            border-bottom: 1px solid var(--border-faint);
+            flex-wrap: wrap;
+            gap: 16px;
+            transition: border-color 0.28s ease;
+        }
+
+        .brand-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+            color: var(--text-primary);
+            font-size: 0.95rem;
+            font-weight: 600;
+            letter-spacing: -0.01em;
+            cursor: pointer;
+        }
+
+        .brand-link:hover {
+            color: var(--text-primary);
+        }
+
+        .nav-right-cluster {
+            display: flex;
+            align-items: center;
+            gap: 22px;
+            flex-wrap: wrap;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .nav-link {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.88rem;
+            font-weight: 500;
+            transition: color 0.2s ease;
+        }
+
+        .nav-link:hover {
+            color: var(--text-primary);
+        }
+
+        /* Theme Toggle Button (Refined Editorial Pill / Circle) */
+        .theme-toggle-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            background: var(--bg-raised);
+            border: 1px solid var(--border-mid);
+            color: var(--text-primary);
+            cursor: pointer;
+            padding: 0;
+            transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .theme-toggle-btn:hover {
+            border-color: var(--accent);
+            color: var(--accent);
+            transform: scale(1.06);
+        }
+
+        .theme-toggle-btn svg {
+            width: 17px;
+            height: 17px;
+            transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        /* Icon switching based on active theme */
+        .icon-moon {
+            display: none;
+        }
+        .icon-sun {
+            display: block;
+        }
+        [data-theme="light"] .icon-sun {
+            display: none;
+        }
+        [data-theme="light"] .icon-moon {
+            display: block;
+        }
+
+        /* Hero Entity Card */
+        .entity-card {
+            background: var(--bg-surface);
+            border: 1px solid var(--border-mid);
+            border-radius: 18px;
+            padding: 48px 44px;
+            position: relative;
+            box-shadow: var(--card-shadow);
+            transition: background-color 0.28s ease, border-color 0.28s ease, box-shadow 0.28s ease;
+        }
+
+        .entity-header {
+            display: flex;
+            flex-direction: row;
+            align-items: flex-start;
+            gap: 36px;
+            flex-wrap: wrap;
+        }
+
+        /* Headshot Image Container */
+        .headshot-wrap {
+            position: relative;
+            flex-shrink: 0;
+        }
+
+        .headshot-img {
+            width: 170px;
+            height: 170px;
+            border-radius: 14px;
+            object-fit: cover;
+            border: 2px solid var(--border-mid);
+            background: var(--bg-raised);
+            box-shadow: var(--img-shadow);
+            display: block;
+            transition: border-color 0.28s ease, box-shadow 0.28s ease;
+        }
+
+        .entity-details {
+            flex: 1;
+            min-width: 280px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .entity-name {
+            font-family: var(--font-display);
+            font-size: clamp(2.4rem, 5vw, 3.4rem);
+            font-weight: 400;
+            line-height: 1.05;
+            letter-spacing: -0.02em;
+            color: var(--text-primary);
+            transition: color 0.28s ease;
+        }
+
+        .entity-roles {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            flex-wrap: wrap;
+            font-size: 1.05rem;
+            color: var(--text-primary);
+            font-weight: 500;
+            letter-spacing: -0.01em;
+            transition: color 0.28s ease;
+        }
+
+        .role-dot {
+            width: 4px;
+            height: 4px;
+            background: var(--text-muted);
+            border-radius: 50%;
+        }
+
+        .entity-meta-row {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            flex-wrap: wrap;
+            margin-top: 4px;
+            font-size: 0.88rem;
+            color: var(--text-secondary);
+            transition: color 0.28s ease;
+        }
+
+        .meta-item {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .meta-item svg {
+            color: var(--text-primary);
+            flex-shrink: 0;
+            transition: color 0.28s ease;
+        }
+
+        /* Profiles Strip */
+        .profiles-strip {
+            margin-top: 28px;
+            padding-top: 24px;
+            border-top: 1px solid var(--border-faint);
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            align-items: center;
+            transition: border-color 0.28s ease;
+        }
+
+        .strip-label {
+            font-family: var(--font-sans);
+            font-size: 0.88rem;
+            font-weight: 500;
+            color: var(--text-secondary);
+            margin-right: 4px;
+            transition: color 0.28s ease;
+        }
+
+        .profile-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: var(--bg-raised);
+            color: var(--text-primary);
+            text-decoration: none;
+            font-size: 0.84rem;
+            font-weight: 500;
+            padding: 8px 14px;
+            border-radius: 8px;
+            border: 1px solid var(--border-faint);
+            transition: all 0.2s ease;
+        }
+
+        .profile-btn:hover {
+            border-color: var(--accent);
+            color: var(--accent);
+            transform: translateY(-2px);
+        }
+
+        .profile-btn svg {
+            width: 15px;
+            height: 15px;
+            flex-shrink: 0;
+        }
+
+        /* Two-Column Structured Info Sections */
+        .grid-sections {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+        }
+
+        @media (max-width: 720px) {
+            .grid-sections {
+                grid-template-columns: 1fr;
+            }
+            .entity-card {
+                padding: 32px 24px;
+            }
+            .headshot-img {
+                width: 130px;
+                height: 130px;
+            }
+            .nav-right-cluster {
+                gap: 14px;
+            }
+            .nav-links {
+                gap: 14px;
+            }
+        }
+
+        .info-card {
+            background: var(--bg-surface);
+            border: 1px solid var(--border-faint);
+            border-radius: 14px;
+            padding: 32px 28px;
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+            box-shadow: var(--card-shadow);
+            transition: background-color 0.28s ease, border-color 0.28s ease, box-shadow 0.28s ease;
+        }
+
+        .card-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            letter-spacing: -0.02em;
+            color: var(--text-primary);
+            transition: color 0.28s ease;
+        }
+
+        .card-body {
+            font-size: 0.92rem;
+            color: var(--text-secondary);
+            line-height: 1.65;
+            transition: color 0.28s ease;
+        }
+
+        .tag-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 6px;
+        }
+
+        .tag-item {
+            font-size: 0.78rem;
+            font-weight: 500;
+            padding: 5px 12px;
+            background: var(--tag-bg);
+            border: 1px solid var(--border-faint);
+            border-radius: 6px;
+            color: var(--text-primary);
+            transition: all 0.25s ease;
+        }
+
+        /* Academic & Affiliation Block */
+        .affiliation-row {
+            display: flex;
+            align-items: flex-start;
+            gap: 14px;
+            padding: 12px 0;
+            border-bottom: 1px solid var(--border-faint);
+            transition: border-color 0.28s ease;
+        }
+
+        .affiliation-row:last-child {
+            border-bottom: none;
+            padding-bottom: 0;
+        }
+
+        .aff-icon {
+            color: var(--text-primary);
+            margin-top: 3px;
+            transition: color 0.28s ease;
+        }
+
+        .aff-text strong {
+            display: block;
+            font-size: 0.95rem;
+            color: var(--text-primary);
+            font-weight: 600;
+            transition: color 0.28s ease;
+        }
+
+        .aff-text span {
+            font-size: 0.82rem;
+            color: var(--text-muted);
+            transition: color 0.28s ease;
+        }
+
+        .footer {
+            margin-top: 10px;
+            text-align: center;
+            font-size: 0.82rem;
+            color: var(--text-muted);
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            transition: color 0.28s ease;
+        }
+
+        .footer a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .footer a:hover {
+            color: var(--accent);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="profile-wrapper">
+        <!-- Top Navigation with Theme Toggle -->
+        <header class="top-nav">
+            <a href="/" class="brand-link">
+                <span>Divyaraj Chauhan</span>
+            </a>
+            <div class="nav-right-cluster">
+                <nav class="nav-links">
+                    <a href="/" class="nav-link">Home</a>
+                    <a href="/about" class="nav-link">About</a>
+                    <a href="/websites" class="nav-link">Websites</a>
+                    <a href="/ai-cinema" class="nav-link">AI Cinema</a>
+                    <a href="/divyaraj-resume" class="nav-link">Resume</a>
+                    <a href="/contact" class="nav-link">Contact</a>
+                </nav>
+                <!-- Theme Toggle Button -->
+                <button id="themeToggle" class="theme-toggle-btn" aria-label="Toggle light and dark theme" title="Toggle theme">
+                    <!-- Sun Icon (shown in dark mode) -->
+                    <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                    <!-- Moon Icon (shown in light mode) -->
+                    <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                </button>
+            </div>
+        </header>
+
+        <!-- Main Hero Card -->
+        <main class="entity-card">
+            <div class="entity-header">
+                <!-- Headshot Picture -->
+                <div class="headshot-wrap">
+                    <img 
+                        src="/images/divyaraj-pp-2.png" 
+                        alt="Divyaraj Chauhan" 
+                        class="headshot-img"
+                        width="170" 
+                        height="170"
+                        loading="eager"
+                    >
+                </div>
+
+                <!-- Entity Details -->
+                <div class="entity-details">
+                    <h1 class="entity-name">Divyaraj Chauhan</h1>
+                    
+                    <div class="entity-roles">
+                        <span>Web Designer</span>
+                        <span class="role-dot"></span>
+                        <span>AI Filmmaker</span>
+                    </div>
+
+                    <div class="entity-meta-row">
+                        <div class="meta-item">
+                            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M22 10v6M2 10l10-5 10 5-10 5z"/>
+                                <path d="M6 12v5c3 3 9 3 12 0v-5"/>
+                            </svg>
+                            <span>St. Xavier's College, Ahmedabad</span>
+                        </div>
+                        <div class="meta-item">
+                            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                                <circle cx="12" cy="10" r="3"></circle>
+                            </svg>
+                            <span>Ahmedabad, Gujarat, India</span>
+                        </div>
+                    </div>
+
+                    <p class="card-body" style="margin-top: 6px;">
+                        Web designer and filmmaker based in Ahmedabad. I design custom websites, help brands grow, and create cinematic videos using AI.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Profiles Strip -->
+            <div class="profiles-strip">
+                <span class="strip-label">Profiles</span>
+
+                <!-- GitHub -->
+                <a href="https://github.com/diu-ctrl" target="_blank" rel="me noopener" class="profile-btn" title="GitHub">
+                    <svg viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/>
+                    </svg>
+                    <span>GitHub</span>
+                </a>
+
+                <!-- LinkedIn -->
+                <a href="https://www.linkedin.com/in/divyarajchauhan33/" target="_blank" rel="me noopener" class="profile-btn" title="LinkedIn">
+                    <svg viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+                    </svg>
+                    <span>LinkedIn</span>
+                </a>
+
+                <!-- X (Twitter) -->
+                <a href="https://x.com/divyraj_creates" target="_blank" rel="me noopener" class="profile-btn" title="X (Twitter)">
+                    <svg viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+                    </svg>
+                    <span>X (Twitter)</span>
+                </a>
+
+                <!-- Instagram -->
+                <a href="https://www.instagram.com/divyaraj.creates" target="_blank" rel="me noopener" class="profile-btn" title="Instagram">
+                    <svg viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                    </svg>
+                    <span>Instagram</span>
+                </a>
+
+                <!-- Facebook -->
+                <a href="https://www.facebook.com/p/Divyaraj-Chauhan-100070641908052/" target="_blank" rel="me noopener" class="profile-btn" title="Facebook">
+                    <svg viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+                    </svg>
+                    <span>Facebook</span>
+                </a>
+
+                <!-- Resume -->
+                <a href="/divyaraj-resume" class="profile-btn" title="Resume">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                        <polyline points="14 2 14 8 20 8"></polyline>
+                        <line x1="16" y1="13" x2="8" y2="13"></line>
+                        <line x1="16" y1="17" x2="8" y2="17"></line>
+                        <polyline points="10 9 9 9 8 9"></polyline>
+                    </svg>
+                    <span>Resume</span>
+                </a>
+            </div>
+        </main>
+
+        <!-- Two Column Sections -->
+        <div class="grid-sections">
+            <!-- Biography & Practice -->
+            <section class="info-card">
+                <h2 class="card-title">Practice & Focus</h2>
+                <p class="card-body">
+                    I build fast, clean websites and make cinematic videos using AI. Based in Ahmedabad, I work with brands and creators to build online stores, design websites, and produce visual content that stands out.
+                </p>
+                <div class="tag-list">
+                    <span class="tag-item">Web Design</span>
+                    <span class="tag-item">AI Filmmaking</span>
+                    <span class="tag-item">Brand Growth</span>
+                    <span class="tag-item">Video Production</span>
+                </div>
+            </section>
+
+            <!-- Education & Affiliations -->
+            <section class="info-card">
+                <h2 class="card-title">Education & Credentials</h2>
+                
+                <div class="affiliation-row">
+                    <div class="aff-icon">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M22 10v6M2 10l10-5 10 5-10 5z"/>
+                            <path d="M6 12v5c3 3 9 3 12 0v-5"/>
+                        </svg>
+                    </div>
+                    <div class="aff-text">
+                        <strong>St. Xavier's College, Ahmedabad</strong>
+                        <span>Department of Information Technology • B.Sc. IT</span>
+                    </div>
+                </div>
+
+                <div class="affiliation-row">
+                    <div class="aff-icon">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="12" cy="12" r="10"></circle>
+                            <line x1="2" y1="12" x2="22" y2="12"></line>
+                            <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+                        </svg>
+                    </div>
+                    <div class="aff-text">
+                        <strong>Independent Work</strong>
+                        <span>Web Design, Branding & Video Production</span>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <p>Divyaraj Chauhan &copy; 2026. All rights reserved.</p>
+            <p>
+                <a href="https://www.divyarajchauhan.in/">divyarajchauhan.in</a> &bull; 
+                <a href="/about">About</a> &bull; 
+                <a href="/divyaraj-resume">Resume</a> &bull; 
+                <a href="/contact">Contact</a>
+            </p>
+        </footer>
+    </div>
+
+    <!-- Theme Switcher Interaction Script -->
+    <script>
+    (function initThemeToggle() {
+        const themeBtn = document.getElementById('themeToggle');
+        if (!themeBtn) return;
+
+        function getActiveTheme() {
+            return document.documentElement.getAttribute('data-theme') || 'dark';
+        }
+
+        function applyTheme(theme) {
+            document.documentElement.setAttribute('data-theme', theme);
+            try {
+                localStorage.setItem('dc-theme', theme);
+            } catch(e) {}
+        }
+
+        themeBtn.addEventListener('click', function() {
+            const current = getActiveTheme();
+            const next = current === 'dark' ? 'light' : 'dark';
+            applyTheme(next);
+        });
+
+        // Listen for OS scheme changes if user hasn't chosen manually
+        try {
+            window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', function(e) {
+                if (!localStorage.getItem('dc-theme')) {
+                    applyTheme(e.matches ? 'dark' : 'light');
+                }
+            });
+        } catch(e) {}
+    })();
+    </script>
+
+</body>
+</html>
